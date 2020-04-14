@@ -1,0 +1,14 @@
+.twrp-admin {
+	font-size: 1rem;
+
+	p,
+	input,
+	textarea,
+	select {
+		font-size: 1rem;
+	}
+
+	input[type="checkbox"] {
+		vertical-align: sub;
+	}
+}

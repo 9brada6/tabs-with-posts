@@ -1,0 +1,19 @@
+
+.twrp-cat-settings {
+
+	// Select type wrapper.
+	&__select-type-text,
+	&__select-relation-text {
+		display: inline;
+		margin-right: 0.2rem;
+	}
+
+	&__include-children-wrap,
+	&__select-type-wrap {
+		margin: 0.3rem 0 1rem;
+	}
+
+	.twrp-cat-settings__select-relation-wrap--hidden {
+		display: none;
+	}
+}

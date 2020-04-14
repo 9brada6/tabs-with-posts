@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<ruleset
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    name="PHP_CodeSniffer"
+    xsi:noNamespaceSchemaLocation="phpcs.xsd"
+>
+    <description>The coding standard for Tabs with Recommended Posts Plugin.</description>
+
+    <exclude-pattern>vendor/**</exclude-pattern>
+    <exclude-pattern>node_modules/**</exclude-pattern>
+	<exclude-pattern>/plugins/!(tabs-with-recommended-posts)/**</exclude-pattern>
+
+    <rule ref="WordPress">
+		<!-- We will use <?= instead of <?php echo -->
+		<exclude name="Generic.PHP.DisallowShortOpenTag.EchoFound"/>
+
+		<properties>
+			<!-- Custom domain name. -->
+			<property name="text_domain" type="array" value="twrp" />
+
+			<!-- Prefix all globals. -->
+			<property name="prefixes" type="array" value="twrp_" />
+
+			<!-- Minimum supported version. -->
+			<property name="minimum_supported_version" value="4.9"/>
+
+			<property name="customAutoEscapedFunctions" type="array">
+				<element value="__"/>
+				<element value="_x"/>
+				<element value="_n"/>
+				<element value="_nx"/>
+			</property>
+		</properties>
+
+
+		<!-- Excluded during development. -->
+		<!--
+			Some problems will appear all the time while developing
+			(Ex: uncommented functions), making the problems panel hard to use,
+			and easy to ignore it completely. Excluding some rules in development
+			stage will make important problems more noticed and the problems panel
+			less cluttered to not be ignored.
+		-->
+		<!-- <exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
+		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
+		<exclude name="Squiz.Commenting.ClassComment.Missing" />
+		<exclude name="Squiz.Commenting.VariableComment.Missing" />
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
+		<exclude name="Generic.Commenting.DocComment.Empty" />
+		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" /> -->
+    </rule>
+
+	<!-- Check for cross-version support for PHP 7.0 and higher. -->
+    <config name="testVersion" value="5.6"/>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+</ruleset>

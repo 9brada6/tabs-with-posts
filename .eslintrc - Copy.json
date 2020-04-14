@@ -1,0 +1,28 @@
+{
+	"env": {
+		"browser": true,
+		"jquery": true
+	},
+	"globals": {
+        "CodeMirror": "readonly"
+    },
+	"extends": [
+		"eslint:recommended",
+		"standard",
+		"prettier",
+		"jquery"
+	],
+	"rules": {
+		"indent": ["error", "tab"],
+		"no-tabs": ["error", { "allowIndentationTabs": true }],
+		"space-in-parens": ["error", "always"],
+		"quotes": ["error", "single", { "avoidEscape": true }],
+		"brace-style": ["error", "1tbs"],
+		"space-before-blocks": ["error", "always"],
+		"arrow-spacing": [ "error", { "before": true, "after": true } ],
+		"keyword-spacing": ["error", { "before": true, "after": true } ],
+		"space-before-function-paren": ["error", { "anonymous": "always", "named": "never", "asyncArrow": "always" }],
+		"switch-colon-spacing": ["error", {"after": true, "before": false}],
+		"linebreak-style": ["error", "unix"]
+	}
+  }

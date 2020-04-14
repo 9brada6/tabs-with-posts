@@ -1,0 +1,16 @@
+.twrp-existing-queries {
+	&__title {
+		margin: 1.5rem 0 1.2rem;
+		font-size: 1.5rem;
+	}
+
+	// increase selection priority by adding .button.
+	&__btn.button {
+		margin: 1rem 0;
+	}
+
+	&__add-btn-icon {
+		margin-right: 0.2rem;
+		vertical-align: middle;
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"env": {
+		"browser": true,
+		"jquery": true
+	},
+	"globals": {
+        "CodeMirror": "readonly"
+    },
+	"extends": [
+		"plugin:@wordpress/eslint-plugin/jsdoc",
+		"plugin:@wordpress/eslint-plugin/esnext"
+	]
+  }
