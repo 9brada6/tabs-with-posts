@@ -1,7 +1,18 @@
 <?php
+/**
+ * File that define the TWRP_Query_Name_Setting class.
+ *
+ * @package Tabs_With_Recommended_Posts
+ */
 
-
-class TWRP_Tab_Name_Setting implements TWRP_Backend_Setting {
+/**
+ * Implements the query name setting.
+ *
+ * This setting is used for the administrators to give a query interrogation a
+ * simple name to remember and describe what a query do. This name will be
+ * visible only in the backend of the website.
+ */
+class TWRP_Query_Name_Setting implements TWRP_Backend_Setting {
 
 	/**
 	 * Display the backend HTML for the setting.
@@ -26,7 +37,7 @@ class TWRP_Tab_Name_Setting implements TWRP_Backend_Setting {
 	}
 
 	/**
-	 * The title of the setting.
+	 * The title of the setting accordion.
 	 *
 	 * @return string
 	 */
@@ -46,7 +57,7 @@ class TWRP_Tab_Name_Setting implements TWRP_Backend_Setting {
 			return '';
 		}
 
-		$sanitized_name = preg_replace( '/[^a-zA-Z0-9 ()\-_]/', '', wp_unslash( $name ) );
+		$sanitized_name = preg_replace( '/[^a-zA-Z0-9 ()\-_]/', '', $name );
 		return $sanitized_name;
 	}
 
@@ -69,7 +80,7 @@ class TWRP_Tab_Name_Setting implements TWRP_Backend_Setting {
 		if ( isset( $_POST, $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore
 			return self::sanitize_setting( $_POST[ self::get_setting_name() ] ); // phpcs:ignore
 		}
-		return '';
+		return self::get_default_setting();
 	}
 
 	/**
