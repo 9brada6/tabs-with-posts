@@ -26,7 +26,7 @@ interface TWRP_Backend_Setting {
 	public function display_setting( $current_setting );
 
 	/**
-	 * The title of the setting.
+	 * The title of the setting accordion.
 	 *
 	 * @return string
 	 */
