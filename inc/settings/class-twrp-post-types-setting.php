@@ -1,33 +1,53 @@
 <?php
+/**
+ * Contains the class that will filter articles via the post types.
+ *
+ * @package Tabs_With_Recommended_Posts
+ */
 
+/**
+ * Class that will filter the articles via selected posts types.
+ */
 class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query_Args {
+
+	/**
+	 * Display the backend HTML for the setting.
+	 *
+	 * @param mixed $current_setting The current setting of a query if is being
+	 * edited, or else an empty string or null will be given.
+	 *
+	 * @return void
+	 */
 	public function display_setting( $current_setting ) {
 
-		$post_types = self::get_available_types();
+		$available_post_types = self::get_available_types();
+		$current_setting      = self::sanitize_setting( $current_setting );
 
-		$selected = self::get_default_setting();
+		$selected_post_types = self::get_default_setting();
 		if ( ! empty( $current_setting ) ) {
-			$selected = $current_setting;
+			$selected_post_types = $current_setting;
 		}
 
 		?>
 		<div class="twrp-tabs-settings__post-types">
 			<?php
-			foreach ( $post_types as $post_type ) :
-				if ( isset( $post_type->name ) ) :
-					$is_checked   = in_array( $post_type->name, $selected, true );
+			foreach ( $available_post_types as $available_post_type ) :
+				if ( isset( $available_post_type->name ) ) :
+
+					$is_checked   = in_array( $available_post_type->name, $selected_post_types, true );
 					$checked_attr = $is_checked ? 'checked="checked"' : '';
+
 					?>
 					<div>
 						<input
-							id="twrp-post-type-checkbox__<?= esc_attr( $post_type->name ); ?>"
-							name="post_types[<?= esc_attr( $post_type->name ); ?>]"
+							id="twrp-post-type-checkbox__<?= esc_attr( $available_post_type->name ); ?>"
+							name="post_types[<?= esc_attr( $available_post_type->name ); ?>]"
 							type="checkbox"
-							value="1"
+							value="<?= esc_attr( $available_post_type->name ); ?>"
 							<?= $checked_attr //phpcs:ignore ?>
 						/>
-						<label for="twrp-post-type-checkbox__<?= esc_attr( $post_type->name ); ?>">
-							<?= esc_html( $post_type->label ) ?>
+						<label for="twrp-post-type-checkbox__<?= esc_attr( $available_post_type->name ); ?>">
+							<?= esc_html( $available_post_type->label ) ?>
 						</label>
 					</div>
 					<?php
@@ -38,10 +58,21 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		<?php
 	}
 
+	/**
+	 * The title of the setting accordion.
+	 *
+	 * @return string
+	 */
 	public function get_title() {
 		return _x( 'Post types to display', 'backend', 'twrp' );
 	}
 
+	/**
+	 * Get the setting submitted from the form. The setting is sanitized and
+	 * ready to use.
+	 *
+	 * @return array
+	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST, $_POST['post_types'] ) ) { // phpcs:ignore WordPress.Security
 			return self::sanitize_setting( $_POST['post_types'] ); // phpcs:ignore WordPress.Security
@@ -50,6 +81,13 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		return self::get_default_setting();
 	}
 
+	/**
+	 * Sanitize the post types, to be safe for processing.
+	 *
+	 * @param array<string> $post_types The array with post types to be sanitized.
+	 *
+	 * @return array The sanitized post types.
+	 */
 	public static function sanitize_setting( $post_types ) {
 		$sanitized_post_types = array();
 
@@ -58,10 +96,10 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		}
 
 		$available_post_types = self::get_available_types( 'names' );
-		foreach ( $post_types as $type => $is_enabled ) {
-			if ( $is_enabled ) {
-				if ( in_array( $type, $available_post_types, true ) ) {
-					array_push( $sanitized_post_types, $type );
+		foreach ( $post_types as $post_type_name ) {
+			if ( $post_type_name ) {
+				if ( in_array( $post_type_name, $available_post_types, true ) ) {
+					array_push( $sanitized_post_types, $post_type_name );
 				}
 			}
 		}
@@ -73,6 +111,11 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		return $sanitized_post_types;
 	}
 
+	/**
+	 * The default setting to be retrieved, if user didn't set anything.
+	 *
+	 * @return mixed
+	 */
 	public static function get_default_setting() {
 		return array( 'post' );
 	}
@@ -98,7 +141,8 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 	}
 
 	/**
-	 * The name of the input, and also of the array key that stores the option of the query.
+	 * The name of the HTML form input, and also of the array key that stores
+	 * the option of the query.
 	 *
 	 * @return string
 	 */
@@ -106,8 +150,39 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		return 'post_types';
 	}
 
-	public static function add_query_arg( $previous_query_args, $tabs_settings ) {
-		return array();
+	/**
+	 * Add the setting into some previous WP_Query arguments to retrieve posts
+	 * via WP_Query class.
+	 *
+	 * The previous query arguments will be modified such that will also contain
+	 * the new settings, and will return the new query arguments to be passed
+	 * into WP_Query class.
+	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param mixed $query_settings All query settings.
+	 *
+	 * @return array The new arguments modified.
+	 */
+	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
+			return $previous_query_args;
+		}
+		$post_types = $query_settings[ self::get_setting_name() ];
+
+		if ( ! is_array( $post_types ) ) {
+			return $previous_query_args;
+		}
+
+		foreach ( $post_types as $key => $type ) {
+			if ( ( ! is_string( $type ) ) || ( ! post_type_exists( $type ) ) ) {
+				unset( $post_types[ $key ] );
+			}
+		}
+
+		array_values( $post_types );
+		$previous_query_args['post_types'] = $post_types;
+
+		return $previous_query_args;
 	}
 
 	/**

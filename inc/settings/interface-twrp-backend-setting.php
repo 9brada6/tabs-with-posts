@@ -33,7 +33,7 @@ interface TWRP_Backend_Setting {
 	public function get_title();
 
 	/**
-	 * The name of the input and of the array key that stores the option of the query.
+	 * The name of the HTML form input and of the array key that stores the option of the query.
 	 *
 	 * @return string
 	 */
@@ -43,17 +43,23 @@ interface TWRP_Backend_Setting {
 	 * Sanitize a variable, to be safe for processing.
 	 *
 	 * @param mixed $setting The string to be sanitized.
+	 *
+	 * @return mixed The sanitized variable
 	 */
 	public static function sanitize_setting( $setting );
 
 	/**
 	 * Get the setting submitted from the form. The setting is sanitized and
 	 * ready to use.
+	 *
+	 * @return mixed
 	 */
 	public function get_submitted_sanitized_setting();
 
 	/**
-	 * The name of the input, and also of the array key that stores the option of the query.
+	 * The default setting to be retrieved, if user didn't set anything.
+	 *
+	 * @return mixed
 	 */
 	public static function get_default_setting();
 
