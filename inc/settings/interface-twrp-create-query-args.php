@@ -20,7 +20,7 @@ interface TWRP_Create_Query_Args {
 	 * into WP_Query class.
 	 *
 	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings.
+	 * @param mixed $query_settings All query settings, these settings are unsanitized.
 	 *
 	 * @return array The new arguments modified.
 	 */

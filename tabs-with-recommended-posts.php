@@ -73,7 +73,7 @@ require_once __DIR__ . '/admin-pages/tabs/class-twrp-styles-tab.php';
 require_once __DIR__ . '/inc/settings/interface-twrp-backend-setting.php';
 require_once __DIR__ . '/inc/settings/interface-twrp-create-query-args.php';
 // Setting to give to name the custom query.
-require_once __DIR__ . '/inc/settings/class-twrp-tab-name-setting.php';
+require_once __DIR__ . '/inc/settings/class-twrp-query-name-setting.php';
 // Setting to select post types of the custom query.
 require_once __DIR__ . '/inc/settings/class-twrp-post-types-setting.php';
 // Setting to add a custom list of arguments to WP_Query. For advanced users only.
@@ -81,6 +81,7 @@ require_once __DIR__ . '/inc/settings/class-twrp-advance-args-setting.php';
 require_once __DIR__ . '/inc/settings/class-twrp-categories-setting.php';
 require_once __DIR__ . '/inc/settings/class-twrp-author-setting.php';
 
+require_once __DIR__ . '/inc/class-twrp-get-posts.php';
 
 
 /**
@@ -136,14 +137,14 @@ function twrp_add_default_tabs() {
 	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Posts_Query_Tab' );
 	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Styles_Tab' );
 
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Tab_Name_Setting', 10 );
+	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Query_Name_Setting', 10 );
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Post_Types_Setting', 20 );
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Author_Setting', 30 );
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Categories_Setting', 40 );
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Advanced_Args_Setting', 100 );
 
 	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Post_Types_Setting', 10 );
-	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Advanced_Args_Setting', 1000 );
+	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Advanced_Args_Setting', 1000 );
 
 	TWRP_Manage_Classes::add_style_class( 'TWRP_Simple_Style' );
 	TWRP_Manage_Classes::add_style_class( 'TWRP_Modern_Style' );

@@ -32,7 +32,7 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		<div class="twrp-tabs-settings__post-types">
 			<?php
 			foreach ( $available_post_types as $available_post_type ) :
-				if ( isset( $available_post_type->name ) ) :
+				if ( isset( $available_post_type->name, $available_post_type->label ) ) :
 
 					$is_checked   = in_array( $available_post_type->name, $selected_post_types, true );
 					$checked_attr = $is_checked ? 'checked="checked"' : '';
@@ -159,28 +159,17 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 	 * into WP_Query class.
 	 *
 	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings.
+	 * @param mixed $query_settings All query settings, these settings are unsanitized.
 	 *
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
-			return $previous_query_args;
+			$post_types = self::get_default_setting();
+		} else {
+			$post_types = $query_settings[ self::get_setting_name() ];
 		}
-		$post_types = $query_settings[ self::get_setting_name() ];
-
-		if ( ! is_array( $post_types ) ) {
-			return $previous_query_args;
-		}
-
-		foreach ( $post_types as $key => $type ) {
-			if ( ( ! is_string( $type ) ) || ( ! post_type_exists( $type ) ) ) {
-				unset( $post_types[ $key ] );
-			}
-		}
-
-		array_values( $post_types );
-		$previous_query_args['post_types'] = $post_types;
+		$previous_query_args['post_types'] = $this->sanitize_setting( $post_types );
 
 		return $previous_query_args;
 	}
