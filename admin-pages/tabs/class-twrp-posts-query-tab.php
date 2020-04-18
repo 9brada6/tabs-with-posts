@@ -138,8 +138,11 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 
 		$edit_icon    = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
 		$delete_icon  = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
-		$add_btn_icon = '<span class="twrp-existing-queries__add-btn-icon dashicons dashicons-plus"></span>'
+		$add_btn_icon = '<span class="twrp-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
 
+		// todo: delete.
+		var_dump( TWRP_Query_Posts::get_wp_query_arguments( 6 ) );
+		var_dump( post_type_exists( 'monitor' ) );
 		?>
 		<div class="twrp-existing-queries">
 			<h3 class="twrp-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
@@ -214,7 +217,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	protected function get_query_edit_link( $query_id ) {
 		$tab_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
-		if ( TWRP_Manage_Options::query_key_exist( $query_id ) ) {
+		if ( TWRP_Manage_Options::query_exists( $query_id ) ) {
 			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 		}
 
@@ -295,7 +298,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 			// phpcs:ignore WordPress.Security -- The setting is sanitized.
 			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
 
-			if ( is_numeric( $key ) && TWRP_Manage_Options::query_key_exist( $key ) ) {
+			if ( is_numeric( $key ) && TWRP_Manage_Options::query_exists( $key ) ) {
 				return $key;
 			}
 		}
@@ -345,7 +348,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 
 		if ( '' === $query_key ) {
 			TWRP_Manage_Options::add_new_query( $query_settings );
-		} elseif ( TWRP_Manage_Options::query_key_exist( $query_key ) ) {
+		} elseif ( TWRP_Manage_Options::query_exists( $query_key ) ) {
 			TWRP_Manage_Options::update_query( $query_key, $query_settings );
 		}
 	}
@@ -378,7 +381,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	protected function get_query_delete_link( $query_id ) {
 		$tab_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
-		if ( TWRP_Manage_Options::query_key_exist( $query_id ) ) {
+		if ( TWRP_Manage_Options::query_exists( $query_id ) ) {
 			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
 			return $url;
@@ -425,7 +428,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	protected function execute_delete_query_action() {
 		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore
 			$key = sanitize_key( wp_unslash( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ); // phpcs:ignore
-			if ( TWRP_Manage_Options::query_key_exist( $key ) ) {
+			if ( TWRP_Manage_Options::query_exists( $key ) ) {
 				TWRP_Manage_Options::delete_query( $key );
 			}
 		}

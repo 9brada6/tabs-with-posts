@@ -41,14 +41,14 @@
 			stage will make important problems more noticed and the problems panel
 			less cluttered to not be ignored.
 		-->
-		<!-- <exclude name="Squiz.Commenting.FileComment.Missing" />
+		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.VariableComment.Missing" />
 		<exclude name="Generic.Commenting.DocComment.MissingShort" />
 		<exclude name="Generic.Commenting.DocComment.Empty" />
-		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" /> -->
+		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
     </rule>
 
 	<!-- Check for cross-version support for PHP 7.0 and higher. -->

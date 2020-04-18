@@ -1,6 +1,6 @@
 <?php
 /**
- * @todo: make query key is valid protected
+ * @todo: add a protected function named "is_query_settings_format"
  */
 
 class TWRP_Manage_Options {
@@ -12,19 +12,20 @@ class TWRP_Manage_Options {
 	 * @return array
 	 */
 	public static function get_all_queries() {
-		$queries_options = get_option( self::QUERIES_OPTION_KEY, array() );
+		$all_queries = get_option( self::QUERIES_OPTION_KEY, array() );
 
-		if ( ! is_array( $queries_options ) ) {
-			$queries_options = array();
+		if ( ! is_array( $all_queries ) ) {
+			$all_queries = array();
 		}
 
-		foreach ( $queries_options as $key => $option ) {
-			if ( ( ! is_array( $option ) ) || ( ! self::query_key_is_valid( $key ) ) ) {
-				unset( $queries_options[ $key ] );
+		$all_queries_keys = array_keys( $all_queries );
+		foreach ( $all_queries_keys as $key ) {
+			if ( ! self::query_exists( $key ) ) {
+				unset( $all_queries[ $key ] );
 			}
 		}
 
-		return $queries_options;
+		return $all_queries;
 	}
 
 	/**
@@ -34,22 +35,18 @@ class TWRP_Manage_Options {
 	 *
 	 * @return array|null Array with all the settings of the query, or null if query didn't exist.
 	 */
-	public static function get_query_options_by_id( $query_id ) {
+	public static function get_all_query_settings( $query_id ) {
 		$queries_options = get_option( self::QUERIES_OPTION_KEY, array() );
 
 		if ( ! is_array( $queries_options ) ) {
 			$queries_options = array();
 		}
 
-		if ( ! self::query_key_is_valid( $query_id ) ) {
-			return null;
+		if ( ! self::query_exists( $query_id ) ) {
+			throw new Exception( 'Query ID doesn\'t exists.' );
 		}
 
-		if ( isset( $queries_options[ $query_id ] ) && is_array( $queries_options[ $query_id ] ) ) {
-			return $queries_options[ $query_id ];
-		}
-
-		return null;
+		return $queries_options[ $query_id ];
 	}
 
 	/**
@@ -68,8 +65,8 @@ class TWRP_Manage_Options {
 			$queries_options = array();
 		}
 
-		if ( ! self::query_key_is_valid( $query_id ) ) {
-			return null;
+		if ( ! self::query_exists( $query_id ) ) {
+			throw new Exception( 'Query ID doesn\'t exists.' );
 		}
 
 		if ( isset( $queries_options[ $query_id ][ $setting_name ] ) ) {
@@ -93,6 +90,11 @@ class TWRP_Manage_Options {
 			$queries_options = array();
 		}
 
+		// Just to make the Id bigger than 0.
+		if ( empty( $queries_options ) ) {
+			$queries_options[0] = null;
+		}
+
 		$queries_options[] = $query_settings;
 
 		update_option( self::QUERIES_OPTION_KEY, $queries_options );
@@ -104,21 +106,21 @@ class TWRP_Manage_Options {
 	 * The new settings will completely replace the previous settings. Like
 	 * the old settings were deleted first, and then the new ones added.
 	 *
-	 * @param int|string $query_key A number that represents the query key.
-	 * @param array      $query_settings An array of settings to update the new query.
+	 * @param int|string $query_id A number that represents the query key.
+	 * @param array      $new_query_settings An array of settings to update the new query.
 	 *
 	 * @return bool True if query has been found and updated, false if it hasn't.
 	 */
-	public static function update_query( $query_key, $query_settings ) {
-		$queries_options = get_option( self::QUERIES_OPTION_KEY, array() );
+	public static function update_query( $query_id, $new_query_settings ) {
+		$all_queries = get_option( self::QUERIES_OPTION_KEY, array() );
 
-		if ( ! self::query_key_is_valid( $query_key ) ) {
+		if ( ! self::query_id_is_valid( $query_id ) ) {
 			return false;
 		}
 
-		if ( isset( $queries_options[ $query_key ] ) ) {
-			$queries_options[ $query_key ] = $query_settings;
-			update_option( self::QUERIES_OPTION_KEY, $queries_options );
+		if ( isset( $all_queries[ $query_id ] ) ) {
+			$all_queries[ $query_id ] = $new_query_settings;
+			update_option( self::QUERIES_OPTION_KEY, $all_queries );
 			return true;
 		}
 
@@ -141,32 +143,30 @@ class TWRP_Manage_Options {
 		}
 
 		if ( isset( $queries_options[ $query_id ] ) ) {
-			$queries_options[ $query_id ] = 'deleted';
+			$queries_options[ $query_id ] = null;
 		}
 
 		update_option( self::QUERIES_OPTION_KEY, $queries_options );
 	}
 
 	/**
-	 * Check to see if a query that has associated a specific key exist.
-	 * Will not return true for a deleted query.
+	 * Check to see if a query exist.
 	 *
-	 * @param int|string $key The key to be verified.
+	 * If a query has been deleted will return false.
+	 *
+	 * @param int|string $query_id The key to be verified.
 	 *
 	 * @return bool True if exist, false otherwise.
 	 */
-	public static function query_key_exist( $key ) {
+	public static function query_exists( $query_id ) {
 		$available_queries = self::get_all_queries();
-		$available_keys    = array_keys( $available_queries );
 
-		if ( ! self::query_key_is_valid( $key ) ) {
+		if ( ! self::query_id_is_valid( $query_id ) ) {
 			return false;
 		}
 
-		foreach ( $available_keys as $available_key ) {
-			if ( ( (int) $key ) === ( (int) $available_key ) ) {
-				return true;
-			}
+		if ( isset( $available_queries[ (int) $query_id ] ) ) {
+			return true;
 		}
 
 		return false;
@@ -181,7 +181,7 @@ class TWRP_Manage_Options {
 	 *
 	 * @return bool
 	 */
-	public static function query_key_is_valid( $key ) {
+	protected static function query_id_is_valid( $key ) {
 		if ( is_numeric( $key ) && $key >= 0 ) {
 			return true;
 		}
