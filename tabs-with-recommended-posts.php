@@ -81,7 +81,7 @@ require_once __DIR__ . '/inc/settings/class-twrp-advance-args-setting.php';
 require_once __DIR__ . '/inc/settings/class-twrp-categories-setting.php';
 require_once __DIR__ . '/inc/settings/class-twrp-author-setting.php';
 
-require_once __DIR__ . '/inc/class-twrp-get-posts.php';
+require_once __DIR__ . '/inc/class-twrp-query-posts.php';
 
 
 /**
@@ -144,7 +144,7 @@ function twrp_add_default_tabs() {
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Advanced_Args_Setting', 100 );
 
 	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Post_Types_Setting', 10 );
-	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Advanced_Args_Setting', 1000 );
+	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Advanced_Args_Setting', 1000 );.
 
 	TWRP_Manage_Classes::add_style_class( 'TWRP_Simple_Style' );
 	TWRP_Manage_Classes::add_style_class( 'TWRP_Modern_Style' );

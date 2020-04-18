@@ -1,13 +1,13 @@
 <?php
 
-class TWRP_Get_Posts {
+class TWRP_Query_Posts {
 	public static function get_posts_by_query_id( $query_id ) {
-		$posts = get_posts( self::get_query_args( $query_id ) );
+		$posts = get_posts( self::get_wp_query_arguments( $query_id ) );
 
 		return $posts;
 	}
 
-	public static function get_query_args( $query_id ) {
+	public static function get_wp_query_arguments( $query_id ) {
 		$query_options = TWRP_Manage_Options::get_query_options_by_id( $query_id );
 		$query_args    = self::get_starting_query_args();
 
