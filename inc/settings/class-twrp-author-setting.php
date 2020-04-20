@@ -19,13 +19,14 @@ class TWRP_Author_Setting implements TWRP_Backend_Setting {
 		</select>
 
 		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list">
-			<?php $authors_ids = explode( ';', $current_setting['authors'] ); ?>
-			<?php // todo: Check if we have authors, and if author is valid. ?>
-			<?php foreach ( $authors_ids as $author_id ) : ?>
-				<?php
+			<?php if ( isset( $current_setting['authors'] ) ) : ?>
+				<?php $authors_ids = explode( ';', $current_setting['authors'] ); ?>
+				<?php // todo: Check if we have authors, and if author is valid. ?>
+				<?php foreach ( $authors_ids as $author_id ) : ?>
+					<?php
 					$author_class        = get_userdata( $author_id );
 					$author_display_name = $author_class->get( 'display_name' );
-				?>
+					?>
 				<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( $author_id ); ?>">
 					<div class="twrp-author-settings__author-item-name">
 						<?= esc_html( $author_display_name ); ?>
@@ -33,6 +34,7 @@ class TWRP_Author_Setting implements TWRP_Backend_Setting {
 					<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>
 				</div>
 			<?php endforeach; ?>
+			<?php endif; ?>
 		</div>
 
 		<input id="twrp-author-settings__js-author-search" type="text" placeholder="Search for Author" />

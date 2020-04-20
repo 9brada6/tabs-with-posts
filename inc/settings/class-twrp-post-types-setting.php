@@ -84,7 +84,8 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 	/**
 	 * Sanitize the post types, to be safe for processing.
 	 *
-	 * @param array<string> $post_types The array with post types to be sanitized.
+	 * @param array<string>|mixed $post_types The array with post types to be sanitized.
+	 *                                        If passed anything else, will return te default settings.
 	 *
 	 * @return array The sanitized post types.
 	 */
@@ -169,7 +170,7 @@ class TWRP_Post_Types_Setting implements TWRP_Backend_Setting, TWRP_Create_Query
 		} else {
 			$post_types = $query_settings[ self::get_setting_name() ];
 		}
-		$previous_query_args['post_types'] = $this->sanitize_setting( $post_types );
+		$previous_query_args['post_types'] = self::sanitize_setting( $post_types );
 
 		return $previous_query_args;
 	}

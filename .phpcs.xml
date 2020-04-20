@@ -19,7 +19,10 @@
 			<property name="text_domain" type="array" value="twrp" />
 
 			<!-- Prefix all globals. -->
-			<property name="prefixes" type="array" value="twrp_" />
+			<property name="prefixes" type="array">
+				<element value="twrp_"/>
+				<element value="_twrp_"/>
+			</property>
 
 			<!-- Minimum supported version. -->
 			<property name="minimum_supported_version" value="4.9"/>
@@ -49,6 +52,8 @@
 		<exclude name="Generic.Commenting.DocComment.MissingShort" />
 		<exclude name="Generic.Commenting.DocComment.Empty" />
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
+		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
+
     </rule>
 
 	<!-- Check for cross-version support for PHP 7.0 and higher. -->

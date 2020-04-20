@@ -17,37 +17,63 @@
 
 class TWRP_Main {
 
-	protected static $plugin_dir;
 	protected static $is_pro         = false;
 	protected static $is_initialized = false;
+
+	const SETTINGS_CLASSES_PLUGIN_FOLDER = 'inc/settings/';
 
 
 	public static function init() {
 		self::$is_initialized = true;
-		self::$plugin_dir     = plugin_dir_path( __FILE__ );
+		spl_autoload_register( 'TWRP_Main::autoload_query_classes' );
+	}
+
+	/**
+	 * Returns the path to this plugin directory.
+	 *
+	 * @return string
+	 */
+	public static function get_plugin_directory() {
+		return plugin_dir_path( __FILE__ );
+	}
+
+	/**
+	 * Returns the absolute path to the directory where the settings classes
+	 * with their interfaces are defined.
+	 *
+	 * @return string
+	 */
+	public static function get_query_settings_classes_directory() {
+		// get_plugin_directory() return a trailing slash path, so we use ltrim
+		// to be sure not to have "//".
+		$directory = self::get_plugin_directory() . ltrim( self::SETTINGS_CLASSES_PLUGIN_FOLDER, '/' );
+		return trailingslashit( $directory );
 	}
 
 	public static function get_registered_tabs() {
-
 	}
 
-	public static function get_plugin_dir() {
-		return self::$plugin_dir;
-	}
 
-	public static function get_posts_ids( $tab_name ) {
-		$posts_ids = array();
+	/**
+	 * Verify if a class exist in the settings folder, and require it. Function
+	 * to be passed to spl_autoload_register.
+	 *
+	 * @param string $class_name The name of the class.
+	 *
+	 * @return void
+	 */
+	protected static function autoload_query_classes( $class_name ) {
+		$directory  = self::get_query_settings_classes_directory();
+		$class_name = strtolower( $class_name );
+		$class_name = str_replace( '_', '-', $class_name );
 
-		foreach ( $posts as $post ) {
-			array_push( $posts_ids, $post->ID );
+		$instance_file_path = $directory . 'instance-' . $class_name . '.php';
+		$class_file_path    = $directory . 'class-' . $class_name . '.php';
+		if ( is_file( $class_file_path ) ) {
+			require_once $class_file_path;
+		} elseif ( is_file( $instance_file_path ) ) {
+			require_once $instance_file_path;
 		}
-		return $posts_ids;
-	}
-
-	public static function get_posts( $tab_name ) {
-		// $posts = get_posts( TWRP_Settings::get_wp_query_tab_args( $tab_name ) );
-
-		// return $posts;
 	}
 }
 
@@ -65,21 +91,15 @@ require_once __DIR__ . '/admin-pages/tabs/class-twrp-documentation-tab.php';
 require_once __DIR__ . '/admin-pages/tabs/class-twrp-posts-query-tab.php';
 require_once __DIR__ . '/admin-pages/tabs/class-twrp-styles-tab.php';
 
+require_once __DIR__ . '/inc/settings/interface-twrp-backend-setting.php';
+require_once __DIR__ . '/inc/settings/interface-twrp-create-query-args.php';
+
 
 /**
  * Posts Query Settings
  */
 // Main interface for other settings.
-require_once __DIR__ . '/inc/settings/interface-twrp-backend-setting.php';
-require_once __DIR__ . '/inc/settings/interface-twrp-create-query-args.php';
-// Setting to give to name the custom query.
-require_once __DIR__ . '/inc/settings/class-twrp-query-name-setting.php';
-// Setting to select post types of the custom query.
-require_once __DIR__ . '/inc/settings/class-twrp-post-types-setting.php';
-// Setting to add a custom list of arguments to WP_Query. For advanced users only.
-require_once __DIR__ . '/inc/settings/class-twrp-advance-args-setting.php';
-require_once __DIR__ . '/inc/settings/class-twrp-categories-setting.php';
-require_once __DIR__ . '/inc/settings/class-twrp-author-setting.php';
+
 
 require_once __DIR__ . '/inc/class-twrp-query-posts.php';
 
@@ -103,7 +123,7 @@ require_once __DIR__ . '/debug-and-development.php';
  *
  * @todo: Move
  */
-require_once __DIR__ . '/inc/class-twrp-settings.php';
+require_once __DIR__ . '/inc/class-twrp-manage-classes.php';
 
 
 /**

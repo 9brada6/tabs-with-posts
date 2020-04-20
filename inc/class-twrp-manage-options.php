@@ -1,8 +1,14 @@
 <?php
 /**
- * @todo: add a protected function named "is_query_settings_format"
+ * Implements the class that will manage all the WP database options.
+ *
+ * @package Tabs_With_Recommended_Posts
  */
 
+/**
+ * Class that contains functions to manage the settings stored in WordPress
+ * database "Options" table.
+ */
 class TWRP_Manage_Options {
 	const QUERIES_OPTION_KEY = 'twrp__article_queries';
 
@@ -31,6 +37,8 @@ class TWRP_Manage_Options {
 	/**
 	 * Get all the settings for a specific query ID.
 	 *
+	 * @throws RuntimeException In case of query ID not existing.
+	 *
 	 * @param int|string $query_id The query ID.
 	 *
 	 * @return array|null Array with all the settings of the query, or null if query didn't exist.
@@ -43,7 +51,7 @@ class TWRP_Manage_Options {
 		}
 
 		if ( ! self::query_exists( $query_id ) ) {
-			throw new Exception( 'Query ID doesn\'t exists.' );
+			throw new RuntimeException( 'Query ID doesn\'t exists.' );
 		}
 
 		return $queries_options[ $query_id ];
@@ -52,6 +60,8 @@ class TWRP_Manage_Options {
 	/**
 	 * Returns a specific setting for a query ID.
 	 * Returns null if setting or query ID doesn't exist.
+	 *
+	 * @throws RuntimeException In case of query ID not existing.
 	 *
 	 * @param int|string $query_id The query ID.
 	 * @param string     $setting_name The setting name.
@@ -66,7 +76,7 @@ class TWRP_Manage_Options {
 		}
 
 		if ( ! self::query_exists( $query_id ) ) {
-			throw new Exception( 'Query ID doesn\'t exists.' );
+			throw new RuntimeException( 'Query ID doesn\'t exists.' );
 		}
 
 		if ( isset( $queries_options[ $query_id ][ $setting_name ] ) ) {
@@ -159,13 +169,17 @@ class TWRP_Manage_Options {
 	 * @return bool True if exist, false otherwise.
 	 */
 	public static function query_exists( $query_id ) {
-		$available_queries = self::get_all_queries();
+		$all_queries = get_option( self::QUERIES_OPTION_KEY, array() );
+
+		if ( ! is_array( $all_queries ) ) {
+			return false;
+		}
 
 		if ( ! self::query_id_is_valid( $query_id ) ) {
 			return false;
 		}
 
-		if ( isset( $available_queries[ (int) $query_id ] ) ) {
+		if ( isset( $all_queries[ (int) $query_id ] ) ) {
 			return true;
 		}
 

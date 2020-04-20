@@ -8,7 +8,7 @@ class TWRP_Manage_Classes {
 	// =========================================================================
 	// Query Settings
 
-	public static function register_backend_setting_class( $setting_class_name, $priority = '0' ) {
+	public static function register_backend_setting_class( $setting_class_name, $priority = 0 ) {
 		if ( ! class_exists( $setting_class_name ) ) {
 			//phpcs:ignore
 			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist, in TWRP_Settings::add_tab_setting_class.' );
@@ -28,7 +28,7 @@ class TWRP_Manage_Classes {
 		ksort( self::$query_backend_settings, SORT_NUMERIC );
 	}
 
-	public static function register_query_arg_setting( $setting_class_name, $priority = '0' ) {
+	public static function register_query_arg_setting( $setting_class_name, $priority = 0 ) {
 		if ( ! class_exists( $setting_class_name ) ) {
 			//phpcs:ignore
 			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist, in TWRP_Settings::add_tab_setting_class.' );
