@@ -1,0 +1,53 @@
+.twrp-styles-table {
+	.twrp-styles-table__title-head,
+	.twrp-styles-table__edit-head,
+	.twrp-styles-table__edit-col,
+	.twrp-styles-table__title-col {
+		padding: 10px 20px;
+	}
+
+	.twrp-styles-table__edit-col,
+	.twrp-styles-table__edit-head {
+		width: 1%;
+		text-align: center;
+		white-space: nowrap;
+	}
+
+	.twrp-styles-table__edit-col,
+	.twrp-styles-table__title-col,
+	.twrp-styles-table__no-styles-col {
+		font-size: 1rem;
+		vertical-align: middle;
+	}
+
+	.twrp-styles-table__edit-col {
+		font-size: 0.9rem;
+	}
+
+	.twrp-styles-table__title-col,
+	.twrp-styles-table__no-styles-col {
+		padding-left: 20px;
+		color: black;
+	}
+
+	.twrp-styles-table__edit-head,
+	.twrp-styles-table__title-head, {
+		font-size: 1.1rem;
+	}
+
+	.twrp-styles-table__title-col {
+		font-size: 1.04rem;
+	}
+
+	&__edit-icon {
+		vertical-align: text-bottom;
+	}
+
+	&__delete-link {
+		color: #a00;
+
+		&:hover {
+			color: #dc3232;
+		}
+	}
+}

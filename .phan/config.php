@@ -120,7 +120,7 @@ return array(
 		'DuplicateArrayKeyPlugin',
 		// 'DuplicateExpressionPlugin',
 		'PregRegexCheckerPlugin',
-		'PrintfCheckerPlugin',
+		// 'PrintfCheckerPlugin',
 		'SleepCheckerPlugin',
 		'UnreachableCodePlugin',
 		'RedundantAssignmentPlugin',

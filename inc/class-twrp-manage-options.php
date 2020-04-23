@@ -12,6 +12,12 @@
 class TWRP_Manage_Options {
 	const QUERIES_OPTION_KEY = 'twrp__article_queries';
 
+	const STYLES_OPTION_KEY = 'twrp__article_styles';
+
+	// =========================================================================
+	// Functions to Retrieve/Add/Remove/Edit Queries from database table:
+
+
 	/**
 	 * Returns all registered article queries.
 	 *
@@ -202,5 +208,8 @@ class TWRP_Manage_Options {
 
 		return false;
 	}
+
+	// =========================================================================
+	// Functions to Retrieve/Add/Remove/Edit Styles from database table:
 
 }
