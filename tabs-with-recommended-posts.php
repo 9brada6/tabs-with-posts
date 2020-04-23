@@ -20,8 +20,9 @@ class TWRP_Main {
 	protected static $is_pro         = false;
 	protected static $is_initialized = false;
 
-	const SETTINGS_CLASSES_PLUGIN_FOLDER = 'inc/settings/';
+	const SETTINGS_CLASSES_FOLDER = 'inc/settings/';
 
+	const TEMPLATES_FOLDER = 'templates/';
 
 	public static function init() {
 		self::$is_initialized = true;
@@ -31,7 +32,7 @@ class TWRP_Main {
 	/**
 	 * Returns the path to this plugin directory.
 	 *
-	 * @return string
+	 * @return string The path is trail slashed.
 	 */
 	public static function get_plugin_directory() {
 		return plugin_dir_path( __FILE__ );
@@ -41,17 +42,28 @@ class TWRP_Main {
 	 * Returns the absolute path to the directory where the settings classes
 	 * with their interfaces are defined.
 	 *
-	 * @return string
+	 * @return string The path is trail slashed.
 	 */
 	public static function get_query_settings_classes_directory() {
 		// get_plugin_directory() return a trailing slash path, so we use ltrim
 		// to be sure not to have "//".
-		$directory = self::get_plugin_directory() . ltrim( self::SETTINGS_CLASSES_PLUGIN_FOLDER, '/' );
+		$directory = self::get_plugin_directory() . ltrim( self::SETTINGS_CLASSES_FOLDER, '/' );
 		return trailingslashit( $directory );
 	}
 
-	public static function get_registered_tabs() {
+	/**
+	 * Returns the absolute path to the directory where the templates are found.
+	 *
+	 * @return string The path is trail slashed.
+	 */
+	public static function get_templates_directory() {
+		// get_plugin_directory() return a trailing slash path, so we use ltrim
+		// to be sure not to have "//".
+		$directory = self::get_plugin_directory() . ltrim( self::TEMPLATES_FOLDER, '/' );
+		return trailingslashit( $directory );
 	}
+
+
 
 
 	/**
@@ -93,6 +105,8 @@ require_once __DIR__ . '/admin-pages/tabs/class-twrp-styles-tab.php';
 
 require_once __DIR__ . '/inc/settings/interface-twrp-backend-setting.php';
 require_once __DIR__ . '/inc/settings/interface-twrp-create-query-args.php';
+
+require_once __DIR__ . '/inc/class-twrp-templates.php';
 
 
 /**

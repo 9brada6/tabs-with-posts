@@ -1,0 +1,12 @@
+.twrp-styles-tab {
+	display: flex;
+
+	&__settings {
+		flex-basis: 600px;
+	}
+
+	&__preview {
+		flex-basis: 300px;
+		background-color: white;
+	}
+}

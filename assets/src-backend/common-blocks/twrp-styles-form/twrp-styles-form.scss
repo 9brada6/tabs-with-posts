@@ -1,0 +1,27 @@
+.twrp-styles-form {
+	&__row {
+		display: flex;
+		margin-bottom: 1rem;
+		background-color: white;
+		border: 1px solid #c1c1c1;
+		border-bottom: 1px solid #c1c1c1;
+		border-radius: 4px;
+	}
+
+	&__select-column {
+		display: flex;
+		flex-basis: 0;
+		align-items: center;
+		justify-content: center;
+		padding: 0.5rem;
+		border-right: 1px solid #c1c1c1;
+	}
+
+	&__style-column {
+		padding: 1rem;
+	}
+
+	&__style-title {
+		margin: 0 0 0.7rem;
+	}
+}

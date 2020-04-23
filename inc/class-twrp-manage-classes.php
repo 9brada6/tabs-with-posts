@@ -63,11 +63,29 @@ class TWRP_Manage_Classes {
 	protected static $style_classes = array();
 
 	public static function add_style_class( $setting_class_name ) {
-		self::$style_classes [] = new $setting_class_name();
+		$style_class = new $setting_class_name();
+		self::$style_classes [ $style_class->get_style_id() ] = $style_class;
 	}
 
 	public static function get_style_classes() {
 		return self::$style_classes;
+	}
+
+	/**
+	 * Get the style class based on the style id.
+	 *
+	 * @param string $style_id The style id to get the class.
+	 *
+	 * @throws InvalidArgumentException If the $name does not correspond with a style id.
+	 *
+	 * @return \TWRP_Style_Setting The class retrieved by name.
+	 */
+	public static function get_style_class_by_name( $style_id ) {
+		if ( ! isset( self::$style_classes[ $style_id ] ) ) {
+			throw new InvalidArgumentException( $style_id . ' is not a style id.' );
+		}
+
+		return self::$style_classes[ $style_id ];
 	}
 
 }
