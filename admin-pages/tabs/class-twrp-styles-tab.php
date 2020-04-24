@@ -17,6 +17,28 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 */
 	const STYLE_NAME = 'query_name';
 
+	/**
+	 * The name of the button that submit the Add/Edit form. The constant
+	 * is also used as the value attribute of the button.
+	 *
+	 * @var string
+	 */
+	const SUBMIT_BTN_NAME = 'twrp_style_submitted';
+
+	/**
+	 * Name of the nonce from the edit form.
+	 *
+	 * @var string
+	 */
+	const NONCE_EDIT_NAME = 'twrp_style_nonce';
+
+	/**
+	 * Action of the nonce from the edit form.
+	 *
+	 * @var string
+	 */
+	const NONCE_EDIT_ACTION = 'twrp_style_query';
+
 
 	/**
 	 * Display the styles tab.
@@ -24,6 +46,20 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return void
 	 */
 	public function display_tab() {
+
+		if ( $this->form_has_been_submitted() ) {
+			if ( $this->verify_edit_nonce() ) {
+				$this->update_form_submitted_settings();
+				/**
+				* @todo
+				*/
+				echo _x( 'Settings saved', 'backend', 'twrp' );
+				$this->display_existing_styles();
+				return;
+			} else {
+				wp_nonce_ays( self::NONCE_EDIT_ACTION );
+			}
+		}
 
 		if ( $this->edit_style_screen_is_displayed() ) {
 			$this->display_edit_style();
@@ -36,7 +72,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	// Functions to display the existing style table
 
 	protected function display_existing_styles() {
-		// $existing_styles = TWRP_Manage_Options::get_all_styles();
+		$existing_styles = TWRP_Manage_Options::get_all_styles();
 
 		$edit_icon    = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
 		$delete_icon  = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
@@ -126,6 +162,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 
 	// =========================================================================
+
 	protected function display_preview_column() {
 		$query_id = 6;
 		$posts    = TWRP_Query_Posts::get_posts_by_query_id( $query_id );
@@ -159,6 +196,9 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 		<form class="twrp-styles-form" method="post" action="<?= esc_url( TWRP_Admin_Settings_Submenu::get_tab_url( $this ) ) ?>">
 			<div>
+				<div>
+					<input type="text" name="style_name" />
+				</div>
 				<h2>Style Settings:</h2>
 				<div class="twrp-styles-form">
 					<?php foreach ( $style_classes as $style_class ) : ?>
@@ -181,9 +221,89 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 					<?php endforeach; ?>
 				</div>
 			</div>
+			<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
 			<button type="submit" name="style-submit" value="submitted"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
 		</form>
 		<?php
+	}
+
+
+	// =========================================================================
+	// Form Functions
+
+	/**
+	 * Whether or not the user have submitted the edit form.
+	 *
+	 * @return bool
+	 */
+	protected function form_has_been_submitted() {
+		// phpcs:ignore
+		if ( isset( $_POST[ self::SUBMIT_BTN_NAME ] ) && self::SUBMIT_BTN_NAME === $_POST[ self::SUBMIT_BTN_NAME ] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	protected function verify_edit_nonce() {
+		if ( isset( $_POST[ self::NONCE_EDIT_NAME ] ) ) {
+
+			if ( ! is_string( $_POST[ self::NONCE_EDIT_NAME ] ) ) {
+				return false;
+			}
+
+			$nonce_value = sanitize_key( $_POST[ self::NONCE_EDIT_NAME ] );
+			$nonce_check = wp_verify_nonce( $nonce_value, self::NONCE_EDIT_ACTION );
+			if ( 1 === $nonce_check ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+
+	/**
+	 * Add a new query settings, or updates a query when the form is submitted.
+	 *
+	 * @return void
+	 */
+	protected function update_form_submitted_settings() {
+		$style_id = $this->get_id_of_style_being_modified();
+
+		// $setting_classes = TWRP_Manage_Classes::get_registered_backend_settings();
+
+		// $query_key      = $this->get_id_of_query_being_modified();
+		// $query_settings = array();
+
+		// foreach ( $setting_classes as $setting_class ) {
+		// $query_settings[ $setting_class->get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
+		// }
+
+		// if ( '' === $query_key ) {
+		// TWRP_Manage_Options::add_new_query( $query_settings );
+		// } elseif ( TWRP_Manage_Options::query_exists( $query_key ) ) {
+		// TWRP_Manage_Options::update_query( $query_key, $query_settings );
+		// }
+	}
+
+	/**
+	 * Returns the ID of the style being modified. Returns an empty string if
+	 * a new style is added.
+	 *
+	 * @return string The ID of the style being modified, or an empty string.
+	 */
+	protected function get_id_of_style_being_modified() {
+		if ( isset( $_GET[ self::EDIT_STYLE__URL_PARAM_KEY ] ) ) { // phpcs:ignore -- Nonce verified.
+			// phpcs:ignore WordPress.Security -- The setting is sanitized.
+			$style_id = wp_unslash( $_GET[ self::EDIT_STYLE__URL_PARAM_KEY ] );
+
+			if ( is_numeric( $style_id ) && TWRP_Manage_Options::style_exists( $style_id ) ) {
+				return $style_id;
+			}
+		}
+
+		return '';
 	}
 
 

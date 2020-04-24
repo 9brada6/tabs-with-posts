@@ -53,6 +53,8 @@
 		<exclude name="Generic.Commenting.DocComment.Empty" />
 		<exclude name="Squiz.WhiteSpace.SuperfluousWhitespace.EndLine" />
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
+		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
+		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
 
     </rule>
 

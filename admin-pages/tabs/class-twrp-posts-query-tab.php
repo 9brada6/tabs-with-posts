@@ -353,9 +353,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 		}
 	}
 
-	/**
-	 * @todo: Move $_POST key into a constant.
-	 */
+
 	protected function verify_edit_nonce() {
 		if ( isset( $_POST[ self::NONCE_EDIT_NAME ] ) ) {
 			$nonce_value = sanitize_key( $_POST[ self::NONCE_EDIT_NAME ] );
