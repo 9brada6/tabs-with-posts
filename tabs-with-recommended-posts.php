@@ -23,6 +23,10 @@ class TWRP_Main {
 
 	const TEMPLATES_FOLDER = 'templates/';
 
+	/**
+	 * @todo: Find on what OS's we can interchange "\" with /.
+	 * @todo: Compatibility of OS's between "\" and "/".
+	 */
 	const AUTOLOAD_DIRECTORIES = array( 'TWRP\\' => 'inc/' );
 
 	public static function init() {
@@ -99,8 +103,10 @@ class TWRP_Main {
 		}
 
 		foreach ( self::AUTOLOAD_DIRECTORIES as $autoload_namespace => $autoload_dir ) {
-			$file_path = self::get_plugin_directory() . str_replace( $autoload_namespace, $autoload_dir, $class_name ) . '.php';
+			$relative_directory = ltrim( str_replace( $autoload_namespace, $autoload_dir, $class_name ) . '.php', '/\\' );
+			$relative_directory = str_replace( '\\', '/', $relative_directory );
 
+			$file_path = trailingslashit( self::get_plugin_directory() ) . $relative_directory;
 			if ( is_file( $file_path ) ) {
 				require_once $file_path;
 			}
@@ -122,9 +128,6 @@ require_once __DIR__ . '/admin-pages/tabs/class-twrp-documentation-tab.php';
 require_once __DIR__ . '/admin-pages/tabs/class-twrp-posts-query-tab.php';
 require_once __DIR__ . '/admin-pages/tabs/class-twrp-styles-tab.php';
 
-require_once __DIR__ . '/inc/settings/interface-twrp-backend-setting.php';
-require_once __DIR__ . '/inc/settings/interface-twrp-create-query-args.php';
-
 require_once __DIR__ . '/inc/class-twrp-templates.php';
 
 
@@ -136,16 +139,6 @@ require_once __DIR__ . '/inc/class-twrp-templates.php';
 
 require_once __DIR__ . '/inc/class-twrp-query-posts.php';
 
-
-/**
- *
- */
-require_once __DIR__ . '/inc/styles/interface-twrp-style-setting.php';
-require_once __DIR__ . '/inc/styles/class-twrp-simple-style.php';
-require_once __DIR__ . '/inc/styles/class-twrp-modern-style.php';
-
-
-require_once __DIR__ . '/inc/class-twrp-style-options.php';
 
 /**
  * For Development only.
@@ -200,8 +193,8 @@ function twrp_add_default_tabs() {
 	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Post_Types_Setting', 10 );
 	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Advanced_Args_Setting', 1000 );.
 
-	TWRP_Manage_Classes::add_style_class( 'TWRP_Simple_Style' );
-	TWRP_Manage_Classes::add_style_class( 'TWRP_Modern_Style' );
+	TWRP_Manage_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
+	TWRP_Manage_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
 }
 
 

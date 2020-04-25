@@ -12,7 +12,7 @@
  * simple name to remember and describe what a query do. This name will be
  * visible only in the backend of the website.
  */
-class TWRP_Query_Name_Setting implements TWRP_Backend_Setting {
+class TWRP_Query_Name_Setting implements TWRP\Query_Setting\Interface_Backend_Layout {
 
 	/**
 	 * Display the backend HTML for the setting.

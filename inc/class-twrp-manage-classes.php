@@ -1,5 +1,10 @@
 <?php
 
+use TWRP\Article_Block\Article_Block_Interface;
+use TWRP\Query_Setting\Interface_Backend_Layout;
+use TWRP\Query_Setting\Interface_Modify_Query_Arguments;
+
+
 class TWRP_Manage_Classes {
 
 	protected static $query_backend_settings = array();
@@ -17,7 +22,7 @@ class TWRP_Manage_Classes {
 
 		$setting_class = new $setting_class_name();
 
-		if ( $setting_class instanceof \TWRP_Backend_Setting ) {
+		if ( $setting_class instanceof Interface_Backend_Layout ) {
 			if ( is_numeric( $priority ) && ! empty( $priority ) && ! array_key_exists( $priority, self::$query_backend_settings ) ) {
 				self::$query_backend_settings[ $priority ] = $setting_class;
 			} else {
@@ -37,7 +42,7 @@ class TWRP_Manage_Classes {
 
 		$setting_class = new $setting_class_name();
 
-		if ( $setting_class instanceof \TWRP_Create_Query_Args ) {
+		if ( $setting_class instanceof Interface_Modify_Query_Arguments ) {
 			if ( is_numeric( $priority ) && ! empty( $priority ) && ! array_key_exists( $priority, self::$query_args_settings ) ) {
 				self::$query_args_settings[ $priority ] = $setting_class;
 			} else {
@@ -76,13 +81,13 @@ class TWRP_Manage_Classes {
 	 *
 	 * @param string $style_id The style id to get the class.
 	 *
-	 * @throws InvalidArgumentException If the $name does not correspond with a style id.
+	 * @throws \InvalidArgumentException If the $name does not correspond with a style id.
 	 *
-	 * @return \TWRP_Style_Setting The class retrieved by name.
+	 * @return Article_Block_Interface The class retrieved by name.
 	 */
 	public static function get_style_class_by_name( $style_id ) {
 		if ( ! isset( self::$style_classes[ $style_id ] ) ) {
-			throw new InvalidArgumentException( $style_id . ' is not a style id.' );
+			throw new \InvalidArgumentException( $style_id . ' is not a style id.' );
 		}
 
 		return self::$style_classes[ $style_id ];

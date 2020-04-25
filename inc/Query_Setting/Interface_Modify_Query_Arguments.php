@@ -5,11 +5,13 @@
  * @package Tabs_With_Recommended_Posts
  */
 
+namespace TWRP\Query_Setting;
+
 /**
  * Interface that implements functions needed to create query arguments to
  * get posts via WP_Query class.
  */
-interface TWRP_Create_Query_Args {
+interface Interface_Modify_Query_Arguments {
 
 	/**
 	 * Add the setting into some previous WP_Query arguments to retrieve posts

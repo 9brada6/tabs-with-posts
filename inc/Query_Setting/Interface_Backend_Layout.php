@@ -5,6 +5,8 @@
  * @package Tabs_With_Recommended_Posts
  */
 
+ namespace TWRP\Query_Setting;
+
 /**
  * Implements the functions needed to be calling in displaying the settings in
  * the backend, and to create a query setting in general. As the name says, this
@@ -13,7 +15,7 @@
  * Each one of this setting will be displayed with a title taken from
  * get_title() function, and display below the HTML in display_setting() function.
  */
-interface TWRP_Backend_Setting {
+interface Interface_Backend_Layout {
 
 	/**
 	 * Display the backend HTML for the setting.

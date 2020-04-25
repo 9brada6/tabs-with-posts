@@ -24,7 +24,7 @@
  * Category 195 and it's children OR Category 198 and it's children
  * cat => '195, 198'
  */
-class TWRP_Categories_Setting implements TWRP_Backend_Setting {
+class TWRP_Categories_Setting implements TWRP\Query_Setting\Interface_Backend_Layout {
 
 	const CATEGORIES_TYPE__SETTING_KEY  = 'setting_type';
 	const INCLUDE_CHILDREN__SETTING_KEY = 'include_children';
