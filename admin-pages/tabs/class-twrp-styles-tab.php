@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @todo: get_style_edit_link if style doesn't exist return nothing.
+ */
+
 class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 	/**
@@ -8,14 +12,28 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 *
 	 * @var string
 	 */
-	const EDIT_STYLE__URL_PARAM_KEY = 'query_edit_style';
+	const EDIT_STYLE__URL_PARAM_KEY = 'style_edit_id';
+
+	/**
+	 * The URL parameter key which say which style should be deleted.
+	 *
+	 * @var string
+	 */
+	const DELETE_STYLE__URL_PARAM_KEY = 'style_delete_id';
 
 	/**
 	 * The name of the input that holds the Style name in the Add/Edit Page.
 	 *
 	 * @var string
 	 */
-	const STYLE_NAME = 'query_name';
+	const STYLE_NAME = 'style_name';
+
+	/**
+	 * The name of the radio where the user selects which post style to use.
+	 *
+	 * @var string
+	 */
+	const KEY__POST_STYLE_ID = 'post_style_id';
 
 	/**
 	 * The name of the button that submit the Add/Edit form. The constant
@@ -37,7 +55,22 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 *
 	 * @var string
 	 */
-	const NONCE_EDIT_ACTION = 'twrp_style_query';
+	const NONCE_EDIT_ACTION = 'twrp_edit_style';
+
+	/**
+	 * Name of the nonce to delete a style.
+	 *
+	 * @var string
+	 */
+	const NONCE_DELETE_NAME = 'twrp_style_delete_nonce';
+
+	/**
+	 * Action of the nonce to delete a style.
+	 *
+	 * @var string
+	 */
+	const NONCE_DELETE_ACTION = 'twrp_delete_style';
+
 
 
 	/**
@@ -96,15 +129,15 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 					<?php if ( ! empty( $existing_styles ) ) : ?>
 						<?php foreach ( $existing_styles as $style_id => $style ) : ?>
 							<tr>
-								<td class="twrp-queries-table__edit-col">
-									<a class="twrp-queries-table__delete-link" href="<?= esc_url( $this->get_style_delete_link( $style_id ) ); ?>">
+								<td class="twrp-styles-table__edit-col">
+									<a class="twrp-styles-table__delete-link" href="<?= esc_url( $this->get_style_delete_link( $style_id ) ); ?>">
 										<?php
 											/* translators: %s: delete dashicon html. */
 											echo sprintf( _x( 'Delete', 'backend', 'twrp' ), $delete_icon ); // phpcs:ignore
 										?>
 									</a>
 									/
-									<a class="twrp-queries-table__edit-link" href="<?= esc_url( $this->get_style_edit_link( $style_id ) ); ?>">
+									<a class="twrp-styles-table__edit-link" href="<?= esc_url( $this->get_style_edit_link( $style_id ) ); ?>">
 										<?php
 											/* translators: %s: edit dashicon html. */
 											echo sprintf( _x( 'Edit', 'backend', 'twrp' ), $edit_icon ); // phpcs:ignore
@@ -191,20 +224,34 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	// =========================================================================
 
 	protected function display_form() {
-		$style_classes = TWRP_Manage_Classes::get_style_classes();
+		$style_id_modified = $this->get_id_of_style_being_modified();
+		$current_settings  = TWRP_Manage_Options::get_all_style_settings( $style_id_modified );
+		$style_classes     = TWRP_Manage_Classes::get_style_classes();
+
+		$style_name = '';
+		if ( isset( $current_settings[ self::STYLE_NAME ] ) ) {
+			$style_name = $this->sanitize_style_name( $current_settings[ self::STYLE_NAME ] );
+		}
+
+		$post_style_selected = '';
+		if ( isset( $current_settings[ self::KEY__POST_STYLE_ID ] ) ) {
+			$post_style_selected = $current_settings[ self::KEY__POST_STYLE_ID ];
+		}
+
 		?>
 
-		<form class="twrp-styles-form" method="post" action="<?= esc_url( TWRP_Admin_Settings_Submenu::get_tab_url( $this ) ) ?>">
+		<form class="twrp-styles-form" method="post" action="<?= esc_url( $this->get_edit_style_form_action() ) ?>">
 			<div>
 				<div>
-					<input type="text" name="style_name" />
+					<input required name="<?= esc_attr( self::STYLE_NAME ); ?>" value="<?= esc_attr( $style_name ); ?>" placeholder="<?= esc_attr( _x( 'Ex: Right Sidebar Style', 'backend', 'twrp' ) ); ?>" type="text" />
 				</div>
+
 				<h2>Style Settings:</h2>
 				<div class="twrp-styles-form">
 					<?php foreach ( $style_classes as $style_class ) : ?>
 						<div class="twrp-styles-form__row">
 							<div class="twrp-styles-form__select-column">
-								<input class="twrp-styles-form__radio-btn" type="radio" name="style" value="<?= esc_attr( $style_class->get_style_id() ); ?>" />
+								<input required class="twrp-styles-form__radio-btn" type="radio" name="<?= esc_attr( self::KEY__POST_STYLE_ID ) ?>" value="<?= esc_attr( $style_class->get_style_id() ); ?>" <?php checked( $style_class->get_style_id(), $post_style_selected ); ?>/>
 							</div>
 
 							<div class="twrp-styles-form__style-column">
@@ -222,7 +269,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 				</div>
 			</div>
 			<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
-			<button type="submit" name="style-submit" value="submitted"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
+			<button type="submit" name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
 		</form>
 		<?php
 	}
@@ -263,28 +310,35 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	}
 
 
-	/**
-	 * Add a new query settings, or updates a query when the form is submitted.
-	 *
-	 * @return void
-	 */
+
+
 	protected function update_form_submitted_settings() {
-		$style_id = $this->get_id_of_style_being_modified();
 
-		// $setting_classes = TWRP_Manage_Classes::get_registered_backend_settings();
+		$styles_classes         = TWRP_Manage_Classes::get_style_classes();
+		$style_id               = $this->get_id_of_style_being_modified();
+		$selected_post_style_id = $this->form_get_post_style_id_selected();
+		$style_name             = $this->get_submitted_sanitized_style_name();
 
-		// $query_key      = $this->get_id_of_query_being_modified();
-		// $query_settings = array();
+		if ( ! isset( $styles_classes[ $selected_post_style_id ] ) ) {
+			return false;
+		}
+		$selected_post_style = $styles_classes[ $selected_post_style_id ];
 
-		// foreach ( $setting_classes as $setting_class ) {
-		// $query_settings[ $setting_class->get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
-		// }
+		$style_settings = $selected_post_style->get_submitted_sanitized_settings();
 
-		// if ( '' === $query_key ) {
-		// TWRP_Manage_Options::add_new_query( $query_settings );
-		// } elseif ( TWRP_Manage_Options::query_exists( $query_key ) ) {
-		// TWRP_Manage_Options::update_query( $query_key, $query_settings );
-		// }
+		// Update the style wit
+		$style_settings[ self::STYLE_NAME ]         = $style_name;
+		$style_settings[ self::KEY__POST_STYLE_ID ] = $selected_post_style_id;
+
+		if ( empty( $style_id ) ) {
+			TWRP_Manage_Options::add_new_style( $style_settings );
+			return true;
+		} elseif ( TWRP_Manage_Options::style_exists( $style_id ) ) {
+			TWRP_Manage_Options::update_style( $style_id, $style_settings );
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -310,6 +364,40 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	// =========================================================================
 	// Utility functions
 
+	protected function get_submitted_sanitized_style_name() {
+		if ( isset( $_POST[ self::STYLE_NAME ] ) ) { // phpcs:ignore -- no need for nonce.
+			return $this->sanitize_style_name( wp_unslash( $_POST[ self::STYLE_NAME ] ) ); // phpcs:ignore -- no need for nonce.
+		}
+
+		return '';
+	}
+
+	protected function sanitize_style_name( $unsanitized_name ) {
+		return $unsanitized_name;
+	}
+
+	protected function form_get_post_style_id_selected() {
+		if ( isset( $_POST[ self::KEY__POST_STYLE_ID ] ) ) { // phpcs:ignore -- nonce verified.
+			$post_style_name = wp_unslash( $_POST[ self::KEY__POST_STYLE_ID ] ); // phpcs:ignore -- nonce verified.
+			if ( is_string( $post_style_name ) ) {
+				return sanitize_key( $post_style_name );
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get the form action(URL) of the edit/add style settings.
+	 *
+	 * @return string
+	 */
+	protected function get_edit_style_form_action() {
+		$url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$url = add_query_arg( self::EDIT_STYLE__URL_PARAM_KEY, $this->get_id_of_style_being_modified(), $url );
+		return $url;
+	}
+
 	/**
 	 * Check to see if the user is currently editing a query.
 	 *
@@ -325,7 +413,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	}
 
 	/**
-	 * Return the url to add a new query.
+	 * Return the url to add a new style.
 	 *
 	 * @return string
 	 */
@@ -336,20 +424,45 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 		return $add_new_link;
 	}
 
+	/**
+	 * Return the url to edit a style. If style doesn't exist it will
+	 * return the tab link.
+	 *
+	 * @param int|string $style_id The ID.
+	 *
+	 * @return string
+	 */
 	protected function get_style_edit_link( $style_id ) {
-		return $style_id;
+		$edit_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+
+		if ( TWRP_Manage_Options::style_exists( $style_id ) ) {
+			return add_query_arg( self::EDIT_STYLE__URL_PARAM_KEY, $style_id, $edit_url );
+		}
+
+		return $edit_url;
 	}
 
+	/**
+	 * Return the url to delete a style. If style doesn't exist it will
+	 * return the tab link.
+	 *
+	 * @param int|string $style_id The ID.
+	 *
+	 * @return string
+	 */
 	protected function get_style_delete_link( $style_id ) {
-		return $style_id;
+		$delete_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
+		if ( TWRP_Manage_Options::style_exists( $style_id ) ) {
+			$url = add_query_arg( self::DELETE_STYLE__URL_PARAM_KEY, $style_id, $delete_url );
+			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
+			return $url;
+		}
+
+		return $delete_url;
 	}
 
 	// =========================================================================
-
-	public static function form_submitted() {
-
-	}
 
 	public static function get_tab_title() {
 		return _x( 'Styles', 'backend', 'twrp' );

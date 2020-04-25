@@ -24,4 +24,11 @@ class TWRP_Simple_Style implements TWRP_Style_Setting {
 	public function get_style_id() {
 		return 'simple_style';
 	}
+
+	public function sanitize_settings( $settings ) {
+
+	}
+	public function get_submitted_sanitized_settings() {
+		return array();
+	}
 }

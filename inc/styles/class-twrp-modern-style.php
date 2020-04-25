@@ -21,4 +21,11 @@ class TWRP_Modern_Style implements TWRP_Style_Setting {
 		return 'modern_style';
 	}
 
+	public function sanitize_settings( $settings ) {
+
+	}
+	public function get_submitted_sanitized_settings() {
+
+	}
+
 }

@@ -55,7 +55,6 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 */
 	const NONCE_DELETE_NAME = 'twrp_query_delete_nonce';
 
-
 	/**
 	 * Action of the nonce to delete a query.
 	 *
