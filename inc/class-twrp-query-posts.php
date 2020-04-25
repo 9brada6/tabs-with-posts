@@ -1,5 +1,7 @@
 <?php
 
+use TWRP\Query_Options;
+
 class TWRP_Query_Posts {
 
 	/**
@@ -38,10 +40,10 @@ class TWRP_Query_Posts {
 		$registered_settings_classes = TWRP_Manage_Classes::get_registered_query_args_settings();
 		$query_args                  = self::get_starting_query_args();
 
-		$query_options = TWRP_Manage_Options::get_all_query_settings( $query_id );
+		$query_options = Query_Options::get_all_query_settings( $query_id );
 
 		try {
-			$query_options = TWRP_Manage_Options::get_all_query_settings( $query_id );
+			$query_options = Query_Options::get_all_query_settings( $query_id );
 		} catch ( RuntimeException $exception ) {
 			throw $exception;
 		}

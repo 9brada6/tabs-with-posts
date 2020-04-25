@@ -1,5 +1,7 @@
 <?php
 
+use TWRP\Query_Options;
+
 class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 
 	/**
@@ -133,7 +135,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries() {
-		$existing_queries = TWRP_Manage_Options::get_all_queries();
+		$existing_queries = Query_Options::get_all_queries();
 
 		$edit_icon    = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
 		$delete_icon  = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
@@ -216,7 +218,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	protected function get_query_edit_link( $query_id ) {
 		$tab_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
-		if ( TWRP_Manage_Options::query_exists( $query_id ) ) {
+		if ( Query_Options::query_exists( $query_id ) ) {
 			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 		}
 
@@ -250,7 +252,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php foreach ( $setting_classes as $setting_class ) : ?>
 					<?php
-					$current_setting = TWRP_Manage_Options::get_specific_query_setting( $query_id, $setting_class->get_setting_name() );
+					$current_setting = Query_Options::get_specific_query_setting( $query_id, $setting_class->get_setting_name() );
 					$collapsed       = $setting_class->setting_is_collapsed() ? '1' : '0';
 					?>
 
@@ -297,7 +299,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 			// phpcs:ignore WordPress.Security -- The setting is sanitized.
 			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
 
-			if ( is_numeric( $key ) && TWRP_Manage_Options::query_exists( $key ) ) {
+			if ( is_numeric( $key ) && Query_Options::query_exists( $key ) ) {
 				return $key;
 			}
 		}
@@ -346,9 +348,9 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 		}
 
 		if ( '' === $query_key ) {
-			TWRP_Manage_Options::add_new_query( $query_settings );
-		} elseif ( TWRP_Manage_Options::query_exists( $query_key ) ) {
-			TWRP_Manage_Options::update_query( $query_key, $query_settings );
+			Query_Options::add_new_query( $query_settings );
+		} elseif ( Query_Options::query_exists( $query_key ) ) {
+			Query_Options::update_query( $query_key, $query_settings );
 		}
 	}
 
@@ -378,7 +380,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	protected function get_query_delete_link( $query_id ) {
 		$tab_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
-		if ( TWRP_Manage_Options::query_exists( $query_id ) ) {
+		if ( Query_Options::query_exists( $query_id ) ) {
 			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
 			return $url;
@@ -425,8 +427,8 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	protected function execute_delete_query_action() {
 		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore
 			$key = sanitize_key( wp_unslash( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ); // phpcs:ignore
-			if ( TWRP_Manage_Options::query_exists( $key ) ) {
-				TWRP_Manage_Options::delete_query( $key );
+			if ( Query_Options::query_exists( $key ) ) {
+				Query_Options::delete_query( $key );
 			}
 		}
 	}

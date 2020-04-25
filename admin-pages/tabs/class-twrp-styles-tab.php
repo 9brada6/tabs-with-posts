@@ -1,5 +1,7 @@
 <?php
 
+use TWRP\Style_Options;
+
 /**
  * @todo: get_style_edit_link if style doesn't exist return nothing.
  */
@@ -105,7 +107,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	// Functions to display the existing style table
 
 	protected function display_existing_styles() {
-		$existing_styles = TWRP_Manage_Options::get_all_styles();
+		$existing_styles = Style_Options::get_all_styles();
 
 		$edit_icon    = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
 		$delete_icon  = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
@@ -225,7 +227,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 	protected function display_form() {
 		$style_id_modified = $this->get_id_of_style_being_modified();
-		$current_settings  = TWRP_Manage_Options::get_all_style_settings( $style_id_modified );
+		$current_settings  = Style_Options::get_all_style_settings( $style_id_modified );
 		$style_classes     = TWRP_Manage_Classes::get_style_classes();
 
 		$style_name = '';
@@ -331,10 +333,10 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 		$style_settings[ self::KEY__POST_STYLE_ID ] = $selected_post_style_id;
 
 		if ( empty( $style_id ) ) {
-			TWRP_Manage_Options::add_new_style( $style_settings );
+			Style_Options::add_new_style( $style_settings );
 			return true;
-		} elseif ( TWRP_Manage_Options::style_exists( $style_id ) ) {
-			TWRP_Manage_Options::update_style( $style_id, $style_settings );
+		} elseif ( Style_Options::style_exists( $style_id ) ) {
+			Style_Options::update_style( $style_id, $style_settings );
 			return true;
 		}
 
@@ -352,7 +354,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 			// phpcs:ignore WordPress.Security -- The setting is sanitized.
 			$style_id = wp_unslash( $_GET[ self::EDIT_STYLE__URL_PARAM_KEY ] );
 
-			if ( is_numeric( $style_id ) && TWRP_Manage_Options::style_exists( $style_id ) ) {
+			if ( is_numeric( $style_id ) && Style_Options::style_exists( $style_id ) ) {
 				return $style_id;
 			}
 		}
@@ -435,7 +437,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	protected function get_style_edit_link( $style_id ) {
 		$edit_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
-		if ( TWRP_Manage_Options::style_exists( $style_id ) ) {
+		if ( Style_Options::style_exists( $style_id ) ) {
 			return add_query_arg( self::EDIT_STYLE__URL_PARAM_KEY, $style_id, $edit_url );
 		}
 
@@ -453,7 +455,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	protected function get_style_delete_link( $style_id ) {
 		$delete_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
 
-		if ( TWRP_Manage_Options::style_exists( $style_id ) ) {
+		if ( Style_Options::style_exists( $style_id ) ) {
 			$url = add_query_arg( self::DELETE_STYLE__URL_PARAM_KEY, $style_id, $delete_url );
 			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
 			return $url;

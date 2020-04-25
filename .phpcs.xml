@@ -20,6 +20,7 @@
 
 			<!-- Prefix all globals. -->
 			<property name="prefixes" type="array">
+				<element value="TWRP"/>
 				<element value="twrp_"/>
 				<element value="_twrp_"/>
 			</property>
@@ -34,6 +35,10 @@
 				<element value="_nx"/>
 			</property>
 		</properties>
+
+		<!-- We use PSR-4 -->
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 
 
 		<!-- Excluded during development. -->
@@ -55,6 +60,8 @@
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
 		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
+		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" />
+
 
     </rule>
 
@@ -62,5 +69,4 @@
     <config name="testVersion" value="5.6"/>
 
 	<rule ref="PHPCompatibilityWP"/>
-
 </ruleset>

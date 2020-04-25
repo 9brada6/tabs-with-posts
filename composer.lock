@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e646f06c85b0eb530753bce259b3f3d",
+    "content-hash": "0254251c4479c761ca1ae2829ae67466",
     "packages": [
         {
             "name": "composer/semver",
@@ -2623,6 +2623,96 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2020-01-21T06:36:37+00:00"
+        },
+        {
+            "name": "slevomat/coding-standard",
+            "version": "4.8.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/slevomat/coding-standard.git",
+                "reference": "bff96313d8c7c2ba57a4edb13c1c141df8988c58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/slevomat/coding-standard/zipball/bff96313d8c7c2ba57a4edb13c1c141df8988c58",
+                "reference": "bff96313d8c7c2ba57a4edb13c1c141df8988c58",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "squizlabs/php_codesniffer": "^3.4.0"
+            },
+            "require-dev": {
+                "jakub-onderka/php-parallel-lint": "1.0.0",
+                "phing/phing": "2.16.1",
+                "phpstan/phpstan": "0.9.2",
+                "phpstan/phpstan-phpunit": "0.9.4",
+                "phpstan/phpstan-strict-rules": "0.9",
+                "phpunit/phpunit": "7.5.1"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-4": {
+                    "SlevomatCodingStandard\\": "SlevomatCodingStandard"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Slevomat Coding Standard for PHP_CodeSniffer complements Consistence Coding Standard by providing sniffs with additional checks.",
+            "time": "2019-01-03T13:15:50+00:00"
+        },
+        {
+            "name": "suin/phpcs-psr4-sniff",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/suin/phpcs-psr4-sniff.git",
+                "reference": "48ae7d95a7c82092527bd9c18f2431f62cae32da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/suin/phpcs-psr4-sniff/zipball/48ae7d95a7c82092527bd9c18f2431f62cae32da",
+                "reference": "48ae7d95a7c82092527bd9c18f2431f62cae32da",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=7.1 <7.4.0",
+                "slevomat/coding-standard": ">=4.7 <5.0.0",
+                "squizlabs/php_codesniffer": ">=3.3 <4.0.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "autoload": {
+                "psr-0": {
+                    "Suin\\Sniffs\\Classes\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "suin",
+                    "email": "suinyeze@gmail.com",
+                    "homepage": "https://github.com/suin",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP_CodeSniffer sniff that checks class name matches PSR-4 project structure.",
+            "homepage": "https://github.com/suin/php",
+            "keywords": [
+                "PSR-4",
+                "coding-standards",
+                "coding-style",
+                "namespace",
+                "php-codesniffer",
+                "phpcs",
+                "static-analysis"
+            ],
+            "time": "2018-12-05T09:12:46+00:00"
         },
         {
             "name": "theseer/tokenizer",

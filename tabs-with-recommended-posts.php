@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -24,9 +23,12 @@ class TWRP_Main {
 
 	const TEMPLATES_FOLDER = 'templates/';
 
+	const AUTOLOAD_DIRECTORIES = array( 'TWRP\\' => 'inc/' );
+
 	public static function init() {
 		self::$is_initialized = true;
 		spl_autoload_register( 'TWRP_Main::autoload_query_classes' );
+		spl_autoload_register( 'TWRP_Main::autoload_plugin_classes' );
 	}
 
 	/**
@@ -64,8 +66,6 @@ class TWRP_Main {
 	}
 
 
-
-
 	/**
 	 * Verify if a class exist in the settings folder, and require it. Function
 	 * to be passed to spl_autoload_register.
@@ -85,6 +85,25 @@ class TWRP_Main {
 			require_once $class_file_path;
 		} elseif ( is_file( $instance_file_path ) ) {
 			require_once $instance_file_path;
+		}
+	}
+
+
+
+	protected static function autoload_plugin_classes( $class_name ) {
+		$class_name_parts = explode( '\\', $class_name );
+
+		// Base namespace needs to be TWRP.
+		if ( empty( $class_name_parts ) || 'TWRP' !== $class_name_parts[0] ) {
+			return;
+		}
+
+		foreach ( self::AUTOLOAD_DIRECTORIES as $autoload_namespace => $autoload_dir ) {
+			$file_path = self::get_plugin_directory() . str_replace( $autoload_namespace, $autoload_dir, $class_name ) . '.php';
+
+			if ( is_file( $file_path ) ) {
+				require_once $file_path;
+			}
 		}
 	}
 }
@@ -125,7 +144,8 @@ require_once __DIR__ . '/inc/styles/interface-twrp-style-setting.php';
 require_once __DIR__ . '/inc/styles/class-twrp-simple-style.php';
 require_once __DIR__ . '/inc/styles/class-twrp-modern-style.php';
 
-require_once __DIR__ . '/inc/class-twrp-manage-options.php';
+
+require_once __DIR__ . '/inc/class-twrp-style-options.php';
 
 /**
  * For Development only.
