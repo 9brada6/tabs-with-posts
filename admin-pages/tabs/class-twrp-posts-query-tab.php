@@ -1,6 +1,7 @@
 <?php
 
 use TWRP\Query_Options;
+use TWRP\Admin\Settings_Menu;
 
 class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 
@@ -216,7 +217,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_query_edit_link( $query_id ) {
-		$tab_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$tab_url = Settings_Menu::get_tab_url( $this );
 
 		if ( Query_Options::query_exists( $query_id ) ) {
 			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
@@ -231,7 +232,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_new_query_link() {
-		$add_new_link = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$add_new_link = Settings_Menu::get_tab_url( $this );
 		$add_new_link = add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, '', $add_new_link );
 
 		return $add_new_link;
@@ -313,7 +314,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_edit_query_form_action() {
-		$url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$url = Settings_Menu::get_tab_url( $this );
 		$url = add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $this->get_id_of_query_being_modified(), $url );
 		return $url;
 	}
@@ -378,7 +379,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_query_delete_link( $query_id ) {
-		$tab_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$tab_url = Settings_Menu::get_tab_url( $this );
 
 		if ( Query_Options::query_exists( $query_id ) ) {
 			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, $query_id, $tab_url );

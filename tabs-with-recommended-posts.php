@@ -13,6 +13,8 @@
  * Domain Path:       @todo
  */
 
+use TWRP\Admin\Settings_Menu;
+
 
 class TWRP_Main {
 
@@ -116,12 +118,6 @@ class TWRP_Main {
 
 TWRP_Main::init();
 
-/**
- * Main admin submenu, displayed in the backend.
- */
-require_once __DIR__ . '/admin-pages/class-twrp-admin-settings-submenu.php';
-
-
 
 require_once __DIR__ . '/admin-pages/tabs/interface-twrp-admin-menu-tab.php';
 require_once __DIR__ . '/admin-pages/tabs/class-twrp-documentation-tab.php';
@@ -169,7 +165,7 @@ function twrp_admin_add_setting_submenu() {
 		$menu_title,
 		$capability,
 		$slug,
-		array( 'TWRP_Admin_Settings_Submenu', 'display_admin_page_hook' )
+		array( 'TWRP\Admin\Settings_Menu', 'display_admin_page_hook' )
 	);
 }
 
@@ -179,10 +175,10 @@ add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
 
 
 function twrp_add_default_tabs() {
-	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Documentation_Tab' );
-	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_General_Test' );
-	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Posts_Query_Tab' );
-	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Styles_Tab' );
+	Settings_Menu::add_tab( 'TWRP_Documentation_Tab' );
+	Settings_Menu::add_tab( 'TWRP_General_Test' );
+	Settings_Menu::add_tab( 'TWRP_Posts_Query_Tab' );
+	Settings_Menu::add_tab( 'TWRP_Styles_Tab' );
 
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
 	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );

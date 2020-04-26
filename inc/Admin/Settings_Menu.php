@@ -1,6 +1,6 @@
 <?php
 /**
- * Define the class TWRP_Admin_Settings_Submenu. See the class doc for more info.
+ * Define the class Settings_Menu. See the class doc for more info.
  *
  * @todo: Remove query arg from url for the default tab.
  * @todo: Check if users have capability to see the post.
@@ -8,17 +8,19 @@
  * @package Tabs_With_Recommended_Posts
  */
 
+namespace TWRP\Admin;
+
 /**
  * Class for creating the Plugin Settings.
  *
  * These settings are added as a submenu page, to the "Settings" Admin Menu.
  *
  * This Page will have multiple tabs, to add a tab use the static function
- * TWRP_Admin_Settings_Submenu::add_tab( 'tab_name' ), usually at "admin_menu"
+ * TWRP\Admin\Settings_Menu::add_tab( 'tab_name' ), usually at "admin_menu"
  * action. The class that implements a tab must have the \TWRP_Admin_Menu_Tab
  * interface.
  */
-class TWRP_Admin_Settings_Submenu {
+class Settings_Menu {
 
 	/**
 	 * Holds the ID of the WordPress submenu. The submenu is added to
@@ -86,7 +88,7 @@ class TWRP_Admin_Settings_Submenu {
 	 * @return void
 	 */
 	public static function display_admin_page_hook() {
-		$class = new TWRP_Admin_Settings_Submenu();
+		$class = new Settings_Menu();
 		$class->display_admin_page();
 	}
 

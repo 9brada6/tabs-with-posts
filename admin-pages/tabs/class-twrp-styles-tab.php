@@ -1,5 +1,6 @@
 <?php
 
+use TWRP\Admin\Settings_Menu;
 use TWRP\Style_Options;
 
 /**
@@ -395,7 +396,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_edit_style_form_action() {
-		$url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$url = Settings_Menu::get_tab_url( $this );
 		$url = add_query_arg( self::EDIT_STYLE__URL_PARAM_KEY, $this->get_id_of_style_being_modified(), $url );
 		return $url;
 	}
@@ -420,7 +421,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_new_style_link() {
-		$add_new_link = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$add_new_link = Settings_Menu::get_tab_url( $this );
 		$add_new_link = add_query_arg( self::EDIT_STYLE__URL_PARAM_KEY, '', $add_new_link );
 
 		return $add_new_link;
@@ -435,7 +436,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_style_edit_link( $style_id ) {
-		$edit_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$edit_url = Settings_Menu::get_tab_url( $this );
 
 		if ( Style_Options::style_exists( $style_id ) ) {
 			return add_query_arg( self::EDIT_STYLE__URL_PARAM_KEY, $style_id, $edit_url );
@@ -453,7 +454,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_style_delete_link( $style_id ) {
-		$delete_url = TWRP_Admin_Settings_Submenu::get_tab_url( $this );
+		$delete_url = Settings_Menu::get_tab_url( $this );
 
 		if ( Style_Options::style_exists( $style_id ) ) {
 			$url = add_query_arg( self::DELETE_STYLE__URL_PARAM_KEY, $style_id, $delete_url );

@@ -9,7 +9,7 @@
  * Interface to be used in creating a tab. A class needs to implement
  * this, for the main setting page to know how to interact with the class.
  *
- * See TWRP_Admin_Settings_Submenu for how to add a class to be displayed.
+ * See TWRP\Admin\Settings_Menu for how to add a class to be displayed.
  */
 interface TWRP_Admin_Menu_Tab {
 
