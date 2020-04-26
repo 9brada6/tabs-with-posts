@@ -1,11 +1,13 @@
 <?php
 
+namespace TWRP;
+
 use TWRP\Article_Block\Article_Block_Interface;
 use TWRP\Query_Setting\Interface_Backend_Layout;
 use TWRP\Query_Setting\Interface_Modify_Query_Arguments;
 
 
-class TWRP_Manage_Classes {
+class Manage_Component_Classes {
 
 	protected static $query_backend_settings = array();
 	protected static $query_args_settings    = array();

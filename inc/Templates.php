@@ -1,6 +1,10 @@
 <?php
 
-class TWRP_Templates {
+namespace TWRP;
+
+use TWRP\Manage_Component_Classes;
+
+class Templates {
 
 	/**
 	 * Display a post block based on a style id and a post object.
@@ -16,10 +20,10 @@ class TWRP_Templates {
 		global $post;
 		$displayed_post = get_post( $displayed_post );
 		if ( ! $displayed_post ) {
-			throw new InvalidArgumentException( 'A post couldn\'t be found.' );
+			throw new \InvalidArgumentException( 'A post couldn\'t be found.' );
 		}
 
-		$style = TWRP_Manage_Classes::get_style_class_by_name( $post_block_style_id );
+		$style = Manage_Component_Classes::get_style_class_by_name( $post_block_style_id );
 
 		// Set global $post to the new post.
 		$post = $displayed_post; // phpcs:ignore --  The global $post will be restored.

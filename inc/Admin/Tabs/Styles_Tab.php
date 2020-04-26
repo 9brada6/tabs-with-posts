@@ -1,13 +1,18 @@
 <?php
 
+namespace TWRP\Admin\Tabs;
+
 use TWRP\Admin\Settings_Menu;
+use TWRP\Manage_Component_Classes;
 use TWRP\Style_Options;
+use TWRP\Query_Posts;
+use TWRP\Templates;
 
 /**
  * @todo: get_style_edit_link if style doesn't exist return nothing.
  */
 
-class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
+class Styles_Tab implements Interface_Admin_Menu_Tab {
 
 	/**
 	 * The URL parameter key which say which style ID should be edited. If this
@@ -201,7 +206,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 	protected function display_preview_column() {
 		$query_id = 6;
-		$posts    = TWRP_Query_Posts::get_posts_by_query_id( $query_id );
+		$posts    = Query_Posts::get_posts_by_query_id( $query_id );
 		?>
 		<div class="twrp-styles-preview">
 			<div class="twrp-styles-preview__orientation-wrapper">
@@ -216,7 +221,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 			<?php
 			foreach ( $posts as $post ) {
-				TWRP_Templates::display_post( 'simple_style', $post );
+				Templates::display_post( 'simple_style', $post );
 			}
 			?>
 		</div>
@@ -229,7 +234,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 	protected function display_form() {
 		$style_id_modified = $this->get_id_of_style_being_modified();
 		$current_settings  = Style_Options::get_all_style_settings( $style_id_modified );
-		$style_classes     = TWRP_Manage_Classes::get_style_classes();
+		$style_classes     = Manage_Component_Classes::get_style_classes();
 
 		$style_name = '';
 		if ( isset( $current_settings[ self::STYLE_NAME ] ) ) {
@@ -317,7 +322,7 @@ class TWRP_Styles_Tab implements TWRP_Admin_Menu_Tab {
 
 	protected function update_form_submitted_settings() {
 
-		$styles_classes         = TWRP_Manage_Classes::get_style_classes();
+		$styles_classes         = Manage_Component_Classes::get_style_classes();
 		$style_id               = $this->get_id_of_style_being_modified();
 		$selected_post_style_id = $this->form_get_post_style_id_selected();
 		$style_name             = $this->get_submitted_sanitized_style_name();

@@ -3,6 +3,7 @@
 namespace TWRP\Query_Setting;
 
 use TWRP\Admin\Settings_Menu;
+use \TWRP\Admin\Tabs\Queries_Tab;
 
 class Advanced_Arguments implements Interface_Backend_Layout, Interface_Modify_Query_Arguments {
 
@@ -66,7 +67,7 @@ class Advanced_Arguments implements Interface_Backend_Layout, Interface_Modify_Q
 	}
 
 	public static function enqueue_scripts() {
-		if ( Settings_Menu::is_tab_active( new \TWRP_Posts_Query_Tab() ) ) {
+		if ( Settings_Menu::is_tab_active( new Queries_Tab() ) ) {
 			wp_enqueue_script( 'wp-codemirror' );
 		}
 	}

@@ -1,9 +1,13 @@
 <?php
 
-use TWRP\Query_Options;
-use TWRP\Admin\Settings_Menu;
+namespace TWRP\Admin\Tabs;
 
-class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
+use TWRP\Admin\Settings_Menu;
+use TWRP\Query_Options;
+use TWRP\Manage_Component_Classes;
+
+
+class Queries_Tab implements Interface_Admin_Menu_Tab {
 
 	/**
 	 * The value that represents the tab in the query URL parameter.
@@ -143,7 +147,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 		$add_btn_icon = '<span class="twrp-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
 
 		// todo: delete.
-		var_dump( TWRP_Query_Posts::get_wp_query_arguments( 6 ) );
+		var_dump( \TWRP\Query_Posts::get_wp_query_arguments( 6 ) );
 		var_dump( post_type_exists( 'monitor' ) );
 		?>
 		<div class="twrp-existing-queries">
@@ -246,7 +250,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_query_form() {
-		$setting_classes = TWRP_Manage_Classes::get_registered_backend_settings();
+		$setting_classes = Manage_Component_Classes::get_registered_backend_settings();
 		$query_id        = $this->get_id_of_query_being_modified();
 		?>
 		<div class="twrp-posts-queries-tab">
@@ -339,7 +343,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function update_form_submitted_settings() {
-		$setting_classes = TWRP_Manage_Classes::get_registered_backend_settings();
+		$setting_classes = Manage_Component_Classes::get_registered_backend_settings();
 
 		$query_key      = $this->get_id_of_query_being_modified();
 		$query_settings = array();

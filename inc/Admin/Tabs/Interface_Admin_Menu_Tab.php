@@ -5,13 +5,15 @@
  * @package Tabs_With_Recommended_Posts
  */
 
+namespace TWRP\Admin\Tabs;
+
 /**
  * Interface to be used in creating a tab. A class needs to implement
  * this, for the main setting page to know how to interact with the class.
  *
  * See TWRP\Admin\Settings_Menu for how to add a class to be displayed.
  */
-interface TWRP_Admin_Menu_Tab {
+interface Interface_Admin_Menu_Tab {
 
 	/**
 	 * Display the main content of the tab.

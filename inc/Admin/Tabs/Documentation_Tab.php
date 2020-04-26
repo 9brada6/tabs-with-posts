@@ -1,9 +1,12 @@
 <?php
 
-class TWRP_Documentation_Tab implements TWRP_Admin_Menu_Tab {
+namespace TWRP\Admin\Tabs;
+
+class Documentation_Tab implements Interface_Admin_Menu_Tab {
 	public function display_tab() {
 
 	}
+
 	public static function get_tab_url_arg() {
 		return 'documentation';
 	}

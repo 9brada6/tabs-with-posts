@@ -14,7 +14,7 @@
  */
 
 use TWRP\Admin\Settings_Menu;
-
+use TWRP\Manage_Component_Classes;
 
 class TWRP_Main {
 
@@ -119,34 +119,10 @@ class TWRP_Main {
 TWRP_Main::init();
 
 
-require_once __DIR__ . '/admin-pages/tabs/interface-twrp-admin-menu-tab.php';
-require_once __DIR__ . '/admin-pages/tabs/class-twrp-documentation-tab.php';
-require_once __DIR__ . '/admin-pages/tabs/class-twrp-posts-query-tab.php';
-require_once __DIR__ . '/admin-pages/tabs/class-twrp-styles-tab.php';
-
-require_once __DIR__ . '/inc/class-twrp-templates.php';
-
-
-/**
- * Posts Query Settings
- */
-// Main interface for other settings.
-
-
-require_once __DIR__ . '/inc/class-twrp-query-posts.php';
-
-
 /**
  * For Development only.
  */
 require_once __DIR__ . '/debug-and-development.php';
-
-/**
- * Unclassified
- *
- * @todo: Move
- */
-require_once __DIR__ . '/inc/class-twrp-manage-classes.php';
 
 
 /**
@@ -175,22 +151,21 @@ add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
 
 
 function twrp_add_default_tabs() {
-	Settings_Menu::add_tab( 'TWRP_Documentation_Tab' );
-	Settings_Menu::add_tab( 'TWRP_General_Test' );
-	Settings_Menu::add_tab( 'TWRP_Posts_Query_Tab' );
-	Settings_Menu::add_tab( 'TWRP_Styles_Tab' );
+	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
+	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
+	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Styles_Tab' );
 
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 30 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 40 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 30 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 40 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
 
-	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 10 );
-	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Advanced_Arguments', 1000 );.
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 10 );
+	// Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Advanced_Arguments', 1000 );.
 
-	TWRP_Manage_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
-	TWRP_Manage_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
+	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
+	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
 }
 
 
