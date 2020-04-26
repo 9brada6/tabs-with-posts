@@ -1,6 +1,8 @@
 <?php
 
-class TWRP_Author_Setting implements TWRP\Query_Setting\Interface_Backend_Layout {
+namespace TWRP\Query_Setting;
+
+class Author implements Interface_Backend_Layout {
 
 	/**
 	 * Display the backend HTML for the setting.

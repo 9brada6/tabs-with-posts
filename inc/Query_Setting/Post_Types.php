@@ -5,10 +5,12 @@
  * @package Tabs_With_Recommended_Posts
  */
 
+namespace TWRP\Query_Setting;
+
 /**
  * Class that will filter the articles via selected posts types.
  */
-class TWRP_Post_Types_Setting implements TWRP\Query_Setting\Interface_Backend_Layout, TWRP\Query_Setting\Interface_Modify_Query_Arguments {
+class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arguments {
 
 	/**
 	 * Display the backend HTML for the setting.

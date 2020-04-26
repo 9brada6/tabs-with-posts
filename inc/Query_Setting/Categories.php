@@ -3,6 +3,8 @@
  * @todo: Remove the margin-bottom of categories classes and move to setting section classes.
  */
 
+namespace TWRP\Query_Setting;
+
 /**
  *
  * We have the following categories:
@@ -24,7 +26,7 @@
  * Category 195 and it's children OR Category 198 and it's children
  * cat => '195, 198'
  */
-class TWRP_Categories_Setting implements TWRP\Query_Setting\Interface_Backend_Layout {
+class Categories implements Interface_Backend_Layout {
 
 	const CATEGORIES_TYPE__SETTING_KEY  = 'setting_type';
 	const INCLUDE_CHILDREN__SETTING_KEY = 'include_children';
@@ -198,7 +200,7 @@ class TWRP_Categories_Setting implements TWRP\Query_Setting\Interface_Backend_La
 		}
 
 		// Sanitizing the option to include children of all categories selected.
-		if ( isset( $setting[ self::INCLUDE_CHILDREN__SETTING_KEY ] ) ) {
+		if ( isset( $setting[ self::INCLUDE_CHILDREN__SETTING_KEY ] ) && $setting[ self::INCLUDE_CHILDREN__SETTING_KEY ] ) {
 			$setting[ self::INCLUDE_CHILDREN__SETTING_KEY ] = '1';
 		} else {
 			$setting[ self::INCLUDE_CHILDREN__SETTING_KEY ] = '0';

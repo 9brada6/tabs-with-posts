@@ -5,7 +5,7 @@
  * @package Tabs_With_Recommended_Posts
  */
 
- namespace TWRP\Query_Setting;
+namespace TWRP\Query_Setting;
 
 /**
  * Implements the functions needed to be calling in displaying the settings in

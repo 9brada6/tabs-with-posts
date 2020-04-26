@@ -30,7 +30,7 @@ class TWRP_Posts_Query_Tab implements TWRP_Admin_Menu_Tab {
 
 	/**
 	 * The name of the input that holds the query name in the Add/Edit Page.
-	 * This value should be the same as TWRP_Query_Name_Setting::get_setting_name().
+	 * This value should be the same as TWRP\Query_Setting\Query_Name::get_setting_name().
 	 *
 	 * @var string
 	 */

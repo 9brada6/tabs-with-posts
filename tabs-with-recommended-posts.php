@@ -184,21 +184,21 @@ function twrp_add_default_tabs() {
 	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Posts_Query_Tab' );
 	TWRP_Admin_Settings_Submenu::add_tab( 'TWRP_Styles_Tab' );
 
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Query_Name_Setting', 10 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Post_Types_Setting', 20 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Author_Setting', 30 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Categories_Setting', 40 );
-	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP_Advanced_Args_Setting', 100 );
+	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
+	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
+	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 30 );
+	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 40 );
+	TWRP_Manage_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
 
-	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Post_Types_Setting', 10 );
-	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP_Advanced_Args_Setting', 1000 );.
+	TWRP_Manage_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 10 );
+	// TWRP_Manage_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Advanced_Arguments', 1000 );.
 
 	TWRP_Manage_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
 	TWRP_Manage_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
 }
 
 
-TWRP_Advanced_Args_Setting::init();
+TWRP\Query_Setting\Advanced_Arguments::init();
 
 
 function twrp_enqueue_admin() {

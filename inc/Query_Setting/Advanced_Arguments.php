@@ -1,9 +1,11 @@
 <?php
 
-class TWRP_Advanced_Args_Setting implements TWRP\Query_Setting\Interface_Backend_Layout, TWRP\Query_Setting\Interface_Modify_Query_Arguments {
+namespace TWRP\Query_Setting;
+
+class Advanced_Arguments implements Interface_Backend_Layout, Interface_Modify_Query_Arguments {
 
 	public static function init() {
-		add_action( 'admin_enqueue_scripts', array( 'TWRP_Advanced_Args_Setting', 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( 'TWRP\\Query_Setting\\Advanced_Arguments', 'enqueue_scripts' ) );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -62,7 +64,7 @@ class TWRP_Advanced_Args_Setting implements TWRP\Query_Setting\Interface_Backend
 	}
 
 	public static function enqueue_scripts() {
-		if ( TWRP_Admin_Settings_Submenu::is_tab_active( new TWRP_Posts_Query_Tab() ) ) {
+		if ( \TWRP_Admin_Settings_Submenu::is_tab_active( new \TWRP_Posts_Query_Tab() ) ) {
 			wp_enqueue_script( 'wp-codemirror' );
 		}
 	}

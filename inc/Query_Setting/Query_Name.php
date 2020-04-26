@@ -1,9 +1,11 @@
 <?php
 /**
- * File that define the TWRP_Query_Name_Setting class.
+ * File that define the TWRP\Query_Setting\Query_Name class.
  *
  * @package Tabs_With_Recommended_Posts
  */
+
+namespace TWRP\Query_Setting;
 
 /**
  * Implements the query name setting.
@@ -12,7 +14,7 @@
  * simple name to remember and describe what a query do. This name will be
  * visible only in the backend of the website.
  */
-class TWRP_Query_Name_Setting implements TWRP\Query_Setting\Interface_Backend_Layout {
+class Query_Name implements Interface_Backend_Layout {
 
 	/**
 	 * Display the backend HTML for the setting.

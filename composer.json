@@ -10,7 +10,7 @@
     "require-dev": {
         "phpcompatibility/phpcompatibility-wp": "*",
         "phpunit/phpunit": "9",
-        "suin/phpcs-psr4-sniff": "^2.2"
+		"suin/phpcs-psr4-sniff": "^2.2"
 	},
 	"autoload": {
 		"psr-4": {
