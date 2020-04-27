@@ -4,7 +4,7 @@ namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
 use TWRP\Manage_Component_Classes;
-use TWRP\Style_Options;
+use TWRP\DBStyleOptions;
 use TWRP\Query_Posts;
 use TWRP\Templates;
 
@@ -116,7 +116,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
 
     protected function display_existing_styles()
     {
-        $existing_styles = Style_Options::get_all_styles();
+        $existing_styles = DBStyleOptions::get_all_styles();
 
         $edit_icon    = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
         $delete_icon  = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
@@ -239,7 +239,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
     protected function display_form()
     {
         $style_id_modified = $this->get_id_of_style_being_modified();
-        $current_settings  = Style_Options::get_all_style_settings($style_id_modified);
+        $current_settings  = DBStyleOptions::get_all_style_settings($style_id_modified);
         $style_classes     = Manage_Component_Classes::get_style_classes();
 
         $style_name = '';
@@ -347,10 +347,10 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
         $style_settings[ self::KEY__POST_STYLE_ID ] = $selected_post_style_id;
 
         if (empty($style_id)) {
-            Style_Options::add_new_style($style_settings);
+            DBStyleOptions::add_new_style($style_settings);
             return true;
-        } elseif (Style_Options::style_exists($style_id)) {
-            Style_Options::update_style($style_id, $style_settings);
+        } elseif (DBStyleOptions::style_exists($style_id)) {
+            DBStyleOptions::update_style($style_id, $style_settings);
             return true;
         }
 
@@ -369,7 +369,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
 			// phpcs:ignore WordPress.Security -- The setting is sanitized.
             $style_id = wp_unslash($_GET[ self::EDIT_STYLE__URL_PARAM_KEY ]);
 
-            if (is_numeric($style_id) && Style_Options::style_exists($style_id)) {
+            if (is_numeric($style_id) && DBStyleOptions::style_exists($style_id)) {
                 return $style_id;
             }
         }
@@ -459,7 +459,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
     {
         $edit_url = Settings_Menu::get_tab_url($this);
 
-        if (Style_Options::style_exists($style_id)) {
+        if (DBStyleOptions::style_exists($style_id)) {
             return add_query_arg(self::EDIT_STYLE__URL_PARAM_KEY, $style_id, $edit_url);
         }
 
@@ -478,7 +478,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
     {
         $delete_url = Settings_Menu::get_tab_url($this);
 
-        if (Style_Options::style_exists($style_id)) {
+        if (DBStyleOptions::style_exists($style_id)) {
             $url = add_query_arg(self::DELETE_STYLE__URL_PARAM_KEY, $style_id, $delete_url);
             $url = add_query_arg(self::NONCE_DELETE_NAME, wp_create_nonce(self::NONCE_DELETE_ACTION), $url);
             return $url;
