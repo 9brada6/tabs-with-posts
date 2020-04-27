@@ -4,34 +4,36 @@ namespace TWRP;
 
 use TWRP\Manage_Component_Classes;
 
-class Templates {
+class Templates
+{
 
-	/**
-	 * Display a post block based on a style id and a post object.
-	 *
-	 * @param string   $post_block_style_id The style id to be displayed.
-	 * @param \WP_Post $displayed_post The post.
-	 *
-	 * @throws InvalidArgumentException If a $post is not valid, or if template name is not valid.
-	 *
-	 * @return void
-	 */
-	public static function display_post( $post_block_style_id, $displayed_post ) {
-		global $post;
-		$displayed_post = get_post( $displayed_post );
-		if ( ! $displayed_post ) {
-			throw new \InvalidArgumentException( 'A post couldn\'t be found.' );
-		}
+    /**
+     * Display an article based on the article block id and a post object.
+     *
+     * @param string   $articleBlockId The article id to be displayed.
+     * @param \WP_Post $postToDisplay The post.
+     *
+     * @throws \InvalidArgumentException If a $post is not valid, or if template name is not valid.
+     *
+     * @return void
+     */
+    public static function displayPost($articleBlockId, $postToDisplay)
+    {
+        global $post;
+        $postToDisplay = get_post($postToDisplay);
+        if (! $postToDisplay) {
+            throw new \InvalidArgumentException('A post couldn\'t be found.');
+        }
 
-		$style = Manage_Component_Classes::get_style_class_by_name( $post_block_style_id );
+        $style = Manage_Component_Classes::get_style_class_by_name($articleBlockId);
 
-		// Set global $post to the new post.
-		$post = $displayed_post; // phpcs:ignore --  The global $post will be restored.
-		setup_postdata( $displayed_post ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
+        // Set global $post to the new post.
+        $post = $postToDisplay; // phpcs:ignore --  The global $post will be restored.
+        setup_postdata($postToDisplay); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
-		$style->include_template();
+        $style->include_template();
 
-		// Restore previous global $post.
-		wp_reset_postdata();
-	}
+        // Restore previous global $post.
+        wp_reset_postdata();
+    }
 }
