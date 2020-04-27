@@ -2,7 +2,7 @@
 
 namespace TWRP;
 
-use TWRP\Manage_Component_Classes;
+use TWRP\ManageComponentClasses;
 
 class Templates
 {
@@ -25,7 +25,7 @@ class Templates
             throw new \InvalidArgumentException('A post couldn\'t be found.');
         }
 
-        $style = Manage_Component_Classes::get_style_class_by_name($articleBlockId);
+        $style = ManageComponentClasses::get_style_class_by_name($articleBlockId);
 
         // Set global $post to the new post.
         $post = $postToDisplay; // phpcs:ignore --  The global $post will be restored.

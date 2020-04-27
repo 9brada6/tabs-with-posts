@@ -3,9 +3,9 @@
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
-use TWRP\Manage_Component_Classes;
+use TWRP\ManageComponentClasses;
 use TWRP\DBStyleOptions;
-use TWRP\Query_Posts;
+use TWRP\QueryPosts;
 use TWRP\Templates;
 
 /**
@@ -211,7 +211,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
     protected function display_preview_column()
     {
         $query_id = 6;
-        $posts    = Query_Posts::get_posts_by_query_id($query_id);
+        $posts    = QueryPosts::get_posts_by_query_id($query_id);
         ?>
         <div class="twrp-styles-preview">
             <div class="twrp-styles-preview__orientation-wrapper">
@@ -240,7 +240,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
     {
         $style_id_modified = $this->get_id_of_style_being_modified();
         $current_settings  = DBStyleOptions::get_all_style_settings($style_id_modified);
-        $style_classes     = Manage_Component_Classes::get_style_classes();
+        $style_classes     = ManageComponentClasses::get_style_classes();
 
         $style_name = '';
         if (isset($current_settings[ self::STYLE_NAME ])) {
@@ -330,7 +330,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab
     protected function update_form_submitted_settings()
     {
 
-        $styles_classes         = Manage_Component_Classes::get_style_classes();
+        $styles_classes         = ManageComponentClasses::get_style_classes();
         $style_id               = $this->get_id_of_style_being_modified();
         $selected_post_style_id = $this->form_get_post_style_id_selected();
         $style_name             = $this->get_submitted_sanitized_style_name();

@@ -3,9 +3,9 @@
 namespace TWRP;
 
 use TWRP\DBQueryOptions;
-use TWRP\Manage_Component_Classes;
+use TWRP\ManageComponentClasses;
 
-class Query_Posts
+class QueryPosts
 {
 
     /**
@@ -34,7 +34,7 @@ class Query_Posts
      * Construct the WP Query Arguments for a registered query, based on the
      * setting classes registered.
      *
-     * @see \TWRP\Manage_Component_Classes On how to add a setting class.
+     * @see \TWRP\ManageComponentClasses On how to add a setting class.
      * @throws \RuntimeException If the Query ID does not exist.
      *
      * @param int|string $query_id The Id to construct query for.
@@ -43,7 +43,7 @@ class Query_Posts
      */
     public static function get_wp_query_arguments( $query_id )
     {
-        $registered_settings_classes = Manage_Component_Classes::get_registered_query_args_settings();
+        $registered_settings_classes = ManageComponentClasses::get_registered_query_args_settings();
         $query_args                  = self::get_starting_query_args();
 
         $query_options = DBQueryOptions::get_all_query_settings($query_id);
