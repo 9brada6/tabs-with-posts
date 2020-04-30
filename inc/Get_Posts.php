@@ -2,10 +2,10 @@
 
 namespace TWRP;
 
-use TWRP\Query_Options;
+use TWRP\DB_Query_Options;
 use TWRP\Manage_Component_Classes;
 
-class Query_Posts {
+class Get_Posts {
 
 	/**
 	 * Get the WordPress posts for a specific defined query.
@@ -43,10 +43,10 @@ class Query_Posts {
 		$registered_settings_classes = Manage_Component_Classes::get_registered_query_args_settings();
 		$query_args                  = self::get_starting_query_args();
 
-		$query_options = Query_Options::get_all_query_settings( $query_id );
+		$query_options = DB_Query_Options::get_all_query_settings( $query_id );
 
 		try {
-			$query_options = Query_Options::get_all_query_settings( $query_id );
+			$query_options = DB_Query_Options::get_all_query_settings( $query_id );
 		} catch ( \RuntimeException $exception ) {
 			throw $exception;
 		}

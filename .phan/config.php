@@ -208,6 +208,4 @@ return array(
 	'redundant_condition_detection'                     => true,
 // Documentation about available bundled plugins can be found [here](https://github.com/phan/phan/tree/master/.phan/plugins).
 
-	'prefer_narrowed_phpdoc_param_types' => true,
-
 );

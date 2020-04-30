@@ -2,7 +2,7 @@
 
 namespace TWRP;
 
-class Style_Options {
+class DB_Style_Options {
 
 	const STYLES_OPTION_KEY = 'twrp__article_styles';
 

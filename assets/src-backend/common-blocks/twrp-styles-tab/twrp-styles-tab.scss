@@ -2,11 +2,12 @@
 	display: flex;
 
 	&__settings {
-		flex-basis: 600px;
+		flex-basis: 900px;
 	}
 
 	&__preview {
 		flex-basis: 300px;
+		margin-left: 30px;
 		background-color: white;
 	}
 }

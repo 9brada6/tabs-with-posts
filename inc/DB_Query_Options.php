@@ -16,7 +16,7 @@ namespace TWRP;
  * Class that contains functions to manage the settings stored in WordPress
  * database "Options" table.
  */
-class Query_Options {
+class DB_Query_Options {
 	const QUERIES_OPTION_KEY = 'twrp__article_queries';
 
 	/**

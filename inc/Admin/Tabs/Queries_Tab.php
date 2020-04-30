@@ -1,9 +1,11 @@
 <?php
 
+declare( strict_types = 1 );
+
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
-use TWRP\Query_Options;
+use TWRP\DB_Query_Options;
 use TWRP\Manage_Component_Classes;
 
 
@@ -13,67 +15,49 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * The value that represents the tab in the query URL parameter.
 	 *
 	 * Ex: .../wp-admin/options-general.php?page=tabs_with_recommended_posts&tab=query_posts
-	 *
-	 * @var string
 	 */
 	const TAB_URL_ARG = 'query_posts';
 
 	/**
 	 * The URL parameter key which say what query ID should be edited. If this
 	 * parameter has no value, then a new query is added.
-	 *
-	 * @var string
 	 */
 	const EDIT_QUERY__URL_PARAM_KEY = 'query_edit_id';
 
 	/**
 	 * The URL parameter key which say which query should be deleted.
-	 *
-	 * @var string
 	 */
 	const DELETE_QUERY__URL_PARAM_KEY = 'query_delete_id';
 
 	/**
 	 * The name of the input that holds the query name in the Add/Edit Page.
 	 * This value should be the same as TWRP\Query_Setting\Query_Name::get_setting_name().
-	 *
-	 * @var string
 	 */
 	const QUERY_NAME = 'tab_name';
 
 	/**
 	 * Name of the nonce from the edit form.
-	 *
-	 * @var string
 	 */
 	const NONCE_EDIT_NAME = 'twrp_query_nonce';
 
 	/**
 	 * Action of the nonce from the edit form.
-	 *
-	 * @var string
 	 */
 	const NONCE_EDIT_ACTION = 'twrp_edit_query';
 
 	/**
 	 * Name of the nonce to delete a query.
-	 *
-	 * @var string
 	 */
 	const NONCE_DELETE_NAME = 'twrp_query_delete_nonce';
 
 	/**
 	 * Action of the nonce to delete a query.
-	 *
-	 * @var string
 	 */
 	const NONCE_DELETE_ACTION = 'twrp_delete_query';
 
 	/**
 	 * The name of the button that submit the Add/Edit form. The constant
 	 * is also used as the value attribute of the button.
-	 *
-	 * @var string
 	 */
 	const SUBMIT_BTN_NAME = 'twrp_query_submitted';
 
@@ -140,14 +124,14 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries() {
-		$existing_queries = Query_Options::get_all_queries();
+		$existing_queries = DB_Query_Options::get_all_queries();
 
 		$edit_icon    = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
 		$delete_icon  = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
 		$add_btn_icon = '<span class="twrp-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
 
 		// todo: delete.
-		var_dump( \TWRP\Query_Posts::get_wp_query_arguments( 6 ) );
+		var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 6 ) );
 		var_dump( post_type_exists( 'monitor' ) );
 		?>
 		<div class="twrp-existing-queries">
@@ -223,7 +207,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function get_query_edit_link( $query_id ) {
 		$tab_url = Settings_Menu::get_tab_url( $this );
 
-		if ( Query_Options::query_exists( $query_id ) ) {
+		if ( DB_Query_Options::query_exists( $query_id ) ) {
 			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 		}
 
@@ -257,7 +241,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php foreach ( $setting_classes as $setting_class ) : ?>
 					<?php
-					$current_setting = Query_Options::get_specific_query_setting( $query_id, $setting_class->get_setting_name() );
+					$current_setting = DB_Query_Options::get_specific_query_setting( $query_id, $setting_class->get_setting_name() );
 					$collapsed       = $setting_class->setting_is_collapsed() ? '1' : '0';
 					?>
 
@@ -304,7 +288,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			// phpcs:ignore WordPress.Security -- The setting is sanitized.
 			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
 
-			if ( is_numeric( $key ) && Query_Options::query_exists( $key ) ) {
+			if ( is_numeric( $key ) && DB_Query_Options::query_exists( $key ) ) {
 				return $key;
 			}
 		}
@@ -353,9 +337,9 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		}
 
 		if ( '' === $query_key ) {
-			Query_Options::add_new_query( $query_settings );
-		} elseif ( Query_Options::query_exists( $query_key ) ) {
-			Query_Options::update_query( $query_key, $query_settings );
+			DB_Query_Options::add_new_query( $query_settings );
+		} elseif ( DB_Query_Options::query_exists( $query_key ) ) {
+			DB_Query_Options::update_query( $query_key, $query_settings );
 		}
 	}
 
@@ -385,7 +369,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function get_query_delete_link( $query_id ) {
 		$tab_url = Settings_Menu::get_tab_url( $this );
 
-		if ( Query_Options::query_exists( $query_id ) ) {
+		if ( DB_Query_Options::query_exists( $query_id ) ) {
 			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
 			return $url;
@@ -432,8 +416,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function execute_delete_query_action() {
 		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore
 			$key = sanitize_key( wp_unslash( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ); // phpcs:ignore
-			if ( Query_Options::query_exists( $key ) ) {
-				Query_Options::delete_query( $key );
+			if ( DB_Query_Options::query_exists( $key ) ) {
+				DB_Query_Options::delete_query( $key );
 			}
 		}
 	}

@@ -174,6 +174,7 @@ TWRP\Query_Setting\Advanced_Arguments::init();
 
 function twrp_enqueue_admin() {
 
+	wp_enqueue_style( 'twrp-frontend', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
 	wp_enqueue_style( 'twrp-backend', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), '1.0.0', 'all' );
 
 	$script_url = plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' );

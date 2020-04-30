@@ -17,11 +17,20 @@
 		border-right: 1px solid #c1c1c1;
 	}
 
-	&__style-column {
+	&__article-block-column {
 		padding: 1rem;
 	}
 
-	&__style-title {
-		margin: 0 0 0.7rem;
+	&__article-block-title {
+		margin: 0 0 1rem;
+	}
+
+	&__article-block-description {
+		font-size: 0.9rem;
+	}
+
+	&__article-block-description-tag {
+		font-size: 1rem;
+		color: #235490;
 	}
 }

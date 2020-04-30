@@ -2,20 +2,20 @@
 
 namespace TWRP\Article_Block;
 
-class Modern_Article_Block implements Article_Block_Interface {
+class Modern_Article_Block implements Article_Block_Interface, Article_Block_Preview {
 	public function display_backend_settings() {
 		return 'Style 2 display settings';
 	}
 
-	public function display_backend_style_preview() {
-		include \TWRP_Main::get_plugin_directory() . 'templates-backend-preview/modern-style.php';
+	public function display_backend_style_description() {
+		// include \TWRP_Main::get_plugin_directory() . 'templates-backend-preview/modern-style.php';
 	}
 
 	public function include_template() {
 		include \TWRP_Main::get_plugin_directory() . 'templates/modern-style.php';
 	}
 
-	public function get_style_name() {
+	public function get_name() {
 		return 'Modern Style';
 	}
 
@@ -27,6 +27,10 @@ class Modern_Article_Block implements Article_Block_Interface {
 
 	}
 	public function get_submitted_sanitized_settings() {
+
+	}
+
+	public function display_backend_preview() {
 
 	}
 
