@@ -191,7 +191,7 @@ class DB_Query_Options {
 			return false;
 		}
 
-		if ( isset( $all_queries[ (int) $query_id ] ) ) {
+		if ( isset( $all_queries[ $query_id ] ) && is_array( $all_queries[ $query_id ] ) ) {
 			return true;
 		}
 

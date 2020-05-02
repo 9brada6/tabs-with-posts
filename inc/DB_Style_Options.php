@@ -178,7 +178,7 @@ class DB_Style_Options {
 			return false;
 		}
 
-		if ( isset( $all_styles[ (int) $style_id ] ) ) {
+		if ( isset( $all_styles[ $style_id ] ) && is_array( $all_styles[ $style_id ] ) ) {
 			return true;
 		}
 
