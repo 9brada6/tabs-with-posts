@@ -51,7 +51,7 @@
 
 
 		<!-- The rules below are excluded during development: -->
-		<!-- <exclude name="Generic.Commenting.DocComment.MissingShort" />
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
 		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
@@ -62,7 +62,7 @@
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
 		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" /> -->
+		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" />
     </rule>
 
 	<!-- Check for cross-version support for PHP 7.0 and higher. -->
