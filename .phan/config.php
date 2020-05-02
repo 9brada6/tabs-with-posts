@@ -146,7 +146,7 @@ return array(
 
 	'polyfill_parse_all_element_doc_comments' => true,
 
-	'target_php_version' => '5.6',
+	'target_php_version' => '7.0',
 	'backward_compatibility_checks' => true,
 
 	// Type Casting.
@@ -199,7 +199,7 @@ return array(
 	// `dead_code_detection` will also enable unused variable detection.
 	//
 	// This has a few known false positives, e.g. for loops or branches.
-	'unused_variable_detection'                         => true,
+	'unused_variable_detection'                         => false,
 
 	// Set to true in order to attempt to detect redundant and impossible conditions.
 	//

@@ -3,7 +3,7 @@
 namespace TWRP\Article_Block;
 
 class Modern_Article_Block implements Article_Block_Interface, Article_Block_Preview {
-	public function display_backend_settings() {
+	public function display_backend_settings( $current_settings ) {
 		return 'Style 2 display settings';
 	}
 
@@ -23,10 +23,14 @@ class Modern_Article_Block implements Article_Block_Interface, Article_Block_Pre
 		return 'modern_style';
 	}
 
-	public function sanitize_settings( $settings ) {
+	public static function sanitize_settings( $settings ) {
 
 	}
 	public function get_submitted_sanitized_settings() {
+
+	}
+
+	public function get_default_settings() {
 
 	}
 

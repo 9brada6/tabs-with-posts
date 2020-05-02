@@ -1,7 +1,5 @@
 <?php
 
-declare( strict_types = 1 );
-
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
@@ -343,6 +341,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 	 * @todo
 	 */
 	protected function display_form_article_block( $article_block ) {
+		$current_settings = $this->get_form_current_settings();
 		?>
 		<div class="twrp-styles-form__row">
 			<div class="twrp-styles-form__select-column">
@@ -368,7 +367,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 						<span class="twrp-styles-form__article-block-description-tag">
 							<?= _x( 'Description:', 'backend', 'twrp' ); ?>
 						</span>
-						<?php $article_block->display_backend_style_description(); ?>
+						<?php $article_block->display_backend_style_description(); // @phan-suppress-current-line PhanPossiblyUndeclaredMethod ?>
 					</div>
 				</div>
 
@@ -376,7 +375,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 					<h4 class="twrp-styles-form__article-block-settings-title">
 						<?= _x( 'Settings:', 'backend', 'twrp' ) ?>
 					</h4>
-					<?php $article_block->display_backend_settings(); ?>
+					<?php $article_block->display_backend_settings( $current_settings ); // @phan-suppress-current-line PhanPossiblyUndeclaredMethod ?>
 				</div>
 			</div>
 		</div>
@@ -450,6 +449,23 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 		}
 
 		return '';
+	}
+
+	/**
+	 * Get all the settings of the current style that is edited. This function
+	 * should be use when the form is displayed, and not when is submitted.
+	 *
+	 * @return array The settings are not sanitized.
+	 */
+	protected function get_form_current_settings() {
+		$style_id = $this->get_id_of_style_being_modified();
+		try {
+			$current_settings = DB_Style_Options::get_all_style_settings( $style_id );
+		} catch ( \RuntimeException $e ) {
+			return array();
+		}
+
+		return $current_settings;
 	}
 
 	/**

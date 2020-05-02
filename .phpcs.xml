@@ -39,6 +39,9 @@
 
 		<!-- Sometimes is not necessary to comment a parameter. -->
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
+		<!-- And the parameter comment alignment is not good as it takes good writing space. -->
+		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
+
 
 		<exclude ref="WordPress-Docs" />
 
