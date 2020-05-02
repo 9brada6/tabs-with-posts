@@ -367,7 +367,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 						<span class="twrp-styles-form__article-block-description-tag">
 							<?= _x( 'Description:', 'backend', 'twrp' ); ?>
 						</span>
-						<?php $article_block->display_backend_style_description(); // @phan-suppress-current-line PhanPossiblyUndeclaredMethod ?>
+						<?php $article_block->display_backend_description(); // @phan-suppress-current-line PhanPossiblyUndeclaredMethod ?>
 					</div>
 				</div>
 

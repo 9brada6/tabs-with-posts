@@ -17,7 +17,7 @@ class Simple_Article_Block implements Article_Block {
 	const AUTHOR_FONT_SIZE_ATTR = 'author-font-size';
 
 
-	public function display_backend_style_description() {
+	public function display_backend_description() {
 		echo _x( 'Display only the post title, additional with the author or date.', 'backend', 'twrp' );
 	}
 

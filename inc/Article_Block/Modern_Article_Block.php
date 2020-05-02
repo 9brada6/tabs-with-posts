@@ -7,7 +7,7 @@ class Modern_Article_Block implements Article_Block, Article_Block_Preview {
 		return 'Style 2 display settings';
 	}
 
-	public function display_backend_style_description() {
+	public function display_backend_description() {
 		// include \TWRP_Main::get_plugin_directory() . 'templates-backend-preview/modern-style.php';
 	}
 

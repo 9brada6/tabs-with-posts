@@ -67,7 +67,7 @@ interface Article_Block {
 	 *
 	 * @return void
 	 */
-	public function display_backend_style_description();
+	public function display_backend_description();
 
 	/**
 	 * Display the HTML to modify the article block settings.
