@@ -1,4 +1,8 @@
 <?php
+/**
+ *
+ * @todo: add a constant for all settings with default values.
+ */
 
 namespace TWRP\Article_Block;
 
@@ -49,8 +53,8 @@ class Simple_Article_Block implements Article_Block_Interface {
 
 		$sanitized_settings = array();
 
-		$sanitized_settings[ self::AUTHOR_ATTR ] = self::sanitize_checkbox( $settings, self::AUTHOR_ATTR );
-		$sanitized_settings[ self::DATE_ATTR ]   = self::sanitize_checkbox( $settings, self::DATE_ATTR );
+		$sanitized_settings[ self::AUTHOR_ATTR ] = self::sanitize_checkbox( $settings, self::AUTHOR_ATTR, '' );
+		$sanitized_settings[ self::DATE_ATTR ]   = self::sanitize_checkbox( $settings, self::DATE_ATTR, '' );
 
 		$sanitized_settings[ self::TITLE_FONT_SIZE_ATTR ] = self::sanitize_number(
 			$settings,
