@@ -1,7 +1,16 @@
 <?php
+/**
+ * File containing a trait class, used by the article blocks.
+ *
+ * @package Tabs_With_Recommended_Posts
+ */
 
 namespace TWRP\Article_Block;
 
+/**
+ * Contains all the traits that are necessary to create the HTML in the backend
+ * for form inputs to let the administrators change the settings.
+ */
 trait Article_Block_Create_Setting {
 
 	/**
@@ -31,6 +40,10 @@ trait Article_Block_Create_Setting {
 		$this->creator_artblock_id      = $artblock_id;
 		$this->creator_current_settings = $current_settings;
 	}
+
+
+	// =========================================================================
+	// Create Input Functions
 
 	/**
 	 * Create a checkbox accompanied with a text. The text will be displayed after
@@ -110,6 +123,9 @@ trait Article_Block_Create_Setting {
 	}
 
 
+	// =========================================================================
+	// Helper Functions
+
 	/**
 	 * Create the input id for a setting, based on the setting and the article
 	 * block id supplied.
@@ -138,6 +154,8 @@ trait Article_Block_Create_Setting {
 	/**
 	 * Get the current setting. The setting is sanitized before so it should be
 	 * safe to use here.
+	 *
+	 * @param string $setting_name
 	 *
 	 * @return mixed The current setting or null otherwise.
 	 */
