@@ -1,0 +1,14 @@
+.twrp-widget-form {
+
+	// Select Query.
+	&__select-query-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	&__select-query-to-add-text,
+	&__select-query-to-add {
+		margin-right: 8px;
+	}
+}

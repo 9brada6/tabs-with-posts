@@ -202,3 +202,10 @@ function twrp_enqueue_admin() {
 }
 
 add_action( 'admin_enqueue_scripts', 'twrp_enqueue_admin', 100 );
+
+
+function twrp_register_widgets() {
+	register_widget( 'TWRP\Tabs_Widget' );
+}
+
+add_action( 'widgets_init', 'twrp_register_widgets' );
