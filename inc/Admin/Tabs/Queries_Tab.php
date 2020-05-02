@@ -241,8 +241,15 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php foreach ( $setting_classes as $setting_class ) : ?>
 					<?php
-					$current_setting = DB_Query_Options::get_specific_query_setting( $query_id, $setting_class->get_setting_name() );
-					$collapsed       = $setting_class->setting_is_collapsed() ? '1' : '0';
+					$current_settings = DB_Query_Options::get_all_query_settings( $query_id );
+
+					if ( isset( $current_settings[ $setting_class->get_setting_name() ] ) ) {
+						$current_setting = $current_settings[ $setting_class->get_setting_name() ];
+					} else {
+						$current_setting = null;
+					}
+
+					$collapsed = $setting_class->setting_is_collapsed() ? '1' : '0';
 					?>
 
 					<div class="twrp-posts-queries-tab__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">

@@ -193,9 +193,13 @@ class Categories implements Interface_Backend_Layout {
 	public static function sanitize_setting( $setting ) {
 		$setting = wp_unslash( $setting );
 
-		$possible_cat_types = array( 'OUT', 'IN' );
-		$has_valid_setting  = in_array( $setting[ self::CATEGORIES_TYPE__SETTING_KEY ], $possible_cat_types, true );
-		if ( ! $has_valid_setting ) {
+		if ( isset( $setting[ self::CATEGORIES_TYPE__SETTING_KEY ] ) ) {
+			$possible_cat_types = array( 'OUT', 'IN' );
+			$has_valid_setting  = in_array( $setting[ self::CATEGORIES_TYPE__SETTING_KEY ], $possible_cat_types, true );
+			if ( ! $has_valid_setting ) {
+				$setting[ self::CATEGORIES_TYPE__SETTING_KEY ] = 'OUT';
+			}
+		} else {
 			$setting[ self::CATEGORIES_TYPE__SETTING_KEY ] = 'OUT';
 		}
 

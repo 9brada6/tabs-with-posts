@@ -2,11 +2,6 @@
 /**
  * Implements the class that will manage all the WP database options.
  *
- * @todo make every setting an array. And make sure of it. We will ned to implement
- * this on add_style/query, and on query/style_exist functions.
- *
- * @todo: Divide this file in 2 separated files.
- *
  * @package Tabs_With_Recommended_Posts
  */
 
@@ -20,7 +15,7 @@ class DB_Query_Options {
 	const QUERIES_OPTION_KEY = 'twrp__article_queries';
 
 	/**
-	 * Returns all registered article queries.
+	 * Returns all registered article queries. The settings are sanitized.
 	 *
 	 * @return array
 	 */
@@ -38,11 +33,15 @@ class DB_Query_Options {
 			}
 		}
 
+		foreach ( $all_queries as $query_id => $query_settings ) {
+			$all_queries[ $query_id ] = self::sanitize_settings( $query_settings );
+		}
+
 		return $all_queries;
 	}
 
 	/**
-	 * Get all the settings for a specific query ID.
+	 * Get all the settings for a specific query ID. The settings are sanitized.
 	 *
 	 * @throws \RuntimeException In case of query ID not existing.
 	 *
@@ -61,36 +60,7 @@ class DB_Query_Options {
 			throw new \RuntimeException( 'Query ID doesn\'t exists.' );
 		}
 
-		return $queries_options[ $query_id ];
-	}
-
-	/**
-	 * Returns a specific setting for a query ID.
-	 * Returns null if setting or query ID doesn't exist.
-	 *
-	 * @throws \RuntimeException In case of query ID not existing.
-	 *
-	 * @param int|string $query_id The query ID.
-	 * @param string     $setting_name The setting name.
-	 *
-	 * @return mixed|null The value of the setting, or null in case it didn't exist.
-	 */
-	public static function get_specific_query_setting( $query_id, $setting_name ) {
-		$queries = get_option( self::QUERIES_OPTION_KEY, array() );
-
-		if ( ! is_array( $queries ) ) {
-			$queries = array();
-		}
-
-		if ( ! self::query_exists( $query_id ) ) {
-			throw new \RuntimeException( 'Query ID doesn\'t exists.' );
-		}
-
-		if ( isset( $queries[ $query_id ][ $setting_name ] ) ) {
-			return $queries[ $query_id ][ $setting_name ];
-		}
-
-		return null;
+		return self::sanitize_settings( $queries_options[ $query_id ] );
 	}
 
 	/**
@@ -169,6 +139,33 @@ class DB_Query_Options {
 		}
 
 		update_option( self::QUERIES_OPTION_KEY, $queries_options );
+	}
+
+	/**
+	 * Sanitize all the settings from a query.
+	 *
+	 * @param array $settings The settings to be sanitized.
+	 *
+	 * @return array
+	 */
+	public static function sanitize_settings( $settings ) {
+		$sanitized_settings = array();
+
+		$registered_settings = Manage_Component_Classes::get_registered_backend_settings();
+
+		foreach ( $registered_settings as $setting_class ) {
+			$setting_name = $setting_class->get_setting_name();
+			if ( ! isset( $settings[ $setting_name ] ) ) {
+				$sanitized_settings[ $setting_name ] = $setting_class->get_default_setting();
+				continue;
+			}
+			$to_sanitize_value = $settings[ $setting_name ];
+
+			$sanitized_value                     = $setting_class->sanitize_setting( $to_sanitize_value );
+			$sanitized_settings[ $setting_name ] = $sanitized_value;
+		}
+
+		return $sanitized_settings;
 	}
 
 	/**

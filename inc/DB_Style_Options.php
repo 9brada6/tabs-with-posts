@@ -1,4 +1,8 @@
 <?php
+/**
+ *
+ * @todo: implement sanitize settings in get_all_queries and get_query settings.
+ */
 
 namespace TWRP;
 
