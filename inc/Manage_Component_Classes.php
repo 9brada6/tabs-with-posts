@@ -2,7 +2,7 @@
 
 namespace TWRP;
 
-use TWRP\Article_Block\Article_Block_Interface;
+use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Setting\Interface_Backend_Layout;
 use TWRP\Query_Setting\Interface_Modify_Query_Arguments;
 
@@ -70,8 +70,8 @@ class Manage_Component_Classes {
 	protected static $style_classes = array();
 
 	public static function add_style_class( $setting_class_name ) {
-		$style_class = new $setting_class_name();
-		self::$style_classes [ $style_class->get_style_id() ] = $style_class;
+		$style_class                                    = new $setting_class_name();
+		self::$style_classes [ $style_class->get_id() ] = $style_class;
 	}
 
 	public static function get_style_classes() {
@@ -85,7 +85,7 @@ class Manage_Component_Classes {
 	 *
 	 * @throws \InvalidArgumentException If the $name does not correspond with a style id.
 	 *
-	 * @return Article_Block_Interface The class retrieved by name.
+	 * @return Article_Block The class retrieved by name.
 	 */
 	public static function get_style_class_by_name( $style_id ) {
 		if ( ! isset( self::$style_classes[ $style_id ] ) ) {

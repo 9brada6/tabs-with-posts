@@ -2,7 +2,7 @@
 
 namespace TWRP\Article_Block;
 
-interface Article_Block_Interface {
+interface Article_Block {
 	public function display_backend_settings( $current_settings );
 	public function display_backend_style_description();
 	public function include_template();
@@ -27,6 +27,13 @@ interface Article_Block_Interface {
 	 *
 	 * @return string
 	 */
-	public function get_style_id();
+	public function get_id();
+
+	/**
+	 * Get the name of the Article Block. The name should have spaces instead
+	 * of "_" and should be something representative.
+	 *
+	 * @return string
+	 */
 	public function get_name();
 }

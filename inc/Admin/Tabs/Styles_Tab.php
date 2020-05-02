@@ -7,7 +7,7 @@ use TWRP\Manage_Component_Classes;
 use TWRP\DB_Style_Options;
 use TWRP\Get_Posts;
 use TWRP\Templates;
-use TWRP\Article_Block\Article_Block_Interface;
+use TWRP\Article_Block\Article_Block;
 use TWRP\Article_Block\Article_Block_Preview;
 
 /**
@@ -337,7 +337,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 	/**
 	 * Display a radio button along side with the settings for the article block.
 	 *
-	 * @param Article_Block_Interface $article_block
+	 * @param Article_Block $article_block
 	 * @todo
 	 */
 	protected function display_form_article_block( $article_block ) {
@@ -347,7 +347,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 			<div class="twrp-styles-form__select-column">
 				<input required class="twrp-styles-form__radio-btn" type="radio"
 					name="<?= esc_attr( self::KEY__POST_STYLE_ID ) ?>"
-					value="<?= esc_attr( $article_block->get_style_id() ); ?>"
+					value="<?= esc_attr( $article_block->get_id() ); ?>"
 					<?= $this->article_block_radio_is_checked( $article_block ); // phpcs:ignore -- Output is XSS safe. ?>
 				/>
 			</div>
@@ -358,7 +358,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 				</h3>
 
 				<div class="twrp-styles-form__article-block-short">
-					<?php if ( $article_block instanceof Article_Block_Preview ): ?>
+					<?php if ( $article_block instanceof Article_Block_Preview ) : ?>
 						<div class="twrp-styles-form__article-block-preview">
 							<?php $article_block->display_backend_preview(); ?>
 						</div>
@@ -506,7 +506,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 	 *
 	 * @return string HTML attribute to be inserted or empty string.
 	 */
-	protected function article_block_radio_is_checked( Article_Block_Interface $article_block ): string {
+	protected function article_block_radio_is_checked( Article_Block $article_block ): string {
 		$style_id_modified = $this->get_id_of_style_being_modified();
 		try {
 			$current_settings = DB_Style_Options::get_all_style_settings( $style_id_modified );
@@ -519,7 +519,7 @@ class Styles_Tab implements Interface_Admin_Menu_Tab {
 			$post_style_selected = $current_settings[ self::KEY__POST_STYLE_ID ];
 		}
 
-		return checked( $article_block->get_style_id(), $post_style_selected, false );
+		return checked( $article_block->get_id(), $post_style_selected, false );
 	}
 
 	/**

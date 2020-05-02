@@ -6,7 +6,7 @@
 
 namespace TWRP\Article_Block;
 
-class Simple_Article_Block implements Article_Block_Interface {
+class Simple_Article_Block implements Article_Block {
 
 	use Article_Block_Create_Setting;
 	use Article_Block_Sanitize_Setting;
@@ -38,7 +38,7 @@ class Simple_Article_Block implements Article_Block_Interface {
 	 *
 	 * @return string
 	 */
-	public function get_style_id() {
+	public function get_id() {
 		return 'simple_style';
 	}
 
@@ -83,16 +83,16 @@ class Simple_Article_Block implements Article_Block_Interface {
 	 * @return array With all the settings.
 	 */
 	public function get_submitted_sanitized_settings() {
-		if ( ! isset( $_POST[ $this->get_style_id() ] ) ) { // phpcs:ignore -- Nonce verified.
+		if ( ! isset( $_POST[ $this->get_id() ] ) ) { // phpcs:ignore -- Nonce verified.
 			return $this->get_default_settings();
 		}
 
 		// phpcs:ignore -- Nonce verified, and setting sanitized.
-		return self::sanitize_settings( $_POST[ $this->get_style_id() ] );
+		return self::sanitize_settings( $_POST[ $this->get_id() ] );
 	}
 
 	public function display_backend_settings( $current_settings ) {
-		$this->set_creator( $this->get_style_id(), self::sanitize_settings( $current_settings ) );
+		$this->set_creator( $this->get_id(), self::sanitize_settings( $current_settings ) );
 		?>
 		<div class="twrp-artblock-form">
 			<?php
