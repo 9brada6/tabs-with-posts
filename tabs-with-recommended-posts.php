@@ -154,7 +154,10 @@ function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Styles_Tab' );
+}
 
+add_action( 'init', 'twrp_register_settings' );
+function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 30 );

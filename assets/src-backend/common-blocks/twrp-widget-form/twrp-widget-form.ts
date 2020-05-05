@@ -3,23 +3,57 @@ import 'jqueryui';
 
 declare const ajaxurl: string;
 
-let widgets: JQuery<HTMLElement>;
-
 const dataWidgetId = 'data-twrp-widget-id';
 const dataQueryId = 'data-twrp-query-id';
 
 const queriesListSelector = '.twrp-widget-form__selected-queries-list';
 const queriesItemSelector = '.twrp-widget-form__selected-query';
 
+const queryAddSelector = '.twrp-widget-form__select-query-to-add-btn';
+const queryRemoveSelector = '.twrp-widget-form__remove-selected-query';
+
 const queriesInputSelector = '.twrp-widget-form__selected-queries';
 
-$( document ).on( 'click', '.twrp-widget-form__select-query-to-add-btn', handleAddQueryButton );
+$( document ).on( 'click', queryAddSelector, handleAddQueryButton );
+$( document ).on( 'click', queryRemoveSelector, handleRemoveQuery );
+
+/**
+ * Handles the click when a user wants to add a query(tab) to be displayed and
+ * modify its settings.
+ */
+function handleAddQueryButton(): void {
+	const widgetWrapper = $( this ).closest( '.twrp-widget-form' );
+	const widgetId = widgetWrapper.attr( dataWidgetId );
+	const queryId = String( widgetWrapper.find( '.twrp-widget-form__select-query-to-add' ).val() );
+
+	const queriesInputValue = getQueriesInputValues( widgetWrapper );
+
+	if ( queriesInputValue.indexOf( queryId ) === -1 ) {
+		queriesInputValue.push( queryId );
+		setQueriesInputValues( widgetId, queriesInputValue );
+		if ( ! queryExistInList( widgetId, queryId ) ) {
+			appendQueryToList( widgetId, queryId );
+		}
+	}
+}
+
+/**
+ * Removes the query from Display List and Input List.
+ */
+function handleRemoveQuery() {
+	const widgetId = getClosestWidgetId( $( this ) );
+	const queryId = getClosestQueryId( $( this ) );
+
+	removeQueryFromList( widgetId, queryId );
+	updateQueriesInput( widgetId );
+}
+
+// =============================================================================
+// Widgets
+
+let widgets: JQuery<HTMLElement>;
 
 $( document ).on( 'click', updateWidgetsList );
-updateWidgetsList();
-
-$( document ).on( 'click', updateAllWidgets );
-updateAllWidgets();
 
 /**
  * Update the file global variable "widgets" to contain all the instance widgets
@@ -29,79 +63,58 @@ function updateWidgetsList(): void {
 	widgets = $( document ).find( `[${ dataWidgetId }]` );
 }
 
-function updateAllWidgets(): void {
+// =============================================================================
+// Widget List Display Functions
+
+$( document ).on( 'load', updateAllWidgetsListOnLoad );
+
+function updateAllWidgetsListOnLoad(): void {
 	widgets.each( function() {
 		const widgetId = $( this ).attr( dataWidgetId );
-		updateWidgetQueriesDisplayList( widgetId );
+		updateQueriesDisplayListFromInput( widgetId );
 	} );
 }
 
 /**
- * Handles the click when a user wants to add a query(tab) to be displayed and
- * modify its settings.
- */
-function handleAddQueryButton(): void {
-	const widgetWrapper = $( this ).closest( '.twrp-widget-form' );
-	const queryId = String( widgetWrapper.find( '.twrp-widget-form__select-query-to-add' ).val() );
-
-	const queriesInputValue = getQueriesInputValues( widgetWrapper );
-
-	if ( queriesInputValue.indexOf( queryId ) === -1 ) {
-		queriesInputValue.push( queryId );
-		setQueriesInputValues( widgetWrapper, queriesInputValue );
-	}
-}
-
-// =============================================================================
-// Widget List Functions
-
-/**
  * Update the queries list from the queries input.
  */
-function updateWidgetQueriesDisplayList( widgetId: string ) {
+function updateQueriesDisplayListFromInput( widgetId: string ) {
 	const widget = getWidgetWrapperById( widgetId );
 	const queries = getQueriesInputValues( widget );
 
 	for ( let i = 0; i < queries.length; i++ ) {
-		if ( ! queryExistInWidgetList( widgetId, queries[ i ] ) ) {
-			appendQueryToWidgetList( widgetId, queries[ i ] );
+		if ( ! queryExistInList( widgetId, queries[ i ] ) ) {
+			appendQueryToList( widgetId, queries[ i ] );
 		}
 	}
 }
 
 /**
- * Somewhat the reversed of updateWidgetQueriesDisplayList(), updates the queries
- * input, from the queries display list.
+ * Updates the queries input, from the queries display list.
  */
-function updateWidgetQueriesInput( widgetId: string ): void {
+function updateQueriesInput( widgetId: string ): void {
 	const widget = getWidgetWrapperById( widgetId );
 	const queriesItems = widget.find( queriesListSelector ).find( queriesItemSelector );
 
 	const queries = [];
-	for ( i = 0; i < queriesItems.length; i++ ) {
-
-	}
-}
-
-/**
- * Check if a query settings are displayed in the widget.
- */
-function queryExistInWidgetList( widgetId: string, queryId: string|number ): boolean {
-	const queryItem = getQueryItemById( widgetId, queryId );
-	if ( queryItem.length ) {
-		return true;
-	}
-
-	return false;
+	queriesItems.each( function() {
+		const queryId = $( this ).attr( dataQueryId );
+		if ( queryId ) {
+			queries.push( queryId );
+		}
+	} );
+	setQueriesInputValues( widgetId, queries );
 }
 
 /**
  * Appends a query tab to the widget list of queries.
  */
-async function appendQueryToWidgetList( widgetId: string, queryId: string|number ) {
+async function appendQueryToList( widgetId: string, queryId: string|number ) {
 	const queryHTML = await getQueryHTMLForList( widgetId, queryId );
 	const widget = getWidgetWrapperById( widgetId );
-	widget.find( '.twrp-widget-form__selected-queries-list' ).append( queryHTML );
+	if ( ! queryExistInList( widgetId, queryId ) ) {
+		widget.find( '.twrp-widget-form__selected-queries-list' ).append( queryHTML );
+	}
 }
 
 /**
@@ -119,8 +132,36 @@ function getQueryHTMLForList( widgetId: string, queryId: string|number ) {
 	} );
 }
 
+/**
+ * Remove a Query From the Display List.
+ */
+function removeQueryFromList( widgetId: string, queryId: string|number ) {
+	const queryItem = getQueryItemById( widgetId, queryId );
+	queryItem.remove();
+}
+
+/**
+ * Check if a query settings are displayed in the widget.
+ */
+function queryExistInList( widgetId: string, queryId: string|number ): boolean {
+	const queryItem = getQueryItemById( widgetId, queryId );
+	if ( queryItem.length ) {
+		return true;
+	}
+
+	return false;
+}
+
 // =============================================================================
 // Utility functions.
+
+function getClosestWidgetId( element: any ): string {
+	return $( element ).closest( `[${ dataWidgetId }]` ).attr( dataWidgetId );
+}
+
+function getClosestQueryId( element: any ): string {
+	return $( element ).closest( `[${ dataQueryId }]` ).attr( dataQueryId );
+}
 
 function getWidgetWrapperById( widgetId: string ): JQuery<HTMLElement> {
 	return $( document ).find( `[${ dataWidgetId }="${ widgetId }"]` );
@@ -143,7 +184,8 @@ function getQueriesInputValues( widget: JQuery<HTMLElement> ): Array<string> {
 	}
 }
 
-function setQueriesInputValues( widget: JQuery<HTMLElement>, queries: Array<string> ): void {
+function setQueriesInputValues( widgetId: string, queries: Array<string> ): void {
+	const widget = getWidgetWrapperById( widgetId );
 	const input = widget.find( queriesInputSelector );
 	const value = queries.join( ';' );
 	input.val( value );
@@ -160,7 +202,14 @@ function initializeAllQueriesSorting(): void {
 	} );
 }
 
-function initializeWidgetSorting( widget: JQuery ) {
+function initializeWidgetSorting( widget: JQuery<HTMLElement> ) {
 	const queriesList = widget.find( queriesListSelector );
-	queriesList.sortable();
+	queriesList.sortable( {
+		update: handleSortingChange,
+	} );
+}
+
+function handleSortingChange(): void {
+	const widgetId = getClosestWidgetId( this );
+	updateQueriesInput( widgetId );
 }

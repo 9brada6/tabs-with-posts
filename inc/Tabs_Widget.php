@@ -143,6 +143,9 @@ class Tabs_Widget extends \WP_Widget {
 		?>
 		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( $query_id ); ?>">
 			<h4 class="twrp-widget-form__selected-query-title">
+				<button class="twrp-widget-form__remove-selected-query" type="button" >
+					X
+				</button>
 				Related Posts
 			</h4>
 

@@ -544,16 +544,45 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 
-	var widgets;
 	var dataWidgetId = 'data-twrp-widget-id';
 	var dataQueryId = 'data-twrp-query-id';
 	var queriesListSelector = '.twrp-widget-form__selected-queries-list';
+	var queriesItemSelector = '.twrp-widget-form__selected-query';
+	var queryAddSelector = '.twrp-widget-form__select-query-to-add-btn';
+	var queryRemoveSelector = '.twrp-widget-form__remove-selected-query';
 	var queriesInputSelector = '.twrp-widget-form__selected-queries';
-	$(document).on('click', '.twrp-widget-form__select-query-to-add-btn', handleAddQueryButton);
+	$(document).on('click', queryAddSelector, handleAddQueryButton);
+	$(document).on('click', queryRemoveSelector, handleRemoveQuery);
+	/**
+	 * Handles the click when a user wants to add a query(tab) to be displayed and
+	 * modify its settings.
+	 */
+	function handleAddQueryButton() {
+	    var widgetWrapper = $(this).closest('.twrp-widget-form');
+	    var widgetId = widgetWrapper.attr(dataWidgetId);
+	    var queryId = String(widgetWrapper.find('.twrp-widget-form__select-query-to-add').val());
+	    var queriesInputValue = getQueriesInputValues(widgetWrapper);
+	    if (queriesInputValue.indexOf(queryId) === -1) {
+	        queriesInputValue.push(queryId);
+	        setQueriesInputValues(widgetId, queriesInputValue);
+	        if (!queryExistInList(widgetId, queryId)) {
+	            appendQueryToList(widgetId, queryId);
+	        }
+	    }
+	}
+	/**
+	 * Removes the query from Display List and Input List.
+	 */
+	function handleRemoveQuery() {
+	    var widgetId = getClosestWidgetId($(this));
+	    var queryId = getClosestQueryId($(this));
+	    removeQueryFromList(widgetId, queryId);
+	    updateQueriesInput(widgetId);
+	}
+	// =============================================================================
+	// Widgets
+	var widgets;
 	$(document).on('click', updateWidgetsList);
-	updateWidgetsList();
-	$(document).on('click', updateAllWidgets);
-	updateAllWidgets();
 	/**
 	 * Update the file global variable "widgets" to contain all the instance widgets
 	 * on the page.
@@ -561,53 +590,46 @@ var TWRP_Plugin = (function ($) {
 	function updateWidgetsList() {
 	    widgets = $(document).find("[" + dataWidgetId + "]");
 	}
-	function updateAllWidgets() {
+	// =============================================================================
+	// Widget List Display Functions
+	$(document).on('load', updateAllWidgetsListOnLoad);
+	function updateAllWidgetsListOnLoad() {
 	    widgets.each(function () {
 	        var widgetId = $(this).attr(dataWidgetId);
-	        updateWidgetQueriesDisplayList(widgetId);
+	        updateQueriesDisplayListFromInput(widgetId);
 	    });
 	}
 	/**
-	 * Handles the click when a user wants to add a query(tab) to be displayed and
-	 * modify its settings.
+	 * Update the queries list from the queries input.
 	 */
-	function handleAddQueryButton() {
-	    var widgetWrapper = $(this).closest('.twrp-widget-form');
-	    var queryId = String(widgetWrapper.find('.twrp-widget-form__select-query-to-add').val());
-	    var queriesInputValue = getQueriesInputValues(widgetWrapper);
-	    if (queriesInputValue.indexOf(queryId) === -1) {
-	        queriesInputValue.push(queryId);
-	        setQueriesInputValues(widgetWrapper, queriesInputValue);
-	    }
-	}
-	// =============================================================================
-	// Widget List Functions
-	/**
-	 * Update the queries list that display settings from the queries input.
-	 */
-	function updateWidgetQueriesDisplayList(widgetId) {
+	function updateQueriesDisplayListFromInput(widgetId) {
 	    var widget = getWidgetWrapperById(widgetId);
 	    var queries = getQueriesInputValues(widget);
 	    for (var i_1 = 0; i_1 < queries.length; i_1++) {
-	        if (!queryExistInWidgetList(widgetId, queries[i_1])) {
-	            appendQueryToWidgetList(widgetId, queries[i_1]);
+	        if (!queryExistInList(widgetId, queries[i_1])) {
+	            appendQueryToList(widgetId, queries[i_1]);
 	        }
 	    }
 	}
 	/**
-	 * Check if a query settings are displayed in the widget.
+	 * Updates the queries input, from the queries display list.
 	 */
-	function queryExistInWidgetList(widgetId, queryId) {
-	    var queryItem = getQueryItemById(widgetId, queryId);
-	    if (queryItem.length) {
-	        return true;
-	    }
-	    return false;
+	function updateQueriesInput(widgetId) {
+	    var widget = getWidgetWrapperById(widgetId);
+	    var queriesItems = widget.find(queriesListSelector).find(queriesItemSelector);
+	    var queries = [];
+	    queriesItems.each(function () {
+	        var queryId = $(this).attr(dataQueryId);
+	        if (queryId) {
+	            queries.push(queryId);
+	        }
+	    });
+	    setQueriesInputValues(widgetId, queries);
 	}
 	/**
 	 * Appends a query tab to the widget list of queries.
 	 */
-	function appendQueryToWidgetList(widgetId, queryId) {
+	function appendQueryToList(widgetId, queryId) {
 	    return __awaiter(this, void 0, void 0, function () {
 	        var queryHTML, widget;
 	        return __generator(this, function (_a) {
@@ -616,7 +638,9 @@ var TWRP_Plugin = (function ($) {
 	                case 1:
 	                    queryHTML = _a.sent();
 	                    widget = getWidgetWrapperById(widgetId);
-	                    widget.find('.twrp-widget-form__selected-queries-list').append(queryHTML);
+	                    if (!queryExistInList(widgetId, queryId)) {
+	                        widget.find('.twrp-widget-form__selected-queries-list').append(queryHTML);
+	                    }
 	                    return [2 /*return*/];
 	            }
 	        });
@@ -636,8 +660,31 @@ var TWRP_Plugin = (function ($) {
 	        },
 	    });
 	}
+	/**
+	 * Remove a Query From the Display List.
+	 */
+	function removeQueryFromList(widgetId, queryId) {
+	    var queryItem = getQueryItemById(widgetId, queryId);
+	    queryItem.remove();
+	}
+	/**
+	 * Check if a query settings are displayed in the widget.
+	 */
+	function queryExistInList(widgetId, queryId) {
+	    var queryItem = getQueryItemById(widgetId, queryId);
+	    if (queryItem.length) {
+	        return true;
+	    }
+	    return false;
+	}
 	// =============================================================================
 	// Utility functions.
+	function getClosestWidgetId(element) {
+	    return $(element).closest("[" + dataWidgetId + "]").attr(dataWidgetId);
+	}
+	function getClosestQueryId(element) {
+	    return $(element).closest("[" + dataQueryId + "]").attr(dataQueryId);
+	}
 	function getWidgetWrapperById(widgetId) {
 	    return $(document).find("[" + dataWidgetId + "=\"" + widgetId + "\"]");
 	}
@@ -654,7 +701,8 @@ var TWRP_Plugin = (function ($) {
 	        return Boolean(elem);
 	    }
 	}
-	function setQueriesInputValues(widget, queries) {
+	function setQueriesInputValues(widgetId, queries) {
+	    var widget = getWidgetWrapperById(widgetId);
 	    var input = widget.find(queriesInputSelector);
 	    var value = queries.join(';');
 	    input.val(value);
@@ -669,7 +717,13 @@ var TWRP_Plugin = (function ($) {
 	}
 	function initializeWidgetSorting(widget) {
 	    var queriesList = widget.find(queriesListSelector);
-	    queriesList.sortable();
+	    queriesList.sortable({
+	        update: handleSortingChange,
+	    });
+	}
+	function handleSortingChange() {
+	    var widgetId = getClosestWidgetId(this);
+	    updateQueriesInput(widgetId);
 	}
 
 	var script = {};
