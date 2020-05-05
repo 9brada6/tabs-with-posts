@@ -44,17 +44,45 @@ class Tabs_Widget extends \WP_Widget {
 		self::$instance++;
 	}
 
+	/**
+	 * Create the widget form settings for an instance.
+	 *
+	 * @param array $instance
+	 *
+	 * @return ''
+	 */
 	public function form( $instance ) {
 		$queries = DB_Query_Options::get_all_queries();
 		?>
-		<div id="twrp-widget-form__id-<?= esc_attr( (string) self::$instance ) ?>" class="twrp-widget-form">
+		<div
+			class="twrp-widget-form"
+			data-twrp-widget-id=<?= esc_attr( (string) $this->id ); ?>
+			data-twrp-widget-instance=<?= esc_attr( (string) self::$instance ); ?>
+		>
+
 			<?php if ( ! empty( $queries ) ) : ?>
 				<?php $this->display_select_query_options(); ?>
+				<?php $this->display_queries_selected_options(); ?>
 			<?php else : ?>
-
+				<?php $this->display_no_queries_exist(); ?>
 			<?php endif; ?>
 		</div>
+		<?php
 
+		return '';
+	}
+
+	/**
+	 * Display a text in case that no queries have been create, to guide the
+	 * administrator to the settings.
+	 *
+	 * @return void
+	 */
+	protected function display_no_queries_exist() {
+		?>
+		<p class="twrp-widget-form__select-queries-exist">
+			<?= _x( 'No queries created. You need to go to Settings Menu -> Tabs With Recommended Posts(Submenu) and create a query and a style.', 'backend', 'twrp' ); ?>
+		</p>
 		<?php
 	}
 
@@ -63,7 +91,7 @@ class Tabs_Widget extends \WP_Widget {
 		?>
 		<p class="twrp-widget-form__select-query-wrapper">
 			<span class="twrp-widget-form__select-query-to-add-text">
-				<?= _x( 'Select a query to add:', 'backend', 'twrp' ); ?>
+				<?= _x( 'Select a query(tab) to add:', 'backend', 'twrp' ); ?>
 			</span>
 			<select class="twrp-widget-form__select-query-to-add">
 				<?php foreach ( $queries as $query_id => $query_settings ) : ?>
@@ -84,15 +112,57 @@ class Tabs_Widget extends \WP_Widget {
 					</option>
 				<?php endforeach; ?>
 			</select>
-			<button class="twrp-widget-form__select-query-to-add-btn button button-primary">
-				<?= _x( 'Add Query', 'backend', 'twrp' ); ?>
+			<button class="twrp-widget-form__select-query-to-add-btn button button-primary" type="button">
+				<?= _x( 'Add', 'backend', 'twrp' ); ?>
 			</button>
 		</p>
 		<?php
 	}
 
-	public function update( $new_instance, $old_instance ) {
+	protected function display_queries_selected_options() {
+		?>
+		<ul class="twrp-widget-form__selected-queries-list">
+		</ul>
+		<input
+			id="<?= esc_attr( $this->get_field_id( 'queries' ) ); ?>"
+			class="twrp-widget-form__selected-queries"
+			name="<?= esc_attr( $this->get_field_name( 'queries' ) ); ?>"
+			type="text"
+		/>
+		<?php
+	}
 
+	public static function ajax_create_query_selected_item() {
+		$widget_id = $_POST['widget_id'];
+		$query_id  = $_POST['query_id'];
+
+		if ( ! is_string( $query_id ) ) {
+			die();
+		}
+
+		?>
+		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( $query_id ); ?>">
+			<h4 class="twrp-widget-form__selected-query-title">
+				Related Posts
+			</h4>
+
+			<div class="twrp-widget-form__selected-query-settings">
+				<p>
+					Tab button text: <input type="text" placeholder="Display tab title" />
+				</p>
+
+				<select>
+					<option>Style 1</option>
+					<option>Style 2</option>
+				</select>
+			</div>
+		</li>
+		<?php
+		die();
+	}
+
+	public function update( $new_instance, $old_instance ) {
+		return $new_instance;
 	}
 
 }

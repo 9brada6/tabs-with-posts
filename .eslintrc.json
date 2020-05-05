@@ -3,11 +3,17 @@
 		"browser": true,
 		"jquery": true
 	},
+	"plugins": ["@typescript-eslint"],
+	"parser": "@typescript-eslint/parser",
 	"globals": {
         "CodeMirror": "readonly"
     },
 	"extends": [
-		"plugin:@wordpress/eslint-plugin/jsdoc",
+		"plugin:@typescript-eslint/eslint-recommended",
+		// "plugin:@wordpress/eslint-plugin/jsdoc",
 		"plugin:@wordpress/eslint-plugin/esnext"
-	]
-  }
+	],
+	"rules": {
+		"jsdoc/require-param": 0
+	}
+}

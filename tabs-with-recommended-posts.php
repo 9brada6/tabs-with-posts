@@ -209,3 +209,5 @@ function twrp_register_widgets() {
 }
 
 add_action( 'widgets_init', 'twrp_register_widgets' );
+
+add_action( 'wp_ajax_twrp_widget_create_query_setting', 'TWRP\Tabs_Widget::ajax_create_query_selected_item' );
