@@ -62,7 +62,7 @@ class Tabs_Widget extends \WP_Widget {
 
 			<?php if ( ! empty( $queries ) ) : ?>
 				<?php $this->display_select_query_options(); ?>
-				<?php $this->display_queries_selected_options(); ?>
+				<?php $this->display_queries_selected_options( $instance ); ?>
 			<?php else : ?>
 				<?php $this->display_no_queries_exist(); ?>
 			<?php endif; ?>
@@ -119,7 +119,11 @@ class Tabs_Widget extends \WP_Widget {
 		<?php
 	}
 
-	protected function display_queries_selected_options() {
+	protected function display_queries_selected_options( $instance ) {
+		$queries_list = '';
+		if ( isset( $instance['queries'] ) ) {
+			$queries_list = $instance['queries'];
+		}
 		?>
 		<ul class="twrp-widget-form__selected-queries-list">
 		</ul>
@@ -128,6 +132,7 @@ class Tabs_Widget extends \WP_Widget {
 			class="twrp-widget-form__selected-queries"
 			name="<?= esc_attr( $this->get_field_name( 'queries' ) ); ?>"
 			type="text"
+			value="<?= esc_attr( $queries_list ); ?>"
 		/>
 		<?php
 	}

@@ -51,7 +51,9 @@ function handleRemoveQuery() {
 // =============================================================================
 // Widgets
 
-let widgets: JQuery<HTMLElement>;
+let widgets: JQuery<HTMLElement> = $();
+
+$( updateWidgetsList );
 
 $( document ).on( 'click', updateWidgetsList );
 
@@ -66,7 +68,8 @@ function updateWidgetsList(): void {
 // =============================================================================
 // Widget List Display Functions
 
-$( document ).on( 'load', updateAllWidgetsListOnLoad );
+$( updateAllWidgetsListOnLoad );
+$( document ).on( 'click', updateAllWidgetsListOnLoad );
 
 function updateAllWidgetsListOnLoad(): void {
 	widgets.each( function() {
@@ -87,6 +90,15 @@ function updateQueriesDisplayListFromInput( widgetId: string ) {
 			appendQueryToList( widgetId, queries[ i ] );
 		}
 	}
+
+	// Todo: remove all widgets that are not in the input.
+	const queriesItems = widget.find( `[${ dataQueryId }]` );
+	queriesItems.each( function() {
+		const queryId = $( this ).attr( dataQueryId );
+		if ( queries.indexOf( queryId ) === -1 ) {
+			$( this ).remove();
+		}
+	} );
 }
 
 /**
@@ -113,7 +125,9 @@ async function appendQueryToList( widgetId: string, queryId: string|number ) {
 	const queryHTML = await getQueryHTMLForList( widgetId, queryId );
 	const widget = getWidgetWrapperById( widgetId );
 	if ( ! queryExistInList( widgetId, queryId ) ) {
-		widget.find( '.twrp-widget-form__selected-queries-list' ).append( queryHTML );
+		const queriesList = widget.find( '.twrp-widget-form__selected-queries-list' );
+		queriesList.append( queryHTML );
+		queriesList.trigger( 'twrp-query-list-added', [ widgetId, queryId ] );
 	}
 }
 
@@ -192,7 +206,7 @@ function setQueriesInputValues( widgetId: string, queries: Array<string> ): void
 }
 
 // =============================================================================
-// jQuery initialize sorting and collapsing.
+// jQuery sorting and collapsing.
 
 $( document ).on( 'click', initializeAllQueriesSorting );
 
@@ -212,4 +226,27 @@ function initializeWidgetSorting( widget: JQuery<HTMLElement> ) {
 function handleSortingChange(): void {
 	const widgetId = getClosestWidgetId( this );
 	updateQueriesInput( widgetId );
+}
+
+// =============================================================================
+// jQuery collapsing.
+
+$( document ).on( 'twrp-query-list-added', handleAddQueryCollapsible );
+
+function handleAddQueryCollapsible( event, widgetId: string, queryId: string ) {
+	makeQueryCollapsible( widgetId, queryId );
+}
+
+function makeQueryCollapsible( widgetId: string, queryId: string ): void {
+	const query = getQueryItemById( widgetId, queryId );
+	const accordionInstance = query.accordion( 'instance' );
+	if ( accordionInstance ) {
+		query.accordion( 'refresh' );
+	} else {
+		query.accordion( {
+			collapsible: true,
+			active: false,
+			heightStyle: 'content',
+		} );
+	}
 }

@@ -581,7 +581,8 @@ var TWRP_Plugin = (function ($) {
 	}
 	// =============================================================================
 	// Widgets
-	var widgets;
+	var widgets = $();
+	$(updateWidgetsList);
 	$(document).on('click', updateWidgetsList);
 	/**
 	 * Update the file global variable "widgets" to contain all the instance widgets
@@ -592,7 +593,8 @@ var TWRP_Plugin = (function ($) {
 	}
 	// =============================================================================
 	// Widget List Display Functions
-	$(document).on('load', updateAllWidgetsListOnLoad);
+	$(updateAllWidgetsListOnLoad);
+	$(document).on('click', updateAllWidgetsListOnLoad);
 	function updateAllWidgetsListOnLoad() {
 	    widgets.each(function () {
 	        var widgetId = $(this).attr(dataWidgetId);
@@ -610,6 +612,14 @@ var TWRP_Plugin = (function ($) {
 	            appendQueryToList(widgetId, queries[i_1]);
 	        }
 	    }
+	    // Todo: remove all widgets that are not in the input.
+	    var queriesItems = widget.find("[" + dataQueryId + "]");
+	    queriesItems.each(function () {
+	        var queryId = $(this).attr(dataQueryId);
+	        if (queries.indexOf(queryId) === -1) {
+	            $(this).remove();
+	        }
+	    });
 	}
 	/**
 	 * Updates the queries input, from the queries display list.
@@ -631,7 +641,7 @@ var TWRP_Plugin = (function ($) {
 	 */
 	function appendQueryToList(widgetId, queryId) {
 	    return __awaiter(this, void 0, void 0, function () {
-	        var queryHTML, widget;
+	        var queryHTML, widget, queriesList;
 	        return __generator(this, function (_a) {
 	            switch (_a.label) {
 	                case 0: return [4 /*yield*/, getQueryHTMLForList(widgetId, queryId)];
@@ -639,7 +649,9 @@ var TWRP_Plugin = (function ($) {
 	                    queryHTML = _a.sent();
 	                    widget = getWidgetWrapperById(widgetId);
 	                    if (!queryExistInList(widgetId, queryId)) {
-	                        widget.find('.twrp-widget-form__selected-queries-list').append(queryHTML);
+	                        queriesList = widget.find('.twrp-widget-form__selected-queries-list');
+	                        queriesList.append(queryHTML);
+	                        queriesList.trigger('twrp-query-list-added', [widgetId, queryId]);
 	                    }
 	                    return [2 /*return*/];
 	            }
@@ -708,7 +720,7 @@ var TWRP_Plugin = (function ($) {
 	    input.val(value);
 	}
 	// =============================================================================
-	// jQuery initialize sorting and collapsing.
+	// jQuery sorting and collapsing.
 	$(document).on('click', initializeAllQueriesSorting);
 	function initializeAllQueriesSorting() {
 	    widgets.each(function () {
@@ -724,6 +736,26 @@ var TWRP_Plugin = (function ($) {
 	function handleSortingChange() {
 	    var widgetId = getClosestWidgetId(this);
 	    updateQueriesInput(widgetId);
+	}
+	// =============================================================================
+	// jQuery collapsing.
+	$(document).on('twrp-query-list-added', handleAddQueryCollapsible);
+	function handleAddQueryCollapsible(event, widgetId, queryId) {
+	    makeQueryCollapsible(widgetId, queryId);
+	}
+	function makeQueryCollapsible(widgetId, queryId) {
+	    var query = getQueryItemById(widgetId, queryId);
+	    var accordionInstance = query.accordion('instance');
+	    if (accordionInstance) {
+	        query.accordion('refresh');
+	    }
+	    else {
+	        query.accordion({
+	            collapsible: true,
+	            active: false,
+	            heightStyle: 'content',
+	        });
+	    }
 	}
 
 	var script = {};
