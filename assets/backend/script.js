@@ -689,6 +689,24 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    return false;
 	}
+	$(document).on('twrp-query-list-added', handleReorderQueries);
+	function handleReorderQueries(event, widgetId) {
+	    reorderQueriesDisplayList(widgetId);
+	}
+	function reorderQueriesDisplayList(widgetId) {
+	    var widget = getWidgetWrapperById(widgetId);
+	    var queryList = widget.find(queriesListSelector);
+	    var queryItems = widget.find("[" + dataQueryId + "]");
+	    var queriesIds = getQueriesInputValues(widget);
+	    queryItems.detach();
+	    for (var i_2 = 0; i_2 < queriesIds.length; i_2++) {
+	        for (var j = 0; j < queryItems.length; j++) {
+	            if (queriesIds[i_2] === queryItems.eq(j).attr(dataQueryId)) {
+	                queryList.append(queryItems.eq(j));
+	            }
+	        }
+	    }
+	}
 	// =============================================================================
 	// Utility functions.
 	function getClosestWidgetId(element) {

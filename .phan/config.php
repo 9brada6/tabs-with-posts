@@ -54,7 +54,7 @@ return array(
 	// from parsing and analysis and will not be read at all.
 	// (\.\./.*tabs-with-recommended-posts|/vendor/|/node_modules/|vendor\\|node_modules\\)
 	// 'exclude_file_regex' => '@.*\/(\.\./.*tabs-with-recommended-posts|vendor|node_modules)\/.*@',
-	'exclude_file_regex' => '@.*\/(\.\./.*tabs-with-recommended-posts|vendor|node_modules|wordpress)\/.*@',
+	'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor|node_modules|wordpress).*@',
 
 
 	'file_list' => array(),

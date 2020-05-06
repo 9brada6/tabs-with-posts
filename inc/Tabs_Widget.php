@@ -10,6 +10,8 @@ class Tabs_Widget extends \WP_Widget {
 
 	private static $instance = 0;
 
+	const TWRP_BASE_ID = 'twrp_tabs_with_recommended_posts';
+
 	public function __construct() {
 
 		$description = _x( 'Tabs with recommended posts. The settings are available at Settings->Tabs With Recommended Posts', 'backend', 'twrp' );
@@ -20,7 +22,7 @@ class Tabs_Widget extends \WP_Widget {
 		);
 
 		parent::__construct(
-			'twrp_tabs_with_recommended_posts',
+			self::TWRP_BASE_ID,
 			_x( 'Tabs with Recommended posts', 'backend', 'twrp' ),
 			$widget_ops
 		);
@@ -141,9 +143,12 @@ class Tabs_Widget extends \WP_Widget {
 		$widget_id = $_POST['widget_id'];
 		$query_id  = $_POST['query_id'];
 
-		if ( ! is_string( $query_id ) ) {
+		if ( ( ! is_string( $query_id ) ) || ( ! is_string( $widget_id ) ) ) {
 			die();
 		}
+
+		$instance_num     = self::get_instance_number( $widget_id );
+		$instance_options = self::get_instance_settings( $widget_id );
 
 		?>
 		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( $query_id ); ?>">
@@ -153,20 +158,59 @@ class Tabs_Widget extends \WP_Widget {
 				</button>
 				Related Posts
 			</h4>
-
 			<div class="twrp-widget-form__selected-query-settings">
 				<p>
-					Tab button text: <input type="text" placeholder="Display tab title" />
+					Tab button text:
+					<input
+						type="text"
+						name="<?= esc_attr( self::twrp_get_field_name( $instance_num, $query_id . '[display_title]' ) ); ?>"
+						placeholder="Display tab title"
+						value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
+					/>
 				</p>
-
-				<select>
-					<option>Style 1</option>
-					<option>Style 2</option>
-				</select>
 			</div>
 		</li>
 		<?php
 		die();
+	}
+
+	/**
+	 * Get the instance settings array based on.
+	 *
+	 * @param string $widget_id
+	 *
+	 * @return array
+	 */
+	public static function get_instance_settings( $widget_id ) {
+		$instance_options = get_option( 'widget_' . self::TWRP_BASE_ID );
+		$widget_instance  = self::get_instance_number( $widget_id );
+
+		if ( isset( $instance_options[ $widget_instance ] ) ) {
+			return $instance_options[ $widget_instance ];
+		}
+
+		return array();
+	}
+
+	public static function twrp_get_field_name( $number, $field_name ) {
+		$pos = strpos( $field_name, '[' );
+		if ( false === $pos ) {
+			return 'widget-' . self::TWRP_BASE_ID . '[' . $number . '][' . $field_name . ']';
+		} else {
+			return 'widget-' . self::TWRP_BASE_ID . '[' . $number . '][' . substr_replace( $field_name, '][', $pos, strlen( '[' ) );
+		}
+	}
+
+	public static function get_instance_number( $widget_id ) {
+		$instance_options = get_option( 'widget_' . self::TWRP_BASE_ID );
+		// @phan-suppress-next-line PhanPartialTypeMismatchArgumentInternal
+		$widget_instance = ltrim( str_replace( self::TWRP_BASE_ID, '', $widget_id ), '-' );
+
+		if ( is_numeric( $widget_instance ) ) {
+			return $widget_instance;
+		}
+
+		return 0;
 	}
 
 	public function update( $new_instance, $old_instance ) {

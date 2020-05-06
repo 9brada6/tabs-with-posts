@@ -166,6 +166,29 @@ function queryExistInList( widgetId: string, queryId: string|number ): boolean {
 	return false;
 }
 
+$( document ).on( 'twrp-query-list-added', handleReorderQueries );
+
+function handleReorderQueries( event, widgetId ) {
+	reorderQueriesDisplayList( widgetId );
+}
+
+function reorderQueriesDisplayList( widgetId: string ): void {
+	const widget = getWidgetWrapperById( widgetId );
+	const queryList = widget.find( queriesListSelector );
+	const queryItems = widget.find( `[${ dataQueryId }]` );
+	const queriesIds = getQueriesInputValues( widget );
+
+	queryItems.detach();
+
+	for ( let i = 0; i < queriesIds.length; i++ ) {
+		for ( let j = 0; j < queryItems.length; j++ ) {
+			if ( queriesIds[ i ] === queryItems.eq( j ).attr( dataQueryId ) ) {
+				queryList.append( queryItems.eq( j ) );
+			}
+		}
+	}
+}
+
 // =============================================================================
 // Utility functions.
 
