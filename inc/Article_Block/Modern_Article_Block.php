@@ -38,4 +38,12 @@ class Modern_Article_Block implements Article_Block, Article_Block_Preview {
 
 	}
 
+	public static function display_widget_settings() {
+		?>
+		<p>
+			Modern settings
+		</p>
+		<?php
+	}
+
 }

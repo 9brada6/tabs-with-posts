@@ -46,6 +46,11 @@ class Tabs_Widget extends \WP_Widget {
 		self::$instance++;
 	}
 
+
+	public function update( $new_instance, $old_instance ) {
+		return $new_instance;
+	}
+
 	/**
 	 * Create the widget form settings for an instance.
 	 *
@@ -147,9 +152,12 @@ class Tabs_Widget extends \WP_Widget {
 			die();
 		}
 
+		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+
 		$instance_num     = self::get_instance_number( $widget_id );
 		$instance_options = self::get_instance_settings( $widget_id );
 
+		$artblock_id_selected = $instance_options[ $query_id ]['article_block'];
 		?>
 		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( $query_id ); ?>">
 			<h4 class="twrp-widget-form__selected-query-title">
@@ -168,7 +176,35 @@ class Tabs_Widget extends \WP_Widget {
 						value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
 					/>
 				</p>
+
+				<p>
+					Select a style to display:
+					<select
+						class="twrp-widget-form__article-block-selector"
+						name="<?= esc_attr( self::twrp_get_field_name( $instance_num, $query_id . '[article_block]' ) ); ?>"
+						value="<?= esc_attr( $instance_options[ $query_id ]['article_block'] ); ?>"
+					>
+						<?php foreach ( $registered_artblocks as $artblock_id => $article_block ) : ?>
+							<option
+								class="twrp-widget-form__article-block-select-option"
+								value="<?= esc_attr( (string) $artblock_id ); ?>"
+								<?= $artblock_id_selected === $artblock_id ? 'selected' : '' ?>
+							>
+								<?= esc_html( $article_block->get_name() ); ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</p>
+
+				<div class="twrp-widget-form__article-block-settings-container">
+					<?php
+					if ( isset( $registered_artblocks[ $artblock_id_selected ] ) ) {
+						self::display_artblock_settings( $artblock_id_selected, $widget_id, $query_id );
+					}
+					?>
+				</div>
 			</div>
+
 		</li>
 		<?php
 		die();
@@ -213,8 +249,28 @@ class Tabs_Widget extends \WP_Widget {
 		return 0;
 	}
 
-	public function update( $new_instance, $old_instance ) {
-		return $new_instance;
+	public static function ajax_create_artblock_settings() {
+		$artblock_id = $_POST['artblock_id'];
+		$widget_id   = $_POST['widget_id'];
+		$query_id    = $_POST['query_id'];
+		self::display_artblock_settings( $artblock_id, $widget_id, $query_id );
+		die();
 	}
 
+	public static function display_artblock_settings( $artblock_id, $widget_id, $query_id ) {
+		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+		$current_settings     = self::get_instance_settings( $widget_id );
+		$instance_number      = self::get_instance_number( $widget_id );
+
+		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
+			return;
+		}
+
+		$artblock = $registered_artblocks[ $artblock_id ];
+		?>
+		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( $artblock_id ); ?>">
+			<?php $artblock->display_widget_settings( $instance_number, $query_id, $current_settings ); ?>
+		</div>
+		<?php
+	}
 }

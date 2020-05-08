@@ -544,6 +544,9 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 
+	/**
+	 * Todo: Do not save widget if the query tabs are not displayed.
+	 */
 	var dataWidgetId = 'data-twrp-widget-id';
 	var dataQueryId = 'data-twrp-query-id';
 	var queriesListSelector = '.twrp-widget-form__selected-queries-list';
@@ -551,6 +554,8 @@ var TWRP_Plugin = (function ($) {
 	var queryAddSelector = '.twrp-widget-form__select-query-to-add-btn';
 	var queryRemoveSelector = '.twrp-widget-form__remove-selected-query';
 	var queriesInputSelector = '.twrp-widget-form__selected-queries';
+	var selectArticleBlockSelector = '.twrp-widget-form__article-block-selector';
+	var artblockSettingsWrapperSelector = '.twrp-widget-form__article-block-settings';
 	$(document).on('click', queryAddSelector, handleAddQueryButton);
 	$(document).on('click', queryRemoveSelector, handleRemoveQuery);
 	/**
@@ -774,6 +779,46 @@ var TWRP_Plugin = (function ($) {
 	            heightStyle: 'content',
 	        });
 	    }
+	}
+	// =============================================================================
+	// Load article blocks settings on the fly.
+	$(document).on('change', selectArticleBlockSelector, handleArticleBlockChanged);
+	function handleArticleBlockChanged() {
+	    return __awaiter(this, void 0, void 0, function () {
+	        var widgetId, queryId, artblockId, artblockSettingsHTML;
+	        return __generator(this, function (_a) {
+	            switch (_a.label) {
+	                case 0:
+	                    widgetId = getClosestWidgetId($(this));
+	                    queryId = getClosestQueryId($(this));
+	                    artblockId = String($(this).val());
+	                    return [4 /*yield*/, getArticleBlockSettings(widgetId, queryId, artblockId)];
+	                case 1:
+	                    artblockSettingsHTML = _a.sent();
+	                    insertArticleBlock(widgetId, queryId, artblockSettingsHTML);
+	                    return [2 /*return*/];
+	            }
+	        });
+	    });
+	}
+	function getArticleBlockSettings(widgetId, queryId, artblockId) {
+	    return $.ajax({
+	        url: ajaxurl,
+	        method: 'POST',
+	        data: {
+	            action: 'twrp_widget_create_artblock_settings',
+	            artblock_id: artblockId,
+	            widget_id: widgetId,
+	            query_id: queryId,
+	        },
+	    });
+	}
+	function insertArticleBlock(widgetId, queryId, html) {
+	    var queryItem = getQueryItemById(widgetId, queryId);
+	    var artblockSettingsWrapper = queryItem.find(artblockSettingsWrapperSelector);
+	    var artblockContainer = artblockSettingsWrapper.closest('.twrp-widget-form__article-block-settings-container');
+	    artblockSettingsWrapper.remove();
+	    artblockContainer.append(html);
 	}
 
 	var script = {};

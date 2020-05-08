@@ -149,4 +149,17 @@ class Simple_Article_Block implements Article_Block {
 	}
 
 
+	public static function display_widget_settings( $instance_number, $query_id, $current_settings ) {
+
+		?>
+		<p>
+			Simple Settings
+			<input
+				name="<?= \TWRP\Tabs_Widget::twrp_get_field_name( $instance_number, $query_id . '[display_author]' ) ?>"
+				value="<?= $current_settings[ $query_id ]['display_author'] ? $current_settings[ $query_id ]['display_author'] : 'nope' ?>"
+			/>
+		</p>
+		<?php
+	}
+
 }

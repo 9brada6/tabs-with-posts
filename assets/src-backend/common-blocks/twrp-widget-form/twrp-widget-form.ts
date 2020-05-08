@@ -3,6 +3,10 @@ import 'jqueryui';
 
 declare const ajaxurl: string;
 
+/**
+ * Todo: Do not save widget if the query tabs are not displayed.
+ */
+
 const dataWidgetId = 'data-twrp-widget-id';
 const dataQueryId = 'data-twrp-query-id';
 
@@ -13,6 +17,9 @@ const queryAddSelector = '.twrp-widget-form__select-query-to-add-btn';
 const queryRemoveSelector = '.twrp-widget-form__remove-selected-query';
 
 const queriesInputSelector = '.twrp-widget-form__selected-queries';
+
+const selectArticleBlockSelector = '.twrp-widget-form__article-block-selector';
+const artblockSettingsWrapperSelector = '.twrp-widget-form__article-block-settings';
 
 $( document ).on( 'click', queryAddSelector, handleAddQueryButton );
 $( document ).on( 'click', queryRemoveSelector, handleRemoveQuery );
@@ -272,4 +279,38 @@ function makeQueryCollapsible( widgetId: string, queryId: string ): void {
 			heightStyle: 'content',
 		} );
 	}
+}
+
+// =============================================================================
+// Load article blocks settings on the fly.
+
+$( document ).on( 'change', selectArticleBlockSelector, handleArticleBlockChanged );
+
+async function handleArticleBlockChanged() {
+	const widgetId = getClosestWidgetId( $( this ) );
+	const queryId = getClosestQueryId( $( this ) );
+	const artblockId = String( $( this ).val() );
+	const artblockSettingsHTML = await getArticleBlockSettings( widgetId, queryId, artblockId );
+	insertArticleBlock( widgetId, queryId, artblockSettingsHTML );
+}
+
+function getArticleBlockSettings( widgetId: string, queryId: string|number, artblockId: string|number ) {
+	return $.ajax( {
+		url: ajaxurl,
+		method: 'POST',
+		data: {
+			action: 'twrp_widget_create_artblock_settings',
+			artblock_id: artblockId,
+			widget_id: widgetId,
+			query_id: queryId,
+		},
+	} );
+}
+
+function insertArticleBlock( widgetId: string, queryId: string|number, html: string ) {
+	const queryItem = getQueryItemById( widgetId, queryId );
+	const artblockSettingsWrapper = queryItem.find( artblockSettingsWrapperSelector );
+	const artblockContainer = artblockSettingsWrapper.closest( '.twrp-widget-form__article-block-settings-container' );
+	artblockSettingsWrapper.remove();
+	artblockContainer.append( html );
 }
