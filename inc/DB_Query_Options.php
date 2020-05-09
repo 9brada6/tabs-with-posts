@@ -7,6 +7,8 @@
 
 namespace TWRP;
 
+use TWRP\Query_Setting\Query_Name;
+
 /**
  * Class that contains functions to manage the settings stored in WordPress
  * database "Options" table.
@@ -61,6 +63,37 @@ class DB_Query_Options {
 		}
 
 		return self::sanitize_settings( $queries_options[ $query_id ] );
+	}
+
+	/**
+	 * Function used specifically to get a name for the query to be displayed
+	 * in the backend. If the query does not have a name set, will default to
+	 * Query-$id, or the translated version.
+	 *
+	 * @param string|int $query_id
+	 *
+	 * @return string
+	 */
+	public static function get_query_display_name( $query_id ) {
+		try {
+			$settings = self::get_all_query_settings( $query_id );
+		} catch ( \RuntimeException $e ) {
+			$settings = array();
+		}
+
+		if ( isset( $settings[ Query_Name::get_setting_name() ] ) ) {
+			$name = $settings[ Query_Name::get_setting_name() ];
+		} else {
+			$name = '';
+		}
+
+		if ( empty( $name ) ) {
+			/* translators: %s: an unique id number, this translation will be displayed if somehow no query name is present. */
+			$pre = _x( 'Query-%s', 'backend', 'twrp' );
+			return sprintf( $pre, $query_id );
+		}
+
+		return $name;
 	}
 
 	/**

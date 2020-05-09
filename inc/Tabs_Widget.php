@@ -1,16 +1,19 @@
 <?php
+/**
+ * @todo: Verify if we have privilege to retrieve the ajax settings.
+ */
 
 namespace TWRP;
 
+use RuntimeException;
 use TWRP\Admin\Tabs\Queries_Tab;
 use \TWRP\Query_Setting\Query_Name;
 use TWRP\DB_Query_Options;
 
 class Tabs_Widget extends \WP_Widget {
 
-	private static $instance = 0;
-
-	const TWRP_BASE_ID = 'twrp_tabs_with_recommended_posts';
+	const TWRP_BASE_ID           = 'twrp_tabs_with_recommended_posts';
+	const ARTBLOCK_SELECTOR_NAME = 'article_block';
 
 	public function __construct() {
 
@@ -42,14 +45,15 @@ class Tabs_Widget extends \WP_Widget {
 		echo '</div>';
 
 		echo $args['after_widget']; // phpcs:ignore
-
-		self::$instance++;
 	}
 
 
 	public function update( $new_instance, $old_instance ) {
 		return $new_instance;
 	}
+
+	// =========================================================================
+	// Display the widget form functions
 
 	/**
 	 * Create the widget form settings for an instance.
@@ -61,15 +65,9 @@ class Tabs_Widget extends \WP_Widget {
 	public function form( $instance ) {
 		$queries = DB_Query_Options::get_all_queries();
 		?>
-		<div
-			class="twrp-widget-form"
-			data-twrp-widget-id=<?= esc_attr( (string) $this->id ); ?>
-			data-twrp-widget-instance=<?= esc_attr( (string) self::$instance ); ?>
-		>
-
+		<div class="twrp-widget-form" data-twrp-widget-id=<?= esc_attr( (string) $this->number ); ?> >
 			<?php if ( ! empty( $queries ) ) : ?>
-				<?php $this->display_select_query_options(); ?>
-				<?php $this->display_queries_selected_options( $instance ); ?>
+				<?php $this->display_select_query_options( $instance ); ?>
 			<?php else : ?>
 				<?php $this->display_no_queries_exist(); ?>
 			<?php endif; ?>
@@ -78,6 +76,8 @@ class Tabs_Widget extends \WP_Widget {
 
 		return '';
 	}
+
+	// ===================
 
 	/**
 	 * Display a text in case that no queries have been create, to guide the
@@ -93,29 +93,25 @@ class Tabs_Widget extends \WP_Widget {
 		<?php
 	}
 
-	protected function display_select_query_options() {
-		$queries = DB_Query_Options::get_all_queries();
+	protected function display_select_query_options( $instance ) {
+		$queries     = DB_Query_Options::get_all_queries();
+		$queries_ids = array_keys( $queries );
+
+		// Todo: factorize this:
+		$selected_queries_list = '';
+		if ( isset( $instance['queries'] ) ) {
+			$selected_queries_list = $instance['queries'];
+		}
+		$selected_queries_ids = explode( ';', $selected_queries_list );
 		?>
 		<p class="twrp-widget-form__select-query-wrapper">
 			<span class="twrp-widget-form__select-query-to-add-text">
 				<?= _x( 'Select a query(tab) to add:', 'backend', 'twrp' ); ?>
 			</span>
 			<select class="twrp-widget-form__select-query-to-add">
-				<?php foreach ( $queries as $query_id => $query_settings ) : ?>
-					<?php
-					if ( isset( $query_settings[ Query_Name::get_setting_name() ] ) ) {
-						$name = $query_settings[ Query_Name::get_setting_name() ];
-					} else {
-						$name = '';
-					}
-
-					// This should never be the case, but just to be sure.
-					if ( empty( $name ) ) {
-						$name = 'Query-' . $query_id;
-					}
-					?>
-					<option value="<?= esc_attr( $query_id ) ?>">
-						<?= esc_html( $name ); ?>
+				<?php foreach ( $queries_ids as $query_id ) : ?>
+					<option value="<?= esc_attr( (string) $query_id ) ?>">
+						<?= esc_html( DB_Query_Options::get_query_display_name( $query_id ) ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
@@ -123,154 +119,242 @@ class Tabs_Widget extends \WP_Widget {
 				<?= _x( 'Add', 'backend', 'twrp' ); ?>
 			</button>
 		</p>
-		<?php
-	}
 
-	protected function display_queries_selected_options( $instance ) {
-		$queries_list = '';
-		if ( isset( $instance['queries'] ) ) {
-			$queries_list = $instance['queries'];
-		}
-		?>
 		<ul class="twrp-widget-form__selected-queries-list">
+			<?php foreach ( $selected_queries_ids as $selected_query_id ) : ?>
+				<?php self::display_query_settings( (int) $this->number, $selected_query_id ); ?>
+			<?php endforeach; ?>
 		</ul>
-		<input
-			id="<?= esc_attr( $this->get_field_id( 'queries' ) ); ?>"
-			class="twrp-widget-form__selected-queries"
-			name="<?= esc_attr( $this->get_field_name( 'queries' ) ); ?>"
-			type="text"
-			value="<?= esc_attr( $queries_list ); ?>"
+
+		<input id="<?= esc_attr( $this->get_field_id( 'queries' ) ); ?>" class="twrp-widget-form__selected-queries"
+			type="text" name="<?= esc_attr( $this->get_field_name( 'queries' ) ); ?>"
+			value="<?= esc_attr( $selected_queries_list ); ?>"
 		/>
 		<?php
 	}
+
+	// =========================================================================
+
+	/**
+	 * Display the settings of a specified query, including the article block
+	 * selected.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 *
+	 * @return void
+	 */
+	public static function display_query_settings( $widget_id, $query_id ) {
+		?>
+		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( (string) $query_id ); ?>">
+			<h4 class="twrp-widget-form__selected-query-title">
+				<button class="twrp-widget-form__remove-selected-query" type="button" >X</button>
+				<?= esc_attr( DB_Query_Options::get_query_display_name( $query_id ) ); ?>
+			</h4>
+
+			<div class="twrp-widget-form__selected-query-settings">
+				<?php self::display_query_button_text_setting( $widget_id, $query_id ); ?>
+				<?php self::display_query_select_artblock_setting( $widget_id, $query_id ); ?>
+				<?php self::display_query_wrapper_for_artblock_setting( $widget_id, $query_id ); ?>
+			</div>
+		</li>
+		<?php
+	}
+
+	/**
+	 * Todo.
+	 */
+	protected static function display_query_button_text_setting( $widget_id, $query_id ) {
+		$instance_options = self::get_instance_settings( $widget_id );
+		?>
+		<p>
+		Tab button text:
+		<input
+			type="text"
+			name="<?= esc_attr( self::twrp_get_field_name( $widget_id, $query_id . '[display_title]' ) ); ?>"
+			placeholder="Display tab title"
+			value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
+		/>
+		</p>
+		<?php
+	}
+
+	protected static function display_query_select_artblock_setting( $widget_id, $query_id ) {
+		$instance_options     = self::get_instance_settings( $widget_id );
+		$artblock_id_selected = self::get_selected_artblock_id( $widget_id, $query_id );
+		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+
+		$select_name = self::twrp_get_field_name( $widget_id, $query_id . '[' . self::ARTBLOCK_SELECTOR_NAME . ']' );
+		$select_val  = $instance_options[ $query_id ][ self::ARTBLOCK_SELECTOR_NAME ];
+		?>
+		<p>
+			Select a style to display:
+			<select class="twrp-widget-form__article-block-selector" name="<?= esc_attr( $select_name ); ?>" value="<?= esc_attr( $select_val ); ?>">
+				<?php foreach ( $registered_artblocks as $artblock_id => $article_block ) : ?>
+					<option
+						class="twrp-widget-form__article-block-select-option"
+						value="<?= esc_attr( (string) $artblock_id ); ?>"
+						<?= $artblock_id_selected === $artblock_id ? 'selected' : '' ?>
+					>
+						<?= esc_html( $article_block->get_name() ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+		<?php
+	}
+
+	protected static function display_query_wrapper_for_artblock_setting( $widget_id, $query_id ) {
+		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+		$artblock_id_selected = self::get_selected_artblock_id( $widget_id, $query_id );
+		?>
+		<div class="twrp-widget-form__article-block-settings-container">
+		<?php
+		if ( isset( $registered_artblocks[ $artblock_id_selected ] ) ) {
+			self::display_artblock_settings( $widget_id, $query_id, $artblock_id_selected );
+		}
+		?>
+		</div>
+		<?php
+	}
+
+	// =========================================================================
+	// Functions to display the artblock settings.
+
+	/**
+	 * Display the artblock settings for a specific widget and query.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param string|int $artblock_id
+	 *
+	 * @return void
+	 */
+	public static function display_artblock_settings( $widget_id, $query_id, $artblock_id ) {
+		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+		$current_settings     = self::get_instance_settings( $widget_id );
+
+		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
+			return;
+		}
+		$artblock = $registered_artblocks[ $artblock_id ];
+		?>
+		<div
+			class="twrp-widget-form__article-block-settings"
+			data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>"
+		>
+			<?php $artblock->display_widget_settings( $widget_id, $query_id, $current_settings ); ?>
+		</div>
+		<?php
+	}
+
+	// =========================================================================
+	// Ajax functionality to fetch query settings and artblock settings.
 
 	public static function ajax_create_query_selected_item() {
 		$widget_id = $_POST['widget_id'];
 		$query_id  = $_POST['query_id'];
 
-		if ( ( ! is_string( $query_id ) ) || ( ! is_string( $widget_id ) ) ) {
-			die();
-		}
+		// todo: Verify those 2.
+		$widget_id = (int) $widget_id;
+		$query_id  = (int) $query_id;
 
-		$registered_artblocks = Manage_Component_Classes::get_style_classes();
-
-		$instance_num     = self::get_instance_number( $widget_id );
-		$instance_options = self::get_instance_settings( $widget_id );
-
-		$artblock_id_selected = $instance_options[ $query_id ]['article_block'];
-		?>
-		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( $query_id ); ?>">
-			<h4 class="twrp-widget-form__selected-query-title">
-				<button class="twrp-widget-form__remove-selected-query" type="button" >
-					X
-				</button>
-				Related Posts
-			</h4>
-			<div class="twrp-widget-form__selected-query-settings">
-				<p>
-					Tab button text:
-					<input
-						type="text"
-						name="<?= esc_attr( self::twrp_get_field_name( $instance_num, $query_id . '[display_title]' ) ); ?>"
-						placeholder="Display tab title"
-						value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
-					/>
-				</p>
-
-				<p>
-					Select a style to display:
-					<select
-						class="twrp-widget-form__article-block-selector"
-						name="<?= esc_attr( self::twrp_get_field_name( $instance_num, $query_id . '[article_block]' ) ); ?>"
-						value="<?= esc_attr( $instance_options[ $query_id ]['article_block'] ); ?>"
-					>
-						<?php foreach ( $registered_artblocks as $artblock_id => $article_block ) : ?>
-							<option
-								class="twrp-widget-form__article-block-select-option"
-								value="<?= esc_attr( (string) $artblock_id ); ?>"
-								<?= $artblock_id_selected === $artblock_id ? 'selected' : '' ?>
-							>
-								<?= esc_html( $article_block->get_name() ); ?>
-							</option>
-						<?php endforeach; ?>
-					</select>
-				</p>
-
-				<div class="twrp-widget-form__article-block-settings-container">
-					<?php
-					if ( isset( $registered_artblocks[ $artblock_id_selected ] ) ) {
-						self::display_artblock_settings( $artblock_id_selected, $widget_id, $query_id );
-					}
-					?>
-				</div>
-			</div>
-
-		</li>
-		<?php
+		self::display_query_settings( $widget_id, $query_id );
 		die();
-	}
-
-	/**
-	 * Get the instance settings array based on.
-	 *
-	 * @param string $widget_id
-	 *
-	 * @return array
-	 */
-	public static function get_instance_settings( $widget_id ) {
-		$instance_options = get_option( 'widget_' . self::TWRP_BASE_ID );
-		$widget_instance  = self::get_instance_number( $widget_id );
-
-		if ( isset( $instance_options[ $widget_instance ] ) ) {
-			return $instance_options[ $widget_instance ];
-		}
-
-		return array();
-	}
-
-	public static function twrp_get_field_name( $number, $field_name ) {
-		$pos = strpos( $field_name, '[' );
-		if ( false === $pos ) {
-			return 'widget-' . self::TWRP_BASE_ID . '[' . $number . '][' . $field_name . ']';
-		} else {
-			return 'widget-' . self::TWRP_BASE_ID . '[' . $number . '][' . substr_replace( $field_name, '][', $pos, strlen( '[' ) );
-		}
-	}
-
-	public static function get_instance_number( $widget_id ) {
-		$instance_options = get_option( 'widget_' . self::TWRP_BASE_ID );
-		// @phan-suppress-next-line PhanPartialTypeMismatchArgumentInternal
-		$widget_instance = ltrim( str_replace( self::TWRP_BASE_ID, '', $widget_id ), '-' );
-
-		if ( is_numeric( $widget_instance ) ) {
-			return $widget_instance;
-		}
-
-		return 0;
 	}
 
 	public static function ajax_create_artblock_settings() {
 		$artblock_id = $_POST['artblock_id'];
 		$widget_id   = $_POST['widget_id'];
 		$query_id    = $_POST['query_id'];
-		self::display_artblock_settings( $artblock_id, $widget_id, $query_id );
+
+		// todo: verify those 3.
+
+		self::display_artblock_settings( $widget_id, $query_id, $artblock_id );
 		die();
 	}
 
-	public static function display_artblock_settings( $artblock_id, $widget_id, $query_id ) {
-		$registered_artblocks = Manage_Component_Classes::get_style_classes();
-		$current_settings     = self::get_instance_settings( $widget_id );
-		$instance_number      = self::get_instance_number( $widget_id );
+	// =========================================================================
+	// Utility functions
 
-		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
-			return;
+	/**
+	 * Get only the widget Id number for this type of widget, the number is
+	 * taken from the full widget id.
+	 *
+	 * @throws \RuntimeException If the widget Id cannot be retrieved.
+	 * @param string $widget_id The full widget Id has the id_base of the widget
+	 *                          appended with the unique id number.
+	 * @return int
+	 */
+	public static function twrp_get_widget_id_num( $widget_id ) {
+		$widget_id_num = ltrim( str_replace( self::TWRP_BASE_ID, '', $widget_id ), '-' );
+
+		if ( is_numeric( $widget_id_num ) ) {
+			return (int) $widget_id_num;
+		} else {
+			throw new \RuntimeException( 'Cannot retrieve a number corresponding to a widget Id.' );
+		}
+	}
+
+	/**
+	 * Get the instance settings array based on.
+	 *
+	 * @param int $widget_id The widget Id number.
+	 *
+	 * @return array
+	 */
+	public static function get_instance_settings( $widget_id ) {
+		$instance_options = get_option( 'widget_' . self::TWRP_BASE_ID );
+		if ( isset( $instance_options[ $widget_id ] ) ) {
+			return $instance_options[ $widget_id ];
 		}
 
-		$artblock = $registered_artblocks[ $artblock_id ];
-		?>
-		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( $artblock_id ); ?>">
-			<?php $artblock->display_widget_settings( $instance_number, $query_id, $current_settings ); ?>
-		</div>
-		<?php
+		return array();
+	}
+
+	/**
+	 * Get the HTML attribute name for an input field in the widget form. The
+	 * name will be specifically for only a widget instance. This function is
+	 * basically the one from WP_Widget Class, but is static and can be called
+	 * from outside of the class.
+	 *
+	 * @param int $widget_id The number of the widget Id.
+	 * @param string $field_name The name of the setting to create the name.
+	 *
+	 * @return string The attribute name for that field, corresponding to the widget.
+	 */
+	public static function twrp_get_field_name( $widget_id, $field_name ) {
+		$pos = strpos( $field_name, '[' );
+		if ( false === $pos ) {
+			return 'widget-' . self::TWRP_BASE_ID . '[' . $widget_id . '][' . $field_name . ']';
+		} else {
+			return 'widget-' . self::TWRP_BASE_ID . '[' . $widget_id . '][' . substr_replace( $field_name, '][', $pos, strlen( '[' ) );
+		}
+	}
+
+	/**
+	 * Get the selected article block id exclusive for a query selected within a widget.
+	 * Return empty string if no article block selected or the article block was
+	 * not registered.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 *
+	 * @return string
+	 */
+	protected static function get_selected_artblock_id( $widget_id, $query_id ) {
+
+		$instance_options = self::get_instance_settings( $widget_id );
+		if ( ! isset( $instance_options[ $query_id ][ self::ARTBLOCK_SELECTOR_NAME ] ) ) {
+			return '';
+		}
+		$artblock_id = $instance_options[ $query_id ][ self::ARTBLOCK_SELECTOR_NAME ];
+
+		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
+			return '';
+		}
+
+		return $artblock_id;
 	}
 }

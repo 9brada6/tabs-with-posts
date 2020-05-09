@@ -546,9 +546,11 @@ var TWRP_Plugin = (function ($) {
 
 	/**
 	 * Todo: Do not save widget if the query tabs are not displayed.
+	 * Todo: Block the select option while the article block is loading and waited to be appended.
 	 */
 	var dataWidgetId = 'data-twrp-widget-id';
 	var dataQueryId = 'data-twrp-query-id';
+	var dataArtblockId = 'data-twrp-selected-artblock';
 	var queriesListSelector = '.twrp-widget-form__selected-queries-list';
 	var queriesItemSelector = '.twrp-widget-form__selected-query';
 	var queryAddSelector = '.twrp-widget-form__select-query-to-add-btn';
@@ -762,9 +764,27 @@ var TWRP_Plugin = (function ($) {
 	}
 	// =============================================================================
 	// jQuery collapsing.
-	$(document).on('twrp-query-list-added', handleAddQueryCollapsible);
-	function handleAddQueryCollapsible(event, widgetId, queryId) {
-	    makeQueryCollapsible(widgetId, queryId);
+	// todo: add a cache for collapsed to be as before when they update.
+	$(document).ready(makeAllQueriesCollapsible);
+	$(document).on('twrp-query-list-added widget-updated widget-added', handleQueryModifiedMakeCollapsible);
+	function handleQueryModifiedMakeCollapsible(event, widgetId, queryId) {
+	    if (event.type === 'twrp-query-list-added') {
+	        makeQueryCollapsible(widgetId, queryId);
+	    }
+	    else {
+	        makeAllQueriesCollapsible();
+	    }
+	}
+	function makeAllQueriesCollapsible() {
+	    updateWidgetsList();
+	    widgets.each(function () {
+	        var widgetId = $(this).attr(dataWidgetId);
+	        var queryItems = $(this).find("[" + dataQueryId + "]");
+	        queryItems.each(function () {
+	            var queryId = $(this).attr(dataQueryId);
+	            makeQueryCollapsible(widgetId, queryId);
+	        });
+	    });
 	}
 	function makeQueryCollapsible(widgetId, queryId) {
 	    var query = getQueryItemById(widgetId, queryId);
@@ -802,6 +822,9 @@ var TWRP_Plugin = (function ($) {
 	    });
 	}
 	function getArticleBlockSettings(widgetId, queryId, artblockId) {
+	    if (hasArticleBlockInCache(widgetId, queryId, artblockId)) {
+	        return getArticleBlockFromCache(widgetId, queryId, artblockId);
+	    }
 	    return $.ajax({
 	        url: ajaxurl,
 	        method: 'POST',
@@ -817,8 +840,63 @@ var TWRP_Plugin = (function ($) {
 	    var queryItem = getQueryItemById(widgetId, queryId);
 	    var artblockSettingsWrapper = queryItem.find(artblockSettingsWrapperSelector);
 	    var artblockContainer = artblockSettingsWrapper.closest('.twrp-widget-form__article-block-settings-container');
-	    artblockSettingsWrapper.remove();
+	    artblockSettingsWrapper.detach();
+	    addArticleBlockToCache(widgetId, queryId, artblockSettingsWrapper);
 	    artblockContainer.append(html);
+	}
+	// ==========================
+	// Cache Article Blocks
+	/**
+	 * An array that contains all the article blocks retrieved and detached.
+	 * When a user choose to reselect a previously selected and modified article
+	 * block, the settings will not be fetched again from the server and the
+	 * modifications will remain.
+	 */
+	var articleBlocksCache = Array();
+	/**
+	 * Add the article block to the cache array.
+	 */
+	function addArticleBlockToCache(widgetId, queryId, artblockWrapper) {
+	    var artblockId = artblockWrapper.attr(dataArtblockId);
+	    if ((!widgetId) || (!queryId) || (!artblockId)) {
+	        return;
+	    }
+	    if (!articleBlocksCache[widgetId]) {
+	        articleBlocksCache[widgetId] = [];
+	    }
+	    if (!articleBlocksCache[widgetId][queryId]) {
+	        articleBlocksCache[widgetId][queryId] = [];
+	    }
+	    articleBlocksCache[widgetId][queryId][artblockId] = artblockWrapper;
+	    console.log(articleBlocksCache);
+	}
+	/**
+	 * Get an article block from cache. Or false if the article block is not in cache.
+	 */
+	function getArticleBlockFromCache(widgetId, queryId, $artblockId) {
+	    if (hasArticleBlockInCache(widgetId, queryId, $artblockId)) {
+	        return articleBlocksCache[widgetId][queryId][$artblockId];
+	    }
+	    return false;
+	}
+	/**
+	 * Whether or not an article block was already fetched and put in cache.
+	 */
+	function hasArticleBlockInCache(widgetId, queryId, $artblockId) {
+	    if (!articleBlocksCache[widgetId]) {
+	        return false;
+	    }
+	    if (!articleBlocksCache[widgetId][queryId]) {
+	        return false;
+	    }
+	    if (!articleBlocksCache[widgetId][queryId][$artblockId]) {
+	        return false;
+	    }
+	    var storedArtblockId = articleBlocksCache[widgetId][queryId][$artblockId].attr(dataArtblockId);
+	    if (!(storedArtblockId === $artblockId)) {
+	        return false;
+	    }
+	    return true;
 	}
 
 	var script = {};

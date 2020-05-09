@@ -5,10 +5,12 @@ declare const ajaxurl: string;
 
 /**
  * Todo: Do not save widget if the query tabs are not displayed.
+ * Todo: Block the select option while the article block is loading and waited to be appended.
  */
 
 const dataWidgetId = 'data-twrp-widget-id';
 const dataQueryId = 'data-twrp-query-id';
+const dataArtblockId = 'data-twrp-selected-artblock';
 
 const queriesListSelector = '.twrp-widget-form__selected-queries-list';
 const queriesItemSelector = '.twrp-widget-form__selected-query';
@@ -261,10 +263,29 @@ function handleSortingChange(): void {
 // =============================================================================
 // jQuery collapsing.
 
-$( document ).on( 'twrp-query-list-added', handleAddQueryCollapsible );
+// todo: add a cache for collapsed to be as before when they update.
 
-function handleAddQueryCollapsible( event, widgetId: string, queryId: string ) {
-	makeQueryCollapsible( widgetId, queryId );
+$( document ).ready( makeAllQueriesCollapsible );
+$( document ).on( 'twrp-query-list-added widget-updated widget-added', handleQueryModifiedMakeCollapsible );
+
+function handleQueryModifiedMakeCollapsible( event, widgetId: string, queryId: string ) {
+	if ( event.type === 'twrp-query-list-added' ) {
+		makeQueryCollapsible( widgetId, queryId );
+	} else {
+		makeAllQueriesCollapsible();
+	}
+}
+
+function makeAllQueriesCollapsible() {
+	updateWidgetsList();
+	widgets.each( function() {
+		const widgetId = $( this ).attr( dataWidgetId );
+		const queryItems = $( this ).find( `[${ dataQueryId }]` );
+		queryItems.each( function() {
+			const queryId = $( this ).attr( dataQueryId );
+			makeQueryCollapsible( widgetId, queryId );
+		} );
+	} );
 }
 
 function makeQueryCollapsible( widgetId: string, queryId: string ): void {
@@ -295,6 +316,10 @@ async function handleArticleBlockChanged() {
 }
 
 function getArticleBlockSettings( widgetId: string, queryId: string|number, artblockId: string|number ) {
+	if ( hasArticleBlockInCache( widgetId, queryId, artblockId ) ) {
+		return getArticleBlockFromCache( widgetId, queryId, artblockId );
+	}
+
 	return $.ajax( {
 		url: ajaxurl,
 		method: 'POST',
@@ -311,6 +336,74 @@ function insertArticleBlock( widgetId: string, queryId: string|number, html: str
 	const queryItem = getQueryItemById( widgetId, queryId );
 	const artblockSettingsWrapper = queryItem.find( artblockSettingsWrapperSelector );
 	const artblockContainer = artblockSettingsWrapper.closest( '.twrp-widget-form__article-block-settings-container' );
-	artblockSettingsWrapper.remove();
+	artblockSettingsWrapper.detach();
+	addArticleBlockToCache( widgetId, queryId, artblockSettingsWrapper );
 	artblockContainer.append( html );
+}
+
+// ==========================
+// Cache Article Blocks
+
+/**
+ * An array that contains all the article blocks retrieved and detached.
+ * When a user choose to reselect a previously selected and modified article
+ * block, the settings will not be fetched again from the server and the
+ * modifications will remain.
+ */
+const articleBlocksCache = Array();
+
+/**
+ * Add the article block to the cache array.
+ */
+function addArticleBlockToCache( widgetId: string, queryId: string|number, artblockWrapper: JQuery<HTMLElement> ): void {
+	const artblockId = artblockWrapper.attr( dataArtblockId );
+
+	if ( ( ! widgetId ) || ( ! queryId ) || ( ! artblockId ) ) {
+		return;
+	}
+
+	if ( ! articleBlocksCache[ widgetId ] ) {
+		articleBlocksCache[ widgetId ] = [];
+	}
+	if ( ! articleBlocksCache[ widgetId ][ queryId ] ) {
+		articleBlocksCache[ widgetId ][ queryId ] = [];
+	}
+
+	articleBlocksCache[ widgetId ][ queryId ][ artblockId ] = artblockWrapper;
+	console.log( articleBlocksCache );
+}
+
+/**
+ * Get an article block from cache. Or false if the article block is not in cache.
+ */
+function getArticleBlockFromCache( widgetId: string, queryId: string|number, $artblockId: string|number ): JQuery<HTMLElement>|false {
+	if ( hasArticleBlockInCache( widgetId, queryId, $artblockId ) ) {
+		return articleBlocksCache[ widgetId ][ queryId ][ $artblockId ];
+	}
+	return false;
+}
+
+/**
+ * Whether or not an article block was already fetched and put in cache.
+ */
+function hasArticleBlockInCache( widgetId: string, queryId: string|number, $artblockId: string|number ): boolean {
+	if ( ! articleBlocksCache[ widgetId ] ) {
+		return false;
+	}
+
+	if ( ! articleBlocksCache[ widgetId ][ queryId ] ) {
+		return false;
+	}
+
+	if ( ! articleBlocksCache[ widgetId ][ queryId ][ $artblockId ] ) {
+		return false;
+	}
+
+	const storedArtblockId = articleBlocksCache[ widgetId ][ queryId ][ $artblockId ].attr( dataArtblockId );
+
+	if ( ! ( storedArtblockId === $artblockId ) ) {
+		return false;
+	}
+
+	return true;
 }
