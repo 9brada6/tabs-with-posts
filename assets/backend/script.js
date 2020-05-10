@@ -839,7 +839,7 @@ var TWRP_Plugin = (function ($) {
 	function insertArticleBlock(widgetId, queryId, html) {
 	    var queryItem = getQueryItemById(widgetId, queryId);
 	    var artblockSettingsWrapper = queryItem.find(artblockSettingsWrapperSelector);
-	    var artblockContainer = artblockSettingsWrapper.closest('.twrp-widget-form__article-block-settings-container');
+	    var artblockContainer = queryItem.find('.twrp-widget-form__article-block-settings-container');
 	    artblockSettingsWrapper.detach();
 	    addArticleBlockToCache(widgetId, queryId, artblockSettingsWrapper);
 	    artblockContainer.append(html);

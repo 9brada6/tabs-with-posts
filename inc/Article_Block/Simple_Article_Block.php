@@ -169,10 +169,10 @@ class Simple_Article_Block implements Article_Block {
 		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $widget_id, $query_id, $current_settings );
 
 		$author_text = _x( 'Display the author.', 'backend', 'twrp' );
-		$settings_creator->display_checkbox_setting( 'display_author', '', $author_text );
+		$settings_creator->display_checkbox_setting( 'display_author', $author_text, '' );
 
 		$date_text = _x( 'Display the date.', 'backend', 'twrp' );
-		$settings_creator->display_checkbox_setting( 'display_date', '', $date_text );
+		$settings_creator->display_checkbox_setting( 'display_date', $date_text, '' );
 
 	}
 

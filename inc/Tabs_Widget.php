@@ -14,6 +14,8 @@ class Tabs_Widget extends \WP_Widget {
 	const TWRP_BASE_ID           = 'twrp_tabs_with_recommended_posts';
 	const ARTBLOCK_SELECTOR_NAME = 'article_block';
 
+	const DEFAULT_SELECTED_ARTBLOCK_ID = 'simple_style';
+
 	public function __construct() {
 
 		$description = _x( 'Tabs with recommended posts. The settings are available at Settings->Tabs With Recommended Posts', 'backend', 'twrp' );
@@ -46,9 +48,41 @@ class Tabs_Widget extends \WP_Widget {
 		echo $args['after_widget']; // phpcs:ignore
 	}
 
+	// =========================================================================
+	// Functions to sanitize the settings.
 
 	public function update( $new_instance, $old_instance ) {
-		return $new_instance;
+		return self::sanitize_instance_settings( $new_instance );
+	}
+
+	public static function sanitize_instance_settings( $settings ) {
+		$settings = self::sanitize_query_list_setting( $settings );
+
+		return $settings;
+	}
+
+	protected static function sanitize_query_list_setting( $settings ) {
+		if ( ! isset( $settings['queries'] ) ) {
+			$settings['queries'] = '';
+		}
+		$queries           = explode( ';', $settings['queries'] );
+		$valid_queries_ids = array();
+		foreach ( $queries as $query_id ) {
+			if ( ! is_numeric( $query_id ) ) {
+				continue;
+			}
+			if ( DB_Query_Options::query_exists( $query_id ) ) {
+				array_push( $valid_queries_ids, $query_id );
+			}
+		}
+
+		$sanitized_settings = array();
+		foreach ( $valid_queries_ids as $query_id ) {
+			$sanitized_settings[ $query_id ] = $settings[ $query_id ];
+		}
+		$sanitized_settings['queries'] = implode( ';', $valid_queries_ids );
+
+		return $sanitized_settings;
 	}
 
 	// =========================================================================
@@ -204,15 +238,10 @@ class Tabs_Widget extends \WP_Widget {
 	}
 
 	protected static function display_query_wrapper_for_artblock_setting( $widget_id, $query_id ) {
-		$registered_artblocks = Manage_Component_Classes::get_style_classes();
 		$artblock_id_selected = self::get_selected_artblock_id( $widget_id, $query_id );
 		?>
 		<div class="twrp-widget-form__article-block-settings-container">
-		<?php
-		if ( isset( $registered_artblocks[ $artblock_id_selected ] ) ) {
-			self::display_artblock_settings( $widget_id, $query_id, $artblock_id_selected );
-		}
-		?>
+			<?php self::display_artblock_settings( $widget_id, $query_id, $artblock_id_selected ); ?>
 		</div>
 		<?php
 	}
@@ -234,7 +263,11 @@ class Tabs_Widget extends \WP_Widget {
 		try {
 			$artblock = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
 		} catch ( \RuntimeException $e ) {
-			return;
+			try {
+				$artblock = Manage_Component_Classes::get_style_class_by_name( self::DEFAULT_SELECTED_ARTBLOCK_ID );
+			} catch ( \RuntimeException $e ) {
+				return;
+			}
 		}
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
@@ -361,13 +394,13 @@ class Tabs_Widget extends \WP_Widget {
 
 		$instance_options = self::get_instance_settings( $widget_id );
 		if ( ! isset( $instance_options[ $query_id ][ self::ARTBLOCK_SELECTOR_NAME ] ) ) {
-			return '';
+			return self::DEFAULT_SELECTED_ARTBLOCK_ID;
 		}
 		$artblock_id = $instance_options[ $query_id ][ self::ARTBLOCK_SELECTOR_NAME ];
 
 		$registered_artblocks = Manage_Component_Classes::get_style_classes();
 		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
-			return '';
+			return self::DEFAULT_SELECTED_ARTBLOCK_ID;
 		}
 
 		return $artblock_id;

@@ -335,7 +335,7 @@ function getArticleBlockSettings( widgetId: string, queryId: string|number, artb
 function insertArticleBlock( widgetId: string, queryId: string|number, html: string ) {
 	const queryItem = getQueryItemById( widgetId, queryId );
 	const artblockSettingsWrapper = queryItem.find( artblockSettingsWrapperSelector );
-	const artblockContainer = artblockSettingsWrapper.closest( '.twrp-widget-form__article-block-settings-container' );
+	const artblockContainer = queryItem.find( '.twrp-widget-form__article-block-settings-container' );
 	artblockSettingsWrapper.detach();
 	addArticleBlockToCache( widgetId, queryId, artblockSettingsWrapper );
 	artblockContainer.append( html );
