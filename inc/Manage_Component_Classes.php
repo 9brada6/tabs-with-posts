@@ -83,13 +83,13 @@ class Manage_Component_Classes {
 	 *
 	 * @param string $style_id The style id to get the class.
 	 *
-	 * @throws \InvalidArgumentException If the $name does not correspond with a style id.
+	 * @throws \RuntimeException If the $name does not correspond with a style id.
 	 *
 	 * @return Article_Block The class retrieved by name.
 	 */
 	public static function get_style_class_by_name( $style_id ) {
 		if ( ! isset( self::$style_classes[ $style_id ] ) ) {
-			throw new \InvalidArgumentException( $style_id . ' is not a style id.' );
+			throw new \RuntimeException( $style_id . ' is not a style id.' );
 		}
 
 		return self::$style_classes[ $style_id ];

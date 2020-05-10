@@ -9,6 +9,7 @@ namespace TWRP\Article_Block;
 class Simple_Article_Block implements Article_Block {
 
 	use Article_Block_Create_Setting;
+	// use Article_Block_Create_Widget_Settings;
 	use Article_Block_Sanitize_Setting;
 
 	const AUTHOR_ATTR           = 'author';
@@ -148,18 +149,47 @@ class Simple_Article_Block implements Article_Block {
 		return $author_date_size_args;
 	}
 
+	public function get_settings_to_create() {
+		$settings_to_create = array();
 
-	public static function display_widget_settings( $instance_number, $query_id, $current_settings ) {
+		$display_author_setting = array(
+			'type'    => 'checkbox',
+			'name'    => 'display_author',
+			'default' => '',
+			'after'   => _x( 'Display the author', 'backend', 'twrp' ),
+		);
 
-		?>
-		<p>
-			Simple Settings
-			<input
-				name="<?= \TWRP\Tabs_Widget::twrp_get_field_name( $instance_number, $query_id . '[display_author]' ) ?>"
-				value="<?= $current_settings[ $query_id ]['display_author'] ? $current_settings[ $query_id ]['display_author'] : 'nope' ?>"
-			/>
-		</p>
-		<?php
+		array_push( $settings_to_create, $display_author_setting );
+
+		return $settings_to_create;
+	}
+
+
+	public static function display_widget_settings( $widget_id, $query_id, $current_settings ) {
+		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $widget_id, $query_id, $current_settings );
+
+		$author_text = _x( 'Display the author.', 'backend', 'twrp' );
+		$settings_creator->display_checkbox_setting( 'display_author', '', $author_text );
+
+		$date_text = _x( 'Display the date.', 'backend', 'twrp' );
+		$settings_creator->display_checkbox_setting( 'display_date', '', $date_text );
+
+	}
+
+	public static function sanitize_widget_settings( $widget_id, $query_id, $unsanitized_settings ) {
+		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $widget_id, $query_id, $unsanitized_settings );
+
+		$sanitized_settings = $unsanitized_settings;
+		foreach ( $unsanitized_settings as $setting_name => $setting ) {
+			if ( 'display_author' === $setting_name ) {
+				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_checkbox( $setting, '' );
+			}
+			if ( 'display_date' === $setting_name ) {
+				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_checkbox( $setting, '' );
+			}
+		}
+
+		return $sanitized_settings;
 	}
 
 }

@@ -46,4 +46,8 @@ class Modern_Article_Block implements Article_Block, Article_Block_Preview {
 		<?php
 	}
 
+	public function get_settings_to_create() {
+
+	}
+
 }

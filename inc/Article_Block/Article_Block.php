@@ -86,4 +86,6 @@ interface Article_Block {
 	 */
 	public function get_submitted_sanitized_settings();
 
+	public function get_settings_to_create();
+
 }

@@ -7,7 +7,6 @@ namespace TWRP;
 
 use RuntimeException;
 use TWRP\Admin\Tabs\Queries_Tab;
-use \TWRP\Query_Setting\Query_Name;
 use TWRP\DB_Query_Options;
 
 class Tabs_Widget extends \WP_Widget {
@@ -122,7 +121,7 @@ class Tabs_Widget extends \WP_Widget {
 
 		<ul class="twrp-widget-form__selected-queries-list">
 			<?php foreach ( $selected_queries_ids as $selected_query_id ) : ?>
-				<?php self::display_query_settings( (int) $this->number, $selected_query_id ); ?>
+				<?php self::display_query_settings( (int) $this->number, (int) $selected_query_id ); ?>
 			<?php endforeach; ?>
 		</ul>
 
@@ -226,23 +225,19 @@ class Tabs_Widget extends \WP_Widget {
 	 *
 	 * @param int $widget_id
 	 * @param int $query_id
-	 * @param string|int $artblock_id
+	 * @param string $artblock_id
 	 *
 	 * @return void
 	 */
 	public static function display_artblock_settings( $widget_id, $query_id, $artblock_id ) {
-		$registered_artblocks = Manage_Component_Classes::get_style_classes();
-		$current_settings     = self::get_instance_settings( $widget_id );
-
-		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
+		$current_settings = self::get_instance_settings( $widget_id );
+		try {
+			$artblock = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
+		} catch ( \RuntimeException $e ) {
 			return;
 		}
-		$artblock = $registered_artblocks[ $artblock_id ];
 		?>
-		<div
-			class="twrp-widget-form__article-block-settings"
-			data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>"
-		>
+		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
 			<?php $artblock->display_widget_settings( $widget_id, $query_id, $current_settings ); ?>
 		</div>
 		<?php
@@ -312,8 +307,12 @@ class Tabs_Widget extends \WP_Widget {
 		return array();
 	}
 
+	public static function get_query_instance_settings() {
+		// todo.
+	}
+
 	/**
-	 * Get the HTML attribute name for an input field in the widget form. The
+	 * Constructs name attributes for use in WP_Widget::form() fields. The
 	 * name will be specifically for only a widget instance. This function is
 	 * basically the one from WP_Widget Class, but is static and can be called
 	 * from outside of the class.
@@ -331,6 +330,22 @@ class Tabs_Widget extends \WP_Widget {
 			return 'widget-' . self::TWRP_BASE_ID . '[' . $widget_id . '][' . substr_replace( $field_name, '][', $pos, strlen( '[' ) );
 		}
 	}
+
+	/**
+	 * Constructs id attributes for use in WP_Widget::form() fields. This is the
+	 * same as get_field_id(), only that it can be called statically.
+	 *
+	 * @param int $widget_id The number of the widget Id.
+	 * @param string $field_name The name of the setting to create the name.
+	 *
+	 * @return string The attribute name for that field, corresponding to the widget.
+	 */
+	public static function twrp_get_field_id( $widget_id, $field_name ) {
+		return 'widget-' . self::TWRP_BASE_ID . '-' . $widget_id . '-' .
+		trim( str_replace( array( '[]', '[', ']' ), array( '', '-', '' ), $field_name ), '-' );
+	}
+
+
 
 	/**
 	 * Get the selected article block id exclusive for a query selected within a widget.
