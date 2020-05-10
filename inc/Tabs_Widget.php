@@ -56,33 +56,56 @@ class Tabs_Widget extends \WP_Widget {
 	}
 
 	public static function sanitize_instance_settings( $settings ) {
-		$settings = self::sanitize_query_list_setting( $settings );
-
-		return $settings;
-	}
-
-	protected static function sanitize_query_list_setting( $settings ) {
 		if ( ! isset( $settings['queries'] ) ) {
 			$settings['queries'] = '';
 		}
-		$queries           = explode( ';', $settings['queries'] );
-		$valid_queries_ids = array();
+		$queries            = explode( ';', $settings['queries'] );
+		$valid_queries_ids  = array();
+		$sanitized_settings = array();
+
 		foreach ( $queries as $query_id ) {
 			if ( ! is_numeric( $query_id ) ) {
 				continue;
 			}
 			if ( DB_Query_Options::query_exists( $query_id ) ) {
+				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $settings[ $query_id ] );
 				array_push( $valid_queries_ids, $query_id );
 			}
 		}
 
-		$sanitized_settings = array();
-		foreach ( $valid_queries_ids as $query_id ) {
-			$sanitized_settings[ $query_id ] = $settings[ $query_id ];
-		}
 		$sanitized_settings['queries'] = implode( ';', $valid_queries_ids );
 
 		return $sanitized_settings;
+	}
+
+	protected static function sanitize_query_settings( $query_settings ) {
+		$sanitized_settings = array();
+
+		if ( isset( $query_settings['article_block'] ) ) {
+			if ( Manage_Component_Classes::article_block_id_exist( $query_settings['article_block'] ) ) {
+				$sanitized_settings['article_block'] = $query_settings['article_block'];
+			} else {
+				$sanitized_settings['article_block'] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
+			}
+		} else {
+			$sanitized_settings['article_block'] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
+		}
+
+		if ( ! isset( $query_settings['display_title'] ) ) {
+			$sanitized_settings['display_title'] = '';
+		} else {
+			$sanitized_settings['display_title'] = $query_settings['display_title'];
+		}
+
+		try {
+			$artblock = Manage_Component_Classes::get_style_class_by_name( $sanitized_settings['article_block'] );
+		} catch ( \RuntimeException $e ) {
+			return $sanitized_settings;
+		}
+
+		$sanitized_article_block_setting = $artblock->sanitize_widget_settings( $query_settings );
+
+		return array_merge( $sanitized_settings, $sanitized_article_block_setting );
 	}
 
 	// =========================================================================

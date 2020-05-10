@@ -95,4 +95,13 @@ class Manage_Component_Classes {
 		return self::$style_classes[ $style_id ];
 	}
 
+	public static function article_block_id_exist( $artblock_id ) {
+		$classes = self::$style_classes;
+		if ( isset( $classes[ $artblock_id ] ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
 }

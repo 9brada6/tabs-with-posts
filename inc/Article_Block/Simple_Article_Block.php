@@ -176,9 +176,9 @@ class Simple_Article_Block implements Article_Block {
 
 	}
 
-	public static function sanitize_widget_settings( $widget_id, $query_id, $unsanitized_settings ) {
-		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $widget_id, $query_id, $unsanitized_settings );
-
+	public static function sanitize_widget_settings( $unsanitized_settings ) {
+		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( 0, 0, $unsanitized_settings );
+		return $unsanitized_settings;
 		$sanitized_settings = $unsanitized_settings;
 		foreach ( $unsanitized_settings as $setting_name => $setting ) {
 			if ( 'display_author' === $setting_name ) {
