@@ -70,16 +70,6 @@ interface Article_Block {
 	public function display_backend_description();
 
 	/**
-	 * Display the HTML to modify the article block settings.
-	 *
-	 * @param array $current_settings The current settings to put as values(if
-	 *                                previously modified) in the HTML form.
-	 *
-	 * @return void
-	 */
-	public function display_backend_settings( $current_settings );
-
-	/**
 	 * Get the settings submitted via the backend form. The settings are also sanitized.
 	 *
 	 * @return array

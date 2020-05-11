@@ -8,8 +8,6 @@ namespace TWRP\Article_Block;
 
 class Simple_Article_Block implements Article_Block {
 
-	use Article_Block_Create_Setting;
-
 	const AUTHOR_ATTR           = 'author';
 	const DATE_ATTR             = 'date';
 	const TITLE_FONT_SIZE_ATTR  = 'font-size';
@@ -88,23 +86,6 @@ class Simple_Article_Block implements Article_Block {
 
 		// phpcs:ignore -- Nonce verified, and setting sanitized.
 		return self::sanitize_settings( $_POST[ $this->get_id() ] );
-	}
-
-	public function display_backend_settings( $current_settings ) {
-		$this->set_creator( $this->get_id(), self::sanitize_settings( $current_settings ) );
-		?>
-		<div class="twrp-artblock-form">
-			<?php
-			// All the functions that create settings will get their current value to display
-			// from the previously set values with set_creator() function.
-			$this->create_checkbox_setting( self::AUTHOR_ATTR, _x( 'Display the author', 'backend', 'twrp' ) );
-			$this->create_checkbox_setting( self::DATE_ATTR, _x( 'Display the date', 'backend', 'twrp' ) );
-
-			$this->create_number_setting( self::TITLE_FONT_SIZE_ATTR, $this->get_title_font_size_setting_form_args() );
-			$this->create_number_setting( self::AUTHOR_FONT_SIZE_ATTR, $this->get_author_font_size_setting_form_args() );
-			?>
-		</div>
-		<?php
 	}
 
 	/**

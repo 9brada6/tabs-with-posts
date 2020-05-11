@@ -3,9 +3,6 @@
 namespace TWRP\Article_Block;
 
 class Modern_Article_Block implements Article_Block, Article_Block_Preview {
-	public function display_backend_settings( $current_settings ) {
-		return 'Style 2 display settings';
-	}
 
 	public function display_backend_description() {
 		// include \TWRP_Main::get_plugin_directory() . 'templates-backend-preview/modern-style.php';
