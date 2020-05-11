@@ -53,7 +53,7 @@ class Article_Block_Widget_Settings_Creator {
 	}
 
 	// =========================================================================
-	// Settings by type of form fields.
+	// Create settings by type of form fields.
 
 	public function display_checkbox_setting( $name, $after, $default = '' ) {
 		$input_id   = $this->create_input_id( $name );
@@ -89,6 +89,22 @@ class Article_Block_Widget_Settings_Creator {
 		<?php
 	}
 
+	// =========================================================================
+	// Sanitize settings by type of form fields.
+
+	public function sanitize_checkbox( $setting, $default = '' ) {
+		if ( '1' === $setting ) {
+			return '1';
+		} elseif ( ! $setting ) {
+			return '';
+		}
+
+		if ( $default ) {
+			return '1';
+		}
+
+		return '';
+	}
 
 	// =========================================================================
 	// Helper functions

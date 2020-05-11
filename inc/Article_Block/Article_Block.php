@@ -11,6 +11,8 @@ namespace TWRP\Article_Block;
  * The interface of an article block. By implementing this interface a class can
  * be declared an article block.
  *
+ * @todo: Read and change this.
+ *
  * Definition: An article block is how a post can be displayed in the widget.
  * It can be displayed as a simple title, where a user can click on it(it can
  * also have some metadata like the author or the date), or it can be displayed
@@ -44,42 +46,24 @@ interface Article_Block {
 	public function include_template();
 
 	/**
-	 * Sanitize the settings of this specific article block.
+	 * Display the article block settings in the Widgets::form().
 	 *
-	 * @param array $settings All the article block settings that can be set via backend.
-	 *
-	 * @return array
-	 */
-	public static function sanitize_settings( $settings );
-
-	/**
-	 * Get the default settings values of the article block.
-	 *
-	 * @return array
-	 */
-	public function get_default_settings();
-
-	/**
-	 * Display a description of the article block. What is this, what metadata
-	 * can display, on which post formats can be displayed, which plugins can use
-	 * to display data, and other things to take in consideration when using this
-	 * article block.
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $current_settings
 	 *
 	 * @return void
 	 */
-	public function display_backend_description();
-
-	/**
-	 * Get the settings submitted via the backend form. The settings are also sanitized.
-	 *
-	 * @return array
-	 */
-	public function get_submitted_sanitized_settings();
-
-	public function get_settings_to_create();
-
 	public function display_widget_settings( $widget_id, $query_id, $current_settings );
 
+	/**
+	 * Sanitize the widget settings of this specific article block.
+	 *
+	 * @param array $query_settings The settings to be sanitized. This settings
+	 * also include other query settings, which can safely be removed in this
+	 * sanitization process.
+	 *
+	 * @return array The new array of settings.
+	 */
 	public function sanitize_widget_settings( $query_settings );
-
 }

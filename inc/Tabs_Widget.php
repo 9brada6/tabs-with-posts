@@ -78,6 +78,9 @@ class Tabs_Widget extends \WP_Widget {
 		return $sanitized_settings;
 	}
 
+	/**
+	 * @param array $query_settings
+	 */
 	protected static function sanitize_query_settings( $query_settings ) {
 		$sanitized_settings = array();
 
@@ -224,7 +227,7 @@ class Tabs_Widget extends \WP_Widget {
 		$instance_options = self::get_instance_settings( $widget_id );
 		?>
 		<p>
-		Tab button text:
+		<?= _x( 'Tab button text:', 'backend', 'twrp' ); ?>
 		<input
 			type="text"
 			name="<?= esc_attr( self::twrp_get_field_name( $widget_id, $query_id . '[display_title]' ) ); ?>"
