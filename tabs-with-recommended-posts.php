@@ -153,7 +153,6 @@ add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
 function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
-	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Styles_Tab' );
 }
 
 add_action( 'init', 'twrp_register_settings' );
