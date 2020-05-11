@@ -9,8 +9,6 @@ namespace TWRP\Article_Block;
 class Simple_Article_Block implements Article_Block {
 
 	use Article_Block_Create_Setting;
-	// use Article_Block_Create_Widget_Settings;
-	use Article_Block_Sanitize_Setting;
 
 	const AUTHOR_ATTR           = 'author';
 	const DATE_ATTR             = 'date';
@@ -54,22 +52,22 @@ class Simple_Article_Block implements Article_Block {
 
 		$sanitized_settings = array();
 
-		$sanitized_settings[ self::AUTHOR_ATTR ] = self::sanitize_checkbox( $settings, self::AUTHOR_ATTR, '' );
-		$sanitized_settings[ self::DATE_ATTR ]   = self::sanitize_checkbox( $settings, self::DATE_ATTR, '' );
+		// $sanitized_settings[ self::AUTHOR_ATTR ] = self::sanitize_checkbox( $settings, self::AUTHOR_ATTR, '' );
+		// $sanitized_settings[ self::DATE_ATTR ]   = self::sanitize_checkbox( $settings, self::DATE_ATTR, '' );
 
-		$sanitized_settings[ self::TITLE_FONT_SIZE_ATTR ] = self::sanitize_number(
-			$settings,
-			self::TITLE_FONT_SIZE_ATTR,
-			self::get_title_font_size_setting_form_args(),
-			''
-		);
+		// $sanitized_settings[ self::TITLE_FONT_SIZE_ATTR ] = self::sanitize_number(
+		// $settings,
+		// self::TITLE_FONT_SIZE_ATTR,
+		// self::get_title_font_size_setting_form_args(),
+		// ''
+		// );
 
-		$sanitized_settings[ self::AUTHOR_FONT_SIZE_ATTR ] = self::sanitize_number(
-			$settings,
-			self::AUTHOR_FONT_SIZE_ATTR,
-			self::get_author_font_size_setting_form_args(),
-			''
-		);
+		// $sanitized_settings[ self::AUTHOR_FONT_SIZE_ATTR ] = self::sanitize_number(
+		// $settings,
+		// self::AUTHOR_FONT_SIZE_ATTR,
+		// self::get_author_font_size_setting_form_args(),
+		// ''
+		// );
 
 		return $sanitized_settings;
 	}
