@@ -38,7 +38,7 @@ class Modern_Article_Block implements Article_Block, Article_Block_Preview {
 
 	}
 
-	public static function display_widget_settings() {
+	public function display_widget_settings( $widget_id, $query_id, $current_settings ) {
 		?>
 		<p>
 			Modern settings
@@ -48,6 +48,10 @@ class Modern_Article_Block implements Article_Block, Article_Block_Preview {
 
 	public function get_settings_to_create() {
 
+	}
+
+	public function sanitize_widget_settings( $query_settings ) {
+		return $query_settings;
 	}
 
 }

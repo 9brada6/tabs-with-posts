@@ -165,7 +165,7 @@ class Simple_Article_Block implements Article_Block {
 	}
 
 
-	public static function display_widget_settings( $widget_id, $query_id, $current_settings ) {
+	public function display_widget_settings( $widget_id, $query_id, $current_settings ) {
 		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $widget_id, $query_id, $current_settings );
 
 		$author_text = _x( 'Display the author.', 'backend', 'twrp' );
@@ -176,7 +176,7 @@ class Simple_Article_Block implements Article_Block {
 
 	}
 
-	public static function sanitize_widget_settings( $unsanitized_settings ) {
+	public function sanitize_widget_settings( $unsanitized_settings ) {
 		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( 0, 0, $unsanitized_settings );
 		return $unsanitized_settings;
 		$sanitized_settings = $unsanitized_settings;

@@ -88,4 +88,8 @@ interface Article_Block {
 
 	public function get_settings_to_create();
 
+	public function display_widget_settings( $widget_id, $query_id, $current_settings );
+
+	public function sanitize_widget_settings( $query_settings );
+
 }
