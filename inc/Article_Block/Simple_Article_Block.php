@@ -40,7 +40,18 @@ class Simple_Article_Block implements Article_Block {
 	 * @return void
 	 */
 	public function include_template() {
+		$settings = array();
 		include \TWRP_Main::get_templates_directory() . 'simple-style.php';
+	}
+
+	/**
+	 * Enqueue the styles and scripts when a widget that has this article block
+	 * is displayed.
+	 *
+	 * @todo
+	 */
+	public function enqueue_styles_and_scripts() {
+
 	}
 
 	/**
@@ -59,8 +70,8 @@ class Simple_Article_Block implements Article_Block {
 		$settings_creator->display_checkbox_setting( 'display_author', _x( 'Display the author.', 'backend', 'twrp' ), $default_settings['display_author'] );
 		$settings_creator->display_checkbox_setting( 'display_date', _x( 'Display the date.', 'backend', 'twrp' ), $default_settings['display_author'] );
 
-		$settings_creator->display_number_setting( 'title_size', $default_settings['title_size'], $this->get_title_size_setting_args() );
-
+		$settings_creator->display_number_setting( 'header_size', $default_settings['header_size'], $this->get_header_size_setting_args() );
+		$settings_creator->display_number_setting( 'meta_size', $default_settings['meta_size'], $this->get_meta_size_setting_args() );
 	}
 
 	/**
@@ -75,14 +86,24 @@ class Simple_Article_Block implements Article_Block {
 	public function sanitize_widget_settings( $unsanitized_settings ) {
 		$unsanitized_settings = wp_parse_args( $unsanitized_settings, $this->get_default_values() );
 		$settings_creator     = new \TWRP\Article_Block_Widget_Settings_Creator( 0, 0, $unsanitized_settings );
+		$default_values       = $this->get_default_values();
 
 		$sanitized_settings = array();
 		foreach ( $unsanitized_settings as $setting_name => $setting ) {
 			if ( 'display_author' === $setting_name ) {
 				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_checkbox( $setting );
 			}
+
 			if ( 'display_date' === $setting_name ) {
 				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_checkbox( $setting );
+			}
+
+			if ( 'header_size' === $setting_name ) {
+				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_number( $setting, $default_values['header_size'], $this->get_header_size_setting_args() );
+			}
+
+			if ( 'meta_size' === $setting_name ) {
+				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_number( $setting, $default_values['meta_size'], $this->get_meta_size_setting_args() );
 			}
 		}
 
@@ -96,59 +117,33 @@ class Simple_Article_Block implements Article_Block {
 		$defaults = array(
 			'display_date'   => '',
 			'display_author' => '',
-			'title_size'     => '1.2',
+			'header_size'    => '',
+			'meta_size'      => '0.9',
 		);
 
 		return $defaults;
 	}
 
-	protected function get_title_size_setting_args() {
+	protected function get_header_size_setting_args() {
 		return array(
-			'max'  => '3',
-			'min'  => '0.7',
-			'step' => '0.025',
+			'before' => _x( 'Title font size:', 'backend; CSS unit', 'twrp' ),
+			'after'  => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
+			'max'    => '3',
+			'min'    => '0.7',
+			'step'   => '0.025',
 		);
 	}
 
-	// ===========================
-	// Todo:
-
-	/**
-	 * Get the arguments that should be passed into create_number_setting()
-	 * function for the title font size setting.
-	 *
-	 * @todo make value current from settings.
-	 *
-	 * @return array
-	 */
-	protected static function get_title_font_size_setting_form_args() {
-		$font_size_args = array(
-			'before' => _x( 'Title font size:', 'backend', 'twrp1' ),
-			'after'  => 'rem',
-			'min'    => 0.9,
-			'max'    => 3,
-			'step'   => 0.025,
-		);
-
-		return $font_size_args;
-	}
-
-	/**
-	 * Get the arguments to create the number setting of the font size
-	 * CSS applied to author and the date.
-	 *
-	 * @todo make value current from settings.
-	 *
-	 * @return array
-	 */
-	protected static function get_author_font_size_setting_form_args() {
+	protected function get_meta_size_setting_args() {
 		return array(
-			'before' => _x( 'Author and date font size:', 'backend', 'twrp' ),
-			'after'  => 'rem',
-			'min'    => 0.9,
-			'max'    => 3,
-			'step'   => 0.025,
+			'before' => _x( 'Author and date font size:', 'backend; CSS unit', 'twrp' ),
+			'after'  => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
+			'max'    => '3',
+			'min'    => '0.7',
+			'step'   => '0.025',
 		);
 	}
+
+	// =========================================================================
 
 }

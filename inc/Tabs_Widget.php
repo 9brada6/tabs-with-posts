@@ -32,6 +32,14 @@ class Tabs_Widget extends \WP_Widget {
 		);
 	}
 
+	public static function enqueue_scripts( $widget_full_id ) {
+		$widget_id = self::twrp_get_widget_id_num( $widget_full_id );
+		$settings  = self::get_instance_settings();
+
+		// Get all queries and articles blocks.
+		// For each article block enqueue the styles.
+	}
+
 	/**
 	 * Display the front-end content.
 	 *
@@ -43,9 +51,32 @@ class Tabs_Widget extends \WP_Widget {
 		echo $args['before_widget']; // phpcs:ignore
 
 		echo '<div class="twrp-widget__content">';
+
+			echo '<div class="twrp-widget__tabs-container">';
+				$this->display_query( 6, $instance_settings, true );
+			echo '</div>';
 		echo '</div>';
 
 		echo $args['after_widget']; // phpcs:ignore
+	}
+
+	protected function display_query( $query_id, $instance_settings, $is_shown ) {
+		// TODO: Verify these how we get them and how legit they are.
+		$posts       = Get_Posts::get_posts_by_query_id( $query_id );
+		$artblock_id = self::get_selected_artblock_id( (int) $this->number, $query_id );
+		$artblock    = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
+		global $post;
+		?>
+		<div class="twrp-widget__tab-content">
+			<?php
+			foreach ( $posts as $new_global_post ) :
+				$post = $new_global_post; // phpcs:ignore -- We reset afterwards;
+				$artblock->include_template();
+			endforeach;
+			wp_reset_postdata();
+			?>
+		</div>
+		<?php
 	}
 
 	// =========================================================================
@@ -341,6 +372,7 @@ class Tabs_Widget extends \WP_Widget {
 	 * @return int
 	 */
 	public static function twrp_get_widget_id_num( $widget_id ) {
+
 		$widget_id_num = ltrim( str_replace( self::TWRP_BASE_ID, '', $widget_id ), '-' );
 
 		if ( is_numeric( $widget_id_num ) ) {

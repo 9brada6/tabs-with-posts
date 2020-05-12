@@ -14,8 +14,10 @@ class Article_Block_Widget_Settings_Creator {
 	protected $current_settings;
 
 	public function __construct( $widget_id, $query_id, $current_settings ) {
-		$this->widget_id        = $widget_id;
-		$this->query_id         = $query_id;
+		$this->widget_id = $widget_id;
+		$this->query_id  = $query_id;
+
+		// todo: make current settings be $current_settings[$query_id];
 		$this->current_settings = $current_settings;
 	}
 
@@ -89,6 +91,43 @@ class Article_Block_Widget_Settings_Creator {
 		<?php
 	}
 
+	public function display_number_setting( $name, $default, $args ) {
+
+		$default_args = array(
+			'min'    => '',
+			'max'    => '',
+			'step'   => '',
+			'before' => '',
+			'after'  => '',
+		);
+		$args         = wp_parse_args( $args, $default_args );
+
+		$settings   = $this->get_settings();
+		$value      = isset( $settings[ $name ] ) ? $settings[ $name ] : $default;
+		$input_id   = $this->create_input_id( $name );
+		$input_name = $this->create_input_name( $name );
+		?>
+		<p class="twrp-artblock-form__paragraph">
+			<?php if ( $args['before'] ) : ?>
+				<span class="twrp-artblock-form__number-label-before" for="<?= esc_attr( $input_id ) ?>">
+					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
+				</span>
+			<?php endif; ?>
+
+			<input id="<?= esc_attr( $input_id ) ?>" name="<?= esc_attr( $input_name ) ?>" type="number"
+				step="<?= esc_attr( $args['step'] ) ?>" max="<?= esc_attr( $args['max'] ) ?>" min="<?= esc_attr( $args['min'] ) ?>"
+				value="<?= esc_attr( $value ) ?>"
+			/>
+
+			<?php if ( $args['after'] ) : ?>
+				<span class="twrp-artblock-form__number-label-after" for="<?= esc_attr( $input_id ) ?>">
+					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
+				</span>
+			<?php endif; ?>
+		</p>
+		<?php
+	}
+
 	// =========================================================================
 	// Sanitize settings by type of form fields.
 
@@ -104,6 +143,22 @@ class Article_Block_Widget_Settings_Creator {
 		}
 
 		return '';
+	}
+
+	public function sanitize_number( $setting, $default, $args ) {
+		if ( ! is_numeric( $setting ) ) {
+			return $default;
+		}
+
+		if ( ! isset( $args['min'], $args['max'] ) ) {
+			return $default;
+		}
+
+		if ( $setting >= $args['min'] && $setting <= $args['max'] ) {
+			return $setting;
+		}
+
+		return $default;
 	}
 
 	// =========================================================================

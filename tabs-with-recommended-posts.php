@@ -214,3 +214,20 @@ add_action( 'widgets_init', 'twrp_register_widgets' );
 
 add_action( 'wp_ajax_twrp_widget_create_query_setting', 'TWRP\Tabs_Widget::ajax_create_query_selected_item' );
 add_action( 'wp_ajax_twrp_widget_create_artblock_settings', 'TWRP\Tabs_Widget::ajax_create_artblock_settings' );
+
+function twrp_enqueue_artblock_styles() {
+	global $wp_registered_widgets;
+
+	foreach ( $wp_registered_widgets as $widget_full_id => $widget ) {
+		if ( ! isset( $widget['callback'][0] ) ) {
+			continue;
+		}
+		$widget_class = $widget['callback'][0];
+
+		if ( $widget_class instanceof \TWRP\Tabs_Widget && is_active_widget( false, $widget_full_id, $widget_class->id_base ) ) {
+			$widget_class::enqueue_scripts( $widget_full_id );
+		}
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
