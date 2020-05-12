@@ -2,11 +2,11 @@
 	"folders": [
 		{
 			"name": "Main",
-			"path": "."
+			"path": "./"
 		},
 		{
 			"name": "Server",
-			"path": ".\\..\\..\\..\\.."
+			"path": "./../../../"
 		}
 	],
 	"extensions": {

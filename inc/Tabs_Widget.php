@@ -34,7 +34,7 @@ class Tabs_Widget extends \WP_Widget {
 
 	public static function enqueue_scripts( $widget_full_id ) {
 		$widget_id = self::twrp_get_widget_id_num( $widget_full_id );
-		$settings  = self::get_instance_settings();
+		// $settings  = self::get_instance_settings();
 
 		// Get all queries and articles blocks.
 		// For each article block enqueue the styles.
