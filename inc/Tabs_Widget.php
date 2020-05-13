@@ -224,17 +224,23 @@ class Tabs_Widget extends \WP_Widget {
 	}
 
 	// =========================================================================
+	// Functions to create each query tab setting.
 
 	/**
 	 * Display the settings of a specified query, including the article block
 	 * selected.
 	 *
-	 * @param int $widget_id
+	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @param int $query_id
-	 *
 	 * @return void
 	 */
 	public static function display_query_settings( $widget_id, $query_id ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $e ) {
+			return;
+		}
+
 		?>
 		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="twrp-widget-form__selected-query-title">
@@ -244,15 +250,20 @@ class Tabs_Widget extends \WP_Widget {
 
 			<div class="twrp-widget-form__selected-query-settings">
 				<?php self::display_query_button_text_setting( $widget_id, $query_id ); ?>
-				<?php self::display_query_select_artblock_setting( $widget_id, $query_id ); ?>
-				<?php self::display_query_wrapper_for_artblock_setting( $widget_id, $query_id ); ?>
+				<?php self::display_query_select_artblock( $widget_id, $query_id ); ?>
+				<?php self::display_query_wrapper_for_artblock( $widget_id, $query_id ); ?>
 			</div>
 		</li>
 		<?php
 	}
 
 	/**
-	 * Todo.
+	 * Display the form input field that will let the user choose what button text
+	 * the query will have.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @return void
 	 */
 	protected static function display_query_button_text_setting( $widget_id, $query_id ) {
 		$instance_options = self::get_instance_settings( $widget_id );
@@ -262,14 +273,22 @@ class Tabs_Widget extends \WP_Widget {
 		<input
 			type="text"
 			name="<?= esc_attr( self::twrp_get_field_name( $widget_id, $query_id . '[display_title]' ) ); ?>"
-			placeholder="Display tab title"
+			placeholder="<?= _x( 'Display tab title', 'backend', 'twrp' ) ?>"
 			value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
 		/>
 		</p>
 		<?php
 	}
 
-	protected static function display_query_select_artblock_setting( $widget_id, $query_id ) {
+	/**
+	 * Display a HTML select form control, which will let user choose what article
+	 * block to display posts with.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @return void
+	 */
+	protected static function display_query_select_artblock( $widget_id, $query_id ) {
 		$instance_options     = self::get_instance_settings( $widget_id );
 		$artblock_id_selected = self::get_selected_artblock_id( $widget_id, $query_id );
 		$registered_artblocks = Manage_Component_Classes::get_style_classes();
@@ -294,8 +313,16 @@ class Tabs_Widget extends \WP_Widget {
 		<?php
 	}
 
-	protected static function display_query_wrapper_for_artblock_setting( $widget_id, $query_id ) {
+	/**
+	 * Display the query wrapper for the article block settings.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @return void
+	 */
+	protected static function display_query_wrapper_for_artblock( $widget_id, $query_id ) {
 		$artblock_id_selected = self::get_selected_artblock_id( $widget_id, $query_id );
+
 		?>
 		<div class="twrp-widget-form__article-block-settings-container">
 			<?php self::display_artblock_settings( $widget_id, $query_id, $artblock_id_selected ); ?>
@@ -309,14 +336,18 @@ class Tabs_Widget extends \WP_Widget {
 	/**
 	 * Display the artblock settings for a specific widget and query.
 	 *
-	 * @param int $widget_id
+	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @param int $query_id
 	 * @param string $artblock_id
-	 *
 	 * @return void
 	 */
 	public static function display_artblock_settings( $widget_id, $query_id, $artblock_id ) {
-		$current_settings = self::get_instance_settings( $widget_id );
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $e ) {
+			return;
+		}
+
 		try {
 			$artblock = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
 		} catch ( \RuntimeException $e ) {
@@ -326,6 +357,9 @@ class Tabs_Widget extends \WP_Widget {
 				return;
 			}
 		}
+
+		$current_settings = self::get_instance_settings( $widget_id );
+
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
 			<?php $artblock->display_widget_settings( $widget_id, $query_id, $current_settings ); ?>
@@ -363,33 +397,18 @@ class Tabs_Widget extends \WP_Widget {
 	// Utility functions
 
 	/**
-	 * Get only the widget Id number for this type of widget, the number is
-	 * taken from the full widget id.
-	 *
-	 * @throws \RuntimeException If the widget Id cannot be retrieved.
-	 * @param string $widget_id The full widget Id has the id_base of the widget
-	 *                          appended with the unique id number.
-	 * @return int
-	 */
-	public static function twrp_get_widget_id_num( $widget_id ) {
-
-		$widget_id_num = ltrim( str_replace( self::TWRP_BASE_ID, '', $widget_id ), '-' );
-
-		if ( is_numeric( $widget_id_num ) ) {
-			return (int) $widget_id_num;
-		} else {
-			throw new \RuntimeException( 'Cannot retrieve a number corresponding to a widget Id.' );
-		}
-	}
-
-	/**
 	 * Get the instance settings array based on.
 	 *
-	 * @param int $widget_id The widget Id number.
-	 *
+	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @return array
 	 */
 	public static function get_instance_settings( $widget_id ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $e ) {
+			return array();
+		}
+
 		$instance_options = get_option( 'widget_' . self::TWRP_BASE_ID );
 		if ( isset( $instance_options[ $widget_id ] ) ) {
 			return $instance_options[ $widget_id ];
@@ -398,22 +417,23 @@ class Tabs_Widget extends \WP_Widget {
 		return array();
 	}
 
-	public static function get_query_instance_settings() {
-		// todo.
-	}
-
 	/**
-	 * Constructs name attributes for use in WP_Widget::form() fields. The
-	 * name will be specifically for only a widget instance. This function is
-	 * basically the one from WP_Widget Class, but is static and can be called
-	 * from outside of the class.
+	 * Constructs name attributes for use in WP_Widget::form() fields.
 	 *
-	 * @param int $widget_id The number of the widget Id.
+	 * This function is basically the one from WP_Widget Class, but is static
+	 * and can be called from outside of the class.
+	 *
+	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @param string $field_name The name of the setting to create the name.
-	 *
 	 * @return string The attribute name for that field, corresponding to the widget.
 	 */
 	public static function twrp_get_field_name( $widget_id, $field_name ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+
 		$pos = strpos( $field_name, '[' );
 		if ( false === $pos ) {
 			return 'widget-' . self::TWRP_BASE_ID . '[' . $widget_id . '][' . $field_name . ']';
@@ -426,29 +446,35 @@ class Tabs_Widget extends \WP_Widget {
 	 * Constructs id attributes for use in WP_Widget::form() fields. This is the
 	 * same as get_field_id(), only that it can be called statically.
 	 *
-	 * @param int $widget_id The number of the widget Id.
+	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @param string $field_name The name of the setting to create the name.
-	 *
 	 * @return string The attribute name for that field, corresponding to the widget.
 	 */
 	public static function twrp_get_field_id( $widget_id, $field_name ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+
 		return 'widget-' . self::TWRP_BASE_ID . '-' . $widget_id . '-' .
 		trim( str_replace( array( '[]', '[', ']' ), array( '', '-', '' ), $field_name ), '-' );
 	}
 
-
-
 	/**
 	 * Get the selected article block id exclusive for a query selected within a widget.
-	 * Return empty string if no article block selected or the article block was
-	 * not registered.
+	 * Return the constant "DEFAULT_SELECTED_ARTBLOCK_ID" if something is wrong, or article block not set.
 	 *
-	 * @param int $widget_id
+	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @param int $query_id
-	 *
 	 * @return string
 	 */
 	protected static function get_selected_artblock_id( $widget_id, $query_id ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $e ) {
+			return self::DEFAULT_SELECTED_ARTBLOCK_ID;
+		}
 
 		$instance_options = self::get_instance_settings( $widget_id );
 		if ( ! isset( $instance_options[ $query_id ][ self::ARTBLOCK_SELECTOR_NAME ] ) ) {
@@ -462,5 +488,31 @@ class Tabs_Widget extends \WP_Widget {
 		}
 
 		return $artblock_id;
+	}
+
+	/**
+	 * Get only the widget Id number for this type of widget.
+	 *
+	 * @throws \RuntimeException If the widget Id cannot be retrieved.
+	 *
+	 * @param string|int $widget_id Either the int or the whole widget Id.
+	 * @return int
+	 */
+	public static function twrp_get_widget_id_num( $widget_id ) {
+		if ( is_numeric( $widget_id ) ) {
+			return (int) $widget_id;
+		}
+
+		$widget_id_num = ltrim( str_replace( self::TWRP_BASE_ID, '', $widget_id ), '-' );
+
+		if ( is_numeric( $widget_id_num ) ) {
+			return (int) $widget_id_num;
+		} else {
+			throw new \RuntimeException( 'Cannot retrieve a number corresponding to a widget Id.' );
+		}
+	}
+
+	public static function get_query_instance_settings() {
+		// todo.
 	}
 }
