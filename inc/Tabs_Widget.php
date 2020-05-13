@@ -33,7 +33,12 @@ class Tabs_Widget extends \WP_Widget {
 	}
 
 	public static function enqueue_scripts( $widget_full_id ) {
-		$widget_id = self::twrp_get_widget_id_num( $widget_full_id );
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_full_id );
+		} catch ( RuntimeException $exception ) {
+			return;
+		}
+
 		// $settings  = self::get_instance_settings();
 
 		// Get all queries and articles blocks.
@@ -53,7 +58,8 @@ class Tabs_Widget extends \WP_Widget {
 		echo '<div class="twrp-widget__content">';
 
 			echo '<div class="twrp-widget__tabs-container">';
-				$this->display_query( 6, $instance_settings, true );
+				// Todo: change this shit.
+				$this->display_query( 1, $instance_settings, true );
 			echo '</div>';
 		echo '</div>';
 
@@ -62,7 +68,12 @@ class Tabs_Widget extends \WP_Widget {
 
 	protected function display_query( $query_id, $instance_settings, $is_shown ) {
 		// TODO: Verify these how we get them and how legit they are.
-		$posts       = Get_Posts::get_posts_by_query_id( $query_id );
+		try {
+			$posts = Get_Posts::get_posts_by_query_id( $query_id );
+		} catch ( RuntimeException $e ) {
+			return;
+		}
+
 		$artblock_id = self::get_selected_artblock_id( (int) $this->number, $query_id );
 		$artblock    = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
 		global $post;
@@ -510,6 +521,31 @@ class Tabs_Widget extends \WP_Widget {
 		} else {
 			throw new \RuntimeException( 'Cannot retrieve a number corresponding to a widget Id.' );
 		}
+	}
+
+	/**
+	 * Get the selected queries id's for a specific widget. The Id's are
+	 * verified if they exist before return.
+	 *
+	 * @param string|int $widget_id Either the int or the whole widget Id.
+	 * @return array All queries id's exist and are valid.
+	 */
+	public static function get_selected_queries( $widget_id ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $exception ) {
+			return array();
+		}
+		$queries_ids    = array();
+		$settings_names = array_keys( self::get_instance_settings( $widget_id ) );
+
+		foreach ( $settings_names as $possible_query_id ) {
+			if ( is_numeric( $possible_query_id ) && DB_Query_Options::query_exists( $possible_query_id ) ) {
+				array_push( $queries_ids, $possible_query_id );
+			}
+		}
+
+		return $queries_ids;
 	}
 
 	public static function get_query_instance_settings() {

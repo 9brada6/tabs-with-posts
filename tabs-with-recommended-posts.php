@@ -224,7 +224,7 @@ function twrp_enqueue_artblock_styles() {
 		}
 		$widget_class = $widget['callback'][0];
 
-		if ( $widget_class instanceof \TWRP\Tabs_Widget && is_active_widget( false, $widget_full_id, $widget_class->id_base ) ) {
+		if ( ( $widget_class instanceof \TWRP\Tabs_Widget ) && is_active_widget( false, $widget_full_id, $widget_class->id_base ) ) {
 			$widget_class::enqueue_scripts( $widget_full_id );
 		}
 	}

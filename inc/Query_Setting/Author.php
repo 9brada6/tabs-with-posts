@@ -2,6 +2,8 @@
 
 namespace TWRP\Query_Setting;
 
+use \WP_User;
+
 class Author implements Interface_Backend_Layout {
 
 	/**
@@ -23,19 +25,23 @@ class Author implements Interface_Backend_Layout {
 		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list">
 			<?php if ( isset( $current_setting['authors'] ) ) : ?>
 				<?php $authors_ids = explode( ';', $current_setting['authors'] ); ?>
-				<?php // todo: Check if we have authors, and if author is valid. ?>
+
 				<?php foreach ( $authors_ids as $author_id ) : ?>
 					<?php
-					$author_class        = get_userdata( $author_id );
+					$author_class = get_userdata( (int) $author_id );
+					if ( ! $author_class || ( ! ( $author_class instanceof WP_User ) ) ) {
+						continue;
+					}
 					$author_display_name = $author_class->get( 'display_name' );
+
 					?>
-				<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( $author_id ); ?>">
-					<div class="twrp-author-settings__author-item-name">
-						<?= esc_html( $author_display_name ); ?>
+					<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( $author_id ); ?>">
+						<div class="twrp-author-settings__author-item-name">
+							<?= esc_html( $author_display_name ); ?>
+						</div>
+						<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>
 					</div>
-					<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>
-				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
 			<?php endif; ?>
 		</div>
 

@@ -43,8 +43,6 @@ class Get_Posts {
 		$registered_settings_classes = Manage_Component_Classes::get_registered_query_args_settings();
 		$query_args                  = self::get_starting_query_args();
 
-		$query_options = DB_Query_Options::get_all_query_settings( $query_id );
-
 		try {
 			$query_options = DB_Query_Options::get_all_query_settings( $query_id );
 		} catch ( \RuntimeException $exception ) {

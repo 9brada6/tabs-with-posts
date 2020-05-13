@@ -7,6 +7,7 @@ namespace TWRP\Admin\Tabs;
 use TWRP\Admin\Settings_Menu;
 use TWRP\DB_Query_Options;
 use TWRP\Manage_Component_Classes;
+use \RuntimeException;
 
 
 class Queries_Tab implements Interface_Admin_Menu_Tab {
@@ -131,8 +132,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$add_btn_icon = '<span class="twrp-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
 
 		// todo: delete.
-		var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 6 ) );
-		var_dump( post_type_exists( 'monitor' ) );
+		// var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 6 ) );
+		// var_dump( post_type_exists( 'monitor' ) );
 		?>
 		<div class="twrp-existing-queries">
 			<h3 class="twrp-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
@@ -241,7 +242,16 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php foreach ( $setting_classes as $setting_class ) : ?>
 					<?php
-					$current_settings = DB_Query_Options::get_all_query_settings( $query_id );
+					try {
+						$current_settings = DB_Query_Options::get_all_query_settings( $query_id );
+						if ( isset( $current_settings[ $setting_class->get_setting_name() ] ) ) {
+							$current_setting = $current_settings[ $setting_class->get_setting_name() ];
+						} else {
+							$current_setting = null;
+						}
+					} catch ( RuntimeException $e ) {
+						$current_settings = null;
+					}
 
 					if ( isset( $current_settings[ $setting_class->get_setting_name() ] ) ) {
 						$current_setting = $current_settings[ $setting_class->get_setting_name() ];
