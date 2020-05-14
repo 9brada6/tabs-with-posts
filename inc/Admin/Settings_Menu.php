@@ -4,8 +4,6 @@
  *
  * @todo: Remove query arg from url for the default tab.
  * @todo: Check if users have capability to see the post.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP\Admin;
@@ -27,15 +25,11 @@ class Settings_Menu {
 	/**
 	 * Holds the ID of the WordPress submenu. The submenu is added to
 	 * "Settings" menu.
-	 *
-	 * @var string
 	 */
 	const MENU_SLUG = 'tabs_with_recommended_posts';
 
 	/**
 	 * Key of the URL parameter that holds each tab value.
-	 *
-	 * @var string
 	 */
 	const TAB__URL_PARAMETER_KEY = 'tab';
 
@@ -43,8 +37,6 @@ class Settings_Menu {
 	 * Holds all the HTML attribute classes to display the HTML.
 	 *
 	 * ID => HTML classes.
-	 *
-	 * @var array
 	 */
 	const CLASSES = array(
 		'page'                => 'twrp-admin wrap',

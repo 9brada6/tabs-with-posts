@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the interface of the article blocks.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP\Article_Block;
@@ -44,6 +42,16 @@ interface Article_Block {
 	 * @return void
 	 */
 	public function include_template();
+
+	/**
+	 * Enqueue all the styles and scripts necessary for this article block to run.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $query_settings
+	 * @return void
+	 */
+	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings );
 
 	/**
 	 * Display the article block settings in the Widgets::form().

@@ -35,6 +35,18 @@ class Modern_Article_Block implements Article_Block {
 	}
 
 	/**
+	 * Enqueue all the styles and scripts necessary for this article block to run.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $query_settings
+	 * @return void
+	 */
+	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings ) {
+
+	}
+
+	/**
 	 * Display the article block settings in the Widgets::form().
 	 *
 	 * @param int $widget_id
@@ -63,5 +75,6 @@ class Modern_Article_Block implements Article_Block {
 	public function sanitize_widget_settings( $unsanitized_settings ) {
 		return $unsanitized_settings;
 	}
+
 
 }

@@ -45,12 +45,14 @@ class Simple_Article_Block implements Article_Block {
 	}
 
 	/**
-	 * Enqueue the styles and scripts when a widget that has this article block
-	 * is displayed.
+	 * Enqueue all the styles and scripts necessary for this article block to run.
 	 *
-	 * @todo
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $query_settings
+	 * @return void
 	 */
-	public function enqueue_styles_and_scripts() {
+	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings ) {
 
 	}
 

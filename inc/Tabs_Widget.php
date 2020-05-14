@@ -39,6 +39,19 @@ class Tabs_Widget extends \WP_Widget {
 			return;
 		}
 
+		$selected_queries = self::get_selected_queries( $widget_id );
+
+		foreach ( $selected_queries as $query_id ) {
+			$selected_artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
+			try {
+				$artblock       = Manage_Component_Classes::get_style_class_by_name( $selected_artblock_id );
+				$query_settings = self::get_query_instance_settings( $widget_id, $query_id );
+			} catch ( RuntimeException $e ) {
+				continue;
+			}
+			$artblock->enqueue_scripts( $query_settings );
+		}
+
 		// $settings  = self::get_instance_settings();
 
 		// Get all queries and articles blocks.
@@ -473,7 +486,7 @@ class Tabs_Widget extends \WP_Widget {
 	}
 
 	/**
-	 * Get the selected article block id exclusive for a query selected within a widget.
+	 * Get the selected article block id for a query selected within a widget.
 	 * Return the constant "DEFAULT_SELECTED_ARTBLOCK_ID" if something is wrong, or article block not set.
 	 *
 	 * @param string|int $widget_id Either the int or the whole widget Id.
@@ -548,7 +561,24 @@ class Tabs_Widget extends \WP_Widget {
 		return $queries_ids;
 	}
 
-	public static function get_query_instance_settings() {
-		// todo.
+	/**
+	 * Get the query settings of a specific widget.
+	 *
+	 * @throws \RuntimeException If settings does not exist.
+	 *
+	 * @param int|string $widget_id The whole widget id or just the number.
+	 * @param int $query_id
+	 * @return array
+	 */
+	public static function get_query_instance_settings( $widget_id, $query_id ) {
+		$instance_settings = self::get_instance_settings( $widget_id );
+
+		if ( isset( $instance_settings[ $query_id ] ) ) {
+			if ( is_array( $instance_settings[ $query_id ] ) ) {
+				return $instance_settings[ $query_id ];
+			}
+		}
+
+		throw new RuntimeException( 'The settings does not exist.' );
 	}
 }

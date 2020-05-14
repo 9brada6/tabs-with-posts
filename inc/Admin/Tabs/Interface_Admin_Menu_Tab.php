@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the interface that each tab that needs to be displayed should implement.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP\Admin\Tabs;

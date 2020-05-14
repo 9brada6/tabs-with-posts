@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the interface needed to calculate the posts retrieved by a WP Query.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP\Query_Setting;

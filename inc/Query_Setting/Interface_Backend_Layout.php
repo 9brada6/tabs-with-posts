@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the interface needed for all the query settings to exist.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP\Query_Setting;

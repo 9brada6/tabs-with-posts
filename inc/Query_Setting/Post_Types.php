@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the class that will filter articles via the post types.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP\Query_Setting;

@@ -1,8 +1,6 @@
 <?php
 /**
  * Implements the class that will manage all the WP database options.
- *
- * @package Tabs_With_Recommended_Posts
  */
 
 namespace TWRP;
