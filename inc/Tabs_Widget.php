@@ -32,31 +32,10 @@ class Tabs_Widget extends \WP_Widget {
 		);
 	}
 
-	public static function enqueue_scripts( $widget_full_id ) {
-		try {
-			$widget_id = self::twrp_get_widget_id_num( $widget_full_id );
-		} catch ( RuntimeException $exception ) {
-			return;
-		}
 
-		$selected_queries = self::get_selected_queries( $widget_id );
 
-		foreach ( $selected_queries as $query_id ) {
-			$selected_artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
-			try {
-				$artblock       = Manage_Component_Classes::get_style_class_by_name( $selected_artblock_id );
-				$query_settings = self::get_query_instance_settings( $widget_id, $query_id );
-			} catch ( RuntimeException $e ) {
-				continue;
-			}
-			$artblock->enqueue_scripts( $query_settings );
-		}
-
-		// $settings  = self::get_instance_settings();
-
-		// Get all queries and articles blocks.
-		// For each article block enqueue the styles.
-	}
+	// =========================================================================
+	// Functions to display the frontend.
 
 	/**
 	 * Display the front-end content.
@@ -72,35 +51,73 @@ class Tabs_Widget extends \WP_Widget {
 
 			echo '<div class="twrp-widget__tabs-container">';
 				// Todo: change this shit.
-				$this->display_query( 1, $instance_settings, true );
+				$this->display_query( 1, true );
 			echo '</div>';
 		echo '</div>';
 
 		echo $args['after_widget']; // phpcs:ignore
 	}
 
-	protected function display_query( $query_id, $instance_settings, $is_shown ) {
-		// TODO: Verify these how we get them and how legit they are.
+	protected function display_query( $query_id, $is_shown ) {
+		// Todo: Verify if widget_id is good.
+		$widget_id = (int) $this->number;
+
 		try {
-			$posts = Get_Posts::get_posts_by_query_id( $query_id );
+			$artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
+			$artblock    = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
+			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
+			$settings    = self::get_query_instance_settings( $widget_id, $query_id );
+			$settings    = $artblock->sanitize_widget_settings( $settings );
 		} catch ( RuntimeException $e ) {
 			return;
 		}
 
-		$artblock_id = self::get_selected_artblock_id( (int) $this->number, $query_id );
-		$artblock    = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
+		$query_content_class = 'twrp-widget__tab-content twrp-widget__tab-content--' . $widget_id . '-' . $query_id;
+
 		global $post;
 		?>
-		<div class="twrp-widget__tab-content">
+		<div class="<?= esc_attr( $query_content_class ); ?>">
 			<?php
 			foreach ( $posts as $new_global_post ) :
 				$post = $new_global_post; // phpcs:ignore -- We reset afterwards;
-				$artblock->include_template();
+				setup_postdata( $new_global_post );
+				$artblock->include_template( $widget_id, $query_id, $settings );
 			endforeach;
 			wp_reset_postdata();
 			?>
 		</div>
 		<?php
+	}
+
+	// =========================================================================
+	// Enqueue the scripts dynamically.
+
+	/**
+	 * Enqueue the scripts and generate the styles for a specific widget.
+	 *
+	 * @param int|string $widget_id Full widget Id, or just the int number.
+	 * @return void
+	 */
+	public static function enqueue_scripts( $widget_id ) {
+		try {
+			$widget_id = self::twrp_get_widget_id_num( $widget_id );
+		} catch ( RuntimeException $exception ) {
+			return;
+		}
+
+		$selected_queries = self::get_selected_queries( $widget_id );
+
+		foreach ( $selected_queries as $query_id ) {
+			$selected_artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
+			try {
+				$artblock       = Manage_Component_Classes::get_style_class_by_name( $selected_artblock_id );
+				$query_settings = self::get_query_instance_settings( $widget_id, $query_id );
+				$query_settings = $artblock->sanitize_widget_settings( $query_settings );
+			} catch ( RuntimeException $e ) {
+				continue;
+			}
+			$artblock->enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings );
+		}
 	}
 
 	// =========================================================================
@@ -562,7 +579,8 @@ class Tabs_Widget extends \WP_Widget {
 	}
 
 	/**
-	 * Get the query settings of a specific widget.
+	 * Get the query settings of a specific widget. The settings retrieved from
+	 * db are not sanitized after.
 	 *
 	 * @throws \RuntimeException If settings does not exist.
 	 *

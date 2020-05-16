@@ -2,11 +2,11 @@
 	"folders": [
 		{
 			"name": "Main",
-			"path": "./"
+			"path": "."
 		},
 		{
 			"name": "Server",
-			"path": "./../../../"
+			"path": "../../.."
 		}
 	],
 	"extensions": {
@@ -51,28 +51,28 @@
 		// easily toggle the visibility of
 		// those from the status bar.
 		"files.exclude": {
-			".idea": false,
-			".phan": false,
-			".vscode": false,
-			"node_modules": false,
-			".gitignore": false,
-			"vendor": false,
-			".eslintrc.json": false,
-			"rollup.config.js": false,
-			".phpcs - development.xml": false,
-			".phpcs.xml": false,
-			".stylelintrc.json": false,
-			"composer.json": false,
-			"composer.lock": false,
-			"package.json": false,
-			"index.php": false,
-			"package-lock.json": false,
-			"TWRP.code-workspace": false,
-			"**/.git": false,
-			"**/.svn": false,
-			"**/.hg": false,
-			"**/CVS": false,
-			"**/.DS_Store": false
+			".idea": true,
+			".phan": true,
+			".vscode": true,
+			"node_modules": true,
+			".gitignore": true,
+			"vendor": true,
+			".eslintrc.json": true,
+			"rollup.config.js": true,
+			".phpcs - development.xml": true,
+			".phpcs.xml": true,
+			".stylelintrc.json": true,
+			"composer.json": true,
+			"composer.lock": true,
+			"package.json": true,
+			"index.php": true,
+			"package-lock.json": true,
+			"TWRP.code-workspace": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true
 		},
 
 
@@ -95,7 +95,7 @@
 			"**/node_modules/**",
 			"**/bower_components/**",
 			"**/vendor/**",
-			"**/vendor/**/{Tests,tests}/**"
+			"**/vendor/**/{Tests,tests}/**",
 		],
 		"intelephense.completion.maxItems": 50,
 		// =====================================================================
@@ -112,7 +112,7 @@
 		// =====================================================================
 		// PHP Sniffer & Beautifier - Linter and Formatter:
 		"phpSniffer.autoDetect": true,
-		"phpSniffer.run": "onType",
+		"phpSniffer.run": "onSave",
 
 		"phpsab.snifferMode": "onSave",
 		"phpsab.snifferShowSources": false,
@@ -136,10 +136,10 @@
 		"phan.analyzedProjectDirectory": "/mnt/w/Projects/wp-plugin-twrp/wordpress/wp-content/plugins/tabs-with-recommended-posts/",
 
 		// Setting to false, because is enabled in Intelephense.
-		"phan.connectToServerWithStdio": true,
+		"phan.connectToServerWithStdio": false,
 		"phan.enableGoToDefinition": false,
 		"phan.enableHover": false,
-		"phan.analyzeOnlyOnSave": false,
+		"phan.analyzeOnlyOnSave": true,
 		// "phan.enableDebugLog": true,
 
 		// =====================================================================

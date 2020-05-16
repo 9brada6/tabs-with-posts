@@ -37,10 +37,12 @@ class Simple_Article_Block implements Article_Block {
 	/**
 	 * Include the template that should be displayed in the frontend.
 	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $settings
 	 * @return void
 	 */
-	public function include_template() {
-		$settings = array();
+	public function include_template( $widget_id, $query_id, $settings ) {
 		include \TWRP_Main::get_templates_directory() . 'simple-style.php';
 	}
 
@@ -49,11 +51,27 @@ class Simple_Article_Block implements Article_Block {
 	 *
 	 * @param int $widget_id
 	 * @param int $query_id
-	 * @param array $query_settings
+	 * @param array $query_settings The settings passed must be sanitized.
 	 * @return void
 	 */
 	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings ) {
+		wp_enqueue_style( 'twrp-simple-style', 'todo', array(), '1.0.0', 'all' );
 
+		$custom_css = self::create_custom_css( $widget_id, $query_id, $query_settings );
+		wp_add_inline_style( 'twrp-simple-style', $custom_css );
+	}
+
+	protected function create_custom_css( $widget_id, $query_id, $settings ) {
+		$parent_class = '.twrp-widget__tab-content--' . $widget_id . '-' . $query_id;
+
+		$custom_css = '';
+		if ( $settings['header_size'] ) {
+			$custom_css .= "$parent_class .twrp-ss__title {
+				font-size: {$settings['header_size']}rem;
+			}";
+		}
+
+		return $custom_css;
 	}
 
 	/**

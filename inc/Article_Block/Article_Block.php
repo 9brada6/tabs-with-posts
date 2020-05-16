@@ -39,9 +39,12 @@ interface Article_Block {
 	/**
 	 * Include the template that should be displayed in the frontend.
 	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $settings
 	 * @return void
 	 */
-	public function include_template();
+	public function include_template( $widget_id, $query_id, $settings );
 
 	/**
 	 * Enqueue all the styles and scripts necessary for this article block to run.

@@ -28,9 +28,12 @@ class Modern_Article_Block implements Article_Block {
 	/**
 	 * Include the template that should be displayed in the frontend.
 	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $settings
 	 * @return void
 	 */
-	public function include_template() {
+	public function include_template( $widget_id, $query_id, $settings ) {
 		include \TWRP_Main::get_plugin_directory() . 'templates/modern-style.php';
 	}
 

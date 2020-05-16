@@ -1,7 +1,5 @@
 <?php
 
-declare( strict_types = 1 );
-
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
