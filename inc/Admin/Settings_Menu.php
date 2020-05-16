@@ -216,7 +216,7 @@ class Settings_Menu {
 
 		$active_tab = '';
 		if ( isset( $_GET[ self::TAB__URL_PARAMETER_KEY ] ) ) { // phpcs:ignore WordPress.Security
-			$active_tab = sanitize_key( $_GET[ self::TAB__URL_PARAMETER_KEY ] ); // phpcs:ignore WordPress.Security
+			$active_tab = sanitize_key( (string) $_GET[ self::TAB__URL_PARAMETER_KEY ] ); // phpcs:ignore WordPress.Security
 		}
 
 		foreach ( self::$tabs as $tab ) {
@@ -236,7 +236,7 @@ class Settings_Menu {
 	 */
 	public static function is_active_screen() {
 		$screen = get_current_screen();
-		if ( isset( $screen, $screen->id ) && strpos( $screen->id, self::MENU_SLUG ) ) {
+		if ( isset( $screen, $screen->id ) && ( strpos( $screen->id, self::MENU_SLUG ) !== false ) ) {
 			return true;
 		}
 
