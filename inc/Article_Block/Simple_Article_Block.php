@@ -89,6 +89,7 @@ class Simple_Article_Block implements Article_Block {
 
 		$settings_creator->display_checkbox_setting( 'display_author', _x( 'Display the author.', 'backend', 'twrp' ), $default_settings['display_author'] );
 		$settings_creator->display_checkbox_setting( 'display_date', _x( 'Display the date.', 'backend', 'twrp' ), $default_settings['display_author'] );
+		$settings_creator->display_checkbox_setting( 'show_date_difference', _x( 'Display the date as a human difference(Ex: 3 months ago).', 'backend', 'twrp' ), $default_settings['show_date_difference'] );
 
 		$settings_creator->display_number_setting( 'header_size', $default_settings['header_size'], $this->get_header_size_setting_args() );
 		$settings_creator->display_number_setting( 'meta_size', $default_settings['meta_size'], $this->get_meta_size_setting_args() );
@@ -125,6 +126,14 @@ class Simple_Article_Block implements Article_Block {
 			if ( 'meta_size' === $setting_name ) {
 				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_number( $setting, $default_values['meta_size'], $this->get_meta_size_setting_args() );
 			}
+
+			if ( 'date_format' === $setting_name ) {
+				$sanitized_settings[ $setting_name ] = $setting;
+			}
+
+			if ( 'show_date_difference' === $setting_name ) {
+				$sanitized_settings[ $setting_name ] = $settings_creator->sanitize_checkbox( $setting );
+			}
 		}
 
 		return $sanitized_settings;
@@ -135,10 +144,12 @@ class Simple_Article_Block implements Article_Block {
 
 	public function get_default_values() {
 		$defaults = array(
-			'display_date'   => '',
-			'display_author' => '',
-			'header_size'    => '',
-			'meta_size'      => '0.9',
+			'display_date'         => '',
+			'display_author'       => '',
+			'header_size'          => '',
+			'meta_size'            => '0.9',
+			'date_format'          => '',
+			'show_date_difference' => '1',
 		);
 
 		return $defaults;

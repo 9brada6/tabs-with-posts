@@ -7,12 +7,50 @@
 if ( ! isset( $settings ) ) {
 	return;
 }
+
+$title = get_the_title();
+if ( empty( $title ) ) {
+	return;
+}
+
+
+
+if ( $settings['show_date_difference'] ) {
+	$from = get_post_timestamp();
+	$to   = date_timestamp_get( current_datetime() );
+
+	if ( false === $from ) {
+		$date_text = '';
+	} else {
+		$date_text = sprintf( '%s ago', human_time_diff( $from, $to ) );
+	}
+} else {
+	if ( empty( trim( $settings['date_format'] ) ) ) {
+		$settings['date_format'] = get_option( 'date_format' );
+	}
+	$date_text = get_the_time( $settings['date_format'] );
+}
+
+
+
 ?>
 
 <div class="twrp-ss">
-	<?php the_title( '<p class="h3 twrp-ss__title">', '</p>' ); ?>
-	<?php if ( $settings['display_author'] ) : ?>
-		<?php the_author(); ?>
-	<?php endif; ?>
+	<a class="twrp-ss__link" href="<?php the_permalink(); ?>">
+		<h3 class="twrp-ss__title">
+			<?php the_title(); ?>
+		</h3>
 
+		<?php if ( $settings['display_author'] ) : ?>
+		<span class="twrp-ss__author">
+			<?php the_author(); ?>
+		</span>
+		<?php endif; ?>
+
+		<?php if ( $settings['display_date'] ) : ?>
+		<span class="twrp-ss__date">
+			<?= $date_text; // phpcs:ignore -- Safe XSS ?>
+		</span>
+		<?php endif; ?>
+	</a>
 </div>
