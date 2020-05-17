@@ -17,7 +17,7 @@
 			// PHP Debug
 			"felixfbecker.php-debug",
 
-			// PHP Sniffer - Linter and Formater,
+			// PHP Sniffer - Linter and Formatter,
 			// we use the WordPress standard.
 			"wongjn.php-sniffer",
 
@@ -135,11 +135,11 @@
 		// WSL:
 		"phan.analyzedProjectDirectory": "/mnt/w/Projects/wp-plugin-twrp/wordpress/wp-content/plugins/tabs-with-recommended-posts/",
 
-		// Setting to false, because is enabled in Intelephense.
-		"phan.connectToServerWithStdio": false,
+		"phan.connectToServerWithStdio": true,
 		"phan.enableGoToDefinition": false,
 		"phan.enableHover": false,
 		"phan.analyzeOnlyOnSave": true,
+
 		// "phan.enableDebugLog": true,
 
 		// =====================================================================
