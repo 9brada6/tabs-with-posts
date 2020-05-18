@@ -19,10 +19,7 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 	 * @return void
 	 */
 	public function display_setting( $current_setting ) {
-
-		$available_post_types = self::get_available_types();
-		$current_setting      = self::sanitize_setting( $current_setting );
-
+		$current_setting     = self::sanitize_setting( $current_setting );
 		$selected_post_types = self::get_default_setting();
 		if ( ! empty( $current_setting ) ) {
 			$selected_post_types = $current_setting;
@@ -31,6 +28,7 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 		?>
 		<div class="twrp-tabs-settings__post-types">
 			<?php
+			$available_post_types = self::get_available_types();
 			foreach ( $available_post_types as $available_post_type ) :
 				if ( isset( $available_post_type->name, $available_post_type->label ) ) :
 
@@ -98,10 +96,8 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 
 		$available_post_types = self::get_available_types( 'names' );
 		foreach ( $post_types as $post_type_name ) {
-			if ( $post_type_name ) {
-				if ( in_array( $post_type_name, $available_post_types, true ) ) {
-					array_push( $sanitized_post_types, $post_type_name );
-				}
+			if ( in_array( $post_type_name, $available_post_types, true ) ) {
+				array_push( $sanitized_post_types, $post_type_name );
 			}
 		}
 
@@ -118,7 +114,11 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 	 * @return mixed
 	 */
 	public static function get_default_setting() {
-		return array( 'post' );
+		if ( post_type_exists( 'post' ) ) {
+			return array( 'post' );
+		}
+
+		return array();
 	}
 
 	/**
@@ -127,7 +127,7 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 	 *
 	 * @param string $return_type Can be 'objects', or names, @see get_post_types().
 	 *
-	 * @return array<object>|array<string> Depends on return type parameter.
+	 * @return \WP_Post_Type[]|string[] Depends on return type parameter.
 	 */
 	public static function get_available_types( $return_type = 'objects' ) {
 		$args = array(
@@ -165,13 +165,13 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
-			$post_types = self::get_default_setting();
-		} else {
+		if ( isset( $query_settings[ self::get_setting_name() ] ) ) {
 			$post_types = $query_settings[ self::get_setting_name() ];
+		} else {
+			$post_types = self::get_default_setting();
 		}
-		$previous_query_args['post_types'] = self::sanitize_setting( $post_types );
 
+		$previous_query_args['post_types'] = self::sanitize_setting( $post_types );
 		return $previous_query_args;
 	}
 
