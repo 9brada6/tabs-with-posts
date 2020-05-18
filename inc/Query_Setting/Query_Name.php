@@ -17,6 +17,35 @@ namespace TWRP\Query_Setting;
 class Query_Name implements Interface_Backend_Layout {
 
 	/**
+	 * The name of the input and of the array key that stores the option of the query.
+	 *
+	 * @return string
+	 */
+	public static function get_setting_name() {
+		return 'tab_name';
+	}
+
+	/**
+	 * The title of the setting accordion.
+	 *
+	 * @return string
+	 */
+	public function get_title() {
+		return _x( 'Name of the query', 'backend', 'twrp' );
+	}
+
+	/**
+	 * Whether or not when displaying the setting in the backend only the title
+	 * is shown and the setting HTML is hidden(return false), or both are
+	 * shown(return true).
+	 *
+	 * @return bool
+	 */
+	public static function setting_is_collapsed() {
+		return true;
+	}
+
+	/**
 	 * Display the backend HTML for the setting.
 	 *
 	 * @param mixed $current_setting The current setting of a query if is being
@@ -39,37 +68,12 @@ class Query_Name implements Interface_Backend_Layout {
 	}
 
 	/**
-	 * The title of the setting accordion.
+	 * Get the default setting. In this case an empty string.
 	 *
 	 * @return string
 	 */
-	public function get_title() {
-		return _x( 'Name of the query', 'backend', 'twrp' );
-	}
-
-	/**
-	 * Sanitize a variable, to be safe for processing.
-	 *
-	 * @param mixed $name The string to be sanitized.
-	 *
-	 * @return string
-	 */
-	public static function sanitize_setting( $name ) {
-		if ( ! is_string( $name ) ) {
-			return '';
-		}
-
-		$sanitized_name = preg_replace( '/[^a-zA-Z0-9 ()\-_]/', '', $name );
-		return $sanitized_name;
-	}
-
-	/**
-	 * The name of the input and of the array key that stores the option of the query.
-	 *
-	 * @return string
-	 */
-	public static function get_setting_name() {
-		return 'tab_name';
+	public static function get_default_setting() {
+		return '';
 	}
 
 	/**
@@ -86,22 +90,18 @@ class Query_Name implements Interface_Backend_Layout {
 	}
 
 	/**
-	 * Get the default setting. In this case an empty string.
+	 * Sanitize a variable, to be safe for processing.
+	 *
+	 * @param mixed $name The string to be sanitized.
 	 *
 	 * @return string
 	 */
-	public static function get_default_setting() {
-		return '';
-	}
+	public static function sanitize_setting( $name ) {
+		if ( ! is_string( $name ) ) {
+			return '';
+		}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
-	public static function setting_is_collapsed() {
-		return true;
+		$sanitized_name = preg_replace( '/[^a-zA-Z0-9 ()\-_]/', '', $name );
+		return $sanitized_name;
 	}
 }

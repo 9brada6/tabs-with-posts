@@ -11,6 +11,36 @@ namespace TWRP\Query_Setting;
 class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arguments {
 
 	/**
+	 * The name of the HTML form input, and also of the array key that stores
+	 * the option of the query.
+	 *
+	 * @return string
+	 */
+	public static function get_setting_name() {
+		return 'post_types';
+	}
+
+	/**
+	 * The title of the setting accordion.
+	 *
+	 * @return string
+	 */
+	public function get_title() {
+		return _x( 'Post types to display', 'backend', 'twrp' );
+	}
+
+	/**
+	 * Whether or not when displaying the setting in the backend only the title
+	 * is shown and the setting HTML is hidden(return false), or both are
+	 * shown(return true).
+	 *
+	 * @return bool
+	 */
+	public static function setting_is_collapsed() {
+		return true;
+	}
+
+	/**
 	 * Display the backend HTML for the setting.
 	 *
 	 * @param mixed $current_setting The current setting of a query if is being
@@ -54,15 +84,6 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 			?>
 		</div>
 		<?php
-	}
-
-	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
-	 */
-	public function get_title() {
-		return _x( 'Post types to display', 'backend', 'twrp' );
 	}
 
 	/**
@@ -142,16 +163,6 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 	}
 
 	/**
-	 * The name of the HTML form input, and also of the array key that stores
-	 * the option of the query.
-	 *
-	 * @return string
-	 */
-	public static function get_setting_name() {
-		return 'post_types';
-	}
-
-	/**
 	 * Create and insert the new arguments for the WP_Query.
 	 *
 	 * The previous query arguments will be modified such that will also contain
@@ -172,16 +183,5 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 
 		$previous_query_args['post_types'] = self::sanitize_setting( $post_types );
 		return $previous_query_args;
-	}
-
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
-	public static function setting_is_collapsed() {
-		return true;
 	}
 }
