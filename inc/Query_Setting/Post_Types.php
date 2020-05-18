@@ -152,8 +152,7 @@ class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arg
 	}
 
 	/**
-	 * Add the setting into some previous WP_Query arguments to retrieve posts
-	 * via WP_Query class.
+	 * Create and insert the new arguments for the WP_Query.
 	 *
 	 * The previous query arguments will be modified such that will also contain
 	 * the new settings, and will return the new query arguments to be passed
