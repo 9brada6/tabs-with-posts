@@ -50,7 +50,7 @@ class Query_Name implements Interface_Backend_Layout {
 	/**
 	 * Sanitize a variable, to be safe for processing.
 	 *
-	 * @param string $name The string to be sanitized.
+	 * @param mixed $name The string to be sanitized.
 	 *
 	 * @return string
 	 */
