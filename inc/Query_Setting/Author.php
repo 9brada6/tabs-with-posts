@@ -6,6 +6,8 @@ use \WP_User;
 
 class Author implements Query_Setting {
 
+	const AUTHORS_TYPE__SETTING_NAME = 'setting_type';
+
 	/**
 	 * The name of the input and of the array key that stores the option of the query.
 	 *
@@ -47,10 +49,14 @@ class Author implements Query_Setting {
 	 */
 	public function display_setting( $current_setting ) {
 		?>
-		<select id="twrp-author-settings__select_type" class="twrp-author-settings__select_type" name="">
-			<option value="">Exclude selected authors</option>
-			<option value="">Include selected authors</option>
-			<option value="">Same author as the post</option>
+		<select
+			id="twrp-author-settings__select_type"
+			class="twrp-author-settings__select_type"
+			name="<?= esc_attr( $this->get_setting_name() . '[' . self::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
+		>
+			<option value="-1"><?= _x( 'Exclude selected authors', 'backend', 'twrp' ); ?></option>
+			<option value="1"><?= _x( 'Include selected authors', 'backend', 'twrp' ); ?></option>
+			<option value="2"><?= _x( 'Same author as the post', 'backend', 'twrp' ); ?></option>
 		</select>
 
 		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list">
