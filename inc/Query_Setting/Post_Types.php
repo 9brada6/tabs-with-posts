@@ -8,7 +8,7 @@ namespace TWRP\Query_Setting;
 /**
  * Class that will filter the articles via selected posts types.
  */
-class Post_Types implements Interface_Backend_Layout, Interface_Modify_Query_Arguments {
+class Post_Types implements Query_Setting {
 
 	/**
 	 * The name of the HTML form input, and also of the array key that stores

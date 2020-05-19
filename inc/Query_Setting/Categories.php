@@ -26,7 +26,7 @@ namespace TWRP\Query_Setting;
  * Category 195 and it's children OR Category 198 and it's children
  * cat => '195, 198'
  */
-class Categories implements Interface_Backend_Layout {
+class Categories implements Query_Setting {
 
 	const CATEGORIES_TYPE__SETTING_KEY  = 'setting_type';
 	const INCLUDE_CHILDREN__SETTING_KEY = 'include_children';
@@ -277,5 +277,21 @@ class Categories implements Interface_Backend_Layout {
 	 */
 	public static function setting_is_collapsed() {
 		return true;
+	}
+
+	/**
+	 * Create and insert the new arguments for the WP_Query.
+	 *
+	 * The previous query arguments will be modified such that will also contain
+	 * the new settings, and will return the new query arguments to be passed
+	 * into WP_Query class.
+	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param mixed $query_settings All query settings, these settings are unsanitized.
+	 *
+	 * @return array The new arguments modified.
+	 */
+	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		return $previous_query_args;
 	}
 }

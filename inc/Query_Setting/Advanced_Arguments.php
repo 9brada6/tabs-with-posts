@@ -5,7 +5,7 @@ namespace TWRP\Query_Setting;
 use TWRP\Admin\Settings_Menu;
 use \TWRP\Admin\Tabs\Queries_Tab;
 
-class Advanced_Arguments implements Interface_Backend_Layout, Interface_Modify_Query_Arguments {
+class Advanced_Arguments implements Query_Setting {
 
 	public static function init() {
 		add_action( 'admin_enqueue_scripts', array( 'TWRP\\Query_Setting\\Advanced_Arguments', 'enqueue_scripts' ) );
@@ -76,8 +76,20 @@ class Advanced_Arguments implements Interface_Backend_Layout, Interface_Modify_Q
 		return 'advanced_args';
 	}
 
-	public static function add_query_arg( $previous_query_args, $tabs_settings ) {
-		return array( 'post_types' => 'post,page' );
+	/**
+	 * Create and insert the new arguments for the WP_Query.
+	 *
+	 * The previous query arguments will be modified such that will also contain
+	 * the new settings, and will return the new query arguments to be passed
+	 * into WP_Query class.
+	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param mixed $query_settings All query settings, these settings are unsanitized.
+	 *
+	 * @return array The new arguments modified.
+	 */
+	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		return $previous_query_args;
 	}
 
 	public static function setting_is_collapsed() {

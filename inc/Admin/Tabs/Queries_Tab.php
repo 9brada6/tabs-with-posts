@@ -8,7 +8,7 @@ namespace TWRP\Admin\Tabs;
 use TWRP\Admin\Settings_Menu;
 use TWRP\DB_Query_Options;
 use TWRP\Manage_Component_Classes;
-use \TWRP\Query_Setting\Interface_Backend_Layout;
+use \TWRP\Query_Setting\Query_Setting;
 use \RuntimeException;
 
 /**
@@ -18,8 +18,7 @@ use \RuntimeException;
  * it's a easy UI for the user to create parameters for WP_Query function.
  *
  * For a given query, this class shows an UI with each filter implemented. Each
- * filter has it's own class, and implement Interface_Modify_Query_Arguments
- * interface.
+ * filter has it's own class, and implement Query_Setting interface.
  */
 class Queries_Tab implements Interface_Admin_Menu_Tab {
 
@@ -295,7 +294,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	/**
 	 * Get the current setting of the query.
 	 *
-	 * @param Interface_Backend_Layout $setting_class
+	 * @param Query_Setting $setting_class
 	 *
 	 * @return mixed|null Null if no setting could be retrieved.
 	 */

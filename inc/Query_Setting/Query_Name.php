@@ -14,7 +14,7 @@ namespace TWRP\Query_Setting;
  * simple name to remember and describe what a query do. This name will be
  * visible only in the backend of the website.
  */
-class Query_Name implements Interface_Backend_Layout {
+class Query_Name implements Query_Setting {
 
 	/**
 	 * The name of the input and of the array key that stores the option of the query.
@@ -103,5 +103,21 @@ class Query_Name implements Interface_Backend_Layout {
 
 		$sanitized_name = preg_replace( '/[^a-zA-Z0-9 ()\-_]/', '', $name );
 		return $sanitized_name;
+	}
+
+	/**
+	 * Create and insert the new arguments for the WP_Query.
+	 *
+	 * The previous query arguments will be modified such that will also contain
+	 * the new settings, and will return the new query arguments to be passed
+	 * into WP_Query class.
+	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param mixed $query_settings All query settings, these settings are unsanitized.
+	 *
+	 * @return array The new arguments modified.
+	 */
+	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		return $previous_query_args;
 	}
 }

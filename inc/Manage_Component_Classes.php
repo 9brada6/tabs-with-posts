@@ -3,8 +3,7 @@
 namespace TWRP;
 
 use TWRP\Article_Block\Article_Block;
-use TWRP\Query_Setting\Interface_Backend_Layout;
-use TWRP\Query_Setting\Interface_Modify_Query_Arguments;
+use TWRP\Query_Setting\Query_Setting;
 
 
 class Manage_Component_Classes {
@@ -24,7 +23,7 @@ class Manage_Component_Classes {
 
 		$setting_class = new $setting_class_name();
 
-		if ( $setting_class instanceof Interface_Backend_Layout ) {
+		if ( $setting_class instanceof Query_Setting ) {
 			if ( is_numeric( $priority ) && ! empty( $priority ) && ! array_key_exists( $priority, self::$query_backend_settings ) ) {
 				self::$query_backend_settings[ $priority ] = $setting_class;
 			} else {
@@ -44,7 +43,7 @@ class Manage_Component_Classes {
 
 		$setting_class = new $setting_class_name();
 
-		if ( $setting_class instanceof Interface_Modify_Query_Arguments ) {
+		if ( $setting_class instanceof Query_Setting ) {
 			if ( is_numeric( $priority ) && ! empty( $priority ) && ! array_key_exists( $priority, self::$query_args_settings ) ) {
 				self::$query_args_settings[ $priority ] = $setting_class;
 			} else {

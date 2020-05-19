@@ -13,7 +13,7 @@ namespace TWRP\Query_Setting;
  * Each one of this setting will be displayed with a title taken from
  * get_title() function, and display below the HTML in display_setting() function.
  */
-interface Interface_Backend_Layout {
+interface Query_Setting {
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
@@ -71,4 +71,18 @@ interface Interface_Backend_Layout {
 	 * @return mixed The sanitized variable
 	 */
 	public static function sanitize_setting( $setting );
+
+	/**
+	 * Create and insert the new arguments for the WP_Query.
+	 *
+	 * The previous query arguments will be modified such that will also contain
+	 * the new settings, and will return the new query arguments to be passed
+	 * into WP_Query class.
+	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param mixed $query_settings All query settings, these settings are unsanitized.
+	 *
+	 * @return array The new arguments modified.
+	 */
+	public static function add_query_arg( $previous_query_args, $query_settings );
 }
