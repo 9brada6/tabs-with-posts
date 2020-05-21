@@ -309,201 +309,345 @@ var TWRP_Plugin = (function ($) {
 	}
 
 	// =============================================================================
-
-	$( initializeAutoComplete );
-
-	const authorSearchControl = $( '#twrp-author-settings__js-author-search' );
-
+	// Hide/Show Categories List and Add Button based on option selected.
+	var authorTypeSelector = $('#twrp-author-settings__select_type');
+	var authorSearchWrap = $('#twrp-author-settings__author-search-wrap');
+	var authorToHideList = $('#twrp-author-settings__js-authors-list');
+	$(document).ready(hideOrShowVisualList);
+	$(document).on('change', '#twrp-author-settings__select_type', hideOrShowVisualList);
+	/**
+	 * Hide or show the visual list and the form input to search for users.
+	 */
+	function hideOrShowVisualList() {
+	    var authorTypeVal = authorTypeSelector.val();
+	    if ('IN' === authorTypeVal || 'OUT' === authorTypeVal) {
+	        authorSearchWrap.show('blind');
+	        authorToHideList.show('blind');
+	    }
+	    else {
+	        authorSearchWrap.hide('blind');
+	        authorToHideList.hide('blind');
+	    }
+	}
+	// =============================================================================
+	// Hide/Show Same author notice.
+	var sameAuthorNotice = $('#twrp-author-settings__js-same-author-notice');
+	$(document).ready(handleSameAuthorNotice);
+	$(document).on('change', '#twrp-author-settings__select_type', handleSameAuthorNotice);
+	/**
+	 * Hide or show a notice that says that when the author is set to the same as
+	 * the post, the query will not be displayed on non-singular pages.
+	 */
+	function handleSameAuthorNotice() {
+	    var authorTypeVal = authorTypeSelector.val();
+	    if ('SAME' === authorTypeVal) {
+	        sameAuthorNotice.show('blind');
+	    }
+	    else {
+	        sameAuthorNotice.hide('blind');
+	    }
+	}
+	// =============================================================================
+	// Manage Author Search
+	$(initializeAutoComplete);
+	/**
+	 * The search input where administrators will search for users.
+	 */
+	var authorSearchInput = $('#twrp-author-settings__js-author-search');
+	/**
+	 * Initialize the search input, when a user enter some characters, it will
+	 * automatically search and display the options.
+	 */
 	function initializeAutoComplete() {
-		authorSearchControl.autocomplete( {
-			source: getSearchedUsers,
-			minLength: 2,
-		} );
+	    authorSearchInput.autocomplete({
+	        source: showSearchedUsers,
+	        minLength: 2,
+	    });
 	}
-
-	// =============================================================================
-
-	function getSearchedUsers( request, sendToControl ) {
-		const allUsers = new wp.api.collections.Users();
-		const usersFound = [];
-
-		allUsers.fetch( {
-			data: {
-				_fields: 'id,name',
-				search: request.term,
-			},
-		} );
-
-		allUsers.once( 'sync', updateCategories );
-
-		function updateCategories() {
-			for ( let i = 0; i < allUsers.length; i++ ) {
-				// Todo: Check if properties of object exist. Sanitize Name and Id.
-				usersFound.push( {
-					value: allUsers.models[ i ].attributes.name,
-					label: allUsers.models[ i ].attributes.name,
-					id: allUsers.models[ i ].attributes.id,
-				} );
-			}
-			sendToControl( usersFound );
-		}
-
-		allUsers.once( 'error', function() {
-			console.error( 'TWRP Backbone error when getting users.' ); // eslint-disable-line
-			updateCategories();
-		} );
-
-		allUsers.once( 'invalid', function() {
-			console.error( 'TWRP Backbone invalid when getting users.' ); // eslint-disable-line
-			updateCategories();
-		} );
+	/**
+	 * Search for the users and append the results into the autocomplete selector.
+	 */
+	function showSearchedUsers(request, sendToControl) {
+	    var allUsers = new wp.api.collections.Users();
+	    var usersFound = [];
+	    allUsers.fetch({
+	        data: {
+	            _fields: 'id,name',
+	            search: request.term,
+	        },
+	    });
+	    allUsers.once('sync', updateCategories);
+	    function updateCategories() {
+	        for (var i_1 = 0; i_1 < allUsers.length; i_1++) {
+	            var name_1 = void 0, id_1 = void 0;
+	            try {
+	                name_1 = allUsers.models[i_1].attributes.name;
+	                id_1 = allUsers.models[i_1].attributes.id;
+	            }
+	            catch (error) {
+	                continue;
+	            }
+	            usersFound.push({
+	                value: name_1,
+	                label: name_1,
+	                id: id_1,
+	            });
+	        }
+	        sendToControl(usersFound);
+	    }
+	    allUsers.once('error', function () {
+	        console.error('TWRP Backbone error when getting users.'); // eslint-disable-line
+	        updateCategories();
+	    });
+	    allUsers.once('invalid', function () {
+	        console.error('TWRP Backbone invalid when getting users.'); // eslint-disable-line
+	        updateCategories();
+	    });
 	}
-
 	// =============================================================================
-
-	const authorHiddenInput = $( '#twrp-author-settings__js-author-ids' );
-
-	const authorsVisualList = $( '#twrp-author-settings__js-authors-list' );
-	const authorVisualItem = $(
-		'<div class="twrp-display-list__item twrp-author-settings__author-item">' +
-			'<div class="twrp-author-settings__author-item-name">' +
-			'</div>' +
-			'<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
-		'</div>'
-	);
-
-	const authorIdAttrName = 'data-author-id';
-
-	$( document ).on( 'click', '#twrp-author-settings__js-author-add-btn', handleAddAuthorClick );
-
+	// Add an author
+	var authorsIdsInput = $('#twrp-author-settings__js-author-ids');
+	var authorsVisualList = $('#twrp-author-settings__js-authors-list');
+	/**
+	 * The template for an author item, to be appended to the visual list. Note that
+	 * we have a similar template in the PHP file, so a change here will require
+	 * also a change there, and vice-versa.
+	 */
+	var authorVisualItem = $('<div class="twrp-display-list__item twrp-author-settings__author-item">' +
+	    '<div class="twrp-author-settings__author-item-name"></div>' +
+	    '<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button">' +
+	    '<span class="dashicons dashicons-no"></span>' +
+	    '</button>' +
+	    '</div>');
+	/**
+	 * The author attribute name that hold the Id of a visual item.
+	 */
+	var authorIdAttrName = 'data-author-id';
+	$(document).on('click', '#twrp-author-settings__js-author-add-btn', handleAddAuthorClick);
+	$(document).on('keypress', '#twrp-author-settings__js-author-search', handleSearchInputKeypress);
+	/**
+	 * When a user click "enter", add the current selected author to the list.
+	 */
+	function handleSearchInputKeypress(event) {
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if (keycode !== 13) {
+	        return;
+	    }
+	    event.preventDefault();
+	    var autocompleteInstance = authorSearchInput.autocomplete('instance');
+	    var id, name;
+	    try {
+	        var selectedItem = autocompleteInstance.selectedItem;
+	        id = selectedItem.id;
+	        name = selectedItem.label;
+	    }
+	    catch (error) {
+	        return;
+	    }
+	    addAuthor(id, name);
+	}
+	/**
+	 * Handles the click on "Add author" button.
+	 */
 	function handleAddAuthorClick() {
-		const autocompleteInstance = authorSearchControl.autocomplete( 'instance' );
-
-		// todo: Check if property selectedItem exist first.
-		const selectedItem = autocompleteInstance.selectedItem;
-
-		// todo: Check if property label,value exist first.
-		const id = selectedItem.id;
-		const name = selectedItem.label;
-		addAuthorToVisualList( id, name );
-		addAuthorToHiddenInput( id );
+	    var autocompleteInstance = authorSearchInput.autocomplete('instance');
+	    var id, name;
+	    try {
+	        var selectedItem = autocompleteInstance.selectedItem;
+	        id = selectedItem.id;
+	        name = selectedItem.label;
+	    }
+	    catch (error) {
+	        return;
+	    }
+	    addAuthor(id, name);
 	}
-
+	/**
+	 * Add an author to the list of selected authors(both visual, and in the hidden
+	 * input).
+	 */
+	function addAuthor(id, name) {
+	    _addAuthorToVisualList(id, name);
+	    _addAuthorToHiddenInput(id);
+	    removeOrAddNoAuthorsText();
+	}
+	/**
+	 * Add an author to the visual list.
+	 */
+	function _addAuthorToVisualList(id, name) {
+	    if (authorExistInVisualList(id)) {
+	        return;
+	    }
+	    var newAuthorItem = authorVisualItem.clone();
+	    newAuthorItem.find('.twrp-author-settings__author-item-name').append(sanitizeAuthorName(name));
+	    newAuthorItem.attr(authorIdAttrName, id);
+	    authorsVisualList.append(newAuthorItem);
+	}
+	/**
+	 * Add an author to the list of hidden input.
+	 */
+	function _addAuthorToHiddenInput(id) {
+	    if (authorExistInHiddenInput(id)) {
+	        return;
+	    }
+	    id = String(id);
+	    var previousVal = authorsIdsInput.val();
+	    var newVal = '';
+	    if (previousVal) {
+	        newVal = previousVal + ';' + id;
+	    }
+	    else {
+	        newVal = id;
+	    }
+	    authorsIdsInput.val(newVal);
+	}
 	// =============================================================================
-
-	function addAuthorToVisualList( id, name ) {
-		if ( authorExistInVisualList( id ) ) {
-			return;
-		}
-
-		const newAuthorItem = authorVisualItem.clone();
-		newAuthorItem.find( '.twrp-author-settings__author-item-name' ).append( sanitizeAuthorName( name ) );
-		newAuthorItem.attr( authorIdAttrName, id );
-		authorsVisualList.append( newAuthorItem );
+	// Remove an author
+	$(document).on('click', '.twrp-author-settings__js-author-remove-btn', handleRemoveAuthor);
+	/**
+	 * Handle the removing of the authors from the selected list.
+	 */
+	function handleRemoveAuthor() {
+	    var id = $(this).closest('[' + authorIdAttrName + ']').attr(authorIdAttrName);
+	    id = Number(id);
+	    if (!(id > 0)) {
+	        return;
+	    }
+	    removeAuthor(id);
 	}
-
-	function addAuthorToHiddenInput( id ) {
-		if ( authorExistInHiddenInput( id ) ) {
-			return;
-		}
-
-		const previousVal = authorHiddenInput.val();
-
-		let newVal = '';
-		if ( previousVal ) {
-			newVal = previousVal + ';' + id;
-		} else {
-			newVal = id;
-		}
-
-		authorHiddenInput.val( newVal );
+	/**
+	 * Removes an author to the list of selected authors(both visual, and in the
+	 * hidden input).
+	 */
+	function removeAuthor(id) {
+	    _removeAuthorFromVisualList(id);
+	    _removeAuthorFromHiddenInput(id);
+	    removeOrAddNoAuthorsText();
 	}
-
+	/**
+	 * Removes the author from the visual list, based on id.
+	 */
+	function _removeAuthorFromVisualList(id) {
+	    var itemsToRemove = authorsVisualList.find('[' + authorIdAttrName + '="' + id + '"]');
+	    itemsToRemove.remove();
+	}
+	function _removeAuthorFromHiddenInput(id) {
+	    var currentValue = String(authorsIdsInput.val());
+	    id = String(id);
+	    var authorsIds = currentValue.split(';');
+	    var indexOfId = authorsIds.indexOf(id);
+	    if (indexOfId !== -1) {
+	        authorsIds.splice(indexOfId, 1);
+	        authorsIdsInput.val(authorsIds.join(';'));
+	    }
+	}
 	// =============================================================================
-
-	function authorExistInVisualList( id ) {
-		const authorItem = authorsVisualList.find( '[' + authorIdAttrName + '="' + id + '"]' );
-
-		if ( authorItem.length ) {
-			return true;
-		}
-
-		return false;
+	// Manage the "No Authors Added" Text.
+	/**
+	 * Contains the HTML Element that will be inserted/removed as necessary.
+	 */
+	var noAuthorsText = $('#twrp-author-settings__js-no-authors-selected');
+	$(document).ready(removeOrAddNoAuthorsText);
+	/**
+	 * Remove or add "No authors" text if necessary.
+	 */
+	function removeOrAddNoAuthorsText() {
+	    _removeNoAuthorsTextIfNecessary();
+	    _addNoAuthorsTextIfNecessary();
 	}
-
-	function authorExistInHiddenInput( id ) {
-		const inputVal = authorHiddenInput.val();
-
-		if ( ! inputVal ) {
-			return false;
-		}
-
-		const authorsIds = inputVal.split( ';' ).map( mapToInt );
-
-		if ( authorsIds.indexOf( id ) !== -1 ) {
-			return true;
-		}
-
-		return false;
-
-		function mapToInt( val ) {
-			return parseInt( val );
-		}
+	/**
+	 * If Necessary, removes the "No Authors selected" text.
+	 */
+	function _removeNoAuthorsTextIfNecessary() {
+	    var textIsAppended = (authorsVisualList.find(noAuthorsText).length > 0);
+	    var haveItems = (authorsVisualList.find("[" + authorIdAttrName + "]").length > 0);
+	    if (haveItems && textIsAppended) {
+	        noAuthorsText.detach();
+	    }
 	}
-
+	/**
+	 * If Necessary, adds the "No Authors selected" text.
+	 */
+	function _addNoAuthorsTextIfNecessary() {
+	    var textIsAppended = (authorsVisualList.find(noAuthorsText).length > 0);
+	    var haveItems = (authorsVisualList.find("[" + authorIdAttrName + "]").length > 0);
+	    if ((!textIsAppended) && (!haveItems)) {
+	        authorsVisualList.append(noAuthorsText);
+	    }
+	}
 	// =============================================================================
-
-	$( document ).on( 'click', '.twrp-author-settings__js-author-remove-btn', handleRemoveAuthor );
-
-	function handleRemoveAuthor( e ) {
-		// todo: check if we have an id.
-		const id = $( this ).closest( '[' + authorIdAttrName + ']' ).attr( authorIdAttrName );
-
-		removeAuthorFromVisualList( id );
-		removeAuthorFromHiddenInput( id );
+	// Sorting function.
+	$(document).ready(initializeSorting);
+	function initializeSorting() {
+	    authorsVisualList.sortable({
+	        placeholder: 'twrp-display-list__placeholder',
+	        stop: updateAuthorsIdsFromVisualList,
+	    });
 	}
-
-	function removeAuthorFromVisualList( id ) {
-		const itemsToRemove = authorsVisualList.find( '[' + authorIdAttrName + '="' + id + '"]' );
-		console.dir( itemsToRemove );
-		itemsToRemove.remove();
-	}
-
-	function removeAuthorFromHiddenInput( id ) {
-		const currentValue = authorHiddenInput.val();
-
-		// todo: verify if exist.
-		const authorsIds = currentValue.split( ';' );
-		const indexOfId = authorsIds.indexOf( id );
-
-		if ( indexOfId !== -1 ) {
-			authorsIds.splice( indexOfId, 1 );
-			const newValue = authorsIds.join( ';' );
-			authorHiddenInput.val( newValue );
-		}
-	}
-
 	// =============================================================================
-
-	function sanitizeAuthorName( name ) {
-		return name;
+	// Helper Functions
+	/**
+	 * Check to see if a given author item is displayed in visual list.
+	 */
+	function authorExistInVisualList(id) {
+	    var authorItem = authorsVisualList.find('[' + authorIdAttrName + '="' + id + '"]');
+	    if (authorItem.length) {
+	        return true;
+	    }
+	    return false;
 	}
-
-	// =============================================================================
+	/**
+	 * Check to see if a given author item is displayed in visual list.
+	 */
+	function authorExistInHiddenInput(id) {
+	    var inputVal = String(authorsIdsInput.val());
+	    id = Number(id);
+	    if ((!inputVal) || !(id > 0)) {
+	        return false;
+	    }
+	    var authorsIds = inputVal.split(';').map(mapToInt);
+	    if (authorsIds.indexOf(id) !== -1) {
+	        return true;
+	    }
+	    return false;
+	    function mapToInt(val) {
+	        return parseInt(val);
+	    }
+	}
+	function updateAuthorsIdsFromVisualList() {
+	    var authorItems = authorsVisualList.find('.twrp-author-settings__author-item');
+	    var authorsIds = [];
+	    authorItems.each(function () {
+	        var itemId = $(this).attr(authorIdAttrName);
+	        itemId = +itemId;
+	        if (itemId > 0) {
+	            authorsIds.push(itemId);
+	        }
+	    });
+	    authorsIdsInput.val(authorsIds.join(';'));
+	}
+	/**
+	 * Sanitize the author name.
+	 *
+	 * @todo
+	 */
+	function sanitizeAuthorName(name) {
+	    return name;
+	}
 
 	/*! *****************************************************************************
-	Copyright (c) Microsoft Corporation. All rights reserved.
-	Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-	this file except in compliance with the License. You may obtain a copy of the
-	License at http://www.apache.org/licenses/LICENSE-2.0
+	Copyright (c) Microsoft Corporation.
 
-	THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-	KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-	WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-	MERCHANTABLITY OR NON-INFRINGEMENT.
+	Permission to use, copy, modify, and/or distribute this software for any
+	purpose with or without fee is hereby granted.
 
-	See the Apache Version 2.0 License for specific language governing permissions
-	and limitations under the License.
+	THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+	REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+	INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+	LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+	OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+	PERFORMANCE OF THIS SOFTWARE.
 	***************************************************************************** */
 
 	function __awaiter(thisArg, _arguments, P, generator) {
@@ -868,7 +1012,6 @@ var TWRP_Plugin = (function ($) {
 	        articleBlocksCache[widgetId][queryId] = [];
 	    }
 	    articleBlocksCache[widgetId][queryId][artblockId] = artblockWrapper;
-	    console.log(articleBlocksCache);
 	}
 	/**
 	 * Get an article block from cache. Or false if the article block is not in cache.

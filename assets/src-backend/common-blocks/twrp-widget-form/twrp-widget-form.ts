@@ -370,7 +370,6 @@ function addArticleBlockToCache( widgetId: string, queryId: string|number, artbl
 	}
 
 	articleBlocksCache[ widgetId ][ queryId ][ artblockId ] = artblockWrapper;
-	console.log( articleBlocksCache );
 }
 
 /**

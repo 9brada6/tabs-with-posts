@@ -113,7 +113,7 @@ class Query_Name implements Query_Setting {
 	 * into WP_Query class.
 	 *
 	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are unsanitized.
+	 * @param mixed $query_settings All query settings, these settings are sanitized.
 	 *
 	 * @return array The new arguments modified.
 	 */

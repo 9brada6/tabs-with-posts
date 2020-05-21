@@ -135,36 +135,51 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries_page() {
-		$existing_queries = DB_Query_Options::get_all_queries();
+
 		?>
 		<div class="twrp-existing-queries">
 			<h3 class="twrp-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
-
-			<table class="twrp-existing-queries__table twrp-queries-table wp-list-table widefat striped">
-				<thead>
-					<tr>
-						<th class="twrp-queries-table__edit-head">
-							<?= _x( 'Actions', 'backend', 'twrp' ) ?>
-						</th>
-						<th class="twrp-queries-table__title-head"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php if ( ! empty( $existing_queries ) ) : ?>
-						<?php foreach ( $existing_queries as $query_id => $query ) : ?>
-							<?php $this->display_existing_queries_row( $query_id, $query ); ?>
-						<?php endforeach; ?>
-					<?php else : ?>
-						<tr>
-							<td class="twrp-queries-table__no-queries-col" colspan="2">
-							<?= _x( 'No queries added', 'backend', 'twrp' ); ?>
-							</td>
-						</tr>
-					<?php endif; ?>
-				</tbody>
-			</table>
-			<?php $this->display_existing_queries_add_new_btn(); ?>
+			<?php
+			do_action( 'twrp_before_displaying_existing_queries_table' );
+			$this->display_existing_queries_table();
+			$this->display_existing_queries_add_new_btn();
+			do_action( 'twrp_after_displaying_existing_queries_table' );
+			?>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Display the existing queries table.
+	 *
+	 * @return void
+	 */
+	protected function display_existing_queries_table() {
+		$existing_queries = DB_Query_Options::get_all_queries();
+		?>
+		<table class="twrp-existing-queries__table twrp-queries-table wp-list-table widefat striped">
+			<thead>
+				<tr>
+					<th class="twrp-queries-table__edit-head">
+						<?= _x( 'Actions', 'backend', 'twrp' ) ?>
+					</th>
+					<th class="twrp-queries-table__title-head"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php if ( ! empty( $existing_queries ) ) : ?>
+					<?php foreach ( $existing_queries as $query_id => $query ) : ?>
+						<?php $this->display_existing_queries_row( $query_id, $query ); ?>
+					<?php endforeach; ?>
+				<?php else : ?>
+					<tr>
+						<td class="twrp-queries-table__no-queries-col" colspan="2">
+						<?= _x( 'No queries added', 'backend', 'twrp' ); ?>
+						</td>
+					</tr>
+				<?php endif; ?>
+			</tbody>
+		</table>
 		<?php
 	}
 

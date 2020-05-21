@@ -164,7 +164,7 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
 
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 10 );
-	// Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Advanced_Arguments', 1000 );.
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Author', 20 );
 
 	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
 	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
@@ -231,3 +231,10 @@ function twrp_enqueue_artblock_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
+
+
+function dump_query_settings() {
+	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
+}
+
+add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );

@@ -79,9 +79,10 @@ interface Query_Setting {
 	 * the new settings, and will return the new query arguments to be passed
 	 * into WP_Query class.
 	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are unsanitized.
+	 * @throws \RuntimeException If a setting cannot implement something.
 	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param mixed $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings );

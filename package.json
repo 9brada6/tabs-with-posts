@@ -16,23 +16,21 @@
 		"rollup-compile": "rollup -c ./rollup.config.js"
 	},
 	"devDependencies": {
+		"@types/jquery": "^3.3.37",
+		"@types/jqueryui": "^1.12.13",
+		"@typescript-eslint/eslint-plugin": "^2.34.0",
+		"@typescript-eslint/parser": "^2.34.0",
 		"@wordpress/eslint-plugin": "^4.1.0",
 		"eslint": "^6.8.0",
-		"rollup": "^2.2.0",
+		"rollup": "^2.10.4",
 		"rollup-plugin-terser": "^5.3.0",
-		"rollup-plugin-typescript2": "^0.27.0",
-		"sass": "^1.26.1",
-		"stylelint": "^13.2.1",
+		"rollup-plugin-typescript2": "^0.27.1",
+		"sass": "^1.26.5",
+		"stylelint": "^13.5.0",
 		"stylelint-config-recess-order": "^2.0.4",
 		"stylelint-config-recommended-scss": "^4.2.0",
 		"stylelint-config-standard-scss": "^1.1.0",
-		"stylelint-scss": "^3.16.0",
-		"typescript": "^3.8.3"
-	},
-	"dependencies": {
-		"@types/jquery": "^3.3.37",
-		"@types/jqueryui": "^1.12.10",
-		"@typescript-eslint/eslint-plugin": "^2.31.0",
-		"@typescript-eslint/parser": "^2.31.0"
+		"stylelint-scss": "^3.17.2",
+		"typescript": "^3.9.2"
 	}
 }

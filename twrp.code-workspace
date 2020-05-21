@@ -147,12 +147,7 @@
 
 		// =====================================================================
 		// Parameter Hint:
-		"phpParameterHint.margin": 0,
-		"phpParameterHint.fontSize": 10,
-		// "phpParameterHint.php7": false,
-		"phpParameterHint.collapseHintsWhenEqual": true,
-		// "phpParameterHint.hintOnlyLiterals": true,
-		// "phpParameterHint.hintOnlyLine": true,
+		"phpParameterHint.php7": false,
 		// =====================================================================
 
 
@@ -169,7 +164,8 @@
 		"stylelint.packageManager": "npm",
 		"stylelint.reportNeedlessDisables": false,
 		"stylelint.stylelintPath": "",
-		"stylelint.validate": [ "html", "sass", "scss", ],
+		"stylelint.validate": [ "html", "sass", "scss" ],
+
 
 		// Apply formatter.
 		"[scss]": {
@@ -244,6 +240,7 @@
 			"artblocks",
 			"autoload",
 			"autorefresh",
+			"blogroll",
 			"brada",
 			"browserslist",
 			"btns",

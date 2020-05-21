@@ -33,7 +33,7 @@ class Get_Posts {
 	 * setting classes registered.
 	 *
 	 * @see \TWRP\Manage_Component_Classes On how to add a setting class.
-	 * @throws \RuntimeException If the Query ID does not exist.
+	 * @throws \RuntimeException If the Query ID does not exist, or something went wrong.
 	 *
 	 * @param int|string $query_id The Id to construct query for.
 	 *
@@ -63,5 +63,13 @@ class Get_Posts {
 	 */
 	protected static function get_starting_query_args() {
 		return array();
+	}
+
+	// todo: Make a global variable that will hold the original post when global
+	// post is replaced.
+	public static function get_global_post() {
+		global $post;
+
+		return $post;
 	}
 }
