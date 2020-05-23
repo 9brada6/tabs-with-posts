@@ -48,8 +48,7 @@ class Query_Name implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param mixed $current_setting The current setting of a query if is being
-	 * edited, or else an empty string or null will be given.
+	 * @param mixed $current_setting The setting is sanitized.
 	 *
 	 * @return void
 	 */
@@ -92,7 +91,7 @@ class Query_Name implements Query_Setting {
 	/**
 	 * Sanitize a variable, to be safe for processing.
 	 *
-	 * @param mixed $name The string to be sanitized.
+	 * @param mixed $name The setting to be sanitized.
 	 *
 	 * @return string
 	 */

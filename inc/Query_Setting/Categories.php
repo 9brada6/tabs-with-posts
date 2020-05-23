@@ -37,8 +37,7 @@ class Categories implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param mixed $current_setting The current setting of a query if is being
-	 * edited, or else an empty string or null will be given.
+	 * @param mixed $current_setting The setting is sanitized.
 	 *
 	 * @return void
 	 */
@@ -188,7 +187,8 @@ class Categories implements Query_Setting {
 	/**
 	 * Sanitize a variable, to be safe for processing.
 	 *
-	 * @param mixed $setting The string to be sanitized.
+	 * @param mixed $setting
+	 * @return array
 	 */
 	public static function sanitize_setting( $setting ) {
 		$setting = wp_unslash( $setting );

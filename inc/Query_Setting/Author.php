@@ -73,8 +73,7 @@ class Author implements Query_Setting {
 	 *
 	 * @todo
 	 *
-	 * @param mixed $current_setting The current setting of a query if is being
-	 * edited, or else an empty string or null will be given.
+	 * @param mixed $current_setting The setting is sanitized.
 	 *
 	 * @return void
 	 */
@@ -214,7 +213,8 @@ class Author implements Query_Setting {
 	/**
 	 * Sanitize a variable, to be safe for processing.
 	 *
-	 * @param mixed $settings The string to be sanitized.
+	 * @param mixed $settings
+	 * @return array
 	 */
 	public static function sanitize_setting( $settings ) {
 		if ( ! isset( $settings[ self::AUTHORS_TYPE__SETTING_NAME ] ) ) {

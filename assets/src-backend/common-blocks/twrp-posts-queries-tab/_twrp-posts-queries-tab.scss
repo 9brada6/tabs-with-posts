@@ -1,7 +1,12 @@
+// Todo: change this class to twrp-query-setting
 .twrp-posts-queries-tab {
 	max-width: 1200px;
 
 	&__setting {
 		margin: 1rem 0;
+	}
+
+	&__paragraph {
+		margin: 0.3rem 0.2rem 0.35rem;
 	}
 }

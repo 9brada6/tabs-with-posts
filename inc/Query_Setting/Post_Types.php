@@ -43,8 +43,7 @@ class Post_Types implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param mixed $current_setting The current setting of a query if is being
-	 * edited, or else an empty string or null will be given.
+	 * @param mixed $current_setting The setting is sanitized.
 	 *
 	 * @return void
 	 */
@@ -104,7 +103,7 @@ class Post_Types implements Query_Setting {
 	 * Sanitize the post types, to be safe for processing.
 	 *
 	 * @param array<string>|mixed $post_types The array with post types to be sanitized.
-	 *                                        If passed anything else, will return te default settings.
+	 *                                        If passed anything else, will return the default settings.
 	 *
 	 * @return array The sanitized post types.
 	 */
