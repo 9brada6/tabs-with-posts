@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the class that will filter articles via the post status.
+ * Contains the class that will filter articles via the post status property.
  */
 
 namespace TWRP\Query_Setting;
