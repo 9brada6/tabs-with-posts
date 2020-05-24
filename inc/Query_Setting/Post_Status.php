@@ -123,7 +123,7 @@ class Post_Status implements Query_Setting {
 	 * Sanitize a variable, to be safe for processing.
 	 *
 	 * @param mixed $setting
-	 * @return array The sanitized variable
+	 * @return string[] The sanitized variable. An array with post statuses.
 	 */
 	public static function sanitize_setting( $setting ) {
 		if ( ! is_array( $setting ) ) {
