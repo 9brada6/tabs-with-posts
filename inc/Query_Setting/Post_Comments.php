@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the class that will filter articles via the post comments.
+ * Contains the class that will filter articles via the comments.
  */
 
 namespace TWRP\Query_Setting;
