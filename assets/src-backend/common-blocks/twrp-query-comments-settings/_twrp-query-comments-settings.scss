@@ -1,0 +1,10 @@
+.twrp-query-comments-settings {
+	display: inline-flex;
+	flex-wrap: wrap;
+	line-height: 2.3;
+
+	> * {
+		margin-right: 0.4rem;
+		vertical-align: middle;
+	}
+}

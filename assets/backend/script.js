@@ -635,6 +635,44 @@ var TWRP_Plugin = (function ($) {
 	    return name;
 	}
 
+	var effectDuration$1 = 500;
+	// =============================================================================
+	function hideUp(element) {
+	    $(element).hide({
+	        effect: 'blind',
+	        duration: effectDuration$1,
+	        complete: addHideClass,
+	    });
+	}
+	function showUp(element) {
+	    $(element).show({
+	        effect: 'blind',
+	        duration: effectDuration$1,
+	        complete: removeHideClass,
+	    });
+	}
+	// =============================================================================
+	function addHideClass() {
+	    $(this).addClass('twrp-hidden');
+	}
+	function removeHideClass() {
+	    $(this).removeClass('twrp-hidden');
+	}
+
+	var selectCommentsComparator = $('#twrp-query-comments-settings__js-comparator');
+	var numCommentsInput = $('#twrp-query-comments-settings__js-num_comments');
+	$(document).ready(hideOrShowCommentsNumberInput);
+	$(document).on('change', '#twrp-query-comments-settings__js-comparator', hideOrShowCommentsNumberInput);
+	function hideOrShowCommentsNumberInput() {
+	    var comparator = selectCommentsComparator.val();
+	    if ('NA' === comparator) {
+	        hideUp(numCommentsInput);
+	    }
+	    else {
+	        showUp(numCommentsInput);
+	    }
+	}
+
 	/*! *****************************************************************************
 	Copyright (c) Microsoft Corporation.
 
