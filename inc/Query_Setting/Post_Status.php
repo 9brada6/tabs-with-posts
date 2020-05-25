@@ -68,7 +68,7 @@ class Post_Status implements Query_Setting {
 					$checked = 'checked';
 				}
 				?>
-				<div class="twrp-posts-queries-tab__paragraph twrp-post-status-setting__paragraph">
+				<div class="twrp-posts-queries-tab__checkbox-line twrp-post-status-setting__paragraph">
 					<input
 						id="<?= esc_attr( $id ); ?>"
 						class="twrp-post-status-setting__input"
