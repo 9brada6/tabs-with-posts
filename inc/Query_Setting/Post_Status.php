@@ -3,6 +3,9 @@
  * Contains the class that will filter articles via the post status property.
  */
 
+// todo: addquery_arg do not add if array is empty.
+// todo: Add a note that post statuses can reveal things do not wanted.
+
 namespace TWRP\Query_Setting;
 
 /**
@@ -75,7 +78,7 @@ class Post_Status implements Query_Setting {
 					/>
 					<label class="twrp-post-status-setting__label" for="<?= esc_attr( $id ); ?>">
 						<?= esc_html( $status->label ); ?>
-					</span>
+					</label>
 				</div>
 				<?php
 			endif;

@@ -635,6 +635,7 @@ var TWRP_Plugin = (function ($) {
 	    return name;
 	}
 
+	// Todo...
 	var effectDuration$1 = 500;
 	// =============================================================================
 	function hideUp(element) {
@@ -670,6 +671,21 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    else {
 	        showUp(numCommentsInput);
+	    }
+	}
+
+	var searchInput = $('#twrp-search-setting__js-search-input');
+	var warningWrapper = $('#twrp-search-setting__js-words-warning');
+	$(document).ready(hiderOrShowSearchWarning);
+	$(document).on('change', '#twrp-search-setting__js-search-input', hiderOrShowSearchWarning);
+	function hiderOrShowSearchWarning() {
+	    var searchString = String(searchInput.val());
+	    var searchStringLength = searchString.length;
+	    if ((searchStringLength !== 0) && (searchStringLength < 3)) {
+	        showUp(warningWrapper);
+	    }
+	    else {
+	        hideUp(warningWrapper);
 	    }
 	}
 

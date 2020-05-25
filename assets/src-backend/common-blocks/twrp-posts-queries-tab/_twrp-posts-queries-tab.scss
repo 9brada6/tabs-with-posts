@@ -6,7 +6,17 @@
 		margin: 1rem 0;
 	}
 
-	&__paragraph {
+	&__checkbox-line {
 		margin: 0.3rem 0.2rem 0.35rem;
+	}
+
+	&__paragraph {
+		margin: 0.7rem 0 0.85rem;
+		&:first-child { margin-top: 0; }
+		&:last-child { margin-bottom: 0; }
+	}
+
+	&__paragraph-with-hide {
+		margin: 0;
 	}
 }
