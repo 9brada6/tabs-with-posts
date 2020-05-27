@@ -1,4 +1,5 @@
-
+@import 'external/jquery-ui-datepicker';
+//
 @import 'common-blocks/twrp-collapsible/twrp-collapsible';
 @import 'common-blocks/twrp-queries-table/twrp-queries-table';
 @import 'common-blocks/twrp-existing-queries/twrp-existing-queries';
@@ -11,6 +12,7 @@
 @import 'common-blocks/twrp-query-comments-settings/twrp-query-comments-settings';
 @import 'common-blocks/twrp-display-list/twrp-display-list';
 @import 'common-blocks/twrp-artblock-form/twrp-artblock-form';
+@import 'common-blocks/twrp-date-settings/twrp-date-settings';
 //
 @import 'common-blocks/twrp-widget-form/twrp-widget-form';
 

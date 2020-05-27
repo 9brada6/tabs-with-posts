@@ -1,0 +1,20 @@
+.twrp-date-settings {
+	&__custom-last-days-wrapper {
+		> * {
+			vertical-align: middle;
+		}
+	}
+
+	&__last-days-input {
+		margin-left: 0.3rem;
+	}
+
+	&__between-wrapper{
+
+	}
+
+	&__after-wrapper,
+	&__before-wrapper {
+		display: inline-block;
+	}
+}

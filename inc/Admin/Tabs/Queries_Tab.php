@@ -310,22 +310,21 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * Get the current setting of the query.
 	 *
 	 * @param Query_Setting $setting_class
-	 *
-	 * @return mixed|null Null if no setting could be retrieved.
+	 * @return mixed The specific settings of the query, sanitized.
 	 */
 	protected function get_query_input_setting( $setting_class ) {
 		try {
 			$query_id           = $this->get_id_of_query_being_modified();
 			$all_query_settings = DB_Query_Options::get_all_query_settings( $query_id );
-		} catch ( RuntimeException $e ) {
-			return null;
+		} catch ( RuntimeException $e ) { // phpcs:ignore -- Empty catch.
+			// Do nothing.
 		}
 
 		if ( isset( $all_query_settings[ $setting_class->get_setting_name() ] ) ) {
 			return $all_query_settings[ $setting_class->get_setting_name() ];
 		}
 
-		return null;
+		return $setting_class->get_default_setting();
 	}
 
 	/**

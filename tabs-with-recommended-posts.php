@@ -160,7 +160,7 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
-
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 35 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 40 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 50 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 60 );
@@ -196,6 +196,7 @@ function twrp_enqueue_admin() {
 
 	wp_enqueue_script( 'jquery-ui-accordion' );
 	wp_enqueue_script( 'jquery-ui-sortable' );
+	wp_enqueue_script( 'jquery-ui-datepicker' );
 	wp_enqueue_script( 'jquery-ui-autocomplete' );
 	wp_enqueue_script( 'jquery-effects-blind' );
 
