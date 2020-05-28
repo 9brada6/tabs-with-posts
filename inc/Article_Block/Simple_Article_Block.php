@@ -6,6 +6,9 @@
 
 namespace TWRP\Article_Block;
 
+use TWRP\Artblock_Component\Default_Component;
+use TWRP\Artblock_Component\Display_Components;
+
 class Simple_Article_Block implements Article_Block {
 
 	const AUTHOR_ATTR           = 'author';
@@ -93,6 +96,22 @@ class Simple_Article_Block implements Article_Block {
 
 		$settings_creator->display_number_setting( 'header_size', $default_settings['header_size'], $this->get_header_size_setting_args() );
 		$settings_creator->display_number_setting( 'meta_size', $default_settings['meta_size'], $this->get_meta_size_setting_args() );
+
+		$title_component_title = _x( 'Title', 'backend', 'twrp' );
+		$title_component       = new Default_Component( 'title_component', $title_component_title, $widget_id, $query_id, $current_settings );
+
+		$author_component_title = _x( 'Author', 'backend', 'twrp' );
+		$author_component       = new Default_Component( 'author_component', $author_component_title, $widget_id, $query_id, $current_settings );
+
+		$date_component_title = _x( 'Date', 'backend', 'twrp' );
+		$date_component       = new Default_Component( 'date_component', $date_component_title, $widget_id, $query_id, $current_settings );
+
+		$components = new Display_Components();
+		$components->add_component( $title_component );
+		$components->add_component( $author_component );
+		$components->add_component( $date_component );
+
+		$components->display_components();
 	}
 
 	/**
@@ -108,6 +127,9 @@ class Simple_Article_Block implements Article_Block {
 		$unsanitized_settings = wp_parse_args( $unsanitized_settings, $this->get_default_values() );
 		$settings_creator     = new \TWRP\Article_Block_Widget_Settings_Creator( 0, 0, $unsanitized_settings );
 		$default_values       = $this->get_default_values();
+
+		// todo: delete this:
+		return $unsanitized_settings;
 
 		$sanitized_settings = array();
 		foreach ( $unsanitized_settings as $setting_name => $setting ) {

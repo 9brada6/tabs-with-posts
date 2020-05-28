@@ -12,13 +12,16 @@ class Article_Block_Widget_Settings_Creator {
 	protected $widget_id;
 	protected $query_id;
 	protected $current_settings;
+	protected $component_name;
 
-	public function __construct( $widget_id, $query_id, $current_settings ) {
+	public function __construct( $widget_id, $query_id, $current_settings, $component_name = '' ) {
 		$this->widget_id = $widget_id;
 		$this->query_id  = $query_id;
 
 		// todo: make current settings be $current_settings[$query_id];
 		$this->current_settings = $current_settings;
+
+		$this->component_name = $component_name;
 	}
 
 	/**
@@ -51,7 +54,18 @@ class Article_Block_Widget_Settings_Creator {
 	protected function get_settings() {
 		// TODO: Verify if query_id is set.
 		$settings = $this->current_settings;
-		return $settings[ $this->query_id ];
+
+		$query_id_settings = $settings[ $this->query_id ];
+
+		if ( empty( $this->component_name ) ) {
+			return $query_id_settings;
+		}
+
+		if ( isset( $settings[ $this->query_id ][ $this->component_name ] ) ) {
+			return $settings[ $this->query_id ][ $this->component_name ];
+		}
+
+		return array();
 	}
 
 	// =========================================================================
@@ -172,6 +186,10 @@ class Article_Block_Widget_Settings_Creator {
 	 * @return string Unsanitized.
 	 */
 	protected function create_input_id( $field_name ) {
+		if ( ! empty( $this->component_name ) ) {
+			return Tabs_Widget::twrp_get_field_id( $this->widget_id, $this->query_id . '-' . $this->component_name . '-' . $field_name );
+		}
+
 		return Tabs_Widget::twrp_get_field_id( $this->widget_id, $this->query_id . '-' . $field_name );
 	}
 
@@ -183,6 +201,10 @@ class Article_Block_Widget_Settings_Creator {
 	 * @return string Unsanitized.
 	 */
 	protected function create_input_name( $field_name ) {
+		if ( ! empty( $this->component_name ) ) {
+			return Tabs_Widget::twrp_get_field_name( $this->widget_id, $this->query_id . "[$this->component_name][$field_name]" );
+		}
+
 		return Tabs_Widget::twrp_get_field_name( $this->widget_id, $this->query_id . "[$field_name]" );
 	}
 
