@@ -165,6 +165,7 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 50 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 60 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Search', 70 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 80 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
 
 	// Todo: some work on authors still left.
@@ -174,6 +175,7 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Author', 40 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Search', 70 );
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected', 80 );
 
 	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
 	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
@@ -244,7 +246,7 @@ add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
 
 function dump_query_settings() {
-	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
+	xdebug_var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
 }
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );

@@ -166,6 +166,10 @@ class Post_Status implements Query_Setting {
 			return $previous_query_args;
 		}
 
+		if ( empty( $query_settings[ self::get_setting_name() ] ) ) {
+			return $previous_query_args;
+		}
+
 		$previous_query_args['post_status'] = $query_settings[ self::get_setting_name() ];
 		return $previous_query_args;
 	}
