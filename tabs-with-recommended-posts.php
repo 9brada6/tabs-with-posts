@@ -170,7 +170,7 @@ function twrp_register_settings() {
 	// Todo: some work on authors still left.
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status', 30 );
-
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date', 35 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Author', 40 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Search', 70 );

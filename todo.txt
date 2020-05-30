@@ -1,1 +1,3 @@
 1. Maybe modify 'tab_name' identification of the query_name.
+
+2.On sanitization, we have a O(n^2). Try to fi it.

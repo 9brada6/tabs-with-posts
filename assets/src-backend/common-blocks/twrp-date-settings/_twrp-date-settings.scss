@@ -1,4 +1,13 @@
 .twrp-date-settings {
+	&__type-selector-wrapper {
+		margin-bottom: 0;
+	}
+
+	&__last-period-wrapper,
+	&__between-wrapper {
+		padding-top: 1rem;
+	}
+
 	&__custom-last-days-wrapper {
 		> * {
 			vertical-align: middle;
@@ -9,8 +18,11 @@
 		margin-left: 0.3rem;
 	}
 
-	&__between-wrapper{
-
+	&__after-label,
+	&__before-label {
+		display: inline-block;
+		margin-bottom: 0.15rem;
+		margin-left: 0.15rem;
 	}
 
 	&__after-wrapper,

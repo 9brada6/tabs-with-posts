@@ -132,7 +132,7 @@ return array(
 		'LoopVariableReusePlugin',
 		'RedundantAssignmentPlugin',
 		// 'UnknownClassElementAccessPlugin', // Todo: issue a warning on github.
-		'MoreSpecificElementTypePlugin',
+		// 'MoreSpecificElementTypePlugin',
 
 		// Greatly increase the false-positive as the doc suggest.
 		// 'NonBoolInLogicalArithPlugin',
