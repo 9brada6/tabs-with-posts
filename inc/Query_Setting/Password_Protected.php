@@ -43,17 +43,26 @@ class Password_Protected implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param mixed $current_setting The setting is sanitized.
-	 *
+	 * @param string $current_setting The setting is sanitized.
 	 * @return void
 	 */
 	public function display_setting( $current_setting ) {
+		$not_applied_text  = _x( 'Not Applied (Posts with and without password)', 'backend', 'twrp' );
+		$has_password_text = _x( 'Only posts with password', 'backend', 'twrp' );
+		$no_password_text  = _x( 'Only posts without password', 'backend', 'twrp' );
+
 		?>
 		<div>
 			<select name="<?= esc_attr( self::get_setting_name() ); ?>">
-				<option value="NA">Not Applied (Posts with and without password)</option>
-				<option value="has_password">Only posts with password</option>
-				<option value="no_password">Only posts without password</option>
+				<option value="not_applied" <?php selected( 'not_applied', $current_setting ); ?>>
+					<?= esc_html( $not_applied_text ); ?>
+				</option>
+				<option value="has_password" <?php selected( 'has_password', $current_setting ); ?>>
+					<?= esc_html( $has_password_text ); ?>
+				</option>
+				<option value="no_password" <?php selected( 'no_password', $current_setting ); ?>>
+					<?= esc_html( $no_password_text ); ?>
+				</option>
 			</select>
 		</div>
 		<?php
@@ -62,10 +71,10 @@ class Password_Protected implements Query_Setting {
 	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public static function get_default_setting() {
-		return null;
+		return 'not_applied';
 	}
 
 	/**
