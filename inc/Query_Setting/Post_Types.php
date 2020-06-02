@@ -180,7 +180,7 @@ class Post_Types implements Query_Setting {
 			$post_types = self::get_default_setting();
 		}
 
-		$previous_query_args['post_types'] = self::sanitize_setting( $post_types );
+		$previous_query_args['post_type'] = self::sanitize_setting( $post_types );
 		return $previous_query_args;
 	}
 }
