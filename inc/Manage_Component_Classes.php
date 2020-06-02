@@ -55,6 +55,9 @@ class Manage_Component_Classes {
 	}
 
 
+    /**
+     * @return Query_Setting[]
+     */
 	public static function get_registered_backend_settings() {
 		return self::$query_backend_settings;
 	}

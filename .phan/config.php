@@ -157,7 +157,7 @@ return array(
 
 		// This plugin checks for duplicate expressions in a statement that are
 		// likely to be a bug. (e.g. expr1 == expr)
-		'DuplicateExpressionPlugin',
+		// 'DuplicateExpressionPlugin',
 
 		// This plugin checks for unexpected inline HTML. Totally unneeded, as we
 		// write a lot of inline HTML.
