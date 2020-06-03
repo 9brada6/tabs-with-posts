@@ -259,12 +259,12 @@ class Author implements Query_Setting {
 	 * ready to use.
 	 */
 	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ $this->get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
+		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return self::sanitize_setting( wp_unslash( $_POST[ $this->get_setting_name() ] ) );
-		} else {
-			return self::get_default_setting();
+			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
 		}
+
+		return self::get_default_setting();
 	}
 
 	/**

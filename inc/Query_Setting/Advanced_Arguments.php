@@ -38,7 +38,7 @@ class Advanced_Arguments implements Query_Setting {
 	}
 
 	public function get_submitted_sanitized_setting() {
-		return wp_unslash( $_POST['advanced_args'] );
+		return wp_unslash( $_POST[ self::get_setting_name() ] );
 	}
 
 	public static function get_default_setting() {

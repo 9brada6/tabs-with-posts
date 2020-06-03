@@ -254,11 +254,12 @@ class Categories implements Query_Setting {
 	 * ready to use.
 	 */
 	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) {
-			return $this->sanitize_setting( $_POST[ self::get_setting_name() ] );
+		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
+			// phpcs:ignore -- Nonce verified and the setting is sanitized.
+			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
 		}
 
-		return $this->get_default_setting();
+		return self::get_default_setting();
 	}
 
 	/**

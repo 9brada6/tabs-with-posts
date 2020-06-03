@@ -82,9 +82,11 @@ class Query_Name implements Query_Setting {
 	 * @return string
 	 */
 	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST, $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore
-			return self::sanitize_setting( $_POST[ self::get_setting_name() ] ); // phpcs:ignore
+		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
+			// phpcs:ignore -- Nonce verified and the setting is sanitized.
+			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
 		}
+
 		return self::get_default_setting();
 	}
 

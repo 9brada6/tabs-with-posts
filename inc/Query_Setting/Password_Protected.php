@@ -84,9 +84,11 @@ class Password_Protected implements Query_Setting {
 	 * @return 'has_password'|'no_password'|null Null for posts with and without passwords.
 	 */
 	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified.
-			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) ); // phpcs:ignore -- Nonce verified.
+		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
+			// phpcs:ignore -- Nonce verified and the setting is sanitized.
+			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
 		}
+
 		return self::get_default_setting();
 	}
 
