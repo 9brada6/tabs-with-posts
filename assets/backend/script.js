@@ -308,8 +308,33 @@ var TWRP_Plugin = (function ($) {
 		}
 	}
 
+	// Todo...
+	var effectDuration$1 = 500;
 	// =============================================================================
-	// Hide/Show Categories List and Add Button based on option selected.
+	function hideUp(element) {
+	    $(element).hide({
+	        effect: 'blind',
+	        duration: effectDuration$1,
+	        complete: addHideClass,
+	    });
+	}
+	function showUp(element) {
+	    $(element).show({
+	        effect: 'blind',
+	        duration: effectDuration$1,
+	        complete: removeHideClass,
+	    });
+	}
+	// =============================================================================
+	function addHideClass() {
+	    $(this).addClass('twrp-hidden');
+	}
+	function removeHideClass() {
+	    $(this).removeClass('twrp-hidden');
+	}
+
+	// =============================================================================
+	// Hide/Show Author List and Add Button based on option selected.
 	var authorTypeSelector = $('#twrp-author-settings__select_type');
 	var authorSearchWrap = $('#twrp-author-settings__author-search-wrap');
 	var authorToHideList = $('#twrp-author-settings__js-authors-list');
@@ -321,12 +346,12 @@ var TWRP_Plugin = (function ($) {
 	function hideOrShowVisualList() {
 	    var authorTypeVal = authorTypeSelector.val();
 	    if ('IN' === authorTypeVal || 'OUT' === authorTypeVal) {
-	        authorSearchWrap.show('blind');
-	        authorToHideList.show('blind');
+	        hideUp(authorSearchWrap);
+	        hideUp(authorToHideList);
 	    }
 	    else {
-	        authorSearchWrap.hide('blind');
-	        authorToHideList.hide('blind');
+	        showUp(authorSearchWrap);
+	        showUp(authorToHideList);
 	    }
 	}
 	// =============================================================================
@@ -531,6 +556,9 @@ var TWRP_Plugin = (function ($) {
 	    var itemsToRemove = authorsVisualList.find('[' + authorIdAttrName + '="' + id + '"]');
 	    itemsToRemove.remove();
 	}
+	/**
+	 * Removes an author from the hidden input list.
+	 */
 	function _removeAuthorFromHiddenInput(id) {
 	    var currentValue = String(authorsIdsInput.val());
 	    id = String(id);
@@ -578,6 +606,9 @@ var TWRP_Plugin = (function ($) {
 	// =============================================================================
 	// Sorting function.
 	$(document).ready(initializeSorting);
+	/**
+	 * Make the visual items sortable, and update the hidden input accordingly.
+	 */
 	function initializeSorting() {
 	    authorsVisualList.sortable({
 	        placeholder: 'twrp-display-list__placeholder',
@@ -597,7 +628,7 @@ var TWRP_Plugin = (function ($) {
 	    return false;
 	}
 	/**
-	 * Check to see if a given author item is displayed in visual list.
+	 * Check to see if a given author item exist in the hidden list.
 	 */
 	function authorExistInHiddenInput(id) {
 	    var inputVal = String(authorsIdsInput.val());
@@ -614,6 +645,10 @@ var TWRP_Plugin = (function ($) {
 	        return parseInt(val);
 	    }
 	}
+	/**
+	 * Updates the Ids in the input in the same order as the ones
+	 * from the visual list.
+	 */
 	function updateAuthorsIdsFromVisualList() {
 	    var authorItems = authorsVisualList.find('.twrp-author-settings__author-item');
 	    var authorsIds = [];
@@ -633,31 +668,6 @@ var TWRP_Plugin = (function ($) {
 	 */
 	function sanitizeAuthorName(name) {
 	    return name;
-	}
-
-	// Todo...
-	var effectDuration$1 = 500;
-	// =============================================================================
-	function hideUp(element) {
-	    $(element).hide({
-	        effect: 'blind',
-	        duration: effectDuration$1,
-	        complete: addHideClass,
-	    });
-	}
-	function showUp(element) {
-	    $(element).show({
-	        effect: 'blind',
-	        duration: effectDuration$1,
-	        complete: removeHideClass,
-	    });
-	}
-	// =============================================================================
-	function addHideClass() {
-	    $(this).addClass('twrp-hidden');
-	}
-	function removeHideClass() {
-	    $(this).removeClass('twrp-hidden');
 	}
 
 	var selectCommentsComparator = $('#twrp-query-comments-settings__js-comparator');
@@ -790,6 +800,316 @@ var TWRP_Plugin = (function ($) {
 	        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
 	        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
 	    }
+	}
+
+	// =============================================================================
+	// Show/Hide Posts List.
+	var postTypeSelect = $('#twrp-posts-settings__js-filter-type');
+	var postVisualList = $('#twrp-posts-settings__js-posts-list');
+	var searchingWrapper = $('#twrp-posts-settings__js-posts-search-wrap');
+	$(document).ready(hideOrShowVisualList$1);
+	$(document).on('change', '#twrp-posts-settings__js-filter-type', hideOrShowVisualList$1);
+	/**
+	 * Hide or show the visual list and the form input to search for users.
+	 */
+	function hideOrShowVisualList$1() {
+	    var authorTypeVal = postTypeSelect.val();
+	    if ('NA' === authorTypeVal) {
+	        searchingWrapper.hide('blind');
+	        postVisualList.hide('blind');
+	    }
+	    else {
+	        searchingWrapper.show('blind');
+	        postVisualList.show('blind');
+	    }
+	}
+	// =============================================================================
+	// Manage Posts Search
+	/**
+	 * The search input where administrators will search for posts.
+	 */
+	var postsSearchInput = $('#twrp-posts-settings__js-posts-search');
+	$(document).ready(initializeAutoComplete$1);
+	/**
+	 * Initialize the search input, when a user enter some characters, it will
+	 * automatically search and display the options.
+	 */
+	function initializeAutoComplete$1() {
+	    postsSearchInput.autocomplete({
+	        source: showSearchedPosts,
+	        minLength: 2,
+	    });
+	}
+	/**
+	 * Search for the posts and append the results into the autocomplete selector.
+	 */
+	function showSearchedPosts(request, sendToControl) {
+	    return __awaiter(this, void 0, void 0, function () {
+	        var wpApiURL, fetchUrl, fetchedResult, posts, postsToSend, i_1;
+	        return __generator(this, function (_a) {
+	            switch (_a.label) {
+	                case 0:
+	                    wpApiURL = wpApiSettings.root + wpApiSettings.versionString;
+	                    fetchUrl = wpApiURL + ("search?_fields=id,title&search=" + request.term + "&page=1&per_page=10");
+	                    return [4 /*yield*/, fetch(fetchUrl)];
+	                case 1:
+	                    fetchedResult = _a.sent();
+	                    return [4 /*yield*/, fetchedResult.json()];
+	                case 2:
+	                    posts = _a.sent();
+	                    if (!(posts instanceof Array)) {
+	                        console.error('TWRP error when fetching posts.'); // eslint-disable-line
+	                    }
+	                    postsToSend = [];
+	                    for (i_1 = 0; i_1 < posts.length; i_1++) {
+	                        postsToSend.push({
+	                            value: posts[i_1].title,
+	                            label: posts[i_1].title,
+	                            id: posts[i_1].id,
+	                        });
+	                    }
+	                    sendToControl(postsToSend);
+	                    return [2 /*return*/];
+	            }
+	        });
+	    });
+	}
+	// =============================================================================
+	// Add Post.
+	var postsIdsInput = $('#twrp-posts-settings__js-posts-ids');
+	/**
+	 * The post attribute name that hold the Id of a visual item.
+	 */
+	var postIdAttrName = 'data-post-id';
+	/**
+	 * The template for a post item, to be appended to the visual list. Note that
+	 * we have a similar template in the PHP file, so a change here will require
+	 * also a change there, and vice-versa.
+	 */
+	var postVisualItem = $('<div class="twrp-display-list__item twrp-posts-settings__post-item">' +
+	    '<div class="twrp-posts-settings__post-item-title"></div>' +
+	    '<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button">' +
+	    '<span class="dashicons dashicons-no"></span>' +
+	    '</button>' +
+	    '</div>');
+	$(document).on('click', '#twrp-posts-settings__js-posts-add-btn', handleAddPostClick);
+	$(document).on('keypress', '#twrp-posts-settings__js-posts-search', handleSearchInputKeypress$1);
+	/**
+	 * When a user click "enter", add the current selected author to the list.
+	 */
+	function handleSearchInputKeypress$1(event) {
+	    var keycode = (event.keyCode ? event.keyCode : event.which);
+	    if (keycode !== 13) {
+	        return;
+	    }
+	    event.preventDefault();
+	    var autocompleteInstance = postsSearchInput.autocomplete('instance');
+	    var id, name;
+	    try {
+	        var selectedItem = autocompleteInstance.selectedItem;
+	        id = selectedItem.id;
+	        name = selectedItem.label;
+	    }
+	    catch (error) {
+	        return;
+	    }
+	    addPost(id, name);
+	}
+	/**
+	 * Handles the click on "Add post" button.
+	 */
+	function handleAddPostClick() {
+	    var autocompleteInstance = postsSearchInput.autocomplete('instance');
+	    var id, name;
+	    try {
+	        var selectedItem = autocompleteInstance.selectedItem;
+	        id = selectedItem.id;
+	        name = selectedItem.label;
+	    }
+	    catch (error) {
+	        return;
+	    }
+	    addPost(id, name);
+	}
+	/**
+	 * Add a post to the list of selected posts(both visual, and in the hidden
+	 * input).
+	 */
+	function addPost(id, name) {
+	    _addPostToVisualList(id, name);
+	    _addPostToHiddenInput(id);
+	    removeOrAddNoPostsText();
+	}
+	/**
+	 * Add a post to the visual list.
+	 */
+	function _addPostToVisualList(id, name) {
+	    if (postExistInVisualList(id)) {
+	        return;
+	    }
+	    var newAuthorItem = postVisualItem.clone();
+	    newAuthorItem.find('.twrp-posts-settings__post-item-title').append(sanitizePostName(name));
+	    newAuthorItem.attr(postIdAttrName, id);
+	    postVisualList.append(newAuthorItem);
+	}
+	/**
+	 * Add a post to the list of hidden input.
+	 */
+	function _addPostToHiddenInput(id) {
+	    if (postExistInHiddenInput(id)) {
+	        return;
+	    }
+	    id = String(id);
+	    var previousVal = postsIdsInput.val();
+	    var newVal = '';
+	    if (previousVal) {
+	        newVal = previousVal + ';' + id;
+	    }
+	    else {
+	        newVal = id;
+	    }
+	    postsIdsInput.val(newVal);
+	}
+	// =============================================================================
+	// Remove an author
+	$(document).on('click', '.twrp-posts-settings__js-post-remove-btn', handleRemovePost);
+	/**
+	 * Handle the removing of the posts from the selected list.
+	 */
+	function handleRemovePost() {
+	    var id = $(this).closest('[' + postIdAttrName + ']').attr(postIdAttrName);
+	    id = Number(id);
+	    if (!(id > 0)) {
+	        return;
+	    }
+	    removePost(id);
+	}
+	/**
+	 * Removes a post to the list of selected posts(both visual, and in the
+	 * hidden input).
+	 */
+	function removePost(id) {
+	    _removePostFromVisualList(id);
+	    _removePostFromHiddenInput(id);
+	    removeOrAddNoPostsText();
+	}
+	/**
+	 * Removes a post from the visual list, based on id.
+	 */
+	function _removePostFromVisualList(id) {
+	    var itemsToRemove = postVisualList.find('[' + postIdAttrName + '="' + id + '"]');
+	    itemsToRemove.remove();
+	}
+	/**
+	 * Removes a post from the hidden input list.
+	 */
+	function _removePostFromHiddenInput(id) {
+	    var currentValue = String(postsIdsInput.val());
+	    id = String(id);
+	    var postsIds = currentValue.split(';');
+	    var indexOfId = postsIds.indexOf(id);
+	    if (indexOfId !== -1) {
+	        postsIds.splice(indexOfId, 1);
+	        postsIdsInput.val(postsIds.join(';'));
+	    }
+	}
+	// =============================================================================
+	// Manage the "No Authors Added" Text.
+	/**
+	 * Contains the HTML Element that will be inserted/removed as necessary.
+	 */
+	var noPostsText = $('#twrp-posts-settings__js-no-posts-selected');
+	$(document).ready(removeOrAddNoPostsText);
+	/**
+	 * Remove or add "No posts selected" text if necessary.
+	 */
+	function removeOrAddNoPostsText() {
+	    _removeNoPostsTextIfNecessary();
+	    _addNoPostsTextIfNecessary();
+	}
+	/**
+	 * If Necessary, removes the "No Posts selected" text.
+	 */
+	function _removeNoPostsTextIfNecessary() {
+	    var textIsAppended = (postVisualList.find(noPostsText).length > 0);
+	    var haveItems = (postVisualList.find("[" + postIdAttrName + "]").length > 0);
+	    if (haveItems && textIsAppended) {
+	        noPostsText.detach();
+	    }
+	}
+	/**
+	 * If Necessary, adds the "No Posts selected" text.
+	 */
+	function _addNoPostsTextIfNecessary() {
+	    var textIsAppended = (postVisualList.find(noPostsText).length > 0);
+	    var haveItems = (postVisualList.find("[" + postIdAttrName + "]").length > 0);
+	    if ((!textIsAppended) && (!haveItems)) {
+	        postVisualList.append(noPostsText);
+	    }
+	}
+	// =============================================================================
+	// Sorting function.
+	$(document).ready(initializeSorting$1);
+	/**
+	 * Make the visual items sortable, and update the hidden input accordingly.
+	 */
+	function initializeSorting$1() {
+	    postVisualList.sortable({
+	        placeholder: 'twrp-display-list__placeholder',
+	        stop: updatePostsIdsFromVisualList,
+	    });
+	}
+	// =============================================================================
+	// Helper Functions
+	/**
+	 * Check to see if a given post item is displayed in visual list.
+	 */
+	function postExistInVisualList(id) {
+	    var postItem = postVisualList.find('[' + postIdAttrName + '="' + id + '"]');
+	    if (postItem.length) {
+	        return true;
+	    }
+	    return false;
+	}
+	/**
+	 * Check to see if a given post item exist in the hidden list.
+	 */
+	function postExistInHiddenInput(id) {
+	    var inputVal = String(postsIdsInput.val());
+	    id = Number(id);
+	    if ((!inputVal) || !(id > 0)) {
+	        return false;
+	    }
+	    var postsIds = inputVal.split(';').map(mapToInt);
+	    if (postsIds.indexOf(id) !== -1) {
+	        return true;
+	    }
+	    return false;
+	    function mapToInt(val) {
+	        return parseInt(val);
+	    }
+	}
+	/**
+	 * Updates the Ids in the input in the same order as the ones
+	 * from the visual list.
+	 */
+	function updatePostsIdsFromVisualList() {
+	    var postItems = postVisualList.find('.twrp-posts-settings__post-item');
+	    var authorsIds = [];
+	    postItems.each(function () {
+	        var itemId = $(this).attr(postIdAttrName);
+	        itemId = +itemId;
+	        if (itemId > 0) {
+	            authorsIds.push(itemId);
+	        }
+	    });
+	    postsIdsInput.val(authorsIds.join(';'));
+	}
+	/**
+	 * todo
+	 */
+	function sanitizePostName(name) {
+	    return name;
 	}
 
 	/**
@@ -1151,3 +1471,4 @@ var TWRP_Plugin = (function ($) {
 	return script;
 
 }(jQuery));
+//# sourceMappingURL=script.js.map

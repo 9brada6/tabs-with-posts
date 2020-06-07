@@ -1,5 +1,6 @@
 import { terser } from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
+import sourcemaps from 'rollup-plugin-sourcemaps';
 
 // rollup.config.js
 export default {
@@ -9,10 +10,12 @@ export default {
 		file: 'assets/backend/script.js',
 		format: 'iife',
 		name: 'TWRP_Plugin',
+		sourcemap: true,
 		globals: {
 			jquery: 'jQuery',
 			ajaxurl: 'ajaxurl',
 		},
+		plugins: [ sourcemaps() ],
 		// plugins: [ terser() ],
 	},
 	plugins: [

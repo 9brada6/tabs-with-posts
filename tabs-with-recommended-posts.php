@@ -95,7 +95,7 @@ class TWRP_Main {
 	}
 
 
-
+	// TODO: learn about autoload and improve.
 	protected static function autoload_plugin_classes( $class_name ) {
 		$class_name_parts = explode( '\\', $class_name );
 
@@ -161,6 +161,7 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 33 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 34 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 35 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 40 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 50 );
@@ -248,7 +249,18 @@ add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
 
 function dump_query_settings() {
-	xdebug_var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
+	try {
+		xdebug_var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
+	} catch ( \RuntimeException $e ) {
+		echo 'Error';
+	}
+
+	$args = array(
+		'post_type'       => array( 'page' ),
+		'post__in'        => array( 13 ),
+		'post_parent__in' => array( 0 ),
+	);
+	\Debug\console_dump( get_posts( $args ) );
 }
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );

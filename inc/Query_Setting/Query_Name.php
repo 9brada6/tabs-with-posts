@@ -48,7 +48,8 @@ class Query_Name implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param mixed $current_setting The setting is sanitized.
+	 * @param mixed $current_setting An array filled with only the settings that
+	 * this class work with. The settings are sanitized.
 	 *
 	 * @return void
 	 */

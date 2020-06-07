@@ -6,6 +6,7 @@
  * @todo: Add more order by options.
  * @todo: If an option is choose, then remove the option from the next one/two
  * select possibilities.
+ * @todo: Add notes.
  */
 
 namespace TWRP\Query_Setting;
@@ -78,7 +79,8 @@ class Post_Order implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param array $current_setting The setting is sanitized.
+	 * @param array $current_setting An array filled with only the settings that
+	 * this class work with. The settings are sanitized.
 	 * @return void
 	 */
 	public function display_setting( $current_setting ) {

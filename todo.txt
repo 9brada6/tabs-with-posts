@@ -1,3 +1,7 @@
 1. Maybe modify 'tab_name' identification of the query_name.
 
-2.On sanitization, we have a O(n^2). Try to fi it.
+2.On sanitization, we have a O(n^2). Try to fix it.
+
+3. Add accessibility to visual list remove button.
+
+4. Increase padding of no items in visual display items.

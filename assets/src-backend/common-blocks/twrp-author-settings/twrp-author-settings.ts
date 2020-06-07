@@ -1,10 +1,11 @@
 import $ from 'jquery';
 import 'jqueryui';
+import { showUp, hideUp } from '../twrp-hidden/twrp-hidden';
 
 declare const wp: any;
 
 // =============================================================================
-// Hide/Show Categories List and Add Button based on option selected.
+// Hide/Show Author List and Add Button based on option selected.
 
 const authorTypeSelector = $( '#twrp-author-settings__select_type' );
 
@@ -21,11 +22,11 @@ function hideOrShowVisualList() {
 	const authorTypeVal = authorTypeSelector.val();
 
 	if ( 'IN' === authorTypeVal || 'OUT' === authorTypeVal ) {
-		authorSearchWrap.show( 'blind' );
-		authorToHideList.show( 'blind' );
+		hideUp( authorSearchWrap );
+		hideUp( authorToHideList );
 	} else {
-		authorSearchWrap.hide( 'blind' );
-		authorToHideList.hide( 'blind' );
+		showUp( authorSearchWrap );
+		showUp( authorToHideList );
 	}
 }
 
@@ -270,6 +271,9 @@ function _removeAuthorFromVisualList( id: string|number ): void {
 	itemsToRemove.remove();
 }
 
+/**
+ * Removes an author from the hidden input list.
+ */
 function _removeAuthorFromHiddenInput( id: number|string ): void {
 	const currentValue = String( authorsIdsInput.val() );
 	id = String( id );
@@ -329,6 +333,10 @@ function _addNoAuthorsTextIfNecessary() {
 // Sorting function.
 
 $( document ).ready( initializeSorting );
+
+/**
+ * Make the visual items sortable, and update the hidden input accordingly.
+ */
 function initializeSorting() {
 	authorsVisualList.sortable( {
 		placeholder: 'twrp-display-list__placeholder',
@@ -353,7 +361,7 @@ function authorExistInVisualList( id: number|string ): boolean {
 }
 
 /**
- * Check to see if a given author item is displayed in visual list.
+ * Check to see if a given author item exist in the hidden list.
  */
 function authorExistInHiddenInput( id: number|string ): boolean {
 	const inputVal = String( authorsIdsInput.val() );
@@ -376,6 +384,10 @@ function authorExistInHiddenInput( id: number|string ): boolean {
 	}
 }
 
+/**
+ * Updates the Ids in the input in the same order as the ones
+ * from the visual list.
+ */
 function updateAuthorsIdsFromVisualList(): void {
 	const authorItems = authorsVisualList.find( '.twrp-author-settings__author-item' );
 	const authorsIds = [];

@@ -1,7 +1,6 @@
 <?php
 // phpcs:disable
 use Phan\Issue;
-use Phan\Config;
 
 /**
  *

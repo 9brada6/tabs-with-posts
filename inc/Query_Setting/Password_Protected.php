@@ -43,7 +43,8 @@ class Password_Protected implements Query_Setting {
 	/**
 	 * Display the backend HTML for the setting.
 	 *
-	 * @param string $current_setting The setting is sanitized.
+	 * @param string $current_setting An array filled with only the settings that
+	 * this class work with. The settings are sanitized.
 	 * @return void
 	 */
 	public function display_setting( $current_setting ) {
