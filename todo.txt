@@ -5,3 +5,5 @@
 3. Add accessibility to visual list remove button.
 
 4. Increase padding of no items in visual display items.
+
+5. Make settings_is_collapsed return 'auto'.

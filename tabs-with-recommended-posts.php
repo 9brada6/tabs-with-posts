@@ -160,7 +160,8 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 33 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 32 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts', 33 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 34 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 35 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 40 );
@@ -173,7 +174,9 @@ function twrp_register_settings() {
 	// Todo: some work on authors still left.
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status', 30 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order', 33 );
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order', 32 );
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts', 33 );
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings', 34 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date', 35 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Author', 40 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
@@ -249,11 +252,10 @@ add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
 
 function dump_query_settings() {
-	try {
-		xdebug_var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
-	} catch ( \RuntimeException $e ) {
-		echo 'Error';
-	}
+
+	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
+
+	var_dump( get_post( 1000 ) );
 
 	$args = array(
 		'post_type'       => array( 'page' ),

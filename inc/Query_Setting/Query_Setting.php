@@ -67,7 +67,7 @@ interface Query_Setting {
 	 * Sanitize a variable, to be safe for processing.
 	 *
 	 * @param mixed $setting
-	 * @return mixed The sanitized variable
+	 * @return mixed The sanitized variable.
 	 */
 	public static function sanitize_setting( $setting );
 

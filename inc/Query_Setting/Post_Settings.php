@@ -5,6 +5,7 @@
  * @todo: When fetching posts, try to also apply other rules, like posts subtypes
  * and status.
  * @todo: Check to see if posts fetching work in IE 11.
+ * @todo post__in (array) – use post ids. Specify posts to retrieve. ATTENTION If you use sticky posts, they will be included (prepended!) in the posts you retrieve whether you want it or not. To suppress this behaviour use ignore_sticky_posts.
  */
 
 namespace TWRP\Query_Setting;
@@ -224,34 +225,55 @@ class Post_Settings implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-
-
-
-
-
-
-
-
-
-
-
 	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public static function get_default_setting() {
-		return array();
+		return array(
+			self::FILTER_TYPE__SETTING_NAME => 'NA',
+			self::POSTS_INPUT__SETTING_NAME => '',
+		);
 	}
 
 	/**
 	 * Sanitize a variable, to be safe for processing.
 	 *
 	 * @param mixed $setting
-	 * @return mixed The sanitized variable
+	 * @return array The sanitized variable.
 	 */
 	public static function sanitize_setting( $setting ) {
-		return $setting;
+		if ( ! isset( $setting[ self::FILTER_TYPE__SETTING_NAME ], $setting[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
+			return self::get_default_setting();
+		}
+		$filter_type = $setting[ self::FILTER_TYPE__SETTING_NAME ];
+		$posts_ids   = $setting[ self::POSTS_INPUT__SETTING_NAME ];
+
+		$possible_filters = array( 'NA', 'IP', 'EP', 'IPP', 'EPP' );
+
+		if ( ( ! in_array( $filter_type, $possible_filters, true ) ) || 'NA' === $filter_type ) {
+			return self::get_default_setting();
+		}
+
+		$sanitized_settings  = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
+		$posts_ids           = explode( ';', $posts_ids );
+		$sanitized_posts_ids = array();
+
+		foreach ( $posts_ids as $id ) {
+			$post = get_post( (int) $id );
+			if ( $post instanceof \WP_Post ) {
+				array_push( $sanitized_posts_ids, $id );
+			}
+		}
+
+		$sanitized_settings[ self::POSTS_INPUT__SETTING_NAME ] = implode( ';', $posts_ids );
+
+		if ( empty( $sanitized_settings[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
+			return self::get_default_setting();
+		}
+
+		return $sanitized_settings;
 	}
 
 	/**
@@ -261,13 +283,46 @@ class Post_Settings implements Query_Setting {
 	 * the new settings, and will return the new query arguments to be passed
 	 * into WP_Query class.
 	 *
-	 * @throws \RuntimeException If a setting cannot implement something.
-	 *
 	 * @param array $previous_query_args The query arguments before being modified.
 	 * @param mixed $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
+			return $previous_query_args;
+		}
+		$settings = $query_settings[ self::get_setting_name() ];
 
+		if ( ! isset( $settings[ self::FILTER_TYPE__SETTING_NAME ], $settings[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
+			return $previous_query_args;
+		}
+
+		$filter_type = $settings[ self::FILTER_TYPE__SETTING_NAME ];
+		if ( 'NA' === $filter_type ) {
+			return $previous_query_args;
+		}
+
+		$posts_ids = explode( ';', $settings[ self::POSTS_INPUT__SETTING_NAME ] );
+
+		if ( empty( $posts_ids ) ) {
+			return $previous_query_args;
+		}
+
+		$posts_query_attr = '';
+		if ( 'IP' === $filter_type ) {
+			$posts_query_attr = 'post__in';
+		} elseif ( 'EP' === $filter_type ) {
+			$posts_query_attr = 'post__not_in';
+		} elseif ( 'IPP' === $filter_type ) {
+			$posts_query_attr = 'post_parent__in ';
+		} elseif ( 'EPP' === $filter_type ) {
+			$posts_query_attr = 'post_parent__not_in ';
+		} else {
+			return $previous_query_args;
+		}
+
+		$previous_query_args[ $posts_query_attr ] = $posts_ids;
+
+		return $previous_query_args;
 	}
 }
