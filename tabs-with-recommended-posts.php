@@ -255,7 +255,13 @@ function dump_query_settings() {
 
 	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
 
-	var_dump( get_post( 1000 ) );
+	var_dump(
+		get_posts(
+			array(
+				'cat' => '2AND3',
+			)
+		)
+	);
 
 	$args = array(
 		'post_type'       => array( 'page' ),

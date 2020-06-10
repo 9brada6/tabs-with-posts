@@ -6,4 +6,9 @@
 
 4. Increase padding of no items in visual display items.
 
-5. Make settings_is_collapsed return 'auto'.
+5. Make settings_is_collapsed also return 'auto'.
+
+6. Modify all Setting Titles to be correctly capitalize only first word.
+
+7. Maybe delete class twrp-admin-settings-separator and twrp-collapsible-content__section-title
+or migrate to something else.

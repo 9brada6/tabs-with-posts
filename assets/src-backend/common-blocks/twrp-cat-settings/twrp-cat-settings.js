@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 const effectDuration = 300;
 
-const categorySelector = $( '#cat' );
+const categorySelector = $( '#twrp-cat-settings__js-cat-dropdown' );
 
 const categoriesInput = $( '#twrp-cat-settings__cat-ids' );
 
@@ -29,8 +29,10 @@ function addSelectedCategoryOnClickButton() {
 	const categoryId = categorySelector.find( ':selected' ).val();
 	const name = sanitizeCategoryName( categorySelector.find( ':selected' ).text() );
 
-	addCatToInput( categoryId );
-	addCatToVisual( categoryId, name );
+	if ( categoryId > 0 ) {
+		addCatToInput( categoryId );
+		addCatToVisual( categoryId, name );
+	}
 }
 
 function addCatToInput( categoryId ) {
