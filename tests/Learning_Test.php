@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-class learningTest extends TestCase {
+class Learning_Test extends TestCase {
 
 	public function testPushAndPop() {
 		$stack = array();
