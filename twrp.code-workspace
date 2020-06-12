@@ -56,7 +56,8 @@
 			".vscode": true,
 			"node_modules": true,
 			".gitignore": true,
-			"vendor": true,
+			"**/vendor/**": false,
+			"**/vendor/!(phpunit)/**": true,
 			".eslintrc.json": true,
 			"rollup.config.js": true,
 			".phpcs - development.xml": true,
@@ -94,10 +95,11 @@
 			"**/.DS_Store/**",
 			"**/node_modules/**",
 			"**/bower_components/**",
-			"**/vendor/**",
-			"**/vendor/**/{Tests,tests}/**",
+			"**/vendor/!(phpunit)/**",
+			"**/vendor/**/{Tests,tests}/**"
 		],
 		"intelephense.completion.maxItems": 50,
+
 		// =====================================================================
 
 
@@ -306,7 +308,7 @@
 
 		"todo-tree.regex.regexCaseSensitive": false,
 		// Make todo work in docblocks and with @ in front.
-		"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*@*($TAGS)"
+		"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*@*($TAGS)",
 
 
 
@@ -328,5 +330,14 @@
 		// "prettier.tabWidth": 4,
 		// "prettier.stylelintIntegration": true,
 
+		"better-phpunit.docker.enable": true,
+		"better-phpunit.docker.command": "docker exec twrp_wp",
+
+		// "phpunit.driverPriority": ["DockerContainer"],
+		// "phpunit.docker.container": "twrp_wp",
+		"phpunit.command": "docker exec -t twrp_wp",
+		"phpunit.paths": { // Map paths in remote environments.
+			"${workspaceFolder}": "/var/www/html/wp-content/plugins/tabs-with-recommended-posts"
+		}
 	},
 }

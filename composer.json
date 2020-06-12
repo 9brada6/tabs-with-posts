@@ -8,12 +8,7 @@
 		"phpcompatibility/phpcompatibility-wp": "*",
 		"slevomat/coding-standard": "~6.0",
 		"dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
-		"phan/phan": "^2.6",
-        "phpunit/phpunit": "9"
+		"phan/phan": "^3.0",
+		"phpunit/phpunit": "^9"
 	}
-	"autoload": {
-		"psr-4": {
-		  "TWRP\\":"inc/"
-		}
-	  }
 }

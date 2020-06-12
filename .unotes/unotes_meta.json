@@ -31,9 +31,13 @@
       "isOrdered": true,
       "folders": {},
       "files": {}
+    },
+    "tests": {
+      "name": "tests",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
     }
   },
-  "files": {
-    "nmm": 0
-  }
+  "files": {}
 }

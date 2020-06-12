@@ -1,0 +1,7 @@
+<phpunit bootstrap="tabs-with-recommended-posts.php">
+  <testsuites>
+    <testsuite name="twrp">
+      <directory>tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
