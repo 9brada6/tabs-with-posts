@@ -37,6 +37,12 @@
       "isOrdered": true,
       "folders": {},
       "files": {}
+    },
+    "bin": {
+      "name": "bin",
+      "isOrdered": true,
+      "folders": {},
+      "files": {}
     }
   },
   "files": {}

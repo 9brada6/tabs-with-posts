@@ -55,7 +55,6 @@ class Sticky_Posts implements Query_Setting {
 	public function display_setting( $current_setting ) {
 		$name            = self::get_setting_name() . '[' . self::INCLUSION__SETTING_NAME . ']';
 		$selected_option = $current_setting[ self::INCLUSION__SETTING_NAME ];
-
 		?>
 		<div class="twrp-sticky-setting">
 			<select class="twrp-sticky-setting__selector" name="<?= esc_attr( $name ); ?>">

@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"name": "Main",
+			// "name": "Main",
 			"path": "."
 		},
 		{
@@ -57,7 +57,7 @@
 			"node_modules": true,
 			".gitignore": true,
 			"**/vendor/**": false,
-			"**/vendor/!(phpunit)/**": true,
+			"**/vendor/!(phpunit|masterminds)/**": true,
 			".eslintrc.json": true,
 			"rollup.config.js": true,
 			".phpcs - development.xml": true,
@@ -95,7 +95,7 @@
 			"**/.DS_Store/**",
 			"**/node_modules/**",
 			"**/bower_components/**",
-			"**/vendor/!(phpunit)/**",
+			"**/vendor/!(phpunit|masterminds)/**",
 			"**/vendor/**/{Tests,tests}/**"
 		],
 		"intelephense.completion.maxItems": 50,
@@ -259,6 +259,7 @@
 			"docblock",
 			"endforeach",
 			"esnext",
+			"funct",
 			"htmlmixed",
 			"jquery",
 			"jqueryui",
@@ -335,9 +336,19 @@
 
 		// "phpunit.driverPriority": ["DockerContainer"],
 		// "phpunit.docker.container": "twrp_wp",
-		"phpunit.command": "docker exec -t twrp_wp",
-		"phpunit.paths": { // Map paths in remote environments.
-			"${workspaceFolder}": "/var/www/html/wp-content/plugins/tabs-with-recommended-posts"
-		}
+		"phpunit.command": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp",
+		"phpunit.paths":{
+			"${workspaceFolder}": "."
+		},
+		// "phpunit.args":[
+		// 	"--coverage-xml php-unit-coverage"
+		// ],
+
+		// "coverage-gutters.xmlname": "W:\\Projects\\wp-plugin-twrp\\wordpress\\wp-content\\plugins\\tabs-with-recommended-posts\\cov.xml",
+		"coverage-gutters.showLineCoverage": true,
+		"coverage-gutters.highlightdark": "rgba(0, 128, 128, 0.06)",
+		"coverage-gutters.noHighlightDark": "rgba(128, 0, 0, 0.1)",
+		"coverage-gutters.showGutterCoverage": false,
+		"coverage-gutters.showRulerCoverage": true,
 	},
 }

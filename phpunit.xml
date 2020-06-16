@@ -1,15 +1,28 @@
 <?xml version="1.0"?>
 <phpunit
-	bootstrap="tests/bootstrap.php"
-	backupGlobals="false"
+	bootstrap="tests/bootstrap1.php"
 	colors="true"
-	convertErrorsToExceptions="true"
-	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	>
+	beStrictAboutOutputDuringTests="true"
+	beStrictAboutChangesToGlobalState="true"
+>
 
-    <testsuite name="twrp">
-      <directory>tests</directory>
-    </testsuite>
-  </testsuites>
+	<testsuites>
+		<testsuite name="twrp">
+			<directory>tests</directory>
+		</testsuite>
+		<testsuite name="query_settings">
+			<directory>tests/Query_Setting</directory>
+		</testsuite>
+  	</testsuites>
+
+	<filter>
+		<whitelist>
+			<directory suffix=".php">inc/Query_Setting</directory>
+		</whitelist>
+	</filter>
+
+  <logging>
+    <log type="coverage-text" target="php://stdout"/>
+    <log type="coverage-clover" target="cov.xml"/>
+  </logging>
 </phpunit>

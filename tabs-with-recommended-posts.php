@@ -29,7 +29,9 @@ class TWRP_Main {
 	 * @todo: Find on what OS's we can interchange "\" with /.
 	 * @todo: Compatibility of OS's between "\" and "/".
 	 */
-	const AUTOLOAD_DIRECTORIES = array( 'TWRP\\' => 'inc/' );
+	protected static $autoload_directories = array(
+		'TWRP\\' => array( 'inc/', 'tests/' ),
+	);
 
 	public static function init() {
 		self::$is_initialized = true;
@@ -99,18 +101,28 @@ class TWRP_Main {
 	protected static function autoload_plugin_classes( $class_name ) {
 		$class_name_parts = explode( '\\', $class_name );
 
+		if ( isset( $class_name_parts[0] ) && ( '' === $class_name_parts[0] ) ) {
+			array_shift( $class_name_parts );
+		}
+
 		// Base namespace needs to be TWRP.
 		if ( empty( $class_name_parts ) || 'TWRP' !== $class_name_parts[0] ) {
 			return;
 		}
 
-		foreach ( self::AUTOLOAD_DIRECTORIES as $autoload_namespace => $autoload_dir ) {
-			$relative_directory = ltrim( str_replace( $autoload_namespace, $autoload_dir, $class_name ) . '.php', '/\\' );
-			$relative_directory = str_replace( '\\', '/', $relative_directory );
+		foreach ( self::$autoload_directories as $autoload_namespace => $autoload_directories ) {
+			if ( is_string( $autoload_directories ) ) {
+				$autoload_directories = array( $autoload_directories );
+			}
 
-			$file_path = trailingslashit( self::get_plugin_directory() ) . $relative_directory;
-			if ( is_file( $file_path ) ) {
-				require_once $file_path;
+			foreach ( $autoload_directories as $autoload_dir ) {
+				$relative_directory = ltrim( str_replace( $autoload_namespace, $autoload_dir, $class_name ) . '.php', '/\\' );
+				$relative_directory = str_replace( '\\', '/', $relative_directory );
+
+				$file_path = trailingslashit( self::get_plugin_directory() ) . $relative_directory;
+				if ( is_file( $file_path ) ) {
+					require_once $file_path;
+				}
 			}
 		}
 	}
@@ -188,7 +200,7 @@ function twrp_register_settings() {
 }
 
 
-TWRP\Query_Setting\Advanced_Arguments::init();
+\TWRP\Query_Setting\Advanced_Arguments::init();
 
 
 function twrp_enqueue_admin() {
