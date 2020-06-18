@@ -41,7 +41,7 @@ return array(
 	// should be added to the `directory_list` as well as to `exclude_analysis_directory_list`.
 	'exclude_analysis_directory_list' => array(
 		'./../../../',
-		'vendor/',
+		'./vendor/'
 	),
 
 	// A list of files that will be excluded from parsing and analysis and will not be read at all.
@@ -53,8 +53,9 @@ return array(
 	// from parsing and analysis and will not be read at all.
 	// (\.\./.*tabs-with-recommended-posts|/vendor/|/node_modules/|vendor\\|node_modules\\)
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-	'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-
+	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!.*phpunit)|node_modules).*@',
+	//'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
+	'exclude_file_regex' => '@(\.\./.*tabs-with-recommended-posts|akismet|themes|node_modules|vendor/(?!(phpunit|masterminds|/?$)))@',
 
 	'file_list' => array(),
 

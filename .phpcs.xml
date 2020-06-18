@@ -41,6 +41,9 @@
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
 		<!-- And the parameter comment alignment is not good as it takes good writing space. -->
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
+		<!-- Allow regional coments. -->
+		<exclude name="Squiz.Commenting.InlineComment.WrongStyle"/>
+
 
 		<!-- We use PSR-4 -->
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />

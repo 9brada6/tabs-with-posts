@@ -1,4 +1,7 @@
 <?php
+/**
+ * @phan-file-suppress PhanThrowTypeAbsentForCall
+ */
 
 namespace TWRP\Query_Setting;
 
@@ -7,6 +10,8 @@ use Masterminds\HTML5;
 
 /**
  * Verify if the main setting name corresponds to what its needed.
+ *
+ * @inherits \PHPUnit\Framework\TestCase
  */
 trait Verify_Basic_Settings {
 
@@ -54,5 +59,54 @@ trait Verify_Basic_Settings {
 		$html5_parser = new Html5();
 		$html5_parser->loadHTMLFragment( $html );
 		$this->assertFalse( $html5_parser->hasErrors() );
+	}
+
+	/**
+	 * Return an array with basic types.
+	 *
+	 * @return array<mixed>
+	 */
+	public function get_basic_types() {
+		return array(
+			null,
+			'a_string',
+			'a string with spaces',
+			'',
+			true,
+			false,
+			0,
+			1,
+			-1,
+			'0',
+			'1',
+			'-1',
+		);
+	}
+
+	/**
+	 * Return an array with each basic type in an array.
+	 *
+	 * @return array<array<mixed>>
+	 */
+	public function get_basic_types_data_provider() {
+		$basic_types = array(
+			'a_string',
+			'a string with spaces',
+			'',
+			true,
+			false,
+			0,
+			1,
+			-1,
+			'0',
+			'1',
+			'-1',
+		);
+
+		foreach ( $basic_types as &$basic_type ) {
+			$basic_type = array( $basic_type );
+		}
+
+		return $basic_types;
 	}
 }

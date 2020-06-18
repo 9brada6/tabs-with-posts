@@ -16,6 +16,8 @@ namespace TWRP\Query_Setting;
  */
 class Query_Name implements Query_Setting {
 
+	const QUERY_NAME__SETTING_NAME = 'name';
+
 	/**
 	 * The name of the input and of the array key that stores the option of the query.
 	 *
@@ -53,13 +55,21 @@ class Query_Name implements Query_Setting {
 	 *
 	 * @return void
 	 */
-	public function display_setting( $current_setting = '' ) {
-		$name        = self::sanitize_setting( $current_setting );
+	public function display_setting( $current_setting ) {
+		$name        = self::get_setting_name() . '[' . self::QUERY_NAME__SETTING_NAME . ']';
+		$value       = $current_setting[ self::QUERY_NAME__SETTING_NAME ];
 		$placeholder = _x( 'Ex: Related Posts', 'backend', 'twrp' );
 
 		?>
 		<div class="twrp-name-setting">
-			<input class="twrp-name-setting__input" type="text" name="<?= esc_attr( $this->get_setting_name() ) ?>" value="<?= esc_attr( $name ) ?>" placeholder="<?= esc_attr( $placeholder ) ?>">
+			<input
+				id="twrp-name-setting__name"
+				class="twrp-name-setting__name" type="text"
+				name="<?= esc_attr( $name ) ?>"
+				value="<?= esc_attr( $value ) ?>"
+				placeholder="<?= esc_attr( $placeholder ) ?>"
+			>
+
 			<div class="twrp-name-setting__notice-wrap">
 				<span class="twrp-name-setting__notice"><?= _x( 'Note: The name will be visible ONLY in the admin screen.', 'backend', 'twrp' ); ?></span>
 			</div>
@@ -70,17 +80,19 @@ class Query_Name implements Query_Setting {
 	/**
 	 * Get the default setting. In this case an empty string.
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public static function get_default_setting() {
-		return '';
+		return array(
+			self::QUERY_NAME__SETTING_NAME => '',
+		);
 	}
 
 	/**
 	 * Get the setting submitted from the form. The setting is sanitized and
 	 * ready to use.
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
@@ -94,17 +106,23 @@ class Query_Name implements Query_Setting {
 	/**
 	 * Sanitize a variable, to be safe for processing.
 	 *
-	 * @param mixed $name The setting to be sanitized.
+	 * @param mixed $setting The setting to be sanitized.
 	 *
-	 * @return string
+	 * @return array
 	 */
-	public static function sanitize_setting( $name ) {
-		if ( ! is_string( $name ) ) {
-			return '';
+	public static function sanitize_setting( $setting ) {
+		if ( ! isset( $setting[ self::QUERY_NAME__SETTING_NAME ] ) ) {
+			return self::get_default_setting();
 		}
 
-		$sanitized_name = preg_replace( '/[^a-zA-Z0-9 ()\-_]/', '', $name );
-		return $sanitized_name;
+		if ( ! is_string( $setting[ self::QUERY_NAME__SETTING_NAME ] ) ) {
+			return self::get_default_setting();
+		}
+
+		$sanitized_setting                                   = array();
+		$sanitized_setting[ self::QUERY_NAME__SETTING_NAME ] = $setting[ self::QUERY_NAME__SETTING_NAME ];
+
+		return $sanitized_setting;
 	}
 
 	/**

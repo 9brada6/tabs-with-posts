@@ -9,6 +9,7 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\DB_Query_Options;
 use TWRP\Manage_Component_Classes;
 use \TWRP\Query_Setting\Query_Setting;
+use TWRP\Query_Setting\Query_Name;
 use \RuntimeException;
 
 /**
@@ -213,8 +214,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			</td>
 			<td class="twrp-queries-table__title-col">
 				<?php
-				if ( isset( $query[ self::QUERY_NAME ] ) ) {
-					echo esc_html( $query[ self::QUERY_NAME ] );
+				if ( isset( $query[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ] ) ) {
+					echo esc_html( $query[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ] );
 				} else {
 					echo esc_html( 'Query-' . $query_id );
 				}

@@ -79,8 +79,8 @@ class DB_Query_Options {
 			$settings = array();
 		}
 
-		if ( isset( $settings[ Query_Name::get_setting_name() ] ) ) {
-			$name = $settings[ Query_Name::get_setting_name() ];
+		if ( isset( $settings[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ] ) ) {
+			$name = $settings[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ];
 		} else {
 			$name = '';
 		}
@@ -198,6 +198,8 @@ class DB_Query_Options {
 
 		return $sanitized_settings;
 	}
+
+	// endregion ---
 
 	/**
 	 * Check to see if a query exist.

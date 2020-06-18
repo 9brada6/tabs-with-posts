@@ -12,3 +12,7 @@
 
 7. Maybe delete class twrp-admin-settings-separator and twrp-collapsible-content__section-title
 or migrate to something else.
+
+8. Change class from notice-wrap in Query_Name.
+
+9. Add a method inside Query_Name that passing

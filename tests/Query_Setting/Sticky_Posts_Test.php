@@ -1,4 +1,7 @@
 <?php
+/**
+ * @phan-file-suppress PhanThrowTypeAbsentForCall
+ */
 
 namespace TWRP\Query_Setting;
 
@@ -9,8 +12,12 @@ class Sticky_Posts_Test extends TestCase {
 
 	use Verify_Basic_Settings;
 
+	/**
+	 * @var \TWRP\Query_Setting\Sticky_Posts
+	 */
 	public static $class_instance;
-	public static $settings_keys;
+
+	public static $settings_keys = array();
 
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Sticky_Posts();

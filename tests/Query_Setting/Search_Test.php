@@ -1,4 +1,7 @@
 <?php
+/**
+ * @phan-file-suppress PhanThrowTypeAbsentForCall
+ */
 
 namespace TWRP\Query_Setting;
 
@@ -12,7 +15,8 @@ class Search_Test extends TestCase {
 	 * @var \TWRP\Query_Setting\Search
 	 */
 	public static $class_instance;
-	public static $settings_keys;
+
+	public static $settings_keys = array();
 
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Search();
