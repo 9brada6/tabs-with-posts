@@ -110,7 +110,7 @@ class Search implements Query_Setting {
 	 * Get the setting submitted from the form. The setting is sanitized and
 	 * ready to use.
 	 *
-	 * @return string
+	 * @return array
 	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
@@ -124,7 +124,7 @@ class Search implements Query_Setting {
 	/**
 	 * Sanitize the search string.
 	 *
-	 * @param array $setting
+	 * @param mixed $setting
 	 * @return array
 	 */
 	public static function sanitize_setting( $setting ) {

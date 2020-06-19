@@ -1,7 +1,4 @@
 <?php
-/**
- * @phan-file-suppress PhanThrowTypeAbsentForCall
- */
 
 namespace TWRP\Query_Setting;
 
@@ -11,9 +8,11 @@ use Masterminds\HTML5;
 /**
  * Verify if the main setting name corresponds to what its needed.
  *
+ * @phan-file-suppress PhanThrowTypeAbsentForCall
  * @inherits \PHPUnit\Framework\TestCase
  */
 trait Verify_Basic_Settings {
+
 
 	public function verify_setting_name( $class_instance ) {
 		$name = $class_instance::get_setting_name();

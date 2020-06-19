@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <phpunit
-	bootstrap="tests/bootstrap1.php"
+	bootstrap="tests/wp_bootstrap.php"
 	colors="true"
 	beStrictAboutOutputDuringTests="true"
 	beStrictAboutChangesToGlobalState="true"

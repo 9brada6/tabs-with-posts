@@ -53,7 +53,7 @@ class Post_Types implements Query_Setting {
 	public function display_setting( $current_setting ) {
 		$selected_post_types = $current_setting[ self::SELECTED_TYPES__SETTING_NAME ];
 		?>
-		<div class="twrp-tabs-settings__post-types">
+		<div class="twrp-types-setting">
 			<?php
 			$available_post_types = self::get_available_types();
 			foreach ( $available_post_types as $post_type ) :
@@ -68,7 +68,12 @@ class Post_Types implements Query_Setting {
 	}
 
 	/**
-	 * @todo: Add HTML classes.
+	 * Display the checkbox for a single custom post type item.
+	 *
+	 * @param string $name
+	 * @param string $label
+	 * @param bool $is_checked
+	 * @return void
 	 */
 	protected function display_post_type_setting_checkbox( $name, $label, $is_checked ) {
 		$checked_attr  = $is_checked ? 'checked="checked"' : '';
@@ -76,7 +81,7 @@ class Post_Types implements Query_Setting {
 		$checkbox_name = 'post_types[' . self::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
 
 		?>
-		<div>
+		<div class="twrp-types-setting__checkbox twrp-posts-queries-tab__checkbox-line">
 			<input
 				id="<?= esc_attr( $checkbox_id ); ?>"
 				name="<?= esc_attr( $checkbox_name ); ?>"
@@ -117,7 +122,12 @@ class Post_Types implements Query_Setting {
 		if ( ! isset( $setting[ self::SELECTED_TYPES__SETTING_NAME ] ) ) {
 			return self::get_default_setting();
 		}
-		$selected_types       = $setting[ self::SELECTED_TYPES__SETTING_NAME ];
+		$selected_types = $setting[ self::SELECTED_TYPES__SETTING_NAME ];
+
+		if ( ! is_array( $selected_types ) ) {
+			return self::get_default_setting();
+		}
+
 		$available_post_types = self::get_available_types( 'names' );
 
 		$sanitized_post_types = array();

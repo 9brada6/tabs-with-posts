@@ -1,12 +1,12 @@
 <?php
-/**
- * @phan-file-suppress PhanThrowTypeAbsentForCall
- */
 
 namespace TWRP\Query_Setting;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @phan-file-suppress PhanThrowTypeAbsentForCall
+ */
 class Search_Test extends TestCase {
 
 	use Verify_Basic_Settings;
@@ -17,6 +17,7 @@ class Search_Test extends TestCase {
 	public static $class_instance;
 
 	public static $settings_keys = array();
+
 
 	public static function setUpBeforeClass() {
 		self::$class_instance = new Search();
@@ -47,6 +48,8 @@ class Search_Test extends TestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
+	 *
+	 * @param mixed $value
 	 */
 	public function test__sanitize_setting( $value ) {
 		$class      = self::$class_instance;

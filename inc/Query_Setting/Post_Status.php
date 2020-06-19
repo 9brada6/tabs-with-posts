@@ -73,7 +73,8 @@ class Post_Status implements Query_Setting {
 					<input
 						id="<?= esc_attr( $id ); ?>"
 						class="twrp-post-status-setting__input"
-						name="<?= esc_attr( $this->get_setting_name() . '[' . $status->name . ']' ); ?>" type="checkbox"
+						name="<?= esc_attr( $this->get_setting_name() . '[' . $status->name . ']' ); ?>"
+						type="checkbox"
 						value="<?= esc_attr( $status->name ); ?>"
 						<?= esc_attr( $checked ); ?>
 					/>
