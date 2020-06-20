@@ -129,12 +129,13 @@ class Search_Test extends TestCase {
 	}
 
 	public function add_query_arg_settings_provider() {
+		self::setUpBeforeClass();
 		$data_provider_values = $this->sanitization_provider();
 		$to_provide           = array();
 
 		foreach ( $data_provider_values as $value ) {
 			foreach ( $value as $sanitization_value ) {
-				$to_provide_val = Search::sanitize_setting( $sanitization_value );
+				$to_provide_val = self::$class_instance::sanitize_setting( $sanitization_value );
 				array_push( $to_provide, array( $to_provide_val ) );
 			}
 		}

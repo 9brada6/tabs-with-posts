@@ -43,7 +43,6 @@ trait Verify_Basic_Settings {
 	}
 
 	public function verify_display_the_setting( $class_instance, $settings_keys, $settings ) {
-
 		foreach ( $settings_keys as $setting_key ) {
 			$name_attr_regex = 'name="' . $class_instance::get_setting_name() . '\[' . $setting_key . '\]"';
 			$this->expectOutputRegex( '/' . $name_attr_regex . '/' );

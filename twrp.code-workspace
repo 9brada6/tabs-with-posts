@@ -261,6 +261,7 @@
 			"docblock",
 			"endforeach",
 			"endregion",
+			"xdebug",
 			"esnext",
 			"funct",
 			"htmlmixed",
@@ -343,9 +344,6 @@
 		"phpunit.paths":{
 			"${workspaceFolder}": "."
 		},
-		// "phpunit.args":[
-		// 	"--coverage-xml php-unit-coverage"
-		// ],
 
 		// "coverage-gutters.xmlname": "W:\\Projects\\wp-plugin-twrp\\wordpress\\wp-content\\plugins\\tabs-with-recommended-posts\\cov.xml",
 		"coverage-gutters.showLineCoverage": true,

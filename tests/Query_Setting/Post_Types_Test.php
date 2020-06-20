@@ -1,13 +1,14 @@
 <?php
-/**
- * @phan-file-suppress PhanThrowTypeAbsentForCall, PhanTypeVoidAssignment
- */
 
 namespace TWRP\Query_Setting;
 
 use PHPUnit\Framework\TestCase;
 use Masterminds\HTML5;
 
+/**
+ * @covers \TWRP\Query_Setting\Post_Types
+ * @phan-file-suppress PhanThrowTypeAbsentForCall, PhanTypeVoidAssignment
+ */
 class Post_Types_Test extends TestCase {
 
 	use Verify_Basic_Settings;
@@ -45,6 +46,11 @@ class Post_Types_Test extends TestCase {
 			)
 		);
 
+	}
+
+	public static function tearDownAfterClass() {
+		unregister_post_type( 'public_post_type' );
+		unregister_post_type( 'not_public_post_type' );
 	}
 
 	/**
@@ -218,12 +224,13 @@ class Post_Types_Test extends TestCase {
 	}
 
 	public function add_query_arg_settings_provider() {
+		self::setUpBeforeClass();
 		$data_provider_values = $this->sanitization_provider();
 		$to_provide           = array();
 
 		foreach ( $data_provider_values as $value ) {
 			foreach ( $value as $sanitization_value ) {
-				$to_provide_val = Post_Types::sanitize_setting( $sanitization_value );
+				$to_provide_val = self::$class_instance::sanitize_setting( $sanitization_value );
 				array_push( $to_provide, array( $to_provide_val ) );
 			}
 		}

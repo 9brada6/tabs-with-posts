@@ -13,6 +13,8 @@ namespace TWRP\Query_Setting;
  */
 class Post_Status implements Query_Setting {
 
+	const POST_STATUSES__SETTING_NAME = 'selected_statuses';
+
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
 	 *
@@ -53,19 +55,21 @@ class Post_Status implements Query_Setting {
 	public function display_setting( $current_setting ) {
 		$info_label = _x( 'Info: ', 'backend', 'twrp' );
 		$info_text  = _x( 'Leave all checkboxes empty for default behaviour, which is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' );
+
 		?>
 		<p class="twrp-posts-queries-tab__paragraph twrp-setting-info">
 			<span class="twrp-setting-info__tag"><?= esc_html( $info_label ); ?></span>
 			<span class="twrp-setting-info__text"><?= esc_html( $info_text ); ?></span>
 		</p>
 		<?php
+
 		$post_stats = self::get_post_statuses();
 		foreach ( $post_stats as $status ) :
 			if ( isset( $status->name, $status->label ) ) :
 				$id = 'twrp-post-status-setting__' . $status->name;
 
 				$checked = '';
-				if ( in_array( $status->name, $current_setting, true ) ) {
+				if ( in_array( $status->name, $current_setting[ self::POST_STATUSES__SETTING_NAME ], true ) ) {
 					$checked = 'checked';
 				}
 				?>
@@ -73,7 +77,7 @@ class Post_Status implements Query_Setting {
 					<input
 						id="<?= esc_attr( $id ); ?>"
 						class="twrp-post-status-setting__input"
-						name="<?= esc_attr( $this->get_setting_name() . '[' . $status->name . ']' ); ?>"
+						name="<?= esc_attr( $this->get_setting_name() . '[' . self::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
 						type="checkbox"
 						value="<?= esc_attr( $status->name ); ?>"
 						<?= esc_attr( $checked ); ?>
@@ -94,10 +98,11 @@ class Post_Status implements Query_Setting {
 	 */
 	public static function get_post_statuses() {
 		$args = array(
-			'public'                 => true,
-			'publicly_queryable'     => true,
-			'show_in_admin_all_list' => true,
-			'internal'               => false,
+			'public'                    => true,
+			'publicly_queryable'        => true,
+			'show_in_admin_all_list'    => true,
+			'show_in_admin_status_list' => true,
+			'internal'                  => false,
 		);
 		return get_post_stati( $args, 'objects', 'or' );
 	}
@@ -108,7 +113,9 @@ class Post_Status implements Query_Setting {
 	 * @return mixed
 	 */
 	public static function get_default_setting() {
-		return array();
+		return array(
+			self::POST_STATUSES__SETTING_NAME => array(),
+		);
 	}
 
 	/**
@@ -130,24 +137,30 @@ class Post_Status implements Query_Setting {
 	 * Sanitize a variable, to be safe for processing.
 	 *
 	 * @param mixed $setting
-	 * @return string[] The sanitized variable. An array with post statuses.
+	 * @return array The sanitized variable. An array with post statuses.
 	 */
 	public static function sanitize_setting( $setting ) {
 		if ( ! is_array( $setting ) ) {
 			return self::get_default_setting();
 		}
 
+		if ( ! isset( $setting[ self::POST_STATUSES__SETTING_NAME ] ) || ! is_array( $setting[ self::POST_STATUSES__SETTING_NAME ] ) ) {
+			return self::get_default_setting();
+		}
+
 		$post_statuses       = self::get_post_statuses();
 		$post_statuses_names = wp_list_pluck( $post_statuses, 'name' );
 
-		$sanitized_post_statuses = array();
-		foreach ( $setting as $post_status ) {
+		$sanitized_post_statuses = array(
+			self::POST_STATUSES__SETTING_NAME => array(),
+		);
+		foreach ( $setting[ self::POST_STATUSES__SETTING_NAME ] as $post_status ) {
 			if ( in_array( $post_status, $post_statuses_names, true ) ) {
-				array_push( $sanitized_post_statuses, $post_status );
+				array_push( $sanitized_post_statuses[ self::POST_STATUSES__SETTING_NAME ], $post_status );
 			}
 		}
 
-		if ( empty( $sanitized_post_statuses ) ) {
+		if ( empty( $sanitized_post_statuses[ self::POST_STATUSES__SETTING_NAME ] ) ) {
 			return self::get_default_setting();
 		}
 
@@ -166,15 +179,11 @@ class Post_Status implements Query_Setting {
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
+		if ( empty( $query_settings[ self::get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ] ) ) {
 			return $previous_query_args;
 		}
 
-		if ( empty( $query_settings[ self::get_setting_name() ] ) ) {
-			return $previous_query_args;
-		}
-
-		$previous_query_args['post_status'] = $query_settings[ self::get_setting_name() ];
+		$previous_query_args['post_status'] = $query_settings[ self::get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ];
 		return $previous_query_args;
 	}
 }

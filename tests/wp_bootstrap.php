@@ -3,7 +3,21 @@
  * PHPUnit bootstrap file
  *
  * @package Tabs_With_Recommended_Posts
+ * @phan-file-suppress PhanUndeclaredConstant, PhanUndeclaredFunction
  */
+
+if ( \function_exists( 'xdebug_set_filter' ) ) {
+	/**
+	 * Speed up phpunit for code coverage, by filtering some xdebug files.
+	 */
+	\xdebug_set_filter(
+		\XDEBUG_FILTER_CODE_COVERAGE,
+		\XDEBUG_PATH_WHITELIST,
+		array(
+			'/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Query_Setting/',
+		)
+	);
+}
 
 $_tests_dir = getenv( 'WP_TESTS_DIR' );
 
