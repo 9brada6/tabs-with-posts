@@ -158,10 +158,10 @@ class Post_Status_Test extends TestCase {
 			self::$post_statuses_key => array(),
 		);
 
-		$this->assertEquals( $class::sanitize_setting( $to_sanitize ), $to_sanitize_equals );
-		$this->assertEquals( $class::sanitize_setting( $to_sanitize_2 ), $to_sanitize_equals_2 );
-		$this->assertEquals( $class::sanitize_setting( $to_sanitize_3 ), $to_sanitize_equals_3 );
-		$this->assertEquals( $class::sanitize_setting( $to_sanitize_4 ), $to_sanitize_equals_4 );
+		$this->assertSame( $class::sanitize_setting( $to_sanitize ), $to_sanitize_equals );
+		$this->assertSame( $class::sanitize_setting( $to_sanitize_2 ), $to_sanitize_equals_2 );
+		$this->assertSame( $class::sanitize_setting( $to_sanitize_3 ), $to_sanitize_equals_3 );
+		$this->assertSame( $class::sanitize_setting( $to_sanitize_4 ), $to_sanitize_equals_4 );
 	}
 
 	/**
@@ -214,9 +214,9 @@ class Post_Status_Test extends TestCase {
 		$to_add_3 = array( $class::get_setting_name() => 'publish' );
 		$result_3 = array();
 
-		$this->assertEquals( $class::add_query_arg( array(), $to_add_1 ), $result_1 );
-		$this->assertEquals( $class::add_query_arg( array(), $to_add_2 ), $result_2 );
-		$this->assertEquals( $class::add_query_arg( array(), $to_add_3 ), $result_3 );
+		$this->assertSame( $class::add_query_arg( array(), $to_add_1 ), $result_1 );
+		$this->assertSame( $class::add_query_arg( array(), $to_add_2 ), $result_2 );
+		$this->assertSame( $class::add_query_arg( array(), $to_add_3 ), $result_3 );
 	}
 
 	#region -- Data Providers

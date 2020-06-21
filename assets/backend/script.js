@@ -406,10 +406,10 @@ var TWRP_Plugin = (function ($) {
 	    allUsers.once('sync', updateCategories);
 	    function updateCategories() {
 	        for (var i_1 = 0; i_1 < allUsers.length; i_1++) {
-	            var name_1 = void 0, id_1 = void 0;
+	            var name_1 = void 0, id = void 0;
 	            try {
 	                name_1 = allUsers.models[i_1].attributes.name;
-	                id_1 = allUsers.models[i_1].attributes.id;
+	                id = allUsers.models[i_1].attributes.id;
 	            }
 	            catch (error) {
 	                continue;
@@ -417,7 +417,7 @@ var TWRP_Plugin = (function ($) {
 	            usersFound.push({
 	                value: name_1,
 	                label: name_1,
-	                id: id_1,
+	                id: id,
 	            });
 	        }
 	        sendToControl(usersFound);
@@ -1112,6 +1112,57 @@ var TWRP_Plugin = (function ($) {
 	 */
 	function sanitizePostName(name) {
 	    return name;
+	}
+
+	var firstOrderGroup = $('#twrp-order-setting__js-first-order-group');
+	var secondOrderGroup = $('#twrp-order-setting__js-second-order-group');
+	var thirdOrderGroup = $('#twrp-order-setting__js-third-order-group');
+	var orderByClassName = 'twrp-order-setting__js-orderby';
+	var orderGroups = [firstOrderGroup, secondOrderGroup, thirdOrderGroup];
+	//todo: delete
+	$(hideOrShowUnnecessarySelectors);
+	$(document).on('change', "." + orderByClassName, hideOrShowUnnecessarySelectors);
+	/**
+	 * Hide or show the next selectors for the order by and order type, making the
+	 * user experience better.
+	 */
+	function hideOrShowUnnecessarySelectors() {
+	    var hideNext = false;
+	    for (var i_1 = 0; i_1 < orderGroups.length; i_1++) {
+	        if (hideNext) {
+	            hideUp(orderGroups[i_1]);
+	        }
+	        else {
+	            showUp(orderGroups[i_1]);
+	        }
+	        if (orderGroups[i_1].find("." + orderByClassName).val() === 'not_applied') {
+	            hideNext = true;
+	            hideUp(orderGroups[i_1].find('.twrp-order-setting__js-order-type'));
+	        }
+	        else {
+	            showUp(orderGroups[i_1].find('.twrp-order-setting__js-order-type'));
+	        }
+	    }
+	}
+	$(document).on('change', "." + orderByClassName, hideOrShowSelectedValues);
+	function hideOrShowSelectedValues() {
+	    for (var i_2 = 0; i_2 < orderGroups.length; i_2++) {
+	        orderGroups[i_2].find('option').removeAttr('disabled');
+	    }
+	    for (var i_3 = 0; i_3 < orderGroups.length; i_3++) {
+	        var selectedVal = orderGroups[i_3].find("." + orderByClassName).val();
+	        if (selectedVal !== 'not_applied') {
+	            for (var j = i_3 + 1; j < orderGroups.length; j++) {
+	                var orderBySelect = orderGroups[j].find("." + orderByClassName);
+	                var nextSelectedVal = orderBySelect.val();
+	                orderBySelect.find("[value=\"" + selectedVal + "\"]").attr('disabled', 'disabled');
+	                if (nextSelectedVal === selectedVal) {
+	                    orderBySelect.val('not_applied');
+	                    orderBySelect.trigger('change');
+	                }
+	            }
+	        }
+	    }
 	}
 
 	/**

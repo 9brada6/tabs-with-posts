@@ -139,7 +139,7 @@ class Post_Types_Test extends TestCase {
 	public function test__get_available_types() {
 		$available_types_obj   = self::$class_instance::get_available_types( 'objects' );
 		$available_types_names = self::$class_instance::get_available_types( 'names' );
-		$this->assertEquals( wp_list_pluck( $available_types_obj, 'name' ), $available_types_names );
+		$this->assertSame( wp_list_pluck( $available_types_obj, 'name' ), $available_types_names );
 		$this->assertContains( 'public_post_type', $available_types_names );
 		$this->assertNotContains( 'not_public_post_type', $available_types_names );
 	}

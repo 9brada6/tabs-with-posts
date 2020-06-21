@@ -102,7 +102,7 @@ class Post_Order implements Query_Setting {
 
 		?>
 		<div class="twrp-order-setting">
-			<p class="twrp-order-setting__js-order-group">
+			<p id="twrp-order-setting__js-first-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $first_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $first_orderby_setting ); ?>
 				</select>
@@ -112,7 +112,7 @@ class Post_Order implements Query_Setting {
 				</select>
 			</p>
 
-			<p class="twrp-order-setting__order-group">
+			<p id="twrp-order-setting__js-second-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $second_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $second_orderby_setting ); ?>
 				</select>
@@ -122,7 +122,7 @@ class Post_Order implements Query_Setting {
 				</select>
 			</p>
 
-			<p class="twrp-order-setting__order-group">
+			<p id="twrp-order-setting__js-third-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $third_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $third_orderby_setting ); ?>
 				</select>

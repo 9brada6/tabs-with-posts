@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1592687553">
-  <project timestamp="1592687553">
+<coverage generated="1592721997">
+  <project timestamp="1592721997">
     <package name="TWRP\Query_Setting">
       <file name="/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Query_Setting/Advanced_Arguments.php">
         <class name="TWRP\Query_Setting\Advanced_Arguments" namespace="TWRP\Query_Setting" fullPackage="Advanced">
@@ -948,8 +948,8 @@
         <class name="TWRP\Query_Setting\Search" namespace="TWRP\Query_Setting">
           <metrics complexity="15" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="42" coveredelements="42"/>
         </class>
-        <line num="20" type="method" name="get_setting_name" visibility="public" complexity="1" crap="1" count="22"/>
-        <line num="21" type="stmt" count="22"/>
+        <line num="20" type="method" name="get_setting_name" visibility="public" complexity="1" crap="1" count="73"/>
+        <line num="21" type="stmt" count="73"/>
         <line num="29" type="method" name="get_title" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="30" type="stmt" count="1"/>
         <line num="40" type="method" name="setting_is_collapsed" visibility="public" complexity="1" crap="1" count="1"/>
@@ -969,27 +969,27 @@
         <line num="89" type="stmt" count="1"/>
         <line num="92" type="stmt" count="1"/>
         <line num="96" type="stmt" count="1"/>
-        <line num="103" type="method" name="get_default_setting" visibility="public" complexity="1" crap="1" count="18"/>
-        <line num="105" type="stmt" count="18"/>
-        <line num="115" type="method" name="get_submitted_sanitized_setting" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="116" type="stmt" count="1"/>
-        <line num="118" type="stmt" count="1"/>
+        <line num="103" type="method" name="get_default_setting" visibility="public" complexity="1" crap="1" count="36"/>
+        <line num="105" type="stmt" count="36"/>
+        <line num="115" type="method" name="get_submitted_sanitized_setting" visibility="public" complexity="2" crap="2" count="23"/>
+        <line num="116" type="stmt" count="23"/>
+        <line num="118" type="stmt" count="22"/>
         <line num="121" type="stmt" count="1"/>
-        <line num="130" type="method" name="sanitize_setting" visibility="public" complexity="3" crap="3" count="19"/>
-        <line num="131" type="stmt" count="19"/>
-        <line num="132" type="stmt" count="11"/>
-        <line num="134" type="stmt" count="9"/>
-        <line num="136" type="stmt" count="9"/>
-        <line num="137" type="stmt" count="6"/>
-        <line num="140" type="stmt" count="4"/>
-        <line num="154" type="method" name="add_query_arg" visibility="public" complexity="3" crap="3" count="19"/>
-        <line num="155" type="stmt" count="19"/>
+        <line num="130" type="method" name="sanitize_setting" visibility="public" complexity="3" crap="3" count="46"/>
+        <line num="131" type="stmt" count="46"/>
+        <line num="132" type="stmt" count="24"/>
+        <line num="134" type="stmt" count="22"/>
+        <line num="136" type="stmt" count="22"/>
+        <line num="137" type="stmt" count="10"/>
+        <line num="140" type="stmt" count="12"/>
+        <line num="154" type="method" name="add_query_arg" visibility="public" complexity="3" crap="3" count="48"/>
+        <line num="155" type="stmt" count="48"/>
         <line num="156" type="stmt" count="1"/>
-        <line num="159" type="stmt" count="18"/>
-        <line num="161" type="stmt" count="18"/>
-        <line num="162" type="stmt" count="16"/>
-        <line num="165" type="stmt" count="2"/>
-        <line num="166" type="stmt" count="2"/>
+        <line num="159" type="stmt" count="47"/>
+        <line num="161" type="stmt" count="47"/>
+        <line num="162" type="stmt" count="43"/>
+        <line num="165" type="stmt" count="28"/>
+        <line num="166" type="stmt" count="28"/>
         <metrics loc="168" ncloc="106" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="34" elements="42" coveredelements="42"/>
       </file>
       <file name="/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Query_Setting/Sticky_Posts.php">

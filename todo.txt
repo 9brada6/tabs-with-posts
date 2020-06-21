@@ -15,4 +15,6 @@ or migrate to something else.
 
 8. Change class from notice-wrap in Query_Name.
 
-9. Add a method inside Query_Name that passing
+9. Add a method inside Query_Name that passing a query will retrieve the name.
+
+10. Post status add a select that will enable an option whether to apply or not to apply.

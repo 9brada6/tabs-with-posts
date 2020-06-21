@@ -69,7 +69,7 @@ class Sticky_Posts_Test extends TestCase {
 			'include',
 		);
 
-		$this->assertEquals( $class->get_submitted_sanitized_setting(), $class::get_default_setting() );
+		$this->assertSame( $class->get_submitted_sanitized_setting(), $class::get_default_setting() );
 
 		foreach ( $values_should_return_not_include as $value_setting ) {
 			$_POST[ $class::get_setting_name() ] = array( $inclusion_key => $value_setting );
@@ -77,14 +77,14 @@ class Sticky_Posts_Test extends TestCase {
 			$returned           = $class->get_submitted_sanitized_setting();
 			$returned_sanitized = $class::sanitize_setting( array( $inclusion_key => $value_setting ) );
 
-			$this->assertEquals( $returned, $returned_sanitized );
+			$this->assertSame( $returned, $returned_sanitized );
 
 			$_POST[ $class::get_setting_name() ] = $value_setting;
 
 			$returned           = $class->get_submitted_sanitized_setting();
 			$returned_sanitized = $class::sanitize_setting( $value_setting );
 
-			$this->assertEquals( $returned, $returned_sanitized );
+			$this->assertSame( $returned, $returned_sanitized );
 		}
 
 	}
@@ -94,7 +94,7 @@ class Sticky_Posts_Test extends TestCase {
 		$inclusion_key = $class::INCLUSION__SETTING_NAME;
 
 		$returned = $class::sanitize_setting( array( $inclusion_key => 'include' ) );
-		$this->assertEquals( $returned[ $inclusion_key ], 'include' );
+		$this->assertSame( $returned[ $inclusion_key ], 'include' );
 
 		$values_should_return_not_include = array(
 			'not_include',
@@ -109,9 +109,9 @@ class Sticky_Posts_Test extends TestCase {
 		);
 		foreach ( $values_should_return_not_include as $value_setting ) {
 			$returned = $class::sanitize_setting( array( $inclusion_key => $value_setting ) );
-			$this->assertEquals( $returned[ $inclusion_key ], 'not_include' );
+			$this->assertSame( $returned[ $inclusion_key ], 'not_include' );
 			$returned = $class::sanitize_setting( $value_setting );
-			$this->assertEquals( $returned[ $inclusion_key ], 'not_include' );
+			$this->assertSame( $returned[ $inclusion_key ], 'not_include' );
 		}
 	}
 
