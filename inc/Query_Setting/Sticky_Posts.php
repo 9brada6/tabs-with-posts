@@ -57,15 +57,17 @@ class Sticky_Posts implements Query_Setting {
 		$selected_option = $current_setting[ self::INCLUSION__SETTING_NAME ];
 		?>
 		<div class="twrp-sticky-setting">
-			<select class="twrp-sticky-setting__selector" name="<?= esc_attr( $name ); ?>">
-				<option value="not_include" <?php selected( $selected_option, 'not_include' ); ?>>
-					<?= _x( 'Do not include sticky posts', 'backend', 'twrp' ); ?>
-				</option>
+			<p class="twrp-query-settings__paragraph">
+				<select class="twrp-sticky-setting__selector" name="<?= esc_attr( $name ); ?>">
+					<option value="not_include" <?php selected( $selected_option, 'not_include' ); ?>>
+						<?= _x( 'Do not include sticky posts', 'backend', 'twrp' ); ?>
+					</option>
 
-				<option value="include" <?php selected( $selected_option, 'include' ); ?>>
-					<?= _x( 'Include sticky posts', 'backend', 'twrp' ); ?>
-				</option>
-			</select>
+					<option value="include" <?php selected( $selected_option, 'include' ); ?>>
+						<?= _x( 'Include sticky posts', 'backend', 'twrp' ); ?>
+					</option>
+				</select>
+			</p>
 		</div>
 		<?php
 	}

@@ -30,7 +30,8 @@ class TWRP_Main {
 	 * @todo: Compatibility of OS's between "\" and "/".
 	 */
 	protected static $autoload_directories = array(
-		'TWRP\\' => array( 'inc/', 'tests/' ),
+		'TWRP\\'        => array( 'inc/', 'tests/' ),
+		'TWRP\\Plugins' => array( 'inc/Plugins', 'inc/Plugins/Post_Views_Plugins' ),
 	);
 
 	public static function init() {
@@ -262,8 +263,11 @@ function twrp_enqueue_artblock_styles() {
 
 add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
+#region -- Testing
 
 function dump_query_settings() {
+
+	// var_dump( \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( 25 ) );
 
 	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
 
@@ -284,3 +288,6 @@ function dump_query_settings() {
 }
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );
+
+
+#endregion -- Testing

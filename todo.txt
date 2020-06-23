@@ -18,3 +18,5 @@ or migrate to something else.
 9. Add a method inside Query_Name that passing a query will retrieve the name.
 
 10. Post status add a select that will enable an option whether to apply or not to apply.
+
+11. Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.

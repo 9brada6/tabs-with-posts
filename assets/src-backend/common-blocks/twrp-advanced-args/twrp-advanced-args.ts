@@ -1,8 +1,10 @@
 import $ from 'jquery';
 
-$( enableCodeMirror );
+declare let CodeMirror: any;
 
-function enableCodeMirror() {
+$( document ).ready( enableCodeMirror );
+
+function enableCodeMirror(): void {
 	const element = document.getElementById( 'twrp-advanced-args__codemirror-textarea' );
 
 	if ( element ) {

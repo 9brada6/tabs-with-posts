@@ -1,6 +1,9 @@
 import $ from 'jquery';
+import 'jqueryui';
 
 // todo: Make everything under twrp-display-list block.
+
+// #region -- Defining some global variables.
 
 const effectDuration = 300;
 
@@ -20,13 +23,17 @@ const categoryItem = $(
 	'</div>'
 );
 
-// =============================================================================
-// Function to add a category on the lists.
+// #endregion -- Defining some global variables.
 
-$( document ).on( 'click', '#twrp-cat-settings__add-cat-btn', addSelectedCategoryOnClickButton );
+// #region -- add a categories on the lists.
 
-function addSelectedCategoryOnClickButton() {
-	const categoryId = categorySelector.find( ':selected' ).val();
+$( document ).on( 'click', '#twrp-cat-settings__add-cat-btn', handleAddCategoryButton );
+
+/**
+ * Handle the addition of a new category via the button click.
+ */
+function handleAddCategoryButton(): void {
+	const categoryId: any = categorySelector.find( ':selected' ).val();
 	const name = sanitizeCategoryName( categorySelector.find( ':selected' ).text() );
 
 	if ( categoryId > 0 ) {
@@ -35,10 +42,13 @@ function addSelectedCategoryOnClickButton() {
 	}
 }
 
-function addCatToInput( categoryId ) {
+/**
+ * Add a category to the hidden input.
+ */
+function addCatToInput( categoryId: string|number ): void {
 	const oldValue = categoriesInput.val();
 
-	let newValue;
+	let newValue: string|number;
 	if ( oldValue && categoryId ) {
 		newValue = oldValue + ';' + categoryId;
 	} else {
@@ -50,7 +60,10 @@ function addCatToInput( categoryId ) {
 	}
 }
 
-function addCatToVisual( categoryId, name ) {
+/**
+ * Adds a category to visual list.
+ */
+function addCatToVisual( categoryId: string|number, name: string ): void {
 	if ( ! categoryItemIsDisplayed( categoryId ) ) {
 		const toAppend = categoryItem.clone();
 
@@ -76,23 +89,30 @@ function addCatToVisual( categoryId, name ) {
 		} );
 	}
 
-	function removeEmptyMessage() {
+	function removeEmptyMessage(): void {
 		categoriesEmptyMessage.remove();
 	}
 }
 
-// =============================================================================
-// Function for removing
+// #endregion -- add a categories on the lists.
 
-$( document ).on( 'click', '.twrp-cat-settings__cat-remove-btn', removeCategoryOnButtonClick );
+// #region -- Removing categories.
 
-function removeCategoryOnButtonClick() {
+$( document ).on( 'click', '.twrp-cat-settings__cat-remove-btn', handleRemoveCategory );
+
+/**
+ * Removes a selected category when a button is clicked.
+ */
+function handleRemoveCategory(): void {
 	const categoryId = $( this ).closest( '[' + categoryIdAttrName + ']' ).attr( categoryIdAttrName );
 	removeCategoryFromDisplay( categoryId );
 	removeCategoryFromInput( categoryId );
 }
 
-function removeCategoryFromDisplay( categoryId ) {
+/**
+ * Removes a category from the display list with the categories.
+ */
+function removeCategoryFromDisplay( categoryId: string|number ): void {
 	const toRemove = categoriesItemsWrapper.find( '[' + categoryIdAttrName + '="' + categoryId + '"]' );
 	toRemove.effect( {
 		effect: 'blind',
@@ -115,9 +135,12 @@ function removeCategoryFromDisplay( categoryId ) {
 	}
 }
 
-function removeCategoryFromInput( categoryId ) {
-	const categoryIds = categoriesInput.val().split( ';' );
-	const toRemoveCategoryIndex = categoryIds.indexOf( categoryId );
+/**
+ * Removes a category from the hidden input.
+ */
+function removeCategoryFromInput( categoryId: string|number ): void {
+	const categoryIds = String( categoriesInput.val() ).split( ';' );
+	const toRemoveCategoryIndex = categoryIds.indexOf( String( categoryId ) );
 
 	if ( toRemoveCategoryIndex !== -1 ) {
 		categoryIds.splice( toRemoveCategoryIndex, 1 );
@@ -125,10 +148,14 @@ function removeCategoryFromInput( categoryId ) {
 	}
 }
 
-// =============================================================================
-// Function for to verify if a category exist.
+// #endregion -- Removing categories.
 
-function categoryItemIsDisplayed( categoryId ) {
+// #region -- Verify if a category exist.
+
+/**
+ * Check to see if a category item is displayed in the Visual List of categories.
+ */
+function categoryItemIsDisplayed( categoryId: string|number ): boolean {
 	const items = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
 
 	let sameIdFound = false;
@@ -146,8 +173,11 @@ function categoryItemIsDisplayed( categoryId ) {
 	return false;
 }
 
-function categoryIdInsertedInInput( categoryId ) {
-	const value = categoriesInput.val();
+/**
+ * Check to see if the category Id is found in the hidden input.
+ */
+function categoryIdInsertedInInput( categoryId: string|number ): boolean {
+	const value: any = categoriesInput.val();
 	if ( ! value ) {
 		return false;
 	}
@@ -160,82 +190,36 @@ function categoryIdInsertedInInput( categoryId ) {
 	return false;
 }
 
-// =============================================================================
+// #endregion -- Removing categories.
 
-$( refreshDisplayCategories );
-
-function refreshDisplayCategories() {
-	let categoryIds = categoriesInput.val();
-	if ( ! categoryIds ) {
-		return;
-	}
-	categoryIds = categoryIds.split( ';' );
-
-	for ( let i = 0; i < categoryIds.length; i++ ) {
-		const categoryName = getCategoryName( categoryIds[ i ] );
-		if ( categoryName ) {
-			addCatToVisual( categoryIds[ i ], getCategoryName( categoryIds[ i ] ) );
-		} else {
-			categoryIds.splice( i, 1 );
-			i--;
-		}
-	}
-
-	categoriesInput.val( categoryIds.join( ';' ) );
-}
-
-function refreshInputtedCategories() {
-	const categoriesItems = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
-
-	let categoriesIds = '';
-	categoriesItems.each( function() {
-		const catId = $( this ).attr( categoryIdAttrName );
-		if ( ! categoriesIds ) {
-			categoriesIds = catId;
-		} else {
-			categoriesIds += ';' + catId;
-		}
-	} );
-
-	categoriesInput.val( categoriesIds );
-}
-
-function getCategoryName( categoryId ) {
-	const name = categorySelector.find( '[value="' + categoryId + '"]' ).text();
-	return sanitizeCategoryName( name );
-}
-
-// =============================================================================
-// Sanitization for Category Name.
+// #region -- Sanitization.
 
 /**
  * Take out the number of counts and trim the name.
- *
- * @param {string} name The name to be sanitized.
  */
-function sanitizeCategoryName( name ) {
+function sanitizeCategoryName( name: string ): string {
 	const removeCountParenthesisRegex = /\([^(]*\)$/;
 	name = name.replace( removeCountParenthesisRegex, '' );
 	name = name.trim();
 	return name;
 }
 
-// =============================================================================
-// Make The Categories Sortable
-// =============================================================================
+// #endregion -- Sanitization.
+
+// #region -- Make The Categories Sortable.
 
 $( makeItemsSortable );
 
-function makeItemsSortable() {
+function makeItemsSortable(): void {
 	categoriesItemsWrapper.sortable( {
 		placeholder: 'twrp-display-list__placeholder',
 		stop: refreshInputtedCategories,
 	} );
 }
 
-// =============================================================================
-// Show/Hide Select For Category Relation.
-// =============================================================================
+// #endregion -- Make The Categories Sortable.
+
+// #region -- Show/Hide Select For Category Relation.
 
 const CategoryRelationWrapper = $( '#twrp-cat-settings__js-select-relation-wrap' );
 const CategoryRelationHiddenClass = 'twrp-cat-settings__select-relation-wrap--hidden';
@@ -245,7 +229,7 @@ const CategoryTypeSelect = $( '#twrp-cat-settings__type' );
 $( refreshCategoryRelationDisplay );
 $( document ).on( 'change', '#twrp-cat-settings__type', refreshCategoryRelationDisplay );
 
-function refreshCategoryRelationDisplay() {
+function refreshCategoryRelationDisplay(): void {
 	if ( 'IN' === CategoryTypeSelect.val() ) {
 		if ( CategoryRelationWrapper.hasClass( CategoryRelationHiddenClass ) ) {
 			CategoryRelationWrapper.removeClass( CategoryRelationHiddenClass );
@@ -264,12 +248,74 @@ function refreshCategoryRelationDisplay() {
 		} );
 	}
 
-	function completeHideEffect() {
+	function completeHideEffect(): void {
 		CategoryRelationWrapper.addClass( CategoryRelationHiddenClass );
 		resetEffectInlineStyle();
 	}
 
-	function resetEffectInlineStyle() {
+	function resetEffectInlineStyle(): void {
 		CategoryRelationWrapper.removeAttr( 'style' );
 	}
 }
+
+// #endregion -- Show/Hide Select For Category Relation.
+
+// #region -- Helpers
+
+/**
+ * For a given category Id, return the category name.
+ */
+function getCategoryName( categoryId: string|number ): string {
+	const name = categorySelector.find( '[value="' + categoryId + '"]' ).text();
+	return sanitizeCategoryName( name );
+}
+
+// #endregion -- Helpers
+
+// #region -- Refresh Display/Hidden input categories.
+
+$( refreshDisplayCategories );
+
+/**
+ * Refresh the visual list categories, with Ids taken from the hidden input.
+ */
+function refreshDisplayCategories(): void {
+	const categoriesVal: string = String( categoriesInput.val() );
+	if ( ! categoriesVal ) {
+		return;
+	}
+	const categoryIds = categoriesVal.split( ';' );
+
+	for ( let i = 0; i < categoryIds.length; i++ ) {
+		const categoryName = getCategoryName( categoryIds[ i ] );
+		if ( categoryName ) {
+			addCatToVisual( categoryIds[ i ], getCategoryName( categoryIds[ i ] ) );
+		} else {
+			categoryIds.splice( i, 1 );
+			i--;
+		}
+	}
+
+	categoriesInput.val( categoryIds.join( ';' ) );
+}
+
+/**
+ * Refresh the hidden input categories, with Ids taken from the visual list.
+ */
+function refreshInputtedCategories(): void {
+	const categoriesItems = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
+
+	let categoriesIds = '';
+	categoriesItems.each( function() {
+		const catId = $( this ).attr( categoryIdAttrName );
+		if ( ! categoriesIds ) {
+			categoriesIds = catId;
+		} else {
+			categoriesIds += ';' + catId;
+		}
+	} );
+
+	categoriesInput.val( categoriesIds );
+}
+
+// #endregion -- Refresh Display/Hidden input categories.

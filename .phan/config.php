@@ -1,6 +1,5 @@
 <?php
 // phpcs:disable
-use Phan\Issue;
 
 /**
  *
@@ -55,7 +54,7 @@ return array(
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!.*phpunit)|node_modules).*@',
 	//'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-	'exclude_file_regex' => '@(\.\./.*tabs-with-recommended-posts|akismet|themes|node_modules|vendor/(?!(phpunit|masterminds|/?$)))@',
+	'exclude_file_regex' => '@(\.\./.*tabs-with-recommended-posts|akismet|themes|wordpress|node_modules|vendor/(?!(phpunit|masterminds|/?$)))@',
 
 	'file_list' => array(),
 
@@ -75,7 +74,7 @@ return array(
 	'disable_suppression' => false,
 
 	// @phan-suppress-next-line PhanUndeclaredClassConstant
-	'minimum_severity' => Issue::SEVERITY_LOW,
+	'minimum_severity' => 0,
 
 	'suppress_issue_types' => array(
 		// 'PhanRedefineClass',

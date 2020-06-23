@@ -3,312 +3,288 @@ var TWRP_Plugin = (function ($) {
 
 	$ = $ && Object.prototype.hasOwnProperty.call($, 'default') ? $['default'] : $;
 
-	$( enableCollapsibleSettings );
-
+	$(document).ready(enableCollapsibleSettings);
 	function enableCollapsibleSettings() {
-		$( '.twrp-collapsible' ).each( function () {
-			const element = $( this );
-			const activeTabIndex = ( element.attr( 'data-twrp-is-collapsed' ) === '1' ) ? 0 : false;
-
-			element.accordion( {
-				active: activeTabIndex,
-				heightStyle: 'content',
-				collapsible: true,
-				icons: false
-			} );
-		} );
+	    $('.twrp-collapsible').each(function () {
+	        var element = $(this);
+	        var activeTabIndex = (element.attr('data-twrp-is-collapsed') === '1') ? 0 : false;
+	        element.accordion({
+	            active: activeTabIndex,
+	            heightStyle: 'content',
+	            collapsible: true,
+	            icons: false,
+	        });
+	    });
 	}
 
-	$( enableCodeMirror );
-
+	$(document).ready(enableCodeMirror);
 	function enableCodeMirror() {
-		const element = document.getElementById( 'twrp-advanced-args__codemirror-textarea' );
-
-		if ( element ) {
-			CodeMirror.fromTextArea( element, {
-				mode: 'application/json',
-				theme: 'material-darker',
-				indentUnit: 4,
-				indentWithTabs: true,
-				lineNumbers: true,
-				autoRefresh: true,
-			} );
-		}
+	    var element = document.getElementById('twrp-advanced-args__codemirror-textarea');
+	    if (element) {
+	        CodeMirror.fromTextArea(element, {
+	            mode: 'application/json',
+	            theme: 'material-darker',
+	            indentUnit: 4,
+	            indentWithTabs: true,
+	            lineNumbers: true,
+	            autoRefresh: true,
+	        });
+	    }
 	}
 
 	// todo: Make everything under twrp-display-list block.
-
-	const effectDuration = 300;
-
-	const categorySelector = $( '#twrp-cat-settings__js-cat-dropdown' );
-
-	const categoriesInput = $( '#twrp-cat-settings__cat-ids' );
-
-	const categoryIdAttrName = 'data-cat-id';
-
-	const categoriesItemsWrapper = $( '#twrp-cat-settings__cat-list-wrap' );
-	const categoriesEmptyMessage = categoriesItemsWrapper.find( '.twrp-display-list__empty-msg' );
-	const categoryItem = $(
-		'<div class="twrp-display-list__item twrp-cat-settings__cat-list-item">' +
-			'<div class="twrp-display-list__item-name twrp-cat-settings__cat-item-name">' +
-			'</div>' +
-			'<button class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
-		'</div>'
-	);
-
-	// =============================================================================
-	// Function to add a category on the lists.
-
-	$( document ).on( 'click', '#twrp-cat-settings__add-cat-btn', addSelectedCategoryOnClickButton );
-
-	function addSelectedCategoryOnClickButton() {
-		const categoryId = categorySelector.find( ':selected' ).val();
-		const name = sanitizeCategoryName( categorySelector.find( ':selected' ).text() );
-
-		if ( categoryId > 0 ) {
-			addCatToInput( categoryId );
-			addCatToVisual( categoryId, name );
-		}
+	// region -- Defining some global variables.
+	var effectDuration = 300;
+	var categorySelector = $('#twrp-cat-settings__js-cat-dropdown');
+	var categoriesInput = $('#twrp-cat-settings__cat-ids');
+	var categoryIdAttrName = 'data-cat-id';
+	var categoriesItemsWrapper = $('#twrp-cat-settings__cat-list-wrap');
+	var categoriesEmptyMessage = categoriesItemsWrapper.find('.twrp-display-list__empty-msg');
+	var categoryItem = $('<div class="twrp-display-list__item twrp-cat-settings__cat-list-item">' +
+	    '<div class="twrp-display-list__item-name twrp-cat-settings__cat-item-name">' +
+	    '</div>' +
+	    '<button class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
+	    '</div>');
+	// endregion -- Defining some global variables.
+	// region -- add a categories on the lists.
+	$(document).on('click', '#twrp-cat-settings__add-cat-btn', handleAddCategoryButton);
+	/**
+	 * Handle the addition of a new category via the button click.
+	 */
+	function handleAddCategoryButton() {
+	    var categoryId = categorySelector.find(':selected').val();
+	    var name = sanitizeCategoryName(categorySelector.find(':selected').text());
+	    if (categoryId > 0) {
+	        addCatToInput(categoryId);
+	        addCatToVisual(categoryId, name);
+	    }
 	}
-
-	function addCatToInput( categoryId ) {
-		const oldValue = categoriesInput.val();
-
-		let newValue;
-		if ( oldValue && categoryId ) {
-			newValue = oldValue + ';' + categoryId;
-		} else {
-			newValue = categoryId;
-		}
-
-		if ( ! categoryIdInsertedInInput( categoryId ) ) {
-			categoriesInput.val( newValue );
-		}
+	/**
+	 * Add a category to the hidden input.
+	 */
+	function addCatToInput(categoryId) {
+	    var oldValue = categoriesInput.val();
+	    var newValue;
+	    if (oldValue && categoryId) {
+	        newValue = oldValue + ';' + categoryId;
+	    }
+	    else {
+	        newValue = categoryId;
+	    }
+	    if (!categoryIdInsertedInInput(categoryId)) {
+	        categoriesInput.val(newValue);
+	    }
 	}
-
-	function addCatToVisual( categoryId, name ) {
-		if ( ! categoryItemIsDisplayed( categoryId ) ) {
-			const toAppend = categoryItem.clone();
-
-			// Show a nice effect on removing.
-			categoriesEmptyMessage.hide( {
-				effect: 'blind',
-				duration: effectDuration,
-				direction: 'left',
-				complete: removeEmptyMessage,
-			} );
-
-			toAppend.find( '.twrp-cat-settings__cat-item-name' ).text( sanitizeCategoryName( name ) );
-			toAppend.attr( categoryIdAttrName, categoryId );
-
-			categoriesItemsWrapper.append( toAppend );
-
-			// After appending, show a nice effect.
-			toAppend.hide();
-			toAppend.show( {
-				effect: 'blind',
-				duration: effectDuration,
-				direction: 'left',
-			} );
-		}
-
-		function removeEmptyMessage() {
-			categoriesEmptyMessage.remove();
-		}
+	/**
+	 * Adds a category to visual list.
+	 */
+	function addCatToVisual(categoryId, name) {
+	    if (!categoryItemIsDisplayed(categoryId)) {
+	        var toAppend = categoryItem.clone();
+	        // Show a nice effect on removing.
+	        categoriesEmptyMessage.hide({
+	            effect: 'blind',
+	            duration: effectDuration,
+	            direction: 'left',
+	            complete: removeEmptyMessage,
+	        });
+	        toAppend.find('.twrp-cat-settings__cat-item-name').text(sanitizeCategoryName(name));
+	        toAppend.attr(categoryIdAttrName, categoryId);
+	        categoriesItemsWrapper.append(toAppend);
+	        // After appending, show a nice effect.
+	        toAppend.hide();
+	        toAppend.show({
+	            effect: 'blind',
+	            duration: effectDuration,
+	            direction: 'left',
+	        });
+	    }
+	    function removeEmptyMessage() {
+	        categoriesEmptyMessage.remove();
+	    }
 	}
-
-	// =============================================================================
-	// Function for removing
-
-	$( document ).on( 'click', '.twrp-cat-settings__cat-remove-btn', removeCategoryOnButtonClick );
-
-	function removeCategoryOnButtonClick() {
-		const categoryId = $( this ).closest( '[' + categoryIdAttrName + ']' ).attr( categoryIdAttrName );
-		removeCategoryFromDisplay( categoryId );
-		removeCategoryFromInput( categoryId );
+	// endregion -- add a categories on the lists.
+	// region -- Removing categories.
+	$(document).on('click', '.twrp-cat-settings__cat-remove-btn', handleRemoveCategory);
+	/**
+	 * Removes a selected category when a button is clicked.
+	 */
+	function handleRemoveCategory() {
+	    var categoryId = $(this).closest('[' + categoryIdAttrName + ']').attr(categoryIdAttrName);
+	    removeCategoryFromDisplay(categoryId);
+	    removeCategoryFromInput(categoryId);
 	}
-
-	function removeCategoryFromDisplay( categoryId ) {
-		const toRemove = categoriesItemsWrapper.find( '[' + categoryIdAttrName + '="' + categoryId + '"]' );
-		toRemove.effect( {
-			effect: 'blind',
-			duration: effectDuration,
-			direction: 'left',
-			complete: removeElement,
-		} );
-
-		function removeElement() {
-			toRemove.remove();
-
-			if ( 0 === categoriesItemsWrapper.children().length ) {
-				categoriesItemsWrapper.append( categoriesEmptyMessage );
-				categoriesEmptyMessage.show( {
-					effect: 'blind',
-					duration: effectDuration,
-					direction: 'left',
-				} );
-			}
-		}
+	/**
+	 * Removes a category from the display list with the categories.
+	 */
+	function removeCategoryFromDisplay(categoryId) {
+	    var toRemove = categoriesItemsWrapper.find('[' + categoryIdAttrName + '="' + categoryId + '"]');
+	    toRemove.effect({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        direction: 'left',
+	        complete: removeElement,
+	    });
+	    function removeElement() {
+	        toRemove.remove();
+	        if (0 === categoriesItemsWrapper.children().length) {
+	            categoriesItemsWrapper.append(categoriesEmptyMessage);
+	            categoriesEmptyMessage.show({
+	                effect: 'blind',
+	                duration: effectDuration,
+	                direction: 'left',
+	            });
+	        }
+	    }
 	}
-
-	function removeCategoryFromInput( categoryId ) {
-		const categoryIds = categoriesInput.val().split( ';' );
-		const toRemoveCategoryIndex = categoryIds.indexOf( categoryId );
-
-		if ( toRemoveCategoryIndex !== -1 ) {
-			categoryIds.splice( toRemoveCategoryIndex, 1 );
-			categoriesInput.val( categoryIds.join( ';' ) );
-		}
+	/**
+	 * Removes a category from the hidden input.
+	 */
+	function removeCategoryFromInput(categoryId) {
+	    var categoryIds = String(categoriesInput.val()).split(';');
+	    var toRemoveCategoryIndex = categoryIds.indexOf(String(categoryId));
+	    if (toRemoveCategoryIndex !== -1) {
+	        categoryIds.splice(toRemoveCategoryIndex, 1);
+	        categoriesInput.val(categoryIds.join(';'));
+	    }
 	}
-
-	// =============================================================================
-	// Function for to verify if a category exist.
-
-	function categoryItemIsDisplayed( categoryId ) {
-		const items = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
-
-		let sameIdFound = false;
-
-		items.each( function() {
-			if ( categoryId === $( this ).attr( categoryIdAttrName ) ) {
-				sameIdFound = true;
-			}
-		} );
-
-		if ( sameIdFound ) {
-			return true;
-		}
-
-		return false;
+	// endregion -- Removing categories.
+	// region -- Verify if a category exist.
+	/**
+	 * Check to see if a category item is displayed in the Visual List of categories.
+	 */
+	function categoryItemIsDisplayed(categoryId) {
+	    var items = categoriesItemsWrapper.find('.twrp-cat-settings__cat-list-item');
+	    var sameIdFound = false;
+	    items.each(function () {
+	        if (categoryId === $(this).attr(categoryIdAttrName)) {
+	            sameIdFound = true;
+	        }
+	    });
+	    if (sameIdFound) {
+	        return true;
+	    }
+	    return false;
 	}
-
-	function categoryIdInsertedInInput( categoryId ) {
-		const value = categoriesInput.val();
-		if ( ! value ) {
-			return false;
-		}
-		const categoryIds = value.split( ';' );
-
-		if ( categoryIds.indexOf( categoryId ) !== -1 ) {
-			return true;
-		}
-
-		return false;
+	/**
+	 * Check to see if the category Id is found in the hidden input.
+	 */
+	function categoryIdInsertedInInput(categoryId) {
+	    var value = categoriesInput.val();
+	    if (!value) {
+	        return false;
+	    }
+	    var categoryIds = value.split(';');
+	    if (categoryIds.indexOf(categoryId) !== -1) {
+	        return true;
+	    }
+	    return false;
 	}
-
-	// =============================================================================
-
-	$( refreshDisplayCategories );
-
-	function refreshDisplayCategories() {
-		let categoryIds = categoriesInput.val();
-		if ( ! categoryIds ) {
-			return;
-		}
-		categoryIds = categoryIds.split( ';' );
-
-		for ( let i = 0; i < categoryIds.length; i++ ) {
-			const categoryName = getCategoryName( categoryIds[ i ] );
-			if ( categoryName ) {
-				addCatToVisual( categoryIds[ i ], getCategoryName( categoryIds[ i ] ) );
-			} else {
-				categoryIds.splice( i, 1 );
-				i--;
-			}
-		}
-
-		categoriesInput.val( categoryIds.join( ';' ) );
-	}
-
-	function refreshInputtedCategories() {
-		const categoriesItems = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
-
-		let categoriesIds = '';
-		categoriesItems.each( function() {
-			const catId = $( this ).attr( categoryIdAttrName );
-			if ( ! categoriesIds ) {
-				categoriesIds = catId;
-			} else {
-				categoriesIds += ';' + catId;
-			}
-		} );
-
-		categoriesInput.val( categoriesIds );
-	}
-
-	function getCategoryName( categoryId ) {
-		const name = categorySelector.find( '[value="' + categoryId + '"]' ).text();
-		return sanitizeCategoryName( name );
-	}
-
-	// =============================================================================
-	// Sanitization for Category Name.
-
+	// endregion -- Removing categories.
+	// region -- Sanitization.
 	/**
 	 * Take out the number of counts and trim the name.
-	 *
-	 * @param {string} name The name to be sanitized.
 	 */
-	function sanitizeCategoryName( name ) {
-		const removeCountParenthesisRegex = /\([^(]*\)$/;
-		name = name.replace( removeCountParenthesisRegex, '' );
-		name = name.trim();
-		return name;
+	function sanitizeCategoryName(name) {
+	    var removeCountParenthesisRegex = /\([^(]*\)$/;
+	    name = name.replace(removeCountParenthesisRegex, '');
+	    name = name.trim();
+	    return name;
 	}
-
-	// =============================================================================
-	// Make The Categories Sortable
-	// =============================================================================
-
-	$( makeItemsSortable );
-
+	// endregion -- Sanitization.
+	// region -- Make The Categories Sortable.
+	$(makeItemsSortable);
 	function makeItemsSortable() {
-		categoriesItemsWrapper.sortable( {
-			placeholder: 'twrp-display-list__placeholder',
-			stop: refreshInputtedCategories,
-		} );
+	    categoriesItemsWrapper.sortable({
+	        placeholder: 'twrp-display-list__placeholder',
+	        stop: refreshInputtedCategories,
+	    });
 	}
-
-	// =============================================================================
-	// Show/Hide Select For Category Relation.
-	// =============================================================================
-
-	const CategoryRelationWrapper = $( '#twrp-cat-settings__js-select-relation-wrap' );
-	const CategoryRelationHiddenClass = 'twrp-cat-settings__select-relation-wrap--hidden';
-
-	const CategoryTypeSelect = $( '#twrp-cat-settings__type' );
-
-	$( refreshCategoryRelationDisplay );
-	$( document ).on( 'change', '#twrp-cat-settings__type', refreshCategoryRelationDisplay );
-
+	// endregion -- Make The Categories Sortable.
+	// region -- Show/Hide Select For Category Relation.
+	var CategoryRelationWrapper = $('#twrp-cat-settings__js-select-relation-wrap');
+	var CategoryRelationHiddenClass = 'twrp-cat-settings__select-relation-wrap--hidden';
+	var CategoryTypeSelect = $('#twrp-cat-settings__type');
+	$(refreshCategoryRelationDisplay);
+	$(document).on('change', '#twrp-cat-settings__type', refreshCategoryRelationDisplay);
 	function refreshCategoryRelationDisplay() {
-		if ( 'IN' === CategoryTypeSelect.val() ) {
-			if ( CategoryRelationWrapper.hasClass( CategoryRelationHiddenClass ) ) {
-				CategoryRelationWrapper.removeClass( CategoryRelationHiddenClass );
-				CategoryRelationWrapper.hide();
-				CategoryRelationWrapper.show( {
-					effect: 'blind',
-					duration: effectDuration,
-					complete: resetEffectInlineStyle,
-				} );
-			}
-		} else if ( ! CategoryRelationWrapper.hasClass( CategoryRelationHiddenClass ) ) {
-			CategoryRelationWrapper.hide( {
-				effect: 'blind',
-				duration: effectDuration,
-				complete: completeHideEffect,
-			} );
-		}
-
-		function completeHideEffect() {
-			CategoryRelationWrapper.addClass( CategoryRelationHiddenClass );
-			resetEffectInlineStyle();
-		}
-
-		function resetEffectInlineStyle() {
-			CategoryRelationWrapper.removeAttr( 'style' );
-		}
+	    if ('IN' === CategoryTypeSelect.val()) {
+	        if (CategoryRelationWrapper.hasClass(CategoryRelationHiddenClass)) {
+	            CategoryRelationWrapper.removeClass(CategoryRelationHiddenClass);
+	            CategoryRelationWrapper.hide();
+	            CategoryRelationWrapper.show({
+	                effect: 'blind',
+	                duration: effectDuration,
+	                complete: resetEffectInlineStyle,
+	            });
+	        }
+	    }
+	    else if (!CategoryRelationWrapper.hasClass(CategoryRelationHiddenClass)) {
+	        CategoryRelationWrapper.hide({
+	            effect: 'blind',
+	            duration: effectDuration,
+	            complete: completeHideEffect,
+	        });
+	    }
+	    function completeHideEffect() {
+	        CategoryRelationWrapper.addClass(CategoryRelationHiddenClass);
+	        resetEffectInlineStyle();
+	    }
+	    function resetEffectInlineStyle() {
+	        CategoryRelationWrapper.removeAttr('style');
+	    }
 	}
+	// endregion -- Show/Hide Select For Category Relation.
+	// region -- Helpers
+	/**
+	 * For a given category Id, return the category name.
+	 */
+	function getCategoryName(categoryId) {
+	    var name = categorySelector.find('[value="' + categoryId + '"]').text();
+	    return sanitizeCategoryName(name);
+	}
+	// endregion -- Helpers
+	// region -- Refresh Display/Hidden input categories.
+	$(refreshDisplayCategories);
+	/**
+	 * Refresh the visual list categories, with Ids taken from the hidden input.
+	 */
+	function refreshDisplayCategories() {
+	    var categoriesVal = String(categoriesInput.val());
+	    if (!categoriesVal) {
+	        return;
+	    }
+	    var categoryIds = categoriesVal.split(';');
+	    for (var i_1 = 0; i_1 < categoryIds.length; i_1++) {
+	        var categoryName = getCategoryName(categoryIds[i_1]);
+	        if (categoryName) {
+	            addCatToVisual(categoryIds[i_1], getCategoryName(categoryIds[i_1]));
+	        }
+	        else {
+	            categoryIds.splice(i_1, 1);
+	            i_1--;
+	        }
+	    }
+	    categoriesInput.val(categoryIds.join(';'));
+	}
+	/**
+	 * Refresh the hidden input categories, with Ids taken from the visual list.
+	 */
+	function refreshInputtedCategories() {
+	    var categoriesItems = categoriesItemsWrapper.find('.twrp-cat-settings__cat-list-item');
+	    var categoriesIds = '';
+	    categoriesItems.each(function () {
+	        var catId = $(this).attr(categoryIdAttrName);
+	        if (!categoriesIds) {
+	            categoriesIds = catId;
+	        }
+	        else {
+	            categoriesIds += ';' + catId;
+	        }
+	    });
+	    categoriesInput.val(categoriesIds);
+	}
+	// endregion -- Refresh Display/Hidden input categories.
 
 	// Todo...
 	var effectDuration$1 = 500;
