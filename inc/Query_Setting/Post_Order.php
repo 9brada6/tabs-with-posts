@@ -49,6 +49,9 @@ class Post_Order implements Query_Setting {
 	 */
 	const THIRD_ORDER_TYPE_SELECT_NAME = 'third_order_type';
 
+	// TODO:
+	const PLUGIN_ORDERBY_ORDERBY_VALUE = 'post_views';
+
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
 	 *
@@ -118,7 +121,6 @@ class Post_Order implements Query_Setting {
 			<p id="twrp-order-setting__js-second-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $second_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $second_orderby_setting ); ?>
-					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_plugin_select_options() ); ?>
 				</select>
 
 				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $second_select_order_type_name ); ?>>
@@ -129,7 +131,6 @@ class Post_Order implements Query_Setting {
 			<p id="twrp-order-setting__js-third-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $third_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $third_orderby_setting ); ?>
-					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_plugin_select_options() ); ?>
 				</select>
 
 				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $third_select_order_type_name ); ?>>
@@ -210,7 +211,7 @@ class Post_Order implements Query_Setting {
 
 	public static function get_orderby_plugin_select_options() {
 		$select_options = array(
-			'post_views' => _x( '(Plugin) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_ORDERBY_ORDERBY_VALUE => _x( '(Plugin) Order by post views', 'backend', 'twrp' ),
 		);
 
 		return $select_options;
@@ -256,7 +257,7 @@ class Post_Order implements Query_Setting {
 	 */
 	public static function sanitize_setting( $setting ) {
 		$sanitized_setting = self::sanitize_orderby_parameters( $setting );
-		$sanitized_setting = Post_Views::additional_sanitization( $sanitized_setting, 'order' );
+		$sanitized_setting = self::plugin_additional_sanitization( $sanitized_setting );
 
 		return $sanitized_setting;
 	}
@@ -311,6 +312,21 @@ class Post_Order implements Query_Setting {
 		}
 
 		return $sanitized_setting;
+	}
+
+	protected static function plugin_additional_sanitization( $settings ) {
+		if ( ! in_array( self::PLUGIN_ORDERBY_ORDERBY_VALUE, $settings, true ) ) {
+			return $settings;
+		}
+
+		$settings[ self::FIRST_ORDERBY_SELECT_NAME ] = self::PLUGIN_ORDERBY_ORDERBY_VALUE;
+
+		$settings[ self::SECOND_ORDERBY_SELECT_NAME ]    = 'not_applied';
+		$settings[ self::THIRD_ORDERBY_SELECT_NAME ]     = 'not_applied';
+		$settings[ self::SECOND_ORDER_TYPE_SELECT_NAME ] = 'DESC';
+		$settings[ self::THIRD_ORDER_TYPE_SELECT_NAME ]  = 'DESC';
+
+		return $settings;
 	}
 
 	/**
