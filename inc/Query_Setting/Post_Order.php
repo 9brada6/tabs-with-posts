@@ -11,6 +11,8 @@
 
 namespace TWRP\Query_Setting;
 
+use TWRP\Plugins\Post_Views;
+
 /**
  * Creates the possibility to select the order in which the posts will be
  * displayed.
@@ -105,6 +107,7 @@ class Post_Order implements Query_Setting {
 			<p id="twrp-order-setting__js-first-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $first_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $first_orderby_setting ); ?>
+					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_plugin_select_options() ); ?>
 				</select>
 
 				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $first_select_order_type_name ); ?>>
@@ -115,6 +118,7 @@ class Post_Order implements Query_Setting {
 			<p id="twrp-order-setting__js-second-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $second_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $second_orderby_setting ); ?>
+					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_plugin_select_options() ); ?>
 				</select>
 
 				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $second_select_order_type_name ); ?>>
@@ -125,6 +129,7 @@ class Post_Order implements Query_Setting {
 			<p id="twrp-order-setting__js-third-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $third_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $third_orderby_setting ); ?>
+					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_plugin_select_options() ); ?>
 				</select>
 
 				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $third_select_order_type_name ); ?>>
@@ -139,10 +144,13 @@ class Post_Order implements Query_Setting {
 	 * Display all possible orderby options to select.
 	 *
 	 * @param string|null $current_setting Current selected option.
+	 * @param array|null $options
 	 * @return void
 	 */
-	protected function display_order_by_select_options( $current_setting ) {
-		$options = self::get_orderby_select_options();
+	protected function display_order_by_select_options( $current_setting, $options = null ) {
+		if ( null === $options || ! is_array( $options ) ) {
+			$options = self::get_orderby_select_options();
+		}
 
 		foreach ( $options as $value => $description ) {
 			?>
@@ -200,6 +208,14 @@ class Post_Order implements Query_Setting {
 		return $select_options;
 	}
 
+	public static function get_orderby_plugin_select_options() {
+		$select_options = array(
+			'post_views' => _x( '(Plugin) Order by post views', 'backend', 'twrp' ),
+		);
+
+		return $select_options;
+	}
+
 	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
@@ -239,11 +255,20 @@ class Post_Order implements Query_Setting {
 	 * @return array
 	 */
 	public static function sanitize_setting( $setting ) {
-		$default_settings  = self::get_default_setting();
-		$sanitized_setting = self::get_default_setting();
-		$setting           = wp_parse_args( $setting, $default_settings );
+		$sanitized_setting = self::sanitize_orderby_parameters( $setting );
+		$sanitized_setting = Post_Views::additional_sanitization( $sanitized_setting, 'order' );
 
-		$orderby_options    = array_keys( self::get_orderby_select_options() );
+		return $sanitized_setting;
+	}
+
+	protected static function sanitize_orderby_parameters( $setting ) {
+		$sanitized_setting = self::get_default_setting();
+		$setting           = wp_parse_args( $setting, self::get_default_setting() );
+
+		$orderby_options        = array_keys( self::get_orderby_select_options() );
+		$plugin_orderby_options = array_keys( self::get_orderby_plugin_select_options() );
+		$valid_orderby_options  = array_merge( $orderby_options, $plugin_orderby_options );
+
 		$order_type_options = array( 'DESC', 'ASC' );
 
 		$orderby_settings_keys = array(
@@ -263,13 +288,13 @@ class Post_Order implements Query_Setting {
 		// elements after will also equal 'not_applied.'
 		$must_apply_next_orderby = true;
 		foreach ( $orderby_settings_keys as $orderby_key ) {
-			$is_valid_option = in_array( $setting[ $orderby_key ], $orderby_options, true );
+			$is_valid_option = in_array( $setting[ $orderby_key ], $valid_orderby_options, true );
 
-			if ( ( ! $is_valid_option ) || ( ! $must_apply_next_orderby ) ) {
+			if ( ! $is_valid_option || ! $must_apply_next_orderby ) {
 				$setting[ $orderby_key ] = 'not_applied';
 			}
 
-			if ( 'not_applied' === $setting[ $orderby_key ] ) {
+			if ( ( 'not_applied' === $setting[ $orderby_key ] ) ) {
 				$must_apply_next_orderby = false;
 			}
 
@@ -300,6 +325,13 @@ class Post_Order implements Query_Setting {
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		$previous_query_args = self::add_wp_query_arg( $previous_query_args, $query_settings );
+		$previous_query_args = Post_Views::modify_query_arg( $previous_query_args );
+
+		return $previous_query_args;
+	}
+
+	public static function add_wp_query_arg( $previous_query_args, $query_settings ) {
 		$orderby  = array();
 		$settings = $query_settings[ self::get_setting_name() ];
 
@@ -324,4 +356,5 @@ class Post_Order implements Query_Setting {
 		$previous_query_args['orderby'] = $orderby;
 		return $previous_query_args;
 	}
+
 }

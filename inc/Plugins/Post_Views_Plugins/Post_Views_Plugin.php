@@ -39,24 +39,34 @@ interface Post_Views_Plugin {
 	 * @param int|string $post_id The post Id.
 	 * @return int
 	 */
-	public static function get_post_views( $post_id );
+	public static function get_views( $post_id );
 
 	/**
 	 * Get the views for all the posts in the array. This function will fail
 	 * silently.
 	 *
 	 * @param array $posts_ids
-	 * @return array<int,int> The key of the array represents the post Id, and
+	 * @return array<int,int> The key of the array represents the Post ID, and
 	 *                        the value the post views number.
 	 */
-	public static function get_posts_views( $posts_ids );
+	public static function get_multiple_posts_views( $posts_ids );
+
+	/**
+	 * Provides an additional sanitization to the settings.
+	 *
+	 * @param mixed $sanitized_setting The settings to sanitize.
+	 * @param mixed $sanitization_method An identifier as where the settings come from, identifiers
+	 * can be found in Additional_Sanitization_Methods class.
+	 */
+	public static function additional_sanitization( $sanitized_setting, $sanitization_method );
 
 	/**
 	 * Given an array with WP_Query args return the new WP_Query args that will
 	 * have the parameters added to order by this plugin views.
 	 *
-	 * @param array $query_args
+	 * @param array $query_args The normal WP_Query args, only that 'post_views'
+	 * appears as a key in 'orderby' parameter.
 	 * @return array
 	 */
-	public static function construct_query_order( $query_args );
+	public static function modify_query_arg( $query_args );
 }

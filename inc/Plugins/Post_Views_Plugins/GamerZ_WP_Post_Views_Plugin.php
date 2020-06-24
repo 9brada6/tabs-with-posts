@@ -2,9 +2,7 @@
 
 namespace TWRP\Plugins;
 
-class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
-
-	const ORDERBY_NAME = 'post_views';
+class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 
 	/**
 	 * Whether the plugin support getting the views for a post and
@@ -25,8 +23,21 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		return true;
 	}
 
+	/**
+	 * Whether or not the plugin is installed.
+	 *
+	 * @return bool
+	 */
 	public static function is_installed() {
-		return function_exists( 'pvc_get_post_views' );
+		$is_active = false;
+
+		// We search for any of the 2 functions, as one might change in the future.
+		$a_function_exist = ( function_exists( 'wp_postview_cache_count_enqueue' ) || function_exists( 'the_views' ) );
+		if ( is_plugin_active( 'wp-postviews/wp-postviews.php' ) || $a_function_exist ) {
+			$is_active = true;
+		}
+
+		return $is_active;
 	}
 
 	/**
@@ -36,22 +47,13 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 	 * @return int
 	 */
 	public static function get_views( $post_id ) {
-		if ( ! is_numeric( $post_id ) ) {
-			return 0;
-		}
-		$post_id = (int) $post_id;
+		$post_views = get_post_meta( $post_id, 'views', true );
 
-		if ( ! function_exists( 'pvc_get_post_views' ) ) {
-			return 0;
+		if ( ! is_numeric( $post_views ) || ! ( $post_views > 0 ) ) {
+			$post_views = 0;
 		}
 
-		$post_views = pvc_get_post_views( $post_id );
-
-		if ( is_numeric( $post_views ) && $post_views > 0 ) {
-			return (int) $post_views;
-		}
-
-		return 0;
+		return $post_views;
 	}
 
 	/**
@@ -63,32 +65,18 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 	 *                        the value the post views number.
 	 */
 	public static function get_multiple_posts_views( $posts_ids ) {
-		// Todo.
+		// todo.
 	}
 
 	/**
 	 * Provides an additional sanitization to the settings.
 	 *
 	 * @param mixed $sanitized_setting The settings to sanitize.
-	 * @param mixed $sanitization_method An identifier as where the settings come from, identifiers
+	 * @param string $sanitization_method An identifier as where the settings come from, identifiers
 	 * can be found in Additional_Sanitization_Methods class.
 	 */
 	public static function additional_sanitization( $sanitized_setting, $sanitization_method ) {
-		if ( Additional_Sanitization_Methods::ORDER === $sanitization_method ) {
-			self::sanitize_order( $sanitized_setting );
-		}
-	}
-
-	public static function sanitize_order( $sanitized_setting ) {
-		if ( ! isset( $sanitized_setting ) || ! is_array( $sanitized_setting ) ) {
-			return $sanitized_setting;
-		}
-
-		if ( in_array( self::ORDERBY_NAME, $sanitized_setting ) ) {
-			$order = $sanitized_setting[ self::ORDERBY_NAME ];
-		}
-
-		return $sanitized_setting;
+		return $sanitized_setting; // No default sanitization needed.
 	}
 
 	/**
@@ -100,21 +88,25 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 	 * @return array
 	 */
 	public static function modify_query_arg( $query_args ) {
-		if ( ! isset( $query_args['orderby'] ) ) {
-			return $query_args;
-		}
-
 		if ( ! is_array( $query_args['orderby'] ) ) {
 			return $query_args;
 		}
 
-		if ( ! array_key_exists( self::ORDERBY_NAME, $query_args['orderby'] ) ) {
+		if ( ! isset( $query_args['orderby']['post_views'] ) ) {
 			return $query_args;
 		}
 
-		$query_args['order']   = $query_args['orderby'];
-		$query_args['orderby'] = self::ORDERBY_NAME;
-		// todo: add key to include filters.
+		$new_orderby = array();
+
+		foreach ( $query_args['orderby'] as $orderby => $order ) {
+			if ( 'post_views' === $orderby ) {
+				$new_orderby['meta_value_num'] = $order;
+				continue;
+			}
+			$new_orderby[ $orderby ] = $order;
+		}
+
+		$query_args['meta_key'] = 'views'; // phpcs:ignore -- using meta_key is making query slow.
 
 		return $query_args;
 	}

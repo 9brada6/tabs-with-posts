@@ -269,6 +269,13 @@ function dump_query_settings() {
 
 	// var_dump( \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( 25 ) );
 
+	$ids_array = array( 25, 27, 29 );
+	// var_dump( \TWRP\Plugins\DFactory_Post_Views_Counter_Plugin::get_multiple_posts_views( $ids_array ) );
+
+	// var_dump( pvc_get_post_views( $ids_array ) );
+
+	var_dump( TWRP\Plugins\Post_Views::get_plugin_to_use() );
+
 	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
 
 	var_dump(
@@ -280,11 +287,21 @@ function dump_query_settings() {
 	);
 
 	$args = array(
-		'post_type'       => array( 'page' ),
-		'post__in'        => array( 13 ),
-		'post_parent__in' => array( 0 ),
+		'suppress_filters' => false,
 	);
 	\Debug\console_dump( get_posts( $args ) );
+
+	$args = array(
+		'orderby'  => array(
+			'comment_count'  => 'DESC',
+			'meta_value_num' => 'DESC',
+			'date'           => 'ASC',
+		),
+		'meta_key' => 'views',
+	);
+	\Debug\console_dump( get_posts( $args ) );
+	\Debug\console_dump( get_post_meta( 25, 'views', true ), '25:' );
+	\Debug\console_dump( get_post_meta( 27, 'views', true ), '27:' );
 }
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );
