@@ -52,15 +52,6 @@ interface Post_Views_Plugin {
 	public static function get_multiple_posts_views( $posts_ids );
 
 	/**
-	 * Provides an additional sanitization to the settings.
-	 *
-	 * @param mixed $sanitized_setting The settings to sanitize.
-	 * @param mixed $sanitization_method An identifier as where the settings come from, identifiers
-	 * can be found in Additional_Sanitization_Methods class.
-	 */
-	public static function additional_sanitization( $sanitized_setting, $sanitization_method );
-
-	/**
 	 * Given an array with WP_Query args return the new WP_Query args that will
 	 * have the parameters added to order by this plugin views.
 	 *

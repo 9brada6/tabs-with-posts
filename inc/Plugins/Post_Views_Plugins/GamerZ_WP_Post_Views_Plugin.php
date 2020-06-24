@@ -69,17 +69,6 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 	}
 
 	/**
-	 * Provides an additional sanitization to the settings.
-	 *
-	 * @param mixed $sanitized_setting The settings to sanitize.
-	 * @param string $sanitization_method An identifier as where the settings come from, identifiers
-	 * can be found in Additional_Sanitization_Methods class.
-	 */
-	public static function additional_sanitization( $sanitized_setting, $sanitization_method ) {
-		return $sanitized_setting; // No default sanitization needed.
-	}
-
-	/**
 	 * Given an array with WP_Query args return the new WP_Query args that will
 	 * have the parameters added to order by this plugin views.
 	 *

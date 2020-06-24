@@ -66,19 +66,6 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		// Todo.
 	}
 
-	/**
-	 * Provides an additional sanitization to the settings.
-	 *
-	 * @param mixed $sanitized_setting The settings to sanitize.
-	 * @param mixed $sanitization_method An identifier as where the settings come from, identifiers
-	 * can be found in Additional_Sanitization_Methods class.
-	 */
-	public static function additional_sanitization( $sanitized_setting, $sanitization_method ) {
-		if ( Additional_Sanitization_Methods::ORDER === $sanitization_method ) {
-			self::sanitize_order( $sanitized_setting );
-		}
-	}
-
 	public static function sanitize_order( $sanitized_setting ) {
 		if ( ! isset( $sanitized_setting ) || ! is_array( $sanitized_setting ) ) {
 			return $sanitized_setting;
