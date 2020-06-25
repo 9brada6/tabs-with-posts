@@ -12,7 +12,7 @@ namespace TWRP\Plugins;
 interface Post_Rating_Plugin {
 
 	/**
-	 * Whether the plugin support getting the rating for a post and
+	 * Whether the plugin support getting the rating for a post and additionally
 	 * for multiple posts in an array.
 	 *
 	 * @return bool
@@ -35,14 +35,20 @@ interface Post_Rating_Plugin {
 	public static function is_installed_and_can_be_used();
 
 	/**
-	 * Get the rating for a post. This function will fail silently.
-	 *
-	 * @todo: What to return when fail?
+	 * Get the average rating for a post. This function will fail silently.
 	 *
 	 * @param int|string $post_id The post Id.
-	 * @return int
+	 * @return int|float|null Null if plugin is not installed.
 	 */
-	public static function get_rating( $post_id );
+	public static function get_average_rating( $post_id );
+
+	/**
+	 * Get the number of votes for a post.
+	 *
+	 * @param int $post_id
+	 * @return null|int Null if Plugin is not installed or $post_id id not valid.
+	 */
+	public static function get_number_of_votes( $post_id );
 
 	/**
 	 * Given an array with WP_Query args with 'orderby' of type array and a

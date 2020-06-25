@@ -5,3 +5,4 @@
 ### Rating Plugins
 
 #### YASR Rating Plugin
+	- Can get the rating for a post.

@@ -40,7 +40,6 @@ return array(
 	// should be added to the `directory_list` as well as to `exclude_analysis_directory_list`.
 	'exclude_analysis_directory_list' => array(
 		'./../../../',
-		'./vendor/'
 	),
 
 	// A list of files that will be excluded from parsing and analysis and will not be read at all.
@@ -54,7 +53,7 @@ return array(
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!.*phpunit)|node_modules).*@',
 	//'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-	'exclude_file_regex' => '@(\.\./.*tabs-with-recommended-posts|akismet|themes|wordpress|node_modules|vendor/(?!(phpunit|masterminds|/?$)))@',
+	'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|akismet|themes|wordpress|node_modules|vendor/(?!(phpunit|masterminds|/?$))).*@',
 
 	'file_list' => array(),
 
@@ -73,7 +72,6 @@ return array(
 	// Set to true in order to ignore issue suppression.
 	'disable_suppression' => false,
 
-	// @phan-suppress-next-line PhanUndeclaredClassConstant
 	'minimum_severity' => 0,
 
 	'suppress_issue_types' => array(

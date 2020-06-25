@@ -26,3 +26,5 @@ or migrate to something else.
 13. Create Suppress Filter Query Option.
 
 13. Make Plugin DFactory Block Suppress filter option.
+
+15. Change is_installed from Post_views class with is_installed_and_can_be_used.

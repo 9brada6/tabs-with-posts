@@ -49,10 +49,24 @@ class Post_Order implements Query_Setting {
 	 */
 	const THIRD_ORDER_TYPE_SELECT_NAME = 'third_order_type';
 
-	// TODO:
+	/**
+	 * Orderby key that will be replaced with a custom order implemented by a
+	 * plugin.
+	 */
 	const PLUGIN_DFACTORY_ORDERBY_VALUE = 'post_views_dfactory';
 
+	/**
+	 * Orderby key that will be replaced with a custom order implemented by a
+	 * plugin.
+	 */
 	const PLUGIN_GAMERZ_ORDERBY_VALUE = 'post_views_gamerz';
+
+	/**
+	 * Orderby key that will be replaced with a custom order implemented by a
+	 * plugin.
+	 */
+	const PLUGIN_BLAZK_ORDERBY_VALUE = 'post_views_gamerz';
+
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
