@@ -15,7 +15,7 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 	}
 
 	/**
-	 * Whether the plugin support support ordering posts by querying the
+	 * Whether the plugin support support ordering posts by querying the db.
 	 *
 	 * @return bool
 	 */
@@ -47,6 +47,15 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 	 * @return int
 	 */
 	public static function get_views( $post_id ) {
+		if ( ! is_numeric( $post_id ) ) {
+			return 0;
+		}
+		$post_id = (int) $post_id;
+
+		if ( ! self::is_installed() ) {
+			return 0;
+		}
+
 		$post_views = get_post_meta( $post_id, 'views', true );
 
 		if ( ! is_numeric( $post_views ) || ! ( $post_views > 0 ) ) {
@@ -69,32 +78,31 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 	}
 
 	/**
-	 * Given an array with WP_Query args return the new WP_Query args that will
-	 * have the parameters added to order by this plugin views.
+	 * Given an array with WP_Query args with 'orderby' of type array and a
+	 * custom orderby key. Return the new WP_Query args that will have the
+	 * parameters modified, to retrieve the posts in order of the views.
 	 *
-	 * @param array $query_args The normal WP_Query args, only that 'post_views'
-	 * appears as a key in 'orderby' parameter.
+	 * @param array $query_args The normal WP_Query args, only that a new key
+	 * will appear as a key in 'orderby' parameter.
 	 * @return array
 	 */
-	public static function modify_query_arg( $query_args ) {
-		if ( ! is_array( $query_args['orderby'] ) ) {
-			return $query_args;
-		}
-
-		if ( ! isset( $query_args['orderby']['post_views'] ) ) {
+	public static function modify_query_arg_if_necessary( $query_args ) {
+		$orderby_value = \TWRP\Query_Setting\Post_Order::PLUGIN_GAMERZ_ORDERBY_VALUE;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
 		}
 
 		$new_orderby = array();
 
 		foreach ( $query_args['orderby'] as $orderby => $order ) {
-			if ( 'post_views' === $orderby ) {
+			if ( $orderby_value === $orderby ) {
 				$new_orderby['meta_value_num'] = $order;
 				continue;
 			}
 			$new_orderby[ $orderby ] = $order;
 		}
 
+		$query_args['orderby']  = $new_orderby;
 		$query_args['meta_key'] = 'views'; // phpcs:ignore -- using meta_key is making query slow.
 
 		return $query_args;

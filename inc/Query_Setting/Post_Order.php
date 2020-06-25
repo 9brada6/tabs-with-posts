@@ -50,7 +50,9 @@ class Post_Order implements Query_Setting {
 	const THIRD_ORDER_TYPE_SELECT_NAME = 'third_order_type';
 
 	// TODO:
-	const PLUGIN_ORDERBY_ORDERBY_VALUE = 'post_views';
+	const PLUGIN_DFACTORY_ORDERBY_VALUE = 'post_views_dfactory';
+
+	const PLUGIN_GAMERZ_ORDERBY_VALUE = 'post_views_gamerz';
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
@@ -211,7 +213,8 @@ class Post_Order implements Query_Setting {
 
 	public static function get_orderby_plugin_select_options() {
 		$select_options = array(
-			self::PLUGIN_ORDERBY_ORDERBY_VALUE => _x( '(Plugin) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_DFACTORY_ORDERBY_VALUE => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_GAMERZ_ORDERBY_VALUE   => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
 		);
 
 		return $select_options;
@@ -315,11 +318,11 @@ class Post_Order implements Query_Setting {
 	}
 
 	protected static function plugin_additional_sanitization( $settings ) {
-		if ( ! in_array( self::PLUGIN_ORDERBY_ORDERBY_VALUE, $settings, true ) ) {
+		if ( ! in_array( self::PLUGIN_DFACTORY_ORDERBY_VALUE, $settings, true ) ) {
 			return $settings;
 		}
 
-		$settings[ self::FIRST_ORDERBY_SELECT_NAME ] = self::PLUGIN_ORDERBY_ORDERBY_VALUE;
+		$settings[ self::FIRST_ORDERBY_SELECT_NAME ] = self::PLUGIN_DFACTORY_ORDERBY_VALUE;
 
 		$settings[ self::SECOND_ORDERBY_SELECT_NAME ]    = 'not_applied';
 		$settings[ self::THIRD_ORDERBY_SELECT_NAME ]     = 'not_applied';
@@ -342,7 +345,7 @@ class Post_Order implements Query_Setting {
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$previous_query_args = self::add_wp_query_arg( $previous_query_args, $query_settings );
-		$previous_query_args = Post_Views::modify_query_arg( $previous_query_args );
+		$previous_query_args = Post_Views::modify_query_arg_if_necessary( $previous_query_args, $query_settings );
 
 		return $previous_query_args;
 	}

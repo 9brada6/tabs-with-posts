@@ -11,18 +11,12 @@ class Post_Views {
 	 *
 	 * @var array
 	 */
-	protected static $all_plugin_classes = array(
-		'DFactory_Post_Views_Counter_Plugin',
+	protected static $all_plugin_class_names = array(
+		'DFactory' => 'DFactory_Post_Views_Counter_Plugin',
+		'GamerZ'   => 'GamerZ_WP_Post_Views_Plugin',
 	);
 
-	/**
-	 * A variable that hold the class that our plugin use to display post views.
-	 *
-	 * @var null|false|Post_Views_Plugin Null if not have been set. False if no
-	 * views plugin is installed, so no class can be used. And the corresponding
-	 * class to use.
-	 */
-	protected static $plugin_class;
+	protected static $plugin_classes = array();
 
 	/**
 	 * The plugins class namespace prefix.
@@ -31,13 +25,43 @@ class Post_Views {
 	 */
 	protected static $plugin_namespace = '\\TWRP\\Plugins\\';
 
-	// public static function a_plugin_is_installed() {
+	public static function get_plugin_classes() {
+		if ( ! empty( self::$plugin_classes ) ) {
+			return self::$plugin_classes;
+		}
 
-	// }
+		self::$plugin_classes = array();
 
-	public static function additional_sanitization( $var, $from ) {
-		return $var;
+		foreach ( self::$all_plugin_class_names as $identity => $class_name ) {
+			$fully_qualified_class_name = self::$plugin_namespace . $class_name;
+			$plugin_class               = new $fully_qualified_class_name();
+			if ( $plugin_class instanceof Post_Views_Plugin ) {
+				self::$plugin_classes[ $identity ] = new $fully_qualified_class_name();
+			}
+		}
+
+		return self::$plugin_classes;
 	}
+
+	/**
+	 * Given an array with WP_Query args return the new WP_Query args that will
+	 * have the parameters added to order by the views plugin selected.
+	 *
+	 * @param array $query_args The normal WP_Query args, only that 'post_views'
+	 * appears as a key in 'orderby' parameter.
+	 * @return array
+	 */
+	public static function modify_query_arg_if_necessary( $query_args ) {
+		$plugin_classes = self::get_plugin_classes();
+
+		foreach ( $plugin_classes as $plugin_class ) {
+			$query_args = $plugin_class::modify_query_arg_if_necessary( $query_args );
+		}
+
+		return $query_args;
+	}
+
+	#region -- Todo
 
 	/**
 	 * Get the class of the plugin to use.
@@ -48,16 +72,16 @@ class Post_Views {
 	 * no class can be used, or the corresponding class to use.
 	 */
 	public static function get_plugin_to_use() {
-		foreach ( self::$all_plugin_classes as $plugin_name_class ) {
-			$fully_qualified_class_name = self::$plugin_namespace . $plugin_name_class;
-			if ( true === $fully_qualified_class_name::is_installed() ) {
-				self::$plugin_class = new $fully_qualified_class_name();
-				return self::$plugin_class; // @phan-suppress-current-line PhanPossiblyNullTypeReturn
-			}
-		}
+		// foreach ( self::$all_plugin_classes as $plugin_name_class ) {
+		// $fully_qualified_class_name = self::$plugin_namespace . $plugin_name_class;
+		// if ( true === $fully_qualified_class_name::is_installed() ) {
+		// self::$plugin_class = new $fully_qualified_class_name();
+		// return self::$plugin_class; // @phan-suppress-current-line PhanPossiblyNullTypeReturn
+		// }
+		// }
 
-		self::$plugin_class = false;
-		return false;
+		// self::$plugin_class = false;
+		// return false;
 	}
 
 	/**
@@ -102,23 +126,5 @@ class Post_Views {
 		return $posts_views;
 	}
 
-	/**
-	 * Given an array with WP_Query args return the new WP_Query args that will
-	 * have the parameters added to order by the views plugin selected.
-	 *
-	 * @param array $query_args The normal WP_Query args, only that 'post_views'
-	 * appears as a key in 'orderby' parameter.
-	 * @return array
-	 */
-	public static function modify_query_arg( $query_args ) {
-		$plugin_class = self::get_plugin_to_use();
-
-		if ( ! $plugin_class ) {
-			return $query_args;
-		}
-
-		$query_args = $plugin_class::modify_query_arg( $query_args );
-
-		return $query_args;
-	}
+	#endregion -- Todo
 }

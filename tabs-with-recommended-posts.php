@@ -302,6 +302,8 @@ function dump_query_settings() {
 	\Debug\console_dump( get_posts( $args ) );
 	\Debug\console_dump( get_post_meta( 25, 'views', true ), '25:' );
 	\Debug\console_dump( get_post_meta( 27, 'views', true ), '27:' );
+
+	\Debug\console_dump( get_post_meta( 25, 'yasr_overall_rating', true ), '25 rating:' );
 }
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );

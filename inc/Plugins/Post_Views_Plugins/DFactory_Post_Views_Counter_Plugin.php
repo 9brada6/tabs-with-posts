@@ -17,7 +17,7 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 	}
 
 	/**
-	 * Whether the plugin support support ordering posts by querying the
+	 * Whether the plugin support support ordering posts by querying the db.
 	 *
 	 * @return bool
 	 */
@@ -41,7 +41,7 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! function_exists( 'pvc_get_post_views' ) ) {
+		if ( ! self::is_installed() ) {
 			return 0;
 		}
 
@@ -66,42 +66,24 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		// Todo.
 	}
 
-	public static function sanitize_order( $sanitized_setting ) {
-		if ( ! isset( $sanitized_setting ) || ! is_array( $sanitized_setting ) ) {
-			return $sanitized_setting;
-		}
-
-		if ( in_array( self::ORDERBY_NAME, $sanitized_setting ) ) {
-			$order = $sanitized_setting[ self::ORDERBY_NAME ];
-		}
-
-		return $sanitized_setting;
-	}
-
 	/**
-	 * Given an array with WP_Query args return the new WP_Query args that will
-	 * have the parameters added to order by this plugin views.
+	 * Given an array with WP_Query args with 'orderby' of type array and a
+	 * custom orderby key. Return the new WP_Query args that will have the
+	 * parameters modified, to retrieve the posts in order of the views.
 	 *
-	 * @param array $query_args The normal WP_Query args, only that 'post_views'
-	 * appears as a key in 'orderby' parameter.
+	 * @param array $query_args The normal WP_Query args, only that a new key
+	 * will appear as a key in 'orderby' parameter.
 	 * @return array
 	 */
-	public static function modify_query_arg( $query_args ) {
-		if ( ! isset( $query_args['orderby'] ) ) {
+	public static function modify_query_arg_if_necessary( $query_args ) {
+		$orderby_value = \TWRP\Query_Setting\Post_Order::PLUGIN_DFACTORY_ORDERBY_VALUE;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
 		}
 
-		if ( ! is_array( $query_args['orderby'] ) ) {
-			return $query_args;
-		}
-
-		if ( ! array_key_exists( self::ORDERBY_NAME, $query_args['orderby'] ) ) {
-			return $query_args;
-		}
-
-		$query_args['order']   = $query_args['orderby'];
-		$query_args['orderby'] = self::ORDERBY_NAME;
-		// todo: add key to include filters.
+		$query_args['order']            = $query_args['orderby'][ $orderby_value ];
+		$query_args['orderby']          = 'post_views';
+		$query_args['suppress_filters'] = false;
 
 		return $query_args;
 	}

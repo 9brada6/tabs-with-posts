@@ -20,3 +20,9 @@ or migrate to something else.
 10. Post status add a select that will enable an option whether to apply or not to apply.
 
 11. Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.
+
+12. Make Category/Author/ORderby Query Settings Better.
+
+13. Create Suppress Filter Query Option.
+
+13. Make Plugin DFactory Block Suppress filter option.
