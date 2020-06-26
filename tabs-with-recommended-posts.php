@@ -182,6 +182,8 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 60 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Search', 70 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 80 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters', 90 );
+
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
 
 	// Todo: some work on authors still left.
@@ -195,6 +197,7 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Search', 70 );
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected', 80 );
+	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters', 90 );
 
 	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
 	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
