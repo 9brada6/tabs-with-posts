@@ -33,7 +33,7 @@ var TWRP_Plugin = (function ($) {
 	}
 
 	// todo: Make everything under twrp-display-list block.
-	// region -- Defining some global variables.
+	// #region -- Defining some global variables.
 	var effectDuration = 300;
 	var categorySelector = $('#twrp-cat-settings__js-cat-dropdown');
 	var categoriesInput = $('#twrp-cat-settings__cat-ids');
@@ -45,8 +45,8 @@ var TWRP_Plugin = (function ($) {
 	    '</div>' +
 	    '<button class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
 	    '</div>');
-	// endregion -- Defining some global variables.
-	// region -- add a categories on the lists.
+	// #endregion -- Defining some global variables.
+	// #region -- add a categories on the lists.
 	$(document).on('click', '#twrp-cat-settings__add-cat-btn', handleAddCategoryButton);
 	/**
 	 * Handle the addition of a new category via the button click.
@@ -103,8 +103,8 @@ var TWRP_Plugin = (function ($) {
 	        categoriesEmptyMessage.remove();
 	    }
 	}
-	// endregion -- add a categories on the lists.
-	// region -- Removing categories.
+	// #endregion -- add a categories on the lists.
+	// #region -- Removing categories.
 	$(document).on('click', '.twrp-cat-settings__cat-remove-btn', handleRemoveCategory);
 	/**
 	 * Removes a selected category when a button is clicked.
@@ -148,8 +148,8 @@ var TWRP_Plugin = (function ($) {
 	        categoriesInput.val(categoryIds.join(';'));
 	    }
 	}
-	// endregion -- Removing categories.
-	// region -- Verify if a category exist.
+	// #endregion -- Removing categories.
+	// #region -- Verify if a category exist.
 	/**
 	 * Check to see if a category item is displayed in the Visual List of categories.
 	 */
@@ -180,8 +180,8 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    return false;
 	}
-	// endregion -- Removing categories.
-	// region -- Sanitization.
+	// #endregion -- Removing categories.
+	// #region -- Sanitization.
 	/**
 	 * Take out the number of counts and trim the name.
 	 */
@@ -191,8 +191,8 @@ var TWRP_Plugin = (function ($) {
 	    name = name.trim();
 	    return name;
 	}
-	// endregion -- Sanitization.
-	// region -- Make The Categories Sortable.
+	// #endregion -- Sanitization.
+	// #region -- Make The Categories Sortable.
 	$(makeItemsSortable);
 	function makeItemsSortable() {
 	    categoriesItemsWrapper.sortable({
@@ -200,8 +200,8 @@ var TWRP_Plugin = (function ($) {
 	        stop: refreshInputtedCategories,
 	    });
 	}
-	// endregion -- Make The Categories Sortable.
-	// region -- Show/Hide Select For Category Relation.
+	// #endregion -- Make The Categories Sortable.
+	// #region -- Show/Hide Select For Category Relation.
 	var CategoryRelationWrapper = $('#twrp-cat-settings__js-select-relation-wrap');
 	var CategoryRelationHiddenClass = 'twrp-cat-settings__select-relation-wrap--hidden';
 	var CategoryTypeSelect = $('#twrp-cat-settings__type');
@@ -234,8 +234,8 @@ var TWRP_Plugin = (function ($) {
 	        CategoryRelationWrapper.removeAttr('style');
 	    }
 	}
-	// endregion -- Show/Hide Select For Category Relation.
-	// region -- Helpers
+	// #endregion -- Show/Hide Select For Category Relation.
+	// #region -- Helpers
 	/**
 	 * For a given category Id, return the category name.
 	 */
@@ -243,8 +243,8 @@ var TWRP_Plugin = (function ($) {
 	    var name = categorySelector.find('[value="' + categoryId + '"]').text();
 	    return sanitizeCategoryName(name);
 	}
-	// endregion -- Helpers
-	// region -- Refresh Display/Hidden input categories.
+	// #endregion -- Helpers
+	// #region -- Refresh Display/Hidden input categories.
 	$(refreshDisplayCategories);
 	/**
 	 * Refresh the visual list categories, with Ids taken from the hidden input.
@@ -284,7 +284,7 @@ var TWRP_Plugin = (function ($) {
 	    });
 	    categoriesInput.val(categoriesIds);
 	}
-	// endregion -- Refresh Display/Hidden input categories.
+	// #endregion -- Refresh Display/Hidden input categories.
 
 	// Todo...
 	var effectDuration$1 = 500;

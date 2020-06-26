@@ -59,13 +59,19 @@ class Post_Order implements Query_Setting {
 	 * Orderby key that will be replaced with a custom order implemented by a
 	 * plugin.
 	 */
-	const PLUGIN_GAMERZ_ORDERBY_VALUE = 'post_views_gamerz';
+	const PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE = 'post_views_gamerz';
 
 	/**
 	 * Orderby key that will be replaced with a custom order implemented by a
 	 * plugin.
 	 */
 	const PLUGIN_BLAZK_ORDERBY_VALUE = 'post_views_gamerz';
+
+	/**
+	 * Orderby key that will be replaced with a custom order implemented by a
+	 * plugin.
+	 */
+	const PLUGIN_GAMERZ_RATING_ORDERBY_VALUE = 'post_rating_gamerz';
 
 
 	/**
@@ -228,7 +234,7 @@ class Post_Order implements Query_Setting {
 	public static function get_orderby_plugin_select_options() {
 		$select_options = array(
 			self::PLUGIN_DFACTORY_ORDERBY_VALUE => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
-			self::PLUGIN_GAMERZ_ORDERBY_VALUE   => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE   => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
 		);
 
 		return $select_options;

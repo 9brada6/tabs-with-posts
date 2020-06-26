@@ -312,5 +312,20 @@ function dump_query_settings() {
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );
 
+/**
+ * @return int
+ */
+function return_int() {
+	$rating = get_a_mixed();
+	return $rating;
+}
+
+/**
+ * @return mixed
+ */
+function get_a_mixed() {
+	return 'a_string';
+}
+
 
 #endregion -- Testing
