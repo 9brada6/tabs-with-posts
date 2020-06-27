@@ -32,3 +32,9 @@ or migrate to something else.
 Plugins:
 
 GamerZ/BlazK: Sort by most rated/unrated posts.
+
+Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
+
+Don't know how to count site reviews ratings, maybe email for support?
+
+Add each plugin, move orderby plugin indicators to classes.

@@ -306,26 +306,13 @@ function dump_query_settings() {
 	\Debug\console_dump( get_post_meta( 25, 'views', true ), '25:' );
 	\Debug\console_dump( get_post_meta( 27, 'views', true ), '27:' );
 
-	\Debug\console_dump( TWRP\Plugins\YASR_Plugin::get_average_rating( 25 ), '25 overall rating:' );
-	\Debug\console_dump( TWRP\Plugins\YASR_Plugin::get_number_of_votes( 25 ), '25 nr votes:' );
+	\Debug\console_dump( TWRP\Plugins\YASR_Rating_Plugin::get_average_rating( 25 ), '25 overall rating:' );
+	\Debug\console_dump( TWRP\Plugins\YASR_Rating_Plugin::get_number_of_votes( 25 ), '25 nr votes:' );
+
+	\Debug\console_dump( get_post_meta( 27, '_glsr_count', true ), '27 nr votes:' );
+
 }
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );
-
-/**
- * @return int
- */
-function return_int() {
-	$rating = get_a_mixed();
-	return $rating;
-}
-
-/**
- * @return mixed
- */
-function get_a_mixed() {
-	return 'a_string';
-}
-
 
 #endregion -- Testing

@@ -4,7 +4,7 @@ namespace TWRP\Plugins;
 
 use TWRP\Utils;
 
-class YASR_Plugin implements Post_Rating_Plugin {
+class YASR_Rating_Plugin implements Post_Rating_Plugin {
 
 	protected static $cache_ratings = array();
 
