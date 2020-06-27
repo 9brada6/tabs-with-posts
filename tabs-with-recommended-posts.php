@@ -315,4 +315,11 @@ function dump_query_settings() {
 
 add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );
 
+/**
+ * @return string
+ */
+function test_string() {
+	return \TWRP\Query_Setting\Post_Order::setting_is_collapsed();
+}
+
 #endregion -- Testing

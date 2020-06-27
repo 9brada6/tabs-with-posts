@@ -41,9 +41,10 @@
 		<exclude name="Squiz.Commenting.FunctionComment.MissingParamComment"/>
 		<!-- And the parameter comment alignment is not good as it takes good writing space. -->
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
-		<!-- Allow regional coments. -->
+		<!-- Allow regional comments. So we can use Phan annotations. -->
 		<exclude name="Squiz.Commenting.InlineComment.WrongStyle"/>
-
+		<!-- Allow missing short, so we can use @inheritdoc. -->
+		<exclude name="Generic.Commenting.DocComment.MissingShort" />
 
 		<!-- We use PSR-4 -->
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
@@ -51,10 +52,11 @@
 		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
 
 
+
+
 		<!-- The rules below are excluded during development: -->
-		<exclude ref="WordPress-Docs" />
-		<exclude name="Generic.Commenting.DocComment.MissingShort" />
-		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
+		<!--
+		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
@@ -64,7 +66,7 @@
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
 		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" />
+		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" /> -->
     </rule>
 
 	<!-- Check for cross-version support for PHP 7.0 and higher. -->

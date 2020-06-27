@@ -7,6 +7,8 @@
  * @todo: If an option is choose, then remove the option from the next one/two
  * select possibilities.
  * @todo: Add notes.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Setting;
@@ -73,31 +75,22 @@ class Post_Order implements Query_Setting {
 	 */
 	const PLUGIN_GAMERZ_RATING_ORDERBY_VALUE = 'post_rating_gamerz';
 
-
 	/**
-	 * The name of the HTML form input and of the array key that stores the option of the query.
-	 *
-	 * @return string
+	 * @inheritdoc
 	 */
 	public static function get_setting_name() {
 		return 'post_order';
 	}
 
 	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
+	 * @inheritdoc
 	 */
 	public function get_title() {
 		return _x( 'Order of posts', 'backend', 'twrp' );
 	}
 
 	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
+	 * @inheritdoc
 	 */
 	public static function setting_is_collapsed() {
 		return true;
@@ -233,8 +226,8 @@ class Post_Order implements Query_Setting {
 
 	public static function get_orderby_plugin_select_options() {
 		$select_options = array(
-			self::PLUGIN_DFACTORY_ORDERBY_VALUE => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
-			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE   => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_DFACTORY_ORDERBY_VALUE     => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
 		);
 
 		return $select_options;
@@ -309,7 +302,7 @@ class Post_Order implements Query_Setting {
 
 		// Sanitize orderby Settings, check if elements are valid and if one of
 		// the element in the array setting equals 'not_applied', then all
-		// elements after will also equal 'not_applied.'
+		// elements after will also equal 'not_applied'.
 		$must_apply_next_orderby = true;
 		foreach ( $orderby_settings_keys as $orderby_key ) {
 			$is_valid_option = in_array( $setting[ $orderby_key ], $valid_orderby_options, true );

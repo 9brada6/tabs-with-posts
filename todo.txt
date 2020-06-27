@@ -29,6 +29,10 @@ or migrate to something else.
 
 15. Change is_installed from Post_views class with is_installed_and_can_be_used.
 
+16. Add a note to suppress filters of what is doing.
+
+17. Remove duplicate comments.
+
 Plugins:
 
 GamerZ/BlazK: Sort by most rated/unrated posts.

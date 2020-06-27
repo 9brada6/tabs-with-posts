@@ -34,7 +34,7 @@ interface Query_Setting {
 	 * is shown and the setting HTML is hidden(return false), or both are
 	 * shown(return true).
 	 *
-	 * @return bool
+	 * @return bool|'auto'
 	 */
 	public static function setting_is_collapsed();
 
@@ -51,7 +51,7 @@ interface Query_Setting {
 	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public static function get_default_setting();
 
@@ -59,7 +59,7 @@ interface Query_Setting {
 	 * Get the setting submitted from the form. The setting is sanitized and
 	 * ready to use.
 	 *
-	 * @return mixed
+	 * @return array
 	 */
 	public function get_submitted_sanitized_setting();
 
@@ -67,7 +67,7 @@ interface Query_Setting {
 	 * Sanitize a variable, to be safe for processing.
 	 *
 	 * @param mixed $setting
-	 * @return mixed The sanitized variable.
+	 * @return array The sanitized variable.
 	 */
 	public static function sanitize_setting( $setting );
 
@@ -81,7 +81,7 @@ interface Query_Setting {
 	 * @throws \RuntimeException If a setting cannot implement something.
 	 *
 	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are sanitized.
+	 * @param array $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
 	 */
 	public static function add_query_arg( $previous_query_args, $query_settings );
