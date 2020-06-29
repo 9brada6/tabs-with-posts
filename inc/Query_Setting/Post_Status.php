@@ -1,10 +1,12 @@
 <?php
 /**
  * Contains the class that will filter articles via the post status property.
+ *
+ * @todo: addquery_arg do not add if array is empty.
+ * @todo: Add a note that post statuses can reveal things do not wanted.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
-
-// todo: addquery_arg do not add if array is empty.
-// todo: Add a note that post statuses can reveal things do not wanted.
 
 namespace TWRP\Query_Setting;
 
@@ -13,82 +15,84 @@ namespace TWRP\Query_Setting;
  */
 class Post_Status implements Query_Setting {
 
+	const APPLY_STATUSES__SETTING_NAME = 'status_type';
+
 	const POST_STATUSES__SETTING_NAME = 'selected_statuses';
 
-	/**
-	 * The name of the HTML form input and of the array key that stores the option of the query.
-	 *
-	 * @return string
-	 */
 	public static function get_setting_name() {
 		return 'post_status';
 	}
 
-	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
-	 */
 	public function get_title() {
-		return _x( 'Post Status', 'backend', 'twrp' );
+		return _x( 'Filter by post statuses', 'backend', 'twrp' );
 	}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param mixed $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 *
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
-		$info_label = _x( 'Info: ', 'backend', 'twrp' );
-		$info_text  = _x( 'Leave all checkboxes empty for default behaviour, which is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' );
+		$info_label = _x( 'Note: ', 'backend', 'twrp' );
+		$info_text  = _x( 'Default value is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' );
+		$info_text2 = _x( 'Be aware of this setting. As it can easily lead to an information disclosure vulnerability if you are not careful.', 'backend', 'twrp' );
 
+		$apply_statuses_name    = self::get_setting_name() . '[' . self::APPLY_STATUSES__SETTING_NAME . ']';
+		$current_apply_statuses = $current_setting[ self::APPLY_STATUSES__SETTING_NAME ];
+
+		$additional_hide_class = $current_apply_statuses === 'not_applied' ? ' twrp-hidden' : '';
 		?>
-		<p class="twrp-posts-queries-tab__paragraph twrp-setting-info">
-			<span class="twrp-setting-info__tag"><?= esc_html( $info_label ); ?></span>
-			<span class="twrp-setting-info__text"><?= esc_html( $info_text ); ?></span>
+		<p class="twrp-query-settings__paragraph twrp-setting-note">
+			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
+			<span class="twrp-setting-note__text"><?= esc_html( $info_text ); ?></span>
 		</p>
+
+		<p class="twrp-query-settings__paragraph twrp-setting-note">
+			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
+			<span class="twrp-setting-note__text"><?= esc_html( $info_text2 ); ?></span>
+		</p>
+
+		<div class="twrp-query-settings__paragraph">
+			<select id="twrp-statuses-settings__js-apply-select" name="<?= esc_attr( $apply_statuses_name ); ?>">
+				<option value="not_applied" <?= selected( $current_apply_statuses, 'not_applied' ); ?>>
+					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="apply" <?= selected( $current_apply_statuses, 'apply' ); ?>>
+					<?= _x( 'Filter by post statuses', 'backend', 'twrp' ); ?>
+				</option>
+			</select>
+		</div>
+
+		<div id="twrp-statuses-settings__js-statuses-wrapper" class="twrp-query-settings__paragraph-with-hide twrp-statuses-settings__statuses-wrap<?= esc_attr( $additional_hide_class ); ?>">
+			<?php
+			$post_stats = self::get_post_statuses();
+			foreach ( $post_stats as $status ) :
+				if ( isset( $status->name, $status->label ) ) :
+					$id = 'twrp-statuses-settings__' . $status->name;
+
+					$checked = '';
+					if ( in_array( $status->name, $current_setting[ self::POST_STATUSES__SETTING_NAME ], true ) ) {
+						$checked = 'checked';
+					}
+					?>
+					<div class="twrp-query-settings__checkbox-line">
+						<input
+							id="<?= esc_attr( $id ); ?>"
+							class="twrp-statuses-settings__input"
+							name="<?= esc_attr( $this->get_setting_name() . '[' . self::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
+							type="checkbox"
+							value="<?= esc_attr( $status->name ); ?>"
+							<?= esc_attr( $checked ); ?>
+						/>
+						<label class="twrp-statuses-settings__label" for="<?= esc_attr( $id ); ?>">
+							<?= esc_html( $status->label ); ?>
+						</label>
+					</div>
+					<?php
+				endif;
+			endforeach;
+			?>
+		</div>
 		<?php
-
-		$post_stats = self::get_post_statuses();
-		foreach ( $post_stats as $status ) :
-			if ( isset( $status->name, $status->label ) ) :
-				$id = 'twrp-post-status-setting__' . $status->name;
-
-				$checked = '';
-				if ( in_array( $status->name, $current_setting[ self::POST_STATUSES__SETTING_NAME ], true ) ) {
-					$checked = 'checked';
-				}
-				?>
-				<div class="twrp-posts-queries-tab__checkbox-line twrp-post-status-setting__paragraph">
-					<input
-						id="<?= esc_attr( $id ); ?>"
-						class="twrp-post-status-setting__input"
-						name="<?= esc_attr( $this->get_setting_name() . '[' . self::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
-						type="checkbox"
-						value="<?= esc_attr( $status->name ); ?>"
-						<?= esc_attr( $checked ); ?>
-					/>
-					<label class="twrp-post-status-setting__label" for="<?= esc_attr( $id ); ?>">
-						<?= esc_html( $status->label ); ?>
-					</label>
-				</div>
-				<?php
-			endif;
-		endforeach;
 	}
 
 	/**
@@ -107,23 +111,13 @@ class Post_Status implements Query_Setting {
 		return get_post_stati( $args, 'objects', 'or' );
 	}
 
-	/**
-	 * The default setting to be retrieved, if user didn't set anything.
-	 *
-	 * @return mixed
-	 */
 	public static function get_default_setting() {
 		return array(
-			self::POST_STATUSES__SETTING_NAME => array(),
+			self::APPLY_STATUSES__SETTING_NAME => 'not_applied',
+			self::POST_STATUSES__SETTING_NAME  => array(),
 		);
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -133,14 +127,12 @@ class Post_Status implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-	/**
-	 * Sanitize a variable, to be safe for processing.
-	 *
-	 * @param mixed $setting
-	 * @return array The sanitized variable. An array with post statuses.
-	 */
 	public static function sanitize_setting( $setting ) {
 		if ( ! is_array( $setting ) ) {
+			return self::get_default_setting();
+		}
+
+		if ( ! isset( $setting[ self::APPLY_STATUSES__SETTING_NAME ] ) || 'apply' !== $setting[ self::APPLY_STATUSES__SETTING_NAME ] ) {
 			return self::get_default_setting();
 		}
 
@@ -152,7 +144,8 @@ class Post_Status implements Query_Setting {
 		$post_statuses_names = wp_list_pluck( $post_statuses, 'name' );
 
 		$sanitized_post_statuses = array(
-			self::POST_STATUSES__SETTING_NAME => array(),
+			self::APPLY_STATUSES__SETTING_NAME => $setting[ self::APPLY_STATUSES__SETTING_NAME ],
+			self::POST_STATUSES__SETTING_NAME  => array(),
 		);
 		foreach ( $setting[ self::POST_STATUSES__SETTING_NAME ] as $post_status ) {
 			if ( in_array( $post_status, $post_statuses_names, true ) ) {
@@ -167,18 +160,12 @@ class Post_Status implements Query_Setting {
 		return $sanitized_post_statuses;
 	}
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are sanitized.
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ self::get_setting_name() ][ self::APPLY_STATUSES__SETTING_NAME ] )
+			|| 'apply' !== $query_settings[ self::get_setting_name() ][ self::APPLY_STATUSES__SETTING_NAME ] ) {
+				return $previous_query_args;
+		}
+
 		if ( empty( $query_settings[ self::get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ] ) ) {
 			return $previous_query_args;
 		}

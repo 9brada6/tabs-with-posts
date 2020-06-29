@@ -173,18 +173,17 @@ function twrp_register_settings() {
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
 	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 32 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts', 33 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 34 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 35 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 40 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 50 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 60 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Search', 70 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 80 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters', 90 );
-
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 100 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 40 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 50 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 60 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 70 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 80 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts', 90 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 100 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Search', 110 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 120 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters', 130 );
+	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 150 );
 
 	// Todo: some work on authors still left.
 	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 20 );
@@ -279,7 +278,7 @@ function dump_query_settings() {
 
 	var_dump( TWRP\Plugins\Post_Views::get_plugin_to_use() );
 
-	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 1 ) );
+	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 4 ) );
 
 	var_dump(
 		get_posts(

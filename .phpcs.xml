@@ -45,6 +45,9 @@
 		<exclude name="Squiz.Commenting.InlineComment.WrongStyle"/>
 		<!-- Allow missing short, so we can use @inheritdoc. -->
 		<exclude name="Generic.Commenting.DocComment.MissingShort" />
+		<!-- If some functions don't have a commet, the phpcs think that they
+		will inherit whatever is before. -->
+		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 
 		<!-- We use PSR-4 -->
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
@@ -58,7 +61,6 @@
 		<!--
 		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
-		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.VariableComment.Missing" />
 		<exclude name="Generic.Commenting.DocComment.Empty" />

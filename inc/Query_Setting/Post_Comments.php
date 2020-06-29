@@ -1,6 +1,8 @@
 <?php
 /**
  * Contains the class that will filter articles via the comments.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Setting;
@@ -21,43 +23,18 @@ class Post_Comments implements Query_Setting {
 	 */
 	const COMMENTS_COMPARATOR_NAME = 'comparator';
 
-	/**
-	 * The name of the HTML form input and of the array key that stores the option of the query.
-	 *
-	 * @return string
-	 */
 	public static function get_setting_name() {
 		return 'post_comments';
 	}
 
-	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
-	 */
 	public function get_title() {
-		return _x( 'Post Comments', 'backend', 'twrp' );
+		return _x( 'Filter by comments', 'backend', 'twrp' );
 	}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param mixed $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 *
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
 		$hidden_class = '';
 		if ( 'NA' === $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ) {
@@ -65,50 +42,47 @@ class Post_Comments implements Query_Setting {
 		}
 
 		?>
-			<div class="twrp-query-comments-settings">
-				<span>
-					<?= _x( 'Filter articles by number of comments: ', 'backend', 'twrp' ); ?>
-				</span>
+			<div class="twrp-comments-settings">
+				<div class="twrp-query-settings__paragraph twrp-comments-settings__wrapper">
+					<span>
+						<?= _x( 'Filter articles by number of comments: ', 'backend', 'twrp' ); ?>
+					</span>
 
-				<select
-					id="twrp-query-comments-settings__js-comparator"
-					class="twrp-query-comments-settings__comparator"
-					name="<?= esc_attr( self::get_setting_name() . '[' . self::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
-				>
-					<option value="NA" <?php selected( 'NA', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
-						<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
-					</option>
-					<option value="BE" <?php selected( 'BE', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
-						<?= _x( 'Bigger or equal than: >=', 'backend', 'twrp' ); ?>
-					</option>
-					<option value="LE" <?php selected( 'LE', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
-						<?= _x( 'Less or equal than: <=', 'backend', 'twrp' ); ?>
-					</option>
-					<option value="E" <?php selected( 'E', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
-						<?= _x( 'Equal', 'backend', 'twrp' ); ?>
-					</option>
-					<option value="NE" <?php selected( 'NE', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
-						<?= _x( 'Not equal', 'backend', 'twrp' ); ?>
-					</option>
-				</select>
+					<select
+						id="twrp-comments-settings__js-comparator"
+						class="twrp-comments-settings__comparator"
+						name="<?= esc_attr( self::get_setting_name() . '[' . self::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
+					>
+						<option value="NA" <?php selected( 'NA', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
+							<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
+						</option>
+						<option value="BE" <?php selected( 'BE', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
+							<?= _x( 'Bigger or equal than: >=', 'backend', 'twrp' ); ?>
+						</option>
+						<option value="LE" <?php selected( 'LE', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
+							<?= _x( 'Less or equal than: <=', 'backend', 'twrp' ); ?>
+						</option>
+						<option value="E" <?php selected( 'E', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
+							<?= _x( 'Equal', 'backend', 'twrp' ); ?>
+						</option>
+						<option value="NE" <?php selected( 'NE', $current_setting[ self::COMMENTS_COMPARATOR_NAME ] ); ?>>
+							<?= _x( 'Not equal', 'backend', 'twrp' ); ?>
+						</option>
+					</select>
 
-				<input
-					id="twrp-query-comments-settings__js-num_comments"
-					class="twrp-query-comments-settings__num_comments<?= esc_attr( $hidden_class ); ?>"
-					type="number" min="0" step="1"
-					placeholder="<?= _x( 'Number of comments', 'backend', 'twrp' ); ?>"
-					name="<?= esc_attr( self::get_setting_name() . '[' . self::COMMENTS_VALUE_NAME . ']' ); ?>"
-					value="<?= esc_attr( $current_setting[ self::COMMENTS_VALUE_NAME ] ); ?>"
-				/>
+					<input
+						id="twrp-comments-settings__js-num_comments"
+						class="twrp-comments-settings__num_comments<?= esc_attr( $hidden_class ); ?>"
+						type="number" min="0" step="1"
+						placeholder="<?= _x( 'Number of comments', 'backend', 'twrp' ); ?>"
+						name="<?= esc_attr( self::get_setting_name() . '[' . self::COMMENTS_VALUE_NAME . ']' ); ?>"
+						value="<?= esc_attr( $current_setting[ self::COMMENTS_VALUE_NAME ] ); ?>"
+					/>
+				</div>
 			</div>
 		<?php
 	}
 
-	/**
-	 * The default setting to be retrieved, if user didn't set anything.
-	 *
-	 * @return array
-	 */
 	public static function get_default_setting() {
 		return array(
 			self::COMMENTS_COMPARATOR_NAME => 'NA',
@@ -116,12 +90,6 @@ class Post_Comments implements Query_Setting {
 		);
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -131,12 +99,6 @@ class Post_Comments implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-	/**
-	 * Sanitize the settings, to be safe for processing.
-	 *
-	 * @param mixed $setting
-	 * @return array The sanitized settings
-	 */
 	public static function sanitize_setting( $setting ) {
 		if ( ! is_array( $setting ) ) {
 			return self::get_default_setting();
@@ -162,17 +124,6 @@ class Post_Comments implements Query_Setting {
 		return $sanitized_setting;
 	}
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param array $query_settings All query settings, these settings are sanitized.
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
 			return $previous_query_args;

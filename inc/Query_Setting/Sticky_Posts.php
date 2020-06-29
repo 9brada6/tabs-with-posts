@@ -23,11 +23,11 @@ class Sticky_Posts implements Query_Setting {
 	}
 
 	public function get_title() {
-		return _x( 'Sticky Posts', 'backend', 'twrp' );
+		return _x( 'Sticky posts inclusion', 'backend', 'twrp' );
 	}
 
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
 	public function display_setting( $current_setting ) {

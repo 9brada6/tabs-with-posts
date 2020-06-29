@@ -22,11 +22,11 @@ class Search implements Query_Setting {
 	}
 
 	public function get_title() {
-		return _x( 'Search keywords', 'backend', 'twrp' );
+		return _x( 'Filter by search keywords', 'backend', 'twrp' );
 	}
 
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
 	public function display_setting( $current_setting ) {
@@ -48,12 +48,12 @@ class Search implements Query_Setting {
 
 		?>
 		<div class="twrp-search-setting">
-			<p class="twrp-posts-queries-tab__paragraph twrp-setting-info twrp-search-setting__paragraph">
-				<span class="twrp-setting-info__tag"><?= esc_html( $info_label ); ?></span>
-				<span class="twrp-setting-info__text"><?= esc_html( $info_text ); ?> <?= esc_html( $info_text2 ); ?></span>
+			<p class="twrp-query-settings__paragraph twrp-setting-note twrp-search-setting__paragraph">
+				<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
+				<span class="twrp-setting-note__text"><?= esc_html( $info_text ); ?> <?= esc_html( $info_text2 ); ?></span>
 			</p>
 
-			<div class="twrp-posts-queries-tab__paragraph twrp-search-setting__paragraph">
+			<div class="twrp-query-settings__paragraph twrp-search-setting__paragraph">
 				<input
 					id="twrp-search-setting__js-search-input"
 					class="twrp-search-setting__input"
@@ -64,8 +64,8 @@ class Search implements Query_Setting {
 				/>
 			</div>
 
-			<p id="twrp-search-setting__js-words-warning" class="twrp-posts-queries-tab__paragraph-with-hide twrp-setting-warning twrp-search-setting__paragraph <?= esc_attr( $warning_hidden_class ); ?>">
-				<span class="twrp-setting-warning__tag">
+			<p id="twrp-search-setting__js-words-warning" class="twrp-query-settings__paragraph-with-hide twrp-setting-warning twrp-search-setting__paragraph <?= esc_attr( $warning_hidden_class ); ?>">
+				<span class="twrp-setting-warning__label">
 					<?= esc_html( $warning_label ); ?>
 				</span>
 				<span class="twrp-setting-warning__text">

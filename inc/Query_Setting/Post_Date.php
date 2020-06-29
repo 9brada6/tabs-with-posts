@@ -1,6 +1,8 @@
 <?php
 /**
  * Contains the class that will filter articles via the post date property.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Setting;
@@ -24,47 +26,21 @@ class Post_Date implements Query_Setting {
 
 	const AFTER_DATE_NAME = 'after';
 
-	/**
-	 * The name of the HTML form input and of the array key that stores the option of the query.
-	 *
-	 * @return string
-	 */
 	public static function get_setting_name() {
 		return 'post_date';
 	}
 
-	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
-	 */
 	public function get_title() {
-		return _x( 'Post Date', 'backend', 'twrp' );
+		return _x( 'Filter by date', 'backend', 'twrp' );
 	}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
 
-	// =========================================================================
-	// Display the settings
+	#region -- Display Settings
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param array $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 *
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
 		?>
 		<div class="twrp-date-settings">
@@ -95,7 +71,7 @@ class Post_Date implements Query_Setting {
 				</option>
 
 				<option value="FT" <?php selected( 'FT', $date_type ); ?>>
-					<?= _x( 'Fixed point in time', 'backend', 'twrp' ) ?>
+					<?= _x( 'Between points in time', 'backend', 'twrp' ) ?>
 				</option>
 			</select>
 		</div>
@@ -129,27 +105,27 @@ class Post_Date implements Query_Setting {
 		}
 
 		$note_label = _x( 'Note:', 'backend', 'twrp' );
-		$note_text  = _x( 'You can either put a number of days manualy(7 for week, 30 for a month, ..etc), or calculate the first day of last week/month and include everything after.', 'backend', 'twrp' );
+		$note_text  = _x( 'You can either put a number of days manually(7 for week, 30 for a month, ..etc), or calculate the first day of last week/month and include everything after.', 'backend', 'twrp' );
 
 		$note_label2 = _x( 'Note 2:', 'backend', 'twrp' );
 		$note_text2  = _x( 'When putting a custom number of days, do not forget to also check the last option.', 'backend', 'twrp' );
 
 		?>
 		<div id="twrp-date-settings__js-last-period-wrapper" class="twrp-date-settings__last-period-wrapper twrp-query-settings__paragraph twrp-query-settings__paragraph-with-hide<?= esc_attr( $additional_settings_hidden_class ); ?>">
-			<p class="twrp-posts-queries-tab__paragraph twrp-setting-info">
-				<span class="twrp-setting-info__label">
+			<p class="twrp-query-settings__paragraph twrp-setting-note">
+				<span class="twrp-setting-note__label">
 					<?= esc_html( $note_label ); ?>
 				</span>
-				<span class="twrp-setting-info__text">
+				<span class="twrp-setting-note__text">
 					<?= esc_html( $note_text ); ?>
 				</span>
 			</p>
 
-			<p class="twrp-posts-queries-tab__paragraph twrp-setting-info">
-				<span class="twrp-setting-info__label">
+			<p class="twrp-query-settings__paragraph twrp-setting-note">
+				<span class="twrp-setting-note__label">
 				<?= esc_html( $note_label2 ); ?>
 				</span>
-				<span class="twrp-setting-info__text">
+				<span class="twrp-setting-note__text">
 				<?= esc_html( $note_text2 ); ?>
 				</span>
 			</p>
@@ -233,11 +209,11 @@ class Post_Date implements Query_Setting {
 
 		?>
 		<div id="twrp-date-settings__js-between-wrapper" class="twrp-query-settings__paragraph-with-hide twrp-date-settings__between-wrapper <?= esc_attr( $is_hidden_class ); ?>">
-			<p class="twrp-query-settings__paragraph twrp-setting-info">
-				<span class="twrp-setting-info__tag">
+			<p class="twrp-query-settings__paragraph twrp-setting-note">
+				<span class="twrp-setting-note__label">
 					<?= esc_html( $info_tag ); ?>
 				</span>
-				<span class="twrp-setting-info__text">
+				<span class="twrp-setting-note__text">
 					<?= esc_html( $info_text ); ?>
 				</span>
 			</p>
@@ -268,16 +244,10 @@ class Post_Date implements Query_Setting {
 		<?php
 	}
 
+	#endregion -- Display Settings
 
-	// =========================================================================
-	// Sanitize settings
+	#region -- Sanitization
 
-	/**
-	 * Sanitize the date fields, to be safe for processing.
-	 *
-	 * @param mixed $setting
-	 * @return array
-	 */
 	public static function sanitize_setting( $setting ) {
 		$sanitized_settings = array();
 		if ( ! is_array( $setting ) ) {
@@ -361,23 +331,14 @@ class Post_Date implements Query_Setting {
 		}
 	}
 
-	/**
-	 * The default setting to be retrieved, if user didn't set anything.
-	 *
-	 * @return array
-	 */
+	#endregion -- Sanitization
+
 	public static function get_default_setting() {
 		return array(
 			self::DATE_TYPE_NAME => 'NA',
 		);
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -388,20 +349,8 @@ class Post_Date implements Query_Setting {
 	}
 
 
-	// =========================================================================
-	// Create WP_Query args
+	#region -- Create WP Query args
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are sanitized.
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$date_settings = $query_settings[ self::get_setting_name() ];
 
@@ -513,8 +462,9 @@ class Post_Date implements Query_Setting {
 		return $between_args;
 	}
 
-	// =========================================================================
-	// Helpers
+	#endregion -- Create WP Query args
+
+	#region -- Class Helpers
 
 	/**
 	 * Returns a specific time array of for WP_Query args, to be used into
@@ -570,4 +520,6 @@ class Post_Date implements Query_Setting {
 
 		return $tz_offset;
 	}
+
+	#endregion -- Class Helpers
 }

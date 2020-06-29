@@ -648,10 +648,10 @@ var TWRP_Plugin = (function ($) {
 	    return name;
 	}
 
-	var selectCommentsComparator = $('#twrp-query-comments-settings__js-comparator');
-	var numCommentsInput = $('#twrp-query-comments-settings__js-num_comments');
+	var selectCommentsComparator = $('#twrp-comments-settings__js-comparator');
+	var numCommentsInput = $('#twrp-comments-settings__js-num_comments');
 	$(document).ready(hideOrShowCommentsNumberInput);
-	$(document).on('change', '#twrp-query-comments-settings__js-comparator', hideOrShowCommentsNumberInput);
+	$(document).on('change', '#twrp-comments-settings__js-comparator', hideOrShowCommentsNumberInput);
 	function hideOrShowCommentsNumberInput() {
 	    var comparator = selectCommentsComparator.val();
 	    if ('NA' === comparator) {
@@ -674,6 +674,19 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    else {
 	        hideUp(warningWrapper);
+	    }
+	}
+
+	var applySettingSelect = $('#twrp-statuses-settings__js-apply-select');
+	var postStatuses = $('#twrp-statuses-settings__js-statuses-wrapper');
+	$(document).on('change', '#twrp-statuses-settings__js-apply-select', hideOrShowPostStatuses);
+	$(document).ready(hideOrShowPostStatuses);
+	function hideOrShowPostStatuses() {
+	    if (applySettingSelect.val() === 'not_applied') {
+	        hideUp(postStatuses);
+	    }
+	    else {
+	        showUp(postStatuses);
 	    }
 	}
 

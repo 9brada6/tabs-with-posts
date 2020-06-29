@@ -45,7 +45,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * The name of the input that holds the query name in the Add/Edit Page.
 	 * This value should be the same as TWRP\Query_Setting\Query_Name::get_setting_name().
 	 */
-	const QUERY_NAME = 'tab_name';
+	const QUERY_NAME = 'query_name';
 
 	/**
 	 * Name of the nonce from the edit form.
@@ -282,14 +282,14 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function display_query_form() {
 		$setting_classes = Manage_Component_Classes::get_registered_backend_settings();
 		?>
-		<div class="twrp-posts-queries-tab">
+		<div class="twrp-query-settings">
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php foreach ( $setting_classes as $setting_class ) : ?>
 					<?php
 					$collapsed       = $setting_class->setting_is_collapsed() ? '1' : '0';
 					$current_setting = $this->get_query_input_setting( $setting_class );
 					?>
-					<div class="twrp-posts-queries-tab__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
+					<div class="twrp-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
 						<h2 class="twrp-collapsible__title">
 							<span class="twrp-collapsible__indicator"></span>
 							<?= $setting_class->get_title(); // phpcs:ignore -- No need to escape title. ?>

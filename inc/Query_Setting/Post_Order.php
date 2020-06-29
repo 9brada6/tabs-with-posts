@@ -75,34 +75,18 @@ class Post_Order implements Query_Setting {
 	 */
 	const PLUGIN_GAMERZ_RATING_ORDERBY_VALUE = 'post_rating_gamerz';
 
-	/**
-	 * @inheritdoc
-	 */
 	public static function get_setting_name() {
 		return 'post_order';
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	public function get_title() {
 		return _x( 'Order of posts', 'backend', 'twrp' );
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param array $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
 		$first_select_orderby_name  = self::get_setting_name() . '[' . self::FIRST_ORDERBY_SELECT_NAME . ']';
 		$second_select_orderby_name = self::get_setting_name() . '[' . self::SECOND_ORDERBY_SELECT_NAME . ']';
@@ -233,11 +217,6 @@ class Post_Order implements Query_Setting {
 		return $select_options;
 	}
 
-	/**
-	 * The default setting to be retrieved, if user didn't set anything.
-	 *
-	 * @return array
-	 */
 	public static function get_default_setting() {
 		return array(
 			self::FIRST_ORDERBY_SELECT_NAME     => 'not_applied',
@@ -250,12 +229,6 @@ class Post_Order implements Query_Setting {
 		);
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -265,12 +238,6 @@ class Post_Order implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-	/**
-	 * Sanitize a variable, to be safe for processing.
-	 *
-	 * @param mixed $setting
-	 * @return array
-	 */
 	public static function sanitize_setting( $setting ) {
 		$sanitized_setting = self::sanitize_orderby_parameters( $setting );
 		$sanitized_setting = self::plugin_additional_sanitization( $sanitized_setting );
@@ -345,17 +312,6 @@ class Post_Order implements Query_Setting {
 		return $settings;
 	}
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are sanitized.
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$previous_query_args = self::add_wp_query_arg( $previous_query_args, $query_settings );
 		$previous_query_args = Post_Views::modify_query_arg_if_necessary( $previous_query_args, $query_settings );

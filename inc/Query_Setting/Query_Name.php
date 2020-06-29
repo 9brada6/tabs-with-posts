@@ -22,7 +22,7 @@ class Query_Name implements Query_Setting {
 	const QUERY_NAME__SETTING_NAME = 'name';
 
 	public static function get_setting_name() {
-		return 'tab_name';
+		return 'query_name';
 	}
 
 	public function get_title() {
@@ -40,16 +40,24 @@ class Query_Name implements Query_Setting {
 
 		?>
 		<div class="twrp-name-setting">
+			<div class="twrp-query-settings__paragraph">
 			<input
 				id="twrp-name-setting__name"
 				class="twrp-name-setting__name" type="text"
 				name="<?= esc_attr( $name ) ?>"
 				value="<?= esc_attr( $value ) ?>"
 				placeholder="<?= esc_attr( $placeholder ) ?>"
-			>
+			/>
+			</div>
 
-			<div class="twrp-name-setting__notice-wrap">
-				<span class="twrp-name-setting__notice"><?= _x( 'Note: The name will be visible ONLY in the admin screen.', 'backend', 'twrp' ); ?></span>
+
+			<div class="twrp-setting-note twrp-query-settings__paragraph">
+				<span class="twrp-setting-note__label">
+					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
+				</span>
+				<span class="twrp-setting-note__text">
+					<?= _x( 'The name will be visible ONLY in the admin screen.', 'backend', 'twrp' ); ?>
+				</span>
 			</div>
 		</div>
 		<?php

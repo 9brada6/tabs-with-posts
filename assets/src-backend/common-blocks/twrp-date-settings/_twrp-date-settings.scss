@@ -1,11 +1,11 @@
 .twrp-date-settings {
-	&__type-selector-wrapper {
-		margin-bottom: 0;
-	}
-
 	&__last-period-wrapper,
 	&__between-wrapper {
-		padding-top: 1rem;
+		margin-top: 0;
+
+		> :first-child {
+			margin-top: 0;
+		}
 	}
 
 	&__custom-last-days-wrapper {

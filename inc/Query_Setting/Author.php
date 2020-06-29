@@ -1,4 +1,9 @@
 <?php
+/**
+ * @todo File and class comment.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
+ */
 
 namespace TWRP\Query_Setting;
 
@@ -39,44 +44,18 @@ class Author implements Query_Setting {
 	 */
 	const AUTHORS_TYPE__SAME = 'SAME';
 
-	/**
-	 * The name of the input and of the array key that stores the option of the query.
-	 *
-	 * @return string
-	 */
 	public static function get_setting_name() {
 		return 'author_settings';
 	}
 
-	/**
-	 * The title of the setting.
-	 *
-	 * @return string
-	 */
 	public function get_title() {
-		return _x( 'Author Settings', 'backend', 'twrp' );
+		return _x( 'Filter by author', 'backend', 'twrp' );
 	}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @todo
-	 *
-	 * @param mixed $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
 		$this->display_authors_select_type( $current_setting );
 		$this->display_selected_authors_list( $current_setting );
@@ -187,9 +166,9 @@ class Author implements Query_Setting {
 
 	protected function display_note() {
 		?>
-		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-notice">
-			<span class="twrp-setting-notice__note"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
-			<span>
+		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note">
+			<span class="twrp-setting-note__label"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
+			<span class="twrp-setting-note__text">
 				<?= _x(
 					'This query(tab) will be displayed only on singular pages(post, page, attachments, custom post types), but not on blogroll pages, categories pages, ..etc, because these pages do not display an article from where the author can be retrieved.',
 					'backend',
@@ -200,9 +179,6 @@ class Author implements Query_Setting {
 		<?php
 	}
 
-	/**
-	 * The name of the input, and also of the array key that stores the option of the query.
-	 */
 	public static function get_default_setting() {
 		return array(
 			self::AUTHORS_TYPE__SETTING_NAME => self::AUTHORS_TYPE__DISABLED,
@@ -210,12 +186,6 @@ class Author implements Query_Setting {
 		);
 	}
 
-	/**
-	 * Sanitize a variable, to be safe for processing.
-	 *
-	 * @param mixed $settings
-	 * @return array
-	 */
 	public static function sanitize_setting( $settings ) {
 		if ( ! isset( $settings[ self::AUTHORS_TYPE__SETTING_NAME ] ) ) {
 			return self::get_default_setting();
@@ -254,10 +224,6 @@ class Author implements Query_Setting {
 		return $sanitized_setting;
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -267,20 +233,6 @@ class Author implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @throws RuntimeException When the widget is displayed in the blog roll
-	 * and the current author cannot be retrieved.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are sanitized.
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$settings     = $query_settings[ self::get_setting_name() ];
 		$authors_type = $settings[ self::AUTHORS_TYPE__SETTING_NAME ];

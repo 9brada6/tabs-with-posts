@@ -1,6 +1,8 @@
 <?php
 /**
  * Contains the class that will filter articles via the post types.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Setting;
@@ -12,57 +14,34 @@ class Post_Types implements Query_Setting {
 
 	const SELECTED_TYPES__SETTING_NAME = 'selected_post_types';
 
-	/**
-	 * The name of the HTML form input, and also of the array key that stores
-	 * the option of the query.
-	 *
-	 * @return string
-	 */
+
 	public static function get_setting_name() {
 		return 'post_types';
 	}
 
-	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
-	 */
 	public function get_title() {
-		return _x( 'Post Types to Display', 'backend', 'twrp' );
+		return _x( 'Post types to include', 'backend', 'twrp' );
 	}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param array $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 *
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
 		$selected_post_types = $current_setting[ self::SELECTED_TYPES__SETTING_NAME ];
 		?>
 		<div class="twrp-types-setting">
-			<?php
-			$available_post_types = self::get_available_types();
-			foreach ( $available_post_types as $post_type ) :
-				if ( isset( $post_type->name, $post_type->label ) ) :
-					$is_checked = in_array( $post_type->name, $selected_post_types, true );
-					$this->display_post_type_setting_checkbox( $post_type->name, $post_type->label, $is_checked );
-				endif;
-			endforeach;
-			?>
+			<div class="twrp-query-settings__paragraph">
+				<?php
+				$available_post_types = self::get_available_types();
+				foreach ( $available_post_types as $post_type ) :
+					if ( isset( $post_type->name, $post_type->label ) ) :
+						$is_checked = in_array( $post_type->name, $selected_post_types, true );
+						$this->display_post_type_setting_checkbox( $post_type->name, $post_type->label, $is_checked );
+					endif;
+				endforeach;
+				?>
+			</div>
 		</div>
 		<?php
 	}
@@ -81,7 +60,7 @@ class Post_Types implements Query_Setting {
 		$checkbox_name = 'post_types[' . self::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
 
 		?>
-		<div class="twrp-types-setting__checkbox twrp-posts-queries-tab__checkbox-line">
+		<div class="twrp-types-setting__checkbox twrp-query-settings__checkbox-line">
 			<input
 				id="<?= esc_attr( $checkbox_id ); ?>"
 				name="<?= esc_attr( $checkbox_name ); ?>"
@@ -96,12 +75,6 @@ class Post_Types implements Query_Setting {
 		<?php
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -111,13 +84,6 @@ class Post_Types implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-	/**
-	 * Sanitize the post types, to be safe for processing.
-	 *
-	 * @param mixed $setting
-	 *
-	 * @return array The sanitized post types.
-	 */
 	public static function sanitize_setting( $setting ) {
 		if ( ! isset( $setting[ self::SELECTED_TYPES__SETTING_NAME ] ) ) {
 			return self::get_default_setting();
@@ -140,11 +106,6 @@ class Post_Types implements Query_Setting {
 		return array( self::SELECTED_TYPES__SETTING_NAME => $sanitized_post_types );
 	}
 
-	/**
-	 * The default setting to be retrieved, if user didn't set anything.
-	 *
-	 * @return array
-	 */
 	public static function get_default_setting() {
 		if ( post_type_exists( 'post' ) ) {
 			return array(
@@ -177,18 +138,6 @@ class Post_Types implements Query_Setting {
 		return get_post_types( $args, 'objects' );
 	}
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param array $query_settings All query settings, these settings are sanitized.
-	 *
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		if ( ! empty( $query_settings[ self::get_setting_name() ][ self::SELECTED_TYPES__SETTING_NAME ] ) ) {
 			$post_types = $query_settings[ self::get_setting_name() ][ self::SELECTED_TYPES__SETTING_NAME ];

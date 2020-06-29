@@ -1,6 +1,9 @@
 <?php
 /**
+ * @todo: Comment file.
  * @todo: Remove the margin-bottom of categories classes and move to setting section classes.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Setting;
@@ -20,42 +23,18 @@ class Categories implements Query_Setting {
 	 */
 	const CATEGORIES_IDS__SETTING_KEY = 'cat_ids';
 
-	/**
-	 * The name of the input and of the array key that stores the option of the query.
-	 *
-	 * @return string
-	 */
 	public static function get_setting_name() {
 		return 'cat_settings';
 	}
 
-	/**
-	 * The title of the setting.
-	 *
-	 * @return string
-	 */
 	public function get_title() {
-		return _x( 'Categories', 'backend', 'twrp' );
+		return _x( 'Include/Exclude posts by categories', 'backend', 'twrp' );
 	}
 
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool
-	 */
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param mixed $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 * @return void
-	 */
 	public function display_setting( $current_setting ) {
 		?>
 		<div class="twrp-cat-settings twrp-collapsible-content">
@@ -84,7 +63,7 @@ class Categories implements Query_Setting {
 	protected function display_category_select_type( $current_setting ) {
 		$cat_type_setting = $current_setting[ self::CATEGORIES_TYPE__SETTING_KEY ];
 		?>
-		<div class="twrp-posts-queries-tab__paragraph twrp-cat-settings__select-type-wrap">
+		<div class="twrp-query-settings__paragraph twrp-cat-settings__select-type-wrap">
 			<select
 				id="twrp-cat-settings__type"
 				class="twrp-cat-settings__type"
@@ -115,7 +94,7 @@ class Categories implements Query_Setting {
 	 */
 	protected function display_category_include_children( $current_setting ) {
 		?>
-		<div class="twrp-posts-queries-tab__paragraph twrp-cat-settings__include-children-wrap">
+		<div class="twrp-query-settings__paragraph twrp-cat-settings__include-children-wrap">
 			<input
 				id="twrp-cat-settings__include-children"
 				type="checkbox"
@@ -230,12 +209,6 @@ class Categories implements Query_Setting {
 		<?php
 	}
 
-	/**
-	 * The name of the input, and also of the array key that stores the option
-	 * of the query.
-	 *
-	 * @return array
-	 */
 	public static function get_default_setting() {
 		return array(
 			self::CATEGORIES_TYPE__SETTING_KEY  => 'NA',
@@ -245,12 +218,6 @@ class Categories implements Query_Setting {
 		);
 	}
 
-	/**
-	 * Sanitize a variable, to be safe for processing.
-	 *
-	 * @param mixed $setting
-	 * @return array
-	 */
 	public static function sanitize_setting( $setting ) {
 		$sanitized_setting = array();
 		if ( ! is_array( $setting ) ) {
@@ -314,10 +281,6 @@ class Categories implements Query_Setting {
 		return $sanitized_setting;
 	}
 
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 */
 	public function get_submitted_sanitized_setting() {
 		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
 			// phpcs:ignore -- Nonce verified and the setting is sanitized.
@@ -327,18 +290,6 @@ class Categories implements Query_Setting {
 		return self::get_default_setting();
 	}
 
-	/**
-	 * Create and insert the new arguments for the WP_Query.
-	 *
-	 * The previous query arguments will be modified such that will also contain
-	 * the new settings, and will return the new query arguments to be passed
-	 * into WP_Query class.
-	 *
-	 * @param array $previous_query_args The query arguments before being modified.
-	 * @param mixed $query_settings All query settings, these settings are sanitized.
-	 *
-	 * @return array The new arguments modified.
-	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$settings = $query_settings[ self::get_setting_name() ];
 
@@ -361,7 +312,7 @@ class Categories implements Query_Setting {
 				} else {
 					$previous_query_args['category__and'] = $cat_ids;
 				}
-			} else { // OUT
+			} else { // OUT.
 				$previous_query_args['category__out'] = $cat_ids;
 			}
 		} else {
@@ -378,7 +329,7 @@ class Categories implements Query_Setting {
 					$cat_slugs                            = implode( '+', $cat_slugs );
 					$previous_query_args['category_name'] = $cat_slugs;
 				}
-			} else { // OUT
+			} else { // OUT.
 				foreach ( $cat_ids as &$id ) {
 					$id = '-' . $id;
 				}

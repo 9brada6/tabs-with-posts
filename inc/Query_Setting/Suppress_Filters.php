@@ -28,11 +28,11 @@ class Suppress_Filters implements Query_Setting {
 	}
 
 	public function get_title() {
-		return _x( 'Suppress Filters', 'backend', 'twrp' );
+		return _x( 'Suppress other plugins/theme query filters', 'backend', 'twrp' );
 	}
 
 	public static function setting_is_collapsed() {
-		return true;
+		return 'auto';
 	}
 
 	public function display_setting( $current_setting ) {
@@ -40,7 +40,7 @@ class Suppress_Filters implements Query_Setting {
 		$name                 = self::get_setting_name() . '[' . self::SUPPRESS_FILTERS__SETTING_NAME . ']';
 		?>
 		<div class="twrp-filters-setting">
-			<div class="twrp-posts-queries-tab__paragraph">
+			<div class="twrp-query-settings__paragraph">
 			<select id="twrp-filters-setting__suppress-filters" name="<?= esc_attr( $name ); ?>">
 				<option value="true" <?= selected( $suppress_the_filters, 'true' ); ?>>
 					<?= _x( 'Suppress the filters', 'backend', 'twrp' ); ?>

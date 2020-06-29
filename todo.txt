@@ -1,14 +1,8 @@
-1. Maybe modify 'tab_name' identification of the query_name.
-
 2.On sanitization, we have a O(n^2). Try to fix it.
 
 3. Add accessibility to visual list remove button.
 
 4. Increase padding of no items in visual display items.
-
-5. Make settings_is_collapsed also return 'auto'.
-
-6. Modify all Setting Titles to be correctly capitalize only first word.
 
 7. Maybe delete class twrp-admin-settings-separator and twrp-collapsible-content__section-title
 or migrate to something else.
@@ -23,15 +17,19 @@ or migrate to something else.
 
 12. Make Category/Author/ORderby Query Settings Better.
 
-13. Create Suppress Filter Query Option.
-
 13. Make Plugin DFactory Block Suppress filter option.
 
 15. Change is_installed from Post_views class with is_installed_and_can_be_used.
 
 16. Add a note to suppress filters of what is doing.
 
-17. Remove duplicate comments.
+18. Comment post order functions.
+
+20. Read more about perm => 'readable' and 'editable'.
+
+21. Add post formats.
+
+22. Add permission.
 
 Plugins:
 
