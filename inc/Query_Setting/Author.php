@@ -57,10 +57,17 @@ class Author implements Query_Setting {
 	}
 
 	public function display_setting( $current_setting ) {
-		$this->display_authors_select_type( $current_setting );
-		$this->display_selected_authors_list( $current_setting );
-		$this->display_add_authors_to_list( $current_setting );
-		$this->display_note();
+		?>
+
+		<?php $this->display_authors_select_type( $current_setting ); ?>
+
+		<?php $this->display_selected_authors_list( $current_setting ); ?>
+
+
+			<?php $this->display_add_authors_to_list( $current_setting ); ?>
+
+		<?php $this->display_note(); ?>
+		<?php
 	}
 
 	/**
@@ -72,24 +79,26 @@ class Author implements Query_Setting {
 	protected function display_authors_select_type( $current_setting ) {
 		$selected_option = $current_setting[ self::AUTHORS_TYPE__SETTING_NAME ];
 		?>
-		<select
-			id="twrp-author-settings__select_type"
-			class="twrp-author-settings__select_type"
-			name="<?= esc_attr( $this->get_setting_name() . '[' . self::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
-		>
-			<option value="<?= esc_attr( self::AUTHORS_TYPE__DISABLED ) ?>" <?php selected( self::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
-				<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="<?= esc_attr( self::AUTHORS_TYPE__SAME ) ?>" <?php selected( self::AUTHORS_TYPE__SAME, $selected_option ); ?>>
-				<?= _x( 'Same author as the post', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="<?= esc_attr( self::AUTHORS_TYPE__INCLUDE ) ?>" <?php selected( self::AUTHORS_TYPE__INCLUDE, $selected_option ); ?>>
-				<?= _x( 'Include selected authors', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="<?= esc_attr( self::AUTHORS_TYPE__EXCLUDE ) ?>" <?php selected( self::AUTHORS_TYPE__EXCLUDE, $selected_option ); ?>>
-				<?= _x( 'Exclude selected authors', 'backend', 'twrp' ); ?>
-			</option>
-		</select>
+		<div class="twrp-query-settings__paragraph">
+			<select
+				id="twrp-author-settings__select_type"
+				class="twrp-author-settings__select_type"
+				name="<?= esc_attr( $this->get_setting_name() . '[' . self::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
+			>
+				<option value="<?= esc_attr( self::AUTHORS_TYPE__DISABLED ) ?>" <?php selected( self::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
+					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="<?= esc_attr( self::AUTHORS_TYPE__SAME ) ?>" <?php selected( self::AUTHORS_TYPE__SAME, $selected_option ); ?>>
+					<?= _x( 'Same author as the post', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="<?= esc_attr( self::AUTHORS_TYPE__INCLUDE ) ?>" <?php selected( self::AUTHORS_TYPE__INCLUDE, $selected_option ); ?>>
+					<?= _x( 'Include selected authors', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="<?= esc_attr( self::AUTHORS_TYPE__EXCLUDE ) ?>" <?php selected( self::AUTHORS_TYPE__EXCLUDE, $selected_option ); ?>>
+					<?= _x( 'Exclude selected authors', 'backend', 'twrp' ); ?>
+				</option>
+			</select>
+		</div>
 		<?php
 	}
 
@@ -101,7 +110,7 @@ class Author implements Query_Setting {
 	 */
 	protected function display_selected_authors_list( $current_setting ) {
 		?>
-		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list">
+		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-author-settings__display-list">
 			<div id="twrp-author-settings__js-no-authors-selected" class="twrp-display-list__empty-msg">
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
@@ -141,7 +150,7 @@ class Author implements Query_Setting {
 	 */
 	protected function display_add_authors_to_list( $current_setting ) {
 		?>
-		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap">
+		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap twrp-query-settings__paragraph-with-hide">
 			<input
 				id="twrp-author-settings__js-author-search" type="text"
 				class="twrp-author-settings__author-search"
@@ -156,7 +165,7 @@ class Author implements Query_Setting {
 			</button>
 
 			<input
-				id="twrp-author-settings__js-author-ids" type="text"
+				id="twrp-author-settings__js-author-ids" type="hidden"
 				name="<?= esc_attr( $this->get_setting_name() . '[' . self::AUTHORS_IDS__SETTING_NAME . ']' ) ?>"
 				value="<?= esc_attr( $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] ) ?>"
 			/>
@@ -166,7 +175,7 @@ class Author implements Query_Setting {
 
 	protected function display_note() {
 		?>
-		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note">
+		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph-with-hide twrp-author-settings__same-author-note">
 			<span class="twrp-setting-note__label"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
 			<span class="twrp-setting-note__text">
 				<?= _x(
@@ -233,6 +242,19 @@ class Author implements Query_Setting {
 		return self::get_default_setting();
 	}
 
+	/**
+	 * Create and insert the new arguments for the WP_Query.
+	 *
+	 * The previous query arguments will be modified such that will also contain
+	 * the new settings, and will return the new query arguments to be passed
+	 * into WP_Query class.
+	 *
+	 * @throws \RuntimeException If a setting cannot implement something.
+	 *
+	 * @param array $previous_query_args The query arguments before being modified.
+	 * @param array $query_settings All query settings, these settings are sanitized.
+	 * @return array The new arguments modified.
+	 */
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$settings     = $query_settings[ self::get_setting_name() ];
 		$authors_type = $settings[ self::AUTHORS_TYPE__SETTING_NAME ];

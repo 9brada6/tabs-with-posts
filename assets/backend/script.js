@@ -324,12 +324,12 @@ var TWRP_Plugin = (function ($) {
 	function hideOrShowVisualList() {
 	    var authorTypeVal = authorTypeSelector.val();
 	    if ('IN' === authorTypeVal || 'OUT' === authorTypeVal) {
-	        hideUp(authorSearchWrap);
-	        hideUp(authorToHideList);
-	    }
-	    else {
 	        showUp(authorSearchWrap);
 	        showUp(authorToHideList);
+	    }
+	    else {
+	        hideUp(authorSearchWrap);
+	        hideUp(authorToHideList);
 	    }
 	}
 	// =============================================================================
