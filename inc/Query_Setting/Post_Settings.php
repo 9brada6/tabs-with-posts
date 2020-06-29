@@ -61,23 +61,25 @@ class Post_Settings implements Query_Setting {
 		}
 
 		?>
-		<select id="twrp-posts-settings__js-filter-type" name="<?= esc_attr( $select_name ); ?>">
-			<option value="NA" <?php selected( 'NA', $option_selected ); ?>>
-				<?= _x( 'Not Applied', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="IP" <?php selected( 'IP', $option_selected ); ?>>
-				<?= _x( 'Include Posts', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="EP" <?php selected( 'EP', $option_selected ); ?>>
-				<?= _x( 'Exclude Posts', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="IPP" <?php selected( 'IPP', $option_selected ); ?>>
-				<?= _x( 'Include Posts by Parent Id', 'backend', 'twrp' ); ?>
-			</option>
-			<option value="EPP" <?php selected( 'EPP', $option_selected ); ?>>
-				<?= _x( 'Exclude Posts by Parent Id', 'backend', 'twrp' ); ?>
-			</option>
-		</select>
+		<div class="twrp-query-settings__paragraph">
+			<select id="twrp-posts-settings__js-filter-type" name="<?= esc_attr( $select_name ); ?>">
+				<option value="NA" <?php selected( 'NA', $option_selected ); ?>>
+					<?= _x( 'Not Applied', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="IP" <?php selected( 'IP', $option_selected ); ?>>
+					<?= _x( 'Include Posts', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="EP" <?php selected( 'EP', $option_selected ); ?>>
+					<?= _x( 'Exclude Posts', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="IPP" <?php selected( 'IPP', $option_selected ); ?>>
+					<?= _x( 'Include Posts by Parent Id', 'backend', 'twrp' ); ?>
+				</option>
+				<option value="EPP" <?php selected( 'EPP', $option_selected ); ?>>
+					<?= _x( 'Exclude Posts by Parent Id', 'backend', 'twrp' ); ?>
+				</option>
+			</select>
+		</div>
 		<?php
 	}
 
@@ -107,7 +109,7 @@ class Post_Settings implements Query_Setting {
 		}
 
 		?>
-		<div id="twrp-posts-settings__js-posts-list" class="twrp-display-list twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>">
+		<div id="twrp-posts-settings__js-posts-list" class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>">
 			<div
 				id="twrp-posts-settings__js-no-posts-selected"
 				class="twrp-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
@@ -149,7 +151,7 @@ class Post_Settings implements Query_Setting {
 		}
 
 		?>
-		<div id="twrp-posts-settings__js-posts-search-wrap" class="twrp-posts-settings__posts-search-wrap<?= esc_attr( $list_is_hidden_class ); ?>">
+		<div id="twrp-posts-settings__js-posts-search-wrap" class="twrp-posts-settings__posts-search-wrap twrp-query-settings__paragraph-with-hide<?= esc_attr( $list_is_hidden_class ); ?>">
 			<input
 				id="twrp-posts-settings__js-posts-search" type="text"
 				class="twrp-posts-settings__posts-search"
@@ -183,7 +185,7 @@ class Post_Settings implements Query_Setting {
 
 		?>
 		<input id="twrp-posts-settings__js-posts-ids"
-			name="<?= esc_attr( $input_name ); ?>" type="text"
+			name="<?= esc_attr( $input_name ); ?>" type="hidden"
 			value="<?= esc_attr( $value ); ?>"
 		>
 		<?php

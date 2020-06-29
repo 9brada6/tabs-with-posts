@@ -31,6 +31,10 @@ or migrate to something else.
 
 22. Add permission.
 
+23. Make a way to remove deleted posts from include/exclude posts by id.
+24. Make a way to remove deleted authors.
+25. Make a way to remove deleted categories.
+
 Plugins:
 
 GamerZ/BlazK: Sort by most rated/unrated posts.
