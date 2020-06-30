@@ -31,7 +31,7 @@ interface Post_Views_Plugin {
 	 *
 	 * @return bool
 	 */
-	public static function is_installed();
+	public static function is_installed_and_can_be_used();
 
 	/**
 	 * Get the views for a post. This function will fail silently.

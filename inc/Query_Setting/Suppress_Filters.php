@@ -40,15 +40,24 @@ class Suppress_Filters implements Query_Setting {
 		$name                 = self::get_setting_name() . '[' . self::SUPPRESS_FILTERS__SETTING_NAME . ']';
 		?>
 		<div class="twrp-filters-setting">
+			<div class="twrp-query-settings__paragraph twrp-setting-note">
+				<span class="twrp-setting-note__label">
+					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
+				</span>
+				<span class="twrp-setting-note__text">
+					<?= _x( 'Some theme/plugins can alter any WP database query, modifying it\'s results in unexpected ways. Fortunately, with this setting we can suppress/allow them all together.', 'backend', 'twrp' ); ?>
+				</span>
+			</div>
+
 			<div class="twrp-query-settings__paragraph">
-			<select id="twrp-filters-setting__suppress-filters" name="<?= esc_attr( $name ); ?>">
-				<option value="true" <?= selected( $suppress_the_filters, 'true' ); ?>>
-					<?= _x( 'Suppress the filters', 'backend', 'twrp' ); ?>
-				</option>
-				<option value="false" <?= selected( $suppress_the_filters, 'false' ); ?>>
-					<?= _x( 'Do not suppress the filters', 'backend', 'twrp' ); ?>
-				</option>
-			</select>
+				<select id="twrp-filters-setting__suppress-filters" name="<?= esc_attr( $name ); ?>">
+					<option value="true" <?= selected( $suppress_the_filters, 'true' ); ?>>
+						<?= _x( 'Suppress the filters', 'backend', 'twrp' ); ?>
+					</option>
+					<option value="false" <?= selected( $suppress_the_filters, 'false' ); ?>>
+						<?= _x( 'Do not suppress the filters', 'backend', 'twrp' ); ?>
+					</option>
+				</select>
 			</div>
 		</div>
 		<?php

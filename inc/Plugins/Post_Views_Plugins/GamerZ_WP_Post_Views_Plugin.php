@@ -28,16 +28,16 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 	 *
 	 * @return bool
 	 */
-	public static function is_installed() {
-		$is_active = false;
-
-		// We search for any of the 2 functions, as one might change in the future.
-		$a_function_exist = ( function_exists( 'wp_postview_cache_count_enqueue' ) || function_exists( 'the_views' ) );
-		if ( is_plugin_active( 'wp-postviews/wp-postviews.php' ) || $a_function_exist ) {
-			$is_active = true;
+	public static function is_installed_and_can_be_used() {
+		if ( function_exists( 'the_views' ) ) {
+			return false;
 		}
 
-		return $is_active;
+		if ( function_exists( 'get_totalviews' ) ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -52,7 +52,7 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! self::is_installed() ) {
+		if ( ! self::is_installed_and_can_be_used() ) {
 			return 0;
 		}
 

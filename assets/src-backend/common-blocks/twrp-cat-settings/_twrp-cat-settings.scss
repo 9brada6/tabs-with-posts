@@ -1,6 +1,5 @@
 
 .twrp-cat-settings {
-
 	// Select type wrapper.
 	&__select-type-text,
 	&__select-relation-text {
@@ -8,11 +7,7 @@
 		margin-right: 0.2rem;
 	}
 
-	&__include-children-wrap {
-		margin: 0.3rem 0 1rem;
-	}
-
-	.twrp-cat-settings__select-relation-wrap--hidden {
-		display: none;
+	&__separator {
+		margin-top: 0 !important;
 	}
 }

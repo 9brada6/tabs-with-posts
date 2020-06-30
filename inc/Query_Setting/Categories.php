@@ -36,22 +36,36 @@ class Categories implements Query_Setting {
 	}
 
 	public function display_setting( $current_setting ) {
+		$cat_type_setting = $current_setting[ self::CATEGORIES_TYPE__SETTING_KEY ];
+
+		$additional_class = '';
+		if ( 'NA' === $cat_type_setting ) {
+			$additional_class = ' twrp-hidden';
+		}
+
 		?>
 		<div class="twrp-cat-settings twrp-collapsible-content">
 			<?php
 			$this->display_category_select_type( $current_setting );
-			$this->display_category_include_children( $current_setting );
-			$this->display_categories_relation_setting( $current_setting );
 
-			echo '<hr class="twrp-admin-settings-separator">';
-
-			$this->display_categories_list( $current_setting );
-			$this->display_category_dropdown_selector( $current_setting );
-			$this->display_hidden_input_with_cat_ids( $current_setting );
 			?>
+			<div id="twrp-cat-settings__js-settings-wrapper" class="twrp-cat-settings__settings-wrapper<?= esc_attr( $additional_class ); ?>">
+				<?php
+				$this->display_category_include_children( $current_setting );
+				$this->display_categories_relation_setting( $current_setting );
+
+				echo '<hr class="twrp-admin-settings-separator twrp-cat-settings__separator" />';
+
+				$this->display_categories_list( $current_setting );
+				$this->display_category_dropdown_selector( $current_setting );
+				$this->display_hidden_input_with_cat_ids( $current_setting );
+				?>
+			</div>
 		</div>
 		<?php
 	}
+
+	#region -- Display settings
 
 	/**
 	 * Display a select field where the administrator will select how to filter
@@ -94,7 +108,7 @@ class Categories implements Query_Setting {
 	 */
 	protected function display_category_include_children( $current_setting ) {
 		?>
-		<div class="twrp-query-settings__paragraph twrp-cat-settings__include-children-wrap">
+		<div class="twrp-query-settings__paragraph-with-hide twrp-cat-settings__include-children-wrap">
 			<input
 				id="twrp-cat-settings__include-children"
 				type="checkbox"
@@ -120,7 +134,7 @@ class Categories implements Query_Setting {
 		$cat_relation = $current_setting[ self::RELATION__SETTING_KEY ];
 
 		?>
-		<div id="twrp-cat-settings__js-select-relation-wrap" class="twrp-cat-settings__select-relation-wrap twrp-cat-settings__select-relation-wrap--hidden">
+		<div id="twrp-cat-settings__js-select-relation-wrap" class="twrp-query-settings__paragraph-with-hide twrp-cat-settings__select-relation-wrap">
 			<p class="twrp-cat-settings__select-relation-text">
 				<?= _x( 'An article should have:', 'backend', 'twrp' ); ?>
 			</p>
@@ -152,7 +166,7 @@ class Categories implements Query_Setting {
 		<h4 class="twrp-collapsible-content__section-title">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
 		</h4>
-		<div class="twrp-cat-settings__cat-list-section">
+		<div class="twrp-cat-settings__cat-list-section twrp-query-settings__paragraph">
 			<div id="twrp-cat-settings__cat-list-wrap" class="twrp-display-list twrp-cat-settings__cat-list-wrap">
 				<span class="twrp-display-list__empty-msg">
 					<?= _x( 'No categories added. Select a category and click the button to add.', 'backend', 'twrp' ) ?>
@@ -182,7 +196,7 @@ class Categories implements Query_Setting {
 		);
 
 		?>
-		<div class="twrp-cat-settings__add-cat-wrapper">
+		<div class="twrp-cat-settings__add-cat-wrapper twrp-query-settings__paragraph">
 			<?= $categories_dropdown; // phpcs:ignore -- No need to escape. ?>
 			<button id="twrp-cat-settings__add-cat-btn" class="button button-primary" type="button">
 				<?= _x( 'Add Category To List', 'backend', 'twrp' ); ?>
@@ -202,12 +216,14 @@ class Categories implements Query_Setting {
 			<input
 				id="twrp-cat-settings__cat-ids"
 				class="twrp-cat-settings__cat-ids"
-				type="text"
+				type="hidden"
 				name="<?= esc_attr( $this->get_setting_name() . '[' . self::CATEGORIES_IDS__SETTING_KEY . ']' ) ?>"
 				value="<?= esc_attr( $current_setting[ self::CATEGORIES_IDS__SETTING_KEY ] ) ?>"
 			/>
 		<?php
 	}
+
+	#endregion -- Display settings
 
 	public static function get_default_setting() {
 		return array(
@@ -319,7 +335,8 @@ class Categories implements Query_Setting {
 			// cat (int) – use category id.
 			if ( 'IN' === $settings[ self::CATEGORIES_TYPE__SETTING_KEY ] ) {
 				if ( 'OR' === $settings[ self::RELATION__SETTING_KEY ] ) {
-					$cat_ids = implode( ',', $cat_ids );
+					$cat_ids                    = implode( ',', $cat_ids );
+					$previous_query_args['cat'] = $cat_ids;
 				} else {
 					$categories = get_categories( array( 'include' => $cat_ids ) );
 					$cat_slugs  = array();
@@ -333,9 +350,9 @@ class Categories implements Query_Setting {
 				foreach ( $cat_ids as &$id ) {
 					$id = '-' . $id;
 				}
-				$cat_ids = implode( ',', $cat_ids );
+				$cat_ids                    = implode( ',', $cat_ids );
+				$previous_query_args['cat'] = $cat_ids;
 			}
-			$previous_query_args['cat'] = $cat_ids;
 		}
 
 		return $previous_query_args;

@@ -28,7 +28,7 @@ class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
 	 *
 	 * @return bool
 	 */
-	public static function is_installed() {
+	public static function is_installed_and_can_be_used() {
 		if ( ! class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
 			return false;
 		}
@@ -56,7 +56,7 @@ class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! self::is_installed() ) {
+		if ( ! self::is_installed_and_can_be_used() ) {
 			return 0;
 		}
 

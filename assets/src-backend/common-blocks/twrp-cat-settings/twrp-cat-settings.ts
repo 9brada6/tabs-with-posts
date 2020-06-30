@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
+import { showUp, hideUp } from '../twrp-hidden/twrp-hidden';
 
 // todo: Make everything under twrp-display-list block.
 
@@ -221,40 +222,32 @@ function makeItemsSortable(): void {
 
 // #region -- Show/Hide Select For Category Relation.
 
-const CategoryRelationWrapper = $( '#twrp-cat-settings__js-select-relation-wrap' );
-const CategoryRelationHiddenClass = 'twrp-cat-settings__select-relation-wrap--hidden';
+const categoryTypeSelect = $( '#twrp-cat-settings__type' );
+const categoryRelationWrapper = $( '#twrp-cat-settings__js-select-relation-wrap' );
+const mainCategorySettings = $( '#twrp-cat-settings__js-settings-wrapper' );
 
-const CategoryTypeSelect = $( '#twrp-cat-settings__type' );
+// todo: uncomment document.ready.
+// $( document ).ready( hideOrShowCategorySettings );
+$( document ).on( 'change', '#twrp-cat-settings__type', hideOrShowCategorySettings );
 
-$( refreshCategoryRelationDisplay );
-$( document ).on( 'change', '#twrp-cat-settings__type', refreshCategoryRelationDisplay );
+function hideOrShowCategorySettings(): void {
+	const selectVal = categoryTypeSelect.val();
 
-function refreshCategoryRelationDisplay(): void {
-	if ( 'IN' === CategoryTypeSelect.val() ) {
-		if ( CategoryRelationWrapper.hasClass( CategoryRelationHiddenClass ) ) {
-			CategoryRelationWrapper.removeClass( CategoryRelationHiddenClass );
-			CategoryRelationWrapper.hide();
-			CategoryRelationWrapper.show( {
-				effect: 'blind',
-				duration: effectDuration,
-				complete: resetEffectInlineStyle,
-			} );
+	if ( 'NA' === selectVal ) {
+		hideUp( mainCategorySettings );
+		hideUp( categoryRelationWrapper );
+	} else if ( 'IN' === selectVal ) {
+		if ( categoryRelationWrapper.is( ':hidden' ) ) {
+			categoryRelationWrapper.show();
+			showUp( mainCategorySettings );
+			categoryRelationWrapper.hide();
+		} else {
+			showUp( mainCategorySettings );
 		}
-	} else if ( ! CategoryRelationWrapper.hasClass( CategoryRelationHiddenClass ) ) {
-		CategoryRelationWrapper.hide( {
-			effect: 'blind',
-			duration: effectDuration,
-			complete: completeHideEffect,
-		} );
-	}
-
-	function completeHideEffect(): void {
-		CategoryRelationWrapper.addClass( CategoryRelationHiddenClass );
-		resetEffectInlineStyle();
-	}
-
-	function resetEffectInlineStyle(): void {
-		CategoryRelationWrapper.removeAttr( 'style' );
+		showUp( categoryRelationWrapper );
+	} else {
+		showUp( mainCategorySettings );
+		hideUp( categoryRelationWrapper );
 	}
 }
 

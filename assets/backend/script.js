@@ -32,9 +32,34 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 
+	// Todo...
+	var effectDuration = 500;
+	// =============================================================================
+	function hideUp(element) {
+	    $(element).hide({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        complete: addHideClass,
+	    });
+	}
+	function showUp(element) {
+	    $(element).show({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        complete: removeHideClass,
+	    });
+	}
+	// =============================================================================
+	function addHideClass() {
+	    $(this).addClass('twrp-hidden');
+	}
+	function removeHideClass() {
+	    $(this).removeClass('twrp-hidden');
+	}
+
 	// todo: Make everything under twrp-display-list block.
 	// #region -- Defining some global variables.
-	var effectDuration = 300;
+	var effectDuration$1 = 300;
 	var categorySelector = $('#twrp-cat-settings__js-cat-dropdown');
 	var categoriesInput = $('#twrp-cat-settings__cat-ids');
 	var categoryIdAttrName = 'data-cat-id';
@@ -84,7 +109,7 @@ var TWRP_Plugin = (function ($) {
 	        // Show a nice effect on removing.
 	        categoriesEmptyMessage.hide({
 	            effect: 'blind',
-	            duration: effectDuration,
+	            duration: effectDuration$1,
 	            direction: 'left',
 	            complete: removeEmptyMessage,
 	        });
@@ -95,7 +120,7 @@ var TWRP_Plugin = (function ($) {
 	        toAppend.hide();
 	        toAppend.show({
 	            effect: 'blind',
-	            duration: effectDuration,
+	            duration: effectDuration$1,
 	            direction: 'left',
 	        });
 	    }
@@ -121,7 +146,7 @@ var TWRP_Plugin = (function ($) {
 	    var toRemove = categoriesItemsWrapper.find('[' + categoryIdAttrName + '="' + categoryId + '"]');
 	    toRemove.effect({
 	        effect: 'blind',
-	        duration: effectDuration,
+	        duration: effectDuration$1,
 	        direction: 'left',
 	        complete: removeElement,
 	    });
@@ -131,7 +156,7 @@ var TWRP_Plugin = (function ($) {
 	            categoriesItemsWrapper.append(categoriesEmptyMessage);
 	            categoriesEmptyMessage.show({
 	                effect: 'blind',
-	                duration: effectDuration,
+	                duration: effectDuration$1,
 	                direction: 'left',
 	            });
 	        }
@@ -202,36 +227,32 @@ var TWRP_Plugin = (function ($) {
 	}
 	// #endregion -- Make The Categories Sortable.
 	// #region -- Show/Hide Select For Category Relation.
-	var CategoryRelationWrapper = $('#twrp-cat-settings__js-select-relation-wrap');
-	var CategoryRelationHiddenClass = 'twrp-cat-settings__select-relation-wrap--hidden';
-	var CategoryTypeSelect = $('#twrp-cat-settings__type');
-	$(refreshCategoryRelationDisplay);
-	$(document).on('change', '#twrp-cat-settings__type', refreshCategoryRelationDisplay);
-	function refreshCategoryRelationDisplay() {
-	    if ('IN' === CategoryTypeSelect.val()) {
-	        if (CategoryRelationWrapper.hasClass(CategoryRelationHiddenClass)) {
-	            CategoryRelationWrapper.removeClass(CategoryRelationHiddenClass);
-	            CategoryRelationWrapper.hide();
-	            CategoryRelationWrapper.show({
-	                effect: 'blind',
-	                duration: effectDuration,
-	                complete: resetEffectInlineStyle,
-	            });
+	var categoryTypeSelect = $('#twrp-cat-settings__type');
+	var categoryRelationWrapper = $('#twrp-cat-settings__js-select-relation-wrap');
+	var mainCategorySettings = $('#twrp-cat-settings__js-settings-wrapper');
+	// todo: uncomment document.ready.
+	// $( document ).ready( hideOrShowCategorySettings );
+	$(document).on('change', '#twrp-cat-settings__type', hideOrShowCategorySettings);
+	function hideOrShowCategorySettings() {
+	    var selectVal = categoryTypeSelect.val();
+	    if ('NA' === selectVal) {
+	        hideUp(mainCategorySettings);
+	        hideUp(categoryRelationWrapper);
+	    }
+	    else if ('IN' === selectVal) {
+	        if (categoryRelationWrapper.is(':hidden')) {
+	            categoryRelationWrapper.show();
+	            showUp(mainCategorySettings);
+	            categoryRelationWrapper.hide();
 	        }
+	        else {
+	            showUp(mainCategorySettings);
+	        }
+	        showUp(categoryRelationWrapper);
 	    }
-	    else if (!CategoryRelationWrapper.hasClass(CategoryRelationHiddenClass)) {
-	        CategoryRelationWrapper.hide({
-	            effect: 'blind',
-	            duration: effectDuration,
-	            complete: completeHideEffect,
-	        });
-	    }
-	    function completeHideEffect() {
-	        CategoryRelationWrapper.addClass(CategoryRelationHiddenClass);
-	        resetEffectInlineStyle();
-	    }
-	    function resetEffectInlineStyle() {
-	        CategoryRelationWrapper.removeAttr('style');
+	    else {
+	        showUp(mainCategorySettings);
+	        hideUp(categoryRelationWrapper);
 	    }
 	}
 	// #endregion -- Show/Hide Select For Category Relation.
@@ -285,31 +306,6 @@ var TWRP_Plugin = (function ($) {
 	    categoriesInput.val(categoriesIds);
 	}
 	// #endregion -- Refresh Display/Hidden input categories.
-
-	// Todo...
-	var effectDuration$1 = 500;
-	// =============================================================================
-	function hideUp(element) {
-	    $(element).hide({
-	        effect: 'blind',
-	        duration: effectDuration$1,
-	        complete: addHideClass,
-	    });
-	}
-	function showUp(element) {
-	    $(element).show({
-	        effect: 'blind',
-	        duration: effectDuration$1,
-	        complete: removeHideClass,
-	    });
-	}
-	// =============================================================================
-	function addHideClass() {
-	    $(this).addClass('twrp-hidden');
-	}
-	function removeHideClass() {
-	    $(this).removeClass('twrp-hidden');
-	}
 
 	// =============================================================================
 	// Hide/Show Author List and Add Button based on option selected.

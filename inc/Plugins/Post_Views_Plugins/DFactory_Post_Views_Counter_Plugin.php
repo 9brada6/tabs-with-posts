@@ -25,7 +25,7 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		return true;
 	}
 
-	public static function is_installed() {
+	public static function is_installed_and_can_be_used() {
 		return function_exists( 'pvc_get_post_views' );
 	}
 
@@ -41,7 +41,7 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! self::is_installed() ) {
+		if ( ! self::is_installed_and_can_be_used() ) {
 			return 0;
 		}
 
