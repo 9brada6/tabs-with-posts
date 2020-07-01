@@ -42,7 +42,7 @@
 
 		// We will use tabs, WP standards.
 		"editor.detectIndentation": true,
-		"editor.insertSpaces": true,
+		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
 		"files.eol": "\n",
 

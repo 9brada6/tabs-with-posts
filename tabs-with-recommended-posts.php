@@ -248,8 +248,7 @@ function twrp_register_widgets() {
 
 add_action( 'widgets_init', 'twrp_register_widgets' );
 
-add_action( 'wp_ajax_twrp_widget_create_query_setting', 'TWRP\Tabs_Widget::ajax_create_query_selected_item' );
-add_action( 'wp_ajax_twrp_widget_create_artblock_settings', 'TWRP\Tabs_Widget::ajax_create_artblock_settings' );
+
 
 function twrp_enqueue_artblock_styles() {
 	global $wp_registered_widgets;
@@ -279,6 +278,7 @@ twrp_init_classes();
  * @return void
  */
 function twrp_init_classes() {
+	\TWRP\Widget\Widget_Ajax::init();
 	\TWRP\Plugins\Post_Views::init();
 }
 
