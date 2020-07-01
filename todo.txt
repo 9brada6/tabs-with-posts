@@ -1,19 +1,8 @@
-2.On sanitization, we have a O(n^2). Try to fix it.
-
 3. Add accessibility to visual list remove button.
-
-4. Increase padding of no items in visual display items.
-
-7. Maybe delete class twrp-admin-settings-separator and twrp-collapsible-content__section-title
-or migrate to something else.
-
-9. Add a method inside Query_Name that passing a query will retrieve the name.
 
 11. Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.
 
 12. Make Category/Author/ORderby Query Settings Better.
-
-13. Make Plugin DFactory Block Suppress filter option.
 
 18. Comment post order functions.
 
@@ -25,9 +14,12 @@ or migrate to something else.
 24. Make a way to remove deleted authors.
 25. Make a way to remove deleted categories.
 26. Show if a post/category/author is deleted?
+27. There is a setting that is displaying the post even if it doesn't exit.
 
 
 Plugins:
+
+13. Make Plugin DFactory Block Suppress filter option.
 
 GamerZ/BlazK: Sort by most rated/unrated posts.
 

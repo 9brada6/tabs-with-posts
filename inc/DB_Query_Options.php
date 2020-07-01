@@ -79,19 +79,7 @@ class DB_Query_Options {
 			$settings = array();
 		}
 
-		if ( isset( $settings[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ] ) ) {
-			$name = $settings[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ];
-		} else {
-			$name = '';
-		}
-
-		if ( empty( $name ) ) {
-			/* translators: %s: an unique id number, this translation will be displayed if somehow no query name is present. */
-			$pre = _x( 'Query-%s', 'backend', 'twrp' );
-			return sprintf( $pre, $query_id );
-		}
-
-		return $name;
+		return Query_Name::get_query_display_name( $settings, $query_id );
 	}
 
 	/**
@@ -198,8 +186,6 @@ class DB_Query_Options {
 
 		return $sanitized_settings;
 	}
-
-	// endregion ---
 
 	/**
 	 * Check to see if a query exist.

@@ -188,11 +188,11 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * Display a row with the corresponding query names and their actions.
 	 *
 	 * @param int|string $query_id
-	 * @param array $query
+	 * @param array $query_settings
 	 *
 	 * @return void
 	 */
-	protected function display_existing_queries_row( $query_id, $query ) {
+	protected function display_existing_queries_row( $query_id, $query_settings ) {
 		$edit_icon   = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
 		$delete_icon = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
 		?>
@@ -213,13 +213,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 				</a>
 			</td>
 			<td class="twrp-queries-table__title-col">
-				<?php
-				if ( isset( $query[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ] ) ) {
-					echo esc_html( $query[ Query_Name::get_setting_name() ][ Query_Name::QUERY_NAME__SETTING_NAME ] );
-				} else {
-					echo esc_html( 'Query-' . $query_id );
-				}
-				?>
+				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
 			</td>
 		</tr>
 		<?php

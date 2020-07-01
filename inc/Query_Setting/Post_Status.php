@@ -39,7 +39,7 @@ class Post_Status implements Query_Setting {
 		$apply_statuses_name    = self::get_setting_name() . '[' . self::APPLY_STATUSES__SETTING_NAME . ']';
 		$current_apply_statuses = $current_setting[ self::APPLY_STATUSES__SETTING_NAME ];
 
-		$additional_hide_class = $current_apply_statuses === 'not_applied' ? ' twrp-hidden' : '';
+		$additional_hide_class = 'not_applied' === $current_apply_statuses ? ' twrp-hidden' : '';
 		?>
 		<p class="twrp-query-settings__paragraph twrp-setting-note">
 			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>

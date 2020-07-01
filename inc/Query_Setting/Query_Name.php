@@ -96,4 +96,29 @@ class Query_Name implements Query_Setting {
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		return $previous_query_args;
 	}
+
+	/**
+	 * Get the display name for a query.
+	 *
+	 * @param array $query_settings The full settings of the query, or just the query name settings.
+	 * @param int|string $query_id_to_replace The query id to replace with, in case the query does not have a name.
+	 * @return string Will return "Query-$query_id_to_replace" if a name doesn't exist.
+	 */
+	public static function get_query_display_name( $query_settings, $query_id_to_replace ) {
+		if ( isset( $query_settings[ self::get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ] ) ) {
+			$name = $query_settings[ self::get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ];
+		} elseif ( $query_settings[ self::QUERY_NAME__SETTING_NAME ] ) {
+			$name = $query_settings[ self::QUERY_NAME__SETTING_NAME ];
+		} else {
+			$name = '';
+		}
+
+		if ( empty( $name ) ) {
+			/* translators: %s: an unique id number, this translation will be displayed if somehow no query name is present. */
+			$name_replacement = _x( 'Query-%s', 'backend', 'twrp' );
+			$name             = sprintf( $name_replacement, $query_id_to_replace );
+		}
+
+		return $name;
+	}
 }
