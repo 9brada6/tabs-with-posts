@@ -44,6 +44,22 @@ class Post_Views {
 	}
 
 	/**
+	 * Called before anything else, to initialize all others plugin adapter
+	 * classes.
+	 *
+	 * This function is not called when needed, for example in admin backend or
+	 * frontend, but when the WP include the plugin, so additional checking must
+	 * be made inside the function.
+	 */
+	public static function init() {
+		$classes = self::get_plugin_classes();
+
+		foreach ( $classes as $view_class ) {
+			$view_class::init();
+		}
+	}
+
+	/**
 	 * Given an array with WP_Query args return the new WP_Query args that will
 	 * have the parameters added to order by the views plugin selected.
 	 *
@@ -110,21 +126,21 @@ class Post_Views {
 	 * @return array<int,int> The key of the array represents the Post ID, and
 	 *                        the value the post views number.
 	 */
-	public static function get_multiple_posts_views( $posts_ids ) {
-		$plugin_class = self::get_plugin_to_use();
+	// public static function get_multiple_posts_views( $posts_ids ) {
+	// $plugin_class = self::get_plugin_to_use();
 
-		if ( ! $plugin_class ) {
-			$return_zeroes = array();
-			foreach ( $posts_ids as $id ) {
-				$return_zeroes[ $id ] = 0;
-			}
-			return $return_zeroes;
-		}
+	// if ( ! $plugin_class ) {
+	// $return_zeroes = array();
+	// foreach ( $posts_ids as $id ) {
+	// $return_zeroes[ $id ] = 0;
+	// }
+	// return $return_zeroes;
+	// }
 
-		$posts_views = $plugin_class::get_multiple_posts_views( $posts_ids );
+	// $posts_views = $plugin_class::get_multiple_posts_views( $posts_ids );
 
-		return $posts_views;
-	}
+	// return $posts_views;
+	// }
 
 	#endregion -- Todo
 }

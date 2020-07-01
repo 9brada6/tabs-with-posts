@@ -41,8 +41,8 @@
 		"editor.formatOnSaveTimeout": 6000,
 
 		// We will use tabs, WP standards.
-		"editor.detectIndentation": false,
-		"editor.insertSpaces": false,
+		"editor.detectIndentation": true,
+		"editor.insertSpaces": true,
 		"editor.tabSize": 4,
 		"files.eol": "\n",
 

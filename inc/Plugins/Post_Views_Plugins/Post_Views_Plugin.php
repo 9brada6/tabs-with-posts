@@ -12,8 +12,7 @@ namespace TWRP\Plugins;
 interface Post_Views_Plugin {
 
 	/**
-	 * Whether the plugin support getting the views for a post and
-	 * for multiple posts in an array.
+	 * Whether the plugin support getting the views for a post.
 	 *
 	 * @return bool
 	 */
@@ -25,6 +24,15 @@ interface Post_Views_Plugin {
 	 * @return bool
 	 */
 	public static function support_order_posts();
+
+	/**
+	 * Called before anything else, to initialize actions and filters.
+	 *
+	 * This function is not called when needed, for example in admin backend or
+	 * frontend, but when the WP include the plugin, so additional checking must
+	 * be made inside the function.
+	 */
+	public static function init();
 
 	/**
 	 * Whether or not the plugin is installed.
@@ -40,16 +48,6 @@ interface Post_Views_Plugin {
 	 * @return int
 	 */
 	public static function get_views( $post_id );
-
-	/**
-	 * Get the views for all the posts in the array. This function will fail
-	 * silently.
-	 *
-	 * @param array $posts_ids
-	 * @return array<int,int> The key of the array represents the Post ID, and
-	 *                        the value the post views number.
-	 */
-	public static function get_multiple_posts_views( $posts_ids );
 
 	/**
 	 * Given an array with WP_Query args with 'orderby' of type array and a

@@ -1,7 +1,16 @@
 <?php
+/**
+ * File that holds the class with the same name.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
+ */
 
 namespace TWRP\Plugins;
 
+/**
+ * Adapter type of class that will manage and call the functions for the views
+ * plugin written by DFactory.
+ */
 class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 
 	const ORDERBY_NAME = 'post_views';
@@ -23,6 +32,10 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 	 */
 	public static function support_order_posts() {
 		return true;
+	}
+
+	public static function init() {
+		// Do nothing.
 	}
 
 	public static function is_installed_and_can_be_used() {
@@ -52,18 +65,6 @@ class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
 		}
 
 		return 0;
-	}
-
-	/**
-	 * Get the views for all the posts in the array. This function will fail
-	 * silently.
-	 *
-	 * @param array $posts_ids
-	 * @return array<int,int> The key of the array represents the Post ID, and
-	 *                        the value the post views number.
-	 */
-	public static function get_multiple_posts_views( $posts_ids ) {
-		// Todo.
 	}
 
 	/**

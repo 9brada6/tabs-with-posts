@@ -107,7 +107,7 @@ class Query_Name implements Query_Setting {
 	public static function get_query_display_name( $query_settings, $query_id_to_replace ) {
 		if ( isset( $query_settings[ self::get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ] ) ) {
 			$name = $query_settings[ self::get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ];
-		} elseif ( $query_settings[ self::QUERY_NAME__SETTING_NAME ] ) {
+		} elseif ( isset( $query_settings[ self::QUERY_NAME__SETTING_NAME ] ) ) {
 			$name = $query_settings[ self::QUERY_NAME__SETTING_NAME ];
 		} else {
 			$name = '';

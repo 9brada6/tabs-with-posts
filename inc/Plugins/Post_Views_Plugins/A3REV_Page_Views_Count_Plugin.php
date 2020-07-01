@@ -1,33 +1,30 @@
 <?php
+/**
+ * File that holds the class with the same name.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
+ */
 
 namespace TWRP\Plugins;
 
+/**
+ * Adapter type of class that will manage and call the functions for the views
+ * plugin written by A3REV.
+ */
 class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
 
-	/**
-	 * Whether the plugin support getting the views for a post and
-	 * for multiple posts in an array.
-	 *
-	 * @return bool
-	 */
-	public function support_get_views() {
+	public static function support_get_views() {
 		return true;
 	}
 
-	/**
-	 * Whether the plugin support support ordering posts by querying the db.
-	 *
-	 * @return bool
-	 */
-	public function support_order_posts() {
+	public static function support_order_posts() {
 		return false;
 	}
 
-	/**
-	 * Whether or not the plugin is installed.
-	 *
-	 * @return bool
-	 */
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function is_installed_and_can_be_used() {
 		if ( ! class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
 			return false;
@@ -44,13 +41,7 @@ class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
 		return true;
 	}
 
-	/**
-	 * Get the views for a post. This function will fail silently.
-	 *
-	 * @param int|string $post_id The post Id.
-	 * @return int
-	 */
-	public function get_views( $post_id ) {
+	public static function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
 			return 0;
 		}
@@ -72,30 +63,6 @@ class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
 		return 0;
 	}
 
-	/**
-	 * Get the views for all the posts in the array. This function will fail
-	 * silently.
-	 *
-	 * @param array $posts_ids
-	 * @return array<int,int> The key of the array represents the Post ID, and
-	 *                        the value the post views number.
-	 */
-	public static function get_multiple_posts_views( $posts_ids ) {
-		// Todo.
-	}
-
-	/**
-	 * Given an array with WP_Query args with 'orderby' of type array and a
-	 * custom orderby key. Return the new WP_Query args that will have the
-	 * parameters modified, to retrieve the posts in order of the views.
-	 *
-	 * This plugin does not support ordering, so this function will just return
-	 * the query_args unmodified.
-	 *
-	 * @param array $query_args The normal WP_Query args, only that a new key
-	 * will appear as a key in 'orderby' parameter.
-	 * @return array
-	 */
 	public static function modify_query_arg_if_necessary( $query_args ) {
 		return $query_args;
 	}

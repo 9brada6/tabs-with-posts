@@ -268,6 +268,22 @@ function twrp_enqueue_artblock_styles() {
 
 add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
+#region -- Initializing
+
+twrp_init_classes();
+
+/**
+ * Initialize all the functions of the classes, usually implementing actions or
+ * filters.
+ *
+ * @return void
+ */
+function twrp_init_classes() {
+	\TWRP\Plugins\Post_Views::init();
+}
+
+#endregion -- Initializing
+
 #region -- Testing
 
 function dump_query_settings() {

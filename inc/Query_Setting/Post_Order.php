@@ -13,8 +13,6 @@
 
 namespace TWRP\Query_Setting;
 
-use TWRP\Plugins\Post_Views;
-
 /**
  * Creates the possibility to select the order in which the posts will be
  * displayed.
@@ -109,7 +107,7 @@ class Post_Order implements Query_Setting {
 			<p id="twrp-order-setting__js-first-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $first_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $first_orderby_setting ); ?>
-					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_plugin_select_options() ); ?>
+					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_single_select_options() ); ?>
 				</select>
 
 				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $first_select_order_type_name ); ?>>
@@ -205,14 +203,26 @@ class Post_Order implements Query_Setting {
 			'relevance'     => _x( 'Order by searched terms', 'backend', 'twrp' ),
 		);
 
+		/**
+		 * Add or remove orderby options in the query settings page.
+		 */
+		$select_options = apply_filters( 'twrp_post_orderby_select_options', $select_options );
+
 		return $select_options;
 	}
 
-	public static function get_orderby_plugin_select_options() {
+	public static function get_orderby_single_select_options() {
 		$select_options = array(
 			self::PLUGIN_DFACTORY_ORDERBY_VALUE     => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
 			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
 		);
+
+		/**
+		 * Add or remove orderby options that will appear only on the first
+		 * orderby selector(meaning that the posts can be ordered only by these
+		 * values, and not the others), in the query settings page.
+		 */
+		$select_options = apply_filters( 'twrp_post_orderby_select_options', $select_options );
 
 		return $select_options;
 	}
@@ -250,8 +260,8 @@ class Post_Order implements Query_Setting {
 		$setting           = wp_parse_args( $setting, self::get_default_setting() );
 
 		$orderby_options        = array_keys( self::get_orderby_select_options() );
-		$plugin_orderby_options = array_keys( self::get_orderby_plugin_select_options() );
-		$valid_orderby_options  = array_merge( $orderby_options, $plugin_orderby_options );
+		$single_orderby_options = array_keys( self::get_orderby_single_select_options() );
+		$valid_orderby_options  = array_merge( $orderby_options, $single_orderby_options );
 
 		$order_type_options = array( 'DESC', 'ASC' );
 
@@ -314,7 +324,11 @@ class Post_Order implements Query_Setting {
 
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
 		$previous_query_args = self::add_wp_query_arg( $previous_query_args, $query_settings );
-		$previous_query_args = Post_Views::modify_query_arg_if_necessary( $previous_query_args, $query_settings );
+
+		/**
+		 * Filter the query args generated of the post order.
+		 */
+		$previous_query_args = apply_filters( 'twrp_post_order_after_add_query_args', $previous_query_args, $query_settings );
 
 		return $previous_query_args;
 	}

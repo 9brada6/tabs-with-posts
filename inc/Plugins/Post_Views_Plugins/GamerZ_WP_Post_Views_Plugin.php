@@ -1,33 +1,30 @@
 <?php
+/**
+ * File that holds the class with the same name.
+ *
+ * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
+ */
 
 namespace TWRP\Plugins;
 
+/**
+ * Adapter type of class that will manage and call the functions for the views
+ * plugin written by GaMerZ.
+ */
 class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 
-	/**
-	 * Whether the plugin support getting the views for a post and
-	 * for multiple posts in an array.
-	 *
-	 * @return bool
-	 */
 	public static function support_get_views() {
 		return true;
 	}
 
-	/**
-	 * Whether the plugin support support ordering posts by querying the db.
-	 *
-	 * @return bool
-	 */
 	public static function support_order_posts() {
 		return true;
 	}
 
-	/**
-	 * Whether or not the plugin is installed.
-	 *
-	 * @return bool
-	 */
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function is_installed_and_can_be_used() {
 		if ( function_exists( 'the_views' ) ) {
 			return false;
@@ -40,12 +37,6 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 		return true;
 	}
 
-	/**
-	 * Get the views for a post. This function will fail silently.
-	 *
-	 * @param int|string $post_id The post Id.
-	 * @return int
-	 */
 	public static function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
 			return 0;
@@ -65,27 +56,6 @@ class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
 		return $post_views;
 	}
 
-	/**
-	 * Get the views for all the posts in the array. This function will fail
-	 * silently.
-	 *
-	 * @param array $posts_ids
-	 * @return array<int,int> The key of the array represents the Post ID, and
-	 *                        the value the post views number.
-	 */
-	public static function get_multiple_posts_views( $posts_ids ) {
-		// todo.
-	}
-
-	/**
-	 * Given an array with WP_Query args with 'orderby' of type array and a
-	 * custom orderby key. Return the new WP_Query args that will have the
-	 * parameters modified, to retrieve the posts in order of the views.
-	 *
-	 * @param array $query_args The normal WP_Query args, only that a new key
-	 * will appear as a key in 'orderby' parameter.
-	 * @return array
-	 */
 	public static function modify_query_arg_if_necessary( $query_args ) {
 		$orderby_value = \TWRP\Query_Setting\Post_Order::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE;
 		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
