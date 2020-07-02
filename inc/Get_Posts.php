@@ -2,7 +2,7 @@
 
 namespace TWRP;
 
-use TWRP\Query_Options;
+use TWRP\Database\Query_Options;
 use TWRP\Query_Settings_Manager;
 
 class Get_Posts {

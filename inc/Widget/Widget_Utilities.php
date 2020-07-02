@@ -6,8 +6,8 @@
 namespace TWRP\Widget;
 
 use TWRP\Tabs_Widget;
-use TWRP\Query_Options;
 use TWRP\Article_Blocks_Manager;
+use TWRP\Database\Query_Options;
 
 /**
  * Basic utility functions for the Tabs With Recommended Posts Widget.

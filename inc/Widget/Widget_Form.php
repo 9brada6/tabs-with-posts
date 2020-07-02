@@ -5,9 +5,9 @@
 
 namespace TWRP\Widget;
 
-use TWRP\Query_Options;
 use TWRP\Tabs_Widget;
 use TWRP\Article_Blocks_Manager;
+use TWRP\Database\Query_Options;
 
 /**
  * Class responsible with displaying the widget form.

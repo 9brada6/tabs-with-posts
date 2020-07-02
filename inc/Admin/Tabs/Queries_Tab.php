@@ -6,7 +6,7 @@
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
-use TWRP\Query_Options;
+use TWRP\Database\Query_Options;
 use TWRP\Query_Settings_Manager;
 use TWRP\Query_Setting\Query_Setting;
 use TWRP\Query_Setting\Query_Name;

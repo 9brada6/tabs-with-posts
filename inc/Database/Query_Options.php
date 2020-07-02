@@ -3,7 +3,7 @@
  * Implements the class that will manage all the WP database options.
  */
 
-namespace TWRP;
+namespace TWRP\Database;
 
 use TWRP\Query_Setting\Query_Name;
 

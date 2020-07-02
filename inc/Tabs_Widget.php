@@ -5,6 +5,8 @@
 
 namespace TWRP;
 
+use TWRP\Database\Query_Options;
+
 class Tabs_Widget extends \WP_Widget {
 
 	const TWRP_BASE_ID                 = 'twrp_tabs_with_recommended_posts';
