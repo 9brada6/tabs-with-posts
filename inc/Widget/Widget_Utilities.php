@@ -6,8 +6,8 @@
 namespace TWRP\Widget;
 
 use TWRP\Tabs_Widget;
-use TWRP\DB_Query_Options;
-use TWRP\Manage_Component_Classes;
+use TWRP\Query_Options;
+use TWRP\Article_Blocks_Manager;
 
 /**
  * Basic utility functions for the Tabs With Recommended Posts Widget.
@@ -100,7 +100,7 @@ trait Widget_Utilities {
 		}
 		$artblock_id = $instance_options[ $query_id ][ self::get_artblock_selector_name() ];
 
-		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+		$registered_artblocks = Article_Blocks_Manager::get_style_classes();
 		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
 			return self::get_default_artblock_id();
 		}
@@ -147,7 +147,7 @@ trait Widget_Utilities {
 		$settings_names = array_keys( self::get_instance_settings( $widget_id ) );
 
 		foreach ( $settings_names as $possible_query_id ) {
-			if ( is_numeric( $possible_query_id ) && DB_Query_Options::query_exists( $possible_query_id ) ) {
+			if ( is_numeric( $possible_query_id ) && Query_Options::query_exists( $possible_query_id ) ) {
 				array_push( $queries_ids, $possible_query_id );
 			}
 		}

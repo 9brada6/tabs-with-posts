@@ -8,6 +8,7 @@ namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Default_Component;
 use TWRP\Artblock_Component\Display_Components;
+use TWRP\Artblock_Component\Widget_Settings_Creator;
 
 class Simple_Article_Block implements Article_Block {
 
@@ -87,7 +88,7 @@ class Simple_Article_Block implements Article_Block {
 	 * @return void
 	 */
 	public function display_widget_settings( $widget_id, $query_id, $current_settings ) {
-		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $widget_id, $query_id, $current_settings );
+		$settings_creator = new Widget_Settings_Creator( $widget_id, $query_id, $current_settings );
 		$default_settings = $this->get_default_values();
 
 		$settings_creator->display_checkbox_setting( 'display_author', _x( 'Display the author.', 'backend', 'twrp' ), $default_settings['display_author'] );
@@ -125,7 +126,7 @@ class Simple_Article_Block implements Article_Block {
 	 */
 	public function sanitize_widget_settings( $unsanitized_settings ) {
 		$unsanitized_settings = wp_parse_args( $unsanitized_settings, $this->get_default_values() );
-		$settings_creator     = new \TWRP\Article_Block_Widget_Settings_Creator( 0, 0, $unsanitized_settings );
+		$settings_creator     = new Widget_Settings_Creator( 0, 0, $unsanitized_settings );
 		$default_values       = $this->get_default_values();
 
 		// todo: delete this:

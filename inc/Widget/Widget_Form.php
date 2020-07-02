@@ -5,9 +5,9 @@
 
 namespace TWRP\Widget;
 
-use TWRP\DB_Query_Options;
+use TWRP\Query_Options;
 use TWRP\Tabs_Widget;
-use TWRP\Manage_Component_Classes;
+use TWRP\Article_Blocks_Manager;
 
 /**
  * Class responsible with displaying the widget form.
@@ -22,7 +22,7 @@ class Widget_Form {
 	 * @return void
 	 */
 	public static function display_form( $instance, $widget_id ) {
-		$queries = DB_Query_Options::get_all_queries();
+		$queries = Query_Options::get_all_queries();
 		?>
 		<div class="twrp-widget-form" data-twrp-widget-id=<?= esc_attr( (string) $widget_id ); ?> >
 			<?php
@@ -57,7 +57,7 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected static function display_select_query_options() {
-		$queries     = DB_Query_Options::get_all_queries();
+		$queries     = Query_Options::get_all_queries();
 		$queries_ids = array_keys( $queries );
 		?>
 		<p class="twrp-widget-form__select-query-wrapper">
@@ -67,7 +67,7 @@ class Widget_Form {
 			<select class="twrp-widget-form__select-query-to-add">
 				<?php foreach ( $queries_ids as $query_id ) : ?>
 					<option value="<?= esc_attr( (string) $query_id ) ?>">
-						<?= esc_html( DB_Query_Options::get_query_display_name( $query_id ) ); ?>
+						<?= esc_html( Query_Options::get_query_display_name( $query_id ) ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
@@ -128,7 +128,7 @@ class Widget_Form {
 		<li class="twrp-widget-form__selected-query" data-twrp-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="twrp-widget-form__selected-query-title">
 				<button class="twrp-widget-form__remove-selected-query" type="button" >X</button>
-				<?= esc_attr( DB_Query_Options::get_query_display_name( $query_id ) ); ?>
+				<?= esc_attr( Query_Options::get_query_display_name( $query_id ) ); ?>
 			</h4>
 
 			<div class="twrp-widget-form__selected-query-settings">
@@ -174,7 +174,7 @@ class Widget_Form {
 	protected static function display_query_select_artblock( $widget_id, $query_id ) {
 		$instance_options     = Tabs_Widget::get_instance_settings( $widget_id );
 		$artblock_id_selected = Tabs_Widget::get_selected_artblock_id( $widget_id, $query_id );
-		$registered_artblocks = Manage_Component_Classes::get_style_classes();
+		$registered_artblocks = Article_Blocks_Manager::get_style_classes();
 
 		$select_name = Tabs_Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Tabs_Widget::ARTBLOCK_SELECTOR_NAME . ']' );
 		$select_val  = $instance_options[ $query_id ][ Tabs_Widget::ARTBLOCK_SELECTOR_NAME ];
@@ -233,10 +233,10 @@ class Widget_Form {
 		}
 
 		try {
-			$artblock = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
+			$artblock = Article_Blocks_Manager::get_style_class_by_name( $artblock_id );
 		} catch ( \RuntimeException $e ) {
 			try {
-				$artblock = Manage_Component_Classes::get_style_class_by_name( Tabs_Widget::DEFAULT_SELECTED_ARTBLOCK_ID );
+				$artblock = Article_Blocks_Manager::get_style_class_by_name( Tabs_Widget::DEFAULT_SELECTED_ARTBLOCK_ID );
 			} catch ( \RuntimeException $e ) {
 				return;
 			}

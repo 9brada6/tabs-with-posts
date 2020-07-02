@@ -6,11 +6,11 @@
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Admin\Settings_Menu;
-use TWRP\DB_Query_Options;
-use TWRP\Manage_Component_Classes;
-use \TWRP\Query_Setting\Query_Setting;
+use TWRP\Query_Options;
+use TWRP\Query_Settings_Manager;
+use TWRP\Query_Setting\Query_Setting;
 use TWRP\Query_Setting\Query_Name;
-use \RuntimeException;
+use RuntimeException;
 
 /**
  * Implements a tab in the Settings Menu called "Queries Tab". The implemented
@@ -156,7 +156,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries_table() {
-		$existing_queries = DB_Query_Options::get_all_queries();
+		$existing_queries = Query_Options::get_all_queries();
 		?>
 		<table class="twrp-existing-queries__table twrp-queries-table wp-list-table widefat striped">
 			<thead>
@@ -247,7 +247,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function get_query_edit_link( $query_id ) {
 		$tab_url = Settings_Menu::get_tab_url( $this );
 
-		if ( DB_Query_Options::query_exists( $query_id ) ) {
+		if ( Query_Options::query_exists( $query_id ) ) {
 			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 		}
 
@@ -274,7 +274,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_query_form() {
-		$setting_classes = Manage_Component_Classes::get_registered_backend_settings();
+		$setting_classes = Query_Settings_Manager::get_registered_backend_settings();
 		?>
 		<div class="twrp-query-settings">
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
@@ -310,7 +310,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function get_query_input_setting( $setting_class ) {
 		try {
 			$query_id           = $this->get_id_of_query_being_modified();
-			$all_query_settings = DB_Query_Options::get_all_query_settings( $query_id );
+			$all_query_settings = Query_Options::get_all_query_settings( $query_id );
 		} catch ( RuntimeException $e ) { // phpcs:ignore -- Empty catch.
 			// Do nothing.
 		}
@@ -347,7 +347,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			// phpcs:ignore WordPress.Security -- The setting is sanitized below.
 			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
 
-			if ( is_numeric( $key ) && DB_Query_Options::query_exists( $key ) ) {
+			if ( is_numeric( $key ) && Query_Options::query_exists( $key ) ) {
 				return $key;
 			}
 		}
@@ -384,7 +384,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function update_form_submitted_settings() {
-		$setting_classes = Manage_Component_Classes::get_registered_backend_settings();
+		$setting_classes = Query_Settings_Manager::get_registered_backend_settings();
 		$query_settings  = array();
 
 		foreach ( $setting_classes as $setting_class ) {
@@ -393,9 +393,9 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 
 		$query_key = $this->get_id_of_query_being_modified();
 		if ( '' === $query_key ) {
-			DB_Query_Options::add_new_query( $query_settings );
-		} elseif ( DB_Query_Options::query_exists( $query_key ) ) {
-			DB_Query_Options::update_query( $query_key, $query_settings );
+			Query_Options::add_new_query( $query_settings );
+		} elseif ( Query_Options::query_exists( $query_key ) ) {
+			Query_Options::update_query( $query_key, $query_settings );
 		}
 	}
 
@@ -430,7 +430,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function get_query_delete_link( $query_id ) {
 		$tab_url = Settings_Menu::get_tab_url( $this );
 
-		if ( DB_Query_Options::query_exists( $query_id ) ) {
+		if ( Query_Options::query_exists( $query_id ) ) {
 			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
 			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
 			return $url;
@@ -477,8 +477,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function execute_delete_query_action() {
 		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore
 			$key = sanitize_key( (string) wp_unslash( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ); // phpcs:ignore
-			if ( DB_Query_Options::query_exists( $key ) ) {
-				DB_Query_Options::delete_query( $key );
+			if ( Query_Options::query_exists( $key ) ) {
+				Query_Options::delete_query( $key );
 			}
 		}
 	}

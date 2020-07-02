@@ -14,7 +14,8 @@
  */
 
 use TWRP\Admin\Settings_Menu;
-use TWRP\Manage_Component_Classes;
+use TWRP\Query_Settings_Manager;
+use TWRP\Article_Blocks_Manager;
 
 class TWRP_Main {
 
@@ -170,39 +171,39 @@ function twrp_add_default_tabs() {
 
 add_action( 'init', 'twrp_register_settings' );
 function twrp_register_settings() {
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 40 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 50 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 60 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 70 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Author', 80 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts', 90 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 100 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Search', 110 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 120 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters', 130 );
-	Manage_Component_Classes::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 150 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 40 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 50 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 60 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 70 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Author', 80 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts', 90 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 100 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Search', 110 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 120 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters', 130 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 150 );
 
 	// Todo: some work on authors still left.
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 20 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status', 30 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order', 40 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings', 50 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Categories', 60 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 20 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status', 30 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order', 40 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings', 50 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Categories', 60 );
 
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts', 33 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts', 33 );
 
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date', 35 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Author', 40 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Search', 70 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected', 80 );
-	Manage_Component_Classes::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters', 90 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date', 35 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Author', 40 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Search', 70 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected', 80 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters', 90 );
 
-	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
-	Manage_Component_Classes::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
+	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
+	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
 }
 
 

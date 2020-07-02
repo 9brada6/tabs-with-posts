@@ -4,11 +4,11 @@
  * block widget settings.
  */
 
-namespace TWRP;
+namespace TWRP\Artblock_Component;
 
 use TWRP\Tabs_Widget;
 
-class Article_Block_Widget_Settings_Creator {
+class Widget_Settings_Creator {
 	protected $widget_id;
 	protected $query_id;
 	protected $current_settings;

@@ -18,6 +18,8 @@
 
 ## ✅ Todo
 
+### Query Settings
+
 - Add accessibility to visual list remove button.
 - Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.
 - Make Category/Author/ORderby Query Settings Better.
@@ -33,10 +35,15 @@
 - Add a way for post order to order things via a filter.
 - Add filters for all things?
 
-Plugins:
+### Plugins
 
 - Make Plugin DFactory Block Suppress filter option.
 - GamerZ/BlazK: Sort by most rated/unrated posts.
 - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
 - Don't know how to count site reviews ratings, maybe email for support?
 - Add each plugin, move orderby plugin indicators to classes.
+
+### General
+
+- Put databases class in a new folder, with a new namespace.
+- There should be a function for human diff in Utilities.

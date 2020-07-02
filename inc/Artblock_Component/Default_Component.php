@@ -2,6 +2,8 @@
 
 namespace TWRP\Artblock_Component;
 
+use TWRP\Artblock_Component\Widget_Settings_Creator;
+
 class Default_Component {
 
 	protected $widget_id;
@@ -23,7 +25,7 @@ class Default_Component {
 	}
 
 	public function create_component_settings() {
-		$settings_creator = new \TWRP\Article_Block_Widget_Settings_Creator( $this->widget_id, $this->query_id, $this->settings, $this->name );
+		$settings_creator = new Widget_Settings_Creator( $this->widget_id, $this->query_id, $this->settings, $this->name );
 		?>
 		<div>
 			<?php $settings_creator->display_number_setting( 'header_size', '', $this->get_header_size_setting_args() ); ?>

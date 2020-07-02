@@ -11,7 +11,7 @@ use TWRP\Query_Setting\Query_Name;
  * Class that contains functions to manage the settings stored in WordPress
  * database "Options" table.
  */
-class DB_Query_Options {
+class Query_Options {
 	const QUERIES_OPTION_KEY = 'twrp__article_queries';
 
 	/**
@@ -170,7 +170,7 @@ class DB_Query_Options {
 	public static function sanitize_settings( $settings ) {
 		$sanitized_settings = array();
 
-		$registered_settings = Manage_Component_Classes::get_registered_backend_settings();
+		$registered_settings = Query_Settings_Manager::get_registered_backend_settings();
 
 		foreach ( $registered_settings as $setting_class ) {
 			$setting_name = $setting_class->get_setting_name();

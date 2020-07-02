@@ -59,7 +59,7 @@ class Tabs_Widget extends \WP_Widget {
 
 		try {
 			$artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
-			$artblock    = Manage_Component_Classes::get_style_class_by_name( $artblock_id );
+			$artblock    = Article_Blocks_Manager::get_style_class_by_name( $artblock_id );
 			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
 			$settings    = self::get_query_instance_settings( $widget_id, $query_id );
 			$settings    = $artblock->sanitize_widget_settings( $settings );
@@ -105,7 +105,7 @@ class Tabs_Widget extends \WP_Widget {
 		foreach ( $selected_queries as $query_id ) {
 			$selected_artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
 			try {
-				$artblock       = Manage_Component_Classes::get_style_class_by_name( $selected_artblock_id );
+				$artblock       = Article_Blocks_Manager::get_style_class_by_name( $selected_artblock_id );
 				$query_settings = self::get_query_instance_settings( $widget_id, $query_id );
 				$query_settings = $artblock->sanitize_widget_settings( $query_settings );
 			} catch ( \RuntimeException $e ) {
@@ -134,7 +134,7 @@ class Tabs_Widget extends \WP_Widget {
 			if ( ! is_numeric( $query_id ) ) {
 				continue;
 			}
-			if ( DB_Query_Options::query_exists( $query_id ) ) {
+			if ( Query_Options::query_exists( $query_id ) ) {
 				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $settings[ $query_id ] );
 				array_push( $valid_queries_ids, $query_id );
 			}
@@ -152,7 +152,7 @@ class Tabs_Widget extends \WP_Widget {
 		$sanitized_settings = array();
 
 		if ( isset( $query_settings['article_block'] ) ) {
-			if ( Manage_Component_Classes::article_block_id_exist( $query_settings['article_block'] ) ) {
+			if ( Article_Blocks_Manager::article_block_id_exist( $query_settings['article_block'] ) ) {
 				$sanitized_settings['article_block'] = $query_settings['article_block'];
 			} else {
 				$sanitized_settings['article_block'] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
@@ -168,7 +168,7 @@ class Tabs_Widget extends \WP_Widget {
 		}
 
 		try {
-			$artblock = Manage_Component_Classes::get_style_class_by_name( $sanitized_settings['article_block'] );
+			$artblock = Article_Blocks_Manager::get_style_class_by_name( $sanitized_settings['article_block'] );
 		} catch ( \RuntimeException $e ) {
 			return $sanitized_settings;
 		}
