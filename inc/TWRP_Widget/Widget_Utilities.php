@@ -3,11 +3,11 @@
  * File that holds the trait with the same name.
  */
 
-namespace TWRP\Widget;
+namespace TWRP\TWRP_Widget;
 
-use TWRP\Tabs_Widget;
 use TWRP\Article_Blocks_Manager;
 use TWRP\Database\Query_Options;
+use TWRP\TWRP_Widget\Widget;
 
 /**
  * Basic utility functions for the Tabs With Recommended Posts Widget.
@@ -183,7 +183,7 @@ trait Widget_Utilities {
 	 * @return string
 	 */
 	protected static function get_base_id() {
-		return Tabs_Widget::TWRP_BASE_ID;
+		return Widget::TWRP_BASE_ID;
 	}
 
 	/**
@@ -192,7 +192,7 @@ trait Widget_Utilities {
 	 * @return string
 	 */
 	protected static function get_default_artblock_id() {
-		return Tabs_Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
+		return Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
 	}
 
 	/**
@@ -201,6 +201,6 @@ trait Widget_Utilities {
 	 * @return string
 	 */
 	protected static function get_artblock_selector_name() {
-		return Tabs_Widget::ARTBLOCK_SELECTOR_NAME;
+		return Widget::ARTBLOCK_SELECTOR_NAME;
 	}
 }

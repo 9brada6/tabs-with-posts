@@ -3,11 +3,11 @@
  * File that holds the class with the same name.
  */
 
-namespace TWRP\Widget;
+namespace TWRP\TWRP_Widget;
 
-use TWRP\Tabs_Widget;
 use TWRP\Article_Blocks_Manager;
 use TWRP\Database\Query_Options;
+use TWRP\TWRP_Widget\Widget;
 
 /**
  * Class responsible with displaying the widget form.
@@ -92,8 +92,8 @@ class Widget_Form {
 		}
 		$selected_queries_ids = explode( ';', $selected_queries_list );
 
-		$queries_field_id   = Tabs_Widget::twrp_get_field_id( $widget_id, 'queries' );
-		$queries_field_name = Tabs_Widget::twrp_get_field_name( $widget_id, 'queries' );
+		$queries_field_id   = Widget::twrp_get_field_id( $widget_id, 'queries' );
+		$queries_field_name = Widget::twrp_get_field_name( $widget_id, 'queries' );
 
 		?>
 		<ul class="twrp-widget-form__selected-queries-list">
@@ -149,13 +149,13 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected static function display_query_button_text_setting( $widget_id, $query_id ) {
-		$instance_options = Tabs_Widget::get_instance_settings( $widget_id );
+		$instance_options = Widget::get_instance_settings( $widget_id );
 		?>
 		<p>
 			<?= _x( 'Tab button text:', 'backend', 'twrp' ); ?>
 			<input
 				type="text"
-				name="<?= esc_attr( Tabs_Widget::twrp_get_field_name( $widget_id, $query_id . '[display_title]' ) ); ?>"
+				name="<?= esc_attr( Widget::twrp_get_field_name( $widget_id, $query_id . '[display_title]' ) ); ?>"
 				placeholder="<?= _x( 'Display tab title', 'backend', 'twrp' ) ?>"
 				value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
 			/>
@@ -172,12 +172,12 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected static function display_query_select_artblock( $widget_id, $query_id ) {
-		$instance_options     = Tabs_Widget::get_instance_settings( $widget_id );
-		$artblock_id_selected = Tabs_Widget::get_selected_artblock_id( $widget_id, $query_id );
+		$instance_options     = Widget::get_instance_settings( $widget_id );
+		$artblock_id_selected = Widget::get_selected_artblock_id( $widget_id, $query_id );
 		$registered_artblocks = Article_Blocks_Manager::get_style_classes();
 
-		$select_name = Tabs_Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Tabs_Widget::ARTBLOCK_SELECTOR_NAME . ']' );
-		$select_val  = $instance_options[ $query_id ][ Tabs_Widget::ARTBLOCK_SELECTOR_NAME ];
+		$select_name = Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::ARTBLOCK_SELECTOR_NAME . ']' );
+		$select_val  = $instance_options[ $query_id ][ Widget::ARTBLOCK_SELECTOR_NAME ];
 		?>
 		<p>
 			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
@@ -204,7 +204,7 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected static function display_query_wrapper_for_artblock( $widget_id, $query_id ) {
-		$artblock_id_selected = Tabs_Widget::get_selected_artblock_id( $widget_id, $query_id );
+		$artblock_id_selected = Widget::get_selected_artblock_id( $widget_id, $query_id );
 
 		?>
 		<div class="twrp-widget-form__article-block-settings-container">
@@ -227,7 +227,7 @@ class Widget_Form {
 	 */
 	public static function display_artblock_settings( $widget_id, $query_id, $artblock_id ) {
 		try {
-			$widget_id = Tabs_Widget::twrp_get_widget_id_num( $widget_id );
+			$widget_id = Widget::twrp_get_widget_id_num( $widget_id );
 		} catch ( \RuntimeException $e ) {
 			return;
 		}
@@ -236,13 +236,13 @@ class Widget_Form {
 			$artblock = Article_Blocks_Manager::get_style_class_by_name( $artblock_id );
 		} catch ( \RuntimeException $e ) {
 			try {
-				$artblock = Article_Blocks_Manager::get_style_class_by_name( Tabs_Widget::DEFAULT_SELECTED_ARTBLOCK_ID );
+				$artblock = Article_Blocks_Manager::get_style_class_by_name( Widget::DEFAULT_SELECTED_ARTBLOCK_ID );
 			} catch ( \RuntimeException $e ) {
 				return;
 			}
 		}
 
-		$current_settings = Tabs_Widget::get_instance_settings( $widget_id );
+		$current_settings = Widget::get_instance_settings( $widget_id );
 
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >

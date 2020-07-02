@@ -3,7 +3,9 @@
  * File that holds the class with the same name.
  */
 
-namespace TWRP\Widget;
+namespace TWRP\TWRP_Widget;
+
+use TWRP\TWRP_Widget\Widget_Form;
 
 class Widget_Ajax {
 
@@ -15,8 +17,8 @@ class Widget_Ajax {
 	 * be made inside the function.
 	 */
 	public static function init() {
-		add_action( 'wp_ajax_twrp_widget_create_query_setting', 'TWRP\\Widget\\Widget_Ajax::ajax_create_query_selected_item' );
-		add_action( 'wp_ajax_twrp_widget_create_artblock_settings', 'TWRP\\Widget\\Widget_Ajax::ajax_create_artblock_settings' );
+		add_action( 'wp_ajax_twrp_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
+		add_action( 'wp_ajax_twrp_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
 	}
 
 	public static function ajax_create_query_selected_item() {

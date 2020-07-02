@@ -3,17 +3,21 @@
  * @todo: Verify if we have privilege to retrieve the ajax settings.
  */
 
-namespace TWRP;
+namespace TWRP\TWRP_Widget;
 
+use TWRP\Article_Blocks_Manager;
+use TWRP\Get_Posts;
 use TWRP\Database\Query_Options;
+use TWRP\TWRP_Widget\Widget_Utilities;
+use TWRP\TWRP_Widget\Widget_Form;
 
-class Tabs_Widget extends \WP_Widget {
+class Widget extends \WP_Widget {
 
 	const TWRP_BASE_ID                 = 'twrp_tabs_with_recommended_posts';
 	const ARTBLOCK_SELECTOR_NAME       = 'article_block';
 	const DEFAULT_SELECTED_ARTBLOCK_ID = 'simple_style';
 
-	use \TWRP\Widget\Widget_Utilities;
+	use Widget_Utilities;
 
 	public function __construct() {
 
@@ -188,7 +192,7 @@ class Tabs_Widget extends \WP_Widget {
 	 * @return ''
 	 */
 	public function form( $instance ) {
-		\TWRP\Widget\Widget_Form::display_form( $instance, (int) $this->number );
+		Widget_Form::display_form( $instance, (int) $this->number );
 
 		return ''; // todo: Learn why, probably because of AJAX.
 	}

@@ -6,7 +6,7 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Tabs_Widget;
+use TWRP\TWRP_Widget\Widget;
 
 class Widget_Settings_Creator {
 	protected $widget_id;
@@ -187,10 +187,10 @@ class Widget_Settings_Creator {
 	 */
 	protected function create_input_id( $field_name ) {
 		if ( ! empty( $this->component_name ) ) {
-			return Tabs_Widget::twrp_get_field_id( $this->widget_id, $this->query_id . '-' . $this->component_name . '-' . $field_name );
+			return Widget::twrp_get_field_id( $this->widget_id, $this->query_id . '-' . $this->component_name . '-' . $field_name );
 		}
 
-		return Tabs_Widget::twrp_get_field_id( $this->widget_id, $this->query_id . '-' . $field_name );
+		return Widget::twrp_get_field_id( $this->widget_id, $this->query_id . '-' . $field_name );
 	}
 
 	/**
@@ -202,10 +202,10 @@ class Widget_Settings_Creator {
 	 */
 	protected function create_input_name( $field_name ) {
 		if ( ! empty( $this->component_name ) ) {
-			return Tabs_Widget::twrp_get_field_name( $this->widget_id, $this->query_id . "[$this->component_name][$field_name]" );
+			return Widget::twrp_get_field_name( $this->widget_id, $this->query_id . "[$this->component_name][$field_name]" );
 		}
 
-		return Tabs_Widget::twrp_get_field_name( $this->widget_id, $this->query_id . "[$field_name]" );
+		return Widget::twrp_get_field_name( $this->widget_id, $this->query_id . "[$field_name]" );
 	}
 
 }

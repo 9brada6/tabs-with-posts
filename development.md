@@ -47,3 +47,8 @@
 
 - Put databases class in a new folder, with a new namespace.
 - There should be a function for human diff in Utilities.
+
+#### Learning PHPStan
+
+- Check to see if a callable string is verified. as in add_action.
+- Check to see if @throws are verified.

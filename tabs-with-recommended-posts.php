@@ -16,6 +16,9 @@
 use TWRP\Admin\Settings_Menu;
 use TWRP\Query_Settings_Manager;
 use TWRP\Article_Blocks_Manager;
+use TWRP\TWRP_Widget\Widget;
+use TWRP\TWRP_Widget\Widget_Ajax;
+use TWRP\Plugins\Post_Views;
 
 class TWRP_Main {
 
@@ -244,7 +247,7 @@ add_action( 'admin_enqueue_scripts', 'twrp_enqueue_admin', 100 );
 
 
 function twrp_register_widgets() {
-	register_widget( 'TWRP\Tabs_Widget' );
+	register_widget( 'TWRP\\TWRP_Widget\\Widget' );
 }
 
 add_action( 'widgets_init', 'twrp_register_widgets' );
@@ -260,7 +263,7 @@ function twrp_enqueue_artblock_styles() {
 		}
 		$widget_class = $widget['callback'][0];
 
-		if ( ( $widget_class instanceof \TWRP\Tabs_Widget ) && is_active_widget( false, $widget_full_id, $widget_class->id_base ) ) {
+		if ( ( $widget_class instanceof Widget ) && is_active_widget( false, $widget_full_id, $widget_class->id_base ) ) {
 			$widget_class::enqueue_scripts( $widget_full_id );
 		}
 	}
@@ -279,8 +282,8 @@ twrp_init_classes();
  * @return void
  */
 function twrp_init_classes() {
-	\TWRP\Widget\Widget_Ajax::init();
-	\TWRP\Plugins\Post_Views::init();
+	Widget_Ajax::init();
+	Post_Views::init();
 }
 
 #endregion -- Initializing
