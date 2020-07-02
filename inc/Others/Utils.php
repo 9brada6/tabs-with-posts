@@ -16,4 +16,18 @@ class Utils {
 
 		return $post_id;
 	}
+
+	/**
+	 * Flatten multi-dimensional array.
+	 *
+	 * @param array $array
+	 * @return array
+	 */
+	public static function flatten_array( array $array ) {
+		$ret_array = array();
+		foreach ( new \RecursiveIteratorIterator( new \RecursiveArrayIterator( $array ) ) as $value ) {
+			$ret_array[] = $value;
+		}
+		return $ret_array;
+	}
 }

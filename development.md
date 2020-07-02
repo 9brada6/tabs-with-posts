@@ -34,6 +34,7 @@
 - There is a setting that is displaying the post even if it doesn't exit.
 - Add a way for post order to order things via a filter.
 - Add filters for all things?
+- Add an init method to all classes.
 
 ### Plugins
 

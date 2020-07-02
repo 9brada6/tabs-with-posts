@@ -1,0 +1,14 @@
+parameters:
+	level: 8
+	paths:
+		- inc
+	scanDirectories:
+		- ../../../
+		- vendor/phpunit
+	excludes_analyse:
+		- **/noop.php
+		- '**/vendor/**'
+	checkMissingIterableValueType: false
+	ignoreErrors:
+		- '#has parameter .* with no typehint specified.#'
+		- '#has no return typehint specified.#'

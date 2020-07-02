@@ -106,7 +106,6 @@ class Widget_Settings_Creator {
 	}
 
 	public function display_number_setting( $name, $default, $args ) {
-
 		$default_args = array(
 			'min'    => '',
 			'max'    => '',
