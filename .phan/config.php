@@ -40,6 +40,7 @@ return array(
 	// should be added to the `directory_list` as well as to `exclude_analysis_directory_list`.
 	'exclude_analysis_directory_list' => array(
 		'./../../../',
+		'./vendor'
 	),
 
 	// A list of files that will be excluded from parsing and analysis and will not be read at all.

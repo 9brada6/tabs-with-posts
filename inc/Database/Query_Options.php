@@ -6,6 +6,7 @@
 namespace TWRP\Database;
 
 use TWRP\Query_Setting\Query_Name;
+use TWRP\Query_Settings_Manager;
 
 /**
  * Class that contains functions to manage the settings stored in WordPress
