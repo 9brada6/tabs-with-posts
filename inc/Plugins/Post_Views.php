@@ -32,11 +32,12 @@ class Post_Views {
 
 		self::$plugin_classes = array();
 
-		foreach ( self::$all_plugin_class_names as $identity => $class_name ) {
-			$fully_qualified_class_name = self::$plugin_namespace . $class_name;
+		foreach ( self::$all_plugin_class_names as $acronym => $plugin_class_name ) {
+			$fully_qualified_class_name = self::$plugin_namespace . $plugin_class_name;
 			$plugin_class               = new $fully_qualified_class_name();
+
 			if ( $plugin_class instanceof Post_Views_Plugin ) {
-				self::$plugin_classes[ $identity ] = new $fully_qualified_class_name();
+				self::$plugin_classes[ $acronym ] = $plugin_class;
 			}
 		}
 

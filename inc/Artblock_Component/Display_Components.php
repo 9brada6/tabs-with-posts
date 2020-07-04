@@ -6,6 +6,13 @@ class Display_Components {
 
 	protected $components = array();
 
+	/**
+	 * @todo: verify instance of.
+	 */
+	public function __construct( $components ) {
+		$this->components = $components;
+	}
+
 	public function add_component( $component ) {
 		array_push( $this->components, $component );
 	}
@@ -23,7 +30,7 @@ class Display_Components {
 			<div class="twrp-widget-components__components">
 				<?php foreach ( $this->components as $component ) : ?>
 					<div class="twrp-widget-components__component-wrapper">
-						<?php $component->create_component_settings(); ?>
+						<?php $component->display_component_settings(); ?>
 					</div>
 				<?php endforeach; ?>
 			</div>

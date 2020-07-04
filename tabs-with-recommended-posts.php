@@ -20,6 +20,19 @@ use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
 
+use function Debug\stop_bench_and_dump;
+
+/**
+ * For Development only.
+ */
+require_once __DIR__ . '/debug-and-development.php';
+
+\Debug\start_bench( 'require_files' );
+require_once __DIR__ . '/require-files.php';
+\Debug\stop_bench( 'require_files' );
+
+\Debug\start_bench( 'twrp' );
+
 class TWRP_Main {
 
 	protected static $is_pro         = false;
@@ -34,13 +47,13 @@ class TWRP_Main {
 	 * @todo: Compatibility of OS's between "\" and "/".
 	 */
 	protected static $autoload_directories = array(
-		'TWRP\\'        => array( 'inc/', 'tests/' ),
-		'TWRP\\Plugins' => array( 'inc/Plugins', 'inc/Plugins/Post_Views_Plugins', 'inc/Plugins/Rating_Plugins', 'inc/Plugins/Related_Plugins' ),
+		'TWRP\\'                   => array( 'inc/', 'tests/' ),
+		'TWRP\\Plugins'            => array( 'inc/Plugins', 'inc/Plugins/Post_Views_Plugins', 'inc/Plugins/Rating_Plugins', 'inc/Plugins/Related_Plugins' ),
+		'TWRP\\Artblock_Component' => array( 'inc/Artblock_Component', 'inc/Artblock_Component/Widget_Component_Setting' ),
 	);
 
 	public static function init() {
 		self::$is_initialized = true;
-		spl_autoload_register( 'TWRP_Main::autoload_query_classes' );
 		spl_autoload_register( 'TWRP_Main::autoload_plugin_classes' );
 	}
 
@@ -78,30 +91,6 @@ class TWRP_Main {
 		return trailingslashit( $directory );
 	}
 
-
-	/**
-	 * Verify if a class exist in the settings folder, and require it. Function
-	 * to be passed to spl_autoload_register.
-	 *
-	 * @param string $class_name The name of the class.
-	 *
-	 * @return void
-	 */
-	protected static function autoload_query_classes( $class_name ) {
-		$directory  = self::get_query_settings_classes_directory();
-		$class_name = strtolower( $class_name );
-		$class_name = str_replace( '_', '-', $class_name );
-
-		$instance_file_path = $directory . 'instance-' . $class_name . '.php';
-		$class_file_path    = $directory . 'class-' . $class_name . '.php';
-		if ( is_file( $class_file_path ) ) {
-			require_once $class_file_path;
-		} elseif ( is_file( $instance_file_path ) ) {
-			require_once $instance_file_path;
-		}
-	}
-
-
 	// TODO: learn about autoload and improve.
 	protected static function autoload_plugin_classes( $class_name ) {
 		$class_name_parts = explode( '\\', $class_name );
@@ -125,7 +114,14 @@ class TWRP_Main {
 				$relative_directory = str_replace( '\\', '/', $relative_directory );
 
 				$file_path = trailingslashit( self::get_plugin_directory() ) . $relative_directory;
+
+				\Debug\start_foreach_bench( 'autoload_fornew' );
+				$file_exist = false;
 				if ( is_file( $file_path ) ) {
+					$file_exist = true;
+				}
+				\Debug\stop_foreach_bench( 'autoload_fornew' );
+				if ( $file_exist ) {
 					require_once $file_path;
 				}
 			}
@@ -136,10 +132,7 @@ class TWRP_Main {
 TWRP_Main::init();
 
 
-/**
- * For Development only.
- */
-require_once __DIR__ . '/debug-and-development.php';
+
 
 
 /**
@@ -345,3 +338,13 @@ function test_string() {
 }
 
 #endregion -- Testing
+
+function twrp_bench_debug() {
+	\Debug\dump_bench( 'autoload_fornew', 'autoload_fornew' );
+	\Debug\dump_bench( 'require_files', 'require_files' );
+}
+
+\Debug\stop_bench( 'twrp' );
+
+add_action( 'wp_enqueue_scripts', 'twrp_bench_debug' );
+add_action( 'admin_enqueue_scripts', 'twrp_bench_debug' );

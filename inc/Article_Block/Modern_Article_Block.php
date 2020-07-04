@@ -58,7 +58,7 @@ class Modern_Article_Block implements Article_Block {
 	 *
 	 * @return void
 	 */
-	public function display_widget_settings( $widget_id, $query_id, $current_settings ) {
+	public function display_form_settings( $widget_id, $query_id, $current_settings ) {
 		?>
 		<p>
 			Modern settings

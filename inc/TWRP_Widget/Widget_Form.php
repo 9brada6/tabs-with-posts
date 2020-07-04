@@ -246,7 +246,7 @@ class Widget_Form {
 
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
-			<?php $artblock->display_widget_settings( $widget_id, $query_id, $current_settings ); ?>
+			<?php $artblock->display_form_settings( $widget_id, $query_id, $current_settings ); ?>
 		</div>
 		<?php
 	}

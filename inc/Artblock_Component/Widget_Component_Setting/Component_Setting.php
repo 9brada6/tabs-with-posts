@@ -6,5 +6,8 @@
 namespace TWRP\Artblock_Component;
 
 interface Component_Setting {
+	public static function get_key_name();
+
+	public static function display_setting( $id, $name, $value );
 
 }
