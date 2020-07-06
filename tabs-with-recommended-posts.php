@@ -19,43 +19,27 @@ use TWRP\Article_Blocks_Manager;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
-
-use function Debug\stop_bench_and_dump;
+use TWRP\Require_Files;
 
 /**
  * For Development only.
  */
 require_once __DIR__ . '/debug-and-development.php';
 
-\Debug\start_bench( 'require_files' );
-require_once __DIR__ . '/require-files.php';
-\Debug\stop_bench( 'require_files' );
+\Debug\start_bench( 'autoload' );
+require_once __DIR__ . '/inc/require-files.php';
+Require_Files::init();
+// require_once __DIR__ . '/vendor/autoload.php';
+\Debug\stop_bench( 'autoload' );
 
-\Debug\start_bench( 'twrp' );
 
 class TWRP_Main {
 
-	protected static $is_pro         = false;
-	protected static $is_initialized = false;
+	protected static $is_pro = false;
 
 	const SETTINGS_CLASSES_FOLDER = 'inc/settings/';
 
 	const TEMPLATES_FOLDER = 'templates/';
-
-	/**
-	 * @todo: Find on what OS's we can interchange "\" with /.
-	 * @todo: Compatibility of OS's between "\" and "/".
-	 */
-	protected static $autoload_directories = array(
-		'TWRP\\'                   => array( 'inc/', 'tests/' ),
-		'TWRP\\Plugins'            => array( 'inc/Plugins', 'inc/Plugins/Post_Views_Plugins', 'inc/Plugins/Rating_Plugins', 'inc/Plugins/Related_Plugins' ),
-		'TWRP\\Artblock_Component' => array( 'inc/Artblock_Component', 'inc/Artblock_Component/Widget_Component_Setting' ),
-	);
-
-	public static function init() {
-		self::$is_initialized = true;
-		spl_autoload_register( 'TWRP_Main::autoload_plugin_classes' );
-	}
 
 	/**
 	 * Returns the path to this plugin directory.
@@ -90,49 +74,7 @@ class TWRP_Main {
 		$directory = self::get_plugin_directory() . ltrim( self::TEMPLATES_FOLDER, '/' );
 		return trailingslashit( $directory );
 	}
-
-	// TODO: learn about autoload and improve.
-	protected static function autoload_plugin_classes( $class_name ) {
-		$class_name_parts = explode( '\\', $class_name );
-
-		if ( isset( $class_name_parts[0] ) && ( '' === $class_name_parts[0] ) ) {
-			array_shift( $class_name_parts );
-		}
-
-		// Base namespace needs to be TWRP.
-		if ( empty( $class_name_parts ) || 'TWRP' !== $class_name_parts[0] ) {
-			return;
-		}
-
-		foreach ( self::$autoload_directories as $autoload_namespace => $autoload_directories ) {
-			if ( is_string( $autoload_directories ) ) {
-				$autoload_directories = array( $autoload_directories );
-			}
-
-			foreach ( $autoload_directories as $autoload_dir ) {
-				$relative_directory = ltrim( str_replace( $autoload_namespace, $autoload_dir, $class_name ) . '.php', '/\\' );
-				$relative_directory = str_replace( '\\', '/', $relative_directory );
-
-				$file_path = trailingslashit( self::get_plugin_directory() ) . $relative_directory;
-
-				\Debug\start_foreach_bench( 'autoload_fornew' );
-				$file_exist = false;
-				if ( is_file( $file_path ) ) {
-					$file_exist = true;
-				}
-				\Debug\stop_foreach_bench( 'autoload_fornew' );
-				if ( $file_exist ) {
-					require_once $file_path;
-				}
-			}
-		}
-	}
 }
-
-TWRP_Main::init();
-
-
-
 
 
 /**
@@ -340,11 +282,10 @@ function test_string() {
 #endregion -- Testing
 
 function twrp_bench_debug() {
+	\Debug\dump_bench( 'autoload', 'autoload' );
+	\Debug\dump_bench( 'file_exists', 'file_exists' );
 	\Debug\dump_bench( 'autoload_fornew', 'autoload_fornew' );
-	\Debug\dump_bench( 'require_files', 'require_files' );
 }
-
-\Debug\stop_bench( 'twrp' );
 
 add_action( 'wp_enqueue_scripts', 'twrp_bench_debug' );
 add_action( 'admin_enqueue_scripts', 'twrp_bench_debug' );

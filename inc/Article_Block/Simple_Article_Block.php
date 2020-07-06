@@ -49,19 +49,28 @@ class Simple_Article_Block implements Article_Block {
 		include \TWRP_Main::get_templates_directory() . 'simple-style.php';
 	}
 
+	/**
+	 * Get the components that can be edited for this artblock.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $settings
+	 * @return array<Widget_Component_Settings>
+	 */
 	public function get_components( $widget_id, $query_id, $settings ) {
 		$components = array();
 
-		$title_component_title = _x( 'Title', 'backend', 'twrp' );
-		$title_component       = new Widget_Component_Settings(
+		$title_component_settings = ( isset( $settings['title'] ) && is_array( $settings['title'] ) ) ? $settings['title'] : array();
+		$title_component_title    = _x( 'Title', 'backend', 'twrp' );
+		$title_component          = new Widget_Component_Settings(
 			$widget_id,
 			$query_id,
 			'title',
 			$title_component_title,
-			$settings,
+			$title_component_settings,
 			Widget_Component_Settings::TEXT_SETTINGS
 		);
-		$components []         = $title_component;
+		$components []            = $title_component;
 
 		return $components;
 	}
@@ -76,19 +85,29 @@ class Simple_Article_Block implements Article_Block {
 	 * @return void
 	 */
 	public function display_form_settings( $widget_id, $query_id, $widget_settings ) {
-		$this->display_artblock_settings();
+		$this->display_artblock_settings( $widget_id, $query_id, $widget_settings );
 		$this->display_components_settings( $widget_id, $query_id, $widget_settings );
 	}
 
+	/**
+	 * Display the artblock specific settings.
+	 */
 	protected function display_artblock_settings() {
 
 	}
 
+	/**
+	 * Display the settings for the artblocks components.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $settings
+	 *
+	 * @return void
+	 */
 	protected function display_components_settings( $widget_id, $query_id, $settings ) {
 		$components = $this->get_components( $widget_id, $query_id, $settings );
-
-		$display_components = new Display_Components( $components );
-		$display_components->display_components();
+		Widget_Component_Settings::display_components( $components );
 	}
 
 	/**
@@ -144,6 +163,8 @@ class Simple_Article_Block implements Article_Block {
 	// Create/Sanitize Settings Helper Functions
 
 	#region -- Rework and delete
+
+
 
 	public function get_default_values() {
 		$defaults = array(

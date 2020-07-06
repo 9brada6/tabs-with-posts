@@ -11,7 +11,7 @@ namespace TWRP\Plugins;
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by A3REV.
  */
-class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
+class A3REV_Views_Plugin implements Post_Views_Plugin {
 
 	public static function support_get_views() {
 		return true;
@@ -66,4 +66,5 @@ class A3REV_Page_Views_Count_Plugin implements Post_Views_Plugin {
 	public static function modify_query_arg_if_necessary( $query_args ) {
 		return $query_args;
 	}
+
 }

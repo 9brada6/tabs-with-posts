@@ -13,9 +13,12 @@ use TWRP\TWRP_Widget\Widget_Form;
 
 class Widget extends \WP_Widget {
 
-	const TWRP_BASE_ID                 = 'twrp_tabs_with_recommended_posts';
-	const ARTBLOCK_SELECTOR_NAME       = 'article_block';
+	const TWRP_BASE_ID             = 'twrp_tabs_with_recommended_posts';
+	const ARTBLOCK_SELECTOR__NAME  = 'article_block';
+	const QUERY_BUTTON_TITLE__NAME = 'display_title';
+
 	const DEFAULT_SELECTED_ARTBLOCK_ID = 'simple_style';
+
 
 	use Widget_Utilities;
 
@@ -122,7 +125,20 @@ class Widget extends \WP_Widget {
 	}
 
 	// =========================================================================
-	// Functions to sanitize the settings.
+
+	/**
+	 * Create the widget form settings for an instance.
+	 *
+	 * @param array $instance_settings
+	 *
+	 * @return ''
+	 */
+	public function form( $instance_settings ) {
+		Widget_Form::display_form( $instance_settings, (int) $this->number );
+		return ''; // todo: Learn why, probably because of AJAX.
+	}
+
+	#region -- Update
 
 	public function update( $new_instance, $old_instance ) {
 		return self::sanitize_instance_settings( $new_instance );
@@ -157,24 +173,24 @@ class Widget extends \WP_Widget {
 	protected static function sanitize_query_settings( $query_settings ) {
 		$sanitized_settings = array();
 
-		if ( isset( $query_settings['article_block'] ) ) {
-			if ( Article_Blocks_Manager::article_block_id_exist( $query_settings['article_block'] ) ) {
-				$sanitized_settings['article_block'] = $query_settings['article_block'];
+		if ( isset( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
+			if ( Article_Blocks_Manager::article_block_id_exist( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
+				$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = $query_settings[ self::ARTBLOCK_SELECTOR__NAME ];
 			} else {
-				$sanitized_settings['article_block'] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
+				$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
 			}
 		} else {
-			$sanitized_settings['article_block'] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
+			$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
 		}
 
-		if ( ! isset( $query_settings['display_title'] ) ) {
-			$sanitized_settings['display_title'] = '';
+		if ( ! isset( $query_settings[ self::QUERY_BUTTON_TITLE__NAME ] ) ) {
+			$sanitized_settings[ self::QUERY_BUTTON_TITLE__NAME ] = '';
 		} else {
-			$sanitized_settings['display_title'] = $query_settings['display_title'];
+			$sanitized_settings[ self::QUERY_BUTTON_TITLE__NAME ] = $query_settings[ self::QUERY_BUTTON_TITLE__NAME ];
 		}
 
 		try {
-			$artblock = Article_Blocks_Manager::get_style_class_by_name( $sanitized_settings['article_block'] );
+			$artblock = Article_Blocks_Manager::get_style_class_by_name( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] );
 		} catch ( \RuntimeException $e ) {
 			return $sanitized_settings;
 		}
@@ -184,17 +200,6 @@ class Widget extends \WP_Widget {
 		return array_merge( $sanitized_settings, $sanitized_article_block_setting );
 	}
 
-	/**
-	 * Create the widget form settings for an instance.
-	 *
-	 * @param array $instance
-	 *
-	 * @return ''
-	 */
-	public function form( $instance ) {
-		Widget_Form::display_form( $instance, (int) $this->number );
-
-		return ''; // todo: Learn why, probably because of AJAX.
-	}
+	#endregion -- Update
 
 }

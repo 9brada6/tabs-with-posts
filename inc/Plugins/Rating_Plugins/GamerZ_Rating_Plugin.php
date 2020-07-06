@@ -7,7 +7,7 @@ namespace TWRP\Plugins;
 
 use TWRP\Utils;
 
-class GamerZ_Plugin implements Post_Rating_Plugin {
+class GamerZ_Rating_Plugin implements Post_Rating_Plugin {
 
 	/**
 	 * Whether the plugin support getting the rating for a post and additionally

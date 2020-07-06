@@ -21,7 +21,7 @@ class Widget_Form {
 	 * @param int $widget_id
 	 * @return void
 	 */
-	public static function display_form( $instance, $widget_id ) {
+	public static function display_form( $instance_settings, $widget_id ) {
 		$queries = Query_Options::get_all_queries();
 		?>
 		<div class="twrp-widget-form" data-twrp-widget-id=<?= esc_attr( (string) $widget_id ); ?> >
@@ -30,7 +30,7 @@ class Widget_Form {
 				self::display_no_queries_exist();
 			} else {
 				self::display_select_query_options();
-				self::display_queries_settings( $instance, $widget_id );
+				self::display_queries_settings( $instance_settings, $widget_id );
 			}
 			?>
 		</div>
@@ -85,10 +85,10 @@ class Widget_Form {
 	 * @param int $widget_id
 	 * @return void
 	 */
-	protected static function display_queries_settings( $instance, $widget_id ) {
+	protected static function display_queries_settings( $instance_settings, $widget_id ) {
 		$selected_queries_list = '';
-		if ( isset( $instance['queries'] ) ) {
-			$selected_queries_list = $instance['queries'];
+		if ( isset( $instance_settings['queries'] ) ) {
+			$selected_queries_list = $instance_settings['queries'];
 		}
 		$selected_queries_ids = explode( ';', $selected_queries_list );
 
@@ -97,8 +97,8 @@ class Widget_Form {
 
 		?>
 		<ul class="twrp-widget-form__selected-queries-list">
-			<?php foreach ( $selected_queries_ids as $selected_query_id ) : ?>
-				<?php self::display_query_settings( (int) $widget_id, (int) $selected_query_id ); ?>
+			<?php foreach ( $selected_queries_ids as $query_id ) : ?>
+				<?php self::display_query_settings( (int) $widget_id, (int) $query_id ); ?>
 			<?php endforeach; ?>
 		</ul>
 
@@ -155,9 +155,9 @@ class Widget_Form {
 			<?= _x( 'Tab button text:', 'backend', 'twrp' ); ?>
 			<input
 				type="text"
-				name="<?= esc_attr( Widget::twrp_get_field_name( $widget_id, $query_id . '[display_title]' ) ); ?>"
+				name="<?= esc_attr( Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::QUERY_BUTTON_TITLE__NAME . ']' ) ); ?>"
 				placeholder="<?= _x( 'Display tab title', 'backend', 'twrp' ) ?>"
-				value="<?= esc_attr( $instance_options[ $query_id ]['display_title'] ); ?>"
+				value="<?= esc_attr( $instance_options[ $query_id ][ Widget::QUERY_BUTTON_TITLE__NAME ] ); ?>"
 			/>
 		</p>
 		<?php
@@ -176,8 +176,8 @@ class Widget_Form {
 		$artblock_id_selected = Widget::get_selected_artblock_id( $widget_id, $query_id );
 		$registered_artblocks = Article_Blocks_Manager::get_style_classes();
 
-		$select_name = Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::ARTBLOCK_SELECTOR_NAME . ']' );
-		$select_val  = $instance_options[ $query_id ][ Widget::ARTBLOCK_SELECTOR_NAME ];
+		$select_name = Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::ARTBLOCK_SELECTOR__NAME . ']' );
+		$select_val  = $instance_options[ $query_id ][ Widget::ARTBLOCK_SELECTOR__NAME ];
 		?>
 		<p>
 			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
@@ -220,7 +220,7 @@ class Widget_Form {
 	/**
 	 * Display the artblock settings for a specific widget and query.
 	 *
-	 * @param string|int $widget_id Either the int or the whole widget Id.
+	 * @param int $widget_id Either the int or the whole widget Id.
 	 * @param int $query_id
 	 * @param string $artblock_id
 	 * @return void
@@ -242,11 +242,14 @@ class Widget_Form {
 			}
 		}
 
-		$current_settings = Widget::get_instance_settings( $widget_id );
-
+		$current_settings  = Widget::get_instance_settings( $widget_id );
+		$artblock_settings = array();
+		if ( isset( $current_settings[ $query_id ] ) ) {
+			$artblock_settings = $current_settings[ $query_id ];
+		}
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
-			<?php $artblock->display_form_settings( $widget_id, $query_id, $current_settings ); ?>
+			<?php $artblock->display_form_settings( $widget_id, $query_id, $artblock_settings ); ?>
 		</div>
 		<?php
 	}

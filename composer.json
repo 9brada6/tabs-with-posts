@@ -10,5 +10,11 @@
 		"phan/phan": "*",
 		"phpunit/phpunit": "^7",
 		"masterminds/html5": "^2.7"
-	}
+	},
+	"autoload": {
+        "psr-4": {
+			"TWRP\\": [ "inc/", "tests/" ],
+			"TWRP\\Plugins\\" : [ "inc/Plugins", "inc/Plugins/Post_Views_Plugins", "inc/Plugins/Rating_Plugins", "inc/Plugins/Related_Plugins" ]
+		}
+    }
 }

@@ -11,7 +11,7 @@ namespace TWRP\Plugins;
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by GaMerZ.
  */
-class GamerZ_WP_Post_Views_Plugin implements Post_Views_Plugin {
+class GamerZ_Views_Plugin implements Post_Views_Plugin {
 
 	public static function support_get_views() {
 		return true;

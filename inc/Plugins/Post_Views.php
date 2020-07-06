@@ -12,8 +12,8 @@ class Post_Views {
 	 * @var array
 	 */
 	protected static $all_plugin_class_names = array(
-		'DFactory' => 'DFactory_Post_Views_Counter_Plugin',
-		'GamerZ'   => 'GamerZ_WP_Post_Views_Plugin',
+		'DFactory' => 'DFactory_Views_Plugin',
+		'GamerZ'   => 'GamerZ_Views_Plugin',
 	);
 
 	protected static $plugin_classes = array();

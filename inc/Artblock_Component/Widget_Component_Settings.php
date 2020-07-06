@@ -5,6 +5,9 @@ namespace TWRP\Artblock_Component;
 use TWRP\Utils;
 use TWRP\Artblock_Component\Component_Setting;
 
+/**
+ * Class that represents an artblock component and its settings.
+ */
 class Widget_Component_Settings {
 
 	const COMPONENTS_NAMESPACE_PREFIX = 'TWRP\\Artblock_Component\\';
@@ -102,6 +105,27 @@ class Widget_Component_Settings {
 
 	protected function get_component_prefix_id() {
 		return Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, $this->name );
+	}
+
+	public static function display_components( $components ) {
+		?>
+		<div class="twrp-widget-components">
+			<div class="twrp-widget-components__buttons">
+				<?php foreach ( $components as $component ) : ?>
+					<div class="twrp-widget-components__btn">
+						<?= esc_html( $component->get_component_title() ); ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+			<div class="twrp-widget-components__components">
+				<?php foreach ( $components as $component ) : ?>
+					<div class="twrp-widget-components__component-wrapper">
+						<?php $component->display_component_settings(); ?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		</div>
+		<?php
 	}
 
 }

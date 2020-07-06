@@ -36,7 +36,7 @@ class Utils {
 	public static function get_twrp_widget_name( $widget_id, ...$other_name_keys ) {
 		$suffix = '[' . $widget_id . ']';
 		foreach ( $other_name_keys as $name_key ) {
-			if ( ! is_string( $name_key ) ) {
+			if ( ! is_string( $name_key ) && ! is_numeric( $name_key ) ) {
 				continue;
 			}
 

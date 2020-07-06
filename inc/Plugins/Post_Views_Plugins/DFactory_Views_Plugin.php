@@ -11,7 +11,7 @@ namespace TWRP\Plugins;
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by DFactory.
  */
-class DFactory_Post_Views_Counter_Plugin implements Post_Views_Plugin {
+class DFactory_Views_Plugin implements Post_Views_Plugin {
 
 	const ORDERBY_NAME = 'post_views';
 

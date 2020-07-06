@@ -19,9 +19,12 @@ function stop_bench( $name ) {
 
 function dump_bench( $name, $pre = '' ) {
 	if ( isset( $GLOBALS[ 'brada_foreach_bench_total_' . $name ] ) ) {
-		console_dump( $GLOBALS[ 'brada_foreach_bench_total_' . $name ], $pre );
+		console_dump( round( $GLOBALS[ 'brada_foreach_bench_total_' . $name ] * 1000, 2 ) . 'ms', $pre );
+		console_dump( 'Count: ' . $GLOBALS[ 'brada_foreach_bench_count_' . $name ], $pre );
+	} elseif ( isset( $GLOBALS[ 'brada_start_bench_' . $name ] ) ) {
+		console_dump( round( $GLOBALS[ 'brada_start_bench_' . $name ] * 1000, 2 ) . 'ms', $pre );
 	} else {
-		console_dump( $GLOBALS[ 'brada_start_bench_' . $name ], $pre );
+		console_dump( 'not run', $pre );
 	}
 
 }
@@ -58,6 +61,12 @@ function stop_foreach_bench( $name ) {
 	if ( ! isset( $GLOBALS[ 'brada_foreach_bench_total_' . $name ] ) ) {
 		$GLOBALS[ 'brada_foreach_bench_total_' . $name ] = 0;
 	}
+
+	if ( ! isset( $GLOBALS[ 'brada_foreach_bench_count_' . $name ] ) ) {
+		$GLOBALS[ 'brada_foreach_bench_count_' . $name ] = 0;
+	}
+
+	$GLOBALS[ 'brada_foreach_bench_count_' . $name ]++;
 
 	$GLOBALS[ 'brada_foreach_bench_total_' . $name ] += $time_executed;
 

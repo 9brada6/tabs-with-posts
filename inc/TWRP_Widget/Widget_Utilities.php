@@ -201,6 +201,6 @@ trait Widget_Utilities {
 	 * @return string
 	 */
 	protected static function get_artblock_selector_name() {
-		return Widget::ARTBLOCK_SELECTOR_NAME;
+		return Widget::ARTBLOCK_SELECTOR__NAME;
 	}
 }
