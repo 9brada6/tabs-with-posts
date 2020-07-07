@@ -9,7 +9,8 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "*",
 		"phan/phan": "*",
 		"phpunit/phpunit": "^7",
-		"masterminds/html5": "^2.7"
+		"masterminds/html5": "^2.7",
+        "phpstan/phpstan": "^0.12.32"
 	},
 	"autoload": {
         "psr-4": {

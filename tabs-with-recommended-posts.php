@@ -13,31 +13,37 @@
  * Domain Path:       @todo
  */
 
-use TWRP\Admin\Settings_Menu;
+use TWRP\Require_Files;
 use TWRP\Query_Settings_Manager;
 use TWRP\Article_Blocks_Manager;
+use TWRP\Admin\Settings_Menu;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
-use TWRP\Require_Files;
+
 
 /**
  * For Development only.
  */
 require_once __DIR__ . '/debug-and-development.php';
 
-\Debug\start_bench( 'autoload' );
-require_once __DIR__ . '/inc/require-files.php';
+require_once __DIR__ . '/inc/Require_Files.php';
+
+#region -- Initializing
+
+// Require all files. An autoloader is not used, because other plugins can use
+// an autoloader that is slow, making this plugin slow as well.
 Require_Files::init();
-// require_once __DIR__ . '/vendor/autoload.php';
-\Debug\stop_bench( 'autoload' );
+
+Widget_Ajax::init();
+Post_Views::init();
+
+#endregion -- Initializing
+
 
 
 class TWRP_Main {
-
 	protected static $is_pro = false;
-
-	const SETTINGS_CLASSES_FOLDER = 'inc/settings/';
 
 	const TEMPLATES_FOLDER = 'templates/';
 
@@ -48,19 +54,6 @@ class TWRP_Main {
 	 */
 	public static function get_plugin_directory() {
 		return plugin_dir_path( __FILE__ );
-	}
-
-	/**
-	 * Returns the absolute path to the directory where the settings classes
-	 * with their interfaces are defined.
-	 *
-	 * @return string The path is trail slashed.
-	 */
-	public static function get_query_settings_classes_directory() {
-		// get_plugin_directory() return a trailing slash path, so we use ltrim
-		// to be sure not to have "//".
-		$directory = self::get_plugin_directory() . ltrim( self::SETTINGS_CLASSES_FOLDER, '/' );
-		return trailingslashit( $directory );
 	}
 
 	/**
@@ -206,22 +199,7 @@ function twrp_enqueue_artblock_styles() {
 
 add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
-#region -- Initializing
 
-twrp_init_classes();
-
-/**
- * Initialize all the functions of the classes, usually implementing actions or
- * filters.
- *
- * @return void
- */
-function twrp_init_classes() {
-	Widget_Ajax::init();
-	Post_Views::init();
-}
-
-#endregion -- Initializing
 
 #region -- Testing
 
@@ -279,13 +257,11 @@ function test_string() {
 	return \TWRP\Query_Setting\Post_Order::setting_is_collapsed();
 }
 
-#endregion -- Testing
-
 function twrp_bench_debug() {
 	\Debug\dump_bench( 'autoload', 'autoload' );
-	\Debug\dump_bench( 'file_exists', 'file_exists' );
-	\Debug\dump_bench( 'autoload_fornew', 'autoload_fornew' );
 }
 
 add_action( 'wp_enqueue_scripts', 'twrp_bench_debug' );
 add_action( 'admin_enqueue_scripts', 'twrp_bench_debug' );
+
+#endregion -- Testing

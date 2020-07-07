@@ -121,6 +121,15 @@ class Simple_Article_Block implements Article_Block {
 	 */
 	public function sanitize_widget_settings( $unsanitized_settings ) {
 		return $unsanitized_settings;
+
+		$components = $this->get_components();
+
+		foreach ( $components as $component ) {
+
+		}
+
+		return $unsanitized_settings;
+
 		// $unsanitized_settings = wp_parse_args( $unsanitized_settings, $this->get_default_values() );
 		// $settings_creator     = new Widget_Settings_Creator( 0, 0, $unsanitized_settings );
 		// $default_values = $this->get_default_values();
@@ -164,30 +173,6 @@ class Simple_Article_Block implements Article_Block {
 
 	#region -- Rework and delete
 
-
-
-	public function get_default_values() {
-		$defaults = array(
-			'display_date'         => '',
-			'display_author'       => '',
-			'header_size'          => '',
-			'meta_size'            => '0.9',
-			'date_format'          => '',
-			'show_date_difference' => '1',
-		);
-
-		return $defaults;
-	}
-
-	protected function get_meta_size_setting_args() {
-		return array(
-			'before' => _x( 'Author and date font size:', 'backend; CSS unit', 'twrp' ),
-			'after'  => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
-			'max'    => '3',
-			'min'    => '0.7',
-			'step'   => '0.025',
-		);
-	}
 
 	/**
 	 * Enqueue all the styles and scripts necessary for this article block to run.

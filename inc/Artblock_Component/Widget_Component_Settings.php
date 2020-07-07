@@ -107,6 +107,31 @@ class Widget_Component_Settings {
 		return Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, $this->name );
 	}
 
+	#region -- Sanitization
+
+	/**
+	 * Get the new settings, but sanitized.
+	 *
+	 * @return array
+	 */
+	public function sanitize_settings() {
+		$component_setting_classes = $this->get_classes();
+
+		$sanitized_settings = array();
+		foreach ( $component_setting_classes as $setting_class ) {
+			$setting_key = $setting_class::get_key_name();
+
+			if ( isset( $this->settings[ $setting_key ] ) ) {
+				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( $this->settings[ $setting_key ] );
+			} else {
+				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( null );
+			}
+		}
+		return $sanitized_settings;
+	}
+
+	#endregion -- Sanitization
+
 	public static function display_components( $components ) {
 		?>
 		<div class="twrp-widget-components">

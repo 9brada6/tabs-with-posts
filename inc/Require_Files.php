@@ -21,7 +21,6 @@ class Require_Files {
 		'Admin/Tabs/Queries_Tab',
 
 		// Artblock Component Settings
-		'Artblock_Component/Display_Components',
 		'Artblock_Component/Widget_Component_Settings',
 		'Artblock_Component/Widget_Settings_Creator',
 		'Artblock_Component/Widget_Component_Setting/Component_Setting',
