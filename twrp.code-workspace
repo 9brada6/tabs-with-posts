@@ -142,7 +142,7 @@
 		//"phan.analyzedProjectDirectory": "/media/brada/Work/Projects/wp-plugin-twrp/wordpress/wp-content/plugins/tabs-with-recommended-posts/",
 
 
-		"phan.connectToServerWithStdio": true,
+		// "phan.connectToServerWithStdio": true,
 		"phan.enableGoToDefinition": false,
 		"phan.enableHover": false,
 		"phan.analyzeOnlyOnSave": true,

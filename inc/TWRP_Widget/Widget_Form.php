@@ -17,7 +17,7 @@ class Widget_Form {
 	/**
 	 * Display the admin widget form, where user make settings.
 	 *
-	 * @param array $instance Widget instance settings.
+	 * @param array $instance_settings Widget instance settings.
 	 * @param int $widget_id
 	 * @return void
 	 */
@@ -81,7 +81,7 @@ class Widget_Form {
 	/**
 	 * Display all settings for each query separated into each tab.
 	 *
-	 * @param array $instance Widget instance settings.
+	 * @param array $instance_settings Widget instance settings.
 	 * @param int $widget_id
 	 * @return void
 	 */
@@ -174,7 +174,7 @@ class Widget_Form {
 	protected static function display_query_select_artblock( $widget_id, $query_id ) {
 		$instance_options     = Widget::get_instance_settings( $widget_id );
 		$artblock_id_selected = Widget::get_selected_artblock_id( $widget_id, $query_id );
-		$registered_artblocks = Article_Blocks_Manager::get_style_classes();
+		$registered_artblocks = Article_Blocks_Manager::get_artblocks_names();
 
 		$select_name = Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::ARTBLOCK_SELECTOR__NAME . ']' );
 		$select_val  = $instance_options[ $query_id ][ Widget::ARTBLOCK_SELECTOR__NAME ];
@@ -182,13 +182,13 @@ class Widget_Form {
 		<p>
 			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
 			<select class="twrp-widget-form__article-block-selector" name="<?= esc_attr( $select_name ); ?>" value="<?= esc_attr( $select_val ); ?>">
-				<?php foreach ( $registered_artblocks as $artblock_id => $article_block ) : ?>
+				<?php foreach ( $registered_artblocks as $artblock_id => $article_name ) : ?>
 					<option
 						class="twrp-widget-form__article-block-select-option"
 						value="<?= esc_attr( (string) $artblock_id ); ?>"
 						<?= $artblock_id_selected === $artblock_id ? 'selected' : '' ?>
 					>
-						<?= esc_html( $article_block->get_name() ); ?>
+						<?= esc_html( $article_name ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
@@ -232,24 +232,25 @@ class Widget_Form {
 			return;
 		}
 
-		try {
-			$artblock = Article_Blocks_Manager::get_style_class_by_name( $artblock_id );
-		} catch ( \RuntimeException $e ) {
-			try {
-				$artblock = Article_Blocks_Manager::get_style_class_by_name( Widget::DEFAULT_SELECTED_ARTBLOCK_ID );
-			} catch ( \RuntimeException $e ) {
-				return;
-			}
-		}
-
 		$current_settings  = Widget::get_instance_settings( $widget_id );
 		$artblock_settings = array();
 		if ( isset( $current_settings[ $query_id ] ) ) {
 			$artblock_settings = $current_settings[ $query_id ];
 		}
+
+		try {
+			$artblock = Article_Blocks_Manager::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $artblock_settings );
+		} catch ( \RuntimeException $e ) {
+			try {
+				$artblock = Article_Blocks_Manager::construct_class_by_name_or_id( Widget::DEFAULT_SELECTED_ARTBLOCK_ID, $widget_id, $query_id, $artblock_settings );
+			} catch ( \RuntimeException $e ) {
+				return;
+			}
+		}
+
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
-			<?php $artblock->display_form_settings( $widget_id, $query_id, $artblock_settings ); ?>
+			<?php $artblock->display_form_settings(); ?>
 		</div>
 		<?php
 	}

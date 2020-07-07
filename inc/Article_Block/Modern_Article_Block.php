@@ -4,6 +4,16 @@ namespace TWRP\Article_Block;
 
 class Modern_Article_Block implements Article_Block {
 
+	protected $widget_id;
+	protected $query_id;
+	protected $settings;
+
+	public function __construct( $widget_id, $query_id, $settings ) {
+		$this->widget_id = $widget_id;
+		$this->query_id  = $query_id;
+		$this->settings  = $settings;
+	}
+
 	/**
 	 * Get the Id of the article block.
 	 *
@@ -11,7 +21,7 @@ class Modern_Article_Block implements Article_Block {
 	 *
 	 * @return string
 	 */
-	public function get_id() {
+	public static function get_id() {
 		return 'modern_style';
 	}
 
@@ -21,44 +31,29 @@ class Modern_Article_Block implements Article_Block {
 	 *
 	 * @return string
 	 */
-	public function get_name() {
+	public static function get_name() {
 		return 'Modern Style';
+	}
+
+	public static function init() {
+		// Do nothing.
 	}
 
 	/**
 	 * Include the template that should be displayed in the frontend.
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $settings
 	 * @return void
 	 */
-	public function include_template( $widget_id, $query_id, $settings ) {
+	public function include_template() {
 		include \TWRP_Main::get_plugin_directory() . 'templates/modern-style.php';
-	}
-
-	/**
-	 * Enqueue all the styles and scripts necessary for this article block to run.
-	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $query_settings
-	 * @return void
-	 */
-	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings ) {
-
 	}
 
 	/**
 	 * Display the article block settings in the Widgets::form().
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $current_settings
-	 *
 	 * @return void
 	 */
-	public function display_form_settings( $widget_id, $query_id, $current_settings ) {
+	public function display_form_settings() {
 		?>
 		<p>
 			Modern settings
@@ -69,15 +64,9 @@ class Modern_Article_Block implements Article_Block {
 	/**
 	 * Sanitize the widget settings of this specific article block.
 	 *
-	 * @param array $unsanitized_settings The settings to be sanitized. This settings
-	 * also include other query settings, which can safely be removed in this
-	 * sanitization process.
-	 *
 	 * @return array The new array of settings.
 	 */
-	public function sanitize_widget_settings( $unsanitized_settings ) {
-		return $unsanitized_settings;
+	public function sanitize_widget_settings() {
+		return $this->settings;
 	}
-
-
 }

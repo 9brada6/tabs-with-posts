@@ -58,25 +58,14 @@ class Widget_Component_Settings {
 			return $this->setting_classes;
 		}
 
-		$classes_names   = Utils::flatten_array( $this->setting_types );
-		$setting_classes = array();
-
-		foreach ( $classes_names as $component_setting_class_name ) {
-			$component_setting_class_name = self::COMPONENTS_NAMESPACE_PREFIX . $component_setting_class_name;
-
-			if ( ! class_exists( $component_setting_class_name ) ) {
-				continue;
-			}
-
-			$component_setting_class = new $component_setting_class_name();
-
-			if ( $component_setting_class instanceof Component_Setting ) {
-				array_push( $setting_classes, $component_setting_class );
-			}
-		}
+		$setting_classes = self::get_component_classes( $this->setting_types );
 
 		$this->setting_classes = $setting_classes;
 		return $setting_classes;
+	}
+
+	public function get_component_name() {
+		return $this->name;
 	}
 
 	public function get_component_title() {
@@ -114,23 +103,45 @@ class Widget_Component_Settings {
 	 *
 	 * @return array
 	 */
-	public function sanitize_settings() {
+	public function sanitize_settings( $settings ) {
 		$component_setting_classes = $this->get_classes();
 
 		$sanitized_settings = array();
 		foreach ( $component_setting_classes as $setting_class ) {
 			$setting_key = $setting_class::get_key_name();
 
-			if ( isset( $this->settings[ $setting_key ] ) ) {
-				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( $this->settings[ $setting_key ] );
+			if ( isset( $settings[ $setting_key ] ) ) {
+				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( $settings[ $setting_key ] );
 			} else {
 				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( null );
 			}
 		}
+
 		return $sanitized_settings;
 	}
 
 	#endregion -- Sanitization
+
+	public static function get_component_classes( $component_setting_classes ) {
+		$classes_names   = Utils::flatten_array( $component_setting_classes );
+		$setting_classes = array();
+
+		foreach ( $classes_names as $component_setting_class_name ) {
+			$component_setting_class_name = self::COMPONENTS_NAMESPACE_PREFIX . $component_setting_class_name;
+
+			if ( ! class_exists( $component_setting_class_name ) ) {
+				continue;
+			}
+
+			$component_setting_class = new $component_setting_class_name();
+
+			if ( $component_setting_class instanceof Component_Setting ) {
+				array_push( $setting_classes, $component_setting_class );
+			}
+		}
+
+		return $setting_classes;
+	}
 
 	public static function display_components( $components ) {
 		?>

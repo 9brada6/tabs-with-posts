@@ -197,7 +197,7 @@ function twrp_enqueue_artblock_styles() {
 	}
 }
 
-add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
+// add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
 
 
@@ -245,6 +245,8 @@ function dump_query_settings() {
 	\Debug\console_dump( TWRP\Plugins\YASR_Rating_Plugin::get_number_of_votes( 25 ), '25 nr votes:' );
 
 	\Debug\console_dump( get_post_meta( 27, '_glsr_count', true ), '27 nr votes:' );
+
+	\Debug\console_dump( class_exists( 'TWRP\Article_Block\Simple_Article_Block' ) );
 
 }
 

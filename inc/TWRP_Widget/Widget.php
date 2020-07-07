@@ -55,7 +55,7 @@ class Widget extends \WP_Widget {
 
 			echo '<div class="twrp-widget__tabs-container">';
 				// Todo: change this shit.
-				$this->display_query( 1, true );
+				// $this->display_query( 1, true );
 			echo '</div>';
 		echo '</div>';
 
@@ -68,10 +68,10 @@ class Widget extends \WP_Widget {
 
 		try {
 			$artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
-			$artblock    = Article_Blocks_Manager::get_style_class_by_name( $artblock_id );
-			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
 			$settings    = self::get_query_instance_settings( $widget_id, $query_id );
-			$settings    = $artblock->sanitize_widget_settings( $settings );
+			$artblock    = Article_Blocks_Manager::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $settings );
+			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
+			$settings    = $artblock->sanitize_widget_settings();
 		} catch ( \RuntimeException $e ) {
 			return;
 		}
@@ -85,7 +85,7 @@ class Widget extends \WP_Widget {
 			foreach ( $posts as $new_global_post ) :
 				$post = $new_global_post; // phpcs:ignore -- We reset afterwards;
 				setup_postdata( $new_global_post );
-				$artblock->include_template( $widget_id, $query_id, $settings );
+				$artblock->include_template();
 			endforeach;
 			wp_reset_postdata();
 			?>
@@ -114,13 +114,14 @@ class Widget extends \WP_Widget {
 		foreach ( $selected_queries as $query_id ) {
 			$selected_artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
 			try {
-				$artblock       = Article_Blocks_Manager::get_style_class_by_name( $selected_artblock_id );
 				$query_settings = self::get_query_instance_settings( $widget_id, $query_id );
-				$query_settings = $artblock->sanitize_widget_settings( $query_settings );
+				$artblock       = Article_Blocks_Manager::construct_class_by_name_or_id( $selected_artblock_id, $widget_id, $query_id, $query_settings );
+				$query_settings = $artblock->sanitize_widget_settings();
 			} catch ( \RuntimeException $e ) {
 				continue;
 			}
-			$artblock->enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings );
+			// Todo:
+			// $artblock->enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings );
 		}
 	}
 
@@ -141,10 +142,11 @@ class Widget extends \WP_Widget {
 	#region -- Update
 
 	public function update( $new_instance, $old_instance ) {
-		return self::sanitize_instance_settings( $new_instance );
+		$widget_id = (int) $this->number;
+		return self::sanitize_all_queries_settings( $widget_id, $new_instance );
 	}
 
-	public static function sanitize_instance_settings( $settings ) {
+	public static function sanitize_all_queries_settings( $widget_id, $settings ) {
 		if ( ! isset( $settings['queries'] ) ) {
 			$settings['queries'] = '';
 		}
@@ -157,7 +159,7 @@ class Widget extends \WP_Widget {
 				continue;
 			}
 			if ( Query_Options::query_exists( $query_id ) ) {
-				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $settings[ $query_id ] );
+				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $widget_id, $query_id, $settings[ $query_id ] );
 				array_push( $valid_queries_ids, $query_id );
 			}
 		}
@@ -167,10 +169,7 @@ class Widget extends \WP_Widget {
 		return $sanitized_settings;
 	}
 
-	/**
-	 * @param array $query_settings
-	 */
-	protected static function sanitize_query_settings( $query_settings ) {
+	protected static function sanitize_query_settings( $widget_id, $query_id, $query_settings ) {
 		$sanitized_settings = array();
 
 		if ( isset( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
@@ -190,12 +189,12 @@ class Widget extends \WP_Widget {
 		}
 
 		try {
-			$artblock = Article_Blocks_Manager::get_style_class_by_name( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] );
+			$artblock = Article_Blocks_Manager::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], $widget_id, $query_id, $query_settings );
 		} catch ( \RuntimeException $e ) {
 			return $sanitized_settings;
 		}
 
-		$sanitized_article_block_setting = $artblock->sanitize_widget_settings( $query_settings );
+		$sanitized_article_block_setting = $artblock->sanitize_widget_settings();
 
 		return array_merge( $sanitized_settings, $sanitized_article_block_setting );
 	}

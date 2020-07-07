@@ -26,7 +26,7 @@ interface Article_Block {
 	 *
 	 * @return string
 	 */
-	public function get_id();
+	public static function get_id();
 
 	/**
 	 * Get the name of the Article Block. The name should have spaces instead
@@ -34,47 +34,44 @@ interface Article_Block {
 	 *
 	 * @return string
 	 */
-	public function get_name();
+	public static function get_name();
 
 	/**
-	 * Include the template that should be displayed in the frontend.
+	 * Called before anything else, to initialize actions and filters.
+	 *
+	 * This function is not called when needed, for example in admin backend or
+	 * frontend, but when the WP include the plugin, so additional checking must
+	 * be made inside the function.
+	 */
+	public static function init();
+
+	/**
+	 * Construct the object instance.
 	 *
 	 * @param int $widget_id
 	 * @param int $query_id
 	 * @param array $settings
-	 * @return void
 	 */
-	public function include_template( $widget_id, $query_id, $settings );
+	public function __construct( $widget_id, $query_id, $settings );
 
 	/**
-	 * Enqueue all the styles and scripts necessary for this article block to run.
+	 * Include the template that should be displayed in the frontend.
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $query_settings
 	 * @return void
 	 */
-	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings );
+	public function include_template();
 
 	/**
 	 * Display the article block settings in the Widgets::form().
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $current_settings
-	 *
 	 * @return void
 	 */
-	public function display_form_settings( $widget_id, $query_id, $current_settings );
+	public function display_form_settings();
 
 	/**
 	 * Sanitize the widget settings of this specific article block.
 	 *
-	 * @param array $query_settings The settings to be sanitized. This settings
-	 * also include other query settings, which can safely be removed in this
-	 * sanitization process.
-	 *
 	 * @return array The new array of settings.
 	 */
-	public function sanitize_widget_settings( $query_settings );
+	public function sanitize_widget_settings();
 }

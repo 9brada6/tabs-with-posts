@@ -6,7 +6,6 @@
 
 namespace TWRP\Article_Block;
 
-use TWRP\Artblock_Component\Display_Components;
 use TWRP\Artblock_Component\Widget_Component_Settings;
 
 class Simple_Article_Block implements Article_Block {
@@ -16,6 +15,10 @@ class Simple_Article_Block implements Article_Block {
 	const TITLE_FONT_SIZE_ATTR  = 'font-size';
 	const AUTHOR_FONT_SIZE_ATTR = 'author-font-size';
 
+	protected $widget_id;
+	protected $query_id;
+	protected $settings;
+
 	/**
 	 * Get the Id of the article block.
 	 *
@@ -23,7 +26,7 @@ class Simple_Article_Block implements Article_Block {
 	 *
 	 * @return string
 	 */
-	public function get_id() {
+	public static function get_id() {
 		return 'simple_style';
 	}
 
@@ -33,44 +36,48 @@ class Simple_Article_Block implements Article_Block {
 	 *
 	 * @return string
 	 */
-	public function get_name() {
+	public static function get_name() {
 		return 'Simple Style';
+	}
+
+	public static function init() {
+		// Do nothing for now.
+	}
+
+	public function __construct( $widget_id, $query_id, $settings ) {
+		$this->widget_id = $widget_id;
+		$this->query_id  = $query_id;
+		$this->settings  = $settings;
 	}
 
 	/**
 	 * Include the template that should be displayed in the frontend.
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $settings
 	 * @return void
 	 */
-	public function include_template( $widget_id, $query_id, $settings ) {
+	public function include_template() {
 		include \TWRP_Main::get_templates_directory() . 'simple-style.php';
 	}
 
 	/**
 	 * Get the components that can be edited for this artblock.
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $settings
 	 * @return array<Widget_Component_Settings>
 	 */
-	public function get_components( $widget_id, $query_id, $settings ) {
+	public function get_components() {
 		$components = array();
 
-		$title_component_settings = ( isset( $settings['title'] ) && is_array( $settings['title'] ) ) ? $settings['title'] : array();
+		$title_component_settings = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
 		$title_component_title    = _x( 'Title', 'backend', 'twrp' );
 		$title_component          = new Widget_Component_Settings(
-			$widget_id,
-			$query_id,
+			$this->widget_id,
+			$this->query_id,
 			'title',
 			$title_component_title,
 			$title_component_settings,
 			Widget_Component_Settings::TEXT_SETTINGS
 		);
-		$components []            = $title_component;
+		$components ['title']     = $title_component;
 
 		return $components;
 	}
@@ -78,57 +85,47 @@ class Simple_Article_Block implements Article_Block {
 	/**
 	 * Display the article block settings in the Widgets::form().
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $widget_settings
-	 *
 	 * @return void
 	 */
-	public function display_form_settings( $widget_id, $query_id, $widget_settings ) {
-		$this->display_artblock_settings( $widget_id, $query_id, $widget_settings );
-		$this->display_components_settings( $widget_id, $query_id, $widget_settings );
+	public function display_form_settings() {
+		$this->display_artblock_settings();
+		$this->display_components_settings();
 	}
 
 	/**
 	 * Display the artblock specific settings.
 	 */
 	protected function display_artblock_settings() {
-
+		// Do nothing for now.
 	}
 
 	/**
 	 * Display the settings for the artblocks components.
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $settings
-	 *
 	 * @return void
 	 */
-	protected function display_components_settings( $widget_id, $query_id, $settings ) {
-		$components = $this->get_components( $widget_id, $query_id, $settings );
+	protected function display_components_settings() {
+		$components = $this->get_components();
 		Widget_Component_Settings::display_components( $components );
 	}
 
 	/**
 	 * Sanitize the widget settings of this specific article block.
 	 *
-	 * @param array $unsanitized_settings The settings to be sanitized. This settings
-	 * also include other query settings, which can safely be removed in this
-	 * sanitization process.
-	 *
 	 * @return array The new array of settings.
 	 */
-	public function sanitize_widget_settings( $unsanitized_settings ) {
-		return $unsanitized_settings;
-
+	public function sanitize_widget_settings() {
 		$components = $this->get_components();
 
-		foreach ( $components as $component ) {
+		$sanitized_settings = array();
 
+		foreach ( $components as $component ) {
+			$component_name                        = $component->get_component_name();
+			$sanitized_settings[ $component_name ] = $component->sanitize_settings( $this->settings );
 		}
 
-		return $unsanitized_settings;
+		// todo:
+		return $this->settings;
 
 		// $unsanitized_settings = wp_parse_args( $unsanitized_settings, $this->get_default_values() );
 		// $settings_creator     = new Widget_Settings_Creator( 0, 0, $unsanitized_settings );
@@ -185,8 +182,8 @@ class Simple_Article_Block implements Article_Block {
 	public function enqueue_styles_and_scripts( $widget_id, $query_id, $query_settings ) {
 		wp_enqueue_style( 'twrp-simple-style', 'todo', array(), '1.0.0', 'all' );
 
-		$custom_css = self::create_custom_css( $widget_id, $query_id, $query_settings );
-		wp_add_inline_style( 'twrp-simple-style', $custom_css );
+		// $custom_css = self::create_custom_css( $widget_id, $query_id, $query_settings );
+		// wp_add_inline_style( 'twrp-simple-style', $custom_css );
 	}
 
 	protected function create_custom_css( $widget_id, $query_id, $settings ) {
