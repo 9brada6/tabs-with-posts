@@ -25,6 +25,7 @@ interface Component_Setting {
 	 * @param string $prefix_name The prefix name of the control. Will be merged with
 	 *                            the class key name.
 	 * @param mixed $value The value of the control.
+	 * @return void
 	 */
 	public static function display_setting( $prefix_id, $prefix_name, $value );
 

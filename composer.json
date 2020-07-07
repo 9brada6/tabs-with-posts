@@ -10,7 +10,9 @@
 		"phan/phan": "*",
 		"phpunit/phpunit": "^7",
 		"masterminds/html5": "^2.7",
-        "phpstan/phpstan": "^0.12.32"
+        "phpstan/phpstan": "^0.12.32",
+		"vimeo/psalm": "^3.12",
+		"php-stubs/wordpress-stubs": "4.9.*"
 	},
 	"autoload": {
         "psr-4": {

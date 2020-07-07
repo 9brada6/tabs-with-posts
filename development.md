@@ -50,3 +50,5 @@
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
 - The plugin is very slow, find out why and repair it.
+
+- Check if Psalm has throws, has in_array check for true.

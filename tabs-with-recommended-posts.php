@@ -266,4 +266,20 @@ function twrp_bench_debug() {
 add_action( 'wp_enqueue_scripts', 'twrp_bench_debug' );
 add_action( 'admin_enqueue_scripts', 'twrp_bench_debug' );
 
+/**
+ * @param array{default?:string,options:array} $default_args
+ */
+function test( $default_args ) {
+	?>
+
+	<?php foreach ( $default_args['options'] as $value => $display_value ) : ?>
+
+		<option value="<?= esc_attr( $value ); ?>">
+			<?= esc_html( $display_value ); ?>
+		</option>
+	<?php endforeach; ?>
+
+	<?php
+}
+
 #endregion -- Testing

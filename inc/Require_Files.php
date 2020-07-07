@@ -22,10 +22,12 @@ class Require_Files {
 
 		// Artblock Component Settings
 		'Artblock_Component/Widget_Component_Settings',
-		'Artblock_Component/Widget_Settings_Creator',
+
 		'Artblock_Component/Widget_Component_Setting/Component_Setting',
+
 		'Artblock_Component/Widget_Component_Setting/Font_Size_Setting',
 		'Artblock_Component/Widget_Component_Setting/Line_Height_Setting',
+		'Artblock_Component/Widget_Component_Setting/Font_Weight_Setting',
 
 		// Article Blocks
 		'Article_Block/Article_Block',
@@ -76,6 +78,7 @@ class Require_Files {
 		// Widget Control
 		'Widget_Control/Widget_Control',
 		'Widget_Control/Number_Control',
+		'Widget_Control/Select_Control',
 
 	);
 

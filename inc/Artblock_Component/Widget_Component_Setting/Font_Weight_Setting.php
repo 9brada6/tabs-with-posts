@@ -5,9 +5,12 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Widget_Control\Number_Control;
+use TWRP\Widget_Control\Select_Control;
 
-class Line_Height_Setting implements Component_Setting {
+/**
+ * Font weight component setting.
+ */
+class Font_Weight_Setting implements Component_Setting {
 
 	/**
 	 * The name of the setting. Will be used as an array key for storage.
@@ -15,7 +18,7 @@ class Line_Height_Setting implements Component_Setting {
 	 * @return string
 	 */
 	public static function get_key_name() {
-		return 'line_height';
+		return 'font_weight';
 	}
 
 	/**
@@ -23,39 +26,49 @@ class Line_Height_Setting implements Component_Setting {
 	 *
 	 * @param string $prefix_id To this id will be appended the key name.
 	 * @param string $prefix_name To this id will be added the key name.
-	 * @param int|float|string|''|null $value The current value of the setting.
+	 * @param string|null $value The current value of the setting.
 	 * @return void
 	 */
 	public static function display_setting( $prefix_id, $prefix_name, $value ) {
 		$id   = $prefix_id . '-' . self::get_key_name();
 		$name = $prefix_name . '[' . self::get_key_name() . ']';
 
-		Number_Control::display_setting( $id, $name, $value, self::get_control_setting_args() );
+		Select_Control::display_setting( $id, $name, $value, self::get_control_setting_args() );
 	}
 
 	/**
 	 * Sanitize the setting.
 	 *
 	 * @param mixed $value
-	 * @return int|float|''
+	 * @return string
 	 */
 	public static function sanitize_setting( $value ) {
-		return Number_Control::sanitize_setting( $value, self::get_control_setting_args() );
+		return Select_Control::sanitize_setting( $value, self::get_control_setting_args() );
 	}
 
 	/**
 	 * Get the arguments for the control.
 	 *
-	 * @return mixed
+	 * @return array<string,string|array>
 	 */
 	protected static function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Line Height:', 'backend; CSS unit', 'twrp' ),
-			'after'   => '',
-			'max'     => '3',
-			'min'     => '0.7',
-			'step'    => '0.05',
+			'before'  => _x( 'Font size:', 'backend; CSS unit', 'twrp' ),
+			'after'   => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
+			'options' => array(
+				''        => 'Not set',
+				'inherit' => 'inherit',
+				'100'     => '100',
+				'200'     => '200',
+				'300'     => '300',
+				'400'     => '400',
+				'500'     => '500',
+				'600'     => '600',
+				'700'     => '700',
+				'800'     => '800',
+				'900'     => '900',
+			),
 		);
 	}
 }

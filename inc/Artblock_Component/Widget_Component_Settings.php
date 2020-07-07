@@ -14,10 +14,12 @@ class Widget_Component_Settings {
 
 	const FONT_SIZE_SETTING   = 'Font_Size_Setting';
 	const LINE_HEIGHT_SETTING = 'Line_Height_Setting';
+	const FONT_WEIGHT_SETTING = 'Font_Weight_Setting';
 
 	const TEXT_SETTINGS = array(
 		self::FONT_SIZE_SETTING,
 		self::LINE_HEIGHT_SETTING,
+		self::FONT_WEIGHT_SETTING,
 	);
 
 	protected $name;
@@ -101,6 +103,7 @@ class Widget_Component_Settings {
 	/**
 	 * Get the new settings, but sanitized.
 	 *
+	 * @param array|null $settings
 	 * @return array
 	 */
 	public function sanitize_settings( $settings ) {
