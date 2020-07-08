@@ -13,12 +13,6 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
-    <!-- <extraFiles>
-        <directory name="../../.." />
-        <ignoreFiles>
-            <directory name="../../../wp-content" />
-        </ignoreFiles>
-    </extraFiles> -->
     <stubs>
         <file name="vendor/php-stubs/wordpress-stubs/wordpress-stubs.php" />
     </stubs>

@@ -113,7 +113,7 @@ return array(
 
 	'include_paths' => ["."],
 
-	'maximum_recursion_depth' => 6,
+	'maximum_recursion_depth' => 4,
 
 	'plugins' => array(
 		'UnusedSuppressionPlugin',
