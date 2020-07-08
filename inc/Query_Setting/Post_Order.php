@@ -255,6 +255,12 @@ class Post_Order implements Query_Setting {
 		return $sanitized_setting;
 	}
 
+	/**
+	 * Sanitize the WP possible orderby parameters.
+	 *
+	 * @param array $setting
+	 * @return array
+	 */
 	protected static function sanitize_orderby_parameters( $setting ) {
 		$sanitized_setting = self::get_default_setting();
 		$setting           = wp_parse_args( $setting, self::get_default_setting() );
@@ -307,6 +313,12 @@ class Post_Order implements Query_Setting {
 		return $sanitized_setting;
 	}
 
+	/**
+	 * Sanitize the plugins orderby parameters.
+	 *
+	 * @param array $settings
+	 * @return array
+	 */
 	protected static function plugin_additional_sanitization( $settings ) {
 		if ( ! in_array( self::PLUGIN_DFACTORY_ORDERBY_VALUE, $settings, true ) ) {
 			return $settings;
@@ -333,6 +345,13 @@ class Post_Order implements Query_Setting {
 		return $previous_query_args;
 	}
 
+	/**
+	 * Add the query arguments based on WP orderby arguments.
+	 *
+	 * @param array $previous_query_args
+	 * @param array $query_settings
+	 * @return array
+	 */
 	public static function add_wp_query_arg( $previous_query_args, $query_settings ) {
 		$orderby  = array();
 		$settings = $query_settings[ self::get_setting_name() ];

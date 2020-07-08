@@ -54,8 +54,8 @@ class Font_Weight_Setting implements Component_Setting {
 	protected static function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Font size:', 'backend; CSS unit', 'twrp' ),
-			'after'   => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
+			'before'  => _x( 'Font weight:', 'backend; CSS unit', 'twrp' ),
+			'after'   => '',
 			'options' => array(
 				''        => 'Not set',
 				'inherit' => 'inherit',

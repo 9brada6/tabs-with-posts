@@ -23,7 +23,6 @@
 - Add accessibility to visual list remove button.
 - Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.
 - Make Category/Author/ORderby Query Settings Better.
-- Comment post order functions.
 - Read more about perm => 'readable' and 'editable' and add setting.
 - Add post formats.
 - Add permission.
@@ -33,6 +32,7 @@
 - Show if a post/category/author is deleted?
 - There is a setting that is displaying the post even if it doesn't exit.
 - Add a way for post order to order things via a filter.
+- Add meta_key for the post order.s
 - Add filters for all things?
 - Add an init method to all classes.
 

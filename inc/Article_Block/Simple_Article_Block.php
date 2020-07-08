@@ -96,6 +96,7 @@ class Simple_Article_Block implements Article_Block {
 	 * Display the artblock specific settings.
 	 */
 	protected function display_artblock_settings() {
+		// todo.
 		// Do nothing for now.
 	}
 
@@ -122,9 +123,9 @@ class Simple_Article_Block implements Article_Block {
 		foreach ( $components as $component ) {
 			$component_name = $component->get_component_name();
 			if ( isset( $this->settings[ $component_name ] ) ) {
-				$sanitized_settings[ $component_name ] = $component->sanitize_settings( $this->settings[ $component_name ] );
+				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
 			} else {
-				$sanitized_settings[ $component_name ] = $component->sanitize_settings( null );
+				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
 			}
 		}
 

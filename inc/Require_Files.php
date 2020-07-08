@@ -79,7 +79,6 @@ class Require_Files {
 		'Widget_Control/Widget_Control',
 		'Widget_Control/Number_Control',
 		'Widget_Control/Select_Control',
-
 	);
 
 	public static function init() {

@@ -101,13 +101,13 @@ class Widget_Component_Settings {
 	#region -- Sanitization
 
 	/**
-	 * Get the new settings, but sanitized.
+	 * Sanitize the internal settings, and returns them.
 	 *
-	 * @param array|null $settings
 	 * @return array
 	 */
-	public function sanitize_settings( $settings ) {
+	public function sanitize_settings() {
 		$component_setting_classes = $this->get_classes();
+		$settings                  = $this->settings;
 
 		$sanitized_settings = array();
 		foreach ( $component_setting_classes as $setting_class ) {
@@ -120,6 +120,7 @@ class Widget_Component_Settings {
 			}
 		}
 
+		$this->$settings = $sanitized_settings;
 		return $sanitized_settings;
 	}
 
