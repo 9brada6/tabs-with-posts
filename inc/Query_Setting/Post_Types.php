@@ -35,12 +35,7 @@ class Post_Types implements Query_Setting {
 				<?php
 				$available_post_types = self::get_available_types();
 				foreach ( $available_post_types as $post_type ) :
-					/**
-					 * @todo: remove psalm and make an assert.
-					 *
-					 * @psalm-suppress PossiblyInvalidPropertyFetch
-					 */
-					if ( isset( $post_type->name, $post_type->label ) ) :
+					if ( ! is_string( $post_type ) && isset( $post_type->name, $post_type->label ) ) :
 						$is_checked = in_array( $post_type->name, $selected_post_types, true );
 						$this->display_post_type_setting_checkbox( $post_type->name, $post_type->label, $is_checked );
 					endif;
@@ -141,23 +136,6 @@ class Post_Types implements Query_Setting {
 		}
 
 		return get_post_types( $args, 'objects' );
-	}
-
-	/**
-	 * Get the registered post formats that theme supports, or false otherwise.
-	 *
-	 * @return array<string>|false
-	 */
-	public static function get_registered_post_formats() {
-		if ( current_theme_supports( 'post-formats' ) ) {
-			$post_formats = get_theme_support( 'post-formats' );
-
-			if ( is_array( $post_formats[0] ) ) {
-				return $post_formats[0];
-			}
-		}
-
-		return false;
 	}
 
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
