@@ -305,6 +305,8 @@ add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_set
  */
 function twrp_enqueue_scripts_debug() {
 	\Debug\dump_bench( 'test_sanitize' );
+	\Debug\console_dump( get_taxonomies() );
+
 	return null;
 }
 

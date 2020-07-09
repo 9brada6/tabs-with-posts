@@ -5,6 +5,7 @@
     resolveFromConfigFile="true"
     checkForThrowsDocblock="true"
     checkForThrowsInGlobalScope="true"
+    addParamDefaultToDocblockType="false"
     phpVersion="5.6"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
