@@ -16,7 +16,7 @@ class Number_Control implements Widget_Control {
 	 * @param string $id
 	 * @param string $name
 	 * @param int|float|string|null $value
-	 * @param array{default?:''|int|float,min?:''|int|float,max?:''|int|float,step?:''|int|float,before?:string,after?:string} $args
+	 * @param array{default?:''|int|float,min?:''|int|float,max?:''|int|float,step?:''|int|float,before?:string,after?:string,string:string} $args
 	 * @return void
 	 */
 	public static function display_setting( $id, $name, $value, $args ) {

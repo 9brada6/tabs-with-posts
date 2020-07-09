@@ -30,7 +30,6 @@ return array(
 	//
 	// Thus, both first-party and third-party code being used by your application should be included in this list.
 	'directory_list' => array(
-		'./../../../',
 		'./',
 	),
 
@@ -39,7 +38,7 @@ return array(
 	// n.b.: If you'd like to parse but not analyze 3rd party code, directories containing that code
 	// should be added to the `directory_list` as well as to `exclude_analysis_directory_list`.
 	'exclude_analysis_directory_list' => array(
-		'./../../../',
+		'.stubs',
 		'./vendor'
 	),
 
@@ -54,11 +53,8 @@ return array(
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
 	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!.*phpunit)|node_modules).*@',
 	//'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-	'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|akismet|themes|wordpress|node_modules|vendor/(?!(phpunit|masterminds|/?$))).*@',
-
-	'file_list' => array(),
-
-	'include_analysis_file_list' => array(),
+	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|akismet|themes|node_modules|vendor/(?!(phpunit|masterminds|/?$))).*@',
+	'exclude_file_regex' => '@.*(node_modules|vendor/(?!(phpunit|masterminds|/?$))).*@',
 
 
 	// Issue Filtering
@@ -76,10 +72,6 @@ return array(
 	'minimum_severity' => 0,
 
 	'suppress_issue_types' => array(
-		// 'PhanRedefineClass',
-		// 'PhanRedefineFunction',
-		// 'PhanRedefinedClassReference',
-		// 'PhanRedefinedInheritedInterface',
 	),
 
 	'whitelist_issue_types' => array(),
@@ -93,7 +85,9 @@ return array(
 	'analyze_signature_compatibility' => true,
 	'assume_no_external_class_overrides' => false,
 
-	'autoload_internal_extension_signatures' => [],
+	'autoload_internal_extension_signatures' => [
+		'wordpress' => '.stubs/wordpress-stubs.php'
+	],
 	// 'cache_polyfill_asts' => false,
 
 	'check_docblock_signature_param_type_match' => true,

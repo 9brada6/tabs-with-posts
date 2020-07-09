@@ -26,7 +26,7 @@ class Font_Weight_Setting implements Component_Setting {
 	 *
 	 * @param string $prefix_id To this id will be appended the key name.
 	 * @param string $prefix_name To this id will be added the key name.
-	 * @param string|null $value The current value of the setting.
+	 * @param mixed $value The current value of the setting.
 	 * @return void
 	 */
 	public static function display_setting( $prefix_id, $prefix_name, $value ) {
@@ -49,7 +49,7 @@ class Font_Weight_Setting implements Component_Setting {
 	/**
 	 * Get the arguments for the control.
 	 *
-	 * @return array<string,string|array>
+	 * @return array
 	 */
 	protected static function get_control_setting_args() {
 		return array(

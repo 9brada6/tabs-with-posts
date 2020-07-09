@@ -7,6 +7,11 @@ namespace TWRP;
 
 class Require_Files {
 
+	/**
+	 * All files that needs to be required for the plugin.
+	 *
+	 * @var array<string>
+	 */
 	protected static $required_files = array(
 		// Inc Folder
 		'Utils',
@@ -81,8 +86,14 @@ class Require_Files {
 		'Widget_Control/Select_Control',
 	);
 
+	/**
+	 * Require all the files needed for the plugin.
+	 *
+	 * @return void
+	 */
 	public static function init() {
 		foreach ( self::$required_files as $file ) {
+			/** @psalm-suppress all */
 			require __DIR__ . '/' . $file . '.php';
 		}
 	}

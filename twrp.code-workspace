@@ -314,7 +314,7 @@
 		// Make todo work in docblocks and with @ in front.
 		"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*@*($TAGS)",
 
-
+		"psalm.connectToServerWithTcp":true,
 
 				// ===========================
 		// Prettier

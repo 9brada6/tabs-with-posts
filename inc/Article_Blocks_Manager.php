@@ -72,6 +72,9 @@ class Article_Blocks_Manager {
 	 * @param int|string $query_id A numerical parameter.
 	 * @param array $settings
 	 * @return Article_Block
+	 *
+	 * @psalm-suppress LessSpecificReturnStatement -- The return is an Article_Block and not an object.
+	 * @psalm-suppress MoreSpecificReturnType -- The return is an Article_Block and not an object.
 	 */
 	public static function construct_class_by_name_or_id( $name_or_id, $widget_id, $query_id, $settings ) {
 		$artblock_class_names = self::get_artblocks_class_names();
@@ -90,10 +93,17 @@ class Article_Blocks_Manager {
 		if ( ! class_exists( $fq_class_name ) ) {
 			throw new \RuntimeException( 'Could not find class ' . $fq_class_name );
 		} else {
+
 			return new $fq_class_name( $widget_id, $query_id, $settings );
 		}
 	}
 
+	/**
+	 * Return whether or not the article block is registered.
+	 *
+	 * @param string $artblock_id
+	 * @return bool
+	 */
 	public static function article_block_id_exist( $artblock_id ) {
 		$classes = self::$style_classes_names;
 		if ( isset( $classes[ $artblock_id ] ) ) {

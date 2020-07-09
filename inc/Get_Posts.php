@@ -67,6 +67,7 @@ class Get_Posts {
 
 	// todo: Make a global variable that will hold the original post when global
 	// post is replaced.
+	// todo: Maybe delete this function? or move it to utils?
 	public static function get_global_post() {
 		global $post;
 

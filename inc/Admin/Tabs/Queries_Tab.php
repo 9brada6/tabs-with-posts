@@ -248,7 +248,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$tab_url = Settings_Menu::get_tab_url( $this );
 
 		if ( Query_Options::query_exists( $query_id ) ) {
-			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
+			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, (string) $query_id, $tab_url );
 		}
 
 		return $tab_url;
@@ -431,7 +431,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$tab_url = Settings_Menu::get_tab_url( $this );
 
 		if ( Query_Options::query_exists( $query_id ) ) {
-			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, $query_id, $tab_url );
+			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, (string) $query_id, $tab_url );
 			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
 			return $url;
 		}
@@ -475,8 +475,13 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function execute_delete_query_action() {
-		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore
-			$key = sanitize_key( (string) wp_unslash( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ); // phpcs:ignore
+		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore -- Nonce verified and input sanitized.
+			$key = wp_unslash( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ); // phpcs:ignore -- Nonce verified and input sanitized.
+			if ( ! is_string( $key ) ) {
+				return;
+			}
+			$key = sanitize_key( $key ); // phpcs:ignore -- Nonce verified and input sanitized.
+
 			if ( Query_Options::query_exists( $key ) ) {
 				Query_Options::delete_query( $key );
 			}

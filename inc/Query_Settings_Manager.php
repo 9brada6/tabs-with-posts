@@ -9,14 +9,33 @@ use TWRP\Query_Setting\Query_Setting;
 
 class Query_Settings_Manager {
 
+	/**
+	 * Hold the classes that will be used to display the settings in the backed.
+	 *
+	 * @var array<Query_Setting>
+	 */
 	protected static $query_backend_settings = array();
 
+	/**
+	 * Hold the classes that will be used to make the custom WP query arguments.
+	 *
+	 * @var array<Query_Setting>
+	 */
 	protected static $query_args_settings = array();
 
+	/**
+	 * Register a Query_Setting class to display its settings in backend.
+	 *
+	 * @param string $setting_class_name
+	 * @param int|null $priority Defaults to be added after the last one.
+	 * @return void
+	 *
+	 * @psalm-param class-string $setting_class_name
+	 */
 	public static function register_backend_setting_class( $setting_class_name, $priority = 0 ) {
 		if ( ! class_exists( $setting_class_name ) ) {
-			//phpcs:ignore
-			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist, in TWRP_Settings::add_tab_setting_class.' );
+			// phpcs:ignore
+			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist.' );
 			return;
 		}
 
@@ -33,10 +52,21 @@ class Query_Settings_Manager {
 		ksort( self::$query_backend_settings, SORT_NUMERIC );
 	}
 
+	/**
+	 * Register a Query_Setting class to add its settings to the WP query args
+	 * when needed.
+	 *
+	 * @param string $setting_class_name
+	 * @param int|null $priority Defaults to be added after the last one.
+	 * @return void
+	 *
+	 * @psalm-param class-string<Query_Setting> $setting_class_name
+	 */
 	public static function register_query_arg_setting( $setting_class_name, $priority = 0 ) {
+		/** @psalm-suppress DocblockTypeContradiction */
 		if ( ! class_exists( $setting_class_name ) ) {
-			//phpcs:ignore
-			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist, in TWRP_Settings::add_tab_setting_class.' );
+			// phpcs:ignore -- Todo: change this
+			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist.' );
 			return;
 		}
 
@@ -53,14 +83,22 @@ class Query_Settings_Manager {
 		ksort( self::$query_backend_settings, SORT_NUMERIC );
 	}
 
-
 	/**
+	 * Return the registered classes used to display backend settings for the
+	 * WP Query.
+	 *
 	 * @return Query_Setting[]
 	 */
 	public static function get_registered_backend_settings() {
 		return self::$query_backend_settings;
 	}
 
+	/**
+	 * Return the registered classes used to create custom settings for the WP
+	 * Query.
+	 *
+	 * @return Query_Setting[]
+	 */
 	public static function get_registered_query_args_settings() {
 		return self::$query_args_settings;
 	}

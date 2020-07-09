@@ -40,9 +40,16 @@ Post_Views::init();
 
 #endregion -- Initializing
 
-
-
+/**
+ * Main class.
+ */
 class TWRP_Main {
+
+	/**
+	 * Whether or not a pro plugin is installed.
+	 *
+	 * @var bool
+	 */
 	protected static $is_pro = false;
 
 	const TEMPLATES_FOLDER = 'templates/';
@@ -74,6 +81,8 @@ class TWRP_Main {
  * Unclassified
  *
  * @todo: Move
+ *
+ * @return void
  */
 function twrp_admin_add_setting_submenu() {
 	$page_title = _x( 'Tabs with Recommended Posts - Settings', 'backend', 'twrp' );
@@ -94,44 +103,55 @@ add_action( 'admin_menu', 'twrp_add_default_tabs' );
 
 add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
 
-
+/**
+ * @todo: Move and comment.
+ *
+ * @return void
+ */
 function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
 
+
 add_action( 'init', 'twrp_register_settings' );
+
+/**
+ * @todo: Move and comment.
+ *
+ * @return void
+ */
 function twrp_register_settings() {
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name', 10 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types', 20 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status', 30 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order', 40 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings', 50 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Categories', 60 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date', 70 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Author', 80 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts', 90 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments', 100 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Search', 110 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected', 120 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters', 130 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments', 150 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name'::class, 10 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types'::class, 20 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status'::class, 30 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order'::class, 40 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Categories'::class, 60 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date'::class, 70 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Author'::class, 80 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts'::class, 90 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments'::class, 100 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Search'::class, 110 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected'::class, 120 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters'::class, 130 );
+	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments'::class, 150 );
 
 	// Todo: some work on authors still left.
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types', 20 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status', 30 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order', 40 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings', 50 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Categories', 60 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types'::class, 20 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status'::class, 30 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order'::class, 40 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Categories'::class, 60 );
 
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts', 33 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts'::class, 33 );
 
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date', 35 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Author', 40 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments', 60 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Search', 70 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected', 80 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters', 90 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date'::class, 35 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Author'::class, 40 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments'::class, 60 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Search'::class, 70 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected'::class, 80 );
+	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters'::class, 90 );
 
 	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
 	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
@@ -140,7 +160,11 @@ function twrp_register_settings() {
 
 \TWRP\Query_Setting\Advanced_Arguments::init();
 
-
+/**
+ * @todo: Move and comment.
+ *
+ * @return void
+ */
 function twrp_enqueue_admin() {
 
 	wp_enqueue_style( 'twrp-frontend', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
@@ -173,7 +197,11 @@ function twrp_enqueue_admin() {
 
 add_action( 'admin_enqueue_scripts', 'twrp_enqueue_admin', 100 );
 
-
+/**
+ * @todo: Move and comment.
+ *
+ * @return void
+ */
 function twrp_register_widgets() {
 	register_widget( 'TWRP\\TWRP_Widget\\Widget' );
 }
@@ -181,7 +209,11 @@ function twrp_register_widgets() {
 add_action( 'widgets_init', 'twrp_register_widgets' );
 
 
-
+/**
+ * @todo: Move and comment.
+ *
+ * @return void
+ */
 function twrp_enqueue_artblock_styles() {
 	global $wp_registered_widgets;
 
@@ -203,7 +235,14 @@ function twrp_enqueue_artblock_styles() {
 
 #region -- Testing
 
-function dump_query_settings() {
+/**
+ * Used for testing.
+ *
+ * @todo: delete.
+ *
+ * @return void
+ */
+function twrp_dump_query_settings() {
 
 	// var_dump( \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( 25 ) );
 
@@ -212,17 +251,22 @@ function dump_query_settings() {
 
 	// var_dump( pvc_get_post_views( $ids_array ) );
 
-	var_dump( TWRP\Plugins\Post_Views::get_plugin_to_use() );
+	try {
+		\Debug\console_dump( \TWRP\Get_Posts::get_wp_query_arguments( 4 ), 'Query ID 4 Arguments' );
+	} catch ( \RuntimeException $e ) {
+		\Debug\console_dump( 'Query with Id 4 does not exist' );
+		// Do nothing
+	}
 
-	var_dump( \TWRP\Get_Posts::get_wp_query_arguments( 4 ) );
-
-	var_dump(
+	\Debug\console_dump(
 		get_posts(
 			array(
 				'cat' => '2AND3',
 			)
 		)
 	);
+
+	\Debug\console_dump( 'TWRP\Query_Setting\Suppress_Something'::class );
 
 	$args = array(
 		'suppress_filters' => false,
@@ -235,7 +279,7 @@ function dump_query_settings() {
 			'meta_value_num' => 'DESC',
 			'date'           => 'ASC',
 		),
-		'meta_key' => 'views',
+		'meta_key' => 'views', // phpcs:ignore -- Query is slow.
 	);
 	\Debug\console_dump( get_posts( $args ) );
 	\Debug\console_dump( get_post_meta( 25, 'views', true ), '25:' );
@@ -250,36 +294,20 @@ function dump_query_settings() {
 
 }
 
-add_action( 'twrp_after_displaying_existing_queries_table', 'dump_query_settings' );
+add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_settings' );
 
 /**
- * @return string
+ * Used for debugging in the scripts.
+ *
+ * @todo: remove.
+ *
+ * @return null
  */
-function test_string() {
-	return \TWRP\Query_Setting\Post_Order::setting_is_collapsed();
+function twrp_enqueue_scripts_debug() {
+	return null;
 }
 
-function twrp_bench_debug() {
-	\Debug\dump_bench( 'autoload', 'autoload' );
-}
-
-add_action( 'wp_enqueue_scripts', 'twrp_bench_debug' );
-add_action( 'admin_enqueue_scripts', 'twrp_bench_debug' );
-
-/**
- * @param array{default?:string,options:array} $default_args
- */
-function test( $default_args ) {
-	?>
-
-	<?php foreach ( $default_args['options'] as $value => $display_value ) : ?>
-
-		<option value="<?= esc_attr( $value ); ?>">
-			<?= esc_html( $display_value ); ?>
-		</option>
-	<?php endforeach; ?>
-
-	<?php
-}
+add_action( 'wp_enqueue_scripts', 'twrp_enqueue_scripts_debug' );
+add_action( 'admin_enqueue_scripts', 'twrp_enqueue_scripts_debug' );
 
 #endregion -- Testing
