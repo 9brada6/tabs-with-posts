@@ -13,7 +13,8 @@ namespace TWRP\Query_Setting;
 class Post_Types implements Query_Setting {
 
 	const SELECTED_TYPES__SETTING_NAME = 'selected_post_types';
-
+	const FORMATS_TYPE__SETTING_NAME   = 'post_format_enable_type';
+	const POST_FORMATS__SETTING_NAME   = 'post_formats_selected';
 
 	public static function get_setting_name() {
 		return 'post_types';
@@ -28,7 +29,6 @@ class Post_Types implements Query_Setting {
 	}
 
 	public function display_setting( $current_setting ) {
-		$selected_post_types = $current_setting[ self::SELECTED_TYPES__SETTING_NAME ];
 		?>
 		<div class="twrp-types-setting">
 			<div class="twrp-query-settings__paragraph">
@@ -41,8 +41,7 @@ class Post_Types implements Query_Setting {
 					 * @psalm-suppress PossiblyInvalidPropertyFetch
 					 */
 					if ( isset( $post_type->name, $post_type->label ) ) :
-						$is_checked = in_array( $post_type->name, $selected_post_types, true );
-						$this->display_post_type_setting_checkbox( $post_type->name, $post_type->label, $is_checked );
+						$this->display_post_type_setting( $post_type->name, $post_type->label, $current_setting );
 					endif;
 				endforeach;
 				?>
@@ -56,13 +55,15 @@ class Post_Types implements Query_Setting {
 	 *
 	 * @param string $name
 	 * @param string $label
-	 * @param bool $is_checked
+	 * @param array $current_setting
 	 * @return void
 	 */
-	protected function display_post_type_setting_checkbox( $name, $label, $is_checked ) {
-		$checked_attr  = $is_checked ? 'checked="checked"' : '';
-		$checkbox_id   = 'twrp-post-type-checkbox__' . $name;
-		$checkbox_name = 'post_types[' . self::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
+	protected function display_post_type_setting( $name, $label, $current_setting ) {
+		$selected_post_types = $current_setting[ self::SELECTED_TYPES__SETTING_NAME ];
+		$is_checked          = in_array( $name, $selected_post_types, true );
+		$checked_attr        = $is_checked ? 'checked="checked"' : '';
+		$checkbox_id         = 'twrp-post-type-checkbox__' . $name;
+		$checkbox_name       = self::get_setting_name() . '[' . self::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
 
 		?>
 		<div class="twrp-types-setting__checkbox twrp-query-settings__checkbox-line">
@@ -76,8 +77,65 @@ class Post_Types implements Query_Setting {
 			<label for="<?= esc_attr( $checkbox_id ); ?>">
 				<?= esc_html( $label ) ?>
 			</label>
+			<?php
+			if ( 'post' === $name ) { // In WP, only posts currently support post formats.
+				$this->display_post_formats_settings( $name, $current_setting );
+			}
+			?>
 		</div>
 		<?php
+	}
+
+	/**
+	 * Display the post formats for the post type.
+	 *
+	 * @param string $name
+	 * @param array $current_setting
+	 * @return void
+	 */
+	protected function display_post_formats_settings( $name, $current_setting ) {
+		$select_id    = 'twrp-types-setting__js-' . $name . '-select-formats-type';
+		$select_class = 'twrp-types-setting__' . $name . '-select-formats-type';
+		$select_name  = self::get_setting_name() . '[' . self::FORMATS_TYPE__SETTING_NAME . '][' . $name . ']';
+
+		$selected_value = 'all';
+		if ( isset( $current_setting[ self::FORMATS_TYPE__SETTING_NAME ][ $name ] ) ) {
+			$selected_value = $current_setting[ self::FORMATS_TYPE__SETTING_NAME ][ $name ];
+		}
+
+		$post_formats = self::get_registered_post_formats();
+		if ( false !== $post_formats && ! empty( $post_formats ) ) :
+			?>
+			<div>
+				<select id="<?= esc_attr( $select_id ); ?>" class="<?= esc_attr( $select_class ); ?>" name=<?= esc_attr( $select_name ); ?>>
+					<option value="all" <?= selected( 'all', $selected_value ); ?>><?= _x( 'All post formats', 'backend', 'twrp' ); ?></option>
+					<option value="custom" <?= selected( 'custom', $selected_value ); ?>><?= _x( 'Custom post formats', 'backend', 'twrp' ); ?></option>
+				</select>
+
+				<div>
+				<?php foreach ( $post_formats as $format_name ) : ?>
+					<?php
+						$format_input_id = 'twrp-types-setting__' . $format_name . '-format-checkbox';
+						$checkbox_name   = self::get_setting_name() . '[' . self::POST_FORMATS__SETTING_NAME . '][' . $name . '][' . $format_name . ']';
+						$is_checked      = 'custom' === $selected_value && in_array( $format_name, $current_setting[ self::POST_FORMATS__SETTING_NAME ][ $name ], true ) ? 'checked="checked"' : '';
+					?>
+					<div>
+						<input
+							id="<?= esc_attr( $format_input_id ); ?>"
+							name="<?= esc_attr( $checkbox_name ); ?>"
+							type="checkbox"
+							value="<?= esc_attr( $format_name ); ?>"
+							<?= $is_checked // phpcs:ignore ?>
+						/>
+						<label for="<?= esc_attr( $format_input_id ); ?>">
+							<?= esc_html( $format_name ) ?>
+						</label>
+					</div>
+				<?php endforeach; ?>
+				</div>
+			</div>
+			<?php
+		endif;
 	}
 
 	public function get_submitted_sanitized_setting() {
@@ -99,27 +157,67 @@ class Post_Types implements Query_Setting {
 			return self::get_default_setting();
 		}
 
-		$available_post_types = self::get_available_types( 'names' );
+		$available_post_types   = self::get_available_types( 'names' );
+		$possible_formats_types = array( 'all', 'custom' );
 
-		$sanitized_post_types = array();
+		$sanitized_post_types            = array();
+		$sanitized_post_type_format_type = array();
+		$sanitized_post_type_formats     = array();
 		foreach ( $selected_types as $post_type_name ) {
 			if ( in_array( $post_type_name, $available_post_types, true ) ) {
 				array_push( $sanitized_post_types, $post_type_name );
+			} else {
+				continue;
+			}
+
+			if ( ! isset( $setting[ self::FORMATS_TYPE__SETTING_NAME ][ $post_type_name ] )
+			|| ! in_array( $setting[ self::FORMATS_TYPE__SETTING_NAME ][ $post_type_name ], $possible_formats_types, true )
+			|| 'all' === $setting[ self::FORMATS_TYPE__SETTING_NAME ][ $post_type_name ] ) {
+				$sanitized_post_type_format_type[ $post_type_name ] = 'all';
+				$sanitized_post_type_formats[ $post_type_name ]     = array();
+			} else {
+				$sanitized_post_type_format_type[ $post_type_name ] = $setting[ self::FORMATS_TYPE__SETTING_NAME ][ $post_type_name ];
+				$sanitized_post_type_formats[ $post_type_name ]     = array();
+
+				if ( isset( $setting[ self::POST_FORMATS__SETTING_NAME ][ $post_type_name ] ) && is_array( $setting[ self::POST_FORMATS__SETTING_NAME ][ $post_type_name ] ) ) {
+					if ( empty( $setting[ self::POST_FORMATS__SETTING_NAME ][ $post_type_name ] ) ) {
+						$sanitized_post_type_format_type[ $post_type_name ] = 'all';
+						$sanitized_post_type_formats[ $post_type_name ]     = array();
+					}
+
+					$selected_post_formats  = $setting[ self::POST_FORMATS__SETTING_NAME ][ $post_type_name ];
+					$available_post_formats = self::get_registered_post_formats();
+
+					if ( false === $available_post_formats ) {
+						continue;
+					}
+
+					foreach ( $selected_post_formats as $post_format ) {
+						if ( in_array( $post_format, $available_post_formats, true ) ) {
+							array_push( $sanitized_post_type_formats[ $post_type_name ], $post_format );
+						}
+					}
+				}
 			}
 		}
 
-		return array( self::SELECTED_TYPES__SETTING_NAME => $sanitized_post_types );
+		return array(
+			self::SELECTED_TYPES__SETTING_NAME => $sanitized_post_types,
+			self::FORMATS_TYPE__SETTING_NAME   => $sanitized_post_type_format_type,
+			self::POST_FORMATS__SETTING_NAME   => $sanitized_post_type_formats,
+		);
 	}
 
 	public static function get_default_setting() {
+		$default_post_types = array( 'post' );
 		if ( post_type_exists( 'post' ) ) {
-			return array(
-				self::SELECTED_TYPES__SETTING_NAME => array( 'post' ),
-			);
+			$default_post_types = array();
 		}
 
 		return array(
-			self::SELECTED_TYPES__SETTING_NAME => array(),
+			self::SELECTED_TYPES__SETTING_NAME => $default_post_types,
+			self::FORMATS_TYPE__SETTING_NAME   => array(),
+			self::POST_FORMATS__SETTING_NAME   => array(),
 		);
 	}
 

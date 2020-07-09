@@ -304,10 +304,11 @@ add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_set
  * @return null
  */
 function twrp_enqueue_scripts_debug() {
+	\Debug\dump_bench( 'test_sanitize' );
 	return null;
 }
 
-add_action( 'wp_enqueue_scripts', 'twrp_enqueue_scripts_debug' );
-add_action( 'admin_enqueue_scripts', 'twrp_enqueue_scripts_debug' );
+add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
+add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 
 #endregion -- Testing
