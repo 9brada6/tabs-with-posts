@@ -28,6 +28,27 @@ class Utils {
 	}
 
 	/**
+	 * For each post id in an array, verify if can actually be a post id. If not
+	 * remove it from array.
+	 *
+	 * @param array $post_ids
+	 * @return array<int>
+	 */
+	public static function get_valid_post_ids( $post_ids ) {
+		foreach ( $post_ids as $key => $post_id ) {
+			$sanitized_id = self::get_valid_post_id( $post_id );
+
+			if ( $sanitized_id ) {
+				$post_ids[ $key ] = $sanitized_id;
+			} else {
+				unset( $post_ids[ $key ] );
+			}
+		}
+
+		return $post_ids;
+	}
+
+	/**
 	 * Flatten multi-dimensional array.
 	 *
 	 * @param array $array
@@ -55,7 +76,7 @@ class Utils {
 		$suffix = '[' . $widget_id . ']';
 		foreach ( $other_name_keys as $name_key ) {
 			$name_key = sanitize_key( $name_key );
-			if ( ! $name_key ) {
+			if ( empty( $name_key ) ) {
 				continue;
 			}
 

@@ -12,6 +12,8 @@
 
 namespace TWRP\Query_Setting;
 
+use TWRP\Utils;
+
 /**
  * Class that will filter the articles via selected post ids. Can include/exclude
  * for posts Ids and posts parents.
@@ -96,10 +98,11 @@ class Post_Settings implements Query_Setting {
 	 * @return void
 	 */
 	protected function display_selected_posts_list( $current_setting ) {
-		$ids = '';
+		$ids = array();
 		if ( isset( $current_setting[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
 			$ids = $current_setting[ self::POSTS_INPUT__SETTING_NAME ];
 			$ids = explode( ';', $ids );
+			$ids = Utils::get_valid_post_ids( $ids );
 		}
 
 		$list_is_hidden_class = '';
@@ -120,18 +123,22 @@ class Post_Settings implements Query_Setting {
 			>
 				<?= _x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
-
 			<?php foreach ( $ids as $id ) : ?>
 				<?php
 				$post = get_post( (int) $id );
 
-				$title = get_the_title( $post ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
+				if ( $post instanceof \WP_Post ) {
+					$title = get_the_title( $post );
+				} else {
+					continue;
+				}
+
 				if ( empty( $title ) ) {
 					$title = _x( 'Post with no title', 'backend', 'twrp' );
 				}
 				?>
 
-				<div class="twrp-display-list__item twrp-posts-settings__post-item" data-post-id="<?= esc_attr( $id ); ?>">
+				<div class="twrp-display-list__item twrp-posts-settings__post-item" data-post-id="<?= esc_attr( (string) $id ); ?>">
 					<div class="twrp-posts-settings__post-item-title"><?= $title // phpcs:ignore ?></div>
 					<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button">
 						<span class="dashicons dashicons-no"></span>

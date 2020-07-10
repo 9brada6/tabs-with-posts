@@ -52,3 +52,5 @@
 - The plugin is very slow, find out why and repair it.
 
 - Check if Psalm has throws, has in_array check for true.
+
+Urgent: search for every explode and see if they need to verify all array of ids.
