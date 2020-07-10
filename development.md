@@ -24,8 +24,8 @@
 - Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.
 - Make Category/Author/ORderby Query Settings Better.
 - Read more about perm => 'readable' and 'editable' and add setting.
-- Add post formats.
 - Add permission.
+- Add taxonomy options(with post formats).
 - Make a way to remove deleted posts from include/exclude posts by id.
 - Make a way to remove deleted authors.
 - Make a way to remove deleted categories.

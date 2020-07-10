@@ -31,6 +31,8 @@ interface Post_Views_Plugin {
 	 * This function is not called when needed, for example in admin backend or
 	 * frontend, but when the WP include the plugin, so additional checking must
 	 * be made inside the function.
+	 *
+	 * @return void
 	 */
 	public static function init();
 

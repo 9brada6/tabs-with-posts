@@ -14,6 +14,9 @@ class Post_Types implements Query_Setting {
 
 	const SELECTED_TYPES__SETTING_NAME = 'selected_post_types';
 
+	public static function init() {
+		// Do nothing.
+	}
 
 	public static function get_setting_name() {
 		return 'post_types';

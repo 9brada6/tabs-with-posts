@@ -23,6 +23,10 @@ class Categories implements Query_Setting {
 	 */
 	const CATEGORIES_IDS__SETTING_KEY = 'cat_ids';
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'cat_settings';
 	}

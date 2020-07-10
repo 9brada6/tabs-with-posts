@@ -84,6 +84,19 @@ class Query_Settings_Manager {
 	}
 
 	/**
+	 * Executes the initialization of this class, and all query settings classes.
+	 *
+	 * @return void
+	 */
+	public static function init() {
+		do_action( 'twrp_add_query_backend_setting' );
+
+		foreach ( self::get_registered_backend_settings() as $setting_class ) {
+			$setting_class::init();
+		}
+	}
+
+	/**
 	 * Return the registered classes used to display backend settings for the
 	 * WP Query.
 	 *

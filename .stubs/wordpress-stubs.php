@@ -90922,10 +90922,10 @@ function has_filter($tag, $function_to_check = \false)
  *
  * @param string $tag     The name of the filter hook.
  * @param mixed  $value   The value on which the filters hooked to `$tag` are applied on.
- * @param mixed  $var,... Additional variables passed to the functions hooked to `$tag`.
+ * @param mixed  ...$var Additional variables passed to the functions hooked to `$tag`.
  * @return mixed The filtered value after all hooked functions are applied to it.
  */
-function apply_filters($tag, $value)
+function apply_filters($tag, $value, ...$var)
 {
 }
 /**

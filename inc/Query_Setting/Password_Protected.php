@@ -13,6 +13,10 @@ namespace TWRP\Query_Setting;
  */
 class Password_Protected implements Query_Setting {
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'password_protected';
 	}

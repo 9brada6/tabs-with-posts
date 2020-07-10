@@ -44,6 +44,10 @@ class Author implements Query_Setting {
 	 */
 	const AUTHORS_TYPE__SAME = 'SAME';
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'author_settings';
 	}

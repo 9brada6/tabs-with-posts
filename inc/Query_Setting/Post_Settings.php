@@ -22,6 +22,10 @@ class Post_Settings implements Query_Setting {
 
 	const POSTS_INPUT__SETTING_NAME = 'posts_ids';
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'post_settings';
 	}

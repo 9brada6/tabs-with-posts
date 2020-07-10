@@ -73,6 +73,10 @@ class Post_Order implements Query_Setting {
 	 */
 	const PLUGIN_GAMERZ_RATING_ORDERBY_VALUE = 'post_rating_gamerz';
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'post_order';
 	}
@@ -146,15 +150,15 @@ class Post_Order implements Query_Setting {
 	 * @return void
 	 */
 	protected function display_order_by_select_options( $current_setting, $options = null ) {
-		if ( null === $options || ! is_array( $options ) ) {
+		if ( null === $options || empty( $options ) ) {
 			$options = self::get_orderby_select_options();
 		}
 
 		foreach ( $options as $value => $description ) {
 			?>
-				<option value=<?= esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>
-					<?= esc_html( $description ); ?>
-				</option>
+			<option value=<?= esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>
+				<?= esc_html( $description ); ?>
+			</option>
 			<?php
 		}
 	}
@@ -211,6 +215,13 @@ class Post_Order implements Query_Setting {
 		return $select_options;
 	}
 
+	/**
+	 * Get some orderby options, that will only show in the first orderby select,
+	 * because they aren't implemented by plugins to work in an array(multiple
+	 * orderby options).
+	 *
+	 * @return array
+	 */
 	public static function get_orderby_single_select_options() {
 		$select_options = array(
 			self::PLUGIN_DFACTORY_ORDERBY_VALUE     => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),

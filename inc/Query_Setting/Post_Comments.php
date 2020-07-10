@@ -23,6 +23,10 @@ class Post_Comments implements Query_Setting {
 	 */
 	const COMMENTS_COMPARATOR_NAME = 'comparator';
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'post_comments';
 	}

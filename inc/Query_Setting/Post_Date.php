@@ -26,6 +26,10 @@ class Post_Date implements Query_Setting {
 
 	const AFTER_DATE_NAME = 'after';
 
+	public static function init() {
+		// Do nothing.
+	}
+
 	public static function get_setting_name() {
 		return 'post_date';
 	}
@@ -174,7 +178,7 @@ class Post_Date implements Query_Setting {
 					min="0" step="1" type="number"
 					name="<?= esc_attr( $last_days_name ); ?>"
 					placeholder="<?= esc_attr_x( 'Last number of days...', 'backend', 'twrp' ); ?>"
-					value="<?= esc_attr( $last_days_num ); ?>"
+					value="<?= esc_attr( (string) $last_days_num ); ?>"
 				/>
 			</p>
 		</div>
@@ -419,7 +423,8 @@ class Post_Date implements Query_Setting {
 			$time->sub( new DateInterval( 'P' . $nr_days . 'D' ) );
 		}
 
-		if ( ! ( $time instanceof DateTime ) ) {
+		// @phan-suppress-next-line PhanRedundantCondition -- I prefer to be sure $time is DateTime.
+		if ( ! isset( $time ) || ! ( $time instanceof DateTime ) ) {
 			return null;
 		}
 
@@ -491,7 +496,7 @@ class Post_Date implements Query_Setting {
 	 */
 	protected static function get_timezone() {
 		if ( function_exists( 'wp_timezone' ) ) {
-			return wp_timezone();
+			return wp_timezone(); // @phan-suppress-current-line PhanUndeclaredFunction
 		}
 
 		return new DateTimeZone( self::get_polyfill_timezone() );

@@ -266,8 +266,6 @@ function twrp_dump_query_settings() {
 		)
 	);
 
-	\Debug\console_dump( 'TWRP\Query_Setting\Suppress_Something'::class );
-
 	$args = array(
 		'suppress_filters' => false,
 	);

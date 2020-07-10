@@ -2,7 +2,7 @@
 /**
  * Contains the class that will filter articles via the post status property.
  *
- * @todo: addquery_arg do not add if array is empty.
+ * @todo: query_arg do not add if array is empty.
  * @todo: Add a note that post statuses can reveal things do not wanted.
  *
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
@@ -18,6 +18,10 @@ class Post_Status implements Query_Setting {
 	const APPLY_STATUSES__SETTING_NAME = 'status_type';
 
 	const POST_STATUSES__SETTING_NAME = 'selected_statuses';
+
+	public static function init() {
+		// Do nothing.
+	}
 
 	public static function get_setting_name() {
 		return 'post_status';
@@ -153,6 +157,7 @@ class Post_Status implements Query_Setting {
 			}
 		}
 
+		/** @psalm-suppress RedundantCondition -- There is no redundant condition. */
 		if ( empty( $sanitized_post_statuses[ self::POST_STATUSES__SETTING_NAME ] ) ) {
 			return self::get_default_setting();
 		}

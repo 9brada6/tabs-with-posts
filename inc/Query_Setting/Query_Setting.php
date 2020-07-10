@@ -16,6 +16,17 @@ namespace TWRP\Query_Setting;
 interface Query_Setting {
 
 	/**
+	 * Called before anything else, to initialize actions and filters.
+	 *
+	 * This function is not called when needed, for example in admin backend or
+	 * frontend, but when the WP include the plugin, so additional checking must
+	 * be made inside the function.
+	 *
+	 * @return void
+	 */
+	public static function init();
+
+	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
 	 *
 	 * @return string
