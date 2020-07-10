@@ -158,6 +158,7 @@ class Widget extends \WP_Widget {
 			if ( ! is_numeric( $query_id ) ) {
 				continue;
 			}
+
 			if ( Query_Options::query_exists( $query_id ) ) {
 				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $widget_id, $query_id, $settings[ $query_id ] );
 				array_push( $valid_queries_ids, $query_id );

@@ -7,13 +7,15 @@ use TWRP\TWRP_Widget\Widget;
 class Utils {
 
 	/**
-	 * Check a variable if can be a post id and return it on success, or false
-	 * otherwise.
+	 * Verify that a value is a number bigger than 0.
+	 *
+	 * This will work everywhere where WP use an id, like posts, users,
+	 * categories, ...etc.
 	 *
 	 * @param mixed $post_id
 	 * @return int|false False if not valid.
 	 */
-	public static function get_valid_post_id( $post_id ) {
+	public static function get_valid_wp_id( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
 			return false;
 		}
@@ -28,15 +30,17 @@ class Utils {
 	}
 
 	/**
-	 * For each post id in an array, verify if can actually be a post id. If not
-	 * remove it from array.
+	 * Verify that each value in an array is a number bigger than 0.
+	 *
+	 * This will work everywhere where WP use an id, like posts, users,
+	 * categories, ...etc.
 	 *
 	 * @param array $post_ids
 	 * @return array<int>
 	 */
-	public static function get_valid_post_ids( $post_ids ) {
+	public static function get_valid_wp_ids( $post_ids ) {
 		foreach ( $post_ids as $key => $post_id ) {
-			$sanitized_id = self::get_valid_post_id( $post_id );
+			$sanitized_id = self::get_valid_wp_id( $post_id );
 
 			if ( $sanitized_id ) {
 				$post_ids[ $key ] = $sanitized_id;

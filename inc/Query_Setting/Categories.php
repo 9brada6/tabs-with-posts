@@ -8,6 +8,8 @@
 
 namespace TWRP\Query_Setting;
 
+use TWRP\Utils;
+
 /**
  * Class that will filter posts via categories.
  */
@@ -275,27 +277,17 @@ class Categories implements Query_Setting {
 			return self::get_default_setting();
 		}
 
-		// Explode the categories into an array of ids.
+		// Explode the categories into an array of ids and verify them.
 		$categories = explode( ';', $setting[ self::CATEGORIES_IDS__SETTING_KEY ] );
+		$categories = Utils::get_valid_wp_ids( $categories );
+		$categories = array_values( $categories );
 
 		// Checking to see if the array exist.
-		if ( empty( $categories ) ) { // @phan-suppress-current-line PhanImpossibleCondition
+		if ( empty( $categories ) ) {
 			return self::get_default_setting();
 		}
 
-		// Verify for each id, and implode at the final.
-		foreach ( $categories as $key => $category_id ) {
-			if ( ! is_numeric( $category_id ) ) {
-				unset( $categories[ $key ] );
-				continue;
-			} else {
-				// todo: Check to see if Category exist.
-				$categories[ $key ] = (int) $category_id;
-			}
-		}
-		$categories = array_values( $categories );
 		$categories = implode( ';', $categories );
-
 		$sanitized_setting[ self::CATEGORIES_IDS__SETTING_KEY ] = $categories;
 
 		return $sanitized_setting;
@@ -321,6 +313,7 @@ class Categories implements Query_Setting {
 			return $previous_query_args;
 		}
 		$cat_ids = explode( ';', $settings[ self::CATEGORIES_IDS__SETTING_KEY ] );
+		$cat_ids = Utils::get_valid_wp_ids( $cat_ids );
 
 		if ( '0' === $settings[ self::INCLUDE_CHILDREN__SETTING_KEY ] ) {
 			// Do not include children.

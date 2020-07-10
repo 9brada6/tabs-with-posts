@@ -102,7 +102,7 @@ class Post_Settings implements Query_Setting {
 		if ( isset( $current_setting[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
 			$ids = $current_setting[ self::POSTS_INPUT__SETTING_NAME ];
 			$ids = explode( ';', $ids );
-			$ids = Utils::get_valid_post_ids( $ids );
+			$ids = Utils::get_valid_wp_ids( $ids );
 		}
 
 		$list_is_hidden_class = '';
@@ -235,6 +235,7 @@ class Post_Settings implements Query_Setting {
 
 		$sanitized_settings  = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
 		$posts_ids           = explode( ';', $posts_ids );
+		$posts_ids           = Utils::get_valid_wp_ids( $posts_ids );
 		$sanitized_posts_ids = array();
 
 		foreach ( $posts_ids as $id ) {
@@ -269,6 +270,7 @@ class Post_Settings implements Query_Setting {
 		}
 
 		$posts_ids = explode( ';', $settings[ self::POSTS_INPUT__SETTING_NAME ] );
+		$posts_ids = Utils::get_valid_wp_ids( $posts_ids );
 
 		if ( empty( $posts_ids ) ) {
 			return $previous_query_args;

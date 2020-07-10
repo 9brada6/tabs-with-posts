@@ -8,6 +8,7 @@
 namespace TWRP\Query_Setting;
 
 use TWRP\Get_Posts;
+use TWRP\Utils;
 use WP_User;
 use RuntimeException;
 
@@ -119,7 +120,10 @@ class Author implements Query_Setting {
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
 			<?php if ( isset( $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] ) ) : ?>
-				<?php $authors_ids = explode( ';', $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] ); ?>
+				<?php
+					$authors_ids = explode( ';', $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] );
+					$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+				?>
 				<?php foreach ( $authors_ids as $author_id ) : ?>
 					<?php
 					$author_class = get_userdata( (int) $author_id );
@@ -222,7 +226,9 @@ class Author implements Query_Setting {
 			return $sanitized_setting;
 		}
 
-		$authors_ids           = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
+		$authors_ids = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
+		$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+
 		$sanitized_authors_ids = array();
 		foreach ( $authors_ids as $author_id ) {
 			$author = get_userdata( (int) $author_id );
@@ -279,6 +285,8 @@ class Author implements Query_Setting {
 		}
 
 		$authors_ids = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
+		$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+		// Todo: Include authors Ids in the query only if needed.
 
 		if ( self::AUTHORS_TYPE__INCLUDE === $authors_type ) {
 			$previous_query_args['author__in'] = $authors_ids;

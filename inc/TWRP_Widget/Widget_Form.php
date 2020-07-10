@@ -97,9 +97,14 @@ class Widget_Form {
 
 		?>
 		<ul class="twrp-widget-form__selected-queries-list">
-			<?php foreach ( $selected_queries_ids as $query_id ) : ?>
-				<?php self::display_query_settings( (int) $widget_id, (int) $query_id ); ?>
-			<?php endforeach; ?>
+			<?php
+			foreach ( $selected_queries_ids as $query_id ) :
+				if ( ! is_numeric( $query_id ) ) {
+					continue;
+				}
+				self::display_query_settings( (int) $widget_id, (int) $query_id );
+			endforeach;
+			?>
 		</ul>
 
 

@@ -53,7 +53,7 @@ class GamerZ_Rating_Plugin implements Post_Rating_Plugin {
 			return null;
 		}
 
-		$post_id = Utils::get_valid_post_id( $post_id );
+		$post_id = Utils::get_valid_wp_id( $post_id );
 		if ( ! $post_id ) {
 			return null;
 		}
@@ -80,7 +80,7 @@ class GamerZ_Rating_Plugin implements Post_Rating_Plugin {
 			return null;
 		}
 
-		$post_id = Utils::get_valid_post_id( $post_id );
+		$post_id = Utils::get_valid_wp_id( $post_id );
 		if ( ! $post_id ) {
 			return null;
 		}
