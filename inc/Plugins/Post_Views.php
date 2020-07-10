@@ -48,9 +48,9 @@ class Post_Views {
 	 * Called before anything else, to initialize all others plugin adapter
 	 * classes.
 	 *
-	 * This function is not called when needed, for example in admin backend or
-	 * frontend, but when the WP include the plugin, so additional checking must
-	 * be made inside the function.
+	 * Always called at 'after_setup_theme' action. Other things added here should be
+	 * additionally checked, for example by admin hooks, or whether or not to be
+	 * included in special pages, ...etc.
 	 */
 	public static function init() {
 		$classes = self::get_plugin_classes();

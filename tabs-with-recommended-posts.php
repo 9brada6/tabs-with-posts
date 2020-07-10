@@ -27,16 +27,26 @@ use TWRP\Plugins\Post_Views;
  */
 require_once __DIR__ . '/debug-and-development.php';
 
+// Require all files. An autoloader is not used, because other plugins can use
+// an autoloader that is slow, making this plugin slow as well.
 require_once __DIR__ . '/inc/Require_Files.php';
+Require_Files::init();
 
 #region -- Initializing
 
-// Require all files. An autoloader is not used, because other plugins can use
-// an autoloader that is slow, making this plugin slow as well.
-Require_Files::init();
 
-Widget_Ajax::init();
-Post_Views::init();
+/**
+ * Initialize all classes init() static methods.
+ *
+ * @return void
+ */
+function twrp_initialize() {
+	Query_Settings_Manager::init();
+	Widget_Ajax::init();
+	Post_Views::init();
+}
+add_action( 'after_setup_theme', 'twrp_initialize' );
+
 
 #endregion -- Initializing
 
@@ -114,7 +124,7 @@ function twrp_add_default_tabs() {
 }
 
 
-add_action( 'init', 'twrp_register_settings' );
+add_action( 'after_setup_theme', 'twrp_register_settings' );
 
 /**
  * @todo: Move and comment.
@@ -122,37 +132,6 @@ add_action( 'init', 'twrp_register_settings' );
  * @return void
  */
 function twrp_register_settings() {
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name'::class, 10 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types'::class, 20 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status'::class, 30 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order'::class, 40 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Categories'::class, 60 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date'::class, 70 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Author'::class, 80 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts'::class, 90 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments'::class, 100 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Search'::class, 110 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected'::class, 120 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters'::class, 130 );
-	Query_Settings_Manager::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments'::class, 150 );
-
-	// Todo: some work on authors still left.
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types'::class, 20 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status'::class, 30 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order'::class, 40 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Categories'::class, 60 );
-
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts'::class, 33 );
-
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date'::class, 35 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Author'::class, 40 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments'::class, 60 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Search'::class, 70 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected'::class, 80 );
-	Query_Settings_Manager::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters'::class, 90 );
-
 	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
 	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
 }

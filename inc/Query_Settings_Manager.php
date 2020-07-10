@@ -34,7 +34,6 @@ class Query_Settings_Manager {
 	 */
 	public static function register_backend_setting_class( $setting_class_name, $priority = 0 ) {
 		if ( ! class_exists( $setting_class_name ) ) {
-			// phpcs:ignore
 			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist.' );
 			return;
 		}
@@ -86,9 +85,14 @@ class Query_Settings_Manager {
 	/**
 	 * Executes the initialization of this class, and all query settings classes.
 	 *
+	 * Always called at 'after_setup_theme' action. Other things added here should be
+	 * additionally checked, for example by admin hooks, or whether or not to be
+	 * included in special pages, ...etc.
+	 *
 	 * @return void
 	 */
 	public static function init() {
+		add_action( 'twrp_add_query_backend_setting', array( 'TWRP\\Query_Settings_Manager', 'add_plugin_query_settings' ) );
 		do_action( 'twrp_add_query_backend_setting' );
 
 		foreach ( self::get_registered_backend_settings() as $setting_class ) {
@@ -114,5 +118,41 @@ class Query_Settings_Manager {
 	 */
 	public static function get_registered_query_args_settings() {
 		return self::$query_args_settings;
+	}
+
+	/**
+	 * @return void
+	 */
+	public static function add_plugin_query_settings() {
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name'::class, 10 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types'::class, 20 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status'::class, 30 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order'::class, 40 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Categories'::class, 60 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date'::class, 70 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Author'::class, 80 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts'::class, 90 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments'::class, 100 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Search'::class, 110 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected'::class, 120 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters'::class, 130 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments'::class, 150 );
+
+		// Todo: some work on authors still left.
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types'::class, 20 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status'::class, 30 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order'::class, 40 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Categories'::class, 60 );
+
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts'::class, 33 );
+
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date'::class, 35 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Author'::class, 40 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Comments'::class, 60 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Search'::class, 70 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Password_Protected'::class, 80 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Suppress_Filters'::class, 90 );
 	}
 }

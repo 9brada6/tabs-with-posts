@@ -26,13 +26,11 @@
 - Read more about perm => 'readable' and 'editable' and add setting.
 - Add permission.
 - Add taxonomy options(with post formats).
-- Make a way to remove deleted posts from include/exclude posts by id.
 - Make a way to remove deleted authors.
 - Make a way to remove deleted categories.
 - Show if a post/category/author is deleted?
-- There is a setting that is displaying the post even if it doesn't exit.
 - Add a way for post order to order things via a filter.
-- Add meta_key for the post order.s
+- Add meta_key for the post order.
 - Add filters for all things?
 - Add an init method to all classes.
 
@@ -52,5 +50,3 @@
 - The plugin is very slow, find out why and repair it.
 
 - Check if Psalm has throws, has in_array check for true.
-
-Urgent: search for every explode and see if they need to verify all array of ids.
