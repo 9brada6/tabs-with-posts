@@ -1,5 +1,7 @@
 <?php
 /**
+ * File containing the class with the same name.
+ *
  * @todo File and class comment.
  *
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
@@ -126,7 +128,7 @@ class Author implements Query_Setting {
 				?>
 				<?php foreach ( $authors_ids as $author_id ) : ?>
 					<?php
-					$author_class = get_userdata( (int) $author_id );
+					$author_class = get_userdata( $author_id );
 					if ( ! $author_class || ( ! ( $author_class instanceof WP_User ) ) ) {
 						continue;
 					}
@@ -135,7 +137,7 @@ class Author implements Query_Setting {
 					// The following HTML can also be generated in JS, so it will
 					// be need to be changed there as well.
 					?>
-					<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( $author_id ); ?>">
+					<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( (string) $author_id ); ?>">
 						<div class="twrp-author-settings__author-item-name">
 							<?= esc_html( $author_display_name ); ?>
 						</div>
@@ -181,6 +183,11 @@ class Author implements Query_Setting {
 		<?php
 	}
 
+	/**
+	 * Display a note about same author query.
+	 *
+	 * @return void
+	 */
 	protected function display_note() {
 		?>
 		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph-with-hide twrp-author-settings__same-author-note">
@@ -286,7 +293,10 @@ class Author implements Query_Setting {
 
 		$authors_ids = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
 		$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
-		// Todo: Include authors Ids in the query only if needed.
+
+		if ( empty( $authors_ids ) ) {
+			return $previous_query_args;
+		}
 
 		if ( self::AUTHORS_TYPE__INCLUDE === $authors_type ) {
 			$previous_query_args['author__in'] = $authors_ids;

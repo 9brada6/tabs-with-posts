@@ -2,7 +2,6 @@
 /**
  * Contains the class that will filter articles via the post status property.
  *
- * @todo: query_arg do not add if array is empty.
  * @todo: Add a note that post statuses can reveal things do not wanted.
  *
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.

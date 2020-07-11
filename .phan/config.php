@@ -1,81 +1,22 @@
 <?php
 // phpcs:disable
 
-/**
- *
- * A Note About Paths
- * ==================
- *
- * Files referenced from this file should be defined as
- *
- * ```
- *   Config::projectPath('relative_path/to/file')
- * ```
- *
- * where the relative path is relative to the root of the
- * project which is defined as either the working directory
- * of the phan executable or a path passed in via the CLI
- * '-d' flag.
- */
 return array(
-
-	// Configuring Files
-	// =========================================================================
-
-
 	'analyzed_file_extensions' => array( 'php' ),
-
-	// A list of directories that should be parsed for class and method information. After excluding the directories
-	// defined in `exclude_analysis_directory_list`, the remaining files will be statically analyzed for errors.
-	//
-	// Thus, both first-party and third-party code being used by your application should be included in this list.
-	'directory_list' => array(
-		'./',
-	),
-
-	// A directory list that defines files that will be excluded from static analysis, but whose class and method information should be included.
-	//
-	// n.b.: If you'd like to parse but not analyze 3rd party code, directories containing that code
-	// should be added to the `directory_list` as well as to `exclude_analysis_directory_list`.
-	'exclude_analysis_directory_list' => array(
-		'.stubs',
-		'./vendor'
-	),
-
-	// A list of files that will be excluded from parsing and analysis and will not be read at all.
-	'exclude_file_list' => array(
-		'../../../wp-admin/includes/noop.php',
-	),
-
-	// A regular expression to match files to be excluded
-	// from parsing and analysis and will not be read at all.
-	// (\.\./.*tabs-with-recommended-posts|/vendor/|/node_modules/|vendor\\|node_modules\\)
-	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!.*phpunit)|node_modules).*@',
-	//'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|vendor(?!(/phpunit/|\\phpunit\\))|node_modules|wordpress).*@',
-	// 'exclude_file_regex' => '@.*(\.\./.*tabs-with-recommended-posts|akismet|themes|node_modules|vendor/(?!(phpunit|masterminds|/?$))).*@',
-	'exclude_file_regex' => '@.*(node_modules|vendor/(?!(phpunit|masterminds|/?$))).*@',
+	'directory_list' => array( './' ),
+	'exclude_analysis_directory_list' => array( './.stubs' ),
+	'exclude_file_regex' => '@.*(\.git|\.svn|node_modules|vendor).*@',
 
 
 	// Issue Filtering
 	// =========================================================================
 
-	// Set to true in order to ignore file-based issue suppressions.
+	// Set to true in order to ignore file-based, line-based, or all issue suppressions.
 	'disable_file_based_suppression' => false,
-
-	// Set to true in order to ignore line-based issue suppressions.
 	'disable_line_based_suppression' => false,
-
-	// Set to true in order to ignore issue suppression.
 	'disable_suppression' => false,
 
 	'minimum_severity' => 0,
-
-	'suppress_issue_types' => array(
-	),
-
-	'whitelist_issue_types' => array(),
-
 
 	// Analysis
 	// =========================================================================
@@ -86,7 +27,7 @@ return array(
 	'assume_no_external_class_overrides' => false,
 
 	'autoload_internal_extension_signatures' => [
-		'wordpress' => '.stubs/wordpress-stubs.php'
+		// 'wordpress' => '.stubs/wordpress-stubs.php'
 	],
 	// 'cache_polyfill_asts' => false,
 
@@ -219,46 +160,10 @@ return array(
 	'strict_property_checking' => true,
 	'strict_return_checking' => true,
 
-
-
-	// If true, seemingly undeclared variables in the global
-	// scope will be ignored.
-	//
-	// This is useful for projects with complicated cross-file
-	// globals that you have no hope of fixing.
 	'ignore_undeclared_variables_in_global_scope'       => false,
-
-	// Set this to false to emit `PhanUndeclaredFunction` issues for internal functions that Phan has signatures for,
-	// but aren't available in the codebase, or from Reflection.
-	// (may lead to false positives if an extension isn't loaded)
-	//
-	// If this is true(default), then Phan will not warn.
-	//
-	// Even when this is false, Phan will still infer return values and check parameters of internal functions
-	// if Phan has the signatures.
 	'ignore_undeclared_functions_with_known_signatures' => false,
 
-
-	// Set to true in order to attempt to detect dead
-	// (unreferenced) code. Keep in mind that the
-	// results will only be a guess given that classes,
-	// properties, constants and methods can be referenced
-	// as variables (like `$class->$property` or
-	// `$class->$method()`) in ways that we're unable
-	// to make sense of.
 	'dead_code_detection'                               => false,
-
-	// Set to true in order to attempt to detect unused variables.
-	// `dead_code_detection` will also enable unused variable detection.
-	//
-	// This has a few known false positives, e.g. for loops or branches.
 	'unused_variable_detection'                         => false,
-
-	// Set to true in order to attempt to detect redundant and impossible conditions.
-	//
-	// This has some false positives involving loops,
-	// variables set in branches of loops, and global variables.
 	'redundant_condition_detection'                     => true,
-// Documentation about available bundled plugins can be found [here](https://github.com/phan/phan/tree/master/.phan/plugins).
-
 );

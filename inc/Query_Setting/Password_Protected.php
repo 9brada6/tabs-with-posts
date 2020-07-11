@@ -13,6 +13,12 @@ namespace TWRP\Query_Setting;
  */
 class Password_Protected implements Query_Setting {
 
+	/**
+	 * The name of the setting and array key which represents whether or not the
+	 * posts to be filtered by passwords or not.
+	 */
+	const PASSWORD_PROTECTED__SETTING_NAME = 'password_protected';
+
 	public static function init() {
 		// Do nothing.
 	}
@@ -30,6 +36,9 @@ class Password_Protected implements Query_Setting {
 	}
 
 	public function display_setting( $current_setting ) {
+		$select_name     = self::get_setting_name() . '[' . self::PASSWORD_PROTECTED__SETTING_NAME . ']';
+		$current_setting = $current_setting[ self::PASSWORD_PROTECTED__SETTING_NAME ];
+
 		$not_applied_text  = _x( 'Not Applied (Posts with and without password)', 'backend', 'twrp' );
 		$has_password_text = _x( 'Only posts with password', 'backend', 'twrp' );
 		$no_password_text  = _x( 'Only posts without password', 'backend', 'twrp' );
@@ -37,7 +46,7 @@ class Password_Protected implements Query_Setting {
 		?>
 		<div class="twrp-password-settings">
 			<div class="twrp-query-settings__paragraph">
-				<select name="<?= esc_attr( self::get_setting_name() ); ?>">
+				<select name="<?= esc_attr( $select_name ); ?>">
 					<option value="not_applied" <?php selected( 'not_applied', $current_setting ); ?>>
 						<?= esc_html( $not_applied_text ); ?>
 					</option>
@@ -54,7 +63,9 @@ class Password_Protected implements Query_Setting {
 	}
 
 	public static function get_default_setting() {
-		return 'not_applied';
+		return array(
+			self::PASSWORD_PROTECTED__SETTING_NAME => 'not_applied',
+		);
 	}
 
 	public function get_submitted_sanitized_setting() {
@@ -67,20 +78,25 @@ class Password_Protected implements Query_Setting {
 	}
 
 	public static function sanitize_setting( $setting ) {
-		$options = array( 'has_password', 'no_password' );
-		if ( ! in_array( $setting, $options, true ) ) {
+		$sanitized_settings = array();
+		$options            = array( 'has_password', 'no_password' );
+		$need_password      = self::PASSWORD_PROTECTED__SETTING_NAME;
+
+		if ( ! isset( $setting[ $need_password ] ) || ! in_array( $setting[ $need_password ], $options, true ) ) {
 			return self::get_default_setting();
 		}
 
-		return $setting;
+		$sanitized_settings[ $need_password ] = $setting[ $need_password ];
+
+		return $sanitized_settings;
 	}
 
 	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
+		if ( ! isset( $query_settings[ self::get_setting_name() ][ self::PASSWORD_PROTECTED__SETTING_NAME ] ) ) {
 			return $previous_query_args;
 		}
 
-		$setting = $query_settings[ self::get_setting_name() ];
+		$setting = $query_settings[ self::get_setting_name() ][ self::PASSWORD_PROTECTED__SETTING_NAME ];
 
 		if ( 'has_password' === $setting ) {
 			$previous_query_args['has_password'] = true;
