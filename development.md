@@ -23,9 +23,8 @@
 - Add accessibility to visual list remove button.
 - Make Category/Author/ORderby Query Settings Better.
 - Make a way to remove deleted categories.
-- Show if a post/category/author is deleted?
+- Show if a post/category/author is deleted? Update: - post is not show, - author is not show.
 
-- Fix authors flash of content when including/excluding/notes.
 - Make hideLeft/showRight javascript animations work.
 
 - Add meta_key for the post order.

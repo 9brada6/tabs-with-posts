@@ -100,10 +100,12 @@ class Post_Settings implements Query_Setting {
 		$posts = array();
 
 		if ( isset( $current_setting[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
-			$ids   = $current_setting[ self::POSTS_INPUT__SETTING_NAME ];
-			$ids   = explode( ';', $ids );
-			$ids   = Utils::get_valid_wp_ids( $ids );
-			$posts = get_posts( array( 'post__in' => $ids ) );
+			$ids = $current_setting[ self::POSTS_INPUT__SETTING_NAME ];
+			$ids = explode( ';', $ids );
+			$ids = Utils::get_valid_wp_ids( $ids );
+			if ( ! empty( $ids ) ) {
+				$posts = get_posts( array( 'post__in' => $ids ) );
+			}
 		}
 
 		$list_is_hidden_class = '';
