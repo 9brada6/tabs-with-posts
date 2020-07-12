@@ -21,18 +21,14 @@
 ### Query Settings
 
 - Add accessibility to visual list remove button.
-- Make all Add Category/Post/Author/.. etc to handle Add on enter and not submit the form.
 - Make Category/Author/ORderby Query Settings Better.
-- Read more about perm => 'readable' and 'editable' and add setting.
-- Add permission.
-- Add taxonomy options(with post formats).
 - Make a way to remove deleted authors.
 - Make a way to remove deleted categories.
 - Show if a post/category/author is deleted?
-- Add a way for post order to order things via a filter.
 - Add meta_key for the post order.
-- Add filters for all things?
-- Add an init method to all classes.
+- Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
+- checkbox(last days to first checkbox). Change the first note to a good explication(hard).
+- Post order remove flash of content.
 
 ### Plugins
 
@@ -47,6 +43,8 @@
 - Put databases class in a new folder, with a new namespace.
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
-- The plugin is very slow, find out why and repair it.
 
-- Check if Psalm has throws, has in_array check for true.
+### After first release
+
+- 🥇 Add taxonomy options(with post formats).
+- 📬 Add filters for all things.

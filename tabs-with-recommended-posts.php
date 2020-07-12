@@ -247,11 +247,6 @@ function twrp_dump_query_settings() {
 	);
 
 	$args = array(
-		'suppress_filters' => false,
-	);
-	\Debug\console_dump( get_posts( $args ) );
-
-	$args = array(
 		'orderby'  => array(
 			'comment_count'  => 'DESC',
 			'meta_value_num' => 'DESC',
@@ -284,6 +279,13 @@ add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_set
 function twrp_enqueue_scripts_debug() {
 	\Debug\dump_bench( 'test_sanitize' );
 	\Debug\console_dump( get_taxonomies() );
+
+	$args = array(
+		'suppress_filters' => true,
+		'post_status'      => 'future',
+		'perm'             => 'readable',
+	);
+	\Debug\console_dump( get_posts( $args ), 'Custom get posts' );
 
 	return null;
 }

@@ -13,8 +13,13 @@ use TWRP\Query_Settings_Manager;
  * database "Options" table.
  */
 class Query_Options {
-	const QUERIES_OPTION_KEY = 'twrp__article_queries';
+	const QUERIES_OPTION_KEY = 'twrp__post_queries';
 
+	/**
+	 * Holds the various sanitized settings of the cache.
+	 *
+	 * @var array
+	 */
 	protected static $query_settings_cache = array();
 
 	/**
@@ -38,7 +43,11 @@ class Query_Options {
 
 		$all_queries_keys = array_keys( $all_queries );
 		foreach ( $all_queries_keys as $query_id ) {
-			$all_queries[ $query_id ] = self::get_all_query_settings( $query_id );
+			try {
+				$all_queries[ $query_id ] = self::get_all_query_settings( $query_id );
+			} catch ( \RuntimeException $e ) {
+				unset( $all_queries[ $query_id ] );
+			}
 		}
 
 		return $all_queries;
@@ -179,8 +188,7 @@ class Query_Options {
 	 * @return array
 	 */
 	public static function sanitize_settings( $settings ) {
-		$sanitized_settings = array();
-		\Debug\start_foreach_bench( 'test_sanitize' );
+		$sanitized_settings  = array();
 		$registered_settings = Query_Settings_Manager::get_registered_backend_settings();
 
 		foreach ( $registered_settings as $setting_class ) {
@@ -194,7 +202,6 @@ class Query_Options {
 			$sanitized_value                     = $setting_class->sanitize_setting( $to_sanitize_value );
 			$sanitized_settings[ $setting_name ] = $sanitized_value;
 		}
-		\Debug\stop_foreach_bench( 'test_sanitize' );
 
 		return $sanitized_settings;
 	}

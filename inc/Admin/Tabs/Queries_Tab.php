@@ -280,8 +280,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php foreach ( $setting_classes as $setting_class ) : ?>
 					<?php
-					$collapsed       = $setting_class->setting_is_collapsed() ? '1' : '0';
 					$current_setting = $this->get_query_input_setting( $setting_class );
+					$collapsed       = $this->get_if_setting_collapsed( $setting_class, $current_setting ) ? '1' : '0';
 					?>
 					<div class="twrp-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
 						<h2 class="twrp-collapsible__title">
@@ -320,6 +320,31 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		}
 
 		return $setting_class->get_default_setting();
+	}
+
+	/**
+	 * Get whether or not the setting should be collapsed
+	 *
+	 * @param Query_Setting $setting_class
+	 * @param array $current_settings
+	 * @return bool
+	 */
+	protected function get_if_setting_collapsed( $setting_class, $current_settings ) {
+		$setting_is_collapsed = $setting_class::setting_is_collapsed();
+		if ( is_bool( $setting_is_collapsed ) ) {
+			return $setting_is_collapsed;
+		}
+
+		$default_settings = $setting_class::get_default_setting();
+
+		array_multisort( $default_settings );
+		array_multisort( $current_settings );
+
+		if ( $current_settings === $default_settings ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**

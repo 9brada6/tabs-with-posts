@@ -37,7 +37,7 @@ class Post_Status implements Query_Setting {
 	public function display_setting( $current_setting ) {
 		$info_label = _x( 'Note: ', 'backend', 'twrp' );
 		$info_text  = _x( 'Default value is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' );
-		$info_text2 = _x( 'Be aware of this setting. As it can easily lead to an information disclosure vulnerability if you are not careful.', 'backend', 'twrp' );
+		$info_text2 = _x( 'Modifying this setting will make query get only posts that the current user has permission to read. For example if a post is "private", it will not show on normal users, only on logged in users(if they have permission to read).', 'backend', 'twrp' );
 
 		$apply_statuses_name    = self::get_setting_name() . '[' . self::APPLY_STATUSES__SETTING_NAME . ']';
 		$current_apply_statuses = $current_setting[ self::APPLY_STATUSES__SETTING_NAME ];
@@ -175,6 +175,8 @@ class Post_Status implements Query_Setting {
 		}
 
 		$previous_query_args['post_status'] = $query_settings[ self::get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ];
+		$previous_query_args['perm']        = 'readable';
+
 		return $previous_query_args;
 	}
 }

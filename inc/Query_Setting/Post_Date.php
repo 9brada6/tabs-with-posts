@@ -209,7 +209,7 @@ class Post_Date implements Query_Setting {
 		}
 
 		$info_tag  = _x( 'Note:', 'backend', 'twrp' );
-		$info_text = _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after a specific date, but not before.', 'backend', 'twrp' );
+		$info_text = _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after 2020, set only "after": 01/01/2020.', 'backend', 'twrp' );
 
 		?>
 		<div id="twrp-date-settings__js-between-wrapper" class="twrp-query-settings__paragraph-with-hide twrp-date-settings__between-wrapper <?= esc_attr( $is_hidden_class ); ?>">

@@ -2,6 +2,10 @@
 
 namespace TWRP\Plugins;
 
+/*
+			self::PLUGIN_DFACTORY_ORDERBY_VALUE     => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
+			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
+			 */
 class Post_Views {
 
 	/**
