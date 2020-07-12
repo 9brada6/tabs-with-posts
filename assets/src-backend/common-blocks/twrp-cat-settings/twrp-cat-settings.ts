@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { showUp, hideUp } from '../twrp-hidden/twrp-hidden';
+import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 // todo: Make everything under twrp-display-list block.
 

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { showUp, hideUp } from '../twrp-hidden/twrp-hidden';
+import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 declare const wp: any;
 
@@ -12,7 +12,7 @@ const authorTypeSelector = $( '#twrp-author-settings__select_type' );
 const authorSearchWrap = $( '#twrp-author-settings__author-search-wrap' );
 const authorToHideList = $( '#twrp-author-settings__js-authors-list' );
 
-$( document ).ready( hideOrShowVisualList );
+// $( document ).ready( hideOrShowVisualList );
 $( document ).on( 'change', '#twrp-author-settings__select_type', hideOrShowVisualList );
 
 /**
@@ -309,11 +309,10 @@ function removeOrAddNoAuthorsText() {
  * If Necessary, removes the "No Authors selected" text.
  */
 function _removeNoAuthorsTextIfNecessary() {
-	const textIsAppended = ( authorsVisualList.find( noAuthorsText ).length > 0 );
 	const haveItems = ( authorsVisualList.find( `[${ authorIdAttrName }]` ).length > 0 );
 
-	if ( haveItems && textIsAppended ) {
-		noAuthorsText.detach();
+	if ( haveItems ) {
+		hideUp( noAuthorsText );
 	}
 }
 
@@ -321,11 +320,10 @@ function _removeNoAuthorsTextIfNecessary() {
  * If Necessary, adds the "No Authors selected" text.
  */
 function _addNoAuthorsTextIfNecessary() {
-	const textIsAppended = ( authorsVisualList.find( noAuthorsText ).length > 0 );
 	const haveItems = ( authorsVisualList.find( `[${ authorIdAttrName }]` ).length > 0 );
 
-	if ( ( ! textIsAppended ) && ( ! haveItems ) ) {
-		authorsVisualList.append( noAuthorsText );
+	if ( ! haveItems ) {
+		showUp( noAuthorsText );
 	}
 }
 

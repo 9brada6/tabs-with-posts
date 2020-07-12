@@ -11,7 +11,6 @@ namespace TWRP\Query_Setting;
 
 use TWRP\Get_Posts;
 use TWRP\Utils;
-use WP_User;
 use RuntimeException;
 
 class Author implements Query_Setting {
@@ -64,17 +63,23 @@ class Author implements Query_Setting {
 	}
 
 	public function display_setting( $current_setting ) {
-		?>
+		$authors_type             = $current_setting[ self::AUTHORS_TYPE__SETTING_NAME ];
+		$is_showing               = false;
+		$same_author_note_showing = false;
 
-		<?php $this->display_authors_select_type( $current_setting ); ?>
+		if ( self::AUTHORS_TYPE__INCLUDE === $authors_type
+		|| self::AUTHORS_TYPE__EXCLUDE === $authors_type ) {
+			$is_showing = true;
+		}
 
-		<?php $this->display_selected_authors_list( $current_setting ); ?>
+		if ( self::AUTHORS_TYPE__SAME === $authors_type ) {
+			$same_author_note_showing = true;
+		}
 
-
-			<?php $this->display_add_authors_to_list( $current_setting ); ?>
-
-		<?php $this->display_note(); ?>
-		<?php
+		$this->display_authors_select_type( $current_setting );
+		$this->display_selected_authors_list( $current_setting, $is_showing );
+		$this->display_add_authors_to_list( $current_setting, $is_showing );
+		$this->display_note( $same_author_note_showing );
 	}
 
 	/**
@@ -113,40 +118,55 @@ class Author implements Query_Setting {
 	 * Display the list with the selected authors.
 	 *
 	 * @param array $current_setting
+	 * @param bool $is_showing
 	 * @return void
 	 */
-	protected function display_selected_authors_list( $current_setting ) {
+	protected function display_selected_authors_list( $current_setting, $is_showing ) {
+		$authors = array();
+		if ( isset( $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] ) ) {
+			$authors_ids = explode( ';', $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] );
+			$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+
+			if ( ! empty( $authors_ids ) ) {
+				$authors_args = array(
+					'include' => $authors_ids,
+					'fields'  => array( 'ID', 'display_name' ),
+				);
+				$authors      = get_users( $authors_args );
+			}
+		}
+
+		$additional_list_class = '';
+		if ( ! $is_showing ) {
+			$additional_list_class = ' twrp-hidden';
+		}
+
+		$additional_no_authors_class = '';
+		if ( ! empty( $authors ) ) {
+			$additional_no_authors_class = ' twrp-hidden';
+		}
+
 		?>
-		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-author-settings__display-list">
-			<div id="twrp-author-settings__js-no-authors-selected" class="twrp-display-list__empty-msg">
+		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-author-settings__display-list<?= esc_attr( $additional_list_class ); ?>">
+			<div id="twrp-author-settings__js-no-authors-selected" class="twrp-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
-			<?php if ( isset( $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] ) ) : ?>
+			<?php foreach ( $authors as $author ) : ?>
 				<?php
-					$authors_ids = explode( ';', $current_setting[ self::AUTHORS_IDS__SETTING_NAME ] );
-					$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
-				?>
-				<?php foreach ( $authors_ids as $author_id ) : ?>
-					<?php
-					$author_class = get_userdata( $author_id );
-					if ( ! $author_class || ( ! ( $author_class instanceof WP_User ) ) ) {
-						continue;
-					}
-					$author_display_name = $author_class->get( 'display_name' );
+				$author_display_name = $author->display_name;
 
-					// The following HTML can also be generated in JS, so it will
-					// be need to be changed there as well.
-					?>
-					<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( (string) $author_id ); ?>">
-						<div class="twrp-author-settings__author-item-name">
-							<?= esc_html( $author_display_name ); ?>
-						</div>
-						<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button">
-							<span class="dashicons dashicons-no"></span>
-						</button>
+				// The following HTML can also be generated in JS, so it will
+				// be need to be changed there as well.
+				?>
+				<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( (string) $author->ID ); ?>">
+					<div class="twrp-author-settings__author-item-name">
+						<?= esc_html( $author_display_name ); ?>
 					</div>
-				<?php endforeach; ?>
-			<?php endif; ?>
+					<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button">
+						<span class="dashicons dashicons-no"></span>
+					</button>
+				</div>
+			<?php endforeach; ?>
 		</div>
 		<?php
 	}
@@ -156,11 +176,17 @@ class Author implements Query_Setting {
 	 * that remembers the authors.
 	 *
 	 * @param array $current_setting
+	 * @param bool $is_showing
 	 * @return void
 	 */
-	protected function display_add_authors_to_list( $current_setting ) {
+	protected function display_add_authors_to_list( $current_setting, $is_showing ) {
+		$additional_class = '';
+		if ( ! $is_showing ) {
+			$additional_class = ' twrp-hidden';
+		}
+
 		?>
-		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap twrp-query-settings__paragraph-with-hide">
+		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap twrp-query-settings__paragraph-with-hide<?= esc_attr( $additional_class ); ?>">
 			<input
 				id="twrp-author-settings__js-author-search" type="text"
 				class="twrp-author-settings__author-search"
@@ -186,11 +212,17 @@ class Author implements Query_Setting {
 	/**
 	 * Display a note about same author query.
 	 *
+	 * @param bool $is_showing
 	 * @return void
 	 */
-	protected function display_note() {
+	protected function display_note( $is_showing ) {
+		$additional_note_class = '';
+		if ( ! $is_showing ) {
+			$additional_note_class = ' twrp-hidden';
+		}
+
 		?>
-		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph-with-hide twrp-author-settings__same-author-note">
+		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph-with-hide twrp-author-settings__same-author-note<?= esc_attr( $additional_note_class ); ?>">
 			<span class="twrp-setting-note__label"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
 			<span class="twrp-setting-note__text">
 				<?= _x(

@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp, showUp } from '../twrp-hidden/twrp-hidden';
+import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 // =============================================================================
 

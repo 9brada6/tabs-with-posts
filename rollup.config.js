@@ -10,7 +10,7 @@ export default {
 		file: 'assets/backend/script.js',
 		format: 'iife',
 		name: 'TWRP_Plugin',
-		sourcemap: true,
+		// sourcemap: true,
 		globals: {
 			jquery: 'jQuery',
 			ajaxurl: 'ajaxurl',

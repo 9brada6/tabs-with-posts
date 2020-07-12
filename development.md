@@ -22,9 +22,12 @@
 
 - Add accessibility to visual list remove button.
 - Make Category/Author/ORderby Query Settings Better.
-- Make a way to remove deleted authors.
 - Make a way to remove deleted categories.
 - Show if a post/category/author is deleted?
+
+- Fix authors flash of content when including/excluding/notes.
+- Make hideLeft/showRight javascript animations work.
+
 - Add meta_key for the post order.
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).

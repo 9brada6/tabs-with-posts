@@ -92,17 +92,18 @@ class Post_Settings implements Query_Setting {
 	/**
 	 * Creates and display the selected posts list.
 	 *
-	 * @todo Do not use get_post for each post to make multiple db calls, make just one call.
-	 *
 	 * @param array $current_setting
 	 * @return void
 	 */
 	protected function display_selected_posts_list( $current_setting ) {
-		$ids = array();
+		$ids   = array();
+		$posts = array();
+
 		if ( isset( $current_setting[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
-			$ids = $current_setting[ self::POSTS_INPUT__SETTING_NAME ];
-			$ids = explode( ';', $ids );
-			$ids = Utils::get_valid_wp_ids( $ids );
+			$ids   = $current_setting[ self::POSTS_INPUT__SETTING_NAME ];
+			$ids   = explode( ';', $ids );
+			$ids   = Utils::get_valid_wp_ids( $ids );
+			$posts = get_posts( array( 'post__in' => $ids ) );
 		}
 
 		$list_is_hidden_class = '';
@@ -111,7 +112,7 @@ class Post_Settings implements Query_Setting {
 		}
 
 		$text_is_hidden_class = '';
-		if ( ! empty( $ids ) ) {
+		if ( ! empty( $posts ) ) {
 			$text_is_hidden_class = ' twrp-hidden';
 		}
 
@@ -123,22 +124,16 @@ class Post_Settings implements Query_Setting {
 			>
 				<?= _x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
-			<?php foreach ( $ids as $id ) : ?>
+			<?php foreach ( $posts as $post ) : ?>
 				<?php
-				$post = get_post( (int) $id );
-
-				if ( $post instanceof \WP_Post ) {
-					$title = get_the_title( $post );
-				} else {
-					continue;
-				}
+				$title = get_the_title( $post );
 
 				if ( empty( $title ) ) {
 					$title = _x( 'Post with no title', 'backend', 'twrp' );
 				}
 				?>
 
-				<div class="twrp-display-list__item twrp-posts-settings__post-item" data-post-id="<?= esc_attr( (string) $id ); ?>">
+				<div class="twrp-display-list__item twrp-posts-settings__post-item" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
 					<div class="twrp-posts-settings__post-item-title"><?= $title // phpcs:ignore ?></div>
 					<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button">
 						<span class="dashicons dashicons-no"></span>

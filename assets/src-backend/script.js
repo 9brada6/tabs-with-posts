@@ -1,3 +1,4 @@
+import './framework-blocks/twrp-hidden/twrp-hidden';
 import './common-blocks/twrp-collapsible/twrp-collapsible.ts';
 import './common-blocks/twrp-advanced-args/twrp-advanced-args.ts';
 import './common-blocks/twrp-cat-settings/twrp-cat-settings.ts';

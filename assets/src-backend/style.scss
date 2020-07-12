@@ -4,7 +4,6 @@
 @import 'common-blocks/twrp-queries-table/twrp-queries-table';
 @import 'common-blocks/twrp-existing-queries/twrp-existing-queries';
 @import 'common-blocks/twrp-admin/twrp-admin';
-@import 'common-blocks/twrp-hidden/twrp-hidden';
 // Setting blocks inside Query Settings tab:
 @import 'common-blocks/twrp-query-settings/twrp-query-settings';
 @import 'common-blocks/twrp-cat-settings/twrp-cat-settings';
@@ -18,6 +17,7 @@
 
 //
 @import 'common-blocks/twrp-widget-form/twrp-widget-form';
+@import 'framework-blocks/twrp-hidden/twrp-hidden';
 
 .twrp-admin-settings-separator {
 	width: 100%;

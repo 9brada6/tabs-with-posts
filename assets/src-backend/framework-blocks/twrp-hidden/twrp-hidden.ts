@@ -40,7 +40,7 @@ function addHideClass() {
 }
 
 function removeHideClass() {
-	$( this ).removeClass( 'twrp-hidden' );
+	$( this ).removeClass( 'twrp-hidden' ).css( 'display', '' );
 }
 
 // =============================================================================

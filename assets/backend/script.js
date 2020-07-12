@@ -3,6 +3,31 @@ var TWRP_Plugin = (function ($) {
 
 	$ = $ && Object.prototype.hasOwnProperty.call($, 'default') ? $['default'] : $;
 
+	// Todo...
+	var effectDuration = 500;
+	// =============================================================================
+	function hideUp(element) {
+	    $(element).hide({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        complete: addHideClass,
+	    });
+	}
+	function showUp(element) {
+	    $(element).show({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        complete: removeHideClass,
+	    });
+	}
+	// =============================================================================
+	function addHideClass() {
+	    $(this).addClass('twrp-hidden');
+	}
+	function removeHideClass() {
+	    $(this).removeClass('twrp-hidden').css('display', '');
+	}
+
 	$(document).ready(enableCollapsibleSettings);
 	function enableCollapsibleSettings() {
 	    $('.twrp-collapsible').each(function () {
@@ -30,31 +55,6 @@ var TWRP_Plugin = (function ($) {
 	            autoRefresh: true,
 	        });
 	    }
-	}
-
-	// Todo...
-	var effectDuration = 500;
-	// =============================================================================
-	function hideUp(element) {
-	    $(element).hide({
-	        effect: 'blind',
-	        duration: effectDuration,
-	        complete: addHideClass,
-	    });
-	}
-	function showUp(element) {
-	    $(element).show({
-	        effect: 'blind',
-	        duration: effectDuration,
-	        complete: removeHideClass,
-	    });
-	}
-	// =============================================================================
-	function addHideClass() {
-	    $(this).addClass('twrp-hidden');
-	}
-	function removeHideClass() {
-	    $(this).removeClass('twrp-hidden');
 	}
 
 	// todo: Make everything under twrp-display-list block.
@@ -312,7 +312,7 @@ var TWRP_Plugin = (function ($) {
 	var authorTypeSelector = $('#twrp-author-settings__select_type');
 	var authorSearchWrap = $('#twrp-author-settings__author-search-wrap');
 	var authorToHideList = $('#twrp-author-settings__js-authors-list');
-	$(document).ready(hideOrShowVisualList);
+	// $( document ).ready( hideOrShowVisualList );
 	$(document).on('change', '#twrp-author-settings__select_type', hideOrShowVisualList);
 	/**
 	 * Hide or show the visual list and the form input to search for users.
@@ -561,20 +561,18 @@ var TWRP_Plugin = (function ($) {
 	 * If Necessary, removes the "No Authors selected" text.
 	 */
 	function _removeNoAuthorsTextIfNecessary() {
-	    var textIsAppended = (authorsVisualList.find(noAuthorsText).length > 0);
 	    var haveItems = (authorsVisualList.find("[" + authorIdAttrName + "]").length > 0);
-	    if (haveItems && textIsAppended) {
-	        noAuthorsText.detach();
+	    if (haveItems) {
+	        hideUp(noAuthorsText);
 	    }
 	}
 	/**
 	 * If Necessary, adds the "No Authors selected" text.
 	 */
 	function _addNoAuthorsTextIfNecessary() {
-	    var textIsAppended = (authorsVisualList.find(noAuthorsText).length > 0);
 	    var haveItems = (authorsVisualList.find("[" + authorIdAttrName + "]").length > 0);
-	    if ((!textIsAppended) && (!haveItems)) {
-	        authorsVisualList.append(noAuthorsText);
+	    if (!haveItems) {
+	        showUp(noAuthorsText);
 	    }
 	}
 	// =============================================================================
@@ -1509,4 +1507,3 @@ var TWRP_Plugin = (function ($) {
 	return script;
 
 }(jQuery));
-//# sourceMappingURL=script.js.map
