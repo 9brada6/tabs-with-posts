@@ -204,6 +204,7 @@ class Categories implements Query_Setting {
 				'id'           => 'twrp-cat-settings__js-cat-dropdown',
 				'class'        => 'twrp-cat-settings__cat-dropdown',
 				'show_count'   => '1',
+				'hide_empty'   => false,
 				'hierarchical' => true,
 			)
 		);
@@ -293,6 +294,21 @@ class Categories implements Query_Setting {
 		if ( empty( $categories ) ) {
 			return self::get_default_setting();
 		}
+
+		$available_categories     = get_categories( array( 'object_ids' => $categories ) );
+		$available_categories_ids = wp_list_pluck( $available_categories, 'ID' );
+
+		foreach ( $categories as $key => $category_id ) {
+			if ( ! in_array( $category_id, $available_categories_ids, true ) ) {
+				unset( $categories[ $key ] );
+			}
+		}
+
+		// Checking to see if the array exist.
+		if ( empty( $categories ) ) {
+			return self::get_default_setting();
+		}
+		$categories = array_values( $categories );
 
 		$categories = implode( ';', $categories );
 		$sanitized_setting[ self::CATEGORIES_IDS__SETTING_KEY ] = $categories;

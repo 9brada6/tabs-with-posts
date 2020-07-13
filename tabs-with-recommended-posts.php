@@ -21,6 +21,7 @@ use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
+use TWRP\Get_Posts;
 
 
 /**
@@ -282,6 +283,8 @@ function twrp_enqueue_scripts_debug() {
 	\Debug\console_dump( get_taxonomies() );
 	try {
 		\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
+		\Debug\console_dump( Get_Posts::get_wp_query_arguments( 1 ), 'Query 1 settings:' );
+
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
 	}
