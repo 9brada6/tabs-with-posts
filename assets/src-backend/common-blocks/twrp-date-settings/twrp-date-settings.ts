@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'jqueryui';
 import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
-// =============================================================================
+// #region -- Polyfill Datepicker
 
 const after = $( '#twrp-date-settings__after' );
 
@@ -35,7 +35,9 @@ function inputDateTypeIsAvailable() {
 	return ( input.value !== notADateValue );
 }
 
-// =============================================================================
+// #endregion -- Polyfill Datepicker
+
+// #region -- Hide/Show Date
 
 const selectDateType = $( '#twrp-date-settings__js-date-type' );
 
@@ -68,3 +70,5 @@ function hideOrShowBetweenTimeSettings() {
 		hideUp( betweenPeriodWrapper );
 	}
 }
+
+// #endregion -- Hide/Show Date

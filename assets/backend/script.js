@@ -71,7 +71,7 @@ var TWRP_Plugin = (function ($) {
 	    '<button class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
 	    '</div>');
 	// #endregion -- Defining some global variables.
-	// #region -- add a categories on the lists.
+	// #region -- Add a categories on the lists.
 	$(document).on('click', '#twrp-cat-settings__add-cat-btn', handleAddCategoryButton);
 	/**
 	 * Handle the addition of a new category via the button click.
@@ -106,6 +106,7 @@ var TWRP_Plugin = (function ($) {
 	function addCatToVisual(categoryId, name) {
 	    if (!categoryItemIsDisplayed(categoryId)) {
 	        var toAppend = categoryItem.clone();
+	        var removeButtonAriaLabel = getRemoveButtonAriaLabel().replace('%s', sanitizeCategoryName(name));
 	        // Show a nice effect on removing.
 	        categoriesEmptyMessage.hide({
 	            effect: 'blind',
@@ -114,6 +115,7 @@ var TWRP_Plugin = (function ($) {
 	            complete: removeEmptyMessage,
 	        });
 	        toAppend.find('.twrp-cat-settings__cat-item-name').text(sanitizeCategoryName(name));
+	        toAppend.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeButtonAriaLabel);
 	        toAppend.attr(categoryIdAttrName, categoryId);
 	        categoriesItemsWrapper.append(toAppend);
 	        // After appending, show a nice effect.
@@ -206,17 +208,6 @@ var TWRP_Plugin = (function ($) {
 	    return false;
 	}
 	// #endregion -- Removing categories.
-	// #region -- Sanitization.
-	/**
-	 * Take out the number of counts and trim the name.
-	 */
-	function sanitizeCategoryName(name) {
-	    var removeCountParenthesisRegex = /\([^(]*\)$/;
-	    name = name.replace(removeCountParenthesisRegex, '');
-	    name = name.trim();
-	    return name;
-	}
-	// #endregion -- Sanitization.
 	// #region -- Make The Categories Sortable.
 	$(makeItemsSortable);
 	function makeItemsSortable() {
@@ -264,6 +255,36 @@ var TWRP_Plugin = (function ($) {
 	    var name = categorySelector.find('[value="' + categoryId + '"]').text();
 	    return sanitizeCategoryName(name);
 	}
+	/**
+	 * Get the aria label for the remove button. In the aria label will be present
+	 * "%s", which will need to be replaced with an author.
+	 */
+	function getRemoveButtonAriaLabel() {
+	    var ariaLabel = categoriesItemsWrapper.attr('data-twrp-aria-remove-label');
+	    if (!ariaLabel) {
+	        return '';
+	    }
+	    return ariaLabel;
+	}
+	/**
+	 * Take out the number of counts and trim the name.
+	 */
+	function sanitizeCategoryName(name) {
+	    var removeCountParenthesisRegex = /\([^(]*\)$/;
+	    name = name.replace(removeCountParenthesisRegex, '');
+	    name = name.trim();
+	    var map = {
+	        '&': '&amp;',
+	        '<': '&lt;',
+	        '>': '&gt;',
+	        '"': '&quot;',
+	        "'": '&#x27;',
+	        '/': '&#x2F;',
+	        '`': '&grave;',
+	    };
+	    var reg = /[&<>"'/`]/ig;
+	    return name.replace(reg, function (match) { return (map[match]); });
+	}
 	// #endregion -- Helpers
 	// #region -- Refresh Display/Hidden input categories.
 	$(refreshDisplayCategories);
@@ -307,8 +328,7 @@ var TWRP_Plugin = (function ($) {
 	}
 	// #endregion -- Refresh Display/Hidden input categories.
 
-	// =============================================================================
-	// Hide/Show Author List and Add Button based on option selected.
+	// #region -- Hide/Show Author List and Add Button based on option selected.
 	var authorTypeSelector = $('#twrp-author-settings__select_type');
 	var authorSearchWrap = $('#twrp-author-settings__author-search-wrap');
 	var authorToHideList = $('#twrp-author-settings__js-authors-list');
@@ -328,8 +348,8 @@ var TWRP_Plugin = (function ($) {
 	        hideUp(authorToHideList);
 	    }
 	}
-	// =============================================================================
-	// Hide/Show Same author notice.
+	// #endregion -- Hide/Show Author List and Add Button based on option selected.
+	// #region -- Hide/Show Same author notice.
 	var sameAuthorNotice = $('#twrp-author-settings__js-same-author-notice');
 	$(document).ready(handleSameAuthorNotice);
 	$(document).on('change', '#twrp-author-settings__select_type', handleSameAuthorNotice);
@@ -346,8 +366,8 @@ var TWRP_Plugin = (function ($) {
 	        sameAuthorNotice.hide('blind');
 	    }
 	}
-	// =============================================================================
-	// Manage Author Search
+	// #endregion -- Hide/Show Same author notice.
+	// #region -- Manage Author Search
 	$(initializeAutoComplete);
 	/**
 	 * The search input where administrators will search for users.
@@ -403,10 +423,14 @@ var TWRP_Plugin = (function ($) {
 	        updateCategories();
 	    });
 	}
-	// =============================================================================
-	// Add an author
+	// #endregion -- Manage Author Search
+	// #region -- Add an author
 	var authorsIdsInput = $('#twrp-author-settings__js-author-ids');
 	var authorsVisualList = $('#twrp-author-settings__js-authors-list');
+	/**
+	 * Attribute on authorsVisualList that holds the aria label for the remove button.
+	 */
+	var ariaLabelDataAttr = 'data-twrp-aria-remove-label';
 	/**
 	 * The template for an author item, to be appended to the visual list. Note that
 	 * we have a similar template in the PHP file, so a change here will require
@@ -478,7 +502,9 @@ var TWRP_Plugin = (function ($) {
 	        return;
 	    }
 	    var newAuthorItem = authorVisualItem.clone();
+	    var removeBtnAriaLabel = getRemoveButtonAriaLabel$1().replace('%s', sanitizeAuthorName(name));
 	    newAuthorItem.find('.twrp-author-settings__author-item-name').append(sanitizeAuthorName(name));
+	    newAuthorItem.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeBtnAriaLabel);
 	    newAuthorItem.attr(authorIdAttrName, id);
 	    authorsVisualList.append(newAuthorItem);
 	}
@@ -500,8 +526,8 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    authorsIdsInput.val(newVal);
 	}
-	// =============================================================================
-	// Remove an author
+	// #endregion -- Add an author
+	// #region -- Remove an author
 	$(document).on('click', '.twrp-author-settings__js-author-remove-btn', handleRemoveAuthor);
 	/**
 	 * Handle the removing of the authors from the selected list.
@@ -543,8 +569,8 @@ var TWRP_Plugin = (function ($) {
 	        authorsIdsInput.val(authorsIds.join(';'));
 	    }
 	}
-	// =============================================================================
-	// Manage the "No Authors Added" Text.
+	// #endregion -- Remove an author
+	// #region -- Manage the "No Authors Added" Text.
 	/**
 	 * Contains the HTML Element that will be inserted/removed as necessary.
 	 */
@@ -575,8 +601,8 @@ var TWRP_Plugin = (function ($) {
 	        showUp(noAuthorsText);
 	    }
 	}
-	// =============================================================================
-	// Sorting function.
+	// #endregion -- Manage the "No Authors Added" Text.
+	// #region -- Sorting function.
 	$(document).ready(initializeSorting);
 	/**
 	 * Make the visual items sortable, and update the hidden input accordingly.
@@ -587,8 +613,8 @@ var TWRP_Plugin = (function ($) {
 	        stop: updateAuthorsIdsFromVisualList,
 	    });
 	}
-	// =============================================================================
-	// Helper Functions
+	// #endregion -- Sorting function.
+	// #region -- Helper Functions
 	/**
 	 * Check to see if a given author item is displayed in visual list.
 	 */
@@ -634,13 +660,35 @@ var TWRP_Plugin = (function ($) {
 	    authorsIdsInput.val(authorsIds.join(';'));
 	}
 	/**
+	 * Get the aria label for the remove button. In the aria label will be present
+	 * "%s", which will need to be replaced with an author.
+	 */
+	function getRemoveButtonAriaLabel$1() {
+	    var ariaLabel = authorsVisualList.attr(ariaLabelDataAttr);
+	    if (!ariaLabel) {
+	        return '';
+	    }
+	    return ariaLabel;
+	}
+	/**
 	 * Sanitize the author name.
 	 *
 	 * @todo
 	 */
 	function sanitizeAuthorName(name) {
-	    return name;
+	    var map = {
+	        '&': '&amp;',
+	        '<': '&lt;',
+	        '>': '&gt;',
+	        '"': '&quot;',
+	        "'": '&#x27;',
+	        '/': '&#x2F;',
+	        '`': '&grave;',
+	    };
+	    var reg = /[&<>"'/`]/ig;
+	    return name.replace(reg, function (match) { return (map[match]); });
 	}
+	// #endregion -- Helper Functions
 
 	var selectCommentsComparator = $('#twrp-comments-settings__js-comparator');
 	var numCommentsInput = $('#twrp-comments-settings__js-num_comments');
@@ -933,7 +981,9 @@ var TWRP_Plugin = (function ($) {
 	        return;
 	    }
 	    var newAuthorItem = postVisualItem.clone();
+	    var removeButtonLabel = getRemoveButtonAriaLabel$2().replace('%s', sanitizePostName(name));
 	    newAuthorItem.find('.twrp-posts-settings__post-item-title').append(sanitizePostName(name));
+	    newAuthorItem.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeButtonLabel);
 	    newAuthorItem.attr(postIdAttrName, id);
 	    postVisualList.append(newAuthorItem);
 	}
@@ -1091,10 +1141,31 @@ var TWRP_Plugin = (function ($) {
 	    postsIdsInput.val(authorsIds.join(';'));
 	}
 	/**
-	 * todo
+	 * Sanitize the post name.
 	 */
 	function sanitizePostName(name) {
-	    return name;
+	    var map = {
+	        '&': '&amp;',
+	        '<': '&lt;',
+	        '>': '&gt;',
+	        '"': '&quot;',
+	        "'": '&#x27;',
+	        '/': '&#x2F;',
+	        '`': '&grave;',
+	    };
+	    var reg = /[&<>"'/`]/ig;
+	    return name.replace(reg, function (match) { return (map[match]); });
+	}
+	/**
+	 * Get the aria label for the remove button. In the aria label will be present
+	 * "%s", which will need to be replaced with an author.
+	 */
+	function getRemoveButtonAriaLabel$2() {
+	    var ariaLabel = postVisualList.attr('data-twrp-aria-remove-label');
+	    if (!ariaLabel) {
+	        return '';
+	    }
+	    return ariaLabel;
 	}
 
 	var firstOrderGroup = $('#twrp-order-setting__js-first-order-group');

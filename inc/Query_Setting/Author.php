@@ -146,8 +146,15 @@ class Author implements Query_Setting {
 			$additional_no_authors_class = ' twrp-hidden';
 		}
 
+		/* translators: %s -> display name of the author. */
+		$remove_aria_label = _x( 'remove author %s', 'backend, accessibility text', 'twrp' );
+
 		?>
-		<div id="twrp-author-settings__js-authors-list" class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-author-settings__display-list<?= esc_attr( $additional_list_class ); ?>">
+		<div
+			id="twrp-author-settings__js-authors-list"
+			class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-author-settings__display-list<?= esc_attr( $additional_list_class ); ?>"
+			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+		>
 			<div id="twrp-author-settings__js-no-authors-selected" class="twrp-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
@@ -162,7 +169,11 @@ class Author implements Query_Setting {
 					<div class="twrp-author-settings__author-item-name">
 						<?= esc_html( $author_display_name ); ?>
 					</div>
-					<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button">
+					<button
+						class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn"
+						type="button"
+						aria-label="<?= esc_attr( sprintf( $remove_aria_label, $author_display_name ) ); ?>"
+					>
 						<span class="dashicons dashicons-no"></span>
 					</button>
 				</div>

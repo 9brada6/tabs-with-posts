@@ -1,10 +1,10 @@
 import $ from 'jquery';
 import 'jqueryui';
+import { hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 declare const wpApiSettings: any;
 
-// =============================================================================
-// Show/Hide Posts List.
+// #region -- Show/Hide Posts List.
 
 const postTypeSelect = $( '#twrp-posts-settings__js-filter-type' );
 
@@ -30,8 +30,9 @@ function hideOrShowVisualList() {
 	}
 }
 
-// =============================================================================
-// Manage Posts Search
+// #endregion -- Show/Hide Posts List.
+
+// #region -- Manage Posts Search
 
 /**
  * The search input where administrators will search for posts.
@@ -75,8 +76,9 @@ async function showSearchedPosts( request: any, sendToControl: CallableFunction 
 	sendToControl( postsToSend );
 }
 
-// =============================================================================
-// Add Post.
+// #endregion -- Manage Posts Search
+
+// #region -- Add Post.
 
 const postsIdsInput = $( '#twrp-posts-settings__js-posts-ids' );
 
@@ -163,7 +165,11 @@ function _addPostToVisualList( id: number|string, name: string ): void {
 	}
 
 	const newAuthorItem = postVisualItem.clone();
+	const removeButtonLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizePostName( name ) );
+
 	newAuthorItem.find( '.twrp-posts-settings__post-item-title' ).append( sanitizePostName( name ) );
+	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonLabel );
+
 	newAuthorItem.attr( postIdAttrName, id );
 	postVisualList.append( newAuthorItem );
 }
@@ -188,8 +194,9 @@ function _addPostToHiddenInput( id: number|string ): void {
 	postsIdsInput.val( newVal );
 }
 
-// =============================================================================
-// Remove an author
+// #endregion -- Add Post.
+
+// #region -- Remove an author
 
 $( document ).on( 'click', '.twrp-posts-settings__js-post-remove-btn', handleRemovePost );
 
@@ -241,8 +248,9 @@ function _removePostFromHiddenInput( id: number|string ): void {
 	}
 }
 
-// =============================================================================
-// Manage the "No Authors Added" Text.
+// #endregion -- Remove an author
+
+// #region -- Manage the "No Authors Added" Text.
 
 /**
  * Contains the HTML Element that will be inserted/removed as necessary.
@@ -267,7 +275,7 @@ function _removeNoPostsTextIfNecessary() {
 	const haveItems = ( postVisualList.find( `[${ postIdAttrName }]` ).length > 0 );
 
 	if ( haveItems && textIsAppended ) {
-		noPostsText.detach();
+		hideUp( noPostsText );
 	}
 }
 
@@ -279,12 +287,13 @@ function _addNoPostsTextIfNecessary() {
 	const haveItems = ( postVisualList.find( `[${ postIdAttrName }]` ).length > 0 );
 
 	if ( ( ! textIsAppended ) && ( ! haveItems ) ) {
-		postVisualList.append( noPostsText );
+		showUp( noPostsText );
 	}
 }
 
-// =============================================================================
-// Sorting function.
+// #endregion -- Manage the "No Authors Added" Text.
+
+// #region -- Sorting function
 
 $( document ).ready( initializeSorting );
 
@@ -298,8 +307,9 @@ function initializeSorting() {
 	} );
 }
 
-// =============================================================================
-// Helper Functions
+// #endregion -- Sorting function
+
+// #region -- Helper Functions
 
 /**
  * Check to see if a given post item is displayed in visual list.
@@ -343,7 +353,7 @@ function postExistInHiddenInput( id: number|string ): boolean {
  * from the visual list.
  */
 function updatePostsIdsFromVisualList(): void {
-	const postItems = postVisualList.find( '.twrp-posts-settings__post-item' );
+	const postItems = postVisualList.find( '.twrp-posts-settings__post-item' ).filter( '[' + postIdAttrName + ']' );
 	const authorsIds = [];
 
 	postItems.each( function() {
@@ -359,8 +369,33 @@ function updatePostsIdsFromVisualList(): void {
 }
 
 /**
- * todo
+ * Sanitize the post name.
  */
 function sanitizePostName( name: string ): string {
-	return name;
+	const map = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#x27;',
+		'/': '&#x2F;',
+		'`': '&grave;',
+	};
+	const reg = /[&<>"'/`]/ig;
+	return name.replace( reg, ( match ) => ( map[ match ] ) );
 }
+
+/**
+ * Get the aria label for the remove button. In the aria label will be present
+ * "%s", which will need to be replaced with an author.
+ */
+function getRemoveButtonAriaLabel(): string {
+	const ariaLabel = postVisualList.attr( 'data-twrp-aria-remove-label' );
+	if ( ! ariaLabel ) {
+		return '';
+	}
+
+	return ariaLabel;
+}
+
+// #endregion -- Helper Functions

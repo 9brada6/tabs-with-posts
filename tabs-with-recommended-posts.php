@@ -280,7 +280,11 @@ add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_set
 function twrp_enqueue_scripts_debug() {
 	\Debug\dump_bench( 'test_sanitize' );
 	\Debug\console_dump( get_taxonomies() );
-	\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
+	try {
+		\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
+	} catch ( \RuntimeException $e ) {
+		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
+	}
 
 	$args = array(
 		'suppress_filters' => true,

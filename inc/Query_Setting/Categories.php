@@ -169,12 +169,18 @@ class Categories implements Query_Setting {
 	 * @return void
 	 */
 	protected function display_categories_list( $current_setting ) {
+		/* translators: %s -> category name. */
+		$remove_aria_label = _x( 'remove category %s', 'backend, accessibility text', 'twrp' );
 		?>
 		<h4 class="twrp-collapsible-content__section-title">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
 		</h4>
 		<div class="twrp-cat-settings__cat-list-section twrp-query-settings__paragraph">
-			<div id="twrp-cat-settings__cat-list-wrap" class="twrp-display-list twrp-cat-settings__cat-list-wrap">
+			<div
+				id="twrp-cat-settings__cat-list-wrap"
+				class="twrp-display-list twrp-cat-settings__cat-list-wrap"
+				data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+			>
 				<span class="twrp-display-list__empty-msg">
 					<?= _x( 'No categories added. Select a category and click the button to add.', 'backend', 'twrp' ) ?>
 				</span>

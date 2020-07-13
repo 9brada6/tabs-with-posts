@@ -4,8 +4,7 @@ import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 declare const wp: any;
 
-// =============================================================================
-// Hide/Show Author List and Add Button based on option selected.
+// #region -- Hide/Show Author List and Add Button based on option selected.
 
 const authorTypeSelector = $( '#twrp-author-settings__select_type' );
 
@@ -30,8 +29,9 @@ function hideOrShowVisualList() {
 	}
 }
 
-// =============================================================================
-// Hide/Show Same author notice.
+// #endregion -- Hide/Show Author List and Add Button based on option selected.
+
+// #region -- Hide/Show Same author notice.
 
 const sameAuthorNotice = $( '#twrp-author-settings__js-same-author-notice' );
 
@@ -52,8 +52,9 @@ function handleSameAuthorNotice() {
 	}
 }
 
-// =============================================================================
-// Manage Author Search
+// #endregion -- Hide/Show Same author notice.
+
+// #region -- Manage Author Search
 
 $( initializeAutoComplete );
 
@@ -119,12 +120,18 @@ function showSearchedUsers( request: any, sendToControl: CallableFunction ): voi
 	} );
 }
 
-// =============================================================================
-// Add an author
+// #endregion -- Manage Author Search
+
+// #region -- Add an author
 
 const authorsIdsInput = $( '#twrp-author-settings__js-author-ids' );
 
 const authorsVisualList = $( '#twrp-author-settings__js-authors-list' );
+
+/**
+ * Attribute on authorsVisualList that holds the aria label for the remove button.
+ */
+const ariaLabelDataAttr = 'data-twrp-aria-remove-label';
 
 /**
  * The template for an author item, to be appended to the visual list. Note that
@@ -209,7 +216,9 @@ function _addAuthorToVisualList( id: number|string, name: string ): void {
 	}
 
 	const newAuthorItem = authorVisualItem.clone();
+	const removeBtnAriaLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizeAuthorName( name ) );
 	newAuthorItem.find( '.twrp-author-settings__author-item-name' ).append( sanitizeAuthorName( name ) );
+	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeBtnAriaLabel );
 	newAuthorItem.attr( authorIdAttrName, id );
 	authorsVisualList.append( newAuthorItem );
 }
@@ -234,8 +243,9 @@ function _addAuthorToHiddenInput( id: number|string ): void {
 	authorsIdsInput.val( newVal );
 }
 
-// =============================================================================
-// Remove an author
+// #endregion -- Add an author
+
+// #region -- Remove an author
 
 $( document ).on( 'click', '.twrp-author-settings__js-author-remove-btn', handleRemoveAuthor );
 
@@ -287,8 +297,9 @@ function _removeAuthorFromHiddenInput( id: number|string ): void {
 	}
 }
 
-// =============================================================================
-// Manage the "No Authors Added" Text.
+// #endregion -- Remove an author
+
+// #region -- Manage the "No Authors Added" Text.
 
 /**
  * Contains the HTML Element that will be inserted/removed as necessary.
@@ -327,8 +338,9 @@ function _addNoAuthorsTextIfNecessary() {
 	}
 }
 
-// =============================================================================
-// Sorting function.
+// #endregion -- Manage the "No Authors Added" Text.
+
+// #region -- Sorting function.
 
 $( document ).ready( initializeSorting );
 
@@ -342,8 +354,9 @@ function initializeSorting() {
 	} );
 }
 
-// =============================================================================
-// Helper Functions
+// #endregion -- Sorting function.
+
+// #region -- Helper Functions
 
 /**
  * Check to see if a given author item is displayed in visual list.
@@ -403,10 +416,33 @@ function updateAuthorsIdsFromVisualList(): void {
 }
 
 /**
+ * Get the aria label for the remove button. In the aria label will be present
+ * "%s", which will need to be replaced with an author.
+ */
+function getRemoveButtonAriaLabel(): string {
+	const ariaLabel = authorsVisualList.attr( ariaLabelDataAttr );
+	if ( ! ariaLabel ) {
+		return '';
+	}
+
+	return ariaLabel;
+}
+
+/**
  * Sanitize the author name.
- *
- * @todo
  */
 function sanitizeAuthorName( name: string ): string {
-	return name;
+	const map = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#x27;',
+		'/': '&#x2F;',
+		'`': '&grave;',
+	};
+	const reg = /[&<>"'/`]/ig;
+	return name.replace( reg, ( match ) => ( map[ match ] ) );
 }
+
+// #endregion -- Helper Functions

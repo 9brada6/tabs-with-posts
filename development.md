@@ -20,12 +20,16 @@
 
 ### Query Settings
 
-- Add accessibility to visual list remove button.
 - Make Category/Author/ORderby Query Settings Better.
 - Make a way to remove deleted categories.
 - Show if a post/category/author is deleted? Update: - post is not show, - author is not show.
+- Add regions is typescript files -> Authors done.
+
+- Create new style to notes.
 
 - Make hideLeft/showRight javascript animations work.
+
+- Remove flash of content in categories.
 
 - Add meta_key for the post order.
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
@@ -42,7 +46,6 @@
 
 ### General
 
-- Put databases class in a new folder, with a new namespace.
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
 

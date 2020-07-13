@@ -26,7 +26,7 @@ const categoryItem = $(
 
 // #endregion -- Defining some global variables.
 
-// #region -- add a categories on the lists.
+// #region -- Add a categories on the lists.
 
 $( document ).on( 'click', '#twrp-cat-settings__add-cat-btn', handleAddCategoryButton );
 
@@ -67,6 +67,7 @@ function addCatToInput( categoryId: string|number ): void {
 function addCatToVisual( categoryId: string|number, name: string ): void {
 	if ( ! categoryItemIsDisplayed( categoryId ) ) {
 		const toAppend = categoryItem.clone();
+		const removeButtonAriaLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizeCategoryName( name ) );
 
 		// Show a nice effect on removing.
 		categoriesEmptyMessage.hide( {
@@ -77,6 +78,7 @@ function addCatToVisual( categoryId: string|number, name: string ): void {
 		} );
 
 		toAppend.find( '.twrp-cat-settings__cat-item-name' ).text( sanitizeCategoryName( name ) );
+		toAppend.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonAriaLabel );
 		toAppend.attr( categoryIdAttrName, categoryId );
 
 		categoriesItemsWrapper.append( toAppend );
@@ -193,20 +195,6 @@ function categoryIdInsertedInInput( categoryId: string|number ): boolean {
 
 // #endregion -- Removing categories.
 
-// #region -- Sanitization.
-
-/**
- * Take out the number of counts and trim the name.
- */
-function sanitizeCategoryName( name: string ): string {
-	const removeCountParenthesisRegex = /\([^(]*\)$/;
-	name = name.replace( removeCountParenthesisRegex, '' );
-	name = name.trim();
-	return name;
-}
-
-// #endregion -- Sanitization.
-
 // #region -- Make The Categories Sortable.
 
 $( makeItemsSortable );
@@ -261,6 +249,40 @@ function hideOrShowCategorySettings(): void {
 function getCategoryName( categoryId: string|number ): string {
 	const name = categorySelector.find( '[value="' + categoryId + '"]' ).text();
 	return sanitizeCategoryName( name );
+}
+
+/**
+ * Get the aria label for the remove button. In the aria label will be present
+ * "%s", which will need to be replaced with an author.
+ */
+function getRemoveButtonAriaLabel(): string {
+	const ariaLabel = categoriesItemsWrapper.attr( 'data-twrp-aria-remove-label' );
+	if ( ! ariaLabel ) {
+		return '';
+	}
+
+	return ariaLabel;
+}
+
+/**
+ * Take out the number of counts and trim the name.
+ */
+function sanitizeCategoryName( name: string ): string {
+	const removeCountParenthesisRegex = /\([^(]*\)$/;
+	name = name.replace( removeCountParenthesisRegex, '' );
+	name = name.trim();
+
+	const map = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&#x27;',
+		'/': '&#x2F;',
+		'`': '&grave;',
+	};
+	const reg = /[&<>"'/`]/ig;
+	return name.replace( reg, ( match ) => ( map[ match ] ) );
 }
 
 // #endregion -- Helpers

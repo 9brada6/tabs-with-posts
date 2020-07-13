@@ -108,6 +108,9 @@ class Post_Settings implements Query_Setting {
 			}
 		}
 
+		/* translators: %s -> post name. */
+		$remove_aria_label = _x( 'remove post %s', 'backend, accessibility text', 'twrp' );
+
 		$list_is_hidden_class = '';
 		if ( isset( $current_setting[ self::POSTS_INPUT__SETTING_NAME ] ) && 'NA' === $current_setting[ self::POSTS_INPUT__SETTING_NAME ] ) {
 			$list_is_hidden_class = ' twrp_hidden';
@@ -119,7 +122,11 @@ class Post_Settings implements Query_Setting {
 		}
 
 		?>
-		<div id="twrp-posts-settings__js-posts-list" class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>">
+		<div
+			id="twrp-posts-settings__js-posts-list"
+			class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>"
+			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+		>
 			<div
 				id="twrp-posts-settings__js-no-posts-selected"
 				class="twrp-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
@@ -133,11 +140,13 @@ class Post_Settings implements Query_Setting {
 				if ( empty( $title ) ) {
 					$title = _x( 'Post with no title', 'backend', 'twrp' );
 				}
+
+				$remove_btn_label = sprintf( $remove_aria_label, $title );
 				?>
 
 				<div class="twrp-display-list__item twrp-posts-settings__post-item" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
 					<div class="twrp-posts-settings__post-item-title"><?= $title // phpcs:ignore ?></div>
-					<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button">
+					<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
 						<span class="dashicons dashicons-no"></span>
 					</button>
 				</div>

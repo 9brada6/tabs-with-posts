@@ -10,7 +10,6 @@ const orderByClassName = 'twrp-order-setting__js-orderby';
 
 const orderGroups = [ firstOrderGroup, secondOrderGroup, thirdOrderGroup ];
 
-//todo: delete
 $( hideOrShowUnnecessarySelectors );
 
 $( document ).on( 'change', `.${ orderByClassName }`, hideOrShowUnnecessarySelectors );
