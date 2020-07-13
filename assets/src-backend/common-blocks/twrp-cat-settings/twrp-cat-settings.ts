@@ -272,17 +272,7 @@ function sanitizeCategoryName( name: string ): string {
 	name = name.replace( removeCountParenthesisRegex, '' );
 	name = name.trim();
 
-	const map = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		"'": '&#x27;',
-		'/': '&#x2F;',
-		'`': '&grave;',
-	};
-	const reg = /[&<>"'/`]/ig;
-	return name.replace( reg, ( match ) => ( map[ match ] ) );
+	return name;
 }
 
 // #endregion -- Helpers

@@ -94,7 +94,7 @@ function showSearchedUsers( request: any, sendToControl: CallableFunction ): voi
 		for ( let i = 0; i < allUsers.length; i++ ) {
 			let name, id;
 			try {
-				name = allUsers.models[ i ].attributes.name;
+				name = decodeHtml( allUsers.models[ i ].attributes.name );
 				id = allUsers.models[ i ].attributes.id;
 			} catch ( error ) {
 				continue;
@@ -217,7 +217,7 @@ function _addAuthorToVisualList( id: number|string, name: string ): void {
 
 	const newAuthorItem = authorVisualItem.clone();
 	const removeBtnAriaLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizeAuthorName( name ) );
-	newAuthorItem.find( '.twrp-author-settings__author-item-name' ).append( sanitizeAuthorName( name ) );
+	newAuthorItem.find( '.twrp-author-settings__author-item-name' ).text( sanitizeAuthorName( name ) );
 	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeBtnAriaLabel );
 	newAuthorItem.attr( authorIdAttrName, id );
 	authorsVisualList.append( newAuthorItem );
@@ -432,17 +432,15 @@ function getRemoveButtonAriaLabel(): string {
  * Sanitize the author name.
  */
 function sanitizeAuthorName( name: string ): string {
-	const map = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		"'": '&#x27;',
-		'/': '&#x2F;',
-		'`': '&grave;',
-	};
-	const reg = /[&<>"'/`]/ig;
-	return name.replace( reg, ( match ) => ( map[ match ] ) );
+	// Names that are get are already sanitized.
+	return name;
+}
+
+/**
+ * Decodes the HTML entities.
+ */
+function decodeHtml( html: string ): string {
+	return $( '<div>' ).html( html ).text();
 }
 
 // #endregion -- Helper Functions

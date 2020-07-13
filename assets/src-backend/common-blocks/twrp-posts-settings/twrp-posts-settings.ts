@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
+import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 declare const wpApiSettings: any;
 
@@ -68,8 +68,8 @@ async function showSearchedPosts( request: any, sendToControl: CallableFunction 
 	const postsToSend = [];
 	for ( let i = 0; i < posts.length; i++ ) {
 		postsToSend.push( {
-			value: posts[ i ].title,
-			label: posts[ i ].title,
+			value: decodeHtml( posts[ i ].title ),
+			label: decodeHtml( posts[ i ].title ),
 			id: posts[ i ].id,
 		} );
 	}
@@ -167,7 +167,7 @@ function _addPostToVisualList( id: number|string, name: string ): void {
 	const newAuthorItem = postVisualItem.clone();
 	const removeButtonLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizePostName( name ) );
 
-	newAuthorItem.find( '.twrp-posts-settings__post-item-title' ).append( sanitizePostName( name ) );
+	newAuthorItem.find( '.twrp-posts-settings__post-item-title' ).text( sanitizePostName( name ) );
 	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonLabel );
 
 	newAuthorItem.attr( postIdAttrName, id );
@@ -369,20 +369,10 @@ function updatePostsIdsFromVisualList(): void {
 }
 
 /**
- * Sanitize the post name.
+ * Sanitize the post name. It does not do something yet.
  */
 function sanitizePostName( name: string ): string {
-	const map = {
-		'&': '&amp;',
-		'<': '&lt;',
-		'>': '&gt;',
-		'"': '&quot;',
-		"'": '&#x27;',
-		'/': '&#x2F;',
-		'`': '&grave;',
-	};
-	const reg = /[&<>"'/`]/ig;
-	return name.replace( reg, ( match ) => ( map[ match ] ) );
+	return name;
 }
 
 /**
@@ -396,6 +386,13 @@ function getRemoveButtonAriaLabel(): string {
 	}
 
 	return ariaLabel;
+}
+
+/**
+ * Decodes the HTML entities.
+ */
+function decodeHtml( html: string ): string {
+	return $( '<div>' ).html( html ).text();
 }
 
 // #endregion -- Helper Functions

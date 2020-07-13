@@ -131,6 +131,7 @@ class Author implements Query_Setting {
 				$authors_args = array(
 					'include' => $authors_ids,
 					'fields'  => array( 'ID', 'display_name' ),
+					'orderby' => 'include',
 				);
 				$authors      = get_users( $authors_args );
 			}

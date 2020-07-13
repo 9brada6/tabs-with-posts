@@ -273,17 +273,7 @@ var TWRP_Plugin = (function ($) {
 	    var removeCountParenthesisRegex = /\([^(]*\)$/;
 	    name = name.replace(removeCountParenthesisRegex, '');
 	    name = name.trim();
-	    var map = {
-	        '&': '&amp;',
-	        '<': '&lt;',
-	        '>': '&gt;',
-	        '"': '&quot;',
-	        "'": '&#x27;',
-	        '/': '&#x2F;',
-	        '`': '&grave;',
-	    };
-	    var reg = /[&<>"'/`]/ig;
-	    return name.replace(reg, function (match) { return (map[match]); });
+	    return name;
 	}
 	// #endregion -- Helpers
 	// #region -- Refresh Display/Hidden input categories.
@@ -400,7 +390,7 @@ var TWRP_Plugin = (function ($) {
 	        for (var i_1 = 0; i_1 < allUsers.length; i_1++) {
 	            var name_1 = void 0, id = void 0;
 	            try {
-	                name_1 = allUsers.models[i_1].attributes.name;
+	                name_1 = decodeHtml(allUsers.models[i_1].attributes.name);
 	                id = allUsers.models[i_1].attributes.id;
 	            }
 	            catch (error) {
@@ -503,7 +493,7 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    var newAuthorItem = authorVisualItem.clone();
 	    var removeBtnAriaLabel = getRemoveButtonAriaLabel$1().replace('%s', sanitizeAuthorName(name));
-	    newAuthorItem.find('.twrp-author-settings__author-item-name').append(sanitizeAuthorName(name));
+	    newAuthorItem.find('.twrp-author-settings__author-item-name').text(sanitizeAuthorName(name));
 	    newAuthorItem.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeBtnAriaLabel);
 	    newAuthorItem.attr(authorIdAttrName, id);
 	    authorsVisualList.append(newAuthorItem);
@@ -672,21 +662,16 @@ var TWRP_Plugin = (function ($) {
 	}
 	/**
 	 * Sanitize the author name.
-	 *
-	 * @todo
 	 */
 	function sanitizeAuthorName(name) {
-	    var map = {
-	        '&': '&amp;',
-	        '<': '&lt;',
-	        '>': '&gt;',
-	        '"': '&quot;',
-	        "'": '&#x27;',
-	        '/': '&#x2F;',
-	        '`': '&grave;',
-	    };
-	    var reg = /[&<>"'/`]/ig;
-	    return name.replace(reg, function (match) { return (map[match]); });
+	    // Names that are get are already sanitized.
+	    return name;
+	}
+	/**
+	 * Decodes the HTML entities.
+	 */
+	function decodeHtml(html) {
+	    return $('<div>').html(html).text();
 	}
 	// #endregion -- Helper Functions
 
@@ -732,7 +717,7 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 
-	// =============================================================================
+	// #region -- Polyfill Datepicker
 	var after = $('#twrp-date-settings__after');
 	var before = $('#twrp-date-settings__before');
 	$(document).ready(enableDatePickerIfNecessary);
@@ -755,7 +740,8 @@ var TWRP_Plugin = (function ($) {
 	    input.setAttribute('value', notADateValue);
 	    return (input.value !== notADateValue);
 	}
-	// =============================================================================
+	// #endregion -- Polyfill Datepicker
+	// #region -- Hide/Show Date
 	var selectDateType = $('#twrp-date-settings__js-date-type');
 	var lastPeriodWrapper = $('#twrp-date-settings__js-last-period-wrapper');
 	var betweenPeriodWrapper = $('#twrp-date-settings__js-between-wrapper');
@@ -781,6 +767,7 @@ var TWRP_Plugin = (function ($) {
 	        hideUp(betweenPeriodWrapper);
 	    }
 	}
+	// #endregion -- Hide/Show Date
 
 	/*! *****************************************************************************
 	Copyright (c) Microsoft Corporation.
@@ -835,8 +822,7 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 
-	// =============================================================================
-	// Show/Hide Posts List.
+	// #region -- Show/Hide Posts List.
 	var postTypeSelect = $('#twrp-posts-settings__js-filter-type');
 	var postVisualList = $('#twrp-posts-settings__js-posts-list');
 	var searchingWrapper = $('#twrp-posts-settings__js-posts-search-wrap');
@@ -856,8 +842,8 @@ var TWRP_Plugin = (function ($) {
 	        postVisualList.show('blind');
 	    }
 	}
-	// =============================================================================
-	// Manage Posts Search
+	// #endregion -- Show/Hide Posts List.
+	// #region -- Manage Posts Search
 	/**
 	 * The search input where administrators will search for posts.
 	 */
@@ -896,8 +882,8 @@ var TWRP_Plugin = (function ($) {
 	                    postsToSend = [];
 	                    for (i_1 = 0; i_1 < posts.length; i_1++) {
 	                        postsToSend.push({
-	                            value: posts[i_1].title,
-	                            label: posts[i_1].title,
+	                            value: decodeHtml$1(posts[i_1].title),
+	                            label: decodeHtml$1(posts[i_1].title),
 	                            id: posts[i_1].id,
 	                        });
 	                    }
@@ -907,8 +893,8 @@ var TWRP_Plugin = (function ($) {
 	        });
 	    });
 	}
-	// =============================================================================
-	// Add Post.
+	// #endregion -- Manage Posts Search
+	// #region -- Add Post.
 	var postsIdsInput = $('#twrp-posts-settings__js-posts-ids');
 	/**
 	 * The post attribute name that hold the Id of a visual item.
@@ -982,7 +968,7 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    var newAuthorItem = postVisualItem.clone();
 	    var removeButtonLabel = getRemoveButtonAriaLabel$2().replace('%s', sanitizePostName(name));
-	    newAuthorItem.find('.twrp-posts-settings__post-item-title').append(sanitizePostName(name));
+	    newAuthorItem.find('.twrp-posts-settings__post-item-title').text(sanitizePostName(name));
 	    newAuthorItem.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeButtonLabel);
 	    newAuthorItem.attr(postIdAttrName, id);
 	    postVisualList.append(newAuthorItem);
@@ -1005,8 +991,8 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    postsIdsInput.val(newVal);
 	}
-	// =============================================================================
-	// Remove an author
+	// #endregion -- Add Post.
+	// #region -- Remove an author
 	$(document).on('click', '.twrp-posts-settings__js-post-remove-btn', handleRemovePost);
 	/**
 	 * Handle the removing of the posts from the selected list.
@@ -1048,8 +1034,8 @@ var TWRP_Plugin = (function ($) {
 	        postsIdsInput.val(postsIds.join(';'));
 	    }
 	}
-	// =============================================================================
-	// Manage the "No Authors Added" Text.
+	// #endregion -- Remove an author
+	// #region -- Manage the "No Authors Added" Text.
 	/**
 	 * Contains the HTML Element that will be inserted/removed as necessary.
 	 */
@@ -1069,7 +1055,7 @@ var TWRP_Plugin = (function ($) {
 	    var textIsAppended = (postVisualList.find(noPostsText).length > 0);
 	    var haveItems = (postVisualList.find("[" + postIdAttrName + "]").length > 0);
 	    if (haveItems && textIsAppended) {
-	        noPostsText.detach();
+	        hideUp(noPostsText);
 	    }
 	}
 	/**
@@ -1079,11 +1065,11 @@ var TWRP_Plugin = (function ($) {
 	    var textIsAppended = (postVisualList.find(noPostsText).length > 0);
 	    var haveItems = (postVisualList.find("[" + postIdAttrName + "]").length > 0);
 	    if ((!textIsAppended) && (!haveItems)) {
-	        postVisualList.append(noPostsText);
+	        showUp(noPostsText);
 	    }
 	}
-	// =============================================================================
-	// Sorting function.
+	// #endregion -- Manage the "No Authors Added" Text.
+	// #region -- Sorting function
 	$(document).ready(initializeSorting$1);
 	/**
 	 * Make the visual items sortable, and update the hidden input accordingly.
@@ -1094,8 +1080,8 @@ var TWRP_Plugin = (function ($) {
 	        stop: updatePostsIdsFromVisualList,
 	    });
 	}
-	// =============================================================================
-	// Helper Functions
+	// #endregion -- Sorting function
+	// #region -- Helper Functions
 	/**
 	 * Check to see if a given post item is displayed in visual list.
 	 */
@@ -1129,7 +1115,7 @@ var TWRP_Plugin = (function ($) {
 	 * from the visual list.
 	 */
 	function updatePostsIdsFromVisualList() {
-	    var postItems = postVisualList.find('.twrp-posts-settings__post-item');
+	    var postItems = postVisualList.find('.twrp-posts-settings__post-item').filter('[' + postIdAttrName + ']');
 	    var authorsIds = [];
 	    postItems.each(function () {
 	        var itemId = $(this).attr(postIdAttrName);
@@ -1141,20 +1127,10 @@ var TWRP_Plugin = (function ($) {
 	    postsIdsInput.val(authorsIds.join(';'));
 	}
 	/**
-	 * Sanitize the post name.
+	 * Sanitize the post name. It does not do something yet.
 	 */
 	function sanitizePostName(name) {
-	    var map = {
-	        '&': '&amp;',
-	        '<': '&lt;',
-	        '>': '&gt;',
-	        '"': '&quot;',
-	        "'": '&#x27;',
-	        '/': '&#x2F;',
-	        '`': '&grave;',
-	    };
-	    var reg = /[&<>"'/`]/ig;
-	    return name.replace(reg, function (match) { return (map[match]); });
+	    return name;
 	}
 	/**
 	 * Get the aria label for the remove button. In the aria label will be present
@@ -1167,13 +1143,19 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    return ariaLabel;
 	}
+	/**
+	 * Decodes the HTML entities.
+	 */
+	function decodeHtml$1(html) {
+	    return $('<div>').html(html).text();
+	}
+	// #endregion -- Helper Functions
 
 	var firstOrderGroup = $('#twrp-order-setting__js-first-order-group');
 	var secondOrderGroup = $('#twrp-order-setting__js-second-order-group');
 	var thirdOrderGroup = $('#twrp-order-setting__js-third-order-group');
 	var orderByClassName = 'twrp-order-setting__js-orderby';
 	var orderGroups = [firstOrderGroup, secondOrderGroup, thirdOrderGroup];
-	//todo: delete
 	$(hideOrShowUnnecessarySelectors);
 	$(document).on('change', "." + orderByClassName, hideOrShowUnnecessarySelectors);
 	/**

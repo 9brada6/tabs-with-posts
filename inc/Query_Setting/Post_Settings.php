@@ -104,7 +104,12 @@ class Post_Settings implements Query_Setting {
 			$ids = explode( ';', $ids );
 			$ids = Utils::get_valid_wp_ids( $ids );
 			if ( ! empty( $ids ) ) {
-				$posts = get_posts( array( 'post__in' => $ids ) );
+				$posts = get_posts(
+					array(
+						'post__in' => $ids,
+						'orderby'  => 'post__in',
+					)
+				);
 			}
 		}
 
@@ -239,17 +244,17 @@ class Post_Settings implements Query_Setting {
 			return self::get_default_setting();
 		}
 
-		$sanitized_settings  = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
-		$posts_ids           = explode( ';', $posts_ids );
-		$posts_ids           = Utils::get_valid_wp_ids( $posts_ids );
-		$sanitized_posts_ids = array();
+		$sanitized_settings = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
+		$posts_ids          = explode( ';', $posts_ids );
+		$posts_ids          = Utils::get_valid_wp_ids( $posts_ids );
 
-		foreach ( $posts_ids as $id ) {
+		foreach ( $posts_ids as $key => $id ) {
 			$post = get_post( (int) $id );
-			if ( $post instanceof \WP_Post ) {
-				array_push( $sanitized_posts_ids, $id );
+			if ( ! ( $post instanceof \WP_Post ) ) {
+				unset( $posts_ids[ $key ] );
 			}
 		}
+		$posts_ids = array_values( $posts_ids );
 
 		$sanitized_settings[ self::POSTS_INPUT__SETTING_NAME ] = implode( ';', $posts_ids );
 
