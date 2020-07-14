@@ -6,6 +6,10 @@
 	background-color: rgba(0, 0, 0, 0.07);
 	border-radius: 4px;
 
+	&__item[style*='display: block'] { // for jquery effects
+		display: flex !important;
+	}
+
 	&__item {
 		display: flex;
 		align-items: center;
@@ -17,10 +21,13 @@
 		border-radius: 4px;
 	}
 
-	// &__empty-msg {
-	// 	padding: 0.4rem 0.6rem;
-	// 	margin: 3px;
-	// }
+	&__item-name {
+		white-space: nowrap;
+	}
+
+	&__empty-msg {
+		margin: calc(0.4rem + 4px) 0.5rem;
+	}
 
 	&__item-remove-btn {
 		padding: 1px;

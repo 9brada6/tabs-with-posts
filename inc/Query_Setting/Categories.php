@@ -10,6 +10,7 @@
 namespace TWRP\Query_Setting;
 
 use TWRP\Utils;
+use WP_Term;
 
 /**
  * Class that will filter posts via categories.
@@ -19,6 +20,8 @@ class Categories implements Query_Setting {
 	const CATEGORIES_TYPE__SETTING_KEY  = 'setting_type';
 	const INCLUDE_CHILDREN__SETTING_KEY = 'include_children';
 	const RELATION__SETTING_KEY         = 'relation';
+
+	const CATEGORIES_HIDE_EMPTY = false;
 
 	/**
 	 * Input name and array key of the option that remembers the selected
@@ -140,8 +143,16 @@ class Categories implements Query_Setting {
 		$select_name  = $this->get_setting_name() . '[' . self::RELATION__SETTING_KEY . ']';
 		$cat_relation = $current_setting[ self::RELATION__SETTING_KEY ];
 
+		$additional_class = '';
+		if ( 'IN' !== $current_setting[ self::CATEGORIES_TYPE__SETTING_KEY ] ) {
+			$additional_class = ' twrp-hidden';
+		}
+
 		?>
-		<div id="twrp-cat-settings__js-select-relation-wrap" class="twrp-query-settings__paragraph-with-hide twrp-cat-settings__select-relation-wrap">
+		<div
+			id="twrp-cat-settings__js-select-relation-wrap"
+			class="twrp-query-settings__paragraph-with-hide twrp-cat-settings__select-relation-wrap<?= esc_attr( $additional_class ); ?>"
+		>
 			<p class="twrp-cat-settings__select-relation-text">
 				<?= _x( 'An article should have:', 'backend', 'twrp' ); ?>
 			</p>
@@ -171,6 +182,21 @@ class Categories implements Query_Setting {
 	protected function display_categories_list( $current_setting ) {
 		/* translators: %s -> category name. */
 		$remove_aria_label = _x( 'remove category %s', 'backend, accessibility text', 'twrp' );
+
+		$categories_ids = $current_setting[ self::CATEGORIES_IDS__SETTING_KEY ];
+		$categories_ids = explode( ';', $categories_ids );
+		$categories_ids = Utils::get_valid_wp_ids( $categories_ids );
+
+		$categories_are_displayed = array();
+		if ( ! empty( $categories_ids ) ) {
+			$categories_are_displayed = get_categories( array( 'include' => $categories_ids ) );
+		}
+
+		$additional_empty_msg_class = '';
+		if ( count( $categories_are_displayed ) > 0 ) {
+			$additional_empty_msg_class = ' twrp-hidden';
+		}
+
 		?>
 		<h4 class="twrp-collapsible-content__section-title">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
@@ -181,9 +207,34 @@ class Categories implements Query_Setting {
 				class="twrp-display-list twrp-cat-settings__cat-list-wrap"
 				data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 			>
-				<span class="twrp-display-list__empty-msg">
-					<?= _x( 'No categories added. Select a category and click the button to add.', 'backend', 'twrp' ) ?>
-				</span>
+				<div class="twrp-display-list__empty-msg<?= esc_attr( $additional_empty_msg_class ); ?>">
+					<span>
+						<?= _x( 'No categories added. Select a category and click the button to add.', 'backend', 'twrp' ) ?>
+					</span>
+				</div>
+				<?php foreach ( $categories_ids as $category_id ) : ?>
+					<?php
+					$category = get_category( (int) $category_id );
+
+					if ( ! $category instanceof WP_Term ) {
+						continue;
+					}
+
+					$remove_button_aria_label = sprintf( $remove_aria_label, $category->name );
+					?>
+					<div class="twrp-display-list__item twrp-cat-settings__cat-list-item" data-cat-id="<?= esc_attr( (string) $category->term_id ); ?>">
+						<div class="twrp-display-list__item-name twrp-cat-settings__cat-item-name">
+							<?= esc_html( $category->name ); ?>
+						</div>
+						<button
+							class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn"
+							type="button"
+							aria-label=<?= esc_html( $remove_button_aria_label ); ?>
+						>
+							<span class="dashicons dashicons-no"></span>
+						</button>
+					</div>
+				<?php endforeach; ?>
 			</div>
 		</div>
 		<?php
@@ -204,7 +255,7 @@ class Categories implements Query_Setting {
 				'id'           => 'twrp-cat-settings__js-cat-dropdown',
 				'class'        => 'twrp-cat-settings__cat-dropdown',
 				'show_count'   => '1',
-				'hide_empty'   => false,
+				'hide_empty'   => self::CATEGORIES_HIDE_EMPTY,
 				'hierarchical' => true,
 			)
 		);
@@ -295,8 +346,14 @@ class Categories implements Query_Setting {
 			return self::get_default_setting();
 		}
 
-		$available_categories     = get_categories( array( 'object_ids' => $categories ) );
-		$available_categories_ids = wp_list_pluck( $available_categories, 'ID' );
+		$available_categories     = get_categories(
+			array(
+				'include'    => $categories,
+				// Changing hide_empty here will also need be to
+				'hide_empty' => self::CATEGORIES_HIDE_EMPTY,
+			)
+		);
+		$available_categories_ids = wp_list_pluck( $available_categories, 'term_id' );
 
 		foreach ( $categories as $key => $category_id ) {
 			if ( ! in_array( $category_id, $available_categories_ids, true ) ) {

@@ -1,12 +1,8 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
-
-// todo: Make everything under twrp-display-list block.
+import { showUp, hideUp, showLeft, hideLeft } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 // #region -- Defining some global variables.
-
-const effectDuration = 300;
 
 const categorySelector = $( '#twrp-cat-settings__js-cat-dropdown' );
 
@@ -69,31 +65,13 @@ function addCatToVisual( categoryId: string|number, name: string ): void {
 		const toAppend = categoryItem.clone();
 		const removeButtonAriaLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizeCategoryName( name ) );
 
-		// Show a nice effect on removing.
-		categoriesEmptyMessage.hide( {
-			effect: 'blind',
-			duration: effectDuration,
-			direction: 'left',
-			complete: removeEmptyMessage,
-		} );
-
 		toAppend.find( '.twrp-cat-settings__cat-item-name' ).text( sanitizeCategoryName( name ) );
 		toAppend.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonAriaLabel );
 		toAppend.attr( categoryIdAttrName, categoryId );
 
 		categoriesItemsWrapper.append( toAppend );
-
-		// After appending, show a nice effect.
-		toAppend.hide();
-		toAppend.show( {
-			effect: 'blind',
-			duration: effectDuration,
-			direction: 'left',
-		} );
-	}
-
-	function removeEmptyMessage(): void {
-		categoriesEmptyMessage.remove();
+		hideOrShowEmptyMessage();
+		showLeft( toAppend, 'hide_first' );
 	}
 }
 
@@ -117,25 +95,9 @@ function handleRemoveCategory(): void {
  */
 function removeCategoryFromDisplay( categoryId: string|number ): void {
 	const toRemove = categoriesItemsWrapper.find( '[' + categoryIdAttrName + '="' + categoryId + '"]' );
-	toRemove.effect( {
-		effect: 'blind',
-		duration: effectDuration,
-		direction: 'left',
-		complete: removeElement,
-	} );
-
-	function removeElement() {
-		toRemove.remove();
-
-		if ( 0 === categoriesItemsWrapper.children().length ) {
-			categoriesItemsWrapper.append( categoriesEmptyMessage );
-			categoriesEmptyMessage.show( {
-				effect: 'blind',
-				duration: effectDuration,
-				direction: 'left',
-			} );
-		}
-	}
+	toRemove.removeAttr( categoryIdAttrName );
+	hideOrShowEmptyMessage();
+	hideLeft( toRemove, 'remove' );
 }
 
 /**
@@ -153,7 +115,39 @@ function removeCategoryFromInput( categoryId: string|number ): void {
 
 // #endregion -- Removing categories.
 
-// #region -- Verify if a category exist.
+// #region -- Show or Hide empty message.
+
+function hideOrShowEmptyMessage(): void {
+	_showEmptyMessageIfNecessary();
+	_hideEmptyMessageIfNecessary();
+}
+
+/**
+ * Show the empty list message, that should be displayed when no items exists.
+ */
+function _showEmptyMessageIfNecessary(): void {
+	const listHaveItems = ( categoriesItemsWrapper.find( '[' + categoryIdAttrName + ']' ).length > 0 );
+
+	if ( ! listHaveItems ) {
+		showLeft( categoriesEmptyMessage );
+	}
+}
+
+/**
+ * Hide the empty list message, that should not be displayed when at least an
+ * item exists.
+ */
+function _hideEmptyMessageIfNecessary(): void {
+	const listHaveItems = ( categoriesItemsWrapper.find( '[' + categoryIdAttrName + ']' ).length > 0 );
+
+	if ( listHaveItems ) {
+		hideLeft( categoriesEmptyMessage );
+	}
+}
+
+// #endregion -- Show or Hide empty message.
+
+// #region -- Verify if a category is selected.
 
 /**
  * Check to see if a category item is displayed in the Visual List of categories.
@@ -193,7 +187,7 @@ function categoryIdInsertedInInput( categoryId: string|number ): boolean {
 	return false;
 }
 
-// #endregion -- Removing categories.
+// #endregion -- Verify if a category is selected.
 
 // #region -- Make The Categories Sortable.
 
@@ -244,14 +238,6 @@ function hideOrShowCategorySettings(): void {
 // #region -- Helpers
 
 /**
- * For a given category Id, return the category name.
- */
-function getCategoryName( categoryId: string|number ): string {
-	const name = categorySelector.find( '[value="' + categoryId + '"]' ).text();
-	return sanitizeCategoryName( name );
-}
-
-/**
  * Get the aria label for the remove button. In the aria label will be present
  * "%s", which will need to be replaced with an author.
  */
@@ -278,31 +264,6 @@ function sanitizeCategoryName( name: string ): string {
 // #endregion -- Helpers
 
 // #region -- Refresh Display/Hidden input categories.
-
-$( refreshDisplayCategories );
-
-/**
- * Refresh the visual list categories, with Ids taken from the hidden input.
- */
-function refreshDisplayCategories(): void {
-	const categoriesVal: string = String( categoriesInput.val() );
-	if ( ! categoriesVal ) {
-		return;
-	}
-	const categoryIds = categoriesVal.split( ';' );
-
-	for ( let i = 0; i < categoryIds.length; i++ ) {
-		const categoryName = getCategoryName( categoryIds[ i ] );
-		if ( categoryName ) {
-			addCatToVisual( categoryIds[ i ], getCategoryName( categoryIds[ i ] ) );
-		} else {
-			categoryIds.splice( i, 1 );
-			i--;
-		}
-	}
-
-	categoriesInput.val( categoryIds.join( ';' ) );
-}
 
 /**
  * Refresh the hidden input categories, with Ids taken from the visual list.

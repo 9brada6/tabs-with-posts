@@ -5,7 +5,7 @@ var TWRP_Plugin = (function ($) {
 
 	// Todo...
 	var effectDuration = 500;
-	// =============================================================================
+	// #region -- Hide/Show Vertically
 	function hideUp(element) {
 	    $(element).hide({
 	        effect: 'blind',
@@ -20,12 +20,55 @@ var TWRP_Plugin = (function ($) {
 	        complete: removeHideClass,
 	    });
 	}
+	// #endregion -- Hide/Show Vertically
+	// =============================================================================
+	/**
+	 * Hide a HTML element with a blind effect from the left.
+	 *
+	 * @param {HTMLElement} element A jquery element.
+	 * @param {'remove'} remove Add 'remove' to remove the element from the DOM.
+	 */
+	function hideLeft(element, remove) {
+	    if (remove === void 0) { remove = ''; }
+	    var completeFunction = addHideClass;
+	    if (remove === 'remove') {
+	        completeFunction = removeElement;
+	    }
+	    $(element).hide({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        direction: 'left',
+	        complete: completeFunction,
+	    });
+	}
+	/**
+	 * Show a HTML element with a blind effect from the left.
+	 *
+	 * @param {HTMLElement} element A jquery element.
+	 * @param {'hide_first'} hideFirst Add 'hide_first' to first hide then show, if the
+	 * element already exists.
+	 */
+	function showLeft(element, hideFirst) {
+	    if (hideFirst === void 0) { hideFirst = ''; }
+	    if (hideFirst === 'hide_first') {
+	        element.addClass('twrp-hidden');
+	    }
+	    $(element).show({
+	        effect: 'blind',
+	        duration: effectDuration,
+	        direction: 'left',
+	        complete: removeHideClass,
+	    });
+	}
 	// =============================================================================
 	function addHideClass() {
 	    $(this).addClass('twrp-hidden');
 	}
 	function removeHideClass() {
 	    $(this).removeClass('twrp-hidden').css('display', '');
+	}
+	function removeElement() {
+	    $(this).remove();
 	}
 
 	$(document).ready(enableCollapsibleSettings);
@@ -57,9 +100,7 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 
-	// todo: Make everything under twrp-display-list block.
 	// #region -- Defining some global variables.
-	var effectDuration$1 = 300;
 	var categorySelector = $('#twrp-cat-settings__js-cat-dropdown');
 	var categoriesInput = $('#twrp-cat-settings__cat-ids');
 	var categoryIdAttrName = 'data-cat-id';
@@ -107,27 +148,12 @@ var TWRP_Plugin = (function ($) {
 	    if (!categoryItemIsDisplayed(categoryId)) {
 	        var toAppend = categoryItem.clone();
 	        var removeButtonAriaLabel = getRemoveButtonAriaLabel().replace('%s', sanitizeCategoryName(name));
-	        // Show a nice effect on removing.
-	        categoriesEmptyMessage.hide({
-	            effect: 'blind',
-	            duration: effectDuration$1,
-	            direction: 'left',
-	            complete: removeEmptyMessage,
-	        });
 	        toAppend.find('.twrp-cat-settings__cat-item-name').text(sanitizeCategoryName(name));
 	        toAppend.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeButtonAriaLabel);
 	        toAppend.attr(categoryIdAttrName, categoryId);
 	        categoriesItemsWrapper.append(toAppend);
-	        // After appending, show a nice effect.
-	        toAppend.hide();
-	        toAppend.show({
-	            effect: 'blind',
-	            duration: effectDuration$1,
-	            direction: 'left',
-	        });
-	    }
-	    function removeEmptyMessage() {
-	        categoriesEmptyMessage.remove();
+	        hideOrShowEmptyMessage();
+	        showLeft(toAppend, 'hide_first');
 	    }
 	}
 	// #endregion -- add a categories on the lists.
@@ -146,23 +172,9 @@ var TWRP_Plugin = (function ($) {
 	 */
 	function removeCategoryFromDisplay(categoryId) {
 	    var toRemove = categoriesItemsWrapper.find('[' + categoryIdAttrName + '="' + categoryId + '"]');
-	    toRemove.effect({
-	        effect: 'blind',
-	        duration: effectDuration$1,
-	        direction: 'left',
-	        complete: removeElement,
-	    });
-	    function removeElement() {
-	        toRemove.remove();
-	        if (0 === categoriesItemsWrapper.children().length) {
-	            categoriesItemsWrapper.append(categoriesEmptyMessage);
-	            categoriesEmptyMessage.show({
-	                effect: 'blind',
-	                duration: effectDuration$1,
-	                direction: 'left',
-	            });
-	        }
-	    }
+	    toRemove.removeAttr(categoryIdAttrName);
+	    hideOrShowEmptyMessage();
+	    hideLeft(toRemove, 'remove');
 	}
 	/**
 	 * Removes a category from the hidden input.
@@ -176,7 +188,32 @@ var TWRP_Plugin = (function ($) {
 	    }
 	}
 	// #endregion -- Removing categories.
-	// #region -- Verify if a category exist.
+	// #region -- Show or Hide empty message.
+	function hideOrShowEmptyMessage() {
+	    _showEmptyMessageIfNecessary();
+	    _hideEmptyMessageIfNecessary();
+	}
+	/**
+	 * Show the empty list message, that should be displayed when no items exists.
+	 */
+	function _showEmptyMessageIfNecessary() {
+	    var listHaveItems = (categoriesItemsWrapper.find('[' + categoryIdAttrName + ']').length > 0);
+	    if (!listHaveItems) {
+	        showLeft(categoriesEmptyMessage);
+	    }
+	}
+	/**
+	 * Hide the empty list message, that should not be displayed when at least an
+	 * item exists.
+	 */
+	function _hideEmptyMessageIfNecessary() {
+	    var listHaveItems = (categoriesItemsWrapper.find('[' + categoryIdAttrName + ']').length > 0);
+	    if (listHaveItems) {
+	        hideLeft(categoriesEmptyMessage);
+	    }
+	}
+	// #endregion -- Show or Hide empty message.
+	// #region -- Verify if a category is selected.
 	/**
 	 * Check to see if a category item is displayed in the Visual List of categories.
 	 */
@@ -207,7 +244,7 @@ var TWRP_Plugin = (function ($) {
 	    }
 	    return false;
 	}
-	// #endregion -- Removing categories.
+	// #endregion -- Verify if a category is selected.
 	// #region -- Make The Categories Sortable.
 	$(makeItemsSortable);
 	function makeItemsSortable() {
@@ -249,13 +286,6 @@ var TWRP_Plugin = (function ($) {
 	// #endregion -- Show/Hide Select For Category Relation.
 	// #region -- Helpers
 	/**
-	 * For a given category Id, return the category name.
-	 */
-	function getCategoryName(categoryId) {
-	    var name = categorySelector.find('[value="' + categoryId + '"]').text();
-	    return sanitizeCategoryName(name);
-	}
-	/**
 	 * Get the aria label for the remove button. In the aria label will be present
 	 * "%s", which will need to be replaced with an author.
 	 */
@@ -277,28 +307,6 @@ var TWRP_Plugin = (function ($) {
 	}
 	// #endregion -- Helpers
 	// #region -- Refresh Display/Hidden input categories.
-	$(refreshDisplayCategories);
-	/**
-	 * Refresh the visual list categories, with Ids taken from the hidden input.
-	 */
-	function refreshDisplayCategories() {
-	    var categoriesVal = String(categoriesInput.val());
-	    if (!categoriesVal) {
-	        return;
-	    }
-	    var categoryIds = categoriesVal.split(';');
-	    for (var i_1 = 0; i_1 < categoryIds.length; i_1++) {
-	        var categoryName = getCategoryName(categoryIds[i_1]);
-	        if (categoryName) {
-	            addCatToVisual(categoryIds[i_1], getCategoryName(categoryIds[i_1]));
-	        }
-	        else {
-	            categoryIds.splice(i_1, 1);
-	            i_1--;
-	        }
-	    }
-	    categoriesInput.val(categoryIds.join(';'));
-	}
 	/**
 	 * Refresh the hidden input categories, with Ids taken from the visual list.
 	 */
@@ -497,6 +505,7 @@ var TWRP_Plugin = (function ($) {
 	    newAuthorItem.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeBtnAriaLabel);
 	    newAuthorItem.attr(authorIdAttrName, id);
 	    authorsVisualList.append(newAuthorItem);
+	    showLeft(newAuthorItem, 'hide_first');
 	}
 	/**
 	 * Add an author to the list of hidden input.
@@ -543,8 +552,11 @@ var TWRP_Plugin = (function ($) {
 	 * Removes the author from the visual list, based on id.
 	 */
 	function _removeAuthorFromVisualList(id) {
-	    var itemsToRemove = authorsVisualList.find('[' + authorIdAttrName + '="' + id + '"]');
-	    itemsToRemove.remove();
+	    var itemToRemove = authorsVisualList.find('[' + authorIdAttrName + '="' + id + '"]');
+	    // Remove the attr fast, to trigger to show the empty authors list message
+	    // if necessary.
+	    itemToRemove.removeAttr(authorIdAttrName);
+	    hideLeft(itemToRemove, 'remove');
 	}
 	/**
 	 * Removes an author from the hidden input list.
@@ -579,7 +591,7 @@ var TWRP_Plugin = (function ($) {
 	function _removeNoAuthorsTextIfNecessary() {
 	    var haveItems = (authorsVisualList.find("[" + authorIdAttrName + "]").length > 0);
 	    if (haveItems) {
-	        hideUp(noAuthorsText);
+	        hideLeft(noAuthorsText);
 	    }
 	}
 	/**
@@ -588,7 +600,7 @@ var TWRP_Plugin = (function ($) {
 	function _addNoAuthorsTextIfNecessary() {
 	    var haveItems = (authorsVisualList.find("[" + authorIdAttrName + "]").length > 0);
 	    if (!haveItems) {
-	        showUp(noAuthorsText);
+	        showLeft(noAuthorsText);
 	    }
 	}
 	// #endregion -- Manage the "No Authors Added" Text.
@@ -972,6 +984,7 @@ var TWRP_Plugin = (function ($) {
 	    newAuthorItem.find('.twrp-display-list__item-remove-btn').attr('aria-label', removeButtonLabel);
 	    newAuthorItem.attr(postIdAttrName, id);
 	    postVisualList.append(newAuthorItem);
+	    showLeft(newAuthorItem, 'hide_first');
 	}
 	/**
 	 * Add a post to the list of hidden input.
@@ -992,7 +1005,7 @@ var TWRP_Plugin = (function ($) {
 	    postsIdsInput.val(newVal);
 	}
 	// #endregion -- Add Post.
-	// #region -- Remove an author
+	// #region -- Remove post
 	$(document).on('click', '.twrp-posts-settings__js-post-remove-btn', handleRemovePost);
 	/**
 	 * Handle the removing of the posts from the selected list.
@@ -1018,8 +1031,9 @@ var TWRP_Plugin = (function ($) {
 	 * Removes a post from the visual list, based on id.
 	 */
 	function _removePostFromVisualList(id) {
-	    var itemsToRemove = postVisualList.find('[' + postIdAttrName + '="' + id + '"]');
-	    itemsToRemove.remove();
+	    var itemToRemove = postVisualList.find('[' + postIdAttrName + '="' + id + '"]');
+	    itemToRemove.removeAttr(postIdAttrName);
+	    hideLeft(itemToRemove, 'remove');
 	}
 	/**
 	 * Removes a post from the hidden input list.
@@ -1034,7 +1048,7 @@ var TWRP_Plugin = (function ($) {
 	        postsIdsInput.val(postsIds.join(';'));
 	    }
 	}
-	// #endregion -- Remove an author
+	// #endregion -- Remove post
 	// #region -- Manage the "No Authors Added" Text.
 	/**
 	 * Contains the HTML Element that will be inserted/removed as necessary.
@@ -1052,20 +1066,18 @@ var TWRP_Plugin = (function ($) {
 	 * If Necessary, removes the "No Posts selected" text.
 	 */
 	function _removeNoPostsTextIfNecessary() {
-	    var textIsAppended = (postVisualList.find(noPostsText).length > 0);
 	    var haveItems = (postVisualList.find("[" + postIdAttrName + "]").length > 0);
-	    if (haveItems && textIsAppended) {
-	        hideUp(noPostsText);
+	    if (haveItems) {
+	        hideLeft(noPostsText);
 	    }
 	}
 	/**
 	 * If Necessary, adds the "No Posts selected" text.
 	 */
 	function _addNoPostsTextIfNecessary() {
-	    var textIsAppended = (postVisualList.find(noPostsText).length > 0);
 	    var haveItems = (postVisualList.find("[" + postIdAttrName + "]").length > 0);
-	    if ((!textIsAppended) && (!haveItems)) {
-	        showUp(noPostsText);
+	    if (!haveItems) {
+	        showLeft(noPostsText);
 	    }
 	}
 	// #endregion -- Manage the "No Authors Added" Text.

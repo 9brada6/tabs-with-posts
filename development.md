@@ -20,18 +20,13 @@
 
 ### Query Settings
 
-- Make Category/Author/ORderby Query Settings Better.
+- Finish Advanced Arguments.
 
-- Make hideLeft/showRight javascript animations work.
-
-- Remove flash of content in categories.
-- Remove order from orderby that does not depend, like post__in
-
-- Add meta_key for the post order.
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
-- Post order remove flash of content.
-- Finish Advanced Arguments.
+
+- Meta-Key: Add meta_key for the post order or separately.
+- Remove order from orderby that does not depend, like post__in
 
 ### Plugins
 
@@ -49,6 +44,7 @@
 
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
+- Use Webpack and not Rollup.
 
 ### After first release
 

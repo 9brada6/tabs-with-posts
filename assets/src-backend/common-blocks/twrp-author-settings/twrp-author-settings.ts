@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
+import { showUp, hideUp, hideLeft, showLeft } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 declare const wp: any;
 
@@ -221,6 +221,7 @@ function _addAuthorToVisualList( id: number|string, name: string ): void {
 	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeBtnAriaLabel );
 	newAuthorItem.attr( authorIdAttrName, id );
 	authorsVisualList.append( newAuthorItem );
+	showLeft( newAuthorItem, 'hide_first' );
 }
 
 /**
@@ -277,8 +278,11 @@ function removeAuthor( id:number|string ): void {
  * Removes the author from the visual list, based on id.
  */
 function _removeAuthorFromVisualList( id: string|number ): void {
-	const itemsToRemove = authorsVisualList.find( '[' + authorIdAttrName + '="' + id + '"]' );
-	itemsToRemove.remove();
+	const itemToRemove = authorsVisualList.find( '[' + authorIdAttrName + '="' + id + '"]' );
+	// Remove the attr fast, to trigger to show the empty authors list message
+	// if necessary.
+	itemToRemove.removeAttr( authorIdAttrName );
+	hideLeft( itemToRemove, 'remove' );
 }
 
 /**
@@ -323,7 +327,7 @@ function _removeNoAuthorsTextIfNecessary() {
 	const haveItems = ( authorsVisualList.find( `[${ authorIdAttrName }]` ).length > 0 );
 
 	if ( haveItems ) {
-		hideUp( noAuthorsText );
+		hideLeft( noAuthorsText );
 	}
 }
 
@@ -334,7 +338,7 @@ function _addNoAuthorsTextIfNecessary() {
 	const haveItems = ( authorsVisualList.find( `[${ authorIdAttrName }]` ).length > 0 );
 
 	if ( ! haveItems ) {
-		showUp( noAuthorsText );
+		showLeft( noAuthorsText );
 	}
 }
 

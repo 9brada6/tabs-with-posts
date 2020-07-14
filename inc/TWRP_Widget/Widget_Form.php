@@ -8,6 +8,7 @@ namespace TWRP\TWRP_Widget;
 use TWRP\Article_Blocks_Manager;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
+use TWRP\Utils;
 
 /**
  * Class responsible with displaying the widget form.
@@ -91,6 +92,7 @@ class Widget_Form {
 			$selected_queries_list = $instance_settings['queries'];
 		}
 		$selected_queries_ids = explode( ';', $selected_queries_list );
+		$selected_queries_ids = Utils::get_valid_wp_ids( $selected_queries_ids );
 
 		$queries_field_id   = Widget::twrp_get_field_id( $widget_id, 'queries' );
 		$queries_field_name = Widget::twrp_get_field_name( $widget_id, 'queries' );
@@ -99,9 +101,6 @@ class Widget_Form {
 		<ul class="twrp-widget-form__selected-queries-list">
 			<?php
 			foreach ( $selected_queries_ids as $query_id ) :
-				if ( ! is_numeric( $query_id ) ) {
-					continue;
-				}
 				self::display_query_settings( (int) $widget_id, (int) $query_id );
 			endforeach;
 			?>

@@ -10,6 +10,7 @@ use TWRP\Get_Posts;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\TWRP_Widget\Widget_Form;
+use TWRP\Utils;
 
 class Widget extends \WP_Widget {
 
@@ -151,14 +152,11 @@ class Widget extends \WP_Widget {
 			$settings['queries'] = '';
 		}
 		$queries            = explode( ';', $settings['queries'] );
+		$queries            = Utils::get_valid_wp_ids( $queries );
 		$valid_queries_ids  = array();
 		$sanitized_settings = array();
 
 		foreach ( $queries as $query_id ) {
-			if ( ! is_numeric( $query_id ) ) {
-				continue;
-			}
-
 			if ( Query_Options::query_exists( $query_id ) ) {
 				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $widget_id, $query_id, $settings[ $query_id ] );
 				array_push( $valid_queries_ids, $query_id );
@@ -172,6 +170,10 @@ class Widget extends \WP_Widget {
 
 	protected static function sanitize_query_settings( $widget_id, $query_id, $query_settings ) {
 		$sanitized_settings = array();
+
+		if ( ! is_array( $query_settings ) ) {
+			$query_settings = array();
+		}
 
 		if ( isset( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
 			if ( Article_Blocks_Manager::article_block_id_exist( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {

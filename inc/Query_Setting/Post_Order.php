@@ -106,6 +106,25 @@ class Post_Order implements Query_Setting {
 		$second_order_type_setting = isset( $current_setting[ self::SECOND_ORDER_TYPE_SELECT_NAME ] ) ? $current_setting[ self::SECOND_ORDER_TYPE_SELECT_NAME ] : null;
 		$third_order_type_setting  = isset( $current_setting[ self::THIRD_ORDER_TYPE_SELECT_NAME ] ) ? $current_setting[ self::THIRD_ORDER_TYPE_SELECT_NAME ] : null;
 
+		$additional_second_order_class     = '';
+		$additional_first_order_type_class = '';
+		if ( 'not_applied' === $first_orderby_setting ) {
+			$additional_first_order_type_class = ' twrp-hidden';
+			$additional_second_order_class     = ' twrp-hidden';
+		}
+
+		$additional_third_order_class       = '';
+		$additional_second_order_type_class = '';
+		if ( 'not_applied' === $second_orderby_setting ) {
+			$additional_second_order_type_class = ' twrp-hidden';
+			$additional_third_order_class       = ' twrp-hidden';
+		}
+
+		$additional_third_order_type_class = '';
+		if ( 'not_applied' === $third_orderby_setting ) {
+			$additional_third_order_type_class = ' twrp-hidden';
+		}
+
 		?>
 		<div class="twrp-order-setting">
 			<p id="twrp-order-setting__js-first-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph">
@@ -114,27 +133,27 @@ class Post_Order implements Query_Setting {
 					<?php $this->display_order_by_select_options( $first_orderby_setting, self::get_orderby_single_select_options() ); ?>
 				</select>
 
-				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $first_select_order_type_name ); ?>>
+				<select class="twrp-order-setting__js-order-type<?= esc_html( $additional_first_order_type_class ); ?>" name=<?= esc_attr( $first_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $first_order_type_setting ); ?>
 				</select>
 			</p>
 
-			<p id="twrp-order-setting__js-second-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
+			<p id="twrp-order-setting__js-second-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide<?= esc_html( $additional_second_order_class ); ?>">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $second_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $second_orderby_setting, self::get_orderby_select_options() ); ?>
 				</select>
 
-				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $second_select_order_type_name ); ?>>
+				<select class="twrp-order-setting__js-order-type<?= esc_html( $additional_second_order_type_class ); ?>" name=<?= esc_attr( $second_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $second_order_type_setting ); ?>
 				</select>
 			</p>
 
-			<p id="twrp-order-setting__js-third-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide">
+			<p id="twrp-order-setting__js-third-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph-with-hide<?= esc_html( $additional_third_order_class ); ?>">
 				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $third_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $third_orderby_setting, self::get_orderby_select_options() ); ?>
 				</select>
 
-				<select class="twrp-order-setting__js-order-type" name=<?= esc_attr( $third_select_order_type_name ); ?>>
+				<select class="twrp-order-setting__js-order-type<?= esc_html( $additional_third_order_type_class ); ?>" name=<?= esc_attr( $third_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $third_order_type_setting ); ?>
 				</select>
 			</p>
@@ -150,6 +169,10 @@ class Post_Order implements Query_Setting {
 	 * @return void
 	 */
 	protected function display_order_by_select_options( $current_setting, $options ) {
+		if ( ! isset( $current_setting ) ) {
+			$current_setting = 'not_applied';
+		}
+
 		foreach ( $options as $value => $description ) {
 			?>
 			<option value=<?= esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>

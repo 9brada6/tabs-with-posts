@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
+import { hideUp, showUp, hideLeft, showLeft } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 declare const wpApiSettings: any;
 
@@ -172,6 +172,7 @@ function _addPostToVisualList( id: number|string, name: string ): void {
 
 	newAuthorItem.attr( postIdAttrName, id );
 	postVisualList.append( newAuthorItem );
+	showLeft( newAuthorItem, 'hide_first' );
 }
 
 /**
@@ -196,7 +197,7 @@ function _addPostToHiddenInput( id: number|string ): void {
 
 // #endregion -- Add Post.
 
-// #region -- Remove an author
+// #region -- Remove post
 
 $( document ).on( 'click', '.twrp-posts-settings__js-post-remove-btn', handleRemovePost );
 
@@ -228,8 +229,9 @@ function removePost( id:number|string ): void {
  * Removes a post from the visual list, based on id.
  */
 function _removePostFromVisualList( id: string|number ): void {
-	const itemsToRemove = postVisualList.find( '[' + postIdAttrName + '="' + id + '"]' );
-	itemsToRemove.remove();
+	const itemToRemove = postVisualList.find( '[' + postIdAttrName + '="' + id + '"]' );
+	itemToRemove.removeAttr( postIdAttrName );
+	hideLeft( itemToRemove, 'remove' );
 }
 
 /**
@@ -248,7 +250,7 @@ function _removePostFromHiddenInput( id: number|string ): void {
 	}
 }
 
-// #endregion -- Remove an author
+// #endregion -- Remove post
 
 // #region -- Manage the "No Authors Added" Text.
 
@@ -271,11 +273,10 @@ function removeOrAddNoPostsText() {
  * If Necessary, removes the "No Posts selected" text.
  */
 function _removeNoPostsTextIfNecessary() {
-	const textIsAppended = ( postVisualList.find( noPostsText ).length > 0 );
 	const haveItems = ( postVisualList.find( `[${ postIdAttrName }]` ).length > 0 );
 
-	if ( haveItems && textIsAppended ) {
-		hideUp( noPostsText );
+	if ( haveItems ) {
+		hideLeft( noPostsText );
 	}
 }
 
@@ -283,11 +284,10 @@ function _removeNoPostsTextIfNecessary() {
  * If Necessary, adds the "No Posts selected" text.
  */
 function _addNoPostsTextIfNecessary() {
-	const textIsAppended = ( postVisualList.find( noPostsText ).length > 0 );
 	const haveItems = ( postVisualList.find( `[${ postIdAttrName }]` ).length > 0 );
 
-	if ( ( ! textIsAppended ) && ( ! haveItems ) ) {
-		showUp( noPostsText );
+	if ( ! haveItems ) {
+		showLeft( noPostsText );
 	}
 }
 
