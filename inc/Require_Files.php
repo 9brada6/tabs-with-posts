@@ -71,6 +71,7 @@ class Require_Files {
 		'Query_Setting/Post_Types',
 		'Query_Setting/Query_Name',
 		'Query_Setting/Search',
+		'Query_Setting/Meta_Setting',
 		'Query_Setting/Sticky_Posts',
 		'Query_Setting/Suppress_Filters',
 

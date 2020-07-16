@@ -26,6 +26,7 @@
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 
 - Meta-Key: Add meta_key for the post order or separately.
+- Hide meta key value if comparator is exists or not exists.
 - Remove order from orderby that does not depend, like post__in
 
 ### Plugins

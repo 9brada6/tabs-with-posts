@@ -136,10 +136,10 @@ class Query_Settings_Manager {
 		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments'::class, 100 );
 		self::register_backend_setting_class( 'TWRP\Query_Setting\Search'::class, 110 );
 		self::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected'::class, 120 );
+		self::register_backend_setting_class( 'TWRP\Query_Setting\Meta_Setting'::class, 125 );
 		self::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters'::class, 130 );
 		self::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments'::class, 150 );
 
-		// Todo: some work on authors still left.
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types'::class, 20 );
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status'::class, 30 );
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order'::class, 40 );
