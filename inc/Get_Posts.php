@@ -25,7 +25,7 @@ class Get_Posts {
 
 		$posts = get_posts( $query_args );
 
-		return $posts; // @phan-suppress-current-line PhanPartialTypeMismatchReturn
+		return $posts;
 	}
 
 	/**

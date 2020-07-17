@@ -7,6 +7,8 @@
 namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
+use TWRP\Utils;
+use TWRP\Widget_Control\Checkbox_Control;
 
 class Simple_Article_Block implements Article_Block {
 
@@ -55,7 +57,7 @@ class Simple_Article_Block implements Article_Block {
 	 *
 	 * @return void
 	 */
-	public function include_template() {
+	public function include_template( $settings ) {
 		include \TWRP_Main::get_templates_directory() . 'simple-style.php';
 	}
 
@@ -96,8 +98,12 @@ class Simple_Article_Block implements Article_Block {
 	 * Display the artblock specific settings.
 	 */
 	protected function display_artblock_settings() {
-		// todo.
-		// Do nothing for now.
+		$id   = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_author' );
+		$name = Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_author' );
+		Checkbox_Control::display_setting( $id, $name, $this->settings['display_author'], $this->get_display_author_setting_args() );
+
+		// $settings_creator->display_checkbox_setting( 'display_date', _x( 'Display the date.', 'backend', 'twrp' ), $default_settings['display_author'] );
+		// $settings_creator->display_checkbox_setting( 'show_date_difference', _x( 'Display the date as a human difference(Ex: 3 months ago).', 'backend', 'twrp' ), $default_settings['show_date_difference'] );
 	}
 
 	/**
@@ -170,6 +176,20 @@ class Simple_Article_Block implements Article_Block {
 		*/
 	}
 
+	public function sanitize_internal_settings() {
+		// todo.
+	}
+
+	#region -- Settings defaults
+
+	public function get_display_author_setting_args() {
+		return array(
+			'before' => _x( 'Display the author', 'backend', 'twrp' ),
+		);
+	}
+
+	#endregion -- Settings defaults
+
 	// =========================================================================
 	// Create/Sanitize Settings Helper Functions
 
@@ -207,12 +227,6 @@ class Simple_Article_Block implements Article_Block {
 	#endregion -- Rework and delete
 
 
-			// $settings_creator = new Widget_Settings_Creator( $widget_id, $query_id, $current_settings );
-		// $default_settings = $this->get_default_values();
-
-		// $settings_creator->display_checkbox_setting( 'display_author', _x( 'Display the author.', 'backend', 'twrp' ), $default_settings['display_author'] );
-		// $settings_creator->display_checkbox_setting( 'display_date', _x( 'Display the date.', 'backend', 'twrp' ), $default_settings['display_author'] );
-		// $settings_creator->display_checkbox_setting( 'show_date_difference', _x( 'Display the date as a human difference(Ex: 3 months ago).', 'backend', 'twrp' ), $default_settings['show_date_difference'] );
 
 		// $settings_creator->display_number_setting( 'header_size', $default_settings['header_size'], $this->get_header_size_setting_args() );
 		// $settings_creator->display_number_setting( 'meta_size', $default_settings['meta_size'], $this->get_meta_size_setting_args() );

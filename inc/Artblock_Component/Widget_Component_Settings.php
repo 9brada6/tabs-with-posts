@@ -120,7 +120,7 @@ class Widget_Component_Settings {
 			}
 		}
 
-		$this->$settings = $sanitized_settings;
+		$this->settings = $sanitized_settings;
 		return $sanitized_settings;
 	}
 

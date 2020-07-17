@@ -106,7 +106,6 @@ class Widget_Form {
 			?>
 		</ul>
 
-
 		<input
 			id="<?= esc_attr( $queries_field_id ); ?>"
 			class="twrp-widget-form__selected-queries"
@@ -251,6 +250,8 @@ class Widget_Form {
 				return;
 			}
 		}
+
+		$artblock->sanitize_internal_settings();
 
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >

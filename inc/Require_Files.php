@@ -18,6 +18,7 @@ class Require_Files {
 		'Query_Settings_Manager',
 		'Article_Blocks_Manager',
 		'Get_Posts',
+		'Create_Tabs',
 
 		// Admin
 		'Admin/Settings_Menu',
@@ -83,6 +84,7 @@ class Require_Files {
 
 		// Widget Control
 		'Widget_Control/Widget_Control',
+		'Widget_Control/Checkbox_Control',
 		'Widget_Control/Number_Control',
 		'Widget_Control/Select_Control',
 	);

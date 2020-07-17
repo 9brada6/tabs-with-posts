@@ -32,6 +32,7 @@
         <!-- <MissingPropertyType errorLevel="suppress" /> -->
         <!-- <MissingReturnType errorLevel="suppress" /> -->
         <RedundantConditionGivenDocblockType errorLevel="suppress" />
+        <MoreSpecificImplementedParamType errorLevel="suppress" />
 
     </issueHandlers>
 </psalm>

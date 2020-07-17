@@ -302,4 +302,23 @@ function twrp_enqueue_scripts_debug() {
 add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 
+// phpcs:disable
+/**
+ * @param int $intParam
+ */
+function takesInt( $intParam ) {
+	return;
+}
+
+/**
+ * @param int|null $intOrNull
+ */
+function testPhan( $intOrNull ) {
+	if ( ! is_numeric( $intOrNull ) || ! takesInt( $intOrNull ) ) {
+		return 0;
+	}
+
+	return 1;
+}
+
 #endregion -- Testing

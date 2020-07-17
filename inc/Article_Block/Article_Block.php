@@ -59,7 +59,7 @@ interface Article_Block {
 	 *
 	 * @return void
 	 */
-	public function include_template();
+	public function include_template( $settings );
 
 	/**
 	 * Display the article block settings in the Widgets::form().
@@ -74,4 +74,6 @@ interface Article_Block {
 	 * @return array The new array of settings.
 	 */
 	public function sanitize_widget_settings();
+
+	public function sanitize_internal_settings();
 }

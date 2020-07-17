@@ -178,6 +178,31 @@ trait Widget_Utilities {
 	}
 
 	/**
+	 * Determine whether or not a TWRP widget with the specific number exist.
+	 *
+	 * @param mixed $widget_id
+	 * @return bool
+	 */
+	public static function widget_id_exists( $widget_id ) {
+		// todo:
+		return true;
+	}
+
+	public static function get_query_tab_button_title( $widget_id, $query_id ) {
+		try {
+			$instance_settings = Widget::get_query_instance_settings( $widget_id, $query_id );
+		} catch ( \RuntimeException $e ) {
+			return '';
+		}
+
+		if ( ! empty( $instance_settings[ self::get_query_button_title_name() ] ) ) {
+			return $instance_settings[ self::get_query_button_title_name() ];
+		}
+
+		return '';
+	}
+
+	/**
 	 * Get the widget base ID.
 	 *
 	 * @return string
@@ -202,5 +227,14 @@ trait Widget_Utilities {
 	 */
 	protected static function get_artblock_selector_name() {
 		return Widget::ARTBLOCK_SELECTOR__NAME;
+	}
+
+	/**
+	 * Get the query button title name.
+	 *
+	 * @return string
+	 */
+	protected static function get_query_button_title_name() {
+		return Widget::QUERY_BUTTON_TITLE__NAME;
 	}
 }

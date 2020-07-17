@@ -6,6 +6,7 @@
 namespace TWRP\TWRP_Widget;
 
 use TWRP\Article_Blocks_Manager;
+use TWRP\Create_Tabs;
 use TWRP\Get_Posts;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
@@ -51,15 +52,8 @@ class Widget extends \WP_Widget {
 	 */
 	public function widget( $args, $instance_settings ) {
 		echo $args['before_widget']; // phpcs:ignore
-
-		echo '<div class="twrp-widget__content">';
-
-			echo '<div class="twrp-widget__tabs-container">';
-				// Todo: change this shit.
-				// $this->display_query( 1, true );
-			echo '</div>';
-		echo '</div>';
-
+			$tabs_creator = new Create_Tabs( (int) $this->number );
+			$tabs_creator->display_tabs();
 		echo $args['after_widget']; // phpcs:ignore
 	}
 

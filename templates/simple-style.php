@@ -42,15 +42,15 @@ if ( $settings['show_date_difference'] ) {
 		</h3>
 
 		<?php if ( $settings['display_author'] ) : ?>
-		<span class="twrp-ss__author">
-			<?php the_author(); ?>
-		</span>
+			<span class="twrp-ss__author">
+				<?php the_author(); ?>
+			</span>
 		<?php endif; ?>
 
 		<?php if ( $settings['display_date'] ) : ?>
-		<span class="twrp-ss__date">
-			<?= $date_text; // phpcs:ignore -- Safe XSS ?>
-		</span>
+			<span class="twrp-ss__date">
+				<?= $date_text; // phpcs:ignore -- Safe XSS ?>
+			</span>
 		<?php endif; ?>
 	</a>
 </div>

@@ -30,7 +30,7 @@ class Select_Control implements Widget_Control {
 
 		$selected_value = isset( $selected_value ) && is_string( $selected_value ) ? $selected_value : $args['default'];
 		?>
-		<p class="twrp-widget-form__paragraph twrp-widget-form__paragraph-select-control">
+		<div class="twrp-widget-form__paragraph twrp-widget-form__paragraph-select-control">
 			<?php if ( $args['before'] ) : ?>
 				<span class="twrp-widget-form__select-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
@@ -54,7 +54,7 @@ class Select_Control implements Widget_Control {
 					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
-		</p>
+		</div>
 		<?php
 	}
 

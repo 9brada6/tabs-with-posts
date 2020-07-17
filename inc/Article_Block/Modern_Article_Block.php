@@ -44,7 +44,7 @@ class Modern_Article_Block implements Article_Block {
 	 *
 	 * @return void
 	 */
-	public function include_template() {
+	public function include_template( $settings ) {
 		include \TWRP_Main::get_plugin_directory() . 'templates/modern-style.php';
 	}
 
@@ -68,5 +68,9 @@ class Modern_Article_Block implements Article_Block {
 	 */
 	public function sanitize_widget_settings() {
 		return $this->settings;
+	}
+
+	public function sanitize_internal_settings() {
+		// todo.
 	}
 }
