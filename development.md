@@ -46,6 +46,7 @@
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
 - Use Webpack and not Rollup.
+- When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 
 ### After first release
 

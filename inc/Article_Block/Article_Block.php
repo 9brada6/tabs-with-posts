@@ -74,6 +74,4 @@ interface Article_Block {
 	 * @return array The new array of settings.
 	 */
 	public function sanitize_widget_settings();
-
-	public function sanitize_internal_settings();
 }

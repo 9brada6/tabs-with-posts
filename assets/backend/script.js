@@ -1567,6 +1567,13 @@ var TWRP_Plugin = (function ($) {
 	    return true;
 	}
 
+	$(document).ready(createWidgetTabs);
+	function createWidgetTabs() {
+	    $('.twrp-widget-components').tabs({
+	        active: 1,
+	    });
+	}
+
 	var script = {};
 
 	return script;

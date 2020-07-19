@@ -10,6 +10,8 @@ import './common-blocks/twrp-date-settings/twrp-date-settings.ts';
 import './common-blocks/twrp-posts-settings/twrp-posts-settings.ts';
 import './common-blocks/twrp-order-setting/twrp-order-setting.ts';
 
-import './common-blocks/twrp-widget-form/twrp-widget-form.ts';
+// Widget Blocks
+import './widget-blocks/twrp-widget-form.ts';
+import './widget-blocks/twrp-widget-components.ts';
 
 export default {};

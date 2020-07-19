@@ -17,8 +17,11 @@
 
 //
 @import 'common-blocks/twrp-setting-note/twrp-setting-note';
-@import 'common-blocks/twrp-widget-form/twrp-widget-form';
 @import 'framework-blocks/twrp-hidden/twrp-hidden';
+
+// Widget blocks
+@import 'widget-blocks/twrp-widget-form';
+@import 'widget-blocks/twrp-widget-components';
 
 .twrp-admin-settings-separator {
 	width: 100%;

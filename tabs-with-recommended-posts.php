@@ -157,11 +157,13 @@ function twrp_enqueue_admin() {
 	wp_enqueue_style( 'twrp-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
 	wp_enqueue_style( 'twrp-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/material-darker.css' ), array(), '1.0.0', 'all' );
 
-	wp_enqueue_script( 'jquery-ui-accordion' );
-	wp_enqueue_script( 'jquery-ui-sortable' );
-	wp_enqueue_script( 'jquery-ui-datepicker' );
-	wp_enqueue_script( 'jquery-ui-autocomplete' );
-	wp_enqueue_script( 'jquery-effects-blind' );
+	wp_enqueue_script( 'twrp-jquery-ui', plugins_url( 'tabs-with-recommended-posts/assets/backend/jquery-ui.min.js' ), array(), '1.0.0', true );
+	// wp_enqueue_script( 'jquery-ui-tabs' );
+	// wp_enqueue_script( 'jquery-ui-accordion' );
+	// wp_enqueue_script( 'jquery-ui-sortable' );
+	// wp_enqueue_script( 'jquery-ui-datepicker' );
+	// wp_enqueue_script( 'jquery-ui-autocomplete' );
+	// wp_enqueue_script( 'jquery-effects-blind' );
 
 	wp_enqueue_script( 'twrp-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/codemirror.js' ), array(), '1.0.0', true );
 	wp_enqueue_script( 'twrp-codemirror-xml', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/xml.js' ), array(), '1.0.0', true );
@@ -303,22 +305,24 @@ add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 
 // phpcs:disable
+
+
 /**
- * @param int $intParam
+ * @param array $settings
  */
-function takesInt( $intParam ) {
-	return;
+function test_phan($settings) {
+	$var = is_string($settings['option']) ? $settings['option'] : null;
+	takesString($var);
+
+	$var = is_string($settings['option2']) ? $settings['option2'] : null;
+	takesString($var);
 }
 
 /**
- * @param int|null $intOrNull
+ * @param string|null $ok
  */
-function testPhan( $intOrNull ) {
-	if ( ! is_numeric( $intOrNull ) || ! takesInt( $intOrNull ) ) {
-		return 0;
-	}
+function takesString( $ok ) {
 
-	return 1;
 }
 
 #endregion -- Testing

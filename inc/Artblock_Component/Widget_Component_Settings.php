@@ -150,16 +150,18 @@ class Widget_Component_Settings {
 	public static function display_components( $components ) {
 		?>
 		<div class="twrp-widget-components">
-			<div class="twrp-widget-components__buttons">
+			<ul class="twrp-widget-components__tab-buttons">
 				<?php foreach ( $components as $component ) : ?>
-					<div class="twrp-widget-components__btn">
+					<li class="twrp-widget-components__btn-wrapper">
+						<a class="twrp-widget-components__btn" href="<?= esc_attr( '#' . $component->get_html_id_attr() ); ?>">
 						<?= esc_html( $component->get_component_title() ); ?>
-					</div>
+						</a>
+					</li>
 				<?php endforeach; ?>
-			</div>
+			</ul>
 			<div class="twrp-widget-components__components">
 				<?php foreach ( $components as $component ) : ?>
-					<div class="twrp-widget-components__component-wrapper">
+					<div id="<?= esc_attr( $component->get_html_id_attr() ); ?>" class="twrp-widget-components__component-wrapper">
 						<?php $component->display_component_settings(); ?>
 					</div>
 				<?php endforeach; ?>
@@ -167,5 +169,11 @@ class Widget_Component_Settings {
 		</div>
 		<?php
 	}
+
+	public function get_html_id_attr() {
+		return 'twrp-widget-components__' . $this->widget_id . '-' . $this->query_id . '-' . $this->name;
+	}
+
+
 
 }

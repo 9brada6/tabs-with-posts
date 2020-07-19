@@ -31,13 +31,14 @@ class Checkbox_Control implements Widget_Control {
 
 		$current_value = isset( $current_value ) && is_string( $current_value ) ? $current_value : $args['default'];
 		?>
-		<div>
+		<div class="twrp-widget-form__paragraph twrp-widget-form__paragraph-checkbox-control">
 			<?php if ( $args['before'] ) : ?>
 				<span class="twrp-widget-form__checkbox-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 
+			<input type='hidden' value='' name="<?= esc_attr( $name ); ?>">
 			<input
 				id="<?= esc_attr( $id ); ?>"
 				type="checkbox"

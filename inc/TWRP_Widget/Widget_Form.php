@@ -135,8 +135,16 @@ class Widget_Form {
 			</h4>
 
 			<div class="twrp-widget-form__selected-query-settings">
+
+				<h5 class="twrp-widget-form__query-description-title">
+					<?= _x( 'Tab Settings:', 'backend', 'twrp' ); ?>
+				</h5>
 				<?php self::display_query_button_text_setting( $widget_id, $query_id ); ?>
 				<?php self::display_query_select_artblock( $widget_id, $query_id ); ?>
+
+				<h5 class="twrp-widget-form__query-description-title">
+					<?= _x( 'Style Settings:', 'backend', 'twrp' ); ?>
+				</h5>
 				<?php self::display_query_wrapper_for_artblock( $widget_id, $query_id ); ?>
 			</div>
 		</li>
@@ -251,7 +259,7 @@ class Widget_Form {
 			}
 		}
 
-		$artblock->sanitize_internal_settings();
+		$artblock->sanitize_widget_settings();
 
 		?>
 		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >

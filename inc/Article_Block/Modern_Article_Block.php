@@ -69,8 +69,4 @@ class Modern_Article_Block implements Article_Block {
 	public function sanitize_widget_settings() {
 		return $this->settings;
 	}
-
-	public function sanitize_internal_settings() {
-		// todo.
-	}
 }
