@@ -214,6 +214,11 @@ function twrp_enqueue_artblock_styles() {
 
 // add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
+function twrp_enqueue_scripts() {
+	wp_enqueue_style( 'twrp-frontend', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
+}
+add_action( 'wp_enqueue_scripts', 'twrp_enqueue_scripts' );
+
 
 
 #region -- Testing
@@ -305,24 +310,5 @@ add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 
 // phpcs:disable
-
-
-/**
- * @param array $settings
- */
-function test_phan($settings) {
-	$var = is_string($settings['option']) ? $settings['option'] : null;
-	takesString($var);
-
-	$var = is_string($settings['option2']) ? $settings['option2'] : null;
-	takesString($var);
-}
-
-/**
- * @param string|null $ok
- */
-function takesString( $ok ) {
-
-}
 
 #endregion -- Testing

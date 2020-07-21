@@ -26,13 +26,15 @@ class Widget_Component_Settings {
 
 	protected $component_title;
 
+	protected $css_selector;
+
 	protected $widget_id;
 
 	protected $query_id;
 
 	protected $settings;
 
-	protected $setting_types;
+	protected $css_settings;
 
 	/**
 	 * Variable that holds the component settings classes needed.
@@ -41,13 +43,13 @@ class Widget_Component_Settings {
 	 */
 	protected $setting_classes = null;
 
-	public function __construct( $widget_id, $query_id, $name, $component_title, $settings, $setting_types ) {
+	public function __construct( $widget_id, $query_id, $name, $component_title, $settings, $css_settings ) {
 		$this->name            = $name;
 		$this->component_title = $component_title;
 		$this->widget_id       = $widget_id;
 		$this->query_id        = $query_id;
 		$this->settings        = $settings;
-		$this->setting_types   = $setting_types;
+		$this->css_settings    = $css_settings;
 	}
 
 	/**
@@ -60,7 +62,7 @@ class Widget_Component_Settings {
 			return $this->setting_classes;
 		}
 
-		$setting_classes = self::get_component_classes( $this->setting_types );
+		$setting_classes = self::get_component_classes( $this->css_settings );
 
 		$this->setting_classes = $setting_classes;
 		return $setting_classes;
@@ -170,10 +172,44 @@ class Widget_Component_Settings {
 		<?php
 	}
 
+	/**
+	 * Create and return the id for an input of the component.
+	 *
+	 * @return string
+	 */
 	public function get_html_id_attr() {
 		return 'twrp-widget-components__' . $this->widget_id . '-' . $this->query_id . '-' . $this->name;
 	}
 
+	/**
+	 * Create the CSS of the component and return it.
+	 *
+	 * @return string
+	 */
+	public function get_css() {
+		$css = '';
 
+		foreach ( $this->css_settings as $selector => $css_component ) {
+			if ( ! is_array( $css_component ) ) {
+				continue;
+			}
+
+			$components = $this->get_component_classes( $css_component );
+
+			$component_css = '';
+			foreach ( $components as $component ) {
+				if ( isset( $this->settings[ $component::get_key_name() ] ) ) {
+					$value          = $this->settings[ $component::get_key_name() ];
+					$component_css .= $component->get_css( $value );
+				}
+			}
+
+			if ( ! empty( $component_css ) ) {
+				$css .= $selector . '{' . $component_css . '}';
+			}
+		}
+
+		return $css;
+	}
 
 }

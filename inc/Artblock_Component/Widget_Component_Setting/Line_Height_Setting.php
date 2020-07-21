@@ -58,4 +58,18 @@ class Line_Height_Setting implements Component_Setting {
 			'step'    => '0.05',
 		);
 	}
+
+	/**
+	 * Create the CSS for a given value.
+	 *
+	 * @param string|int|float $value
+	 * @return string The CSS.
+	 */
+	public static function get_css( $value ) {
+		if ( is_numeric( $value ) ) {
+			return "line-height:${value};";
+		}
+
+		return '';
+	}
 }

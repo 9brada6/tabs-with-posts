@@ -69,4 +69,24 @@ class Modern_Article_Block implements Article_Block {
 	public function sanitize_widget_settings() {
 		return $this->settings;
 	}
+
+	protected function get_components() {
+		return '';
+	}
+
+	/**
+	 * Create and return the css of the component.
+	 *
+	 * @return string
+	 */
+	public function get_css() {
+		$components = $this->get_components();
+
+		$css = '';
+		foreach ( $components as $component ) {
+			$css .= $component->get_css();
+		}
+
+		return $css;
+	}
 }

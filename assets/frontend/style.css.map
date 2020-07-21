@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":["../src-frontend/common-blocks/twrp-articles/_twrp-articles.scss"],"names":[],"mappings":"AAAA,eACC","file":"style.css"}
+{"version":3,"sourceRoot":"","sources":["../src-frontend/common-blocks/twrp-articles/_twrp-articles.scss","../src-frontend/style.scss"],"names":[],"mappings":"AAAA,eACC,eCEA,yBACC,kBACA,MACA,OACA,WACA,YACA,WAIF,SACC,kBAIA,uBACC","file":"style.css"}

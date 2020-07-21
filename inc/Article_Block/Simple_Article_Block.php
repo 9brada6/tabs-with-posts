@@ -95,7 +95,11 @@ class Simple_Article_Block implements Article_Block {
 	 * @return void
 	 */
 	public function include_template( $settings ) {
-		include \TWRP_Main::get_templates_directory() . 'simple-style.php';
+		?>
+		<div class="<?= esc_attr( $this->get_block_class_wrapper() ); ?>">
+			<?php include \TWRP_Main::get_templates_directory() . 'simple-style.php'; ?>
+		</div>
+		<?php
 	}
 
 	/**
@@ -108,41 +112,39 @@ class Simple_Article_Block implements Article_Block {
 
 		// Title Component
 		$title_component_settings = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
-		$title_component_title    = _x( 'Title', 'backend', 'twrp' );
 		$title_component          = new Widget_Component_Settings(
 			$this->widget_id,
 			$this->query_id,
 			'title',
-			$title_component_title,
+			_x( 'Title', 'backend', 'twrp' ),
 			$title_component_settings,
-			Widget_Component_Settings::TEXT_SETTINGS
+			array( '.twrp-ss__title' => Widget_Component_Settings::TEXT_SETTINGS )
 		);
 		$components ['title']     = $title_component;
 
 		// Date Component
-		$title_component_settings = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
-		$title_component          = new Widget_Component_Settings(
+		$date_component_settings = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
+		$date_component          = new Widget_Component_Settings(
 			$this->widget_id,
 			$this->query_id,
 			'date',
 			_x( 'Date', 'backend', 'twrp' ),
-			$title_component_settings,
-			Widget_Component_Settings::TEXT_SETTINGS
+			$date_component_settings,
+			array( '.twrp-ss__date' => Widget_Component_Settings::TEXT_SETTINGS )
 		);
-		$components ['date']      = $title_component;
+		$components ['date']     = $date_component;
 
 		// Author Component
-		$title_component_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
-		$title_component_title    = _x( 'Author', 'backend', 'twrp' );
-		$title_component          = new Widget_Component_Settings(
+		$author_component_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
+		$author_component          = new Widget_Component_Settings(
 			$this->widget_id,
 			$this->query_id,
 			'author',
-			$title_component_title,
-			$title_component_settings,
-			Widget_Component_Settings::TEXT_SETTINGS
+			_x( 'Author', 'backend', 'twrp' ),
+			$author_component_settings,
+			array( '.twrp-ss__author' => Widget_Component_Settings::TEXT_SETTINGS )
 		);
-		$components ['author']    = $title_component;
+		$components ['author']     = $author_component;
 
 		return $components;
 	}
@@ -238,6 +240,26 @@ class Simple_Article_Block implements Article_Block {
 			'value'   => '1',
 			'before'  => _x( 'Date in relative format(Ex: 3 days ago)', 'backend', 'twrp' ),
 		);
+	}
+
+	protected function get_block_class_wrapper() {
+		return 'twrp-block__' . $this->widget_id . '-' . $this->query_id;
+	}
+
+	/**
+	 * Create and return the css of the component.
+	 *
+	 * @return string
+	 */
+	public function get_css() {
+		$components = $this->get_components();
+
+		$css = '';
+		foreach ( $components as $component ) {
+			$css .= $component->get_css();
+		}
+
+		return $css;
 	}
 
 	#endregion -- Settings defaults

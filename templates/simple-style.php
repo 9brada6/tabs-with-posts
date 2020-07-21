@@ -15,7 +15,7 @@ if ( empty( $title ) ) {
 
 
 
-if ( $settings['show_date_difference'] ) {
+if ( isset( $settings['show_date_difference'] ) && $settings['show_date_difference'] ) {
 	$from = get_post_timestamp();
 	$to   = date_timestamp_get( current_datetime() );
 
@@ -25,7 +25,7 @@ if ( $settings['show_date_difference'] ) {
 		$date_text = sprintf( '%s ago', human_time_diff( $from, $to ) );
 	}
 } else {
-	if ( empty( trim( $settings['date_format'] ) ) ) {
+	if ( empty( $settings['date_format'] ) ) {
 		$settings['date_format'] = get_option( 'date_format' );
 	}
 	$date_text = get_the_time( $settings['date_format'] );
@@ -36,10 +36,11 @@ if ( $settings['show_date_difference'] ) {
 ?>
 
 <div class="twrp-ss">
-	<a class="twrp-ss__link" href="<?php the_permalink(); ?>">
+	<a class="twrp-ss__link twrp-link-expand" href="<?php the_permalink(); ?>">
 		<h3 class="twrp-ss__title">
 			<?php the_title(); ?>
 		</h3>
+	</a>
 
 		<?php if ( $settings['display_author'] ) : ?>
 			<span class="twrp-ss__author">
@@ -52,5 +53,5 @@ if ( $settings['show_date_difference'] ) {
 				<?= $date_text; // phpcs:ignore -- Safe XSS ?>
 			</span>
 		<?php endif; ?>
-	</a>
+
 </div>

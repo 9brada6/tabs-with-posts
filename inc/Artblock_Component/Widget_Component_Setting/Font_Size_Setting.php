@@ -61,4 +61,18 @@ class Font_Size_Setting implements Component_Setting {
 			'step'    => '0.025',
 		);
 	}
+
+	/**
+	 * Create the CSS for a given value.
+	 *
+	 * @param string|int|float $value
+	 * @return string The CSS.
+	 */
+	public static function get_css( $value ) {
+		if ( is_numeric( $value ) ) {
+			return "font-size:${value}rem;";
+		}
+
+		return '';
+	}
 }

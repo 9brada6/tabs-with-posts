@@ -37,4 +37,12 @@ interface Component_Setting {
 	 */
 	public static function sanitize_setting( $value );
 
+	/**
+	 * Create the CSS for a given value.
+	 *
+	 * @param string|int|float $value
+	 * @return string The CSS.
+	 */
+	public static function get_css( $value );
+
 }

@@ -71,4 +71,24 @@ class Font_Weight_Setting implements Component_Setting {
 			),
 		);
 	}
+
+	/**
+	 * Create the CSS for a given value.
+	 *
+	 * @param string|int|float $font_weight
+	 * @return string The CSS.
+	 */
+	public static function get_css( $font_weight ) {
+		$possible_values = self::get_control_setting_args();
+
+		if ( empty( $font_weight ) ) {
+			return '';
+		}
+
+		if ( ! in_array( $font_weight, $possible_values, true ) ) {
+			return '';
+		}
+
+		return "font-weight:${font_weight}rem;";
+	}
 }
