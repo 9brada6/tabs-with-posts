@@ -89,6 +89,6 @@ class Font_Weight_Setting implements Component_Setting {
 			return '';
 		}
 
-		return "font-weight:${font_weight}rem;";
+		return "font-weight:${font_weight} !important;";
 	}
 }

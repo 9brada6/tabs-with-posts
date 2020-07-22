@@ -13,5 +13,6 @@ import './common-blocks/twrp-order-setting/twrp-order-setting.ts';
 // Widget Blocks
 import './widget-blocks/twrp-widget-form.ts';
 import './widget-blocks/twrp-widget-components.ts';
+import './widget-blocks/twrp-color-picker.ts';
 
 export default {};

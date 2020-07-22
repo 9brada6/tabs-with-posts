@@ -5,12 +5,12 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Widget_Control\Number_Control;
+use TWRP\Widget_Control\Color_Control;
 
 /**
  * Font size component setting.
  */
-class Font_Size_Setting implements Component_Setting {
+class Hover_Color_Setting implements Component_Setting {
 
 	/**
 	 * The name of the setting. Will be used as an array key for storage.
@@ -18,7 +18,7 @@ class Font_Size_Setting implements Component_Setting {
 	 * @return string
 	 */
 	public static function get_key_name() {
-		return 'font_size';
+		return 'hover_color';
 	}
 
 	/**
@@ -33,7 +33,7 @@ class Font_Size_Setting implements Component_Setting {
 		$id   = $prefix_id . '-' . self::get_key_name();
 		$name = $prefix_name . '[' . self::get_key_name() . ']';
 
-		Number_Control::display_setting( $id, $name, $value, self::get_control_setting_args() );
+		Color_Control::display_setting( $id, $name, $value, self::get_control_setting_args() );
 	}
 
 	/**
@@ -43,7 +43,7 @@ class Font_Size_Setting implements Component_Setting {
 	 * @return int|float|''
 	 */
 	public static function sanitize_setting( $value ) {
-		return Number_Control::sanitize_setting( $value, self::get_control_setting_args() );
+		return Color_Control::sanitize_setting( $value, self::get_control_setting_args() );
 	}
 
 	/**
@@ -69,10 +69,7 @@ class Font_Size_Setting implements Component_Setting {
 	 * @return string The CSS.
 	 */
 	public static function get_css( $value ) {
-		if ( is_numeric( $value ) ) {
-			return "font-size:${value}rem !important;";
-		}
-
-		return '';
+		return "color:${value} !important;";
+		// return '';
 	}
 }

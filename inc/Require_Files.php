@@ -34,6 +34,8 @@ class Require_Files {
 		'Artblock_Component/Widget_Component_Setting/Font_Size_Setting',
 		'Artblock_Component/Widget_Component_Setting/Line_Height_Setting',
 		'Artblock_Component/Widget_Component_Setting/Font_Weight_Setting',
+		'Artblock_Component/Widget_Component_Setting/Color_Setting',
+		'Artblock_Component/Widget_Component_Setting/Hover_Color_Setting',
 
 		// Article Blocks
 		'Article_Block/Article_Block',
@@ -87,6 +89,7 @@ class Require_Files {
 		'Widget_Control/Checkbox_Control',
 		'Widget_Control/Number_Control',
 		'Widget_Control/Select_Control',
+		'Widget_Control/Color_Control',
 	);
 
 	/**

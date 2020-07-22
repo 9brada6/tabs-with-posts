@@ -15,12 +15,16 @@ class Widget_Component_Settings {
 	const FONT_SIZE_SETTING   = 'Font_Size_Setting';
 	const LINE_HEIGHT_SETTING = 'Line_Height_Setting';
 	const FONT_WEIGHT_SETTING = 'Font_Weight_Setting';
+	const COLOR_SETTING       = 'Color_Setting';
 
 	const TEXT_SETTINGS = array(
 		self::FONT_SIZE_SETTING,
 		self::LINE_HEIGHT_SETTING,
 		self::FONT_WEIGHT_SETTING,
+		self::COLOR_SETTING,
 	);
+
+	const HOVER_COLOR_SETTING = 'Hover_Color_Setting';
 
 	protected $name;
 

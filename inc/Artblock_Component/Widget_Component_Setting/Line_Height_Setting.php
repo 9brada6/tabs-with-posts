@@ -67,7 +67,7 @@ class Line_Height_Setting implements Component_Setting {
 	 */
 	public static function get_css( $value ) {
 		if ( is_numeric( $value ) ) {
-			return "line-height:${value};";
+			return "line-height:${value} !important;";
 		}
 
 		return '';

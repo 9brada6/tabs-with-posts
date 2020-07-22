@@ -118,7 +118,10 @@ class Simple_Article_Block implements Article_Block {
 			'title',
 			_x( 'Title', 'backend', 'twrp' ),
 			$title_component_settings,
-			array( '.twrp-ss__title' => Widget_Component_Settings::TEXT_SETTINGS )
+			array(
+				'.twrp-ss__title'                      => Widget_Component_Settings::TEXT_SETTINGS,
+				'.twrp-ss__link:hover .twrp-ss__title' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+			)
 		);
 		$components ['title']     = $title_component;
 
@@ -130,7 +133,10 @@ class Simple_Article_Block implements Article_Block {
 			'date',
 			_x( 'Date', 'backend', 'twrp' ),
 			$date_component_settings,
-			array( '.twrp-ss__date' => Widget_Component_Settings::TEXT_SETTINGS )
+			array(
+				'.twrp-ss__date'                        => Widget_Component_Settings::TEXT_SETTINGS,
+				'.twrp-ss__link:hover + .twrp-ss__date' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+			)
 		);
 		$components ['date']     = $date_component;
 
@@ -142,7 +148,10 @@ class Simple_Article_Block implements Article_Block {
 			'author',
 			_x( 'Author', 'backend', 'twrp' ),
 			$author_component_settings,
-			array( '.twrp-ss__author' => Widget_Component_Settings::TEXT_SETTINGS )
+			array(
+				'.twrp-ss__author'                        => Widget_Component_Settings::TEXT_SETTINGS,
+				'.twrp-ss__link:hover + .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+			)
 		);
 		$components ['author']     = $author_component;
 
