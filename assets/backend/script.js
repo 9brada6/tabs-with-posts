@@ -1570,7 +1570,7 @@ var TWRP_Plugin = (function ($) {
 	$(document).ready(createWidgetTabs);
 	function createWidgetTabs() {
 	    $('.twrp-widget-components').tabs({
-	        active: 1,
+	        active: 0,
 	    });
 	}
 
@@ -1580,10 +1580,15 @@ var TWRP_Plugin = (function ($) {
 	    colorPickers.each(function () {
 	        var element = this;
 	        var input = $(element).parent().find('input');
+	        var inputVal = input.val();
+	        if (!inputVal) {
+	            inputVal = null;
+	        }
 	        var pickr = Pickr.create({
 	            el: element,
 	            theme: 'classic',
 	            container: 'body',
+	            "default": inputVal,
 	            appClass: 'twrp-pickr',
 	            swatches: [
 	                'rgba(244, 67, 54, 1)',
@@ -1616,11 +1621,29 @@ var TWRP_Plugin = (function ($) {
 	                },
 	            },
 	        }).on('save', function (color) {
-	            input.val(color.toRGBA().toString(0));
+	            if (color) {
+	                input.val(color.toRGBA().toString(0));
+	            }
+	            else {
+	                input.val('');
+	            }
+	            input.change();
 	            pickr.hide();
 	        });
 	        pickr.setColorRepresentation('RGBA');
 	    });
+	}
+
+	$(document).on('change', '[name*="author_icon"]', changeIconPreview);
+	function changeIconPreview() {
+	    var select = $(this);
+	    if (select.parent().find('.twrp-widget-icon-preview').length === 0) {
+	        select.parent().append('<div class="twrp-widget-icon-preview"></div>');
+	    }
+	    var previewWrapper = select.parent().find('.twrp-widget-icon-preview');
+	    var svgId = select.val();
+	    previewWrapper.html('');
+	    previewWrapper.append('<svg><use xlink:href="#' + svgId + '" /></svg>');
 	}
 
 	var script = {};

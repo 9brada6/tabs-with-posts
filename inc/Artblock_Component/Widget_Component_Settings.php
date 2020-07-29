@@ -26,6 +26,8 @@ class Widget_Component_Settings {
 
 	const HOVER_COLOR_SETTING = 'Hover_Color_Setting';
 
+	const AUTHOR_ICON_SETTING = 'Author_Icon_Setting';
+
 	protected $name;
 
 	protected $component_title;

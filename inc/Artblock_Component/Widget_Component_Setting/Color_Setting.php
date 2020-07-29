@@ -54,22 +54,21 @@ class Color_Setting implements Component_Setting {
 	protected static function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Font size:', 'backend; CSS unit', 'twrp' ),
-			'after'   => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
-			'max'     => '3',
-			'min'     => '0.7',
-			'step'    => '0.025',
+			'before'  => _x( 'Font color:', 'backend; CSS unit', 'twrp' ),
 		);
 	}
 
 	/**
 	 * Create the CSS for a given value.
 	 *
-	 * @param string|int|float $value
+	 * @param string $value
 	 * @return string The CSS.
 	 */
 	public static function get_css( $value ) {
-		return "color:${value} !important;";
-		// return '';
+		if ( ! empty( $value ) ) {
+			return "color:${value} !important;fill:${value} !important";
+		}
+
+		return '';
 	}
 }

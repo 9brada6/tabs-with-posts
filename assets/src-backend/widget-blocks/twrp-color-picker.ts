@@ -10,11 +10,17 @@ function createPicker() {
 	colorPickers.each( function() {
 		const element: any = this;
 		const input = $( element ).parent().find( 'input' );
+		let inputVal = input.val();
+
+		if ( ! inputVal ) {
+			inputVal = null;
+		}
 
 		const pickr = Pickr.create( {
 			el: element,
 			theme: 'classic',
 			container: 'body',
+			default: inputVal,
 			appClass: 'twrp-pickr',
 
 			swatches: [
@@ -50,7 +56,13 @@ function createPicker() {
 				},
 			},
 		} ).on( 'save', function( color: any ) {
-			input.val( color.toRGBA().toString( 0 ) );
+			if ( color ) {
+				input.val( color.toRGBA().toString( 0 ) );
+			} else {
+				input.val( '' );
+			}
+
+			input.change();
 			pickr.hide();
 		} );
 

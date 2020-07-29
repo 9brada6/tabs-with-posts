@@ -22,6 +22,7 @@ use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
 use TWRP\Get_Posts;
+use TWRP\SVG_Manager;
 
 
 /**
@@ -46,6 +47,9 @@ function twrp_initialize() {
 	Query_Settings_Manager::init();
 	Widget_Ajax::init();
 	Post_Views::init();
+
+	// Doesn't matter order of init:
+	SVG_Manager::init();
 }
 add_action( 'after_setup_theme', 'twrp_initialize' );
 

@@ -14,5 +14,6 @@ import './common-blocks/twrp-order-setting/twrp-order-setting.ts';
 import './widget-blocks/twrp-widget-form.ts';
 import './widget-blocks/twrp-widget-components.ts';
 import './widget-blocks/twrp-color-picker.ts';
+import './widget-blocks/twrp-icon-select-preview.ts';
 
 export default {};

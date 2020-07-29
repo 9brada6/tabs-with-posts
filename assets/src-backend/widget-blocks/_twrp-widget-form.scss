@@ -46,4 +46,16 @@
 		margin: 0.5rem 0;
 		font-size: 0.9rem;
 	}
+
+	// Controls:
+	&__paragraph-color-control {
+		> * {
+			vertical-align: middle;
+		}
+
+		.pickr {
+			display: inline-block;
+			margin: 0 0.2rem;
+		}
+	}
 }

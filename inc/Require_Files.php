@@ -18,6 +18,7 @@ class Require_Files {
 		'Query_Settings_Manager',
 		'Article_Blocks_Manager',
 		'Get_Posts',
+		'SVG_Manager',
 		'Create_Tabs',
 
 		// Admin
@@ -36,6 +37,8 @@ class Require_Files {
 		'Artblock_Component/Widget_Component_Setting/Font_Weight_Setting',
 		'Artblock_Component/Widget_Component_Setting/Color_Setting',
 		'Artblock_Component/Widget_Component_Setting/Hover_Color_Setting',
+		'Artblock_Component/Widget_Component_Setting/Author_Icon_Setting',
+		'Artblock_Component/Widget_Component_Setting/Category_Icon_Setting',
 
 		// Article Blocks
 		'Article_Block/Article_Block',

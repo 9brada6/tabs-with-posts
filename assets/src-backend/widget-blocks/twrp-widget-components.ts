@@ -4,6 +4,6 @@ import 'jqueryui';
 $( document ).ready( createWidgetTabs );
 function createWidgetTabs() {
 	$( '.twrp-widget-components' ).tabs( {
-		active: 1,
+		active: 0,
 	} );
 }

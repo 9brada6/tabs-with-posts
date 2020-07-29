@@ -44,6 +44,11 @@ if ( isset( $settings['show_date_difference'] ) && $settings['show_date_differen
 
 	<?php if ( $settings['display_author'] ) : ?>
 		<span class="twrp-ss__author">
+			<?php if ( ! empty( $settings['author']['author_icon'] ) ) : ?>
+				<span class="twrp-widget-icon twrp-ss__author-icon">
+					<svg><use xlink:href="#<?= esc_attr( $settings['author']['author_icon'] ); ?>" /></svg>
+				</span>
+			<?php endif; ?>
 			<?php the_author(); ?>
 		</span>
 	<?php endif; ?>

@@ -40,6 +40,9 @@
 ### Widget
 
 - Add regions is typescript files
+- Add margin between before/after text and control.
+- Add label and for attribute for checkbox control.
+- Test a SVG color icon to see if the "fill" property will change it.
 
 ### General
 

@@ -11,12 +11,33 @@
 	}
 }
 
+// Simple Style
+
+[class^="twrp-ss"] {
+	transition: all 250ms ease;
+}
+
 .twrp-ss {
 	position: relative;
 }
 
+.twrp-widget-icon {
+	display: inline-block;
+	width: 1em;
+	height: calc(1em - 1px);
+	margin-right: 0.1em;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
 .twrp-ss__author {
-	&:hover {
-		color: red;
+	&::before {
+		display: inline-block;
+		width: 1em;
+		height: 1em;
+		vertical-align: -1px;
 	}
 }

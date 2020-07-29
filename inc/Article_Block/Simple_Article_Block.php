@@ -151,6 +151,7 @@ class Simple_Article_Block implements Article_Block {
 			array(
 				'.twrp-ss__author'                        => Widget_Component_Settings::TEXT_SETTINGS,
 				'.twrp-ss__link:hover + .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+				''                                        => array( Widget_Component_Settings::AUTHOR_ICON_SETTING ),
 			)
 		);
 		$components ['author']     = $author_component;

@@ -36,7 +36,7 @@ class Create_Tabs {
 			return;
 		}
 		?>
-		<style><?= esc_html( $this->get_widget_css() ); ?></style>
+		<style><?= $this->get_widget_css() ?></style>
 		<div>
 			<div>
 				<?php foreach ( $this->query_ids as $query_id ) : ?>

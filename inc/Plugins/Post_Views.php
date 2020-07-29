@@ -55,6 +55,8 @@ class Post_Views {
 	 * Always called at 'after_setup_theme' action. Other things added here should be
 	 * additionally checked, for example by admin hooks, or whether or not to be
 	 * included in special pages, ...etc.
+	 *
+	 * @return void
 	 */
 	public static function init() {
 		$classes = self::get_plugin_classes();
