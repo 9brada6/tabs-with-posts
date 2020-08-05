@@ -28,6 +28,10 @@ class Widget_Component_Settings {
 
 	const AUTHOR_ICON_SETTING = 'Author_Icon_Setting';
 
+	const DATE_ICON_SETTING = 'Date_Icon_Setting';
+
+	const CATEGORY_ICON_SETTING = 'Category_Icon_Setting';
+
 	protected $name;
 
 	protected $component_title;

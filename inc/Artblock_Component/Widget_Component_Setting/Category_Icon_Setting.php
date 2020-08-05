@@ -9,9 +9,9 @@ use TWRP\Widget_Control\Select_Control;
 use TWRP\SVG_Manager;
 
 /**
- * Each component setting should implement this interface.
+ * Setting that let administrator select what category icon they want.
  */
-class Author_Icon_Setting implements Component_Setting {
+class Category_Icon_Setting implements Component_Setting {
 
 	/**
 	 * The name of the setting. Will be used as an array key for storage.
@@ -19,7 +19,7 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return string
 	 */
 	public static function get_key_name() {
-		return 'author_icon';
+		return 'category_icon';
 	}
 
 	/**
@@ -46,6 +46,7 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return mixed
 	 */
 	public static function sanitize_setting( $value ) {
+		// todo.
 		return $value;
 	}
 
@@ -69,7 +70,7 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$options = SVG_Manager::get_all_authors_vectors();
+		$options = SVG_Manager::get_all_category_vectors();
 
 		foreach ( $options as $id => $option ) {
 			$options[ $id ] = $option['description'];

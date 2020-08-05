@@ -39,6 +39,7 @@ class Require_Files {
 		'Artblock_Component/Widget_Component_Setting/Hover_Color_Setting',
 		'Artblock_Component/Widget_Component_Setting/Author_Icon_Setting',
 		'Artblock_Component/Widget_Component_Setting/Category_Icon_Setting',
+		'Artblock_Component/Widget_Component_Setting/Date_Icon_Setting',
 
 		// Article Blocks
 		'Article_Block/Article_Block',

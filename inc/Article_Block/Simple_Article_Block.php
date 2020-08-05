@@ -60,6 +60,10 @@ class Simple_Article_Block implements Article_Block {
 		return 'Simple Style';
 	}
 
+	protected static function get_file_name() {
+		return 'simple-style.php';
+	}
+
 	/**
 	 * Called before anything else, to initialize all others plugin adapter
 	 * classes.
@@ -95,11 +99,10 @@ class Simple_Article_Block implements Article_Block {
 	 * @return void
 	 */
 	public function include_template( $settings ) {
-		?>
-		<div class="<?= esc_attr( $this->get_block_class_wrapper() ); ?>">
-			<?php include \TWRP_Main::get_templates_directory() . 'simple-style.php'; ?>
-		</div>
-		<?php
+		$widget_id = $this->widget_id;
+		$query_id  = $this->query_id;
+
+		include \TWRP_Main::get_templates_directory() . self::get_file_name();
 	}
 
 	/**
@@ -134,8 +137,9 @@ class Simple_Article_Block implements Article_Block {
 			_x( 'Date', 'backend', 'twrp' ),
 			$date_component_settings,
 			array(
-				'.twrp-ss__date'                        => Widget_Component_Settings::TEXT_SETTINGS,
-				'.twrp-ss__link:hover + .twrp-ss__date' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+				'.twrp-ss__date' => Widget_Component_Settings::TEXT_SETTINGS,
+				'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+				''               => array( Widget_Component_Settings::DATE_ICON_SETTING ),
 			)
 		);
 		$components ['date']     = $date_component;
@@ -149,9 +153,9 @@ class Simple_Article_Block implements Article_Block {
 			_x( 'Author', 'backend', 'twrp' ),
 			$author_component_settings,
 			array(
-				'.twrp-ss__author'                        => Widget_Component_Settings::TEXT_SETTINGS,
-				'.twrp-ss__link:hover + .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
-				''                                        => array( Widget_Component_Settings::AUTHOR_ICON_SETTING ),
+				'.twrp-ss__author' => Widget_Component_Settings::TEXT_SETTINGS,
+				'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+				''                 => array( Widget_Component_Settings::AUTHOR_ICON_SETTING ),
 			)
 		);
 		$components ['author']     = $author_component;
@@ -250,10 +254,6 @@ class Simple_Article_Block implements Article_Block {
 			'value'   => '1',
 			'before'  => _x( 'Date in relative format(Ex: 3 days ago)', 'backend', 'twrp' ),
 		);
-	}
-
-	protected function get_block_class_wrapper() {
-		return 'twrp-block__' . $this->widget_id . '-' . $this->query_id;
 	}
 
 	/**

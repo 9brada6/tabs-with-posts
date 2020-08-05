@@ -51,27 +51,27 @@
 		// easily toggle the visibility of
 		// those from the status bar.
 		"files.exclude": {
-			".phan": true,
-			".stubs": true,
-			".vscode": true,
-			"node_modules": true,
-			".gitignore": true,
-			"**/vendor/**": true,
-			".eslintrc.json": true,
-			"rollup.config.js": true,
-			".phpcs.xml": true,
-			".stylelintrc.json": true,
-			"composer.json": true,
-			"composer.lock": true,
-			"package.json": true,
-			"index.php": true,
-			"package-lock.json": true,
-			"TWRP.code-workspace": true,
-			"**/.git": true,
-			"**/.svn": true,
-			"**/.hg": true,
-			"**/CVS": true,
-			"**/.DS_Store": true
+			".phan": false,
+			".stubs": false,
+			".vscode": false,
+			"node_modules": false,
+			".gitignore": false,
+			"**/vendor/**": false,
+			".eslintrc.json": false,
+			"rollup.config.js": false,
+			".phpcs.xml": false,
+			".stylelintrc.json": false,
+			"composer.json": false,
+			"composer.lock": false,
+			"package.json": false,
+			"index.php": false,
+			"package-lock.json": false,
+			"TWRP.code-workspace": false,
+			"**/.git": false,
+			"**/.svn": false,
+			"**/.hg": false,
+			"**/CVS": false,
+			"**/.DS_Store": false
 		},
 
 
@@ -103,8 +103,10 @@
 		"phpSniffer.autoDetect": true,
 		"phpSniffer.run": "onType",
 
+		"phpsab.snifferMode": "onType",
+
 		"[php]": {
-			"editor.defaultFormatter": "wongjn.php-sniffer",
+			"editor.defaultFormatter": "valeryanm.vscode-phpsab",
 			"editor.formatOnSave": true,
 			"editor.formatOnPaste": false,
 		},

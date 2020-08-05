@@ -66,7 +66,7 @@ class Color_Setting implements Component_Setting {
 	 */
 	public static function get_css( $value ) {
 		if ( ! empty( $value ) ) {
-			return "color:${value} !important;fill:${value} !important";
+			return "color:${value} !important;";
 		}
 
 		return '';

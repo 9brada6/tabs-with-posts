@@ -8,11 +8,21 @@
     "words": [
         "artblocks",
         "blazk",
+        "capicon",
         "dfactory",
+        "fontawesome",
         "gamerz",
+        "iconmonstr",
+        "ionicons",
+        "jamicons",
+        "linea",
+        "octicons",
         "pickr",
         "Squiz",
+        "twotone",
+        "typicons",
         "wordpress",
+        "xlink",
         "yasr"
     ],
     // flagWords - list of words to be always considered incorrect

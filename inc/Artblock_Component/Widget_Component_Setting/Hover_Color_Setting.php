@@ -69,7 +69,7 @@ class Hover_Color_Setting implements Component_Setting {
 	 * @return string The CSS.
 	 */
 	public static function get_css( $value ) {
-		return "color:${value} !important;fill: ${value} !important";
+		return "color:${value} !important;";
 		// todo
 		// return '';
 	}

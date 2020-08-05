@@ -51,6 +51,18 @@
 - Use Webpack and not Rollup.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 
+### Icons
+
+- Add License to FontAwesome
+- Search what fill="currentColor" means
+- Change vertical-align of the icons to em.
+- See from where to use Icons: Linea?
+- Add some colored icons?
+- Remove all XML tags and all fill="none" tags.
+- Reorder Google icons, all icons first after content, and then after type.
+
+- Add another icons from these Packages: IconMonstr, Founsation
+
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).

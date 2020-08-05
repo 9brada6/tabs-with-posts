@@ -9,7 +9,7 @@ use TWRP\Widget_Control\Select_Control;
 use TWRP\SVG_Manager;
 
 /**
- * Each component setting should implement this interface.
+ * Setting that let administrator select what author icon they want.
  */
 class Author_Icon_Setting implements Component_Setting {
 
@@ -46,6 +46,7 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return mixed
 	 */
 	public static function sanitize_setting( $value ) {
+		// todo.
 		return $value;
 	}
 

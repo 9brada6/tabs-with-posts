@@ -71,7 +71,7 @@ return array(
 		// 'NonBoolInLogicalArithPlugin',
 
 		// 'HasPHPDocPlugin', // Enable this when not in development.
-		'InvalidVariableIssetPlugin', // Warns about invalid uses of isset.
+		// 'InvalidVariableIssetPlugin', // Warns about invalid uses of isset.
 		'NoAssertPlugin', // Discourages the usage of assert() in the analyzed project.
 		// 'NotFullyQualifiedUsagePlugin',
 
