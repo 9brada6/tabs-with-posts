@@ -58,6 +58,7 @@
 - Change vertical-align of the icons to em.
 - See from where to use Icons: Linea?
 - Add some colored icons?
+- Add dashicons
 - Remove all XML tags and all fill="none" tags.
 - Reorder Google icons, all icons first after content, and then after type.
 

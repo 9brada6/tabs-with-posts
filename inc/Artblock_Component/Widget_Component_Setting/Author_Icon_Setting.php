@@ -70,7 +70,7 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$options = SVG_Manager::get_all_authors_vectors();
+		$options = SVG_Manager::get_user_icons();
 
 		foreach ( $options as $id => $option ) {
 			$options[ $id ] = $option['description'];

@@ -70,10 +70,13 @@ class Date_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$options = SVG_Manager::get_all_date_vectors();
+		$options = SVG_Manager::get_date_icons();
 
 		foreach ( $options as $id => $option ) {
-			$options[ $id ] = $option['description'];
+			// todo: manage if key does not exist.
+			$description = $option['brand'] . '-' . $option['description'] . '-' . $option['type'];
+
+			$options[ $id ] = $description;
 		}
 
 		return array(
