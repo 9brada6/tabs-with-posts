@@ -43,6 +43,7 @@ class Require_Files {
 
 		// Article Blocks
 		'Article_Block/Article_Block',
+		'Article_Block/Article_Block_Abstract',
 		'Article_Block/Simple_Article_Block',
 		'Article_Block/Modern_Article_Block',
 

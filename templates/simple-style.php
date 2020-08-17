@@ -62,5 +62,20 @@ if ( isset( $settings['show_date_difference'] ) && $settings['show_date_differen
 				<?= $date_text; // phpcs:ignore -- Safe XSS ?>
 			</span>
 		<?php endif; ?>
+
+		<?php if ( $settings['display_views'] ) : ?>
+
+		<?php endif; ?>
+
+		<?php if ( $settings['display_rating'] ) : ?>
+
+		<?php endif; ?>
+
+		<?php if ( $settings['display_comments'] ) : ?>
+			<span class="twrp-ss__comments">
+
+
+			</span>
+		<?php endif; ?>
 	</div>
 </div>

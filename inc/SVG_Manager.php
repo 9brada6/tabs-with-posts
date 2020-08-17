@@ -255,7 +255,6 @@ class SVG_Manager {
 				'description' => _x( 'Person', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-user-ii-person-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M202.4,201.7"/><path d="M425.8,426.8c-20.4-7.3-49.6-9.8-68.2-13.9c-10.7-2.4-26.4-8.4-31.6-14.5c-5.2-6.3-2.1-64.5-2.1-64.5s9.6-15.2,14.8-28.4s10.9-49.6,10.9-49.6s10.7,0,14.5-18.8c4.1-20.5,10.4-29,9.6-44.3c-0.8-14.2-8.2-15-9-15c0,0,7.7-21.5,8.8-66.9C375,57,333.8,4,256.5,4S138.1,56.9,139.2,110.7c0.9,45.3,8.8,66.9,8.8,66.9c-0.8,0-8.2,0.8-9,15c-0.8,15.3,5.7,23.5,9.6,44c3.8,18.8,14.5,18.9,14.5,18.9s5.7,36.5,10.9,49.7c5.2,13.4,14.8,28.4,14.8,28.4s3.2,58.2-2.1,64.5c-5.2,6.3-20.8,12.2-31.6,14.5c-18.8,4.1-47.8,6.8-68.2,14C66.8,434,4,458.5,4,509h505C509,458.5,446.2,434,425.8,426.8z M256.5,483.8H39.8c3.2-4.7,7.4-8,12.9-12c11-8,25.4-15.5,42.8-21.5c10.7-3.8,26.4-6.3,40.1-8.4c9-1.4,17.5-2.7,25.1-4.4c5.4-1.3,32.8-7.9,45.4-23c7.1-8.5,9.2-20,8.8-51c-0.2-15.8-0.9-30.5-0.9-31.1l-0.3-6.6l-3.6-5.5c-2.4-3.6-9.2-15-12.6-24.1c-2.8-7.4-7.3-30.3-9.5-44.3c0,0,0.6,1.6-0.8-5.8c-1.4-7.4-13.3-6.8-14.8-12.6c-1.4-5.7-2.8-10.9-6.8-28.7s4.4-17.7,6.2-25.6c0.9-4.9,0-9,0-9.2c-0.5-1.6-6.5-21.1-7.4-59.5c-0.5-20.8,7.3-40.4,21.8-55.1c16.7-17,41-26,70.2-26c30,0,53.7,9,70.4,26c14.5,14.7,22.3,34.2,21.8,55.1c-0.8,38.2-6.8,57.8-7.4,59.5c0,0.2-0.9,2.7-0.6,8.2c0.3,8.5,10.7,8.7,6.8,26.5s-5.4,23-6.8,28.7c-1.4,5.7-13.4,5.2-14.8,12.6c-1.4,7.4-0.8,5.8-0.8,5.8c-2.2,14-6.6,36.9-9.5,44.3c-3.6,9.2-10.4,20.5-12.6,24.1l-3.6,5.5l-0.3,6.6c0,0.6-0.8,15.3-0.9,31.1c-0.3,30.9,1.7,42.5,8.8,51c12.6,15,40.1,21.8,45.4,23c7.6,1.7,16.1,3,25.1,4.4c13.7,2.1,29.4,4.6,40.1,8.4c17.4,6.2,31.9,13.6,42.8,21.6c5.5,3.9,9.8,7.3,12.9,12L256.5,483.8z"/></svg>',
-				'description' => 'Ionicons - Person - Outlined',
 				'file_name'   => 'person-outlined.svg',
 			),
 
@@ -467,7 +466,7 @@ class SVG_Manager {
 
 			#region -- FontAwesome Icons
 
-			'twrp-cal-fa-f'     => array(
+			'twrp-cal-fa-f'         => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -475,7 +474,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-fa-ol'    => array(
+			'twrp-cal-fa-ol'        => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -483,7 +482,7 @@ class SVG_Manager {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-fa-2-f'   => array(
+			'twrp-cal-fa-2-f'       => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -491,7 +490,7 @@ class SVG_Manager {
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-cal-fa-2-ol'  => array(
+			'twrp-cal-fa-2-ol'      => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -503,7 +502,7 @@ class SVG_Manager {
 
 			#region -- Google Icons
 
-			'twrp-cal-goo-f'            => array(
+			'twrp-cal-goo-f'        => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -511,7 +510,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-goo-ol'           => array(
+			'twrp-cal-goo-ol'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -519,7 +518,7 @@ class SVG_Manager {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-goo-dt'           => array(
+			'twrp-cal-goo-dt'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -527,7 +526,7 @@ class SVG_Manager {
 				'file_name'   => 'twotone.svg',
 			),
 
-			'twrp-cal-goo-sh'           => array(
+			'twrp-cal-goo-sh'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -535,7 +534,7 @@ class SVG_Manager {
 				'file_name'   => 'sharp.svg',
 			),
 
-			'twrp-cal-range-goo-f'      => array(
+			'twrp-cal-range-goo-f'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -543,7 +542,7 @@ class SVG_Manager {
 				'file_name'   => 'range-filled.svg',
 			),
 
-			'twrp-cal-range-goo-ol'     => array(
+			'twrp-cal-range-goo-ol' => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -551,7 +550,7 @@ class SVG_Manager {
 				'file_name'   => 'range-outlined.svg',
 			),
 
-			'twrp-cal-range-goo-dt'     => array(
+			'twrp-cal-range-goo-dt' => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -559,7 +558,7 @@ class SVG_Manager {
 				'file_name'   => 'range-twotone.svg',
 			),
 
-			'twrp-cal-range-goo-sh'     => array(
+			'twrp-cal-range-goo-sh' => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -567,7 +566,7 @@ class SVG_Manager {
 				'file_name'   => 'range-sharp.svg',
 			),
 
-			'twrp-cal-day-goo-f'        => array(
+			'twrp-cal-day-goo-f'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -575,7 +574,7 @@ class SVG_Manager {
 				'file_name'   => 'today-filled.svg',
 			),
 
-			'twrp-cal-day-goo-ol'       => array(
+			'twrp-cal-day-goo-ol'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -583,7 +582,7 @@ class SVG_Manager {
 				'file_name'   => 'today-outlined.svg',
 			),
 
-			'twrp-cal-day-goo-dt'       => array(
+			'twrp-cal-day-goo-dt'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -591,7 +590,7 @@ class SVG_Manager {
 				'file_name'   => 'today-twotone.svg',
 			),
 
-			'twrp-cal-day-goo-sh'       => array(
+			'twrp-cal-day-goo-sh'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -603,7 +602,7 @@ class SVG_Manager {
 
 			#region -- Foundation Icons
 
-			'twrp-cal-fi-f'     => array(
+			'twrp-cal-fi-f'         => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -615,7 +614,7 @@ class SVG_Manager {
 
 			#region -- Ionicons Icons
 
-			'twrp-cal-ii-f'       => array(
+			'twrp-cal-ii-f'         => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -623,7 +622,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-ii-ol'       => array(
+			'twrp-cal-ii-ol'        => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -631,7 +630,7 @@ class SVG_Manager {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-ii-sh'       => array(
+			'twrp-cal-ii-sh'        => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -639,7 +638,7 @@ class SVG_Manager {
 				'file_name'   => 'sharp.svg',
 			),
 
-			'twrp-cal-ii-ios-f'       => array(
+			'twrp-cal-ii-ios-f'     => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -647,7 +646,7 @@ class SVG_Manager {
 				'file_name'   => 'ios-filled.svg',
 			),
 
-			'twrp-cal-ii-ios-ol'       => array(
+			'twrp-cal-ii-ios-ol'    => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -659,7 +658,7 @@ class SVG_Manager {
 
 			#region -- IconMonstr Icons
 
-			'twrp-cal-im-f'       => array(
+			'twrp-cal-im-f'         => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -667,7 +666,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-im-t'       => array(
+			'twrp-cal-im-t'         => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
@@ -711,7 +710,7 @@ class SVG_Manager {
 
 			#region -- Capicon Icons
 
-			'twrp-cal-ci-f'     => array(
+			'twrp-cal-ci-f'         => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -719,7 +718,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-ci-2-f'     => array(
+			'twrp-cal-ci-2-f'       => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -731,7 +730,7 @@ class SVG_Manager {
 
 			#region -- Feather Icons
 
-			'twrp-cal-fe-ol'     => array(
+			'twrp-cal-fe-ol'        => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -743,7 +742,7 @@ class SVG_Manager {
 
 			#region -- Jam Icons
 
-			'twrp-cal-jam-f'    => array(
+			'twrp-cal-jam-f'        => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -751,7 +750,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-jam-ol'   => array(
+			'twrp-cal-jam-ol'       => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -759,7 +758,7 @@ class SVG_Manager {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-jam-2-f'  => array(
+			'twrp-cal-jam-2-f'      => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -767,7 +766,7 @@ class SVG_Manager {
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-cal-jam-2-ol' => array(
+			'twrp-cal-jam-2-ol'     => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -779,7 +778,7 @@ class SVG_Manager {
 
 			#region -- Octicons Icons
 
-			'twrp-cal-oi-ol'    => array(
+			'twrp-cal-oi-ol'        => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -791,7 +790,7 @@ class SVG_Manager {
 
 			#region -- Typicons Icons
 
-			'twrp-cal-ti-f'     => array(
+			'twrp-cal-ti-f'         => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -799,7 +798,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-ti-ol'    => array(
+			'twrp-cal-ti-ol'        => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -817,10 +816,723 @@ class SVG_Manager {
 	/**
 	 * Get all registered icons that represents the category.
 	 *
+	 * Keywords to search for:  tag, bookmark, hashtag, taxonomy, category.
+	 *
 	 * @return array<string,array>
 	 */
 	protected static function get_category_icons() {
-		return array();
+		$registered_category_vectors = array(
+
+			#region -- FontAwesome Icons
+
+			'twrp-tax-fa-f'      => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fa-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M0 252.118V48C0 21.49 21.49 0 48 0h204.118a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882L293.823 497.941c-18.745 18.745-49.137 18.745-67.882 0L14.059 286.059A48 48 0 0 1 0 252.118zM112 64c-26.51 0-48 21.49-48 48s21.49 48 48 48 48-21.49 48-48-21.49-48-48-48z"></path></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-fa-t-f'    => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fa-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M497.941 225.941L286.059 14.059A48 48 0 0 0 252.118 0H48C21.49 0 0 21.49 0 48v204.118a48 48 0 0 0 14.059 33.941l211.882 211.882c18.744 18.745 49.136 18.746 67.882 0l204.118-204.118c18.745-18.745 18.745-49.137 0-67.882zM112 160c-26.51 0-48-21.49-48-48s21.49-48 48-48 48 21.49 48 48-21.49 48-48 48zm513.941 133.823L421.823 497.941c-18.745 18.745-49.137 18.745-67.882 0l-.36-.36L527.64 323.522c16.999-16.999 26.36-39.6 26.36-63.64s-9.362-46.641-26.36-63.64L331.397 0h48.721a48 48 0 0 1 33.941 14.059l211.882 211.882c18.745 18.745 18.745 49.137 0 67.882z"></path></svg>',
+				'file_name'   => 'tags-filled.svg',
+			),
+
+			'twrp-tax-fa-h-f'    => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Hashtag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fa-h-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M440.667 182.109l7.143-40c1.313-7.355-4.342-14.109-11.813-14.109h-74.81l14.623-81.891C377.123 38.754 371.468 32 363.997 32h-40.632a12 12 0 0 0-11.813 9.891L296.175 128H197.54l14.623-81.891C213.477 38.754 207.822 32 200.35 32h-40.632a12 12 0 0 0-11.813 9.891L132.528 128H53.432a12 12 0 0 0-11.813 9.891l-7.143 40C33.163 185.246 38.818 192 46.289 192h74.81L98.242 320H19.146a12 12 0 0 0-11.813 9.891l-7.143 40C-1.123 377.246 4.532 384 12.003 384h74.81L72.19 465.891C70.877 473.246 76.532 480 84.003 480h40.632a12 12 0 0 0 11.813-9.891L151.826 384h98.634l-14.623 81.891C234.523 473.246 240.178 480 247.65 480h40.632a12 12 0 0 0 11.813-9.891L315.472 384h79.096a12 12 0 0 0 11.813-9.891l7.143-40c1.313-7.355-4.342-14.109-11.813-14.109h-74.81l22.857-128h79.096a12 12 0 0 0 11.813-9.891zM261.889 320h-98.634l22.857-128h98.634l-22.857 128z"></path></svg>',
+				'file_name'   => 'hashtag-filled.svg',
+			),
+
+			'twrp-tax-fa-b-f'    => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fa-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"></path></svg>',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			'twrp-tax-fa-b-ol'   => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fa-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"></path></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			#endregion -- FontAwesome Icons
+
+			#region -- Google Icons
+
+			'twrp-tax-go-f'      => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.3,11.5L12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7C24,12.5,23.7,11.9,23.3,11.5z M4.2,6c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8S6,3.2,6,4.2S5.2,6,4.2,6z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-go-ol'     => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.3,11.5L12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7C24,12.5,23.7,11.9,23.3,11.5z M13.2,21.6L2.4,10.8V2.4h8.4v0l10.8,10.8L13.2,21.6z"/><circle cx="5.4" cy="5.4" r="1.8"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-go-dt'     => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-dt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M10.8,2.4H2.4v8.4l10.8,10.8l8.4-8.4L10.8,2.4z M5.4,7.2c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8s1.8,0.8,1.8,1.8S6.4,7.2,5.4,7.2z"/><path d="M12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7c0-0.7-0.3-1.3-0.7-1.7L12.5,0.7z M13.2,21.6L2.4,10.8V2.4h8.4v0l10.8,10.8L13.2,21.6z"/><circle cx="5.4" cy="5.4" r="1.8"/></svg>',
+				'file_name'   => 'tag-twotone.svg',
+			),
+
+			'twrp-tax-go-sh'     => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24,12.7L11.3,0H0v11.3L12.7,24L24,12.7z M4,5.8C3.1,5.8,2.3,5,2.3,4S3.1,2.3,4,2.3S5.8,3.1,5.8,4S5,5.8,4,5.8z"/></svg>',
+				'file_name'   => 'tag-sharp.svg',
+			),
+
+			'twrp-tax-go-h-f'    => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-h-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.3,11.5L12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7C24,12.5,23.7,11.9,23.3,11.5z M4.2,6c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8S6,3.2,6,4.2S5.2,6,4.2,6z M18.3,15.9L13.2,21l-5.1-5.1c-0.5-0.6-0.9-1.3-0.9-2.1c0-1.7,1.3-3,3-3c0.8,0,1.6,0.3,2.1,0.9l0.9,0.9l0.9-0.9c0.5-0.5,1.3-0.9,2.1-0.9c1.7,0,3,1.3,3,3C19.2,14.6,18.9,15.4,18.3,15.9z"/></svg>',
+				'file_name'   => 'tag-heart-filled.svg',
+			),
+
+			'twrp-tax-go-h-ol'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-h-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">twrp-tax-go-h-ol<path d="M23.3,11.5L12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7C24,12.5,23.7,11.9,23.3,11.5z M13.2,21.6L2.4,10.8V2.4h8.4v0l10.8,10.8L13.2,21.6z"/><circle cx="5.4" cy="5.4" r="1.8"/><path d="M8.3,12.7c0,0.7,0.3,1.3,0.7,1.7l4.2,4.2l4.2-4.2c0.4-0.4,0.7-1.1,0.7-1.7c0-1.4-1.1-2.5-2.5-2.5c-0.7,0-1.3,0.3-1.7,0.7l-0.7,0.7l-0.7-0.7c-0.4-0.5-1.1-0.7-1.7-0.7C9.4,10.2,8.3,11.3,8.3,12.7z"/></svg>',
+				'file_name'   => 'tag-heart-outlined.svg',
+			),
+
+			'twrp-tax-go-h-dt'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
+				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-h-dt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M10.8,2.4H2.4v8.4l10.8,10.8l8.4-8.4L10.8,2.4z M5.4,7.2c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8s1.8,0.8,1.8,1.8S6.4,7.2,5.4,7.2z M13.2,11.6l0.7-0.7c0.4-0.4,1.1-0.7,1.7-0.7c1.4,0,2.5,1.1,2.5,2.5c0,0.7-0.3,1.3-0.7,1.7l-4.2,4.2L9,14.4c-0.4-0.5-0.7-1.1-0.7-1.7c0-1.4,1.1-2.5,2.5-2.5c0.7,0,1.3,0.3,1.7,0.7L13.2,11.6z"/><path d="M23.3,11.5L12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7C24,12.5,23.7,11.9,23.3,11.5z M13.2,21.6L2.4,10.8V2.4h8.4v0l10.8,10.8L13.2,21.6z"/><circle cx="5.4" cy="5.4" r="1.8"/><path d="M8.3,12.7c0,0.7,0.3,1.3,0.7,1.7l4.2,4.2l4.2-4.2c0.4-0.4,0.7-1.1,0.7-1.7c0-1.4-1.1-2.5-2.5-2.5c-0.7,0-1.3,0.3-1.7,0.7l-0.7,0.7l-0.7-0.7c-0.4-0.5-1.1-0.7-1.7-0.7C9.4,10.2,8.3,11.3,8.3,12.7z"/></svg>',
+				'file_name'   => 'tag-heart-twotone.svg',
+			),
+
+			'twrp-tax-go-h-sh'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-h-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.3,0H0v11.3L12.7,24c0,0,1.2-1.2,1.6-1.6l9.7-9.7L11.3,0z M4,5.8C3.1,5.8,2.3,5,2.3,4S3.1,2.3,4,2.3S5.8,3.1,5.8,4S5,5.8,4,5.8z M12.7,20.2l-4.9-4.9c-0.5-0.5-0.8-1.2-0.8-2c0-1.6,1.3-2.9,2.9-2.9c0.8,0,1.5,0.3,2,0.9l0.8,0.8l0.8-0.8c0.5-0.5,1.2-0.8,2-0.8c1.6,0,2.9,1.3,2.9,2.9c0,0.8-0.3,1.5-0.8,2L12.7,20.2z"/></svg>',
+				'file_name'   => 'tag-heart-sharp.svg',
+			),
+
+			'twrp-tax-go-l-f'    => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Label', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-l-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.5,4.1C18,3.4,17.3,3,16.4,3L2.5,3C1.1,3,0,4.2,0,5.6v12.9C0,19.8,1.1,21,2.5,21l13.9,0c0.8,0,1.6-0.4,2.1-1.1L24,12C24,12,18.5,4.1,18.5,4.1z"/></svg>',
+				'file_name'   => 'label-filled.svg',
+			),
+
+			'twrp-tax-go-l-ol'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Label', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-l-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.5,4.1C18,3.4,17.3,3,16.4,3L2.5,3C1.1,3,0,4.2,0,5.6v12.9C0,19.8,1.1,21,2.5,21l13.9,0c0.8,0,1.6-0.4,2.1-1.1L24,12C24,12,18.5,4.1,18.5,4.1z M16.4,18.4H2.5V5.6h13.9l4.5,6.4L16.4,18.4z"/></svg>
+				',
+				'file_name'   => 'label-outlined.svg',
+			),
+
+			'twrp-tax-go-l-dt'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Label', 'backend', 'twrp' ),
+				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-l-dt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M16.4,5.6H2.5v12.9h13.9l4.5-6.4L16.4,5.6z"/><path d="M18.5,4.1C18,3.4,17.3,3,16.4,3L2.5,3C1.1,3,0,4.2,0,5.6v12.9C0,19.8,1.1,21,2.5,21l13.9,0c0.8,0,1.6-0.4,2.1-1.1L24,12C24,12,18.5,4.1,18.5,4.1z M16.4,18.4H2.5V5.6h13.9l4.5,6.4L16.4,18.4z"/></svg>',
+				'file_name'   => 'label-twotone.svg',
+			),
+
+			'twrp-tax-go-l-sh'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Label', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-l-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.7,3L0,3v18l17.7,0l6.3-9L17.7,3z"/></svg>',
+				'file_name'   => 'label-sharp.svg',
+			),
+
+			'twrp-tax-go-l2-f'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Label 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-l2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0,21l15.5,0c0.9,0,1.8-0.4,2.3-1.1L24,12l-6.2-7.9C17.3,3.4,16.5,3,15.5,3L0,3l6.8,9L0,21z"/></svg>',
+				'file_name'   => 'label-2-filled.svg',
+			),
+
+			'twrp-tax-go-l2-dt'  => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Label 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-l2-dt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M15.5,5.6h-10l5,6.4l-5,6.4h10l5-6.4L15.5,5.6z"/><path d="M17.8,4.1C17.3,3.4,16.5,3,15.5,3H0l7.1,9L0,21h15.5c0.9,0,1.8-0.4,2.3-1.1L24,12C24,12,17.8,4.1,17.8,4.1z M15.5,18.4h-10l5-6.4l-5-6.4h10l5,6.4L15.5,18.4z"/></svg>',
+				'file_name'   => 'label-2-twotone.svg',
+			),
+
+			'twrp-tax-go-b-f'    => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.4,0H5.6C4.2,0,3,1.2,3,2.7L3,24l9-4l9,4V2.7C21,1.2,19.8,0,18.4,0z"/></svg>',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			'twrp-tax-go-b-ol'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.4,0H5.6C4.2,0,3,1.2,3,2.7V24l9-4l9,4V2.7C21,1.2,19.8,0,18.4,0z M18.4,20L12,17.1L5.6,20V2.7h12.9V20z"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			'twrp-tax-go-b-dt'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-b-dt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M5.6,20l6.4-2.9l6.4,2.9V2.7H5.6V20z"/><path d="M18.4,0H5.6C4.2,0,3,1.2,3,2.7V24l9-4l9,4V2.7C21,1.2,19.8,0,18.4,0z M18.4,20L12,17.1L5.6,20V2.7h12.9V20z"/></svg>
+				',
+				'file_name'   => 'bookmark-twotone.svg',
+			),
+
+			'twrp-tax-go-b-sh'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-b-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21,0H3v24l9-4l9,4V0z"/></svg>',
+				'file_name'   => 'bookmark-sharp.svg',
+			),
+
+			'twrp-tax-go-bs-f'   => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-bs-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.8,18.5l2.2,1.1V2.2C22,1,21,0,19.8,0H8.7C7.4,0,6.4,1,6.4,2.2h11.1c1.2,0,2.2,1,2.2,2.2V18.5z M15.3,4.4H4.2C3,4.4,2,5.3,2,6.5V24l7.8-3.3l7.8,3.3V6.5C17.6,5.3,16.6,4.4,15.3,4.4z"/></svg>',
+				'file_name'   => 'bookmarks-filled.svg',
+			),
+
+			'twrp-tax-go-bs-ol'  => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-bs-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.3,6.5v14.1l-4.7-2l-0.9-0.4l-0.9,0.4l-4.7,2V6.5H15.3 M19.8,0H8.7C7.4,0,6.4,1,6.4,2.2h11.1c1.2,0,2.2,1,2.2,2.2v14.2l2.2,1.1V2.2C22,1,21,0,19.8,0z M15.3,4.4H4.2C3,4.4,2,5.3,2,6.5V24l7.8-3.3l7.8,3.3V6.5C17.6,5.3,16.6,4.4,15.3,4.4z"/></svg>',
+				'file_name'   => 'bookmarks-outlined.svg',
+			),
+
+			'twrp-tax-go-bs-dt'  => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-bs-dt" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.8,0H8.7C7.4,0,6.4,1,6.4,2.2h11.1c1.2,0,2.2,1,2.2,2.2v14.2l2.2,1.1V2.2C22,1,21,0,19.8,0z M15.3,4.4H4.2C3,4.4,2,5.3,2,6.5V24l7.8-3.3l7.8,3.3V6.5C17.6,5.3,16.6,4.4,15.3,4.4z M15.3,20.7l-4.7-2l-0.9-0.4l-0.9,0.4l-4.7,2V6.5h11.1V20.7z"/><path style="opacity:0.3;" d="M4.2,20.7l5.6-2.3l5.6,2.3V6.5H4.2V20.7z"/></svg>',
+				'file_name'   => 'bookmarks-twotone.svg',
+			),
+
+			'twrp-tax-go-bs-sh'  => array(
+				'brand'       => 'Google',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-go-bs-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.8,18.5l2.2,1.1V0H6.4v2.2h13.3V18.5z M17.6,4.4H2V24l7.8-3.3l7.8,3.3V4.4z"/></svg>',
+				'file_name'   => 'bookmarks-sharp.svg',
+			),
+
+			#endregion -- Google Icons
+
+			#region -- Foundation Icons
+
+			'twrp-tax-fi-f'      => array(
+				'brand'       => 'Foundation',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fi-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M87.4,69.2c0,0-0.1-0.1-0.1-0.1l0,0L55.2,13.5l0,0c-0.3-0.4-0.7-0.8-1.1-1l0,0L41,5V5c-0.7-0.4-1.5-0.4-2.2-0.1l0,0L38.5,5c0,0,0,0,0,0c0,0,0,0,0,0L13.2,19.6c-0.8,0.5-1.2,1.3-1.2,2.1l0,0v15.2l0,0c-0.1,0.5,0,1,0.3,1.5c0,0,0,0.1,0.1,0.1l0,0l32,55.4c0,0.1,0.1,0.1,0.1,0.2c0.7,1.2,2.1,1.6,3.3,1l0,0l38.7-22.4l0,0C87.7,71.9,88.1,70.4,87.4,69.2z M33.6,25.2c-2.2,1.3-5.1,0.5-6.3-1.7c-1.3-2.2-0.5-5.1,1.7-6.3s5.1-0.5,6.3,1.7C36.6,21.1,35.9,24,33.6,25.2z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-fi-t-f'    => array(
+				'brand'       => 'Foundation',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fi-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M95.9,71.6c0,0-0.1-0.1-0.1-0.1l0,0L63.6,15.5l0,0c-0.3-0.4-0.7-0.8-1.1-1l0,0L52.9,9l10.6,18.4l24.2,41.9l0,0c0,0,0.1,0.1,0.1,0.1c0.7,1.2,0.3,2.7-0.9,3.4l0,0L51.1,93.6l1.6,2.7c0,0.1,0.1,0.1,0.1,0.2c0.7,1.2,2.1,1.6,3.3,1l0,0L95,75l0,0C96.2,74.3,96.6,72.8,95.9,71.6z"/><path d="M78.5,70.4c1.2-0.7,1.6-2.2,0.9-3.4c0,0-0.1-0.1-0.1-0.1l0,0L47.2,11.3l0,0c-0.3-0.4-0.7-0.8-1.1-1l0,0L33,2.8v0.1c-0.7-0.4-1.5-0.4-2.2-0.1l0,0l-0.2,0.1c0,0,0,0,0,0c0,0,0,0,0,0L5.2,17.4C4.5,17.9,4,18.7,4,19.5l0,0v15.2l0,0c-0.1,0.5,0,1,0.3,1.5c0,0,0,0.1,0.1,0.1l0,0l32,55.4c0,0.1,0.1,0.1,0.1,0.2c0.7,1.2,2.1,1.6,3.3,1l0,0L78.5,70.4L78.5,70.4z M25.5,23c-2.2,1.3-5.1,0.5-6.3-1.7c-1.3-2.2-0.5-5.1,1.7-6.3s5.1-0.5,6.3,1.7C28.4,18.9,27.7,21.7,25.5,23z"/></svg>',
+				'file_name'   => 'tags-filled.svg',
+			),
+
+			#endregion -- Foundation Icons
+
+			#region -- Ionicons Icons
+
+			'twrp-tax-io-f'      => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M491.5,20.7C482.1,11.3,469.4,6,456.1,6H318.9c-9,0-17.6,3.6-24,9.9L20.6,290.1c-19.5,19.5-19.5,51.1,0,70.7l130.6,130.6c19.5,19.5,51.2,19.5,70.7,0L496,217.3c6.4-6.4,9.9-15,10-24V56C506.1,42.8,500.9,30.1,491.5,20.7z M398.9,148.9c-19.7,0-35.7-16-35.7-35.7s16-35.7,35.7-35.7s35.7,16,35.7,35.7S418.6,148.9,398.9,148.9z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-io-ol'     => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;" d="M457.7,22H319.4c-4.3,0-8.4,1.7-11.5,4.7L31.5,304.3c-12.6,12.7-12.6,33.3,0,46l131.7,132.2c12.7,12.7,33.1,12.7,45.8,0L485.3,205c3-3.1,4.7-7.2,4.7-11.5v-139c0.1-17.9-14.3-32.5-32.1-32.5C457.8,22,457.8,22,457.7,22z"/><path d="M400,148.5c-19.9,0-36-16.2-36-36.2s16.1-36.2,36-36.2s36,16.2,36,36.2S419.9,148.5,400,148.5z"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-io-sh'     => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M315.3,7L5,317.3L194.7,507L505,196.7V7H315.3z M401.6,144.9c-19,0-34.5-15.4-34.5-34.5S382.5,76,401.6,76S436,91.4,436,110.4S420.6,144.9,401.6,144.9z"/></svg>',
+				'file_name'   => 'tag-sharp.svg',
+			),
+
+			'twrp-tax-io-i-ol'   => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-i-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M488.1,6H309.6L23.9,327.4L202.4,506l285.7-321.4V6z M470.3,175.6L202.6,479.2L50.7,327.4L318,23.9h152.2V175.6z"/><path d="M381,148.9c19.7,0,35.7-16,35.7-35.7s-16-35.7-35.7-35.7s-35.7,16-35.7,35.7S361.3,148.9,381,148.9z M381,95.3c9.9,0,17.9,8,17.9,17.9s-8,17.9-17.9,17.9s-17.9-8-17.9-17.9S371.1,95.3,381,95.3z"/></svg>',
+				'file_name'   => 'ios-tag-outlined.svg',
+			),
+
+			'twrp-tax-io-t-f'    => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M448,183.8v-123A44.66,44.66,0,0,0,403.29,16H280.36a30.62,30.62,0,0,0-21.51,8.89L13.09,270.58a44.86,44.86,0,0,0,0,63.34l117,117a44.84,44.84,0,0,0,63.33,0L439.11,205.31A30.6,30.6,0,0,0,448,183.8ZM352,144a32,32,0,1,1,32-32A32,32,0,0,1,352,144Z"/><path d="M496,64a16,16,0,0,0-16,16V207.37L218.69,468.69a16,16,0,1,0,22.62,22.62l262-262A29.84,29.84,0,0,0,512,208V80A16,16,0,0,0,496,64Z"/></svg>',
+				'file_name'   => 'tags-filled.svg',
+			),
+
+			'twrp-tax-io-t-ol'   => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M403.29,32H280.36a14.46,14.46,0,0,0-10.2,4.2L24.4,281.9a28.85,28.85,0,0,0,0,40.7l117,117a28.86,28.86,0,0,0,40.71,0L427.8,194a14.46,14.46,0,0,0,4.2-10.2V60.8A28.66,28.66,0,0,0,403.29,32Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M352,144a32,32,0,1,1,32-32A32,32,0,0,1,352,144Z"/><path d="M230,480,492,218a13.81,13.81,0,0,0,4-10V80" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>',
+				'file_name'   => 'tags-outlined.svg',
+			),
+
+			'twrp-tax-io-t-sh'   => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-t-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M288,16,0,304,176,480,464,192V16Zm80,128a32,32,0,1,1,32-32A32,32,0,0,1,368,144Z"/><polygon points="480 64 480 208 216.9 471.1 242 496 512 224 512 64 480 64"/></svg>',
+				'file_name'   => 'tags-sharp.svg',
+			),
+
+			'twrp-tax-io-it-ol'  => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-it-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M470.3,41.7V6H291.7L6,327.4L184.6,506l26.2-26.7l27.4,26.7L506,202.4V41.7H470.3z M184.6,480.7L31,327.4L299.1,23.9h153.3v17.9v17.9v117.6L210.7,454l-12.7,12.7L184.6,480.7z M488.1,195l-250,285.7l-14.7-14.1l246.9-282.1v-125h17.9V195z"/><path d="M363.1,148.9c19.7,0,35.7-16,35.7-35.7s-16-35.7-35.7-35.7c-19.7,0-35.7,16-35.7,35.7S343.4,148.9,363.1,148.9z M363.1,95.3c9.9,0,17.9,8,17.9,17.9s-8,17.9-17.9,17.9s-17.9-8-17.9-17.9S353.3,95.3,363.1,95.3z"/></svg>',
+				'file_name'   => 'ios-tags-outlined.svg',
+			),
+
+			'twrp-tax-io-b-f'    => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M416.7,506c-4.4,0-8.6-1.6-11.9-4.5L256,369.2L107.2,501.5c-7.4,6.6-18.7,5.9-25.2-1.5c-2.9-3.3-4.5-7.5-4.5-11.9V77.4C77.5,38,109.4,6,148.9,6h214.3c39.4,0,71.4,32,71.4,71.4v410.7C434.6,498,426.6,506,416.7,506z"/></svg>',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			'twrp-tax-io-b-ol'   => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;" d="M364.5,21H147.5c-30,0-54.2,24.3-54.2,54.2V491L256,346.4L418.7,491V75.2C418.7,45.3,394.4,21,364.5,21z"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			'twrp-tax-io-b-sh'   => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-b-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M434.6,506L256,369.2L77.4,506V6h357.1V506z"/></svg>',
+				'file_name'   => 'bookmark-sharp.svg',
+			),
+
+			'twrp-tax-io-bs-f'   => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-bs-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M400,0H176a64.11,64.11,0,0,0-62,48H342a74,74,0,0,1,74,74V426.89l22,17.6a16,16,0,0,0,19.34.5A16.41,16.41,0,0,0,464,431.57V64A64,64,0,0,0,400,0Z"/><path d="M320,80H112a64,64,0,0,0-64,64V495.62A16.36,16.36,0,0,0,54.6,509a16,16,0,0,0,19.71-.71L216,388.92,357.69,508.24a16,16,0,0,0,19.6.79A16.4,16.4,0,0,0,384,495.59V144A64,64,0,0,0,320,80Z"/></svg>',
+				'file_name'   => 'bookmarks-filled.svg',
+			),
+
+			'twrp-tax-io-bs-ol'  => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-bs-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M128,80V64a48.14,48.14,0,0,1,48-48H400a48.14,48.14,0,0,1,48,48V432l-80-64" style="fill:none;stroke:currentColor;stroke-linejoin:round;stroke-width:32px"/><path d="M320,96H112a48.14,48.14,0,0,0-48,48V496L216,368,368,496V144A48.14,48.14,0,0,0,320,96Z" style="fill:none;stroke:currentColor;stroke-linejoin:round;stroke-width:32px"/></svg>',
+				'file_name'   => 'bookmarks-outlined.svg',
+			),
+
+			'twrp-tax-io-bs-sh'  => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-bs-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><polygon points="112 0 112 48 416 48 416 416 464 448 464 0 112 0"/><polygon points="48 80 48 512 216 388 384 512 384 80 48 80"/></svg>',
+				'file_name'   => 'bookmarks-sharp.svg',
+			),
+
+			'twrp-tax-io-ibs-ol' => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-io-ibs-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M102.2,6v500L256,390.1L409.8,506V6H102.2z M390.6,467.5L256,366.2L121.4,467.5V25.2h269.2V467.5z"/></svg>',
+				'file_name'   => 'ios-bookmarks-outlined.svg',
+			),
+
+			#endregion -- Ionicons Icons
+
+			#region -- IconMonstr Icons
+
+			'twrp-tax-im-f'      => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.605 0h-10.605v10.609l13.391 13.391 10.609-10.604-13.395-13.396zm-4.191 6.414c-.781.781-2.046.781-2.829.001-.781-.783-.781-2.048 0-2.829.782-.782 2.048-.781 2.829-.001.782.782.781 2.047 0 2.829z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-im-ol'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.776 2l11.395 11.395-7.78 7.777-11.391-11.391v-7.781h7.776zm.829-2h-10.605v10.609l13.391 13.391 10.609-10.604-13.395-13.396zm-3.191 7.414c-.781.782-2.046.782-2.829.001-.781-.783-.781-2.048 0-2.829.782-.782 2.048-.781 2.829-.001.782.783.781 2.047 0 2.829z"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-im-t'      => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-t" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M14.101 24l-14.101-14.105v-9.895h9.855l14.145 14.101c-3.3 3.299-6.6 6.599-9.899 9.899zm-4.659-23h-8.442v8.481l13.101 13.105 8.484-8.484c-4.381-4.368-8.762-8.735-13.143-13.102zm-1.702 3.204c.975.976.975 2.56 0 3.536-.976.975-2.56.975-3.536 0-.976-.976-.976-2.56 0-3.536s2.56-.976 3.536 0zm-.708.707c.586.586.586 1.536 0 2.121-.585.586-1.535.586-2.121 0-.585-.585-.585-1.535 0-2.121.586-.585 1.536-.585 2.121 0z"/></svg>',
+				'file_name'   => 'tag-thin.svg',
+			),
+
+			'twrp-tax-im-t-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.28 0h-8.28v8.058l10.271 10.296 8.302-8.07-10.293-10.284zm-2.72 5.559c-.585.585-1.535.585-2.12 0-.586-.584-.586-1.533 0-2.118.585-.585 1.535-.585 2.12 0 .586.584.586 1.533 0 2.118zm12.01 8.407l1.43 1.409-8.688 8.625-10.312-10.317v-2.833l10.349 10.291 7.221-7.175z"/></svg>',
+				'file_name'   => 'tags-filled.svg',
+			),
+
+			'twrp-tax-im-t-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.452 2l8.271 8.265-5.431 5.279-8.292-8.314v-5.23h5.452zm.828-2h-8.28v8.058l10.271 10.296 8.302-8.07-10.293-10.284zm-1.72 6.559c-.585.585-1.535.585-2.12 0-.586-.584-.586-1.533 0-2.118.585-.585 1.535-.585 2.12 0 .586.584.586 1.533 0 2.118zm11.01 7.407l1.43 1.409-8.688 8.625-10.312-10.317v-2.833l10.349 10.291 7.221-7.175z"/></svg>',
+				'file_name'   => 'tags-outlined.svg',
+			),
+
+			'twrp-tax-im-t-t'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-t-t" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M12.434 22.586l7.859-7.858.707.707-8.565 8.565-.001-.001v.001l-12.434-12.434.707-.707 11.727 11.727zm-.033-1.7l-12.401-12.405v-8.481h8.441l12.445 12.401-8.485 8.485zm-4.373-19.886h-7.028v7.067l11.401 11.405 7.07-7.07s-7.534-7.506-11.443-11.402zm-1.598 2.594c.78.78.78 2.048 0 2.828-.781.781-2.048.781-2.829 0-.78-.78-.78-2.048 0-2.828.781-.781 2.048-.781 2.829 0zm-.707.707c.39.39.39 1.024 0 1.414-.391.39-1.024.39-1.414 0-.391-.39-.391-1.024 0-1.414.39-.39 1.023-.39 1.414 0z"/></svg>',
+				'file_name'   => 'tags-thin.svg',
+			),
+
+			'twrp-tax-im-t2-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tags 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-t2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.876 2h-8.876v9.015l10.972 11.124 9.028-9.028-11.124-11.111zm-3.139 5.737c-.684.684-1.791.684-2.475 0s-.684-1.791 0-2.474c.684-.684 1.791-.684 2.475 0 .684.683.684 1.791 0 2.474zm1.866 13.827l-1.369 1.436-10.234-10.257v-7.743h2v6.891l9.603 9.673z"/></svg>',
+				'file_name'   => 'tags-2-filled.svg',
+			),
+
+			'twrp-tax-im-t2-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Tags 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-t2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12.049 4l9.122 9.112-6.189 6.188-8.982-9.106v-6.194h6.049zm.827-2h-8.876v9.015l10.973 11.124 9.027-9.028-11.124-11.111zm-2.315 6.561c-.586.586-1.535.586-2.121 0s-.586-1.535 0-2.121c.586-.586 1.535-.586 2.121 0 .585.585.585 1.535 0 2.121zm1.042 13.003l-1.369 1.436-10.234-10.257v-7.743h2v6.891l9.603 9.673z"/></svg>',
+				'file_name'   => 'tags-2-outlined.svg',
+			),
+
+			'twrp-tax-im-b-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg>
+				',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			'twrp-tax-im-b-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24z"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			'twrp-tax-im-b-t'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b-t" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M5 0v24l7-6 7 6v-24h-14zm1 1h12v20.827l-6-5.144-6 5.144v-20.827z"/></svg>',
+				'file_name'   => 'bookmark-thin.svg',
+			),
+
+			'twrp-tax-im-b2-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 24l-6-5.269-6 5.269v-24h12v24zm-14-23h-10v2h10v-2zm0 5h-10v2h10v-2zm0 5h-10v2h10v-2zm0 5h-10v2h10v-2z"/></svg>',
+				'file_name'   => 'bookmark-2-filled.svg',
+			),
+
+			'twrp-tax-im-b2-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 2v17.582l-4-3.512-4 3.512v-17.582h8zm2-2h-12v24l6-5.269 6 5.269v-24zm-14 1h-10v2h10v-2zm0 5h-10v2h10v-2zm0 5h-10v2h10v-2zm0 5h-10v2h10v-2z"/></svg>',
+				'file_name'   => 'bookmark-2-outlined.svg',
+			),
+
+			'twrp-tax-im-b3-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark 3', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b3-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 24l-6-5.269-6 5.269v-17.411c0-3.547-1.167-5.547-4-6.589h9.938c3.34 0 6.052 2.701 6.062 6.042v17.958z"/></svg>',
+				'file_name'   => 'bookmark-2-filled.svg',
+			),
+
+			'twrp-tax-im-b3-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmark 3', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-b3-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.938 2c2.232 0 4.055 1.816 4.062 4.042v13.54l-4-3.512-4 3.512v-12.993c0-2.464-.28-3.333-.858-4.589h4.796zm0-2h-9.938c2.834 1.042 4 3.042 4 6.589v17.411l6-5.269 6 5.269v-17.958c-.011-3.341-2.723-6.042-6.062-6.042z"/></svg>',
+				'file_name'   => 'bookmark-3-outlined.svg',
+			),
+
+			'twrp-tax-im-bs-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-bs-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 24l-5-4.39-5 4.39v-20h10v20zm-12-22h8v-2h-10v20l2-1.756v-16.244z"/></svg>',
+				'file_name'   => 'bookmarks-filled.svg',
+			),
+
+			'twrp-tax-im-bs-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-bs-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6v13.583l-3-2.634-3 2.634v-13.583h6zm2-2h-10v20l5-4.39 5 4.39v-20zm-12-2h8v-2h-10v20l2-1.756v-16.244z"/></svg>',
+				'file_name'   => 'bookmarks-outlined.svg',
+			),
+
+			'twrp-tax-im-bs2-f'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmarks 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-bs2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 24l-5-4.39-5 4.39v-20h10v20zm-2-22h-10v19h1v-18h9v-1zm-2-2h-10v19h1v-18h9v-1z"/></svg>',
+				'file_name'   => 'bookmarks-2-filled.svg',
+			),
+
+			'twrp-tax-im-bs2-ol' => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Bookmarks 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-bs2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6v13.583l-3-2.634-3 2.634v-13.583h6zm2-2h-10v20l5-4.39 5 4.39v-20zm-2-2h-10v19h1v-18h9v-1zm-2-2h-10v19h1v-18h9v-1z"/></svg>',
+				'file_name'   => 'bookmarks-2-outlined.svg',
+			),
+
+			'twrp-tax-im-h-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Hashtag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-im-h-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.548 9l.452-2h-5.364l1.364-6h-2l-1.364 6h-5l1.364-6h-2l-1.364 6h-6.184l-.452 2h6.182l-1.364 6h-5.36l-.458 2h5.364l-1.364 6h2l1.364-6h5l-1.364 6h2l1.364-6h6.185l.451-2h-6.182l1.364-6h5.366zm-8.73 6h-5l1.364-6h5l-1.364 6z"/></svg>',
+				'file_name'   => 'hashtag-filled.svg',
+			),
+
+			#endregion -- IconMonstr Icons
+
+			#region -- Capicon Icons
+
+			'twrp-tax-ci-f'      => array(
+				'brand'       => 'Capicon',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ci-f" xmlns="http://www.w3.org/2000/svg" viewBox="-0.921 0 32 32"><path d="M12.665,0.414C11,0.372,1.489-0.497,0.638,0.414c-0.851,0.911-0.851,12.209,0,12.998c0.851,0.789,15.868,18.449,16.521,18.587c0.652,0.136,12.953-14.153,12.999-14.821C30.203,16.51,15.079,0.475,12.665,0.414z M9.835,10.429c-1.393,0.813-3.347,0.058-4.367-1.687C4.448,6.997,4.75,4.923,6.142,4.109S9.49,4.05,10.509,5.796C11.528,7.541,11.227,9.615,9.835,10.429z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-ci-2-f'    => array(
+				'brand'       => 'Capicon',
+				'description' => _x( 'Tag 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ci-2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.23 32"><path d="M16.663,3.527C15.847,2.899,6.169-0.18,5.353,0.009C4.538,0.198,0.39,3.779,0.076,4.47c-0.312,0.691,0.438,9.738,0.502,10.618c0.062,0.88,11.458,16.592,12.716,16.907c1.258,0.313,15.745-10.938,15.936-11.881C29.418,19.172,17.479,4.155,16.663,3.527z M5.596,9.427C5.117,7.295,6.046,5.268,7.671,4.905C9.295,4.54,11,5.974,11.479,8.107c0.479,2.133-0.45,4.158-2.074,4.523C7.78,12.995,6.075,11.561,5.596,9.427z M8.634,18.424l9.924-7.697l2.079,2.683l-9.923,7.695L8.634,18.424z M14.481,26.038l-2.08-2.683l9.924-7.696l2.079,2.681L14.481,26.038z"/></svg>',
+				'file_name'   => 'tag-2-filled.svg',
+			),
+
+			'twrp-tax-ci-b-f'    => array(
+				'brand'       => 'Capicon',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ci-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.055 32"><path d="M0,1.262c0,0,1.958,4.864,3.679,11.661c1.994,7.88,0.484,18.517,1.152,19.015c1.266,0.945,9.666-9.035,9.666-9.035s8.402,8.195,9.354,7.773C24.799,30.256,22.694,12.502,12.186,0L0,1.262z"/></svg>',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			#endregion -- Capicon Icons
+
+			#region -- Feather Icons
+
+			'twrp-tax-fe-ol'     => array(
+				'brand'       => 'Feather',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fe-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" d="M22.3,14.1l-8.2,8.2c-0.9,0.9-2.3,0.9-3.2,0c0,0,0,0,0,0L1,12.5V1h11.5l9.9,9.9C23.2,11.8,23.2,13.2,22.3,14.1z"/><line style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" x1="6.7" y1="6.7" x2="6.7" y2="6.7"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-fe-b-ol'   => array(
+				'brand'       => 'Feather',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fe-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;" d="M21,23l-9-6.1L3,23V3.4C3,2.1,4.2,1,5.6,1h12.9C19.8,1,21,2.1,21,3.4V23z"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			'twrp-tax-fe-h-f'    => array(
+				'brand'       => 'Feather',
+				'description' => _x( 'Hashtag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-fe-h-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="9" x2="20" y2="9"></line><line x1="4" y1="15" x2="20" y2="15"></line><line x1="10" y1="3" x2="8" y2="21"></line><line x1="16" y1="3" x2="14" y2="21"></line></svg>',
+				'file_name'   => 'hashtag-filled.svg',
+			),
+
+			#endregion -- Feather Icons
+
+			#region -- Jam Icons
+
+			'twrp-tax-ji-f'      => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.2,0.7l4.1,4.1c0.7,0.7,0.9,1.6,0.5,2.5L21.8,13c-0.1,0.2-0.2,0.3-0.3,0.4l-9.9,9.9c-0.9,0.9-2.4,0.9-3.4,0c0,0,0,0,0,0l-7.6-7.6c-0.9-0.9-0.9-2.4,0-3.4l9.9-9.9c0.1-0.1,0.3-0.2,0.4-0.3l5.7-2.1C17.6-0.2,18.6,0,19.2,0.7z M15.4,8.6c0.7,0.7,1.8,0.7,2.5,0s0.7-1.8,0-2.5c0,0,0,0,0,0c-0.7-0.7-1.8-0.7-2.5,0C14.7,6.8,14.7,7.9,15.4,8.6z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-ji-ol'     => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.2,0.7l4.1,4.1c0.7,0.7,0.9,1.6,0.5,2.5L21.8,13c-0.1,0.2-0.2,0.3-0.3,0.4l-9.9,9.9c-0.9,0.9-2.4,0.9-3.4,0c0,0,0,0,0,0l-7.6-7.6c-0.9-0.9-0.9-2.4,0-3.4l9.9-9.9c0.1-0.1,0.3-0.2,0.4-0.3l5.7-2.1C17.6-0.2,18.6,0,19.2,0.7z M12.1,4.4l-9.7,9.7l7.6,7.6l9.7-9.7l2-5.5l-4.1-4.1C17.5,2.4,12.1,4.4,12.1,4.4z M15.4,8.6c-0.7-0.7-0.7-1.8-0.1-2.5s1.8-0.7,2.5-0.1c0,0,0,0,0.1,0.1c0.7,0.7,0.6,1.8-0.1,2.5C17.1,9.3,16.1,9.3,15.4,8.6L15.4,8.6z"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-ji-t-f'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.3,4l2.5,2.5c0.5,0.5,0.7,1.3,0.5,2l-1.3,4L8,20.4l-8-7.8l8.1-7.9l4.2-1.3C13,3.3,13.8,3.5,14.3,4z M10.5,10.2c0.6,0.6,1.6,0.6,2.2,0c0.6-0.6,0.6-1.5,0-2.1l0,0c-0.6-0.6-1.6-0.6-2.2,0C9.9,8.7,9.9,9.6,10.5,10.2L10.5,10.2z M17.9,11.2c0.6,0,1-0.1,1.2-0.3c0.7-0.5,0.7-1.5,0.2-2.1c-0.1-0.1-0.3-0.3-0.5-0.4c0.2-0.7-0.1-1.4-0.6-1.8l-1.8-1.7l2.3-0.7c0.7-0.2,1.5,0,2.1,0.5l2.5,2.5c0.5,0.5,0.7,1.3,0.5,2l-1.3,4l-8.1,7.9l-2.9-2.8l5.8-5.7C17.5,12.6,17.9,11.2,17.9,11.2z"/></svg>',
+				'file_name'   => 'tags-filled.svg',
+			),
+
+			'twrp-tax-ji-t-ol'   => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.6,18.1l1.5-1.4l1.5,1.4l6.3-6.2l1.1-3.6l-2.5-2.5l-1.1,0.3l-1.6-1.6L18.8,4c0.7-0.2,1.5,0,2.1,0.5l2.5,2.5c0.5,0.5,0.7,1.3,0.5,2l-1.3,4l-8.1,7.9L11.6,18.1L11.6,18.1z M14.3,3.8l2.5,2.5c0.5,0.5,0.7,1.3,0.5,2l-1.3,4L8,20.2l-8-7.8l8.1-7.9l4.2-1.3C13,3,13.8,3.2,14.3,3.8L14.3,3.8z M2.9,12.4L8,17.4l6.3-6.2l1.1-3.6l-2.5-2.5L9.2,6.3L2.9,12.4z M10.5,9.9c-0.6-0.6-0.6-1.5,0-2.1s1.6-0.6,2.2,0c0,0,0,0,0,0c0.6,0.6,0.6,1.6-0.1,2.1C12,10.5,11.1,10.5,10.5,9.9L10.5,9.9z M17.6,11l0.8-2.9c0.5,0.2,0.8,0.3,0.9,0.5c0.5,0.6,0.5,1.6-0.2,2.1C18.8,11,18.3,11,17.6,11z"/></svg>',
+				'file_name'   => 'tags-outlined.svg',
+			),
+
+			'twrp-tax-ji-b-f'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.9,0h10.3C19.3,0,21,1.6,21,3.6v18c0,1.3-1.2,2.4-2.6,2.4c-0.6,0-1.3-0.2-1.7-0.6l-3.8-3.3c-0.5-0.4-1.2-0.4-1.7,0l-3.8,3.3c-1,0.9-2.7,0.8-3.6-0.2c-0.4-0.4-0.7-1-0.7-1.6v-18C3,1.6,4.7,0,6.9,0z"/></svg>',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			'twrp-tax-ji-b-ol'   => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.9,2.4c-0.7,0-1.3,0.5-1.3,1.2v18l3.8-3.3c1.5-1.3,3.7-1.3,5.2,0l3.8,3.3v-18c0-0.7-0.6-1.2-1.3-1.2H6.9z M6.9,0h10.3C19.3,0,21,1.6,21,3.6v18c0,1.3-1.2,2.4-2.6,2.4c-0.6,0-1.3-0.2-1.7-0.6l-3.8-3.3c-0.5-0.4-1.2-0.4-1.7,0l-3.8,3.3c-1,0.9-2.7,0.8-3.6-0.2c-0.4-0.4-0.7-1-0.7-1.6v-18C3,1.6,4.7,0,6.9,0z"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			'twrp-tax-ji-h-f'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Hashtag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ji-h-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">twrp-tax-ji-h-f<path d="M10.7,10.7v2.6h2.6v-2.6H10.7z M10.7,8.1h2.6V4.3c0-0.7,0.6-1.3,1.3-1.3s1.3,0.6,1.3,1.3v3.9h3.9c0.7,0,1.3,0.6,1.3,1.3c0,0.7-0.6,1.3-1.3,1.3h-3.9v2.6h3.9c0.7,0,1.3,0.6,1.3,1.3s-0.6,1.3-1.3,1.3h-3.9v3.9c0,0.7-0.6,1.3-1.3,1.3s-1.3-0.6-1.3-1.3v-3.9h-2.6v3.9c0,0.7-0.6,1.3-1.3,1.3c-0.7,0-1.3-0.6-1.3-1.3v-3.9H4.3c-0.7,0-1.3-0.6-1.3-1.3s0.6-1.3,1.3-1.3h3.9v-2.6H4.3C3.6,10.7,3,10.1,3,9.4c0-0.7,0.6-1.3,1.3-1.3h3.9V4.3C8.1,3.6,8.7,3,9.4,3c0.7,0,1.3,0.6,1.3,1.3V8.1z"/></svg>',
+				'file_name'   => 'hashtag-filled.svg',
+			),
+
+			#endregion -- Jam Icons
+
+			#region -- Octicons Icons
+
+			'twrp-tax-o-ol'      => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-o-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z"></path><path fill-rule="evenodd" d="M2.5 1A1.5 1.5 0 001 2.5v8.44c0 .397.158.779.44 1.06l10.25 10.25a1.5 1.5 0 002.12 0l8.44-8.44a1.5 1.5 0 000-2.12L12 1.44A1.5 1.5 0 0010.94 1H2.5zm0 1.5h8.44l10.25 10.25-8.44 8.44L2.5 10.94V2.5z"></path></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-o-b-f'     => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-o-b-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M6.69 2a1.75 1.75 0 00-1.75 1.756L5 21.253a.75.75 0 001.219.583L12 17.21l5.782 4.625A.75.75 0 0019 21.25V3.75A1.75 1.75 0 0017.25 2H6.69z"></path></svg>',
+				'file_name'   => 'bookmark-filled.svg',
+			),
+
+			'twrp-tax-o-b-ol'    => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-o-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M5 3.75C5 2.784 5.784 2 6.75 2h10.5c.966 0 1.75.784 1.75 1.75v17.5a.75.75 0 01-1.218.586L12 17.21l-5.781 4.625A.75.75 0 015 21.25V3.75zm1.75-.25a.25.25 0 00-.25.25v15.94l5.031-4.026a.75.75 0 01.938 0L17.5 19.69V3.75a.25.25 0 00-.25-.25H6.75z"></path></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			#endregion -- Octicons Icons
+
+			#region -- Typicons Icons
+
+			'twrp-tax-ti-ol'     => array(
+				'brand'       => 'Typicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ti-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8,2.3c1.5,0,2.9,0.6,4,1.7l4,4l5.7,5.7l-8,8l-6.3-6.3C7.4,15.5,4,12,4,12C1.7,9.8,1.7,6.2,4,4C5.1,2.8,6.5,2.3,8,2.3 M8,0C5.9,0,3.9,0.8,2.3,2.3C0.8,3.9,0,5.9,0,8s0.8,4.1,2.3,5.7l3.4,3.4c0.1,0.1,0.3,0.2,0.4,0.3l5.9,5.9c0.4,0.4,1,0.7,1.6,0.7s1.2-0.2,1.6-0.7l8-8c0.9-0.9,0.9-2.3,0-3.2l-5.7-5.7l-3.9-4C12.1,0.8,10.1,0,8,0z M8,6.3c0.9,0,1.7,0.8,1.7,1.7S8.9,9.7,8,9.7S6.3,8.9,6.3,8S7.1,6.3,8,6.3 M8,5.1C6.4,5.1,5.1,6.4,5.1,8c0,1.6,1.3,2.9,2.9,2.9s2.9-1.3,2.9-2.9C10.9,6.4,9.6,5.1,8,5.1z"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-ti-t-ol'   => array(
+				'brand'       => 'Typicons',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ti-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.4,9l-7.1-6.8C13.8,0.8,11.9,0,9.8,0s-4,0.8-5.4,2.1C2.8,3.6,2,5.6,2.1,7.7C1.4,8.8,1,10.1,1,11.5c0,2,0.8,3.8,2.3,5.2l3.4,3.1l3.8,3.6c0.4,0.4,1,0.6,1.6,0.6s1.1-0.2,1.6-0.6l7.7-7.3c0.9-0.8,0.9-2.1,0-2.9L21.2,13l1.2-1.1C23.2,11.1,23.2,9.8,22.4,9z M12,21.9l-3.8-3.6l-3.3-3.1c-2.1-2-2.1-5.3,0-7.4c1.1-1,2.5-1.5,3.9-1.5s2.8,0.5,3.9,1.5l7.1,6.8C19.7,14.6,12,21.9,12,21.9z M14.2,6.3c-1.5-1.4-3.4-2.1-5.5-2.1c-1.4,0-2.7,0.4-3.9,1C5,4.6,5.4,4.1,5.9,3.6c1.1-1,2.5-1.5,3.9-1.5s2.8,0.5,3.9,1.5l7.1,6.8l-1.2,1.1L14.2,6.3z M8.7,9.9c0.9,0,1.6,0.7,1.6,1.6c0,0.9-0.7,1.6-1.6,1.6S7,12.3,7,11.5C7,10.6,7.8,9.9,8.7,9.9 M8.7,8.9c-1.5,0-2.8,1.2-2.8,2.6c0,1.4,1.2,2.6,2.8,2.6s2.8-1.2,2.8-2.6C11.4,10,10.2,8.9,8.7,8.9z"/></svg>',
+				'file_name'   => 'tags-outlined.svg',
+			),
+
+			'twrp-tax-ti-b-ol'   => array(
+				'brand'       => 'Typicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-ti-b-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.1,0.1H6.9C4.7,0.1,3,1.8,3,3.9v17.6c0,0.6,0.1,1.2,0.4,1.6c0.7,1.2,2.3,1.3,3.6,0l4.1-4c0.5-0.5,1.3-0.5,1.8,0l4.1,4c0.6,0.6,1.3,0.9,2,0.9c1,0,2.1-0.8,2.1-2.6V3.9C21,1.8,19.3,0.1,17.1,0.1z M6.9,2.6h10.3c0.7,0,1.3,0.6,1.3,1.3v12.4l-3.2-2.8c-1.8-1.6-4.7-1.6-6.6,0l-3.1,2.8V3.9C5.6,3.2,6.1,2.6,6.9,2.6z M14.7,17.3C14,16.6,13,16.2,12,16.2s-2,0.4-2.7,1.1l-3.7,3.6V18l4-3.6c1.3-1.2,3.5-1.2,4.8,0l4,3.6v2.9C18.4,20.9,14.7,17.3,14.7,17.3z"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			#endregion -- Typicons Icons
+
+		);
+
+		return $registered_category_vectors;
 	}
 
 	/**
@@ -833,7 +1545,7 @@ class SVG_Manager {
 
 			#region -- FontAwesome Icons
 
-			'twrp-com-fa-f'     => array(
+			'twrp-com-fa-f'       => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -841,7 +1553,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-com-fa-ol'     => array(
+			'twrp-com-fa-ol'      => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -857,7 +1569,7 @@ class SVG_Manager {
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-com-fa-2-ol'     => array(
+			'twrp-com-fa-2-ol'    => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -865,7 +1577,7 @@ class SVG_Manager {
 				'file_name'   => 'alt-outlined.svg',
 			),
 
-			'twrp-com-fa-dots-f'     => array(
+			'twrp-com-fa-dots-f'  => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -873,7 +1585,7 @@ class SVG_Manager {
 				'file_name'   => 'dots-filled.svg',
 			),
 
-			'twrp-com-fa-dots-ol'     => array(
+			'twrp-com-fa-dots-ol' => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -881,7 +1593,7 @@ class SVG_Manager {
 				'file_name'   => 'dots-outlined.svg',
 			),
 
-			'twrp-com-fa-comm-f'     => array(
+			'twrp-com-fa-comm-f'  => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -889,12 +1601,11 @@ class SVG_Manager {
 				'file_name'   => 'comments-filled.svg',
 			),
 
-
 			#endregion -- FontAwesome Icons
 
 			#region -- Google Icons
 
-			'twrp-com-go-f'     => array(
+			'twrp-com-go-f'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -902,7 +1613,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-com-go-ol'     => array(
+			'twrp-com-go-ol'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -910,7 +1621,7 @@ class SVG_Manager {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-com-go-dt'     => array(
+			'twrp-com-go-dt'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -918,14 +1629,13 @@ class SVG_Manager {
 				'file_name'   => 'twotone.svg',
 			),
 
-			'twrp-com-go-sh'     => array(
+			'twrp-com-go-sh'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23,1H1v17.6h17.6L23,23V1z"/></svg>',
 				'file_name'   => 'sharp.svg',
 			),
-
 
 			'twrp-com-go-2-f'     => array(
 				'brand'       => 'Google',
@@ -935,7 +1645,7 @@ class SVG_Manager {
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-com-go-2-ol'     => array(
+			'twrp-com-go-2-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -943,7 +1653,7 @@ class SVG_Manager {
 				'file_name'   => 'alt-outlined.svg',
 			),
 
-			'twrp-com-go-2-dt'     => array(
+			'twrp-com-go-2-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -951,14 +1661,13 @@ class SVG_Manager {
 				'file_name'   => 'alt-twotone.svg',
 			),
 
-			'twrp-com-go-2-sh'     => array(
+			'twrp-com-go-2-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-2-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23,1H1v17.6h17.6L23,23L23,1z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/></svg>',
 				'file_name'   => 'alt-sharp.svg',
 			),
-
 
 			'twrp-com-go-f-f'     => array(
 				'brand'       => 'Google',
@@ -968,7 +1677,7 @@ class SVG_Manager {
 				'file_name'   => 'feedback-filled.svg',
 			),
 
-			'twrp-com-go-f-ol'     => array(
+			'twrp-com-go-f-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -976,7 +1685,7 @@ class SVG_Manager {
 				'file_name'   => 'feedback-outlined.svg',
 			),
 
-			'twrp-com-go-f-dt'     => array(
+			'twrp-com-go-f-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -984,14 +1693,13 @@ class SVG_Manager {
 				'file_name'   => 'feedback-twotone.svg',
 			),
 
-			'twrp-com-go-f-sh'     => array(
+			'twrp-com-go-f-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-f-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23,1H1l0,22l4.4-4.4H23V1z M13.1,14.2h-2.2V12h2.2V14.2z M13.1,9.8h-2.2V5.4h2.2V9.8z"/></svg>',
 				'file_name'   => 'feedback-sharp.svg',
 			),
-
 
 			'twrp-com-go-b-f'     => array(
 				'brand'       => 'Google',
@@ -1001,7 +1709,7 @@ class SVG_Manager {
 				'file_name'   => 'bank-filled.svg',
 			),
 
-			'twrp-com-go-b-ol'     => array(
+			'twrp-com-go-b-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -1009,7 +1717,7 @@ class SVG_Manager {
 				'file_name'   => 'bank-outlined.svg',
 			),
 
-			'twrp-com-go-b-dt'     => array(
+			'twrp-com-go-b-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
@@ -1017,7 +1725,7 @@ class SVG_Manager {
 				'file_name'   => 'bank-twotone.svg',
 			),
 
-			'twrp-com-go-b-sh'     => array(
+			'twrp-com-go-b-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -1029,7 +1737,7 @@ class SVG_Manager {
 
 			#region -- Foundation Icons
 
-			'twrp-com-fi-f'     => array(
+			'twrp-com-fi-f'       => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -1048,9 +1756,337 @@ class SVG_Manager {
 
 			#endregion -- Foundation Icons
 
+			#region -- Ionicons Icons
+
+			'twrp-com-ii-f'       => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M129.1,491.5c-10,0-18.1-8.1-18.1-18.1V401H84c-44.7,0-81-36.5-81-81.4V102.4C3,57.5,39.3,21,84,21h343.6c44.9,0,81.4,36.5,81.4,81.4v217.1c0,45-36.5,81.4-81.4,81.4H244.1l-103.4,86.3C137.4,490,133.3,491.5,129.1,491.5z"/></svg>',
+				'file_name'   => 'filled.svg',
+			),
+
+			'twrp-com-ii-ol'      => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linejoin:round;" d="M427.8,39H84.2C49.3,39.1,21.1,67.4,21,102.3v217c0.1,34.9,28.4,63.2,63.3,63.3h45.2V473l105.9-88.3c1.6-1.4,3.7-2.1,5.8-2.1h186.6c34.9-0.1,63.2-28.4,63.3-63.3v-217C490.9,67.4,462.7,39.1,427.8,39z"/></svg>',
+				'file_name'   => 'outlined.svg',
+			),
+
+			'twrp-com-ii-sh'      => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M111,491.5V401H30.1C15.1,401,3,388.9,3,373.9V48.1C3,33.1,15.1,21,30.1,21h451.8c15,0,27.1,12.1,27.1,27.1v325.8c0,15-12.1,27.1-27.1,27.1H244.1L111,491.5z M482,57.1L482,57.1z"/></svg>',
+				'file_name'   => 'sharp.svg',
+			),
+
+			'twrp-com-ii-2-f'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M53.5,509.1C37.5,509,24.6,496,24.6,480c0.1-2.9,0.5-5.8,1.4-8.6l20.8-75.3c0.9-2.8-0.1-5.6-1.4-7.8l-0.2-0.5c-0.1-0.1-0.5-0.7-0.8-1.2c-0.3-0.4-0.7-0.9-1-1.4l-0.2-0.3C16.9,345.2,2.9,298.5,2.9,250.8C2.7,185.7,28.1,124.2,74.6,77.6C122.7,29.4,187,2.9,255.8,2.9c58.4,0,115.1,19.8,160.7,56.3c44.6,35.9,75.6,85.9,87.2,140.9c3.6,16.7,5.4,33.8,5.4,50.9c0,66.6-25.6,129.1-72,176.1c-46.9,47.5-109.8,73.5-177.2,73.5c-23.7,0-54.1-6.1-68.7-10.2c-17.5-4.9-34.2-11.3-36-12c-1.9-0.7-4-1.1-6.1-1.1c-2.2,0-4.5,0.4-6.6,1.3l-1,0.4l-76.3,27.5C61.6,508.1,57.6,509,53.5,509.1z M65.6,396.1L65.6,396.1z"/></svg>',
+				'file_name'   => '2-filled.svg',
+			),
+
+			'twrp-com-ii-2-ol'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-miterlimit:10;" d="M65.8,396.1c1.3-4.9-1.6-11.8-4.5-16.8c-0.9-1.5-1.8-2.9-2.9-4.3c-24.3-36.9-37.3-80.1-37.3-124.3C20.8,123.9,126,21,256.1,21c113.4,0,208.1,78.6,230.2,182.9c3.3,15.5,5,31.2,5,47.1c0,127-101.1,231.6-231.2,231.6c-20.7,0-48.6-5.2-63.8-9.5c-15.2-4.3-30.4-9.9-34.3-11.4c-4-1.5-8.3-2.3-12.6-2.3c-4.7,0-9.3,0.9-13.7,2.7l-76.6,27.7c-1.7,0.7-3.5,1.2-5.3,1.4c-6,0-10.8-4.9-10.8-10.9c0,0,0-0.1,0-0.1c0.1-1.3,0.3-2.5,0.7-3.7L65.8,396.1z"/></svg>',
+				'file_name'   => '2-outlined.svg',
+			),
+
+			'twrp-com-ii-ios-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Ios Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-ios-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256,51.7c-135.5,0-245.2,88.2-245.2,197c0,39.2,14.3,75.7,38.8,106.4c1.1,1.1,3.7,4.9,4.6,6.3c0,0-1.3-2-1.4-2.4l0,0l0,0l0,0c2.9,4.2,4.6,9.1,4.6,14.3c0,1.8-22.9,74.1-22.9,74.1l0,0c-1.7,5.6,2.7,11.4,9.7,12.8c1,0.3,2,0.3,3.1,0.3c1.7,0,3.2-0.3,4.7-0.6l2-0.8l64.6-28.1c1.1-0.5,11.5-4.5,12.8-5l0.8-0.3c0,0-0.1,0-0.8,0.3c4.3-1.5,9.2-2.3,14.3-2.3c4.6,0,9.1,0.6,13.2,1.9c0.1,0,0.3,0,0.3,0.1c0.6,0.3,1.3,0.4,1.9,0.6c29.5,10.1,61.8,13.2,95.9,13.2c135.4,0,243.9-81.8,243.9-190.6C501.2,139.9,391.4,51.7,256,51.7L256,51.7z"/></svg>',
+				'file_name'   => 'ios-filled.svg',
+			),
+
+			'twrp-com-ii-ios-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Ios Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-ios-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256,72.1c123.9,0,224.7,79.2,224.7,176.6c0,45.8-22.5,88.4-63.2,119.9c-41.9,32.4-98.8,50.2-160.3,50.2c-36.9,0-65.1-3.8-89-11.9c-0.8-0.3-1.7-0.6-2.6-0.9c-0.4-0.1-0.8-0.3-1-0.3c-6-1.8-12.4-2.7-18.8-2.7c-7.2,0-14.2,1.1-20.8,3.3l0,0l-0.4,0.1c-0.8,0.3-11.4,4.2-14,5.5l0,0l-50.6,22c17.6-56.1,17.6-57.2,17.6-60.8c0-9.1-2.8-18-8-25.8c-0.6-0.9-1.3-1.8-2-2.7c-0.9-1.1-1.7-2.2-2.3-2.9c-22.2-28-34-60.1-34-93.2C31.3,151.3,132.2,72.1,256,72.1 M256,51.7c-135.5,0-245.2,88.2-245.2,197c0,39.2,14.3,75.7,38.8,106.4c1.1,1.1,3.7,4.9,4.6,6.3c0,0-1.3-2-1.4-2.4l0,0l0,0l0,0c2.9,4.2,4.6,9.1,4.6,14.3c0,1.8-22.9,74.1-22.9,74.1l0,0c-1.7,5.6,2.7,11.4,9.7,12.8c1,0.3,2,0.3,3.1,0.3c1.7,0,3.2-0.3,4.7-0.6l2-0.8l64.6-28.1c1.1-0.5,11.5-4.5,12.8-5l0.8-0.3c0,0-0.1,0-0.8,0.3c4.3-1.5,9.2-2.3,14.3-2.3c4.6,0,9.1,0.6,13.2,1.9c0.1,0,0.3,0,0.3,0.1c0.6,0.3,1.3,0.4,1.9,0.6c29.5,10.1,61.8,13.2,95.9,13.2c135.4,0,243.9-81.8,243.9-190.6C501.2,139.9,391.4,51.7,256,51.7L256,51.7z"/></svg>',
+				'file_name'   => 'ios-outlined.svg',
+			),
+
+			'twrp-com-ii-t-f'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M427.8,21H84.2C39.3,21,2.9,57.4,2.9,102.3v217c0,44.9,36.4,81.3,81.4,81.4h27.1V473c0,10,8.1,18.1,18.1,18.1c4.2,0,8.3-1.5,11.6-4.2l103.4-86.2h183.4c44.9,0,81.3-36.4,81.4-81.4v-217C509.1,57.4,472.7,21,427.8,21z M147.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2S167.5,247,147.5,247z M256,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S276,247,256,247z M364.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S384.5,247,364.5,247z"/></svg>',
+				'file_name'   => 'typing-filled.svg',
+			),
+
+			'twrp-com-ii-t-ol'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linejoin:round;" d="M427.8,39H84.2C49.3,39.1,21.1,67.4,21,102.3v217c0.1,34.9,28.4,63.2,63.3,63.3h45.2V473l105.9-88.3c1.6-1.4,3.7-2.1,5.8-2.1h186.6c34.9-0.1,63.2-28.4,63.3-63.3v-217C490.9,67.4,462.7,39.1,427.8,39z"/><circle cx="147.5" cy="210.8" r="36.2"/><circle cx="256" cy="210.8" r="36.2"/><circle cx="364.5" cy="210.8" r="36.2"/></svg>',
+				'file_name'   => 'typing-outlined.svg',
+			),
+
+			'twrp-com-ii-t-sh'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-t-sh" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M482,21H30C15,21,2.9,33.1,2.9,48.1v325.4c0,15,12.1,27.1,27.1,27.1h81.4V491l133-90.4H482c15,0,27.1-12.1,27.1-27.1V48.1C509.1,33.1,497,21,482,21z M147.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2S167.5,247,147.5,247z M256,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S276,247,256,247z M364.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S384.5,247,364.5,247z M482,57.1L482,57.1z"/></svg>',
+				'file_name'   => 'typing-outlined.svg',
+			),
+
+			'twrp-com-ii-t2-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-t2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M503.7,200.1c-11.7-55-42.7-105-87.3-140.9C370.9,22.7,314.2,2.9,255.8,2.9C187,2.9,122.7,29.4,74.6,77.6C28.1,124.2,2.7,185.7,2.9,250.8c0,47.7,14,94.4,40.3,134.2l4.9,6.8L21,509.1l129.7-32.3c0,0,2.6,0.9,4.5,1.6c1.9,0.7,18.5,7.1,36,12c14.6,4.1,44.9,10.2,68.7,10.2c67.4,0,130.3-26.1,177.2-73.5c46.5-47,72-109.6,72-176.2C509.1,233.8,507.3,216.8,503.7,200.1z M147.5,292.2c-20,0-36.2-16.2-36.2-36.2c0-20,16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2C183.7,276,167.5,292.2,147.5,292.2z M256,292.2c-20,0-36.2-16.2-36.2-36.2c0-20,16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2C292.2,276,276,292.2,256,292.2z M364.5,292.2c-20,0-36.2-16.2-36.2-36.2c0-20,16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2C400.6,276,384.5,292.2,364.5,292.2z"/></svg>',
+				'file_name'   => 'typing-2-filled.svg',
+			),
+
+			'twrp-com-ii-t2-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-t2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-miterlimit:10;" d="M65.6,396.1c1.4-4.9-1.6-11.8-4.5-16.8c-0.9-1.5-1.8-2.9-2.9-4.3C33.9,338.1,21,294.9,21,250.7C20.6,123.9,125.7,21,255.8,21C369.2,21,463.9,99.5,486,203.9c3.3,15.5,5,31.2,5,47.1c0,127-101.1,231.6-231.2,231.6c-20.7,0-48.6-5.2-63.8-9.5c-15.2-4.3-30.4-9.9-34.3-11.4c-4-1.5-8.3-2.3-12.6-2.3c-4.7,0-9.3,0.9-13.7,2.7l-76.7,27.7c-1.7,0.7-3.5,1.2-5.3,1.4c-6,0-10.8-4.9-10.8-10.9c0,0,0-0.1,0-0.1c0.1-1.3,0.3-2.5,0.7-3.7L65.6,396.1z"/><circle cx="147.5" cy="256" r="36.2"/><circle cx="256" cy="256" r="36.2"/><circle cx="364.5" cy="256" r="36.2"/></svg>',
+				'file_name'   => 'typing-2-outlined.svg',
+			),
+
+			'twrp-com-ii-c-f'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-c-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M473,319.8c0.9-1.3,1.7-2.6,2.6-3.8c21.9-32.5,33.5-70.7,33.6-109.9C509.5,93.9,414.8,2.9,297.7,2.9c-102.1,0-187.3,69.5-207.2,161.7c-3,13.7-4.5,27.6-4.5,41.6C86,318.5,177,412,294.1,412c18.6,0,43.7-5.6,57.4-9.4c13.8-3.8,27.4-8.8,30.9-10.1c3.5-1.3,9-2.7,13.4-1.5l87.5,25.3c2.4,0.7,4.9-0.7,5.6-3.1c0.2-0.8,0.2-1.6,0-2.4l-20-76.3C467.6,329,467.4,327.9,473,319.8z"/><path d="M319.9,436.1c-8.7,1.4-17.5,2.2-26.3,2.3c-47.9,0-93.2-12.7-130-36.4c-23.5-14.4-43.9-33.4-60-55.7c-29.5-39.1-45.5-88.7-45.5-140.7c0-3.5,0.1-6.9,0.2-10.4c0.1-2.7-2-5-4.7-5.1c-1.5-0.1-2.9,0.5-3.8,1.6c-55.7,60.9-62.6,152-16.8,220.6c2.8,4.3,4.4,7.5,3.9,9.7L21,503.8c-0.5,2.5,1.1,4.8,3.6,5.3c0.8,0.1,1.6,0.1,2.3-0.2l76.8-27.4c4.7-1.9,10-1.8,14.6,0.2c23,9,48.4,14.6,73.9,14.6c49,0.2,96.1-18.4,131.8-52c1.9-1.9,2-4.9,0.1-6.9C323,436.4,321.4,435.9,319.9,436.1z"/></svg>',
+				'file_name'   => 'comments-filled.svg',
+			),
+
+			'twrp-com-ii-c-ol'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-c-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-miterlimit:10;" d="M453.8,329c-1.1-4.1,1.4-9.7,3.7-13.8c0.7-1.2,1.5-2.4,2.4-3.5c20.3-30.2,31.2-65.7,31.2-102C491.4,105.5,403.5,21,294.8,21C200,21,120.9,85.5,102.3,171.1c-2.8,12.7-4.2,25.7-4.2,38.6c0,104.3,84.5,191.1,193.2,191.1c17.3,0,40.6-5.2,53.3-8.7c12.8-3.5,25.4-8.1,28.7-9.4c3.4-1.3,6.9-1.9,10.5-1.9c3.9,0,7.8,0.8,11.4,2.3l64.1,22.7c1.4,0.6,2.9,1,4.4,1.1c5,0,9-4,9-9c-0.1-1-0.3-2.1-0.6-3.1L453.8,329z"/><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-miterlimit:10;" d="M41.8,228.9C11.6,283.2,14.4,349.8,49,401.4c2.6,3.9,4.1,7,3.6,9c-0.5,2-13.5,69.9-13.5,69.9c-0.6,3.2,0.5,6.6,3.1,8.7c1.7,1.3,3.7,2,5.8,2c1.1,0,2.3-0.2,3.3-0.7l63.5-24.9c4.4-1.7,9.2-1.6,13.6,0.2c21.4,8.3,45.1,13.6,68.7,13.6c31.8,0,63-8.3,90.5-24.3"/></svg>',
+				'file_name'   => 'comments-outlined.svg',
+			),
+
+			'twrp-com-ii-ioc-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Ios Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-ioc-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><polygon points="346,21 21,21 21,274 147,274 147,148 346,148 	"/><path d="M166,166v253h183.6l72.3,72H437v-72h54V166H166z"/></svg>',
+				'file_name'   => 'ios-comments-filled.svg',
+			),
+
+			'twrp-com-ii-ioc-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Ios Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ii-ioc-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><polygon points="39,39 328.3,39 328.3,147.5 346.4,147.5 346.4,21 21,21 21,274.1 147.5,274.1 147.5,256 39,256"/><path d="M165.6,165.6v253.1h183.7l72.3,72.3h15.1v-72.3H491V165.6H165.6z M473,400.6h-54.2v61.7l-62.1-61.7H183.7v-217H473V400.6z"/></svg>',
+				'file_name'   => 'ios-comments-outlined.svg',
+			),
+
+			#endregion -- Ionicons Icons
+
+			#region -- IconMonstr Icons
+
+			'twrp-com-im-f'       => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 1h-24v16.981h4v5.019l7-5.019h13z"/></svg>',
+				'file_name'   => 'filled.svg',
+			),
+
+			'twrp-com-im-ol'      => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 3v13h-11.643l-4.357 3.105v-3.105h-4v-13h20zm2-2h-24v16.981h4v5.019l7-5.019h13v-16.981z"/></svg>',
+				'file_name'   => 'outlined.svg',
+			),
+
+			'twrp-com-im-2-f'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.054 23c.971-1.912 2.048-4.538 1.993-6.368-1.308-1.562-2.047-3.575-2.047-5.625 0-5.781 5.662-10.007 12-10.007 6.299 0 12 4.195 12 10.007 0 6.052-6.732 11.705-15.968 9.458-1.678 1.027-5.377 2.065-7.978 2.535z"/></svg>',
+				'file_name'   => '2-filled.svg',
+			),
+
+			'twrp-com-im-2-ol'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.685 10 8.213 0 5.04-5.146 8.159-9.913 8.159-2.027 0-3.548-.439-4.548-.712l-4.004 1.196 1.252-2.9c-.952-1-2.787-2.588-2.787-5.743 0-4.528 4.486-8.213 10-8.213zm0-2c-6.628 0-12 4.573-12 10.213 0 2.39.932 4.591 2.427 6.164l-2.427 5.623 7.563-2.26c1.585.434 3.101.632 4.523.632 7.098.001 11.914-4.931 11.914-10.159 0-5.64-5.372-10.213-12-10.213z"/></svg>',
+				'file_name'   => '2-outlined.svg',
+			),
+
+			'twrp-com-im-t-f'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 1v16.981h4v5.019l7-5.019h13v-16.981h-24zm7 10c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5z"/></svg>',
+				'file_name'   => 'typing-filled.svg',
+			),
+
+			'twrp-com-im-t-ol'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 11c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5-8v13h-11.643l-4.357 3.105v-3.105h-4v-13h20zm2-2h-24v16.981h4v5.019l7-5.019h13v-16.981z"/></svg>',
+				'file_name'   => 'typing-outlined.svg',
+			),
+
+			'twrp-com-im-t2-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-t2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1c-6.338 0-12 4.226-12 10.007 0 2.05.739 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 9.236 2.247 15.968-3.405 15.968-9.457 0-5.812-5.701-10.007-12-10.007zm-5 11.5c-.829 0-1.5-.671-1.5-1.5s.671-1.5 1.5-1.5 1.5.671 1.5 1.5-.671 1.5-1.5 1.5zm5 0c-.829 0-1.5-.671-1.5-1.5s.671-1.5 1.5-1.5 1.5.671 1.5 1.5-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5z"/></svg>',
+				'file_name'   => 'typing-filled.svg',
+			),
+
+			'twrp-com-im-t2-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-t2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.592 10 8.007 0 4.917-5.145 7.961-9.91 7.961-1.937 0-3.383-.397-4.394-.644-1 .613-1.595 1.037-4.272 1.82.535-1.373.723-2.748.602-4.265-.838-1-2.025-2.4-2.025-4.872-.001-4.415 4.485-8.007 9.999-8.007zm0-2c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 1.418.345 2.775.503 4.059.503 7.084 0 11.91-4.837 11.91-9.961-.001-5.811-5.702-10.006-12.001-10.006zm-3.5 10c0 .829-.671 1.5-1.5 1.5-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5zm5 0c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5z"/></svg>',
+				'file_name'   => 'typing-outlined.svg',
+			),
+
+			'twrp-com-im-co-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Content', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-co-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M0 1v16.981h4v5.019l7-5.019h13v-16.981h-24zm13 12h-8v-1h8v1zm6-3h-14v-1h14v1zm0-3h-14v-1h14v1z"/></svg>',
+				'file_name'   => 'content-filled.svg',
+			),
+
+			'twrp-com-im-co-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Content', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-co-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 3v13h-11.643l-4.357 3.105v-3.105h-4v-13h20zm2-2h-24v16.981h4v5.019l7-5.019h13v-16.981zm-5 6h-14v-1h14v1zm0 2h-14v1h14v-1zm-6 3h-8v1h8v-1z"/></svg>',
+				'file_name'   => 'content-outlined.svg',
+			),
+
+			'twrp-com-im-co2-f'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Content 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-co2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 1c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 9.236 2.247 15.968-3.405 15.968-9.457 0-5.812-5.701-10.007-12-10.007zm0 14h-6v-1h6v1zm6-3h-12v-1h12v1zm0-3h-12v-1h12v1z"/></svg>',
+				'file_name'   => 'content-2-filled.svg',
+			),
+
+			'twrp-com-im-co2-ol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Content 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-co2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.592 10 8.007 0 4.917-5.145 7.961-9.91 7.961-1.937 0-3.383-.397-4.394-.644-1 .613-1.595 1.037-4.272 1.82.535-1.373.723-2.748.602-4.265-.838-1-2.025-2.4-2.025-4.872-.001-4.415 4.485-8.007 9.999-8.007zm0-2c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 1.418.345 2.775.503 4.059.503 7.084 0 11.91-4.837 11.91-9.961-.001-5.811-5.702-10.006-12.001-10.006zm0 14h-5v-1h5v1zm5-3h-10v-1h10v1zm0-3h-10v-1h10v1z"/></svg>',
+				'file_name'   => 'content-2-outlined.svg',
+			),
+
+			'twrp-com-im-c-f'     => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c-f" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M20 9.999v-2h4v12.001h-3v4l-5.333-4h-7.667v-4h12v-6.001zm-2 4.001h-9.667l-5.333 4v-4h-3v-14.001h18v14.001z"/></svg>',
+				'file_name'   => 'comments-filled.svg',
+			),
+
+			'twrp-com-im-c-ol'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c-ol" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M24 20h-3v4l-5.333-4h-7.667v-4h2v2h6.333l2.667 2v-2h3v-8.001h-2v-2h4v12.001zm-15.667-6l-5.333 4v-4h-3v-14.001l18 .001v14h-9.667zm-6.333-2h3v2l2.667-2h8.333v-10l-14-.001v10.001z"/></svg>',
+				'file_name'   => 'comments-outlined.svg',
+			),
+
+			'twrp-com-im-c2-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c2-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.619 21.671c-5.038 1.227-8.711-1.861-8.711-5.167 0-3.175 3.11-5.467 6.546-5.467 3.457 0 6.546 2.309 6.546 5.467 0 1.12-.403 2.22-1.117 3.073-.029 1 .558 2.435 1.088 3.479-1.419-.257-3.438-.824-4.352-1.385zm-10.711-5.167c0-4.117 3.834-7.467 8.546-7.467.886 0 1.74.119 2.544.338-.021-4.834-4.761-8.319-9.998-8.319-5.281 0-10 3.527-10 8.352 0 1.71.615 3.391 1.705 4.695.047 1.527-.851 3.718-1.661 5.313 2.168-.391 5.252-1.258 6.649-2.115.803.196 1.576.304 2.328.363-.067-.379-.113-.765-.113-1.16z"/></svg>',
+				'file_name'   => 'comments-2-filled.svg',
+			),
+
+			'twrp-com-im-c2-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.454 12.537c2.782 0 5.046 1.779 5.046 3.967 0 1.12-.462 1.745-1.102 2.509-.021.746-.049 1.054.139 1.866-.891-.306-.986-.396-1.666-.813-.894.218-1.489.38-2.465.38-3.087 0-4.998-2.046-4.998-3.942 0-2.188 2.264-3.967 5.046-3.967zm0-1.5c-3.436 0-6.546 2.292-6.546 5.467 0 2.799 2.633 5.442 6.498 5.442.699 0 1.44-.087 2.213-.275.914.561 2.933 1.128 4.352 1.385-.53-1.044-1.117-2.479-1.088-3.479.714-.853 1.117-1.953 1.117-3.073 0-3.158-3.089-5.467-6.546-5.467zm-8.485 4.614c-1.138-.11-1.611-.247-2.611-.491-.97.596-1.26.815-3.008 1.374.418-1.514.364-2.183.333-3.183-.834-1-1.683-2.07-1.683-3.943 0-3.502 3.589-6.352 8-6.352 4.264 0 7.748 2.664 7.978 6.004.698.038 1.377.14 2.021.315-.022-4.834-4.762-8.319-9.999-8.319-5.281 0-10 3.527-10 8.352 0 1.71.615 3.391 1.705 4.695.047 1.527-.851 3.718-1.661 5.313 2.168-.391 5.252-1.258 6.649-2.115.802.196 1.578.314 2.33.374-.135-.749-.148-1.317-.054-2.024z"/></svg>',
+				'file_name'   => 'comments-2-outlined.svg',
+			),
+
+			'twrp-com-im-c3-sf'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 3', 'backend', 'twrp' ),
+				'type'        => _x( 'Semi Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c3-sf" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M24 20h-3v4l-5.333-4h-7.667v-4h2v2h6.333l2.667 2v-2h3v-8.001h-2v-2h4v12.001zm-6-6h-9.667l-5.333 4v-4h-3v-14.001h18v14.001z"/></svg>',
+				'file_name'   => 'comments-3-semi-filled.svg',
+			),
+
+			'twrp-com-im-c4-sf'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 4', 'backend', 'twrp' ),
+				'type'        => _x( 'Semi Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c4-sf" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M24 20h-3v4l-5.333-4h-7.667v-4h2v2h6.333l2.667 2v-2h3v-8.001h-2v-2h4v12.001zm-6-6h-9.667l-5.333 4v-4h-3v-14.001h18v14.001zm-9-4.084h-5v1.084h5v-1.084zm5-2.916h-10v1h10v-1zm0-3h-10v1h10v-1z"/></svg>',
+				'file_name'   => 'comments-4-semi-filled.svg',
+			),
+
+			'twrp-com-im-c5-sf'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 5', 'backend', 'twrp' ),
+				'type'        => _x( 'Semi Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c5-sf" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M24 20h-3v4l-5.333-4h-7.667v-4h2v2h6.333l2.667 2v-2h3v-8.001h-2v-2h4v12.001zm-6-6h-9.667l-5.333 4v-4h-3v-14.001h18v14.001zm-13-8c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm4 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1zm4 0c.552 0 1 .448 1 1s-.448 1-1 1-1-.448-1-1 .448-1 1-1z"/></svg>',
+				'file_name'   => 'comments-5-semi-filled.svg',
+			),
+
+			'twrp-com-im-c6-f'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 6', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c6-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 9.352c0-4.852-4.751-8.352-10-8.352-5.281 0-10 3.526-10 8.352 0 1.711.615 3.391 1.705 4.695.047 1.527-.851 3.718-1.661 5.312 2.168-.391 5.252-1.258 6.649-2.115 7.697 1.877 13.307-2.842 13.307-7.892zm-14.5 1.38c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25zm4.5 0c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25zm4.5 0c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25zm8.383 8.789c-.029 1.001.558 2.435 1.088 3.479-1.419-.258-3.438-.824-4.352-1.385-3.365.818-6.114-.29-7.573-2.1 4.557-.66 8.241-3.557 9.489-7.342 1.48.979 2.465 2.491 2.465 4.274 0 1.12-.403 2.221-1.117 3.074z"/></svg>',
+				'file_name'   => 'comments-6-filled.svg',
+			),
+
+			'twrp-com-im-c6-ol'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 6', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c6-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 3.002c4.411 0 8 2.849 8 6.35 0 3.035-3.029 6.311-7.925 6.311-1.58 0-2.718-.317-3.718-.561-.966.593-1.256.813-3.006 1.373.415-1.518.362-2.182.331-3.184-.837-1.001-1.682-2.069-1.682-3.939 0-3.501 3.589-6.35 8-6.35zm0-2.002c-5.281 0-10 3.526-10 8.352 0 1.711.615 3.391 1.705 4.695.047 1.527-.851 3.718-1.661 5.312 2.168-.391 5.252-1.258 6.649-2.115 1.181.289 2.312.421 3.382.421 5.903 0 9.925-4.038 9.925-8.313 0-4.852-4.751-8.352-10-8.352zm11.535 11.174c-.161.488-.361.961-.601 1.416 1.677 1.262 2.257 3.226.464 5.365-.021.745-.049 1.049.138 1.865-.892-.307-.979-.392-1.665-.813-2.127.519-4.265.696-6.089-.855-.562.159-1.145.278-1.74.364 1.513 1.877 4.298 2.897 7.577 2.1.914.561 2.933 1.127 4.352 1.385-.53-1.045-1.117-2.479-1.088-3.479 1.755-2.098 1.543-5.436-1.348-7.348zm-15.035-3.763c-.591 0-1.071.479-1.071 1.071s.48 1.071 1.071 1.071 1.071-.479 1.071-1.071-.48-1.071-1.071-1.071zm3.5 0c-.591 0-1.071.479-1.071 1.071s.48 1.071 1.071 1.071 1.071-.479 1.071-1.071-.48-1.071-1.071-1.071zm3.5 0c-.591 0-1.071.479-1.071 1.071s.48 1.071 1.071 1.071 1.071-.479 1.071-1.071-.48-1.071-1.071-1.071z"/></svg>',
+				'file_name'   => 'comments-6-outlined.svg',
+			),
+
+			'twrp-com-im-c6-t'    => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 6', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c6-t" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 24 24"><path d="M20 15c0 .552-.448 1-1 1s-1-.448-1-1 .448-1 1-1 1 .448 1 1m-3 0c0 .552-.448 1-1 1s-1-.448-1-1 .448-1 1-1 1 .448 1 1m-3 0c0 .552-.448 1-1 1s-1-.448-1-1 .448-1 1-1 1 .448 1 1m5.415 4.946c-1 .256-1.989.482-3.324.482-3.465 0-7.091-2.065-7.091-5.423 0-3.128 3.14-5.672 7-5.672 3.844 0 7 2.542 7 5.672 0 1.591-.646 2.527-1.481 3.527l.839 2.686-2.943-1.272zm-13.373-3.375l-4.389 1.896 1.256-4.012c-1.121-1.341-1.909-2.665-1.909-4.699 0-4.277 4.262-7.756 9.5-7.756 5.018 0 9.128 3.194 9.467 7.222-1.19-.566-2.551-.889-3.967-.889-4.199 0-8 2.797-8 6.672 0 .712.147 1.4.411 2.049-.953-.126-1.546-.272-2.369-.483m17.958-1.566c0-2.172-1.199-4.015-3.002-5.21l.002-.039c0-5.086-4.988-8.756-10.5-8.756-5.546 0-10.5 3.698-10.5 8.756 0 1.794.646 3.556 1.791 4.922l-1.744 5.572 6.078-2.625c.982.253 1.932.407 2.85.489 1.317 1.953 3.876 3.314 7.116 3.314 1.019 0 2.105-.135 3.242-.428l4.631 2-1.328-4.245c.871-1.042 1.364-2.384 1.364-3.75"/></svg>',
+				'file_name'   => 'comments-6-thin.svg',
+			),
+
+			'twrp-com-im-c7-sf'   => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 7', 'backend', 'twrp' ),
+				'type'        => _x( 'Semi Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c7-sf" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 9.352c0-4.852-4.75-8.352-10-8.352-5.281 0-10 3.527-10 8.352 0 1.71.615 3.39 1.705 4.695.047 1.527-.85 3.719-1.66 5.312 2.168-.391 5.252-1.258 6.648-2.115 7.698 1.877 13.307-2.842 13.307-7.892zm-14.5 1.381c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25zm4.5 0c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25zm4.5 0c-.689 0-1.25-.56-1.25-1.25s.561-1.25 1.25-1.25 1.25.56 1.25 1.25-.561 1.25-1.25 1.25zm7.036 1.441c-.161.488-.361.961-.601 1.416 1.677 1.262 2.257 3.226.464 5.365-.021.745-.049 1.049.138 1.865-.892-.307-.979-.392-1.665-.813-2.127.519-4.265.696-6.089-.855-.562.159-1.145.278-1.74.364 1.513 1.877 4.298 2.897 7.577 2.1.914.561 2.933 1.127 4.352 1.385-.53-1.045-1.117-2.479-1.088-3.479 1.755-2.098 1.543-5.436-1.348-7.348z"/></svg>',
+				'file_name'   => 'comments-7-semi-filled.svg',
+			),
+
+			'twrp-com-im-c7-sol'  => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Comments 7', 'backend', 'twrp' ),
+				'type'        => _x( 'Semi Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c7-sol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.001 9.352c0 1.873.849 2.943 1.683 3.943.031 1 .085 1.668-.333 3.183 1.748-.558 2.038-.778 3.008-1.374 1 .244 1.474.381 2.611.491-.094.708-.081 1.275.055 2.023-.752-.06-1.528-.178-2.33-.374-1.397.857-4.481 1.725-6.649 2.115.811-1.595 1.708-3.785 1.661-5.312-1.09-1.305-1.705-2.984-1.705-4.695-.001-4.826 4.718-8.352 9.999-8.352 5.237 0 9.977 3.484 9.998 8.318-.644-.175-1.322-.277-2.021-.314-.229-3.34-3.713-6.004-7.977-6.004-4.411 0-8 2.85-8 6.352zm20.883 10.169c-.029 1.001.558 2.435 1.088 3.479-1.419-.258-3.438-.824-4.352-1.385-.772.188-1.514.274-2.213.274-3.865 0-6.498-2.643-6.498-5.442 0-3.174 3.11-5.467 6.546-5.467 3.457 0 6.546 2.309 6.546 5.467 0 1.12-.403 2.221-1.117 3.074zm-7.563-3.021c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82zm3 0c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82zm3 0c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82z"/></svg>',
+				'file_name'   => 'comments-7-semi-outlined.svg',
+			),
+
+			#endregion -- IconMonstr Icons
+
 			#region -- Capicon Icons
 
-			'twrp-com-ci-f'     => array(
+			'twrp-com-ci-f'       => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -1058,7 +2094,7 @@ class SVG_Manager {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-com-ci-ol'     => array(
+			'twrp-com-ci-ol'      => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -1095,7 +2131,7 @@ class SVG_Manager {
 
 			#region -- Feather Icons
 
-			'twrp-com-ci-sq-f'     => array(
+			'twrp-com-ci-sq-f'    => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Square', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -1103,7 +2139,7 @@ class SVG_Manager {
 				'file_name'   => 'square-outlined.svg',
 			),
 
-			'twrp-com-ci-ci-f'     => array(
+			'twrp-com-ci-ci-f'    => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -1113,9 +2149,129 @@ class SVG_Manager {
 
 			#endregion -- Feather Icons
 
+			#region -- Jam Icons
+
+			'twrp-com-ji-f'       => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-f" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24"><path d="M3 .565h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.57v-4.006a2 2 0 0 1-2-2v-9a3 3 0 0 1 3-3z" /></svg>',
+				'file_name'   => 'filled.svg',
+			),
+
+			'twrp-com-ji-ol'      => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-ol" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 24 24"><path d="M9.378 12H17a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1 1 1 0 0 1 1 1v3.013L9.378 12zM3 0h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.006V14a2 2 0 0 1-2-2V3a3 3 0 0 1 3-3z"/></svg>',
+				'file_name'   => 'outlined.svg',
+			),
+
+			'twrp-com-ji-2-f'     => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-2-f" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24"><path d="M10.01 15.959c-.186.018-1.626 1.276-4.321 3.774a1 1 0 0 1-1.68-.742c.02-2.362.011-3.709-.024-4.04-.018-.173.032-.28 0-.3C1.708 13.212 0 10.775 0 8.005 0 3.584 4.03 0 9 0s9 3.584 9 8.004c0 4.117-3.495 7.509-7.99 7.955z" /></svg>',
+				'file_name'   => 'alt-filled.svg',
+			),
+
+			'twrp-com-ji-2-ol'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24"><path d="M5.978 14.969a.38.38 0 0 1 .002-.033l-.002.033zm.001-.167a1.36 1.36 0 0 0 .001.003v-.003zm.04 1.9c2.678-2.462 3.007-2.656 3.793-2.734C13.364 13.615 16 11.01 16 8.004c0-3.26-3.085-6.003-7-6.003S2 4.745 2 8.004c0 1.893 1.175 3.767 3.054 4.957.783.495.958 1.117.941 1.778a2.548 2.548 0 0 1-.009.15c.022.33.032.92.033 1.814zm3.99-.743c-.185.018-1.625 1.276-4.32 3.774a1 1 0 0 1-1.68-.742c.02-2.362.011-3.709-.024-4.04-.018-.173.032-.28 0-.3C1.708 13.212 0 10.775 0 8.005 0 3.584 4.03 0 9 0s9 3.584 9 8.004c0 4.117-3.495 7.509-7.99 7.955z"/></svg>',
+				'file_name'   => 'alt-outlined.svg',
+			),
+
+			'twrp-com-ji-c-f'     => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-c-f" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 24 24"><path d="M3.656 17.979A1 1 0 0 1 2 17.243V15a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.003l-4.347 2.979zM16 10.017a7.136 7.136 0 0 0 0 .369v-.37c.005-.107.006-1.447.004-4.019a3 3 0 0 0-3-2.997H5V2a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2v2.243a1 1 0 0 1-1.656.736L16 13.743v-3.726z" /></svg>',
+				'file_name'   => 'comments-filled.svg',
+			),
+
+			'twrp-com-ji-c-ol'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-c-ol" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 24 24"><path d="M3.656 17.979A1 1 0 0 1 2 17.243V15a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H8.003l-4.347 2.979zm.844-3.093a.536.536 0 0 0 .26-.069l2.355-1.638A1 1 0 0 1 7.686 13H12a1 1 0 0 0 1-1V7a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v5c0 .54.429.982 1 1 .41.016.707.083.844.226.128.134.135.36.156.79.003.063.003.177 0 .37a.5.5 0 0 0 .5.5zm11.5-4.87a7.136 7.136 0 0 0 0 .37v-.37c.02-.43.028-.656.156-.79.137-.143.434-.21.844-.226.571-.018 1-.46 1-1V3a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1H5V2a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2v2.243a1 1 0 0 1-1.656.736L16 13.743v-3.726z" /></svg>',
+				'file_name'   => 'comments-outlined.svg',
+			),
+
+			'twrp-com-ji-c2-f'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comments 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-c2-f" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24"><path d="M7.46 2.332C8.74.913 10.746 0 13 0c3.866 0 7 2.686 7 6 0 1.989-1.13 3.752-2.868 4.844a2.826 2.826 0 0 1-.132.076v4.05a1 1 0 0 1-1.718.696l-1.14-1.174c1.069-1.264 1.698-2.816 1.698-4.493 0-4.067-3.698-7.395-8.38-7.667z"/><path d="M8.385 15.886l-3.667 3.78A1 1 0 0 1 3 18.97v-4.05a2.826 2.826 0 0 1-.132-.076C1.129 13.752 0 11.989 0 10c0-3.314 3.134-6 7-6s7 2.686 7 6c0 2.726-2.121 5.028-5.026 5.758a8.17 8.17 0 0 1-.589.128z"/></svg>',
+				'file_name'   => 'comments-alt-filled.svg',
+			),
+
+			'twrp-com-ji-c2-ol'   => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Comments 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-c2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24"><path d="M7.403 14.026l.64-.11c.124-.022.272-.054.443-.098C10.6 13.288 12 11.708 12 10c0-2.135-2.176-4-5-4s-5 1.865-5 4c0 1.218.702 2.378 1.931 3.15l.036.02L5 13.74v2.763l2.403-2.477zm.982 1.86l-3.667 3.78A1 1 0 0 1 3 18.97v-4.05a2.826 2.826 0 0 1-.132-.076C1.129 13.752 0 11.989 0 10c0-3.314 3.134-6 7-6s7 2.686 7 6c0 2.726-2.121 5.028-5.026 5.758a8.17 8.17 0 0 1-.589.128zM6.936 3C8.146 1.207 10.41 0 13 0c3.866 0 7 2.686 7 6 0 1.989-1.13 3.752-2.868 4.844a2.826 2.826 0 0 1-.132.076v4.05a1 1 0 0 1-1.718.696l-1.735-1.788 1.043-1.798.41.423V9.74l1.033-.57.036-.02C17.299 8.378 18 7.218 18 6c0-2.135-2.176-4-5-4-1.28 0-2.426.383-3.297 1H6.936z"/></svg>',
+				'file_name'   => 'comments-alt-outlined.svg',
+			),
+
+			'twrp-com-ji-t-f'     => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-t-f" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2 24 24"><path d="M3 .858h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.864v-4.006a2 2 0 0 1-2-2v-9a3 3 0 0 1 3-3zm10 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" /></svg>',
+				'file_name'   => 'typing-filled.svg',
+			),
+
+			'twrp-com-ji-t-ol'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-t-ol" xmlns="http://www.w3.org/2000/svg" viewBox="-2 -2.5 24 24"><path d="M3 0h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.006V14a2 2 0 0 1-2-2V3a3 3 0 0 1 3-3zm6.378 12H17a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1 1 1 0 0 1 1 1v3.013L9.378 12zM13 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM7 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>',
+				'file_name'   => 'typing-outlined.svg',
+			),
+
+			'twrp-com-ji-t2-f'    => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-t2-f" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24"twrp-com-ji-t2-f><path d="M10.01 15.959c-.186.018-1.626 1.276-4.321 3.774a1 1 0 0 1-1.68-.742c.02-2.362.011-3.709-.024-4.04-.018-.173.032-.28 0-.3C1.708 13.212 0 10.775 0 8.005 0 3.584 4.03 0 9 0s9 3.584 9 8.004c0 4.117-3.495 7.509-7.99 7.955zM12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" /></svg>',
+				'file_name'   => 'typing-alt-filled.svg',
+			),
+
+			'twrp-com-ji-t2-ol'   => array(
+				'brand'       => 'JamIcons',
+				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-ji-t2-ol" xmlns="http://www.w3.org/2000/svg" viewBox="-3 -2 24 24"><path d="M10.01 15.959c-.186.018-1.626 1.276-4.321 3.774a1 1 0 0 1-1.68-.742c.02-2.362.011-3.709-.024-4.04-.018-.173.032-.28 0-.3C1.708 13.212 0 10.775 0 8.005 0 3.584 4.03 0 9 0s9 3.584 9 8.004c0 4.117-3.495 7.509-7.99 7.955zm-3.99.744c2.677-2.463 3.006-2.657 3.792-2.735C13.364 13.615 16 11.01 16 8.004c0-3.26-3.085-6.003-7-6.003S2 4.745 2 8.004c0 1.893 1.175 3.767 3.054 4.957.783.495.958 1.117.941 1.778a2.548 2.548 0 0 1-.009.15c.022.33.032.92.033 1.814zM12 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" /></svg>',
+				'file_name'   => 'typing-alt-outlined.svg',
+			),
+
+			#endregion -- Jam Icons
+
+			#region -- Octicons Icons
+
+			'twrp-com-oi-f'       => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-oi-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M3.25 4a.25.25 0 00-.25.25v12.5c0 .138.112.25.25.25h2.5a.75.75 0 01.75.75v3.19l3.72-3.72a.75.75 0 01.53-.22h10a.25.25 0 00.25-.25V4.25a.25.25 0 00-.25-.25H3.25zm-1.75.25c0-.966.784-1.75 1.75-1.75h17.5c.966 0 1.75.784 1.75 1.75v12.5a1.75 1.75 0 01-1.75 1.75h-9.69l-3.573 3.573A1.457 1.457 0 015 21.043V18.5H3.25a1.75 1.75 0 01-1.75-1.75V4.25z"></path></svg>',
+				'file_name'   => 'filled.svg',
+			),
+
+			'twrp-com-oi-c-f'     => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-oi-c-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.5 2.75a.25.25 0 01.25-.25h8.5a.25.25 0 01.25.25v5.5a.25.25 0 01-.25.25h-3.5a.75.75 0 00-.53.22L3.5 11.44V9.25a.75.75 0 00-.75-.75h-1a.25.25 0 01-.25-.25v-5.5zM1.75 1A1.75 1.75 0 000 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 002.487 1.03L7.061 10h3.189A1.75 1.75 0 0012 8.25v-5.5A1.75 1.75 0 0010.25 1h-8.5zM14.5 4.75a.25.25 0 00-.25-.25h-.5a.75.75 0 110-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0114.25 12H14v1.543a1.457 1.457 0 01-2.487 1.03L9.22 12.28a.75.75 0 111.06-1.06l2.22 2.22v-2.19a.75.75 0 01.75-.75h1a.25.25 0 00.25-.25v-5.5z"></path></svg>',
+				'file_name'   => 'comments-filled.svg',
+			),
+
+			#endregion -- Octicons Icons
+
 			#region -- Typicons Icons
 
-			'twrp-com-ti-f'     => array(
+			'twrp-com-ti-f'       => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -1600,7 +2756,56 @@ class SVG_Manager {
 	 * @return array<string,array>
 	 */
 	protected static function get_rating_icons() {
-		return array();
+		$registered_rating_vectors = array(
+
+			#region -- FontAwesome Icons
+
+			'twrp-rat-fa-f'  => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Star', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-rat-fa-f" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>',
+				'file_name'   => 'star-filled.svg',
+			),
+
+			'twrp-rat-fa-hf' => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Star', 'backend', 'twrp' ),
+				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-rat-fa-hf" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 536 512"><path d="M508.55 171.51L362.18 150.2 296.77 17.81C290.89 5.98 279.42 0 267.95 0c-11.4 0-22.79 5.9-28.69 17.81l-65.43 132.38-146.38 21.29c-26.25 3.8-36.77 36.09-17.74 54.59l105.89 103-25.06 145.48C86.98 495.33 103.57 512 122.15 512c4.93 0 10-1.17 14.87-3.75l130.95-68.68 130.94 68.7c4.86 2.55 9.92 3.71 14.83 3.71 18.6 0 35.22-16.61 31.66-37.4l-25.03-145.49 105.91-102.98c19.04-18.5 8.52-50.8-17.73-54.6zm-121.74 123.2l-18.12 17.62 4.28 24.88 19.52 113.45-102.13-53.59-22.38-11.74.03-317.19 51.03 103.29 11.18 22.63 25.01 3.64 114.23 16.63-82.65 80.38z"></path></svg>',
+				'file_name'   => 'star-half-filled.svg',
+			),
+
+			'twrp-rat-fa-ol' => array(
+				'brand'       => 'FontAwesome',
+				'description' => _x( 'Star', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-rat-fa-ol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>',
+				'file_name'   => 'star-outlined.svg',
+			),
+
+			#endregion -- FontAwesome Icons
+
+		);
+
+		return $registered_rating_vectors;
+	}
+
+	/**
+	 * Get all rating icons packs.
+	 *
+	 * @return array<string,array>
+	 */
+	protected static function get_rating_packs() {
+		return array(
+			'fa-stars' => array(
+				'brand' => 'FontAwesome',
+				'description' => _x( 'Stars', 'backend', 'twrp' ),
+				'full' => 'twrp-rat-fa-f',
+				'half' => 'twrp-rat-fa-hf',
+				'empty' => 'twrp-rat-fa-ol',
+			),
+		);
 	}
 
 	/**
@@ -1659,7 +2864,7 @@ class SVG_Manager {
 	/**
 	 * Get a registered icon details.
 	 *
-	 * @return array
+	 * @return array|false
 	 */
 	public static function get_icon( $name ) {
 		$user_icons = self::get_user_icons();
@@ -1749,6 +2954,10 @@ class SVG_Manager {
 
 		if ( key_exists( $icon_name, self::get_views_icons() ) ) {
 			$additional_class = ' twrp-views-i';
+		}
+
+		if ( key_exists( $icon_name, self::get_comment_icons() ) ) {
+			$additional_class = ' twrp-views-c';
 		}
 
 		$icon           = self::get_icon( $icon_name );

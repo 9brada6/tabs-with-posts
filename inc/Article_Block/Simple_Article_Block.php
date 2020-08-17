@@ -11,51 +11,17 @@ use TWRP\Artblock_Component\Widget_Component_Settings;
 use TWRP\Utils;
 use TWRP\Widget_Control\Checkbox_Control;
 
-class Simple_Article_Block implements Article_Block {
+class Simple_Article_Block extends Article_Block {
 
 	const AUTHOR_ATTR           = 'author';
 	const DATE_ATTR             = 'date';
 	const TITLE_FONT_SIZE_ATTR  = 'font-size';
 	const AUTHOR_FONT_SIZE_ATTR = 'author-font-size';
 
-	/**
-	 * Holds the widget id of these article blocks.
-	 *
-	 * @var int
-	 */
-	protected $widget_id;
-
-	/**
-	 * Holds the query id of these article blocks.
-	 *
-	 * @var int
-	 */
-	protected $query_id;
-
-	/**
-	 * Holds the query settings.
-	 *
-	 * @var array
-	 */
-	protected $settings;
-
-	/**
-	 * Get the Id of the article block.
-	 *
-	 * This should be unique across all article blocks.
-	 *
-	 * @return string
-	 */
 	public static function get_id() {
 		return 'simple_style';
 	}
 
-	/**
-	 * Get the name of the Article Block. The name should have spaces instead
-	 * of "_" and should be something representative.
-	 *
-	 * @return string
-	 */
 	public static function get_name() {
 		return 'Simple Style';
 	}
@@ -64,52 +30,6 @@ class Simple_Article_Block implements Article_Block {
 		return 'simple-style.php';
 	}
 
-	/**
-	 * Called before anything else, to initialize all others plugin adapter
-	 * classes.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 */
-	public static function init() {
-		// Do nothing for now.
-	}
-
-	/**
-	 * Construct the Article Block class.
-	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $settings
-	 */
-	public function __construct( $widget_id, $query_id, $settings ) {
-		$this->widget_id = $widget_id;
-		$this->query_id  = $query_id;
-		$this->settings  = $settings;
-	}
-
-	/**
-	 * Include the template that should be displayed in the frontend.
-	 *
-	 * @param array $settings The article block settings, included in the
-	 * function closure to be available in the template.
-	 * @return void
-	 */
-	public function include_template( $settings ) {
-		$widget_id = $this->widget_id;
-		$query_id  = $this->query_id;
-
-		include \TWRP_Main::get_templates_directory() . self::get_file_name();
-	}
-
-	/**
-	 * Get the components that can be edited for this artblock.
-	 *
-	 * @return array<Widget_Component_Settings>
-	 */
 	public function get_components() {
 		$components = array();
 
@@ -163,11 +83,6 @@ class Simple_Article_Block implements Article_Block {
 		return $components;
 	}
 
-	/**
-	 * Display the article block settings in the Widgets::form().
-	 *
-	 * @return void
-	 */
 	public function display_form_settings() {
 		// Display Author Setting
 		$id              = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_author' );
@@ -192,13 +107,6 @@ class Simple_Article_Block implements Article_Block {
 		Widget_Component_Settings::display_components( $components );
 	}
 
-	/**
-	 * Sanitize the widget settings of this specific article block. Also replace
-	 * the internal settings with sanitized ones by default.
-	 *
-	 * @param bool $set_internal Whether or not to also sanitize internal settings.
-	 * @return array The new array of settings.
-	 */
 	public function sanitize_widget_settings( $set_internal = true ) {
 		$components         = $this->get_components();
 		$sanitized_settings = array();
@@ -254,22 +162,6 @@ class Simple_Article_Block implements Article_Block {
 			'value'   => '1',
 			'before'  => _x( 'Date in relative format(Ex: 3 days ago)', 'backend', 'twrp' ),
 		);
-	}
-
-	/**
-	 * Create and return the css of the component.
-	 *
-	 * @return string
-	 */
-	public function get_css() {
-		$components = $this->get_components();
-
-		$css = '';
-		foreach ( $components as $component ) {
-			$css .= $component->get_css();
-		}
-
-		return $css;
 	}
 
 	#endregion -- Settings defaults
