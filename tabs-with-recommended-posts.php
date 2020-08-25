@@ -22,7 +22,7 @@ use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
 use TWRP\Get_Posts;
-use TWRP\SVG_Manager;
+use TWRP\Icons\SVG_Manager;
 
 
 /**
@@ -126,6 +126,7 @@ add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
  */
 function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
+	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
 

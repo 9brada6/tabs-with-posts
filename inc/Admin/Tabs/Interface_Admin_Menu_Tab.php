@@ -15,6 +15,8 @@ interface Interface_Admin_Menu_Tab {
 
 	/**
 	 * Display the main content of the tab.
+	 *
+	 * @return void
 	 */
 	public function display_tab();
 
@@ -25,11 +27,15 @@ interface Interface_Admin_Menu_Tab {
 	 * (after the "?" sign), that will get from $_GET variable.
 	 *
 	 * This value should be unique, it's like an ID.
+	 *
+	 * @return string
 	 */
 	public static function get_tab_url_arg();
 
 	/**
 	 * The tab title, it will be displayed on the tab button.
+	 *
+	 * @return string
 	 */
 	public static function get_tab_title();
 }

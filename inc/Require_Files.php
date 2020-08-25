@@ -18,13 +18,13 @@ class Require_Files {
 		'Query_Settings_Manager',
 		'Article_Blocks_Manager',
 		'Get_Posts',
-		'SVG_Manager',
 		'Create_Tabs',
 
 		// Admin
 		'Admin/Settings_Menu',
 		'Admin/Tabs/Interface_Admin_Menu_Tab',
 		'Admin/Tabs/Documentation_Tab',
+		'Admin/Tabs/General_Settings_Tab',
 		'Admin/Tabs/Queries_Tab',
 
 		// Artblock Component Settings
@@ -43,12 +43,21 @@ class Require_Files {
 
 		// Article Blocks
 		'Article_Block/Article_Block',
-		'Article_Block/Article_Block_Abstract',
 		'Article_Block/Simple_Article_Block',
 		'Article_Block/Modern_Article_Block',
 
 		// Database
 		'Database/Query_Options',
+		'Database/General_Options',
+
+		// Icons
+		'Icons/SVG_Manager',
+		'Icons/User_Icons',
+		'Icons/Date_Icons',
+		'Icons/Category_Icons',
+		'Icons/Comments_Icons',
+		'Icons/Views_Icons',
+		'Icons/Rating_Icons',
 
 		// Plugins
 		'Plugins/Post_Rating',

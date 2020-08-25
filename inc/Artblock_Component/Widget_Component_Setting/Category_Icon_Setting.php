@@ -6,7 +6,7 @@
 namespace TWRP\Artblock_Component;
 
 use TWRP\Widget_Control\Select_Control;
-use TWRP\SVG_Manager;
+use TWRP\Icons\SVG_Manager;
 
 /**
  * Setting that let administrator select what category icon they want.

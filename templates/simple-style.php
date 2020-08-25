@@ -4,7 +4,9 @@
  * Article_Block::sanitize_widget_settings() function.
  */
 
-if ( ! isset( $settings, $widget_id, $query_id ) ) {
+use TWRP\Icons\SVG_Manager;
+
+if ( ! isset( $settings, $widget_id, $query_id, $artblock ) ) {
 	return;
 }
 
@@ -45,19 +47,17 @@ if ( isset( $settings['show_date_difference'] ) && $settings['show_date_differen
 	</a>
 
 	<div class="twrp-ss__meta-wrapper">
-		<?php if ( $settings['display_author'] ) : ?>
+		<?php if ( $artblock->display_author() ) : ?>
 			<span class="twrp-ss__author">
-				<?php if ( ! empty( $settings['author']['author_icon'] ) ) : ?>
-					<?php TWRP\SVG_Manager::include_svg( $settings['author']['author_icon'], 'twrp-ss__author-icon' ); ?>
-				<?php endif; ?>
+				<?php $artblock->include_author_icon(); ?>
 				<?php the_author(); ?>
 			</span>
 		<?php endif; ?>
 
-		<?php if ( $settings['display_date'] ) : ?>
+		<?php if ( $artblock->display_date() ) : ?>
 			<span class="twrp-ss__date">
 				<?php if ( ! empty( $settings['date']['date_icon'] ) ) : ?>
-					<?php TWRP\SVG_Manager::include_svg( $settings['date']['date_icon'], 'twrp-ss__date-icon' ); ?>
+					<?php SVG_Manager::include_svg( $settings['date']['date_icon'], 'twrp-ss__date-icon' ); ?>
 				<?php endif; ?>
 				<?= $date_text; // phpcs:ignore -- Safe XSS ?>
 			</span>

@@ -6,6 +6,8 @@
 namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
+use TWRP\Database\General_Options;
+use TWRP\Icons\SVG_Manager;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -100,6 +102,7 @@ abstract class Article_Block {
 	 * @return void
 	 */
 	public function include_template( $settings ) {
+		// Todo: remove settings from parameter list.
 		$widget_id = $this->widget_id;
 		$query_id  = $this->query_id;
 		$artblock  = $this;
@@ -144,21 +147,117 @@ abstract class Article_Block {
 		return $css;
 	}
 
+	#region -- Display Settings
+
+	public function display_author() {
+		return (bool) $this->settings['display_author'];
+	}
+
+	public function display_date() {
+		return (bool) $this->settings['display_date'];
+	}
+
+	public function display_views() {
+		return (bool) $this->settings['display_views'];
+	}
+
+	public function display_rating() {
+		return (bool) $this->settings['display_rating'];
+	}
+
+	public function display_comments() {
+		return (bool) $this->settings['display_comments'];
+	}
+
+	#region -- Display Settings
+
+	#region -- Icons
+
 	/**
-	 * Get the Id of the selected author icon.
+	 * Get the Id of the selected author icon. Empty if nothing is set(usually
+	 * should not be encounter).
 	 *
 	 * @return string
 	 */
 	public function get_selected_author_icon() {
-		// todo:
+		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
+			return General_Options::get_option( General_Options::KEY__AUTHOR_ICON );
+		}
+
+		if ( isset( $this->settings['author']['author_icon'] ) ) {
+			return $this->settings['author']['author_icon'];
+		}
+
+		if ( null !== General_Options::get_option( General_Options::KEY__AUTHOR_ICON ) ) {
+			return General_Options::get_option( General_Options::KEY__AUTHOR_ICON );
+		}
+
+		return '';
+	}
+
+
+	/**
+	 * Return the svg for the author icon.
+	 *
+	 * @return string The HTML is safe for output.
+	 */
+	public function get_author_icon_html() {
+		return SVG_Manager::get_html_svg( $this->get_selected_author_icon(), 'twrp-author-icon' );
 	}
 
 	/**
-	 * Display the svg for the author icon.
+	 * Include the HTML svg for the author icon.
 	 *
 	 * @return void
 	 */
-	public function display_author_icon() {
-		// todo:
+	public function include_author_icon() {
+		// phpcs:ignore
+		echo SVG_Manager::get_html_svg( $this->get_selected_author_icon(), 'twrp-author-icon' );
 	}
+
+
+	/**
+	 * Get the Id of the selected date icon. Empty if nothing is set(usually
+	 * should not be encounter).
+	 *
+	 * @return string
+	 */
+	public function get_selected_date_icon() {
+		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
+			return General_Options::get_option( General_Options::KEY__DATE_ICON );
+		}
+
+		if ( isset( $this->settings['date']['date_icon'] ) ) {
+			return $this->settings['date']['date_icon'];
+		}
+
+		if ( null !== General_Options::get_option( General_Options::KEY__DATE_ICON ) ) {
+			return General_Options::get_option( General_Options::KEY__DATE_ICON );
+		}
+
+		return '';
+	}
+
+	/**
+	 * Return the svg for the date icon.
+	 *
+	 * @return string The HTML is safe for output.
+	 */
+	public function get_date_icon_html() {
+		return SVG_Manager::get_html_svg( $this->get_selected_date_icon(), 'twrp-date-icon' );
+	}
+
+	/**
+	 * Include the HTML svg for the date icon.
+	 *
+	 * @return void
+	 */
+	public function include_date_icon() {
+		// phpcs:ignore
+		echo SVG_Manager::get_html_svg( $this->get_selected_date_icon(), 'twrp-date-icon' );
+	}
+
+
+	#endregion -- Icons
+
 }

@@ -141,7 +141,7 @@ class Settings_Menu {
 	 * @return string The URL, not sanitized.
 	 */
 	public static function get_tab_url( $tab_class ) {
-		$url_arg     = $tab_class->get_tab_url_arg();
+		$url_arg     = $tab_class::get_tab_url_arg();
 		$submenu_url = menu_page_url( self::MENU_SLUG, false );
 
 		return add_query_arg( self::TAB__URL_PARAMETER_KEY, $url_arg, $submenu_url );

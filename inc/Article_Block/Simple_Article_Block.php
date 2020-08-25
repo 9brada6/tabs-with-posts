@@ -10,6 +10,7 @@ namespace TWRP\Article_Block;
 use TWRP\Artblock_Component\Widget_Component_Settings;
 use TWRP\Utils;
 use TWRP\Widget_Control\Checkbox_Control;
+use TWRP\Database\General_Options;
 
 class Simple_Article_Block extends Article_Block {
 
@@ -33,52 +34,52 @@ class Simple_Article_Block extends Article_Block {
 	public function get_components() {
 		$components = array();
 
-		// Title Component
+		#region -- Title Component
+
 		$title_component_settings = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
-		$title_component          = new Widget_Component_Settings(
-			$this->widget_id,
-			$this->query_id,
-			'title',
-			_x( 'Title', 'backend', 'twrp' ),
-			$title_component_settings,
-			array(
-				'.twrp-ss__title'                      => Widget_Component_Settings::TEXT_SETTINGS,
-				'.twrp-ss__link:hover .twrp-ss__title' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
-			)
+		$title_css_components     = array(
+			'.twrp-ss__title'                      => Widget_Component_Settings::TEXT_SETTINGS,
+			'.twrp-ss__link:hover .twrp-ss__title' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
 		);
+		$title_component          = new Widget_Component_Settings( $this->widget_id, $this->query_id, 'title', _x( 'Title', 'backend', 'twrp' ), $title_component_settings, $title_css_components );
 		$components ['title']     = $title_component;
 
-		// Date Component
-		$date_component_settings = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
-		$date_component          = new Widget_Component_Settings(
-			$this->widget_id,
-			$this->query_id,
-			'date',
-			_x( 'Date', 'backend', 'twrp' ),
-			$date_component_settings,
-			array(
-				'.twrp-ss__date' => Widget_Component_Settings::TEXT_SETTINGS,
-				'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
-				''               => array( Widget_Component_Settings::DATE_ICON_SETTING ),
-			)
-		);
-		$components ['date']     = $date_component;
+		#endregion -- Title Component
 
-		// Author Component
-		$author_component_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
-		$author_component          = new Widget_Component_Settings(
-			$this->widget_id,
-			$this->query_id,
-			'author',
-			_x( 'Author', 'backend', 'twrp' ),
-			$author_component_settings,
-			array(
-				'.twrp-ss__author' => Widget_Component_Settings::TEXT_SETTINGS,
-				'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
-				''                 => array( Widget_Component_Settings::AUTHOR_ICON_SETTING ),
-			)
+		#region -- Date Component
+
+		$date_component_current_settings = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
+
+		$date_css_components = array(
+			'.twrp-ss__date' => Widget_Component_Settings::TEXT_SETTINGS,
+			'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
 		);
-		$components ['author']     = $author_component;
+		// Append Icon setting if necessary.
+		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
+			$date_css_components[''] = array( Widget_Component_Settings::DATE_ICON_SETTING );
+		}
+
+		$date_component      = new Widget_Component_Settings( $this->widget_id, $this->query_id, 'date', _x( 'Date', 'backend', 'twrp' ), $date_component_current_settings, $date_css_components );
+		$components ['date'] = $date_component;
+
+		#endregion -- Date Component
+
+		#region -- Author Component
+
+		$author_css_components = array(
+			'.twrp-ss__author' => Widget_Component_Settings::TEXT_SETTINGS,
+			'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
+		);
+		// Append Icon setting if necessary.
+		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
+			$author_css_components[''] = array( Widget_Component_Settings::AUTHOR_ICON_SETTING );
+		}
+
+		$author_component_current_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
+		$author_component                  = new Widget_Component_Settings( $this->widget_id, $this->query_id, 'author', _x( 'Author', 'backend', 'twrp' ), $author_component_current_settings, $author_css_components );
+		$components ['author']             = $author_component;
+
+		#endregion -- Author Component
 
 		return $components;
 	}
