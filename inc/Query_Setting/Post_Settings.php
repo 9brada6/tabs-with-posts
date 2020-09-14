@@ -129,7 +129,7 @@ class Post_Settings implements Query_Setting {
 		?>
 		<div
 			id="twrp-posts-settings__js-posts-list"
-			class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>"
+			class="twrp-display-list twrp-query-settings__paragraph twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>"
 			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
 			<div
@@ -173,7 +173,7 @@ class Post_Settings implements Query_Setting {
 		}
 
 		?>
-		<div id="twrp-posts-settings__js-posts-search-wrap" class="twrp-posts-settings__posts-search-wrap twrp-query-settings__paragraph-with-hide<?= esc_attr( $list_is_hidden_class ); ?>">
+		<div id="twrp-posts-settings__js-posts-search-wrap" class="twrp-posts-settings__posts-search-wrap twrp-query-settings__paragraph<?= esc_attr( $list_is_hidden_class ); ?>">
 			<input
 				id="twrp-posts-settings__js-posts-search" type="text"
 				class="twrp-posts-settings__posts-search"

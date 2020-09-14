@@ -15,8 +15,21 @@ use TWRP\Icons\SVG_Manager;
  *   2. Have a default value in get_default_settings() function.
  *   3. Have a sanitized way in the function sanitize_setting() function.
  *   4. Have a function that return the arguments.
+ *   5. Create the HTML to modify the setting, in the general settings tab.
  */
 class General_Options {
+
+	#region -- Date Keys
+
+	const KEY__PER_WIDGET_DATE_FORMAT = 'per_widget_date_format';
+
+	const KEY__HUMAN_READABLE_DATE = 'human_readable_date';
+
+	const KEY__DATE_FORMAT = 'date_format';
+
+	#endregion -- Date Keys
+
+	#region -- Icon Keys
 
 	const KEY__PER_WIDGET_ICON = 'per_widget_icons';
 
@@ -28,9 +41,13 @@ class General_Options {
 
 	const KEY__COMMENTS_ICON = 'comments_icon';
 
+	const KEY__COMMENTS_DISABLED_ICON = 'comments_disabled_icon';
+
 	const KEY__VIEWS_ICON = 'views_icon';
 
 	const KEY__RATING_ICON_PACK = 'rating_icon_icon';
+
+	#endregion -- Icon Keys
 
 	#region -- Getting Options
 
@@ -43,13 +60,17 @@ class General_Options {
 	 */
 	public static function get_default_settings() {
 		return array(
-			self::KEY__PER_WIDGET_ICON  => 'false',
-			self::KEY__AUTHOR_ICON      => 'twrp-user-goo-ol',
-			self::KEY__DATE_ICON        => 'twrp-cal-goo-ol',
-			self::KEY__CATEGORY_ICON    => 'twrp-tax-go-ol',
-			self::KEY__COMMENTS_ICON    => 'twrp-com-go-ol',
-			self::KEY__VIEWS_ICON       => 'twrp-views-goo-ol',
-			self::KEY__RATING_ICON_PACK => 'fa-stars',
+			self::KEY__PER_WIDGET_ICON        => 'false',
+			self::KEY__HUMAN_READABLE_DATE    => 'true',
+			self::KEY__DATE_FORMAT            => '', // empty will default to WP date.
+			self::KEY__AUTHOR_ICON            => 'twrp-user-goo-ol',
+			self::KEY__DATE_ICON              => 'twrp-cal-goo-ol',
+			self::KEY__CATEGORY_ICON          => 'twrp-tax-go-ol',
+			self::KEY__COMMENTS_ICON          => 'twrp-com-go-ol',
+			self::KEY__COMMENTS_DISABLED_ICON => 'twrp-dcom-im-f',
+			self::KEY__VIEWS_ICON             => 'twrp-views-goo-ol',
+			self::KEY__RATING_ICON_PACK       => 'fa-stars',
+			self::KEY__PER_WIDGET_DATE_FORMAT => 'false',
 		);
 	}
 
@@ -83,14 +104,14 @@ class General_Options {
 			return self::get_default_settings();
 		}
 
-		return $options;
+		return array_merge( self::get_default_settings(), $options );
 	}
 
 	/**
 	 * Get the option with the specific name. Return null if option is not set.
 	 *
 	 * @param string $name The key of the option.
-	 * @return mixed
+	 * @return mixed Can return a string/array or null if is not set.
 	 */
 	public static function get_option( $name ) {
 		$options = self::get_all_options();
@@ -184,6 +205,12 @@ class General_Options {
 	 */
 	public static function sanitize_setting( $name, $value ) {
 		switch ( $name ) {
+			case self::KEY__PER_WIDGET_DATE_FORMAT:
+				return self::sanitize_string_choice( $value, self::get_per_widget_date_format_setting_args() );
+			case self::KEY__HUMAN_READABLE_DATE:
+				return self::sanitize_string_choice( $value, self::get_human_readable_date_setting_args() );
+			case self::KEY__DATE_FORMAT:
+				return self::sanitize_date_format( $value );
 			case self::KEY__PER_WIDGET_ICON:
 				return self::sanitize_string_choice( $value, self::get_per_widget_icon_setting_args() );
 			case self::KEY__AUTHOR_ICON:
@@ -194,6 +221,8 @@ class General_Options {
 				return self::sanitize_string_choice( $value, self::get_category_icon_setting_args() );
 			case self::KEY__COMMENTS_ICON:
 				return self::sanitize_string_choice( $value, self::get_comments_icon_setting_args() );
+			case self::KEY__COMMENTS_DISABLED_ICON:
+				return self::sanitize_string_choice( $value, self::get_comments_disabled_icon_setting_args() );
 			case self::KEY__VIEWS_ICON:
 				return self::sanitize_string_choice( $value, self::get_views_icon_setting_args() );
 			case self::KEY__RATING_ICON_PACK:
@@ -218,9 +247,53 @@ class General_Options {
 		return $args['default'];
 	}
 
+	/**
+	 * Sanitize the date format.
+	 *
+	 * @param mixed $value
+	 * @return string
+	 */
+	protected static function sanitize_date_format( $value ) {
+		if ( ! is_string( $value ) ) {
+			return '';
+		}
+
+		return $value;
+	}
+
 	#endregion -- Sanitization
 
 	#region -- Sanitization Arguments
+
+	/**
+	 * Get the arguments for the setting to enable the choosing of date format
+	 * per widget.
+	 *
+	 * @return array
+	 */
+	protected static function get_per_widget_date_format_setting_args() {
+		$default_value = self::get_default_setting( self::KEY__PER_WIDGET_DATE_FORMAT );
+
+		return array(
+			'default' => $default_value,
+			'options' => array( 'true', 'false' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the setting to enable/disable the human readable
+	 * date format.
+	 *
+	 * @return array
+	 */
+	protected static function get_human_readable_date_setting_args() {
+		$default_value = self::get_default_setting( self::KEY__HUMAN_READABLE_DATE );
+
+		return array(
+			'default' => $default_value,
+			'options' => array( 'true', 'false' ),
+		);
+	}
 
 	/**
 	 * Get the arguments for the setting to enable the choosing of icon per
@@ -228,7 +301,7 @@ class General_Options {
 	 *
 	 * @return array
 	 */
-	public static function get_per_widget_icon_setting_args() {
+	protected static function get_per_widget_icon_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__PER_WIDGET_ICON );
 
 		return array(
@@ -242,7 +315,7 @@ class General_Options {
 	 *
 	 * @return array
 	 */
-	public static function get_author_icon_setting_args() {
+	protected static function get_author_icon_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__AUTHOR_ICON );
 		$icons         = SVG_Manager::get_user_icons();
 		$icons         = array_keys( $icons );
@@ -258,7 +331,7 @@ class General_Options {
 	 *
 	 * @return array
 	 */
-	public static function get_date_icon_setting_args() {
+	protected static function get_date_icon_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__DATE_ICON );
 		$icons         = SVG_Manager::get_date_icons();
 		$icons         = array_keys( $icons );
@@ -290,9 +363,25 @@ class General_Options {
 	 *
 	 * @return array
 	 */
-	public static function get_comments_icon_setting_args() {
+	protected static function get_comments_icon_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__COMMENTS_ICON );
 		$icons         = SVG_Manager::get_comment_icons();
+		$icons         = array_keys( $icons );
+
+		return array(
+			'default' => $default_value,
+			'options' => $icons,
+		);
+	}
+
+	/**
+	 * Get the arguments for the setting of comments disabled icon.
+	 *
+	 * @return array
+	 */
+	protected static function get_comments_disabled_icon_setting_args() {
+		$default_value = self::get_default_setting( self::KEY__COMMENTS_DISABLED_ICON );
+		$icons         = SVG_Manager::get_comment_disabled_icons();
 		$icons         = array_keys( $icons );
 
 		return array(
@@ -306,7 +395,7 @@ class General_Options {
 	 *
 	 * @return array
 	 */
-	public static function get_views_icon_setting_args() {
+	protected static function get_views_icon_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__VIEWS_ICON );
 		$icons         = SVG_Manager::get_views_icons();
 		$icons         = array_keys( $icons );
@@ -322,7 +411,7 @@ class General_Options {
 	 *
 	 * @return array
 	 */
-	public static function get_rating_pack_setting_args() {
+	protected static function get_rating_pack_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__RATING_ICON_PACK );
 		$icons         = SVG_Manager::get_rating_packs();
 		$icons         = array_keys( $icons );

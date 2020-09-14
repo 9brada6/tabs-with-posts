@@ -16,4 +16,7 @@ import './widget-blocks/twrp-widget-components.ts';
 import './widget-blocks/twrp-color-picker.ts';
 import './widget-blocks/twrp-icon-select-preview.ts';
 
+// General Settings
+import './general-settings/twrp-general-settings.ts';
+
 export default {};

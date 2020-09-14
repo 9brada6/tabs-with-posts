@@ -28,6 +28,8 @@
 - Meta-Key: Add meta_key for the post order or separately.
 - Hide meta key value if comparator is exists or not exists.
 - Remove order from orderby that does not depend, like post__in
+- Make transition better in Post_Settings and Author.
+- Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
 
 ### Plugins
 
@@ -36,6 +38,8 @@
 - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
 - Don't know how to count site reviews ratings, maybe email for support?
 - Add each plugin, move orderby plugin indicators to classes.
+- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need
+to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Widget
 
@@ -66,8 +70,9 @@
 - Add a way to invert category icons?
 - Finish Rating Icons
 - Add no comment icons
-
-- Add another icons from these Packages: IconMonstr, Founsation
+- Move all inclusion of icons to either file or all in HTML, remove inclusion from inline HTML.
+- Check the file where icons are written to be HTML valid.
+- Add more comments disabled icons.
 
 ### After first release
 

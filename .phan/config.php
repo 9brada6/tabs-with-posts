@@ -18,6 +18,11 @@ return array(
 
 	'minimum_severity' => 0,
 
+	// Supress this issue because in templates it will make the check:
+	// [$artblock instanceof Simple_Article_Block] echo an error.
+	'suppress_issue_types' => array( 'PhanImpossibleConditionInGlobalScope' ),
+
+
 	// Analysis
 	// =========================================================================
 

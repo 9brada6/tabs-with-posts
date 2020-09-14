@@ -66,7 +66,7 @@ class Widget extends \WP_Widget {
 			$settings    = self::get_query_instance_settings( $widget_id, $query_id );
 			$artblock    = Article_Blocks_Manager::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $settings );
 			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
-			$settings    = $artblock->sanitize_widget_settings();
+			$artblock->sanitize_widget_settings();
 		} catch ( \RuntimeException $e ) {
 			return;
 		}

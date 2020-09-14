@@ -7,9 +7,9 @@
 
 namespace TWRP\Query_Setting;
 
+use TWRP\Utils;
 use DateInterval;
 use DateTime;
-use DateTimeZone;
 
 /**
  * Creates the possibility to filter a query based on post dates.
@@ -115,7 +115,7 @@ class Post_Date implements Query_Setting {
 		$note_text2  = _x( 'When putting a custom number of days, do not forget to also check the last option.', 'backend', 'twrp' );
 
 		?>
-		<div id="twrp-date-settings__js-last-period-wrapper" class="twrp-date-settings__last-period-wrapper twrp-query-settings__paragraph twrp-query-settings__paragraph-with-hide<?= esc_attr( $additional_settings_hidden_class ); ?>">
+		<div id="twrp-date-settings__js-last-period-wrapper" class="twrp-date-settings__last-period-wrapper twrp-query-settings__paragraph twrp-query-settings__paragraph<?= esc_attr( $additional_settings_hidden_class ); ?>">
 			<p class="twrp-query-settings__paragraph twrp-setting-note">
 				<span class="twrp-setting-note__label">
 					<?= esc_html( $note_label ); ?>
@@ -212,7 +212,7 @@ class Post_Date implements Query_Setting {
 		$info_text = _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after 2020, set only "after": 01/01/2020.', 'backend', 'twrp' );
 
 		?>
-		<div id="twrp-date-settings__js-between-wrapper" class="twrp-query-settings__paragraph-with-hide twrp-date-settings__between-wrapper <?= esc_attr( $is_hidden_class ); ?>">
+		<div id="twrp-date-settings__js-between-wrapper" class="twrp-query-settings__paragraph twrp-date-settings__between-wrapper <?= esc_attr( $is_hidden_class ); ?>">
 			<p class="twrp-query-settings__paragraph twrp-setting-note">
 				<span class="twrp-setting-note__label">
 					<?= esc_html( $info_tag ); ?>
@@ -388,7 +388,7 @@ class Post_Date implements Query_Setting {
 	protected static function get_last_period_args( $date_settings ) {
 		if ( 'LW' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
-			$time->setTimezone( self::get_timezone() );
+			$time->setTimezone( Utils::wp_timezone() );
 			$time->modify( 'tomorrow' );
 			$time->modify( 'last Monday' );
 			$time->modify( 'last Monday' );
@@ -396,7 +396,7 @@ class Post_Date implements Query_Setting {
 
 		if ( 'LM' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'first day of this month' );
-			$time->setTimezone( self::get_timezone() );
+			$time->setTimezone( Utils::wp_timezone() );
 			$time->sub( new DateInterval( 'P2D' ) );
 			$time->modify( 'first day of this month' );
 		}
@@ -407,7 +407,7 @@ class Post_Date implements Query_Setting {
 
 		if ( 'C' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
-			$time->setTimezone( self::get_timezone() );
+			$time->setTimezone( Utils::wp_timezone() );
 
 			if ( ! isset( $date_settings[ self::DATE_LAST_DAYS_NAME ] ) ) {
 				return null;
@@ -486,45 +486,9 @@ class Post_Date implements Query_Setting {
 		);
 	}
 
-	/**
-	 * Get the website timezone.
-	 *
-	 * This will try to use WP function wp_timezone() available from WP 5.3, or
-	 * else, will fallback to a polyfill.
-	 *
-	 * @return DateTimeZone
-	 */
-	protected static function get_timezone() {
-		if ( function_exists( 'wp_timezone' ) ) {
-			return wp_timezone(); // @phan-suppress-current-line PhanUndeclaredFunction
-		}
 
-		return new DateTimeZone( self::get_polyfill_timezone() );
-	}
 
-	/**
-	 * Get the timezone string. Used as polyfill if wp_timezone is not available.
-	 *
-	 * @return string
-	 */
-	protected static function get_polyfill_timezone() {
-		$timezone_string = get_option( 'timezone_string' );
 
-		if ( $timezone_string ) {
-			return $timezone_string;
-		}
-
-		$offset  = (float) get_option( 'gmt_offset' );
-		$hours   = (int) $offset;
-		$minutes = ( $offset - $hours );
-
-		$sign      = ( $offset < 0 ) ? '-' : '+';
-		$abs_hour  = abs( $hours );
-		$abs_mins  = abs( $minutes * 60 );
-		$tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins );
-
-		return $tz_offset;
-	}
 
 	#endregion -- Class Helpers
 }

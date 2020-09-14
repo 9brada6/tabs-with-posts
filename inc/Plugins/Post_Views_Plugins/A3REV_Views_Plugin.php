@@ -11,7 +11,23 @@ namespace TWRP\Plugins;
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by A3REV.
  */
-class A3REV_Views_Plugin implements Post_Views_Plugin {
+class A3REV_Views_Plugin extends Post_Views_Plugin {
+
+	#region -- Plugin Meta
+
+	public static function get_plugin_title() {
+		return 'Page View Count';
+	}
+
+	public static function get_plugin_author() {
+		return 'a3rev Software';
+	}
+
+	public static function get_last_tested_plugin_version() {
+		return '2.4.3';
+	}
+
+	#endregion -- Plugin Meta
 
 	public static function support_get_views() {
 		return true;
@@ -51,13 +67,11 @@ class A3REV_Views_Plugin implements Post_Views_Plugin {
 			return 0;
 		}
 
-		$total_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id );
+		/** @psalm-suppress UndefinedClass */
+		$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id ); // @phan-suppress-current-line PhanUndeclaredClassMethod
 
-		if ( is_numeric( $total_views ) ) {
-			$total_views = (int) $total_views;
-			if ( $total_views > 0 ) {
-				return $total_views;
-			}
+		if ( is_numeric( $post_views ) && $post_views >= 0 ) {
+			return (int) $post_views;
 		}
 
 		return 0;
@@ -65,6 +79,10 @@ class A3REV_Views_Plugin implements Post_Views_Plugin {
 
 	public static function modify_query_arg_if_necessary( $query_args ) {
 		return $query_args;
+	}
+
+	public static function get_plugin_file_relative_path() {
+		return 'page-views-count/page-views-count.php';
 	}
 
 }

@@ -1,45 +1,18 @@
 <?php
-/**
- * The settings are sanitized, and all keys should be set as declared in
- * Article_Block::sanitize_widget_settings() function.
- */
 
-use TWRP\Icons\SVG_Manager;
+use TWRP\Article_Block\Simple_Article_Block;
 
-if ( ! isset( $settings, $widget_id, $query_id, $artblock ) ) {
+if ( ! isset( $artblock ) && ! ( $artblock instanceof Simple_Article_Block ) ) {
 	return;
 }
 
-$block_class = 'twrp-block--' . $widget_id . '-' . $query_id;
-
-$block_title = get_the_title();
-if ( empty( $block_title ) ) {
+if ( empty( get_the_title() ) ) {
 	return;
 }
-
-
-
-if ( isset( $settings['show_date_difference'] ) && $settings['show_date_difference'] ) {
-	$from = get_post_timestamp();
-	$to   = date_timestamp_get( current_datetime() );
-
-	if ( false === $from ) {
-		$date_text = '';
-	} else {
-		$date_text = sprintf( '%s ago', human_time_diff( $from, $to ) );
-	}
-} else {
-	if ( empty( $settings['date_format'] ) ) {
-		$settings['date_format'] = get_option( 'date_format' );
-	}
-	$date_text = get_the_time( $settings['date_format'] );
-}
-
-
 
 ?>
 
-<div class="twrp-ss twrp-block <?= esc_attr( $block_class ); ?>">
+<div class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
 	<a class="twrp-ss__link twrp-link-expand" href="<?php the_permalink(); ?>">
 		<h3 class="twrp-ss__title">
 			<?php the_title(); ?>
@@ -47,34 +20,37 @@ if ( isset( $settings['show_date_difference'] ) && $settings['show_date_differen
 	</a>
 
 	<div class="twrp-ss__meta-wrapper">
-		<?php if ( $artblock->display_author() ) : ?>
+		<?php if ( $artblock->is_author_displayed() ) : ?>
 			<span class="twrp-ss__author">
 				<?php $artblock->include_author_icon(); ?>
-				<?php the_author(); ?>
+				<?php $artblock->display_the_author(); ?>
 			</span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->display_date() ) : ?>
+		<?php if ( $artblock->is_date_displayed() ) : ?>
 			<span class="twrp-ss__date">
-				<?php if ( ! empty( $settings['date']['date_icon'] ) ) : ?>
-					<?php SVG_Manager::include_svg( $settings['date']['date_icon'], 'twrp-ss__date-icon' ); ?>
-				<?php endif; ?>
-				<?= $date_text; // phpcs:ignore -- Safe XSS ?>
+				<?php $artblock->include_date_icon(); ?>
+				<?php $artblock->display_the_date(); ?>
 			</span>
 		<?php endif; ?>
 
-		<?php if ( $settings['display_views'] ) : ?>
-
+		<?php if ( $artblock->are_views_displayed() ) : ?>
+			<span class="twrp-ss__views">
+				<?php $artblock->include_views_icon(); ?>
+				<?php $artblock->display_the_views(); ?>
+			</span>
 		<?php endif; ?>
 
-		<?php if ( $settings['display_rating'] ) : ?>
-
+		<?php if ( $artblock->is_rating_displayed() ) : ?>
+			<span class="twrp-ss__rating">
+				<?php // $artblock->include_rating_icon(); ?>
+			</span>
 		<?php endif; ?>
 
-		<?php if ( $settings['display_comments'] ) : ?>
+		<?php if ( $artblock->are_comments_displayed() ) : ?>
 			<span class="twrp-ss__comments">
-
-
+			<?php $artblock->include_comments_icon(); ?>
+			<?php $artblock->display_comments_number(); ?>
 			</span>
 		<?php endif; ?>
 	</div>

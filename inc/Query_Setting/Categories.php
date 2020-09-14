@@ -118,7 +118,7 @@ class Categories implements Query_Setting {
 	 */
 	protected function display_category_include_children( $current_setting ) {
 		?>
-		<div class="twrp-query-settings__paragraph-with-hide twrp-cat-settings__include-children-wrap">
+		<div class="twrp-query-settings__paragraph twrp-cat-settings__include-children-wrap">
 			<input
 				id="twrp-cat-settings__include-children"
 				type="checkbox"
@@ -151,7 +151,7 @@ class Categories implements Query_Setting {
 		?>
 		<div
 			id="twrp-cat-settings__js-select-relation-wrap"
-			class="twrp-query-settings__paragraph-with-hide twrp-cat-settings__select-relation-wrap<?= esc_attr( $additional_class ); ?>"
+			class="twrp-query-settings__paragraph twrp-cat-settings__select-relation-wrap<?= esc_attr( $additional_class ); ?>"
 		>
 			<p class="twrp-cat-settings__select-relation-text">
 				<?= _x( 'An article should have:', 'backend', 'twrp' ); ?>

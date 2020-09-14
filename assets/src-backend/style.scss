@@ -23,6 +23,16 @@
 @import 'widget-blocks/twrp-widget-form';
 @import 'widget-blocks/twrp-widget-components';
 
+// Documentation tab
+@import 'documentation-page/twrp-plugins-support';
+@import 'documentation-page/twrp-documentation-page';
+
+// General Settings
+@import 'general-settings/twrp-general-settings';
+@import 'general-settings/twrp-general-select';
+@import 'general-settings/twrp-general-radio';
+@import 'general-settings/twrp-general-text';
+
 .twrp-admin-settings-separator {
 	width: 100%;
 	height: 1px;

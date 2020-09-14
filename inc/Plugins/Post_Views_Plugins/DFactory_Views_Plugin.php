@@ -11,9 +11,29 @@ namespace TWRP\Plugins;
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by DFactory.
  */
-class DFactory_Views_Plugin implements Post_Views_Plugin {
+class DFactory_Views_Plugin extends Post_Views_Plugin {
 
 	const ORDERBY_NAME = 'post_views';
+
+	#region -- Plugin Meta
+
+	public static function get_plugin_title() {
+		return 'Post Views Counter';
+	}
+
+	public static function get_plugin_author() {
+		return 'Digital Factory';
+	}
+
+	public static function get_last_tested_plugin_version() {
+		return '1.3.2';
+	}
+
+	public static function get_plugin_file_relative_path() {
+		return 'post-views-counter/post-views-counter.php';
+	}
+
+	#endregion -- Plugin Meta
 
 	/**
 	 * Whether the plugin support getting the views for a post and
@@ -42,25 +62,23 @@ class DFactory_Views_Plugin implements Post_Views_Plugin {
 		return function_exists( 'pvc_get_post_views' );
 	}
 
-	/**
-	 * Get the views for a post. This function will fail silently.
-	 *
-	 * @param int|string $post_id The post Id.
-	 * @return int
-	 */
 	public static function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
-			return 0;
+			return false;
 		}
 		$post_id = (int) $post_id;
 
 		if ( ! self::is_installed_and_can_be_used() ) {
-			return 0;
+			return false;
 		}
 
-		$post_views = pvc_get_post_views( $post_id );
+		if ( function_exists( 'pvc_get_post_views' ) ) {
+			$post_views = pvc_get_post_views( $post_id ); // @phan-suppress-current-line PhanUndeclaredFunction
+		} else {
+			return false;
+		}
 
-		if ( is_numeric( $post_views ) && $post_views > 0 ) {
+		if ( is_numeric( $post_views ) && $post_views >= 0 ) {
 			return (int) $post_views;
 		}
 

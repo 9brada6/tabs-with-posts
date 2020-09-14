@@ -1,0 +1,50 @@
+.twrp-general-settings {
+	max-width: 750px;
+
+	&__select-group,
+	&__radio-group,
+	&__text-group {
+		margin-top: 0.8rem;
+		margin-bottom: 1.1rem;
+
+		&:last-child {
+			margin-bottom: 1.3rem;
+		}
+	}
+
+	&__fieldset {
+		margin: 1.5rem 0;
+		border: 1px solid #666;
+		border-right-width: 0;
+		border-left-width: 0;
+	}
+
+	&__legend {
+		padding: 0 0.5rem 0.3rem;
+		margin-left: 1.2rem;
+		font-size: 1.2rem;
+		font-weight: 500;
+		color: #555;
+	}
+
+	&__submit-btn {
+		box-sizing: border-box;
+		padding: 0.4rem 0.8rem;
+		font-size: 1.2rem;
+		font-weight: 500;
+		color: white;
+		text-decoration: none;
+		white-space: nowrap;
+		cursor: pointer;
+		background-color: #10ba16;
+		border: 0;
+		border-radius: 3px;
+		-webkit-appearance: none;
+		transition: background-color 250ms ease-out;
+
+		&:hover,
+		&:focus {
+			background-color: #009605;
+		}
+	}
+}

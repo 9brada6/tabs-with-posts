@@ -33,15 +33,30 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			?>
 
 			<form class="twrp-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
-				<?php
-				self::create_radio_option( General_Options::KEY__PER_WIDGET_ICON, General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ), self::get_per_widget_setting_args() );
-				self::create_select_option( General_Options::KEY__AUTHOR_ICON, General_Options::get_option( General_Options::KEY__AUTHOR_ICON ), self::get_author_icon_setting_args() );
-				self::create_select_option( General_Options::KEY__DATE_ICON, General_Options::get_option( General_Options::KEY__DATE_ICON ), self::get_date_icon_setting_args() );
-				self::create_select_option( General_Options::KEY__CATEGORY_ICON, General_Options::get_option( General_Options::KEY__CATEGORY_ICON ), self::get_category_icon_setting_args() );
-				self::create_select_option( General_Options::KEY__COMMENTS_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_ICON ), self::get_comments_icon_setting_args() );
-				self::create_select_option( General_Options::KEY__VIEWS_ICON, General_Options::get_option( General_Options::KEY__VIEWS_ICON ), self::get_views_icon_setting_args() );
-				self::create_select_option( General_Options::KEY__RATING_ICON_PACK, General_Options::get_option( General_Options::KEY__RATING_ICON_PACK ), self::get_rating_pack_setting_args() );
+				<fieldset class="twrp-general-settings__fieldset">
+					<legend class="twrp-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
+					<?php
+					self::create_radio_option( General_Options::KEY__PER_WIDGET_DATE_FORMAT, General_Options::get_option( General_Options::KEY__PER_WIDGET_DATE_FORMAT ), self::get_per_widget_date_format_setting_args() );
+					self::create_radio_option( General_Options::KEY__HUMAN_READABLE_DATE, General_Options::get_option( General_Options::KEY__HUMAN_READABLE_DATE ), self::get_human_readable_setting_args() );
+					self::create_text_option( General_Options::KEY__DATE_FORMAT, General_Options::get_option( General_Options::KEY__DATE_FORMAT ), self::get_date_format_setting_args() );
+					?>
+				</fieldset>
 
+				<fieldset class="twrp-general-settings__fieldset">
+					<legend class="twrp-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
+					<?php
+					self::create_radio_option( General_Options::KEY__PER_WIDGET_ICON, General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ), self::get_per_widget_icons_setting_args() );
+					self::create_select_option( General_Options::KEY__AUTHOR_ICON, General_Options::get_option( General_Options::KEY__AUTHOR_ICON ), self::get_author_icon_setting_args() );
+					self::create_select_option( General_Options::KEY__DATE_ICON, General_Options::get_option( General_Options::KEY__DATE_ICON ), self::get_date_icon_setting_args() );
+					self::create_select_option( General_Options::KEY__CATEGORY_ICON, General_Options::get_option( General_Options::KEY__CATEGORY_ICON ), self::get_category_icon_setting_args() );
+					self::create_select_option( General_Options::KEY__COMMENTS_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_ICON ), self::get_comments_icon_setting_args() );
+					self::create_select_option( General_Options::KEY__COMMENTS_DISABLED_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON ), self::get_comments_disabled_icon_setting_args() );
+					self::create_select_option( General_Options::KEY__VIEWS_ICON, General_Options::get_option( General_Options::KEY__VIEWS_ICON ), self::get_views_icon_setting_args() );
+					self::create_select_option( General_Options::KEY__RATING_ICON_PACK, General_Options::get_option( General_Options::KEY__RATING_ICON_PACK ), self::get_rating_pack_setting_args() );
+					?>
+				</fieldset>
+
+				<?php
 				self::display_submit_button();
 				?>
 			</form>
@@ -135,6 +150,8 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
 	#region -- Option Creator
 
+	// todo: add id's to wrappers.
+
 	/**
 	 * Creates a radio option and outputs the HTML.
 	 *
@@ -157,7 +174,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			<div class="twrp-general-radio__checkboxes">
 				<?php foreach ( $args['options'] as $option_value => $text ) : ?>
 					<?php
-						$id      = 'twrp-general-radio__id-' . $name . '-' . $option_value;
+						$id      = 'twrp-general-radio__setting-' . $name . '-' . $option_value;
 						$checked = ( $option_value === $value ? ' checked' : '' );
 					?>
 					<span class="twrp-general-radio__selection">
@@ -195,7 +212,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			<div class="twrp-general-select__select-wrapper">
 				<select name="<?= esc_attr( $name ); ?>">
 					<?php
-					if ( self::select_with_optgroup( $args['options'] ) ) :
+					if ( self::select_has_optgroup( $args['options'] ) ) :
 						foreach ( $args['options'] as $label => $options ) :
 							?>
 							<optgroup label="<?= esc_attr( $label ); ?>">
@@ -214,13 +231,52 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	}
 
 	/**
+	 * Create an input text and outputs the HTML.
+	 *
+	 * @param string $name The name of the input.
+	 * @param string|null $value The current value of the input, null for default.
+	 * @param array{title:string,placeholder:string,default:string,is_hidden:bool} $args
+	 * @return void
+	 */
+	protected static function create_text_option( $name, $value, $args ) {
+		if ( null === $value ) {
+			$value = $args['default'];
+		}
+
+		$wrapper_id = 'twrp-general-settings__wrapper-' . $name;
+		$input_id   = 'twrp-general-settings__setting-' . $name;
+
+		$is_hidden = '';
+		if ( isset( $args['is_hidden'] ) && true === $args['is_hidden'] ) {
+			$is_hidden = ' twrp-hidden';
+		}
+
+		$placeholder = '';
+		if ( isset( $args['placeholder'] ) ) {
+			$placeholder = 'placeholder="' . $args['placeholder'] . '"';
+		}
+
+		?>
+		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-text twrp-general-settings__text-group<?= esc_attr( $is_hidden ) ?>">
+			<div class="twrp-general-text__title">
+			   <?= $args['title']; // phpcs:ignore -- No XSS ?>
+			</div>
+
+			<div class="twrp-general-text__wrapper">
+				<input id="<?= esc_attr( $input_id ); ?>" type="text" name="<?= esc_attr( $name ); ?>" value="<?= esc_attr( $value ); ?>" <?= $placeholder; // phpcs:ignore ?>/>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
 	 * Detect if the options passed to create_select_option() function are for
 	 * creating a select with optgroup.
 	 *
 	 * @param array $options
 	 * @return bool
 	 */
-	protected static function select_with_optgroup( $options ) {
+	protected static function select_has_optgroup( $options ) {
 		$first_value = reset( $options );
 
 		if ( is_array( $first_value ) ) {
@@ -253,18 +309,69 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	#region -- Settings Arguments
 
 	/**
+	 * Return the arguments of the setting to enable date format selection per widget.
+	 *
+	 * @return array
+	 */
+	protected static function get_per_widget_date_format_setting_args() {
+		return array(
+			'title'   => _x( 'Get an additional option for each widget tab to select date format individually?', 'backend', 'twrp' ),
+			'options' => array(
+				'true'  => __( 'Yes', 'twrp' ),
+				'false' => __( 'No', 'twrp' ),
+			),
+			'default' => General_Options::get_default_setting( General_Options::KEY__PER_WIDGET_DATE_FORMAT ),
+		);
+	}
+
+	/**
+	 * Return the arguments of the setting to enable/disable human readable date format.
+	 *
+	 * @return array
+	 */
+	protected static function get_human_readable_setting_args() {
+		return array(
+			'title'   => _x( 'Display the date in relative format(Ex: 3 weeks ago)?', 'backend', 'twrp' ),
+			'options' => array(
+				'true'  => __( 'Yes', 'twrp' ),
+				'false' => __( 'No', 'twrp' ),
+			),
+			'default' => General_Options::get_default_setting( General_Options::KEY__HUMAN_READABLE_DATE ),
+		);
+	}
+
+	/**
+	 * Return the arguments of the setting to input a custom date format.
+	 *
+	 * @return array
+	 */
+	protected static function get_date_format_setting_args() {
+		$is_hidden = false;
+		if ( 'true' === General_Options::get_option( General_Options::KEY__HUMAN_READABLE_DATE ) ) {
+			$is_hidden = true;
+		}
+
+		return array(
+			'title'       => _x( 'Enter custom date format(leave empty for WordPress default setting):', 'backend', 'twrp' ),
+			'placeholder' => _x( 'Ex: F j, Y', 'backend', 'twrp' ),
+			'default'     => General_Options::get_default_setting( General_Options::KEY__HUMAN_READABLE_DATE ),
+			'is_hidden'   => $is_hidden,
+		);
+	}
+
+	/**
 	 * Return the arguments of the setting to enable icon selection per widget.
 	 *
 	 * @return array
 	 */
-	protected static function get_per_widget_setting_args() {
+	protected static function get_per_widget_icons_setting_args() {
 		return array(
 			'title'   => _x( 'Get an additional option for each widget tab to select icons(user, date, ..etc) individually?', 'backend', 'twrp' ),
 			'options' => array(
 				'true'  => __( 'Yes', 'twrp' ),
 				'false' => __( 'No', 'twrp' ),
 			),
-			'default' => 'false',
+			'default' => General_Options::get_default_setting( General_Options::KEY__PER_WIDGET_ICON ),
 		);
 	}
 
@@ -274,7 +381,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_author_icon_setting_args() {
-		$args    = General_Options::get_author_icon_setting_args();
 		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_user_icons() );
 
 		foreach ( $options as $key => $brand_icons ) {
@@ -286,7 +392,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		return array(
 			'title'   => _x( 'Select the default author icon:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => $args['default'],
+			'default' => General_Options::get_default_setting( General_Options::KEY__AUTHOR_ICON ),
 		);
 	}
 
@@ -296,7 +402,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_date_icon_setting_args() {
-		$args    = General_Options::get_date_icon_setting_args();
 		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_date_icons() );
 
 		foreach ( $options as $key => $brand_icons ) {
@@ -308,7 +413,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		return array(
 			'title'   => _x( 'Select the default date icon:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => $args['default'],
+			'default' => General_Options::get_default_setting( General_Options::KEY__DATE_ICON ),
 		);
 	}
 
@@ -318,7 +423,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_category_icon_setting_args() {
-		$args    = General_Options::get_category_icon_setting_args();
 		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_category_icons() );
 
 		foreach ( $options as $key => $brand_icons ) {
@@ -330,7 +434,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		return array(
 			'title'   => _x( 'Select the default category icon:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => $args['default'],
+			'default' => General_Options::get_default_setting( General_Options::KEY__CATEGORY_ICON ),
 		);
 	}
 
@@ -340,7 +444,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_comments_icon_setting_args() {
-		$args    = General_Options::get_comments_icon_setting_args();
 		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_comment_icons() );
 
 		foreach ( $options as $key => $brand_icons ) {
@@ -352,7 +455,28 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		return array(
 			'title'   => _x( 'Select the default comments icon:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => $args['default'],
+			'default' => General_Options::get_default_setting( General_Options::KEY__COMMENTS_ICON ),
+		);
+	}
+
+	/**
+	 * Return the arguments of the setting to select the disabled comments icon.
+	 *
+	 * @return array
+	 */
+	protected static function get_comments_disabled_icon_setting_args() {
+		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_comment_disabled_icons() );
+
+		foreach ( $options as $key => $brand_icons ) {
+			foreach ( $brand_icons as $icon_id => $icon ) {
+				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
+			}
+		}
+
+		return array(
+			'title'   => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
+			'options' => $options,
+			'default' => General_Options::get_default_setting( General_Options::KEY__COMMENTS_DISABLED_ICON ),
 		);
 	}
 
@@ -362,7 +486,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_views_icon_setting_args() {
-		$args    = General_Options::get_views_icon_setting_args();
 		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_views_icons() );
 
 		foreach ( $options as $key => $brand_icons ) {
@@ -374,7 +497,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		return array(
 			'title'   => _x( 'Select the default views icon:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => $args['default'],
+			'default' => General_Options::get_default_setting( General_Options::KEY__VIEWS_ICON ),
 		);
 	}
 
@@ -384,7 +507,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_rating_pack_setting_args() {
-		$args    = General_Options::get_rating_pack_setting_args();
 		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_rating_packs() );
 
 		foreach ( $options as $key => $brand_icons ) {
@@ -396,7 +518,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		return array(
 			'title'   => _x( 'Select the default rating pack icons:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => $args['default'],
+			'default' => General_Options::get_default_setting( General_Options::KEY__RATING_ICON_PACK ),
 		);
 	}
 

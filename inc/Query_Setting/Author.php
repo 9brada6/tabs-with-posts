@@ -153,7 +153,7 @@ class Author implements Query_Setting {
 		?>
 		<div
 			id="twrp-author-settings__js-authors-list"
-			class="twrp-display-list twrp-query-settings__paragraph-with-hide twrp-author-settings__display-list<?= esc_attr( $additional_list_class ); ?>"
+			class="twrp-display-list twrp-query-settings__paragraph twrp-author-settings__display-list<?= esc_attr( $additional_list_class ); ?>"
 			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
 			<div id="twrp-author-settings__js-no-authors-selected" class="twrp-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
@@ -198,7 +198,7 @@ class Author implements Query_Setting {
 		}
 
 		?>
-		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap twrp-query-settings__paragraph-with-hide<?= esc_attr( $additional_class ); ?>">
+		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap twrp-query-settings__paragraph<?= esc_attr( $additional_class ); ?>">
 			<input
 				id="twrp-author-settings__js-author-search" type="text"
 				class="twrp-author-settings__author-search"
@@ -234,7 +234,7 @@ class Author implements Query_Setting {
 		}
 
 		?>
-		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph-with-hide twrp-author-settings__same-author-note<?= esc_attr( $additional_note_class ); ?>">
+		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph twrp-author-settings__same-author-note<?= esc_attr( $additional_note_class ); ?>">
 			<span class="twrp-setting-note__label"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
 			<span class="twrp-setting-note__text">
 				<?= _x(

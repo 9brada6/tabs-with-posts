@@ -1,23 +1,21 @@
 import $ from 'jquery';
 import 'jqueryui';
 
-// Todo...
+// Todo... Remove all paragraphs with hide.
 
 const effectDuration = 500;
 
 // #region -- Hide/Show Vertically
 
 function hideUp( element: JQuery ): void {
-	$( element ).hide( {
-		effect: 'blind',
+	$( element ).slideUp( {
 		duration: effectDuration,
 		complete: addHideClass,
 	} );
 }
 
 function showUp( element: JQuery ): void {
-	$( element ).show( {
-		effect: 'blind',
+	$( element ).slideDown( {
 		duration: effectDuration,
 		complete: removeHideClass,
 	} );
@@ -34,7 +32,9 @@ function showUp( element: JQuery ): void {
  * @param {'remove'} remove Add 'remove' to remove the element from the DOM.
  */
 function hideLeft( element: JQuery, remove: string = '' ): void {
-	let completeFunction = addHideClass;
+	let completeFunction = function() {
+		addHideClass( element );
+	};
 	if ( remove === 'remove' ) {
 		completeFunction = removeElement;
 	}
@@ -69,12 +69,20 @@ function showLeft( element: JQuery, hideFirst: string = '' ): void {
 
 // =============================================================================
 
-function addHideClass(): void {
-	$( this ).addClass( 'twrp-hidden' );
+function addHideClass( element: JQuery = null ): void {
+	if ( element ) {
+		$( element ).addClass( 'twrp-hidden' );
+	} else {
+		$( this ).addClass( 'twrp-hidden' );
+	}
 }
 
-function removeHideClass(): void {
-	$( this ).removeClass( 'twrp-hidden' ).css( 'display', '' );
+function removeHideClass( element: JQuery = null ): void {
+	if ( element ) {
+		$( element ).removeClass( 'twrp-hidden' ).css( 'display', '' );
+	} else {
+		$( this ).removeClass( 'twrp-hidden' ).css( 'display', '' );
+	}
 }
 
 function removeElement(): void {

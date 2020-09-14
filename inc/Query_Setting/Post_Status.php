@@ -65,7 +65,7 @@ class Post_Status implements Query_Setting {
 			</select>
 		</div>
 
-		<div id="twrp-statuses-settings__js-statuses-wrapper" class="twrp-query-settings__paragraph-with-hide twrp-statuses-settings__statuses-wrap<?= esc_attr( $additional_hide_class ); ?>">
+		<div id="twrp-statuses-settings__js-statuses-wrapper" class="twrp-query-settings__paragraph twrp-statuses-settings__statuses-wrap<?= esc_attr( $additional_hide_class ); ?>">
 			<?php
 			$post_stats = self::get_post_statuses();
 			foreach ( $post_stats as $status ) :

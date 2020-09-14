@@ -68,7 +68,7 @@ class Search implements Query_Setting {
 				/>
 			</div>
 
-			<p id="twrp-search-setting__js-words-warning" class="twrp-query-settings__paragraph-with-hide twrp-setting-warning twrp-search-setting__paragraph <?= esc_attr( $warning_hidden_class ); ?>">
+			<p id="twrp-search-setting__js-words-warning" class="twrp-query-settings__paragraph twrp-setting-warning twrp-search-setting__paragraph <?= esc_attr( $warning_hidden_class ); ?>">
 				<span class="twrp-setting-warning__label">
 					<?= esc_html( $warning_label ); ?>
 				</span>

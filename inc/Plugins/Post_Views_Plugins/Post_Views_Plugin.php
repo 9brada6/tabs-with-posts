@@ -9,47 +9,29 @@ namespace TWRP\Plugins;
  * Interface that will tell what methods the plugin wrapper classes should
  * implement.
  */
-interface Post_Views_Plugin {
+abstract class Post_Views_Plugin extends Plugin_Info {
 
 	/**
 	 * Whether the plugin support getting the views for a post.
 	 *
 	 * @return bool
 	 */
-	public static function support_get_views();
+	abstract public static function support_get_views();
 
 	/**
 	 * Whether the plugin support support ordering posts by querying the db.
 	 *
 	 * @return bool
 	 */
-	public static function support_order_posts();
+	abstract public static function support_order_posts();
 
 	/**
-	 * Called before anything else, to initialize actions and filters.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 */
-	public static function init();
-
-	/**
-	 * Whether or not the plugin is installed.
-	 *
-	 * @return bool
-	 */
-	public static function is_installed_and_can_be_used();
-
-	/**
-	 * Get the views for a post. This function will fail silently.
+	 * Get the views for a post. Return false if cannot be retrieved.
 	 *
 	 * @param int|string $post_id The post Id.
-	 * @return int
+	 * @return int|false
 	 */
-	public static function get_views( $post_id );
+	abstract public static function get_views( $post_id );
 
 	/**
 	 * Given an array with WP_Query args with 'orderby' of type array and a
@@ -60,5 +42,5 @@ interface Post_Views_Plugin {
 	 * will appear as a key in 'orderby' parameter.
 	 * @return array
 	 */
-	public static function modify_query_arg_if_necessary( $query_args );
+	abstract public static function modify_query_arg_if_necessary( $query_args );
 }

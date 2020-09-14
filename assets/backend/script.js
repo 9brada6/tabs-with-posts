@@ -3,19 +3,17 @@ var TWRP_Plugin = (function ($) {
 
 	$ = $ && Object.prototype.hasOwnProperty.call($, 'default') ? $['default'] : $;
 
-	// Todo...
+	// Todo... Remove all paragraphs with hide.
 	var effectDuration = 500;
 	// #region -- Hide/Show Vertically
 	function hideUp(element) {
-	    $(element).hide({
-	        effect: 'blind',
+	    $(element).slideUp({
 	        duration: effectDuration,
 	        complete: addHideClass,
 	    });
 	}
 	function showUp(element) {
-	    $(element).show({
-	        effect: 'blind',
+	    $(element).slideDown({
 	        duration: effectDuration,
 	        complete: removeHideClass,
 	    });
@@ -30,7 +28,9 @@ var TWRP_Plugin = (function ($) {
 	 */
 	function hideLeft(element, remove) {
 	    if (remove === void 0) { remove = ''; }
-	    var completeFunction = addHideClass;
+	    var completeFunction = function () {
+	        addHideClass(element);
+	    };
 	    if (remove === 'remove') {
 	        completeFunction = removeElement;
 	    }
@@ -61,11 +61,23 @@ var TWRP_Plugin = (function ($) {
 	    });
 	}
 	// =============================================================================
-	function addHideClass() {
-	    $(this).addClass('twrp-hidden');
+	function addHideClass(element) {
+	    if (element === void 0) { element = null; }
+	    if (element) {
+	        $(element).addClass('twrp-hidden');
+	    }
+	    else {
+	        $(this).addClass('twrp-hidden');
+	    }
 	}
-	function removeHideClass() {
-	    $(this).removeClass('twrp-hidden').css('display', '');
+	function removeHideClass(element) {
+	    if (element === void 0) { element = null; }
+	    if (element) {
+	        $(element).removeClass('twrp-hidden').css('display', '');
+	    }
+	    else {
+	        $(this).removeClass('twrp-hidden').css('display', '');
+	    }
 	}
 	function removeElement() {
 	    $(this).remove();
@@ -1645,6 +1657,21 @@ var TWRP_Plugin = (function ($) {
 	    previewWrapper.html('');
 	    previewWrapper.append('<svg><use xlink:href="#' + svgId + '" /></svg>');
 	}
+
+	// #region -- Hide or show custom date format depending on human readable date format.
+	var humanReadableEnabledCheckbox = $('#twrp-general-radio__setting-human_readable_date-true');
+	var customDateWrapper = $('#twrp-general-settings__wrapper-date_format');
+	function showOrHideCustomDateFormat() {
+	    if (humanReadableEnabledCheckbox.is(':checked')) {
+	        hideUp(customDateWrapper);
+	    }
+	    else {
+	        showUp(customDateWrapper);
+	    }
+	}
+	$(document).ready(showOrHideCustomDateFormat);
+	$(document).on('click', showOrHideCustomDateFormat);
+	// #endregion -- Hide or show custom date format depending on human readable date format.
 
 	var script = {};
 

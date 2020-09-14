@@ -5,10 +5,13 @@
 
 namespace TWRP\Icons;
 
+use TWRP_Main;
+use TWRP\Database\General_Options;
 use TWRP\Icons\Date_Icons;
 use TWRP\Icons\User_Icons;
 use TWRP\Icons\Category_Icons;
 use TWRP\Icons\Comments_Icons;
+use TWRP\Icons\Comments_Disabled_Icons;
 use TWRP\Icons\Views_Icons;
 use TWRP\Icons\Rating_Icons;
 
@@ -55,6 +58,16 @@ class SVG_Manager {
 	public static function get_comment_icons() {
 		return Comments_Icons::get_comment_icons();
 	}
+
+	/**
+	 * Get all registered icons that represents the disabled comments.
+	 *
+	 * @return array<string,array>
+	 */
+	public static function get_comment_disabled_icons() {
+		return Comments_Disabled_Icons::get_disabled_comment_icons();
+	}
+
 
 	/**
 	 * Get all registered icons that represents the number of views.
@@ -105,6 +118,10 @@ class SVG_Manager {
 	 */
 	public static function init() {
 		add_action( 'admin_footer', array( __CLASS__, 'include_all_svg' ) );
+
+		// todo: remove:
+		add_action( 'wp_footer', array( __CLASS__, 'include_defs_inline_all_needed_icons' ) );
+		add_action( 'admin_footer', array( __CLASS__, 'write_all_needed_icons_to_file' ) );
 	}
 
 	/**
@@ -232,7 +249,7 @@ class SVG_Manager {
 	}
 
 	public static function include_svg( $icon_name, $additional_class = '' ) {
-		echo get_html_svg( $icon_name, $additional_class = '' );
+		echo self::get_html_svg( $icon_name, $additional_class = '' );
 	}
 
 	public static function get_html_svg( $icon_name, $additional_class = '' ) {
@@ -245,6 +262,7 @@ class SVG_Manager {
 			$additional_class = ' twrp-views-i';
 		}
 
+		// todo: fix this class.
 		if ( key_exists( $icon_name, self::get_comment_icons() ) ) {
 			$additional_class = ' twrp-views-c';
 		}
@@ -263,4 +281,157 @@ class SVG_Manager {
 
 		return $html;
 	}
+
+	#region -- Create a full HTML tag with all the icons.
+
+	public static function get_all_icons_svg() {
+
+	}
+
+	public static function create_all_icons_file() {
+
+	}
+
+	#endregion -- Create a full HTML tag with all the icons.
+
+	#region -- Include Icons, either inline or via a file
+
+	/**
+	 * Echo the HTML to include all icons as inline svg defs.
+	 *
+	 * @return void
+	 */
+	public static function include_defs_inline_all_needed_icons() {
+		echo self::get_defs_inline_all_needed_icons(); // phpcs:ignore
+	}
+
+	/**
+	 * Get the HTML to include all icons as inline svg defs.
+	 *
+	 * @return string
+	 */
+	public static function get_defs_inline_all_needed_icons() {
+		$html = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
+
+		foreach ( self::get_all_used_icons() as $icon_id ) {
+			$html .= self::get_svg_def( $icon_id );
+		}
+
+		$html .= '</defs></svg>';
+
+		return $html;
+	}
+
+	/**
+	 * Write all needed icons to a file named assets/svgs/needed-icons.svg
+	 *
+	 * @todo: WP_Filesystem check for credentials.
+	 * @return bool Whether or not the file was written.
+	 */
+	public static function write_all_needed_icons_to_file() {
+		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
+
+		if ( ! file_exists( $file_path ) ) {
+			return false;
+		}
+
+		$wp_filesystem_available = WP_Filesystem();
+		if ( ! $wp_filesystem_available ) {
+			return false;
+		}
+
+		global $wp_filesystem;
+		$html = self::get_defs_file_all_needed_icons();
+
+		/** @psalm-suppress UndefinedConstant */
+		// @phan-suppress-next-line PhanUndeclaredConstant -- FS_CHMOD_FILE is declared.
+		if ( ! $wp_filesystem->put_contents( $file_path, $html, FS_CHMOD_FILE ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Get the HTML to include all icons as a file of svg defs.
+	 *
+	 * @return string
+	 */
+	public static function get_defs_file_all_needed_icons() {
+		$html = '<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
+		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . "\n" .
+		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
+
+		foreach ( self::get_all_used_icons() as $icon_id ) {
+			$html .= self::get_svg_def( $icon_id );
+		}
+
+		$html .= '</defs></svg>';
+
+		return $html;
+	}
+
+	/**
+	 * Enqueue all needed icons file. This function needs to be called at the
+	 * correct action, usually "wp_enqueue_scripts".
+	 *
+	 * @todo: make $ver to change when the file has been updated.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_all_needed_icons_file() {
+		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
+		$deps      = array();
+		$ver       = '1.0.0';
+
+		wp_enqueue_style( 'twrp_needed_icons', $file_path, $deps, $ver, 'all' );
+	}
+
+	#endregion -- Include Icons, either inline or via a file
+
+	/**
+	 * Get an array with all used icons ids, for all widgets.
+	 *
+	 * @return array<string>
+	 */
+	public static function get_all_used_icons() {
+		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
+			return self::get_all_global_used_icons();
+		}
+
+		return self::get_all_per_widget_used_icons();
+	}
+
+	/**
+	 * Get an array with all global used icons ids.
+	 *
+	 * @todo: add rating icons.
+	 *
+	 * @return array<string>
+	 */
+	protected static function get_all_global_used_icons() {
+		$icons = array();
+
+		$options = array(
+			General_Options::KEY__AUTHOR_ICON,
+			General_Options::KEY__DATE_ICON,
+			General_Options::KEY__VIEWS_ICON,
+			General_Options::KEY__CATEGORY_ICON,
+			General_Options::KEY__COMMENTS_ICON,
+		);
+
+		foreach ( $options as $option_key ) {
+			$option_value = General_Options::get_option( $option_key );
+			if ( ! empty( $option_value ) ) {
+				array_push( $icons, $option_value );
+			}
+		}
+
+		return $icons;
+	}
+
+	public static function get_all_per_widget_used_icons() {
+		return array();
+	}
+
 }

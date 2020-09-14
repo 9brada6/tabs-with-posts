@@ -42,6 +42,7 @@ class Require_Files {
 		'Artblock_Component/Widget_Component_Setting/Date_Icon_Setting',
 
 		// Article Blocks
+		'Article_Block/Get_Widget_Settings_Trait',
 		'Article_Block/Article_Block',
 		'Article_Block/Simple_Article_Block',
 		'Article_Block/Modern_Article_Block',
@@ -56,12 +57,15 @@ class Require_Files {
 		'Icons/Date_Icons',
 		'Icons/Category_Icons',
 		'Icons/Comments_Icons',
+		'Icons/Comments_Disabled_Icons',
 		'Icons/Views_Icons',
 		'Icons/Rating_Icons',
 
 		// Plugins
+		'Plugins/Plugin_Info',
 		'Plugins/Post_Rating',
 		'Plugins/Post_Views',
+
 		'Plugins/Post_Views_Plugins/Post_Views_Plugin',
 		'Plugins/Post_Views_Plugins/A3REV_Views_Plugin',
 		'Plugins/Post_Views_Plugins/DFactory_Views_Plugin',

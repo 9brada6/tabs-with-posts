@@ -71,6 +71,11 @@
 		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" />
     </rule>
 
+	<!-- Exclude prefix globals from template files, these files are not global files. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<exclude-pattern>*/templates/*</exclude-pattern>
+	</rule>
+
 	<!-- Check for cross-version support for PHP 7.0 and higher. -->
     <config name="testVersion" value="5.6"/>
 	<rule ref="PHPCompatibilityWP"/>

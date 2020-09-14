@@ -77,7 +77,7 @@ class Create_Tabs {
 		try {
 			$query_posts = Get_Posts::get_posts_by_query_id( $query_id );
 			$artblock    = $this->get_artblock( $query_id );
-			$settings    = $artblock->sanitize_widget_settings();
+			$artblock->sanitize_widget_settings();
 		} catch ( \RuntimeException $e ) {
 			return;
 		}
@@ -85,7 +85,7 @@ class Create_Tabs {
 		foreach ( $query_posts as $query_post ) {
 			$post = $query_post; // phpcs:ignore -- We reset it.
 			setup_postdata( $query_post );
-			$artblock->include_template( $settings );
+			$artblock->include_template();
 		}
 		wp_reset_postdata();
 	}
