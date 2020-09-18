@@ -103,6 +103,12 @@ class Simple_Article_Block extends Article_Block {
 		$current_setting = ( isset( $this->settings['human_readable_date'] ) && is_string( $this->settings['human_readable_date'] ) ) ? $this->settings['human_readable_date'] : null;
 		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_human_readable_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
+		// Display Comments
+		$id              = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_comments' );
+		$name            = Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_comments' );
+		$current_setting = ( isset( $this->settings['display_comments'] ) && is_string( $this->settings['display_comments'] ) ) ? $this->settings['display_comments'] : null;
+		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_comments_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
+
 		// Display the components settings.
 		$components = $this->get_components();
 		Widget_Component_Settings::display_components( $components );
@@ -131,6 +137,9 @@ class Simple_Article_Block extends Article_Block {
 
 		$author_setting_to_sanitize                = isset( $settings['human_readable_date'] ) ? $settings['human_readable_date'] : null;
 		$sanitized_settings['human_readable_date'] = Checkbox_Control::sanitize_setting( $author_setting_to_sanitize, $this->get_human_readable_setting_args() );
+
+		$comments_setting_to_sanitize           = isset( $settings['display_comments'] ) ? $settings['display_comments'] : null;
+		$sanitized_settings['display_comments'] = Checkbox_Control::sanitize_setting( $comments_setting_to_sanitize, $this->get_comments_setting_args() );
 
 		if ( $set_internal ) {
 			$this->settings = $sanitized_settings;
@@ -162,6 +171,14 @@ class Simple_Article_Block extends Article_Block {
 			'default' => '1',
 			'value'   => '1',
 			'before'  => _x( 'Date in relative format(Ex: 3 days ago)', 'backend', 'twrp' ),
+		);
+	}
+
+	public function get_comments_setting_args() {
+		return array(
+			'default' => '',
+			'value'   => '1',
+			'before'  => _x( 'Display the number of comments?', 'backend', 'twrp' ),
 		);
 	}
 

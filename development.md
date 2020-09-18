@@ -58,7 +58,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### Icons
 
 - Add License to FontAwesome
-- Search what fill="currentColor" means
 - Change vertical-align of the icons to em.
 - See from where to use Icons: Linea?
 - Add some colored icons?
@@ -73,6 +72,11 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Move all inclusion of icons to either file or all in HTML, remove inclusion from inline HTML.
 - Check the file where icons are written to be HTML valid.
 - Add more comments disabled icons.
+- Make all icons align perfectly, under all conditions.
+
+### JS/SCSS
+
+- Add pre=fixer to SCSS.
 
 ### After first release
 

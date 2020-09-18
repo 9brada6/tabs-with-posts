@@ -84,8 +84,8 @@ $( document ).on( 'click', '.twrp-cat-settings__cat-remove-btn', handleRemoveCat
 /**
  * Removes a selected category when a button is clicked.
  */
-function handleRemoveCategory(): void {
-	const categoryId = $( this ).closest( '[' + categoryIdAttrName + ']' ).attr( categoryIdAttrName );
+function handleRemoveCategory( this:JQuery ): void {
+	const categoryId = String( $( this ).closest( '[' + categoryIdAttrName + ']' ).attr( categoryIdAttrName ) );
 	removeCategoryFromDisplay( categoryId );
 	removeCategoryFromInput( categoryId );
 }
@@ -273,7 +273,7 @@ function refreshInputtedCategories(): void {
 
 	let categoriesIds = '';
 	categoriesItems.each( function() {
-		const catId = $( this ).attr( categoryIdAttrName );
+		const catId = String( $( this ).attr( categoryIdAttrName ) );
 		if ( ! categoriesIds ) {
 			categoriesIds = catId;
 		} else {

@@ -43,6 +43,8 @@ class Require_Files {
 
 		// Article Blocks
 		'Article_Block/Get_Widget_Settings_Trait',
+		'Article_Block/Get_Settings_Trait',
+		'Article_Block/Display_Post_Meta_Trait',
 		'Article_Block/Article_Block',
 		'Article_Block/Simple_Article_Block',
 		'Article_Block/Modern_Article_Block',

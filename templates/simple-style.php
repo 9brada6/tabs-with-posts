@@ -22,21 +22,21 @@ if ( empty( get_the_title() ) ) {
 	<div class="twrp-ss__meta-wrapper">
 		<?php if ( $artblock->is_author_displayed() ) : ?>
 			<span class="twrp-ss__author">
-				<?php $artblock->include_author_icon(); ?>
+				<?php $artblock->display_author_icon(); ?>
 				<?php $artblock->display_the_author(); ?>
 			</span>
 		<?php endif; ?>
 
 		<?php if ( $artblock->is_date_displayed() ) : ?>
 			<span class="twrp-ss__date">
-				<?php $artblock->include_date_icon(); ?>
+				<?php $artblock->display_date_icon(); ?>
 				<?php $artblock->display_the_date(); ?>
 			</span>
 		<?php endif; ?>
 
 		<?php if ( $artblock->are_views_displayed() ) : ?>
 			<span class="twrp-ss__views">
-				<?php $artblock->include_views_icon(); ?>
+				<?php $artblock->display_views_icon(); ?>
 				<?php $artblock->display_the_views(); ?>
 			</span>
 		<?php endif; ?>
@@ -47,9 +47,15 @@ if ( empty( get_the_title() ) ) {
 			</span>
 		<?php endif; ?>
 
+		<?php if ( $artblock->are_categories_displayed() ) : ?>
+			<span class="twrp-ss__categories">
+				<?php // $artblock->include_rating_icon(); ?>
+			</span>
+		<?php endif; ?>
+
 		<?php if ( $artblock->are_comments_displayed() ) : ?>
 			<span class="twrp-ss__comments">
-			<?php $artblock->include_comments_icon(); ?>
+			<?php $artblock->display_comments_icon(); ?>
 			<?php $artblock->display_comments_number(); ?>
 			</span>
 		<?php endif; ?>

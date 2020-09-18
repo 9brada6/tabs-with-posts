@@ -58,8 +58,15 @@
 			".gitignore": false,
 			"**/vendor/**": false,
 			".eslintrc.json": false,
-			"rollup.config.js": false,
 			".phpcs.xml": false,
+			"cov.xml": false,
+			"cspell.json": false,
+			".phpunit.result.cache": false,
+			"phpunit.xml": false,
+			"phpstan.neon": false,
+			"twrp.code-workspace": false,
+			"gulpfile.js": false,
+			"psalm.xml": false,
 			".stylelintrc.json": false,
 			"composer.json": false,
 			"composer.lock": false,
@@ -73,6 +80,11 @@
 			"**/CVS": false,
 			"**/.DS_Store": false
 		},
+
+		"npm.exclude": [
+			"**/wp-content/plugins/!(tabs-with-recommended-posts)/**",
+			"**/wp-content/themes/**",
+		],
 
 
 		// =====================================================================

@@ -10,14 +10,18 @@ const effectDuration = 500;
 function hideUp( element: JQuery ): void {
 	$( element ).slideUp( {
 		duration: effectDuration,
-		complete: addHideClass,
+		complete() {
+			addHideClass( element );
+		},
 	} );
 }
 
 function showUp( element: JQuery ): void {
 	$( element ).slideDown( {
 		duration: effectDuration,
-		complete: removeHideClass,
+		complete() {
+			removeHideClass( element );
+		},
 	} );
 }
 
@@ -36,7 +40,9 @@ function hideLeft( element: JQuery, remove: string = '' ): void {
 		addHideClass( element );
 	};
 	if ( remove === 'remove' ) {
-		completeFunction = removeElement;
+		completeFunction = function() {
+			removeElement( element );
+		};
 	}
 
 	$( element ).hide( {
@@ -63,30 +69,24 @@ function showLeft( element: JQuery, hideFirst: string = '' ): void {
 		effect: 'blind',
 		duration: effectDuration,
 		direction: 'left',
-		complete: removeHideClass,
+		complete() {
+			removeHideClass( element );
+		},
 	} );
 }
 
 // =============================================================================
 
-function addHideClass( element: JQuery = null ): void {
-	if ( element ) {
-		$( element ).addClass( 'twrp-hidden' );
-	} else {
-		$( this ).addClass( 'twrp-hidden' );
-	}
+function addHideClass( element: JQuery ): void {
+	$( element ).addClass( 'twrp-hidden' );
 }
 
-function removeHideClass( element: JQuery = null ): void {
-	if ( element ) {
-		$( element ).removeClass( 'twrp-hidden' ).css( 'display', '' );
-	} else {
-		$( this ).removeClass( 'twrp-hidden' ).css( 'display', '' );
-	}
+function removeHideClass( element: JQuery ): void {
+	$( element ).removeClass( 'twrp-hidden' ).css( 'display', '' );
 }
 
-function removeElement(): void {
-	$( this ).remove();
+function removeElement( element: JQuery ): void {
+	$( element ).remove();
 }
 
 // =============================================================================

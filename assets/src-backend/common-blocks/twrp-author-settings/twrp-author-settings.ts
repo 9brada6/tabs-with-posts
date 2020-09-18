@@ -79,7 +79,7 @@ function initializeAutoComplete() {
  */
 function showSearchedUsers( request: any, sendToControl: CallableFunction ): void {
 	const allUsers = new wp.api.collections.Users();
-	const usersFound = [];
+	const usersFound: Array<Object> = [];
 
 	allUsers.fetch( {
 		data: {
@@ -253,10 +253,9 @@ $( document ).on( 'click', '.twrp-author-settings__js-author-remove-btn', handle
 /**
  * Handle the removing of the authors from the selected list.
  */
-function handleRemoveAuthor(): void {
-	let id: string|number = $( this ).closest( '[' + authorIdAttrName + ']' ).attr( authorIdAttrName );
+function handleRemoveAuthor( this:JQuery ): void {
+	const id: number = Number( $( this ).closest( '[' + authorIdAttrName + ']' ).attr( authorIdAttrName ) );
 
-	id = Number( id );
 	if ( ! ( id > 0 ) ) {
 		return;
 	}
@@ -405,12 +404,11 @@ function authorExistInHiddenInput( id: number|string ): boolean {
  */
 function updateAuthorsIdsFromVisualList(): void {
 	const authorItems = authorsVisualList.find( '.twrp-author-settings__author-item' );
-	const authorsIds = [];
+	const authorsIds:Array<number> = [];
 
 	authorItems.each( function() {
-		let itemId: string|number = $( this ).attr( authorIdAttrName );
+		const itemId: number = Number( $( this ).attr( authorIdAttrName ) );
 
-		itemId = +itemId;
 		if ( itemId > 0 ) {
 			authorsIds.push( itemId );
 		}
