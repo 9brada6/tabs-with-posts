@@ -76,8 +76,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### JS/SCSS
 
-- Add pre=fixer to SCSS.
-
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).
