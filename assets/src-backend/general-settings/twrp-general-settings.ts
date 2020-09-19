@@ -4,8 +4,8 @@ import { showUp, hideUp } from '../framework-blocks/twrp-hidden/twrp-hidden';
 
 // #region -- Hide or show custom date format depending on human readable date format.
 
-const humanReadableEnabledCheckbox = $( '#twrp-general-radio__setting-human_readable_date-true' );
-const customDateWrapper = $( '#twrp-general-settings__wrapper-date_format' );
+const humanReadableEnabledCheckbox = $( '#twrp-general-select__human_readable_date-setting-true' );
+const customDateWrapper = $( '#twrp-general-select__date_format-wrapper' );
 
 function showOrHideCustomDateFormat() {
 	if ( humanReadableEnabledCheckbox.is( ':checked' ) ) {

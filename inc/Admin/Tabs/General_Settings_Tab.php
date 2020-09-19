@@ -165,8 +165,10 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			$value = $args['default'];
 		}
 
+		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
+
 		?>
-		<div class="twrp-general-radio twrp-general-settings__radio-group">
+		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-radio twrp-general-settings__radio-group">
 			<div class="twrp-general-radio__title">
 				<?= $args['title']; // phpcs:ignore -- No XSS ?>
 			</div>
@@ -174,12 +176,12 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			<div class="twrp-general-radio__checkboxes">
 				<?php foreach ( $args['options'] as $option_value => $text ) : ?>
 					<?php
-						$id      = 'twrp-general-radio__setting-' . $name . '-' . $option_value;
-						$checked = ( $option_value === $value ? ' checked' : '' );
+						$radio_id = self::get_settings_attr_id( $name, $option_value );
+						$checked  = ( $option_value === $value ? ' checked' : '' );
 					?>
 					<span class="twrp-general-radio__selection">
-						<input id="<?= esc_attr( $id ); ?>" type="radio" name="<?= esc_attr( $name ); ?>" value="<?= esc_attr( $option_value ); ?>"<?= esc_attr( $checked ); ?>>
-						<label for="<?= esc_attr( $id ); ?>">
+						<input id="<?= esc_attr( $radio_id ); ?>" type="radio" name="<?= esc_attr( $name ); ?>" value="<?= esc_attr( $option_value ); ?>"<?= esc_attr( $checked ); ?>>
+						<label for="<?= esc_attr( $radio_id ); ?>">
 							<?= $text; // phpcs:ignore -- No XSS ?>
 						</label>
 					</span>
@@ -203,14 +205,17 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			$value = $args['default'];
 		}
 
+		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
+		$select_id  = self::get_settings_attr_id( $name );
+
 		?>
-		<div class="twrp-general-select twrp-general-settings__select-group">
+		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-select twrp-general-settings__select-group">
 			<div class="twrp-general-select__title">
 				<?= $args['title']; // phpcs:ignore -- No XSS ?>
 			</div>
 
 			<div class="twrp-general-select__select-wrapper">
-				<select name="<?= esc_attr( $name ); ?>">
+				<select id="<?= esc_attr( $select_id ); ?>" name="<?= esc_attr( $name ); ?>">
 					<?php
 					if ( self::select_has_optgroup( $args['options'] ) ) :
 						foreach ( $args['options'] as $label => $options ) :
@@ -243,8 +248,8 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			$value = $args['default'];
 		}
 
-		$wrapper_id = 'twrp-general-settings__wrapper-' . $name;
-		$input_id   = 'twrp-general-settings__setting-' . $name;
+		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
+		$input_id   = self::get_settings_attr_id( $name );
 
 		$is_hidden = '';
 		if ( isset( $args['is_hidden'] ) && true === $args['is_hidden'] ) {
@@ -268,6 +273,10 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		</div>
 		<?php
 	}
+
+	#endregion -- Option Creator
+
+	#region -- Option Creator Helpers
 
 	/**
 	 * Detect if the options passed to create_select_option() function are for
@@ -304,7 +313,34 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		endforeach;
 	}
 
-	#endregion -- Option Creator
+	/**
+	 * Return the HTML wrapper id of a setting.
+	 *
+	 * @param string $name
+	 * @return string
+	 */
+	protected static function get_setting_wrapper_attr_id( $name ) {
+		return 'twrp-general-select__' . $name . '-wrapper';
+	}
+
+	/**
+	 * Return the HTML id of a setting.
+	 *
+	 * @param string $name
+	 * @param string $option_value If there are multiple id's separate them by an additional value.
+	 * @return string
+	 */
+	protected static function get_settings_attr_id( $name, $option_value = '' ) {
+		$id = 'twrp-general-select__' . $name . '-setting';
+
+		if ( '' !== $option_value ) {
+			$id = $id . '-' . $option_value;
+		}
+
+		return $id;
+	}
+
+	#endregion -- Option Creator Helpers
 
 	#region -- Settings Arguments
 
