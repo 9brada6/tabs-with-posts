@@ -76,6 +76,8 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### JS/SCSS
 
+- Modify deprecated .ready in jQuery.
+
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).
