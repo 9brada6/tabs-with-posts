@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import 'jqueryui';
 
-$( document ).ready( enableCollapsibleSettings );
+$( enableCollapsibleSettings );
 
 function enableCollapsibleSettings() {
 	$( '.twrp-collapsible' ).each( function() {

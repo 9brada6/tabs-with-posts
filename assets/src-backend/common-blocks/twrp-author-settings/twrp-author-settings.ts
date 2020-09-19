@@ -11,7 +11,7 @@ const authorTypeSelector = $( '#twrp-author-settings__select_type' );
 const authorSearchWrap = $( '#twrp-author-settings__author-search-wrap' );
 const authorToHideList = $( '#twrp-author-settings__js-authors-list' );
 
-// $( document ).ready( hideOrShowVisualList );
+// $( hideOrShowVisualList );
 $( document ).on( 'change', '#twrp-author-settings__select_type', hideOrShowVisualList );
 
 /**
@@ -35,7 +35,7 @@ function hideOrShowVisualList() {
 
 const sameAuthorNotice = $( '#twrp-author-settings__js-same-author-notice' );
 
-$( document ).ready( handleSameAuthorNotice );
+$( handleSameAuthorNotice );
 $( document ).on( 'change', '#twrp-author-settings__select_type', handleSameAuthorNotice );
 
 /**
@@ -309,7 +309,7 @@ function _removeAuthorFromHiddenInput( id: number|string ): void {
  */
 const noAuthorsText = $( '#twrp-author-settings__js-no-authors-selected' );
 
-$( document ).ready( removeOrAddNoAuthorsText );
+$( removeOrAddNoAuthorsText );
 
 /**
  * Remove or add "No authors" text if necessary.
@@ -345,7 +345,7 @@ function _addNoAuthorsTextIfNecessary() {
 
 // #region -- Sorting function.
 
-$( document ).ready( initializeSorting );
+$( initializeSorting );
 
 /**
  * Make the visual items sortable, and update the hidden input accordingly.

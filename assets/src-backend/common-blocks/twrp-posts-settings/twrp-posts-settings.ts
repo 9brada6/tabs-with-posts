@@ -12,7 +12,7 @@ const postVisualList = $( '#twrp-posts-settings__js-posts-list' );
 
 const searchingWrapper = $( '#twrp-posts-settings__js-posts-search-wrap' );
 
-$( document ).ready( hideOrShowVisualList );
+$( hideOrShowVisualList );
 $( document ).on( 'change', '#twrp-posts-settings__js-filter-type', hideOrShowVisualList );
 
 /**
@@ -39,7 +39,7 @@ function hideOrShowVisualList() {
  */
 const postsSearchInput = $( '#twrp-posts-settings__js-posts-search' );
 
-$( document ).ready( initializeAutoComplete );
+$( initializeAutoComplete );
 
 /**
  * Initialize the search input, when a user enter some characters, it will
@@ -259,7 +259,7 @@ function _removePostFromHiddenInput( id: number|string ): void {
  */
 const noPostsText = $( '#twrp-posts-settings__js-no-posts-selected' );
 
-$( document ).ready( removeOrAddNoPostsText );
+$( removeOrAddNoPostsText );
 
 /**
  * Remove or add "No posts selected" text if necessary.
@@ -295,7 +295,7 @@ function _addNoPostsTextIfNecessary() {
 
 // #region -- Sorting function
 
-$( document ).ready( initializeSorting );
+$( initializeSorting );
 
 /**
  * Make the visual items sortable, and update the hidden input accordingly.

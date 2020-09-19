@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 declare let CodeMirror: any;
 
-$( document ).ready( enableCodeMirror );
+$( enableCodeMirror );
 
 function enableCodeMirror(): void {
 	const element = document.getElementById( 'twrp-advanced-args__codemirror-textarea' );

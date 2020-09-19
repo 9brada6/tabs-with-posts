@@ -2,7 +2,7 @@ import $ from 'jquery';
 
 declare const Pickr: any;
 
-$( document ).ready( createPicker );
+$( createPicker );
 
 function createPicker() {
 	const colorPickers = $( '.twrp-color-picker' );

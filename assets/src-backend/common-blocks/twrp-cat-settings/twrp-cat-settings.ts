@@ -209,7 +209,7 @@ const categoryRelationWrapper = $( '#twrp-cat-settings__js-select-relation-wrap'
 const mainCategorySettings = $( '#twrp-cat-settings__js-settings-wrapper' );
 
 // todo: uncomment document.ready.
-// $( document ).ready( hideOrShowCategorySettings );
+// $( hideOrShowCategorySettings );
 $( document ).on( 'change', '#twrp-cat-settings__type', hideOrShowCategorySettings );
 
 function hideOrShowCategorySettings(): void {

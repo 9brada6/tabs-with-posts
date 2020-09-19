@@ -8,7 +8,7 @@ const after = $( '#twrp-date-settings__after' );
 
 const before = $( '#twrp-date-settings__before' );
 
-$( document ).ready( enableDatePickerIfNecessary );
+$( enableDatePickerIfNecessary );
 
 function enableDatePickerIfNecessary() {
 	if ( inputDateTypeIsAvailable() ) {
@@ -45,10 +45,10 @@ const lastPeriodWrapper = $( '#twrp-date-settings__js-last-period-wrapper' );
 
 const betweenPeriodWrapper = $( '#twrp-date-settings__js-between-wrapper' );
 
-$( document ).ready( hideOrShowLastPeriodSettings );
+$( hideOrShowLastPeriodSettings );
 $( document ).on( 'change', '#twrp-date-settings__js-date-type', hideOrShowLastPeriodSettings );
 
-$( document ).ready( hideOrShowBetweenTimeSettings );
+$( hideOrShowBetweenTimeSettings );
 $( document ).on( 'change', '#twrp-date-settings__js-date-type', hideOrShowBetweenTimeSettings );
 
 function hideOrShowLastPeriodSettings() {

@@ -5,7 +5,7 @@ import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 const searchInput = $( '#twrp-search-setting__js-search-input' );
 const warningWrapper = $( '#twrp-search-setting__js-words-warning' );
 
-$( document ).ready( hiderOrShowSearchWarning );
+$( hiderOrShowSearchWarning );
 $( document ).on( 'change', '#twrp-search-setting__js-search-input', hiderOrShowSearchWarning );
 
 function hiderOrShowSearchWarning(): void {

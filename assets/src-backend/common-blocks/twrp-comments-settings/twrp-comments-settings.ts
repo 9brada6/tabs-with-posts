@@ -6,7 +6,7 @@ const selectCommentsComparator = $( '#twrp-comments-settings__js-comparator' );
 
 const numCommentsInput = $( '#twrp-comments-settings__js-num_comments' );
 
-$( document ).ready( hideOrShowCommentsNumberInput );
+$( hideOrShowCommentsNumberInput );
 $( document ).on( 'change', '#twrp-comments-settings__js-comparator', hideOrShowCommentsNumberInput );
 
 function hideOrShowCommentsNumberInput() {

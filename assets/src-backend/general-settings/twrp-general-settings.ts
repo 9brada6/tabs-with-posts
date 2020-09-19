@@ -15,7 +15,7 @@ function showOrHideCustomDateFormat() {
 	}
 }
 
-$( document ).ready( showOrHideCustomDateFormat );
+$( showOrHideCustomDateFormat );
 $( document ).on( 'click', showOrHideCustomDateFormat );
 
 // #endregion -- Hide or show custom date format depending on human readable date format.

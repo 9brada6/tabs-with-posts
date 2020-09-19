@@ -265,7 +265,7 @@ function handleSortingChange(): void {
 
 // todo: add a cache for collapsed to be as before when they update.
 
-$( document ).ready( makeAllQueriesCollapsible );
+$( makeAllQueriesCollapsible );
 $( document ).on( 'twrp-query-list-added widget-updated widget-added', handleQueryModifiedMakeCollapsible );
 
 function handleQueryModifiedMakeCollapsible( event, widgetId: string, queryId: string ) {
