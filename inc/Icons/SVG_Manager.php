@@ -294,8 +294,25 @@ class SVG_Manager {
 
 	#endregion -- Create a full HTML tag with all the icons.
 
-	#region -- Include Icons, either inline or via a file
+	#region -- Enqueue icons
 
+	/**
+	 * Enqueue all needed icons file. This function needs to be called at the
+	 * correct action, usually "wp_enqueue_scripts".
+	 *
+	 * @todo: make $ver to change when the file has been updated.
+	 *
+	 * @return void
+	 */
+	public static function enqueue_all_needed_icons_file() {
+		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
+		$deps      = array();
+		$ver       = '1.0.0';
+
+		wp_enqueue_style( 'twrp_needed_icons', $file_path, $deps, $ver, 'all' );
+	}
+
+	// todo: enqueue inline
 	/**
 	 * Echo the HTML to include all icons as inline svg defs.
 	 *
@@ -304,6 +321,10 @@ class SVG_Manager {
 	public static function include_defs_inline_all_needed_icons() {
 		echo self::get_defs_inline_all_needed_icons(); // phpcs:ignore
 	}
+
+	#endregion -- Enqueue icons
+
+	#region -- Create needed icons, inline and in a file
 
 	/**
 	 * Get the HTML to include all icons as inline svg defs.
@@ -358,8 +379,9 @@ class SVG_Manager {
 	 * @return string
 	 */
 	public static function get_defs_file_all_needed_icons() {
-		$html = '<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
+		$html =
 		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . "\n" .
+		'<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
 		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
 
 		foreach ( self::get_all_used_icons() as $icon_id ) {
@@ -371,23 +393,7 @@ class SVG_Manager {
 		return $html;
 	}
 
-	/**
-	 * Enqueue all needed icons file. This function needs to be called at the
-	 * correct action, usually "wp_enqueue_scripts".
-	 *
-	 * @todo: make $ver to change when the file has been updated.
-	 *
-	 * @return void
-	 */
-	public static function enqueue_all_needed_icons_file() {
-		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
-		$deps      = array();
-		$ver       = '1.0.0';
-
-		wp_enqueue_style( 'twrp_needed_icons', $file_path, $deps, $ver, 'all' );
-	}
-
-	#endregion -- Include Icons, either inline or via a file
+	#endregion -- Create needed icons, inline and in a file
 
 	/**
 	 * Get an array with all used icons ids, for all widgets.

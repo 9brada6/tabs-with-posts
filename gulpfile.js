@@ -9,6 +9,9 @@ const sizeReport = require( 'gulp-sizereport' );
 const buffer = require( 'vinyl-buffer' );
 const minifyStream = require( 'minify-stream' );
 const autoprefixer = require( 'gulp-autoprefixer' );
+const concat = require( 'gulp-concat' );
+const header = require( 'gulp-header' );
+const footer = require( 'gulp-footer' );
 
 /** Change this variable to configure the script for production or development. */
 const production = false;
@@ -53,6 +56,14 @@ const tsVars = {
 	},
 };
 
+const iconVars = {
+	name: 'All Icons',
+	watch: './assets/svgs/*/**/*',
+	src: './assets/svgs/*/**/*',
+	fileName: 'all-icons.svg',
+	dest: './assets/svgs/',
+};
+
 // #region -- Frontend and Backend SCSS
 
 function startScssWatch( options ) {
@@ -73,7 +84,7 @@ function compileScss( options ) {
 		} ) )
 		.pipe( gulp.dest( options.dest ) )
 		.on( 'end', function( ) {
-			const title = 'SCSS: \x1b[34m' + options.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
+			const title = 'SVG: \x1b[34m' + options.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
 			fancyLog( title );
 		} )
 		.pipe( sizeReport( {
@@ -131,9 +142,45 @@ function bundleBrowserify( toBundle, type ) {
 		} ) );
 }
 
-// #region -- Frontend and Backend TypeScript
+// #endregion -- Frontend and Backend TypeScript
+
+// #region -- Create all icons file
+
+function startWatchSvg() {
+	createSvgFile();
+
+	gulp.watch( iconVars.watch, createSvgFile );
+}
+
+function createSvgFile() {
+	const beginDate = new Date();
+
+	const svgHeader =
+		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + '\n' +
+		'<!-- This file is generated dynamically. Do NOT modify it. -->' + '\n' +
+		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
+	const svgFooter = '</defs></svg>';
+
+	fancyLog( 'SVG: \x1b[34m' + iconVars.name + '\x1b[0m ...' );
+	gulp.src( iconVars.src )
+		.pipe( concat( iconVars.fileName ) )
+		.pipe( header( svgHeader ) )
+		.pipe( footer( svgFooter ) )
+		.pipe( gulp.dest( iconVars.dest ) )
+		.on( 'end', function( ) {
+			const title = 'SCSS: \x1b[34m' + iconVars.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
+			fancyLog( title );
+		} )
+		.pipe( sizeReport( {
+			total: false,
+			gzip: true,
+		} ) );
+}
+
+// #endregion -- Create all icons file
 
 exports.default = function() {
 	gulp.parallel( startScssWatch.bind( null, sassVars.backend ), startScssWatch.bind( null, sassVars.frontend ) )();
 	gulp.parallel( watchBrowserify.bind( null, tsVars.backend ), watchBrowserify.bind( null, tsVars.frontend ) )();
+	startWatchSvg();
 };

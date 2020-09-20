@@ -73,6 +73,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Check the file where icons are written to be HTML valid.
 - Add more comments disabled icons.
 - Make all icons align perfectly, under all conditions.
+- delete all xml tags from icon files and php.
+- delete all xmls tags from icon files and php.
+- delete all role and aria attr from icon files and php.
 
 ### JS/SCSS
 

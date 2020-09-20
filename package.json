@@ -19,6 +19,9 @@
 		"gulp-autoprefixer": "^7.0.1",
 		"gulp-check-filesize": "^2.0.1",
 		"gulp-cli": "^2.3.0",
+		"gulp-concat": "^2.6.1",
+		"gulp-footer": "^2.0.2",
+		"gulp-header": "^2.0.9",
 		"gulp-plumber": "^1.2.1",
 		"gulp-sass": "^4.1.0",
 		"gulp-size": "^3.0.0",
@@ -42,7 +45,6 @@
 		"watchify": "^3.11.1"
 	},
 	"dependencies": {},
-
 	"browserify-shim": {
 		"jquery": "global:jQuery",
 		"jqueryui": "global:jQuery"
@@ -56,5 +58,5 @@
 		"last 2 version",
 		">= 0.5%",
 		"IE 11"
-	  ]
+	]
 }
