@@ -149,7 +149,7 @@ function bundleBrowserify( toBundle, type ) {
 function startWatchSvg() {
 	createSvgFile();
 
-	gulp.watch( iconVars.watch, createSvgFile );
+	gulp.watch( iconVars.watch, startWatchSvg );
 }
 
 function createSvgFile() {
