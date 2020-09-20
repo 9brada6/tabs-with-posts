@@ -6,6 +6,7 @@
 namespace TWRP\Icons;
 
 use TWRP_Main;
+use TWRP\Utils;
 use TWRP\Database\General_Options;
 use TWRP\Icons\Date_Icons;
 use TWRP\Icons\User_Icons;
@@ -117,10 +118,9 @@ class SVG_Manager {
 	 * @return void
 	 */
 	public static function init() {
-		add_action( 'admin_footer', array( __CLASS__, 'include_all_svg' ) );
+		add_action( 'admin_head', array( __CLASS__, 'include_all_icons_file' ) );
 
 		// todo: remove:
-		add_action( 'wp_footer', array( __CLASS__, 'include_defs_inline_all_needed_icons' ) );
 		add_action( 'admin_footer', array( __CLASS__, 'write_all_needed_icons_to_file' ) );
 	}
 
@@ -282,18 +282,6 @@ class SVG_Manager {
 		return $html;
 	}
 
-	#region -- Create a full HTML tag with all the icons.
-
-	public static function get_all_icons_svg() {
-
-	}
-
-	public static function create_all_icons_file() {
-
-	}
-
-	#endregion -- Create a full HTML tag with all the icons.
-
 	#region -- Enqueue icons
 
 	/**
@@ -304,15 +292,12 @@ class SVG_Manager {
 	 *
 	 * @return void
 	 */
-	public static function enqueue_all_needed_icons_file() {
+	public static function include_all_needed_icons_file() {
 		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
-		$deps      = array();
 		$ver       = '1.0.0';
-
-		wp_enqueue_style( 'twrp_needed_icons', $file_path, $deps, $ver, 'all' );
+		self::ajax_include_svg_file( $file_path );
 	}
 
-	// todo: enqueue inline
 	/**
 	 * Echo the HTML to include all icons as inline svg defs.
 	 *
@@ -320,6 +305,42 @@ class SVG_Manager {
 	 */
 	public static function include_defs_inline_all_needed_icons() {
 		echo self::get_defs_inline_all_needed_icons(); // phpcs:ignore
+	}
+
+	/**
+	 * Enqueue all needed icons file. This function needs to be called at
+	 * 'wp_head' or 'admin_head' action.
+	 *
+	 * @todo: make $ver to change when the file has been updated.
+	 *
+	 * @return void
+	 */
+	public static function include_all_icons_file() {
+		$file_path = trailingslashit( Utils::get_assets_directory_url() ) . 'svgs/all-icons.svg';
+		self::ajax_include_svg_file( $file_path );
+	}
+
+	/**
+	 * Include a svg file at the top of the document(after the body tag ends).
+	 *
+	 * The svg files cannot be included in the head, and inline svg is the only
+	 * way to reference a SVG by id. Inline svgs are not good because they
+	 * cannot be cached, so thus we include a file containing all svgs as inline.
+	 *
+	 * Careful at the included file, to not violate the CORS.
+	 *
+	 * @param string $file_path The path to the file to be included.
+	 * @return void
+	 */
+	protected static function ajax_include_svg_file( $file_path ) {
+		?>
+		<script>
+		(function() { const ajax = new XMLHttpRequest(); ajax.open('GET', '<?= esc_url( $file_path ) ?>', true); ajax.send();
+			ajax.onload = function( e ) { var div = document.createElement( 'div' ); div.innerHTML = ajax.responseText; insertIntoDocument(div); };
+			function insertIntoDocument(elem) { if( document.body ) { document.body.insertBefore(elem, document.body.childNodes[ 0 ]); } else { setTimeout( insertIntoDocument, 100 ); } }
+		})();
+		</script>
+		<?php
 	}
 
 	#endregion -- Enqueue icons
@@ -378,7 +399,7 @@ class SVG_Manager {
 	 *
 	 * @return string
 	 */
-	public static function get_defs_file_all_needed_icons() {
+	protected static function get_defs_file_all_needed_icons() {
 		$html =
 		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . "\n" .
 		'<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
@@ -394,6 +415,8 @@ class SVG_Manager {
 	}
 
 	#endregion -- Create needed icons, inline and in a file
+
+	#region -- Get All Used Icons Ids
 
 	/**
 	 * Get an array with all used icons ids, for all widgets.
@@ -436,8 +459,11 @@ class SVG_Manager {
 		return $icons;
 	}
 
-	public static function get_all_per_widget_used_icons() {
+	// todo:
+	protected static function get_all_per_widget_used_icons() {
 		return array();
 	}
+
+	#endregion -- Get All Used Icons Ids
 
 }

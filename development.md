@@ -73,7 +73,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Check the file where icons are written to be HTML valid.
 - Add more comments disabled icons.
 - Make all icons align perfectly, under all conditions.
-- delete all role and aria attr from icon files and php like focusable, role, uneeded class.
 - delete all fillCOlor = currentColor?
 
 ### JS/SCSS
