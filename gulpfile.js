@@ -84,7 +84,7 @@ function compileScss( options ) {
 		} ) )
 		.pipe( gulp.dest( options.dest ) )
 		.on( 'end', function( ) {
-			const title = 'SVG: \x1b[34m' + options.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
+			const title = 'SCSS: \x1b[34m' + options.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
 			fancyLog( title );
 		} )
 		.pipe( sizeReport( {
@@ -168,7 +168,7 @@ function createSvgFile() {
 		.pipe( footer( svgFooter ) )
 		.pipe( gulp.dest( iconVars.dest ) )
 		.on( 'end', function( ) {
-			const title = 'SCSS: \x1b[34m' + iconVars.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
+			const title = 'SVG: \x1b[34m' + iconVars.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
 			fancyLog( title );
 		} )
 		.pipe( sizeReport( {
