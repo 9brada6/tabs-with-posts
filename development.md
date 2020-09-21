@@ -68,12 +68,11 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Align all comment icons.
 - Add a way to invert category icons?
 - Finish Rating Icons
-- Add no comment icons
+- Add more no comment icons/ create them.
 - Move all inclusion of icons to either file or all in HTML, remove inclusion from inline HTML.
 - Check the file where icons are written to be HTML valid.
 - Add more comments disabled icons.
 - Make all icons align perfectly, under all conditions.
-- delete all fillCOlor = currentColor?
 
 ### JS/SCSS
 

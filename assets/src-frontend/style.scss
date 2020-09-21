@@ -1,4 +1,5 @@
 @import 'common-blocks/twrp-articles/twrp-articles';
+@import '../src-common/style';
 
 .twrp-link-expand {
 	&::after {
@@ -23,69 +24,6 @@
 
 .twrp-ss__date {
 	margin-left: 6px;
-}
-
-.twrp-i {
-	display: inline-block;
-	width: 1em;
-	height: 1em;
-	margin-right: 0.1em;
-	vertical-align: -0.08em;
-	fill: currentColor;
-
-	svg {
-		width: 100%;
-		height: 100%;
-	}
-}
-
-.twrp-i-stroke {
-	stroke: currentColor;
-}
-
-.twrp-i--va-15 {
-	vertical-align: -1.5px;
-}
-
-.twrp-i--va-18 {
-	vertical-align: -2px;
-}
-
-.twrp-i--va-25 {
-	vertical-align: -2.5px;
-}
-
-.twrp-i--va-3 {
-	vertical-align: -3px;
-}
-
-.twrp-i--1 {
-	width: calc(1em + 1px);
-	height: calc(1em + 1px);
-}
-
-.twrp-i--2 {
-	width: calc(1em + 2px);
-	height: calc(1em + 2px);
-}
-
-.twrp-i--3 {
-	width: calc(1em + 2px);
-	height: calc(1em + 2px);
-}
-
-.twrp-views-i {
-	vertical-align: -0.13em;
-}
-
-.twrp-views-c {
-	vertical-align: -0.15em;
-}
-
-/* Vertical align fix */
-
-.twrp-i--va-08 {
-	vertical-align: -0.08em;
 }
 
 .twrp-ss__author {

@@ -25,7 +25,7 @@ class Views_Icons {
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-fa-s" viewBox="0 0 576 512"><path fill="currentColor" d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"></path></svg>',
+				'svg'         => '<svg id="twrp-views-fa-s" viewBox="0 0 576 512"><path d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z"></path></svg>',
 				'file_name'   => 'eye-filled.svg',
 			),
 
@@ -33,7 +33,7 @@ class Views_Icons {
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-fa-ol" viewBox="0 0 576 512"><path fill="currentColor" d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path></svg>',
+				'svg'         => '<svg id="twrp-views-fa-ol" viewBox="0 0 576 512"><path d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z"></path></svg>',
 				'file_name'   => 'eye-outlined.svg',
 			),
 
@@ -41,7 +41,7 @@ class Views_Icons {
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-fa-chart-s" viewBox="0 0 576 512"><path fill="currentColor" d="M332.8 320h38.4c6.4 0 12.8-6.4 12.8-12.8V172.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V76.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-288 0h38.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zM496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"></path></svg>',
+				'svg'         => '<svg id="twrp-views-fa-chart-s" viewBox="0 0 576 512"><path d="M332.8 320h38.4c6.4 0 12.8-6.4 12.8-12.8V172.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V76.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-288 0h38.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h38.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-38.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zM496 384H64V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16z"></path></svg>',
 				'file_name'   => 'chart-filled.svg',
 			),
 
@@ -49,7 +49,7 @@ class Views_Icons {
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-fa-chart-ol" viewBox="0 0 576 512"><path fill="currentColor" d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"></path></svg>',
+				'svg'         => '<svg id="twrp-views-fa-chart-ol" viewBox="0 0 576 512"><path d="M396.8 352h22.4c6.4 0 12.8-6.4 12.8-12.8V108.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v230.4c0 6.4 6.4 12.8 12.8 12.8zm-192 0h22.4c6.4 0 12.8-6.4 12.8-12.8V140.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v198.4c0 6.4 6.4 12.8 12.8 12.8zm96 0h22.4c6.4 0 12.8-6.4 12.8-12.8V204.8c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v134.4c0 6.4 6.4 12.8 12.8 12.8zM496 400H48V80c0-8.84-7.16-16-16-16H16C7.16 64 0 71.16 0 80v336c0 17.67 14.33 32 32 32h464c8.84 0 16-7.16 16-16v-16c0-8.84-7.16-16-16-16zm-387.2-48h22.4c6.4 0 12.8-6.4 12.8-12.8v-70.4c0-6.4-6.4-12.8-12.8-12.8h-22.4c-6.4 0-12.8 6.4-12.8 12.8v70.4c0 6.4 6.4 12.8 12.8 12.8z"></path></svg>',
 				'file_name'   => 'chart-outlined.svg',
 			),
 
@@ -123,7 +123,7 @@ class Views_Icons {
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-fi-chart-f" viewBox="0 0 100 100"><path d="M46.05,60.163H31.923c-0.836,0-1.513,0.677-1.513,1.513v21.934c0,0.836,0.677,1.513,1.513,1.513H46.05 c0.836,0,1.512-0.677,1.512-1.513V61.675C47.562,60.839,46.885,60.163,46.05,60.163z"/><path d="M68.077,14.878H53.95c-0.836,0-1.513,0.677-1.513,1.513v67.218c0,0.836,0.677,1.513,1.513,1.513h14.127 c0.836,0,1.513-0.677,1.513-1.513V16.391C69.59,15.555,68.913,14.878,68.077,14.878z"/><path d="M90.217,35.299H76.09c-0.836,0-1.513,0.677-1.513,1.513v46.797c0,0.836,0.677,1.513,1.513,1.513h14.126 c0.836,0,1.513-0.677,1.513-1.513V36.812C91.729,35.977,91.052,35.299,90.217,35.299z"/><path d="M23.91,35.299H9.783c-0.836,0-1.513,0.677-1.513,1.513v46.797c0,0.836,0.677,1.513,1.513,1.513H23.91 c0.836,0,1.513-0.677,1.513-1.513V36.812C25.423,35.977,24.746,35.299,23.91,35.299z"/></svg>',
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Foundation Icons
@@ -142,7 +142,7 @@ class Views_Icons {
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-ii-ol" viewBox="0 0 512 512"><path d="M255.66,112c-77.94,0-157.89,45.11-220.83,135.33a16,16,0,0,0-.27,17.77C82.92,340.8,161.8,400,255.66,400,348.5,400,429,340.62,477.45,264.75a16.14,16.14,0,0,0,0-17.47C428.89,172.28,347.8,112,255.66,112Z" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="256" cy="256" r="80" style="fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:32px"/></svg>',
+				'svg'         => '<svg id="twrp-views-ii-ol" viewBox="0 0 512 512"><path d="M255.66,112c-77.94,0-157.89,45.11-220.83,135.33a16,16,0,0,0-.27,17.77C82.92,340.8,161.8,400,255.66,400,348.5,400,429,340.62,477.45,264.75a16.14,16.14,0,0,0,0-17.47C428.89,172.28,347.8,112,255.66,112Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><circle cx="256" cy="256" r="80" style="fill:none;stroke:currentColor;stroke-miterlimit:10;stroke-width:32px"/></svg>',
 				'file_name'   => 'eye-outlined.svg',
 			),
 
@@ -168,16 +168,16 @@ class Views_Icons {
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-ii-chart-f" viewBox="0 0 512 512"><path d="M480,496H48a32,32,0,0,1-32-32V32a16,16,0,0,1,32,0V464H480a16,16,0,0,1,0,32Z"/><path d="M156,432H116a36,36,0,0,1-36-36V244a36,36,0,0,1,36-36h40a36,36,0,0,1,36,36V396A36,36,0,0,1,156,432Z"/><path d="M300,432H260a36,36,0,0,1-36-36V196a36,36,0,0,1,36-36h40a36,36,0,0,1,36,36V396A36,36,0,0,1,300,432Z"/><path d="M443.64,432h-40a36,36,0,0,1-36-36V132a36,36,0,0,1,36-36h40a36,36,0,0,1,36,36V396A36,36,0,0,1,443.64,432Z"/></svg>',
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ii-chart-ol'  => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-ii-chart-ol" viewBox="0 0 512 512"><path d="M32,32V464a16,16,0,0,0,16,16H480" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><rect x="96" y="224" width="80" height="192" rx="20" ry="20" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><rect x="240" y="176" width="80" height="240" rx="20" ry="20" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><rect x="383.64" y="112" width="80" height="304" rx="20" ry="20" style="fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>',
+				'svg'         => '<svg id="twrp-views-ii-chart-ol" viewBox="0 0 512 512"><path d="M32,32V464a16,16,0,0,0,16,16H480" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><rect x="96" y="224" width="80" height="192" rx="20" ry="20" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><rect x="240" y="176" width="80" height="240" rx="20" ry="20" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><rect x="383.64" y="112" width="80" height="304" rx="20" ry="20" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/></svg>',
 				'file_name'   => 'chart-outlined.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ii-chart-sh'  => array(
@@ -186,7 +186,7 @@ class Views_Icons {
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-ii-chart-sh" viewBox="0 0 512 512"><polygon points="496 496 16 496 16 16 48 16 48 464 496 464 496 496"/><path d="M192,432H80V208H192Z"/><path d="M336,432H224V160H336Z"/><path d="M479.64,432h-112V96h112Z"/></svg>',
 				'file_name'   => 'chart-sharp.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Ionicons Icons
@@ -295,7 +295,7 @@ class Views_Icons {
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-im-chart3-f" viewBox="0 0 24 24"><path d="M7 24h-6v-6h6v6zm8-9h-6v9h6v-9zm8-4h-6v13h6v-13zm0-11l-6 1.221 1.716 1.708-6.85 6.733-3.001-3.002-7.841 7.797 1.41 1.418 6.427-6.39 2.991 2.993 8.28-8.137 1.667 1.66 1.201-6.001z"/></svg>',
 				'file_name'   => 'chart3-filled.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-im-chart3-ol' => array(
@@ -304,7 +304,7 @@ class Views_Icons {
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-im-chart3-ol" viewBox="0 0 24 24"><path d="M5 20v2h-2v-2h2zm2-2h-6v6h6v-6zm6-1v5h-2v-5h2zm2-2h-6v9h6v-9zm6-2v9h-2v-9h2zm2-2h-6v13h6v-13zm0-11l-6 1.221 1.716 1.708-6.85 6.733-3.001-3.002-7.841 7.797 1.41 1.418 6.427-6.39 2.991 2.993 8.28-8.137 1.667 1.66 1.201-6.001z"/></svg>',
 				'file_name'   => 'chart3-outlined.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- IconMonstr Icons
@@ -325,7 +325,7 @@ class Views_Icons {
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-ci-chart2-f" viewBox="0 0 32 30.146"><path d="M0.265,23.555c-0.387,0.211-0.316,5.901,0,6.323s6.009,0.281,6.325,0c0.316-0.279,0.246-5.901,0-6.323C6.344,23.133,0.651,23.344,0.265,23.555z"/><path d="M8.698,15.292c-0.316,0.287-0.316,13.8,0,14.375c0.316,0.576,6.009,0.288,6.326,0c0.316-0.287,0.246-13.896,0-14.375C14.778,14.813,9.015,15.004,8.698,15.292z"/><path d="M17.132,5.537c-0.315,0.461-0.315,23.645,0,24.219c0.316,0.577,5.938,0.462,6.325,0c0.387-0.461,0.176-23.643,0-24.219S17.449,5.075,17.132,5.537z"/><path d="M31.893,0.211c-0.142-0.229-5.938-0.327-6.326,0c-0.387,0.328-0.256,29.067,0,29.533c0.254,0.465,6.177,0.191,6.326,0C32.041,29.552,32.032,0.444,31.893,0.211z"/></svg>',
 				'file_name'   => 'chart2-filled.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ci-chart-f'   => array(
@@ -334,7 +334,7 @@ class Views_Icons {
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-ci-chart-f" viewBox="0 0 32 25"><path d="M0.265,18.408c-0.387,0.211-0.316,5.902,0,6.324s6.009,0.281,6.325,0c0.316-0.28,0.246-5.902,0-6.324C6.344,17.986,0.651,18.197,0.265,18.408z"/><path d="M8.698,10.146c-0.316,0.287-0.316,13.799,0,14.375c0.316,0.576,6.009,0.287,6.326,0c0.316-0.287,0.246-13.896,0-14.375C14.778,9.666,9.015,9.857,8.698,10.146z"/><path d="M25.463,10.146c-0.316,0.287-0.316,13.799,0,14.375s6.01,0.287,6.326,0s0.246-13.896,0-14.375C31.542,9.666,25.779,9.857,25.463,10.146z"/><path d="M17.132,0.391c-0.315,0.461-0.315,23.643,0,24.218c0.316,0.578,5.938,0.463,6.325,0c0.387-0.461,0.176-23.644,0-24.218C23.281-0.185,17.449-0.071,17.132,0.391z"/></svg>',
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Capicon Icons
@@ -439,7 +439,7 @@ class Views_Icons {
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-ti-chart-f" viewBox="0 0 24 24"><path d="M14.8,2.6c0-1.4-1.2-2.5-2.8-2.5S9.3,1.2,9.3,2.6v15.1h5.5V2.6z M21.6,7.6c0-1.4-1.2-2.5-2.8-2.5s-2.8,1.1-2.8,2.5v10.1h5.5V7.6z M7.9,11.4c0-1.4-1.2-2.5-2.8-2.5S2.4,10,2.4,11.4v6.3h5.5V11.4z M21.6,21.5H2.4C1.6,21.5,1,22,1,22.7S1.6,24,2.4,24h19.3c0.8,0,1.4-0.6,1.4-1.3S22.4,21.5,21.6,21.5z"/></svg>',
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ti-chart-ol'  => array(
@@ -448,7 +448,7 @@ class Views_Icons {
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-views-ti-chart-ol" viewBox="0 0 24 24"><path d="M18.3,4.8c-1,0-1.8,0.4-2.5,0.9V3.6c0-2-1.7-3.6-3.8-3.6S8.3,1.6,8.3,3.6v5.7C7.6,8.8,6.7,8.4,5.8,8.4C3.7,8.4,2,10,2,12v7.2h20V8.4C22,6.4,20.3,4.8,18.3,4.8z M12,2.4c0.7,0,1.3,0.5,1.3,1.2v13.2h-2.5V3.6C10.8,2.9,11.3,2.4,12,2.4z M7,16.8H4.5V12c0-0.7,0.6-1.2,1.3-1.2S7,11.3,7,12V16.8z M19.5,16.8H17V8.4c0-0.7,0.6-1.2,1.3-1.2s1.3,0.5,1.3,1.2V16.8z M20.8,24H3.3C2.6,24,2,23.5,2,22.8c0-0.7,0.6-1.2,1.3-1.2h17.5c0.7,0,1.3,0.5,1.3,1.2C22,23.5,21.4,24,20.8,24z"/></svg>',
 				'file_name'   => 'chart-outlined.svg',
-				'fix_classes' => 'twrp-i--va-08',
+				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Typicons Icons

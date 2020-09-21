@@ -178,7 +178,7 @@ trait Get_Settings_Trait {
 	 * @return string The HTML is safe for output.
 	 */
 	public function get_views_icon_html() {
-		return SVG_Manager::get_html_svg( $this->get_selected_views_icon(), 'twrp-views-icon' );
+		return SVG_Manager::get_html_svg( $this->get_selected_views_icon(), 'twrp-i--views' );
 	}
 
 
@@ -273,7 +273,7 @@ trait Get_Settings_Trait {
 			$comments_icon = $this->get_selected_comments_icon();
 		}
 
-		return SVG_Manager::get_html_svg( $comments_icon, 'twrp-views-icon' );
+		return SVG_Manager::get_html_svg( $comments_icon, 'twrp-i--comments' );
 	}
 
 	#endregion -- Icons

@@ -123,8 +123,13 @@ class SVG_Manager {
 	 * @return array<string,array>
 	 */
 	public static function get_all_icons() {
-		return self::get_user_icons() + self::get_date_icons() + self::get_category_icons() +
-		self::get_comment_icons() + self::get_views_icons() + self::get_rating_icons();
+		return self::get_user_icons() +
+			self::get_date_icons() +
+			self::get_category_icons() +
+			self::get_comment_icons() +
+			self::get_comment_disabled_icons() +
+			self::get_views_icons() +
+			self::get_rating_icons();
 	}
 
 	/**
@@ -159,18 +164,8 @@ class SVG_Manager {
 	}
 
 	public static function get_html_svg( $icon_name, $additional_class = '' ) {
-
 		if ( ! empty( $additional_class ) ) {
 			$additional_class = ' ' . $additional_class;
-		}
-
-		if ( key_exists( $icon_name, self::get_views_icons() ) ) {
-			$additional_class = ' twrp-views-i';
-		}
-
-		// todo: fix this class.
-		if ( key_exists( $icon_name, self::get_comment_icons() ) ) {
-			$additional_class = ' twrp-views-c';
 		}
 
 		$icon           = self::get_icon( $icon_name );
@@ -421,24 +416,35 @@ class SVG_Manager {
 	 * @return void
 	 */
 	public static function test_icons() {
-
 		$icons = self::get_all_icons();
+		self::include_all_icons_file();
+		$icon_nr = 0;
 
 		echo '<p>';
 		foreach ( $icons as $id => $vector ) {
-			echo "<span style='display:none'>";
-			echo $vector['svg']; // phpcs:ignore
-			echo '</span>';
-		}
-		foreach ( $icons as $id => $vector ) {
-			echo '<span style="display:block;margin:3px">';
-			self::get_html_svg( $id );
-			echo 'Ok <span style="margin-left: 6px;"> <span class="twrp-i twrp-views-i"><svg><use href="#twrp-views-goo-f" /></svg></span>Lala</span>';
-			echo '</span>';
-		}
-		?>
+			$random_word = substr( str_shuffle( 'abcdefghijklmnopqrstuvwxyz' ), 0, 4 );
 
-		<?php
+			if ( 0 === $icon_nr % 3 ) {
+				echo '<div>';
+			}
+
+			// Quick and dirty method.
+			$additional_class = in_array( $vector, self::get_views_icons(), true ) ? 'twrp-i--views' : '';
+			$additional_class = in_array( $vector, self::get_comment_icons(), true ) ? 'twrp-i--comments' : $additional_class;
+
+			echo '<span style="margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block; color:darkblue">';
+				echo '<span style="margin-right: 6px">';
+					echo self::get_html_svg( $id, $additional_class ); // phpcs:ignore
+				echo '</span>';
+				echo esc_html( $random_word );
+			echo '</span>';
+
+			if ( ( ( $icon_nr + 1 ) % 3 ) === 0 || ( count( $icons ) === $icon_nr ) ) {
+				echo '</div>';
+			}
+
+			$icon_nr++;
+		}
 		echo '</p>';
 	}
 

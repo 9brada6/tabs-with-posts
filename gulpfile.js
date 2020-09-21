@@ -24,7 +24,7 @@ const sassVars = {
 		src: './assets/src-backend/style.scss',
 		sassOptions: { outputStyle: 'compressed' },
 		dest: './assets/backend',
-		watch: './assets/src-backend/**/*.scss',
+		watch: [ './assets/src-backend/**/*.scss', './assets/src-common/**/*.scss' ],
 	},
 
 	frontend: {
@@ -32,7 +32,7 @@ const sassVars = {
 		src: './assets/src-frontend/style.scss',
 		sassOptions: { outputStyle: 'compressed' },
 		dest: './assets/frontend',
-		watch: './assets/src-frontend/**/*.scss',
+		watch: [ './assets/src-frontend/**/*.scss', './assets/src-common/**/*.scss' ],
 	},
 };
 

@@ -1,4 +1,9 @@
+// External things.
 @import 'external/jquery-ui-datepicker';
+
+// Common Style
+@import '../src-common/style';
+
 //
 @import 'common-blocks/twrp-collapsible/twrp-collapsible';
 @import 'common-blocks/twrp-queries-table/twrp-queries-table';

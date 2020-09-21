@@ -50,7 +50,7 @@ class Category_Icons {
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-tax-fa-b-f" viewBox="0 0 384 512"><path fill="currentColor" d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"></path></svg>',
+				'svg'         => '<svg id="twrp-tax-fa-b-f" viewBox="0 0 384 512"><path d="M0 512V48C0 21.49 21.49 0 48 0h288c26.51 0 48 21.49 48 48v464L192 400 0 512z"></path></svg>',
 				'file_name'   => 'bookmark-filled.svg',
 			),
 
