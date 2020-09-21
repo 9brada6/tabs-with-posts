@@ -420,6 +420,17 @@ class SVG_Manager {
 		self::include_all_icons_file();
 		$icon_nr = 0;
 
+		?>
+		<style>
+			.twrp-test__icon-block-wrapper {
+				margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block; color:darkblue;
+			}
+			.twrp-test__icon-wrapper {
+				margin-right: 6px
+			}
+		</style>
+		<?php
+
 		echo '<p>';
 		foreach ( $icons as $id => $vector ) {
 			$random_word = substr( str_shuffle( 'abcdefghijklmnopqrstuvwxyz' ), 0, 4 );
@@ -432,8 +443,8 @@ class SVG_Manager {
 			$additional_class = in_array( $vector, self::get_views_icons(), true ) ? 'twrp-i--views' : '';
 			$additional_class = in_array( $vector, self::get_comment_icons(), true ) ? 'twrp-i--comments' : $additional_class;
 
-			echo '<span style="margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block; color:darkblue">';
-				echo '<span style="margin-right: 6px">';
+			echo '<span class="twrp-test__icon-block-wrapper">';
+				echo '<span class="twrp-test__icon-wrapper">';
 					echo self::get_html_svg( $id, $additional_class ); // phpcs:ignore
 				echo '</span>';
 				echo esc_html( $random_word );

@@ -58,7 +58,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### Icons
 
 - Add License to FontAwesome
-- Change vertical-align of the icons to em.
 - See from where to use Icons: Linea?
 - Add some colored icons?
 - Add dashicons
