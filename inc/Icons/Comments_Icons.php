@@ -308,42 +308,42 @@ class Comments_Icons {
 
 			'twrp-com-ii-t-f'     => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ii-t-f" viewBox="0 0 512 512"><path d="M427.8,21H84.2C39.3,21,2.9,57.4,2.9,102.3v217c0,44.9,36.4,81.3,81.4,81.4h27.1V473c0,10,8.1,18.1,18.1,18.1c4.2,0,8.3-1.5,11.6-4.2l103.4-86.2h183.4c44.9,0,81.3-36.4,81.4-81.4v-217C509.1,57.4,472.7,21,427.8,21z M147.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2S167.5,247,147.5,247z M256,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S276,247,256,247z M364.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S384.5,247,364.5,247z"/></svg>',
-				'file_name'   => 'typing-filled.svg',
+				'file_name'   => 'dots-filled.svg',
 			),
 
 			'twrp-com-ii-t-ol'    => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ii-t-ol" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linejoin:round;" d="M427.8,39H84.2C49.3,39.1,21.1,67.4,21,102.3v217c0.1,34.9,28.4,63.2,63.3,63.3h45.2V473l105.9-88.3c1.6-1.4,3.7-2.1,5.8-2.1h186.6c34.9-0.1,63.2-28.4,63.3-63.3v-217C490.9,67.4,462.7,39.1,427.8,39z"/><circle cx="147.5" cy="210.8" r="36.2"/><circle cx="256" cy="210.8" r="36.2"/><circle cx="364.5" cy="210.8" r="36.2"/></svg>',
-				'file_name'   => 'typing-outlined.svg',
+				'file_name'   => 'dots-outlined.svg',
 			),
 
 			'twrp-com-ii-t-sh'    => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ii-t-sh" viewBox="0 0 512 512"><path d="M482,21H30C15,21,2.9,33.1,2.9,48.1v325.4c0,15,12.1,27.1,27.1,27.1h81.4V491l133-90.4H482c15,0,27.1-12.1,27.1-27.1V48.1C509.1,33.1,497,21,482,21z M147.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2S167.5,247,147.5,247z M256,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S276,247,256,247z M364.5,247c-20,0-36.2-16.2-36.2-36.2s16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2S384.5,247,364.5,247z M482,57.1L482,57.1z"/></svg>',
-				'file_name'   => 'typing-outlined.svg',
+				'file_name'   => 'dots-outlined.svg',
 			),
 
 			'twrp-com-ii-t2-f'    => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ii-t2-f" viewBox="0 0 512 512"><path d="M503.7,200.1c-11.7-55-42.7-105-87.3-140.9C370.9,22.7,314.2,2.9,255.8,2.9C187,2.9,122.7,29.4,74.6,77.6C28.1,124.2,2.7,185.7,2.9,250.8c0,47.7,14,94.4,40.3,134.2l4.9,6.8L21,509.1l129.7-32.3c0,0,2.6,0.9,4.5,1.6c1.9,0.7,18.5,7.1,36,12c14.6,4.1,44.9,10.2,68.7,10.2c67.4,0,130.3-26.1,177.2-73.5c46.5-47,72-109.6,72-176.2C509.1,233.8,507.3,216.8,503.7,200.1z M147.5,292.2c-20,0-36.2-16.2-36.2-36.2c0-20,16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2C183.7,276,167.5,292.2,147.5,292.2z M256,292.2c-20,0-36.2-16.2-36.2-36.2c0-20,16.2-36.2,36.2-36.2c20,0,36.2,16.2,36.2,36.2C292.2,276,276,292.2,256,292.2z M364.5,292.2c-20,0-36.2-16.2-36.2-36.2c0-20,16.2-36.2,36.2-36.2s36.2,16.2,36.2,36.2C400.6,276,384.5,292.2,364.5,292.2z"/></svg>',
-				'file_name'   => 'typing-2-filled.svg',
+				'file_name'   => 'dots-2-filled.svg',
 			),
 
 			'twrp-com-ii-t2-ol'   => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ii-t2-ol" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-miterlimit:10;" d="M65.6,396.1c1.4-4.9-1.6-11.8-4.5-16.8c-0.9-1.5-1.8-2.9-2.9-4.3C33.9,338.1,21,294.9,21,250.7C20.6,123.9,125.7,21,255.8,21C369.2,21,463.9,99.5,486,203.9c3.3,15.5,5,31.2,5,47.1c0,127-101.1,231.6-231.2,231.6c-20.7,0-48.6-5.2-63.8-9.5c-15.2-4.3-30.4-9.9-34.3-11.4c-4-1.5-8.3-2.3-12.6-2.3c-4.7,0-9.3,0.9-13.7,2.7l-76.7,27.7c-1.7,0.7-3.5,1.2-5.3,1.4c-6,0-10.8-4.9-10.8-10.9c0,0,0-0.1,0-0.1c0.1-1.3,0.3-2.5,0.7-3.7L65.6,396.1z"/><circle cx="147.5" cy="256" r="36.2"/><circle cx="256" cy="256" r="36.2"/><circle cx="364.5" cy="256" r="36.2"/></svg>',
-				'file_name'   => 'typing-2-outlined.svg',
+				'file_name'   => 'dots-2-outlined.svg',
 			),
 
 			'twrp-com-ii-c-f'     => array(
@@ -416,34 +416,34 @@ class Comments_Icons {
 
 			'twrp-com-im-t-f'     => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-im-t-f" viewBox="0 0 24 24"><path d="M0 1v16.981h4v5.019l7-5.019h13v-16.981h-24zm7 10c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5z"/></svg>',
-				'file_name'   => 'typing-filled.svg',
+				'file_name'   => 'dots-filled.svg',
 			),
 
 			'twrp-com-im-t-ol'    => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-im-t-ol" viewBox="0 0 24 24"><path d="M7 11c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5zm5-8v13h-11.643l-4.357 3.105v-3.105h-4v-13h20zm2-2h-24v16.981h4v5.019l7-5.019h13v-16.981z"/></svg>',
-				'file_name'   => 'typing-outlined.svg',
+				'file_name'   => 'dots-outlined.svg',
 			),
 
 			'twrp-com-im-t2-f'    => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-im-t2-f" viewBox="0 0 24 24"><path d="M12 1c-6.338 0-12 4.226-12 10.007 0 2.05.739 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 9.236 2.247 15.968-3.405 15.968-9.457 0-5.812-5.701-10.007-12-10.007zm-5 11.5c-.829 0-1.5-.671-1.5-1.5s.671-1.5 1.5-1.5 1.5.671 1.5 1.5-.671 1.5-1.5 1.5zm5 0c-.829 0-1.5-.671-1.5-1.5s.671-1.5 1.5-1.5 1.5.671 1.5 1.5-.671 1.5-1.5 1.5zm5 0c-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5s-.671 1.5-1.5 1.5z"/></svg>',
-				'file_name'   => 'typing-filled.svg',
+				'file_name'   => 'dots-filled.svg',
 			),
 
 			'twrp-com-im-t2-ol'   => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-im-t2-ol" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.592 10 8.007 0 4.917-5.145 7.961-9.91 7.961-1.937 0-3.383-.397-4.394-.644-1 .613-1.595 1.037-4.272 1.82.535-1.373.723-2.748.602-4.265-.838-1-2.025-2.4-2.025-4.872-.001-4.415 4.485-8.007 9.999-8.007zm0-2c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 1.418.345 2.775.503 4.059.503 7.084 0 11.91-4.837 11.91-9.961-.001-5.811-5.702-10.006-12.001-10.006zm-3.5 10c0 .829-.671 1.5-1.5 1.5-.828 0-1.5-.671-1.5-1.5s.672-1.5 1.5-1.5c.829 0 1.5.671 1.5 1.5zm3.5-1.5c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5zm5 0c-.828 0-1.5.671-1.5 1.5s.672 1.5 1.5 1.5c.829 0 1.5-.671 1.5-1.5s-.671-1.5-1.5-1.5z"/></svg>',
-				'file_name'   => 'typing-outlined.svg',
+				'file_name'   => 'dots-outlined.svg',
 			),
 
 			'twrp-com-im-co-f'    => array(
@@ -709,34 +709,34 @@ class Comments_Icons {
 
 			'twrp-com-ji-t-f'     => array(
 				'brand'       => 'JamIcons',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ji-t-f" viewBox="-2 -2 24 24"><path d="M3 .858h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.864v-4.006a2 2 0 0 1-2-2v-9a3 3 0 0 1 3-3zm10 9a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" /></svg>',
-				'file_name'   => 'typing-filled.svg',
+				'file_name'   => 'dots-filled.svg',
 			),
 
 			'twrp-com-ji-t-ol'    => array(
 				'brand'       => 'JamIcons',
-				'description' => _x( 'Typing', 'backend', 'twrp' ),
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ji-t-ol" viewBox="-2 -2.5 24 24"><path d="M3 0h14a3 3 0 0 1 3 3v8a3 3 0 0 1-3 3h-6.958l-6.444 4.808A1 1 0 0 1 2 18.006V14a2 2 0 0 1-2-2V3a3 3 0 0 1 3-3zm6.378 12H17a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1 1 1 0 0 1 1 1v3.013L9.378 12zM13 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM7 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>',
-				'file_name'   => 'typing-outlined.svg',
+				'file_name'   => 'dots-outlined.svg',
 			),
 
 			'twrp-com-ji-t2-f'    => array(
 				'brand'       => 'JamIcons',
-				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ji-t2-f" viewBox="-3 -2 24 24"><path d="M10.01 15.959c-.186.018-1.626 1.276-4.321 3.774a1 1 0 0 1-1.68-.742c.02-2.362.011-3.709-.024-4.04-.018-.173.032-.28 0-.3C1.708 13.212 0 10.775 0 8.005 0 3.584 4.03 0 9 0s9 3.584 9 8.004c0 4.117-3.495 7.509-7.99 7.955zM12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm-6 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" /></svg>',
-				'file_name'   => 'typing-alt-filled.svg',
+				'file_name'   => 'dots-alt-filled.svg',
 			),
 
 			'twrp-com-ji-t2-ol'   => array(
 				'brand'       => 'JamIcons',
-				'description' => _x( 'Typing 2', 'backend', 'twrp' ),
+				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-ji-t2-ol" viewBox="-3 -2 24 24"><path d="M10.01 15.959c-.186.018-1.626 1.276-4.321 3.774a1 1 0 0 1-1.68-.742c.02-2.362.011-3.709-.024-4.04-.018-.173.032-.28 0-.3C1.708 13.212 0 10.775 0 8.005 0 3.584 4.03 0 9 0s9 3.584 9 8.004c0 4.117-3.495 7.509-7.99 7.955zm-3.99.744c2.677-2.463 3.006-2.657 3.792-2.735C13.364 13.615 16 11.01 16 8.004c0-3.26-3.085-6.003-7-6.003S2 4.745 2 8.004c0 1.893 1.175 3.767 3.054 4.957.783.495.958 1.117.941 1.778a2.548 2.548 0 0 1-.009.15c.022.33.032.92.033 1.814zM12 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm-6 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" /></svg>',
-				'file_name'   => 'typing-alt-outlined.svg',
+				'file_name'   => 'dots-alt-outlined.svg',
 			),
 
 			#endregion -- Jam Icons

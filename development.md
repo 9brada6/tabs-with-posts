@@ -64,7 +64,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Add dashicons
 - Remove all XML tags and all fill="none" tags.
 - Reorder Google icons, all icons first after content, and then after type.
-- Change all "Dots" to "Typing".
 - Align all comment icons.
 - Add a way to invert category icons?
 - Finish Rating Icons
