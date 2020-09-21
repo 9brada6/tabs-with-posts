@@ -12,6 +12,8 @@ const autoprefixer = require( 'gulp-autoprefixer' );
 const concat = require( 'gulp-concat' );
 const header = require( 'gulp-header' );
 const footer = require( 'gulp-footer' );
+const fs = require( 'fs' );
+const parser = require( 'fast-xml-parser' );
 
 /** Change this variable to configure the script for production or development. */
 const production = false;
@@ -62,6 +64,7 @@ const iconVars = {
 	src: './assets/svgs/*/**/*',
 	fileName: 'all-icons.svg',
 	dest: './assets/svgs/',
+	xmlValidate: [ './assets/svgs/all-icons.svg', './assets/svgs/needed-icons.svg' ],
 };
 
 // #region -- Frontend and Backend SCSS
@@ -170,11 +173,24 @@ function createSvgFile() {
 		.on( 'end', function( ) {
 			const title = 'SVG: \x1b[34m' + iconVars.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
 			fancyLog( title );
+			validateXmlFiles();
 		} )
 		.pipe( sizeReport( {
 			total: false,
 			gzip: true,
 		} ) );
+}
+
+function validateXmlFiles() {
+	try {
+		for ( const filePath of iconVars.xmlValidate ) {
+			const fileContent = fs.readFileSync( filePath, 'utf8' );
+			parser.parse( fileContent, {}, true );
+		}
+		fancyLog( '\x1b[32mNo errors in XML detected!\x1b[0m' );
+	} catch ( error ) {
+		fancyLog( '\x1b[31m' + error.message + '\x1b[0m' );
+	}
 }
 
 // #endregion -- Create all icons file

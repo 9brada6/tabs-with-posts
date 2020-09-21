@@ -70,7 +70,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Finish Rating Icons
 - Add more no comment icons/ create them.
 - Move all inclusion of icons to either file or all in HTML, remove inclusion from inline HTML.
-- Check the file where icons are written to be HTML valid.
 - Add more comments disabled icons.
 - Make all icons align perfectly, under all conditions.
 
