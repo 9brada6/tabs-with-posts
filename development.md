@@ -67,6 +67,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Add more no comment icons/ create them.
 - Make all icons align perfectly, under all conditions.
 - Move all icons that needs to be used in their folders(capicon, tagging).
+- Change all icon names from "outline" to outlined.
 
 ### JS/SCSS
 

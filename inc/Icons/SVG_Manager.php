@@ -34,6 +34,7 @@ class SVG_Manager {
 	 */
 	public static function init() {
 		add_action( 'admin_head', array( __CLASS__, 'include_all_icons_file' ) );
+		add_action( 'admin_head', array( __CLASS__, 'test_same_icons' ) );
 
 		// todo: remove:
 		add_action( 'admin_footer', array( __CLASS__, 'write_all_needed_icons_to_file' ) );
@@ -411,7 +412,7 @@ class SVG_Manager {
 
 	/**
 	 * This function was created for testing and prototyping. It is not for use
-	 * in
+	 * in the theme directly.
 	 *
 	 * @return void
 	 */
@@ -457,6 +458,70 @@ class SVG_Manager {
 			$icon_nr++;
 		}
 		echo '</p>';
+	}
+
+	/**
+	 * Test to see if each file content corresponds to each icon item.
+	 *
+	 * Best to be called at 'admin_head' action.
+	 *
+	 * @return void
+	 */
+	public static function test_same_icons() {
+		$icons = self::get_all_icons();
+
+		foreach ( $icons as $id => $icon ) {
+			$icon_type = self::test_get_icon_type( $icon );
+			$icon_file = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/' . $icon_type . '/' . strtolower( $icon['brand'] ) . '/' . $icon['file_name'];
+
+			@$file_content = file_get_contents( $icon_file ); // phpcs:ignore
+
+			if ( false === $file_content ) {
+				?>
+				<script>console.log('Icon <?= esc_html( $id ); ?> not good. Cannot get it\'s content.');</script>
+				<?php
+			} elseif ( trim( $file_content ) !== $icon['svg'] ) {
+				?>
+				<script>console.log('Icon <?= esc_html( $id ); ?> not good. Content does not match.');</script>
+				<?php
+			}
+		}
+
+		?>
+		<script>console.log('All icons successfully tested.');</script>
+		<?php
+	}
+
+	protected static function test_get_icon_type( $icon ) {
+		if ( in_array( $icon, self::get_views_icons(), true ) ) {
+			return 'views';
+		}
+
+		if ( in_array( $icon, self::get_date_icons(), true ) ) {
+			return 'date';
+		}
+
+		if ( in_array( $icon, self::get_comment_icons(), true ) ) {
+			return 'comments';
+		}
+
+		if ( in_array( $icon, self::get_user_icons(), true ) ) {
+			return 'user';
+		}
+
+		if ( in_array( $icon, self::get_category_icons(), true ) ) {
+			return 'taxonomy';
+		}
+
+		if ( in_array( $icon, self::get_rating_icons(), true ) ) {
+			return 'rating';
+		}
+
+		if ( in_array( $icon, self::get_comment_disabled_icons(), true ) ) {
+			return 'disabled-comments';
+		}
+
+		return '';
 	}
 
 	#endregion -- Testing

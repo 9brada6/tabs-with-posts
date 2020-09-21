@@ -142,8 +142,7 @@ class Category_Icons {
 				'brand'       => 'Google',
 				'description' => _x( 'Label', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-tax-go-l-ol" viewBox="0 0 24 24"><path d="M18.5,4.1C18,3.4,17.3,3,16.4,3L2.5,3C1.1,3,0,4.2,0,5.6v12.9C0,19.8,1.1,21,2.5,21l13.9,0c0.8,0,1.6-0.4,2.1-1.1L24,12C24,12,18.5,4.1,18.5,4.1z M16.4,18.4H2.5V5.6h13.9l4.5,6.4L16.4,18.4z"/></svg>
-				',
+				'svg'         => '<svg id="twrp-tax-go-l-ol" viewBox="0 0 24 24"><path d="M18.5,4.1C18,3.4,17.3,3,16.4,3L2.5,3C1.1,3,0,4.2,0,5.6v12.9C0,19.8,1.1,21,2.5,21l13.9,0c0.8,0,1.6-0.4,2.1-1.1L24,12C24,12,18.5,4.1,18.5,4.1z M16.4,18.4H2.5V5.6h13.9l4.5,6.4L16.4,18.4z"/></svg>',
 				'file_name'   => 'label-outlined.svg',
 			),
 
@@ -199,8 +198,7 @@ class Category_Icons {
 				'brand'       => 'Google',
 				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
 				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-tax-go-b-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M5.6,20l6.4-2.9l6.4,2.9V2.7H5.6V20z"/><path d="M18.4,0H5.6C4.2,0,3,1.2,3,2.7V24l9-4l9,4V2.7C21,1.2,19.8,0,18.4,0z M18.4,20L12,17.1L5.6,20V2.7h12.9V20z"/></svg>
-				',
+				'svg'         => '<svg id="twrp-tax-go-b-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M5.6,20l6.4-2.9l6.4,2.9V2.7H5.6V20z"/><path d="M18.4,0H5.6C4.2,0,3,1.2,3,2.7V24l9-4l9,4V2.7C21,1.2,19.8,0,18.4,0z M18.4,20L12,17.1L5.6,20V2.7h12.9V20z"/></svg>',
 				'file_name'   => 'bookmark-twotone.svg',
 			),
 
@@ -385,7 +383,7 @@ class Category_Icons {
 				'description' => _x( 'Ios Bookmarks', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-io-ibs-ol" viewBox="0 0 512 512"><path d="M102.2,6v500L256,390.1L409.8,506V6H102.2z M390.6,467.5L256,366.2L121.4,467.5V25.2h269.2V467.5z"/></svg>',
-				'file_name'   => 'ios-bookmarks-outlined.svg',
+				'file_name'   => 'ios-bookmark-outlined.svg',
 			),
 
 			#endregion -- Ionicons Icons
@@ -460,8 +458,7 @@ class Category_Icons {
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-tax-im-b-f" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg>
-				',
+				'svg'         => '<svg id="twrp-tax-im-b-f" viewBox="0 0 24 24"><path d="M18 24l-6-5.269-6 5.269v-24h12v24z"/></svg>',
 				'file_name'   => 'bookmark-filled.svg',
 			),
 
@@ -502,7 +499,7 @@ class Category_Icons {
 				'description' => _x( 'Bookmark 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-im-b3-f" viewBox="0 0 24 24"><path d="M20 24l-6-5.269-6 5.269v-17.411c0-3.547-1.167-5.547-4-6.589h9.938c3.34 0 6.052 2.701 6.062 6.042v17.958z"/></svg>',
-				'file_name'   => 'bookmark-2-filled.svg',
+				'file_name'   => 'bookmark-3-filled.svg',
 			),
 
 			'twrp-tax-im-b3-ol'  => array(
