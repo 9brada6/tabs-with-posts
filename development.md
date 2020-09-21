@@ -61,15 +61,12 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - See from where to use Icons: Linea?
 - Add some colored icons?
 - Add dashicons
-- Remove all XML tags and all fill="none" tags.
-- Reorder Google icons, all icons first after content, and then after type.
 - Align all comment icons.
 - Add a way to invert category icons?
 - Finish Rating Icons
 - Add more no comment icons/ create them.
-- Move all inclusion of icons to either file or all in HTML, remove inclusion from inline HTML.
-- Add more comments disabled icons.
 - Make all icons align perfectly, under all conditions.
+- Move all icons that needs to be used in their folders(capicon, tagging).
 
 ### JS/SCSS
 
