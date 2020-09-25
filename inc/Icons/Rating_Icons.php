@@ -46,6 +46,34 @@ class Rating_Icons {
 
 			#endregion -- FontAwesome Icons
 
+			#region -- Dashicons Icons
+
+			'twrp-rat-di-f'  => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Star', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-rat-di-f" viewBox="0 0 20 20"><path d="M10,0l3.3,6.7L20,7.5l-4.6,5.1l1.2,7.4L10,16.7L3.3,20l1.3-7.4L0,7.5l6.7-0.8L10,0z"/></svg>',
+				'file_name'   => 'star-filled.svg',
+			),
+
+			'twrp-rat-di-hf' => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Star', 'backend', 'twrp' ),
+				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-rat-di-hf" viewBox="0 0 20 20"><path d="M10,0L6.7,6.7L0,7.5l4.6,5.1L3.3,20l6.7-3.3l6.7,3.3l-1.2-7.4L20,7.5l-6.7-0.8L10,0z M10,2.5l2.6,5.2l5.2,0.6l-3.5,4l1,5.7L10,15.4V2.5z"/></svg>',
+				'file_name'   => 'star-half-filled.svg',
+			),
+
+			'twrp-rat-di-ol' => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Star', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-rat-di-ol" viewBox="0 0 20 20"><path d="M10,0L6.7,6.7L0,7.5l4.6,5.1L3.3,20l6.7-3.3l6.7,3.3l-1.2-7.4L20,7.5l-6.7-0.8L10,0z M10,2.5l2.6,5.2l5.2,0.6l-3.5,4l1,5.7L10,15.4L4.8,18l1-5.7l-3.5-4l5.2-0.6L10,2.5z"/></svg>',
+				'file_name'   => 'star-outlined.svg',
+			),
+
+			#endregion -- Dashicons Icons
+
 		);
 
 		return $registered_rating_vectors;

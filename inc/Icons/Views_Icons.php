@@ -107,6 +107,27 @@ class Views_Icons {
 
 			#endregion -- Google Icons
 
+			#region -- Dashicons
+
+			'twrp-views-di-f'         => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Eye', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-views-di-f" viewBox="0 0 20 20"><path d="M19.1,8.7C15.5,3.7,8.4,2.5,3.3,6.2C2,7.2,0.9,8.5,0,10c0.2,0.4,0.5,0.9,0.9,1.3c3.6,5.1,10.5,6.2,15.6,2.6c1-0.8,1.9-1.5,2.6-2.6c0.3-0.4,0.5-0.9,0.9-1.3C19.7,9.5,19.5,9.1,19.1,8.7z M10.1,6.2c0.5-0.5,1.4-0.5,2,0c0.5,0.5,0.5,1.4,0,2c-0.5,0.5-1.4,0.5-2,0C9.6,7.6,9.6,6.8,10.1,6.2z M10,14.7c-3.4,0-6.6-1.8-8.5-4.6c1.3-1.9,3.1-3.2,5.2-3.8c-0.8,0.9-1.1,1.9-1.1,3c0,2.4,1.9,4.5,4.4,4.5c2.4,0,4.5-1.9,4.5-4.4V9.2c0-1.1-0.4-2.2-1.2-3c2.1,0.7,3.8,2,5.2,3.8C16.6,12.9,13.4,14.7,10,14.7z"/></svg>',
+				'file_name'   => 'eye-outlined.svg',
+			),
+
+			'twrp-views-di-c-f'       => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Chart', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-views-di-c-f" viewBox="0 0 20 20"><path d="M20,20V0h-5v20H20z M12.5,20V6.3h-5V20H12.5z M5,20V10H0v10H5z"/></svg>',
+				'file_name'   => 'chart-filled.svg',
+			),
+
+
+			#endregion -- Dashicons
+
 			#region -- Foundation Icons
 
 			'twrp-views-fi-f'         => array(

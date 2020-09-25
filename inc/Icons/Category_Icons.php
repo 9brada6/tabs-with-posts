@@ -244,6 +244,34 @@ class Category_Icons {
 
 			#endregion -- Google Icons
 
+			#region -- Dashicons Icons
+
+			'twrp-tax-di-f'      => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-di-f" viewBox="0 0 20 20"><path d="M11.8,0H20v8.2L8.2,20L0,11.8L11.8,0z M15.3,7.1c1.3,0,2.4-1.1,2.4-2.4s-1.1-2.4-2.4-2.4s-2.4,1.1-2.4,2.4S14,7.1,15.3,7.1z"/></svg>',
+				'file_name'   => 'tag-filled.svg',
+			),
+
+			'twrp-tax-di-c-f'    => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Folder', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-di-c-f" viewBox="0 0 20 20"><path d="M3.8,5.6H20v12.5H0V1.9h8.8l2.5,2.5H2.5v11.3h1.3V5.6z"/></svg>',
+				'file_name'   => 'folder-filled.svg',
+			),
+
+			'twrp-tax-di-c2-f'   => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Folder Open', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-di-c2-f" viewBox="0 0 20 20"><path d="M10.6,4.4L8.1,1.9H0l0.9,11.9l1.9-9.4H10.6z M3.8,5.6L1.3,18.1h16.3L20,5.6H3.8z"/></svg>',
+				'file_name'   => 'folder-2-filled.svg',
+			),
+
+			#endregion -- Dashicons Icons
+
 			#region -- Foundation Icons
 
 			'twrp-tax-fi-f'      => array(

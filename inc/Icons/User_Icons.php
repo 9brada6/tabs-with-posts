@@ -178,6 +178,42 @@ class User_Icons {
 
 			#endregion -- Google Icons
 
+			#region -- Dashicons icons
+
+			'twrp-user-di-f'              => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'User', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-user-di-f" viewBox="0 0 20 20"><path d="M10,9C7.2,9,6.6,4.7,6.6,4.7C6.3,2.5,7.3,0,10,0c2.7,0,3.7,2.5,3.4,4.7C13.3,4.7,12.8,9,10,9z M10,12.2l3.4-2.3c3,0,5.6,2.9,5.6,5.6v3.1c0,0-4.5,1.4-9,1.4c-4.5,0-9-1.4-9-1.4v-3.1C1,12.7,3.4,10,6.6,10L10,12.2z"/></svg>',
+				'file_name'   => 'filled.svg',
+			),
+
+			'twrp-user-di-p-f'            => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Person', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-user-di-p-f" viewBox="0 0 20 20"><path d="M14,9.9l-2.8,3.8L10,11.9l-1.3,1.8L6,9.9c-4.8,1.3-4.8,3.8-4.8,8.7c0,0,3.8,1.4,8.1,1.4h1.5c4.3-0.1,8.1-1.4,8.1-1.4C18.8,13.7,18.8,11.2,14,9.9z M10,10.8L8,9.9l2,2l2-2L10,10.8z M10,0C7.6,0,6.2,2.3,6.6,4.8C7,7.3,8.2,9.1,10,9.1s3-1.8,3.4-4.3C13.8,2.1,12.4,0,10,0z"/></svg>',
+				'file_name'   => 'person-filled.svg',
+			),
+
+			'twrp-user-di-m-f'            => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Male', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-user-di-m-f" viewBox="0 0 20 20"><path d="M18.8,18.6v-3.1c0-0.9-0.1-1.8-0.6-2.6c-0.5-0.9-1.1-1.6-2-2.1c-0.9-0.6-2.8-0.8-3.6-0.8l-2,2.1l0.8,1.6v3.8L10,18.9l-1.3-1.4v-3.8l0.9-1.6L7.5,9.9c-1,0-2.9,0.1-3.8,0.8c-0.9,0.5-1.4,1.3-1.9,2.1s-0.6,1.6-0.6,2.6v3.1c0,0,3.3,1.4,8.8,1.4S18.8,18.6,18.8,18.6z M10,0C7.6,0,6.2,2.3,6.6,4.8C7,7.3,8.2,9.1,10,9.1s3-1.8,3.4-4.3C13.8,2.1,12.4,0,10,0z"/></svg>',
+				'file_name'   => 'man-filled.svg',
+			),
+
+			'twrp-user-di-f-f'            => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Female', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-user-di-f-f" viewBox="0 0 20 20"><path d="M17.3,11.2c-1.1-1-2.7-1.1-4.1-1.2l1.2,2.6L10,17.2l-4.4-4.5L6.8,10c-1.5,0-3,0.2-4.1,1.2c-1,0.9-1.2,2.4-1.2,3.9v3.5c0,0,4.1,1.5,8.5,1.4c4.4,0.1,8.5-1.4,8.5-1.4v-3.5C18.5,13.7,18.3,12.2,17.3,11.2z M5.9,9.1c1,0,2.4-0.5,2.7-0.9c-1-1.2-1.8-2.5-1-4.9c0,0,1.3,1.5,5.2,1.9c0,1.2-0.6,2.1-1.3,3c0.2,0.4,1.7,0.9,2.7,0.9s1.7-0.2,1.7-0.6c0-0.4-1.6-1.6-1.9-2.7c-0.4-1.1-0.1-2.4-0.6-3.9C12.5,0.1,10.8,0,10,0C9.1,0,7.4,0.1,6.7,1.9C6.2,3.4,6.5,4.6,6.1,5.8S4.2,8.1,4.2,8.5C4.2,8.9,4.9,9.1,5.9,9.1z"/><path d="M10,11.2L7.2,10l2.8,7.2l2.8-7.2"/></svg>',
+				'file_name'   => 'woman-filled.svg',
+			),
+
+			#endregion -- Dashicons icons
+
 			#region -- Foundation Icons
 
 			'twrp-user-found-male-f'      => array(

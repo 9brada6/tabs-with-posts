@@ -57,17 +57,18 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Add License to FontAwesome
-- See from where to use Icons: Linea?
-- Add some colored icons?
-- Add dashicons
-- Align all comment icons.
-- Add a way to invert category icons?
+- See from where to use Icons: Linea, dashicons?
 - Finish Rating Icons
 - Add more no comment icons/ create them.
+- Add clock icons as date.
+
+- Add License to FontAwesome
+- Add some colored icons?
 - Make all icons align perfectly, under all conditions.
+- Add a way to invert category icons?
 - Move all icons that needs to be used in their folders(capicon, tagging).
 - Change all icon names from "outline" to outlined.
+- Change all definitions from svg to symbol?
 
 ### JS/SCSS
 

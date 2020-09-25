@@ -227,6 +227,42 @@ class Comments_Icons {
 
 			#endregion -- Google Icons
 
+			#region -- Dashicons
+
+			'twrp-com-di-f'       => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-di-f" viewBox="0 0 20 20"><path d="M4.5,0h11.1C16.9,0,18,1.1,18,2.5v8.8c0,1.4-1.1,2.5-2.5,2.5h-2.5L6.9,20v-6.3H4.5c-1.4,0-2.5-1.1-2.5-2.5V2.5C2,1.1,3.1,0,4.5,0z"/></svg>',
+				'file_name'   => 'filled.svg',
+			),
+
+			'twrp-com-di-c-f'     => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-di-c-f" viewBox="0 0 20 20"><path d="M11.1,5.6h-0.9C9,5.6,7.8,6.9,7.8,8v2l-3.3,3.3V10H2.2C1,10,0,9,0,7.8V2.2C0,1,1,0,2.2,0h6.7c1.2,0,2.2,1,2.2,2.2V5.6z M11.1,6.7h6.7c1.2,0,2.2,1,2.2,2.2v5.6c0,1.2-1,2.2-2.2,2.2h-2.2V20l-3.3-3.3h-1.1c-1.2,0-2.2-1-2.2-2.2V8.9C8.9,7.7,9.9,6.7,11.1,6.7z"/></svg>',
+				'file_name'   => 'comments-filled.svg',
+			),
+
+			'twrp-com-di-d-f'     => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-di-d-f" viewBox="0 0 20 20"><path d="M10,0c7.8,0,10,3.3,10,7.4s-2.2,7.4-10,7.4S0,11.5,0,7.4S2.2,0,10,0z M5,9.1c0.9,0,1.7-0.8,1.7-1.7S5.9,5.7,5,5.7S3.3,6.5,3.3,7.4S4.1,9.1,5,9.1z M10,9.1c0.9,0,1.7-0.8,1.7-1.7S10.9,5.7,10,5.7S8.3,6.5,8.3,7.4S9.1,9.1,10,9.1z M15,9.1c0.9,0,1.7-0.8,1.7-1.7S15.9,5.7,15,5.7s-1.7,0.8-1.7,1.7S14.1,9.1,15,9.1z M5.6,15.4c0.9,0,1.7,0.8,1.7,1.7c0,0.9-0.7,1.7-1.7,1.7s-1.7-0.8-1.7-1.7C3.9,16.2,4.6,15.4,5.6,15.4z M2.2,17.7c0.6,0,1.1,0.5,1.1,1.1S2.8,20,2.2,20s-1.1-0.5-1.1-1.1S1.6,17.7,2.2,17.7z"/></svg>',
+				'file_name'   => 'dots-filled.svg',
+			),
+
+			'twrp-com-di-l-f'     => array(
+				'brand'       => 'Dashicons',
+				'description' => _x( 'Lines', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-di-l-f" viewBox="0 0 20 20"><path d="M2.5,0h15c0.7,0,1.3,0.3,1.8,0.7S20,1.8,20,2.5v8.8c0,0.7-0.3,1.3-0.7,1.8s-1.1,0.7-1.8,0.7h-1.3L10,20v-6.3H2.5c-0.7,0-1.3-0.3-1.8-0.7S0,11.9,0,11.3V2.5c0-0.7,0.3-1.3,0.7-1.8S1.8,0,2.5,0z M16.4,2.4H2.6v1.3h13.7V2.4z M17.6,6.2h-15v1.3h15V6.2z M13.9,9.9H2.6v1.3h11.3V9.9z"/></svg>',
+				'file_name'   => 'lines-filled.svg',
+			),
+
+			#endregion -- Dashicons
+
 			#region -- Foundation Icons
 
 			'twrp-com-fi-f'       => array(
