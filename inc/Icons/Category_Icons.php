@@ -696,6 +696,50 @@ class Category_Icons {
 
 			#endregion -- Jam Icons
 
+			#region -- Linea Icons
+
+			'twrp-tax-li-ol'     => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-li-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="25,1 63,39 39,63 1,25 1,1"/><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="17" cy="17" r="6"/></svg>',
+				'file_name'   => 'tag-outlined.svg',
+			),
+
+			'twrp-tax-li-t-ol'   => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Tags', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-li-t-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="21.903,5 55,38.097 34.097,59 1,25.903 1,5"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="29.903,5 63,38.097 42.097,59 	"/><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="14" cy="18" r="5"/></svg>',
+				'file_name'   => 'tags-outlined.svg',
+			),
+
+			'twrp-tax-li-f-ol'   => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Folder', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-li-f-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="63,18 63,54 1,54 1,10 22,10 30,18 "/></svg>',
+				'file_name'   => 'folder-outlined.svg',
+			),
+
+			'twrp-tax-li-f2-ol'  => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Folders', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-li-f2-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="56,22 56,54 1,54 1,15 19.629,15 26.726,22"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="8,13 8,7 26.629,7 33.726,14 63,14 63,46 58,46"/></svg>',
+				'file_name'   => 'folders-outlined.svg',
+			),
+
+			'twrp-tax-li-b-ol'   => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-tax-li-b-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="18,1 46,1 46,62 32,48 18,62"/></svg>',
+				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			#endregion -- Linea Icons
+
 			#region -- Octicons Icons
 
 			'twrp-tax-o-ol'      => array(

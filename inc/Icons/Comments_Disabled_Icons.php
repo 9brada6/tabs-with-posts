@@ -98,6 +98,18 @@ class Comments_Disabled_Icons {
 
 			#endregion -- Jam Icons
 
+			#region -- Linea Icons
+
+			'twrp-dcom-li-ol' => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-dcom-li-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="39" y1="33" x2="25" y2="19"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="25" y1="33" x2="39" y2="19"/></svg>',
+				'file_name'   => 'outlined.svg',
+			),
+
+			#endregion -- Linea Icons
+
 			#region -- Octicons Icons
 
 			// No Icons...

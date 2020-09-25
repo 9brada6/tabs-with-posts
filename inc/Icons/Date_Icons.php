@@ -359,6 +359,42 @@ class Date_Icons {
 
 			#endregion -- Jam Icons
 
+			#region -- Linea Icons
+
+			'twrp-cal-li-ol'        => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Calendar', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-li-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="10" x2="18" y2="10"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="12,10 1,10 1,58 63,58 63,10 52,10 	"/><rect x="12" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="46" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="10" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="10" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="44" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="44" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="27" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="27" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="1" y1="18" x2="63" y2="18"/></svg>',
+				'file_name'   => 'calendar-outlined.svg',
+			),
+
+			'twrp-cal-li-2-ol'      => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-li-2-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="10" x2="18" y2="10"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="12,10 1,10 1,58 63,58 63,10 52,10 	"/><rect x="12" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="46" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="1" y1="18" x2="63" y2="18"/></svg>',
+				'file_name'   => 'calendar-2-outlined.svg',
+			),
+
+			'twrp-cal-li-c-ol'      => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-li-c-ol" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M53.92,10.081c12.107,12.105,12.107,31.732,0,43.838c-12.106,12.108-31.734,12.108-43.84,0c-12.107-12.105-12.107-31.732,0-43.838C22.186-2.027,41.813-2.027,53.92,10.081z"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,12 32,32 41,41 	"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="4" y1="32" x2="8" y2="32"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="56" y1="32" x2="60" y2="32"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="32" y1="60" x2="32" y2="56"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="32" y1="8" x2="32" y2="4"/></svg>',
+				'file_name'   => 'clock-outlined.svg',
+			),
+
+			'twrp-cal-li-c2-ol'     => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Clock 2', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-li-c2-ol" viewBox="0 0 64 64"><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="26"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,20 32,32 40,36 "/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="21.995" y1="56.005" x2="15" y2="63"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="49" y1="63" x2="42.005" y2="56.005"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="1,8 5,4 15,6 3,18 "/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="59,4 63,8 61,18 49,6 "/></svg>',
+				'file_name'   => 'clock-2-outlined.svg',
+			),
+
+			#endregion -- Linea Icons
+
 			#region -- Octicons Icons
 
 			'twrp-cal-oi-ol'        => array(

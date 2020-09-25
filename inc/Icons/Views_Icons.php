@@ -7,6 +7,8 @@ namespace TWRP\Icons;
 
 /**
  * Class that holds all views icon definitions.
+ *
+ * Keywords to search for icons: eye, chart, graph.
  */
 class Views_Icons {
 
@@ -124,7 +126,6 @@ class Views_Icons {
 				'svg'         => '<svg id="twrp-views-di-c-f" viewBox="0 0 20 20"><path d="M20,20V0h-5v20H20z M12.5,20V6.3h-5V20H12.5z M5,20V10H0v10H5z"/></svg>',
 				'file_name'   => 'chart-filled.svg',
 			),
-
 
 			#endregion -- Dashicons
 
@@ -415,6 +416,26 @@ class Views_Icons {
 			),
 
 			#endregion -- Jam Icons
+
+			#region -- Linea Icons
+
+			'twrp-views-li-ol'        => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Eye', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-views-li-ol" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M1,32c0,0,11,15,31,15s31-15,31-15S52,17,32,17S1,32,1,32z"/><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="7"/></svg>',
+				'file_name'   => 'eye-outlined.svg',
+			),
+
+			'twrp-views-li-c-ol'      => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Eye', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-views-li-c-ol" viewBox="0 0 64 64"><rect x="10" y="45" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="12" height="18"/><rect x="42" y="18" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="12" height="45"/><rect x="26" y="32" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="12" height="31"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="14" y1="38" x2="51" y2="1"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" points="40,1 51,1 51,12"/></svg>',
+				'file_name'   => 'chart-outlined.svg',
+			),
+
+			#endregion -- Linea Icons
 
 			#region -- Octicons Icons
 

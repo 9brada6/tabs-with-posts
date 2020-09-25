@@ -775,6 +775,58 @@ class Comments_Icons {
 
 			#endregion -- Jam Icons
 
+			#region -- Linea Icons
+
+			'twrp-com-li-ol'      => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-li-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59"/></svg>',
+				'file_name'   => 'comment-outlined.svg',
+			),
+
+			'twrp-com-li-c-ol'    => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-li-c-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="26,49.042 54.963,49.042 54.963,11.0421,11.042 1,49.042 14,49.042 14,59.486 "/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="57,41.042 62.963,41.042 62.963,3.0429,3.042 9,9 "/></svg>',
+				'file_name'   => 'comments-outlined.svg',
+			),
+
+			'twrp-com-li-l-ol'    => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Lines', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-li-l-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="16" x2="54" y2="16"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="26" x2="54" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="36" x2="54" y2="36"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/></svg>',
+				'file_name'   => 'lines-outlined.svg',
+			),
+
+			'twrp-com-li-d-ol'    => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Dots', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-li-d-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="29" y1="26" x2="35" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="39" y1="26" x2="45" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="19" y1="26" x2="25" y2="26"/></svg>',
+				'file_name'   => 'dots-outlined.svg',
+			),
+
+			'twrp-com-li-he-ol'   => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Heart', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-li-he-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M22,23c0,6.666,10,12,10,12s10-5.334,10-12c0-2.762-2-5-5-5c-2.762,0-5,2.238-5,5c0-2.762-2.238-5-5-5C24,18,22,20.238,22,23z"/></svg>',
+				'file_name'   => 'heart-outlined.svg',
+			),
+
+			'twrp-com-li-ha-ol'   => array(
+				'brand'       => 'Linea',
+				'description' => _x( 'Happy', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-li-ha-ol" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M24,30c0,4.418,3.582,8,8,8s8-3.582,8-8"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="18" y1="20" x2="20" y2="20"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="20" x2="44" y2="20"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59"/></svg>',
+				'file_name'   => 'happy-outlined.svg',
+			),
+
+			#endregion -- Linea Icons
+
 			#region -- Octicons Icons
 
 			'twrp-com-oi-f'       => array(

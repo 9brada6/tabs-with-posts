@@ -57,10 +57,11 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- See from where to use Icons: Linea, dashicons?
+- Check what is with that 2 category svg inside svgs folder.
 - Finish Rating Icons
 - Add more no comment icons/ create them.
 - Add clock icons as date.
+- Check to see that all classes have same icons regions ordonated in same order. If they don't have icons, then a region should contain a comment with no icons.
 
 - Add License to FontAwesome
 - Add some colored icons?
