@@ -450,6 +450,12 @@ class User_Icons {
 
 			#endregion -- Jam Icons
 
+			#region -- Linea Icons
+
+			// No icons...
+
+			#endregion -- Linea Icons
+
 			#region -- Octicons Icons
 
 			'twrp-user-oi-ol'             => array(

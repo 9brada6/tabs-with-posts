@@ -57,19 +57,18 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Check what is with that 2 category svg inside svgs folder.
-- Finish Rating Icons
 - Add more no comment icons/ create them.
+- Finish Rating Icons
 - Add clock icons as date.
-- Check to see that all classes have same icons regions ordonated in same order. If they don't have icons, then a region should contain a comment with no icons.
+- Add folder icons as taxonomy.
 
 - Add License to FontAwesome
-- Add some colored icons?
 - Make all icons align perfectly, under all conditions.
 - Add a way to invert category icons?
 - Move all icons that needs to be used in their folders(capicon, tagging).
 - Change all icon names from "outline" to outlined.
 - Change all definitions from svg to symbol?
+- Add an automatic test that will check: That all icons must not have a class, role, aria attribute. The id's correspond to be similar.
 
 ### JS/SCSS
 
