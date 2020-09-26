@@ -68,7 +68,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Move all icons that needs to be used in their folders(capicon, tagging).
 - Change all icon names from "outline" to outlined.
 - Change all definitions from svg to symbol?
-- Add an automatic test that will check: That all icons must not have a class, role, aria attribute. The id's correspond to be similar.
+- Add an automatic test that will check: The id's correspond to be similar.
 
 ### JS/SCSS
 

@@ -488,8 +488,101 @@ class SVG_Manager {
 		}
 
 		?>
-		<script>console.log('All icons successfully tested.');</script>
+		<script>console.log('All icons files successfully tested.');</script>
 		<?php
+
+		// Verify attributes:
+		$founded_attrs = self::test_icons_must_be_missing_attributes();
+		$founded_attrs = implode( ', ', $founded_attrs );
+		if ( empty( $founded_attrs ) ) {
+			?>
+			<script>console.log('All attributes are correct.');</script>
+			<?php
+		} else {
+			?>
+			<script>console.log('Attributes that must be deleted: <?= esc_html( $founded_attrs ); ?>');</script>
+			<?php
+		}
+
+		// Verify Id format
+		$founded_ids = self::test_icons_ids();
+		$founded_ids = implode( ', ', $founded_ids );
+		if ( empty( $founded_ids ) ) {
+			?>
+			<script>console.log('All ids are correct.');</script>
+			<?php
+		} else {
+			?>
+			<script>console.log('Ids that must be deleted: <?= esc_html( $founded_ids ); ?>');</script>
+			<?php
+		}
+
+	}
+
+	/**
+	 * Return an array with all attributes present in all icons. The attributes
+	 * are only the one we care to not be present.
+	 *
+	 * @return array<string>
+	 */
+	public static function test_icons_must_be_missing_attributes() {
+		$all_icons_file_content = self::test_get_all_icons_content();
+
+		$attributes   = array( 'class', 'role', 'focusable', 'aria' );
+		$founded_attr = array();
+
+		foreach ( $attributes as $attribute ) {
+			if ( strpos( $all_icons_file_content, $attribute ) !== false ) {
+				array_push( $founded_attr, $attribute );
+			}
+		}
+
+		return $founded_attr;
+	}
+
+	/**
+	 * Get the all-icons.svg file contents.
+	 *
+	 * @return string Empty string if not available.
+	 */
+	protected static function test_get_all_icons_content() {
+		$all_icons = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/all-icons.svg';
+
+		@$file_content = file_get_contents( $all_icons ); // phpcs:ignore
+		if ( false === $file_content ) {
+			return '';
+		}
+
+		return $file_content;
+	}
+
+	/**
+	 * Test the icons id's to have similar structure.
+	 *
+	 * @return array<string> Return an array with all id's that do not correspond.
+	 */
+	protected static function test_icons_ids() {
+		$all_icons = self::get_all_icons();
+		$wrong_ids = array();
+
+		$prefix     = 'twrp-';
+		$icon_types = array( 'user', 'tax', 'com', 'dcom', 'rat', 'views', 'cal' );
+
+		foreach ( $all_icons as $icon_id => $icon ) {
+			if ( strpos( $icon_id, $prefix ) !== 0 ) {
+				array_push( $wrong_ids, $icon_id );
+				continue;
+			}
+
+			$id_sections = explode( '-', $icon_id );
+
+			if ( ! in_array( $id_sections[1], $icon_types, true ) ) {
+				array_push( $wrong_ids, $icon_id );
+				continue;
+			}
+		}
+
+		return $wrong_ids;
 	}
 
 	protected static function test_get_icon_type( $icon ) {
