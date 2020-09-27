@@ -625,7 +625,7 @@ class Comments_Icons {
 				'brand'       => 'Capicon',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ci-ol" viewBox="0 0 31.244 32"><path d="M29.511,0.397C21.369-2.011,1.774,7.249,1.145,8.509c-2.603,5.203-0.204,17.772,1.634,18.873c0.396,0.235,2.928,0.089,6.813-0.321c0.952,2.043,3.56,4.938,4.252,4.939c1.601,0,4.12-3.396,5.321-5.789c4.993-0.721,9.025-1.607,9.852-2.293C31.157,22.13,32.494,1.279,29.511,0.397z M26.497,22.127c-0.725,0.604-4.756,1.383-9.146,2.018c-1.055,2.104-2.625,5.028-3.217,5.088c-0.607,0.062-1.929-2.545-2.764-4.342c-3.416,0.359-6.707,0.526-7.029,0.28c-1.587-1.194-2.569-13.743-0.816-15.13c1.522-1.203,16.514-7.75,23.895-6.644C28.979,3.633,28.381,20.557,26.497,22.127z"/><polygon points="23.222,8.199 8.997,11.342 8.915,13.712 23.149,10.434 "/><polygon points="5.704,18.84 25.245,14.342 25.321,12.128 5.786,16.444 "/><polygon points="8.934,22.486 22.196,19.434 22.524,17.139 8.693,20.193 "/></svg>',
+				'svg'         => '<svg id="twrp-com-ci-ol" viewBox="0 0 31.244 32"><path d="M29.511,0.397C21.369-2.011,1.774,7.249,1.145,8.509c-2.603,5.203-0.204,17.772,1.634,18.873c0.396,0.235,2.928,0.089,6.813-0.321c0.952,2.043,3.56,4.938,4.252,4.939c1.601,0,4.12-3.396,5.321-5.789c4.993-0.721,9.025-1.607,9.852-2.293C31.157,22.13,32.494,1.279,29.511,0.397z M26.497,22.127c-0.725,0.604-4.756,1.383-9.146,2.018c-1.055,2.104-2.625,5.028-3.217,5.088c-0.607,0.062-1.929-2.545-2.764-4.342c-3.416,0.359-6.707,0.526-7.029,0.28c-1.587-1.194-2.569-13.743-0.816-15.13c1.522-1.203,16.514-7.75,23.895-6.644C28.979,3.633,28.381,20.557,26.497,22.127z"/><polygon points="23.222,8.199 8.997,11.342 8.915,13.712 23.149,10.434"/><polygon points="5.704,18.84 25.245,14.342 25.321,12.128 5.786,16.444"/><polygon points="8.934,22.486 22.196,19.434 22.524,17.139 8.693,20.193"/></svg>',
 				'file_name'   => 'outlined.svg',
 			),
 
@@ -789,7 +789,7 @@ class Comments_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-li-c-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="26,49.042 54.963,49.042 54.963,11.0421,11.042 1,49.042 14,49.042 14,59.486 "/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="57,41.042 62.963,41.042 62.963,3.0429,3.042 9,9 "/></svg>',
+				'svg'         => '<svg id="twrp-com-li-c-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="26,49.042 54.963,49.042 54.963,11.042 1,11.042 1,49.042 14,49.042 14,59.486"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="57,41.042 62.963,41.042 62.963,3.042 9,3.042 9,9"/></svg>',
 				'file_name'   => 'comments-outlined.svg',
 			),
 
@@ -797,7 +797,7 @@ class Comments_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Lines', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-li-l-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="16" x2="54" y2="16"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="26" x2="54" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="36" x2="54" y2="36"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/></svg>',
+				'svg'         => '<svg id="twrp-com-li-l-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="16" x2="54" y2="16"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="26" x2="54" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="10" y1="36" x2="54" y2="36"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59"/></svg>',
 				'file_name'   => 'lines-outlined.svg',
 			),
 
@@ -805,7 +805,7 @@ class Comments_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-li-d-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="29" y1="26" x2="35" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="39" y1="26" x2="45" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="19" y1="26" x2="25" y2="26"/></svg>',
+				'svg'         => '<svg id="twrp-com-li-d-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="29" y1="26" x2="35" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="39" y1="26" x2="45" y2="26"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="19" y1="26" x2="25" y2="26"/></svg>',
 				'file_name'   => 'dots-outlined.svg',
 			),
 
@@ -813,7 +813,7 @@ class Comments_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-li-he-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59 "/><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M22,23c0,6.666,10,12,10,12s10-5.334,10-12c0-2.762-2-5-5-5c-2.762,0-5,2.238-5,5c0-2.762-2.238-5-5-5C24,18,22,20.238,22,23z"/></svg>',
+				'svg'         => '<svg id="twrp-com-li-he-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,47 63,47 63,5 1,5 1,47 18,47 18,59"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M22,23c0,6.666,10,12,10,12s10-5.334,10-12c0-2.762-2-5-5-5c-2.762,0-5,2.238-5,5c0-2.762-2.238-5-5-5C24,18,22,20.238,22,23z"/></svg>',
 				'file_name'   => 'heart-outlined.svg',
 			),
 

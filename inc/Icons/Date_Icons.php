@@ -275,7 +275,7 @@ class Date_Icons {
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-ii-ios-f" viewBox="0 0 512 512"><rect x="16" y="176" width="480" height="320"/><polygon points="496,56 376,56 376,116 356,116 356,56 156,56 156,116 136,116 136,56 16,56 16,156 496,156 	"/><rect x="136" y="16" width="20" height="40"/><rect x="356" y="16" width="20" height="40"/></svg>',
+				'svg'         => '<svg id="twrp-cal-ii-ios-f" viewBox="0 0 512 512"><rect x="16" y="176" width="480" height="320"/><polygon points="496,56 376,56 376,116 356,116 356,56 156,56 156,116 136,116 136,56 16,56 16,156 496,156"/><rect x="136" y="16" width="20" height="40"/><rect x="356" y="16" width="20" height="40"/></svg>',
 				'file_name'   => 'ios-filled.svg',
 			),
 
@@ -285,6 +285,54 @@ class Date_Icons {
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-cal-ii-ios-ol" viewBox="0 0 512 512"><path d="M376,56V16h-20v40H156V16h-20v40H16v440h480V56H376z M476,476H36V176h440V476z M476,156H36V76h100v40h20V76h200v40h20V76h100V156z"/></svg>',
 				'file_name'   => 'ios-outlined.svg',
+			),
+
+			'twrp-cal-ii-c-f'       => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-ii-c-f" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M374.2,295.4H256c-10.9,0-19.7-8.8-19.7-19.7V98.5c0-10.9,8.8-19.7,19.7-19.7s19.7,8.8,19.7,19.7V256h98.5c10.9,0,19.7,8.8,19.7,19.7C393.8,286.6,385,295.4,374.2,295.4z"/></svg>',
+				'file_name'   => 'clock-filled.svg',
+			),
+
+			'twrp-cal-ii-c-ol'      => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-ii-c-ol" viewBox="0 0 512 512"><path style="fill:none;stroke:currentColor;stroke-width:32;stroke-miterlimit:10;" d="M256,16C123.5,16,16,123.5,16,256s107.5,240,240,240s240-107.5,240-240S388.5,16,256,16z"/><polyline style="fill:none;stroke:currentColor;stroke-width:32;stroke-linecap:round;stroke-linejoin:round;" points="256,96 256,276 376,276"/></svg>',
+				'file_name'   => 'clock-outlined.svg',
+			),
+
+			'twrp-cal-ii-ic-f'      => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-ii-ic-f" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M276.9,276.9H137.8V256H256V98.5h20.9V276.9z"/></svg>',
+				'file_name'   => 'ios-clock-filled.svg',
+			),
+
+			'twrp-cal-ii-ic-ol'     => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-ii-ic-ol" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,490.7C126.6,490.7,21.3,385.5,21.3,256C21.3,126.6,126.5,21.3,256,21.3c129.4,0,234.7,105.2,234.7,234.7C490.7,385.4,385.4,490.7,256,490.7z"/><polygon points="256,256 137.8,256 137.8,277.3 277.3,277.3 277.3,98.5 256,98.5"/></svg>',
+				'file_name'   => 'ios-clock-outlined.svg',
+			),
+
+			'twrp-cal-ii-it-f'      => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Time', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-ii-it-f" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,45.7c5,0,9.1,4.1,9.1,9.1S261,64,256,64s-9.1-4.1-9.1-9.1S251,45.7,256,45.7z M54.9,265.1c-5,0-9.1-4.1-9.1-9.1s4.1-9.1,9.1-9.1S64,251,64,256S59.9,265.1,54.9,265.1z M86.4,364.5c-4.3,2.5-9.9,1-12.5-3.3c-2.5-4.3-1-9.9,3.3-12.5c4.3-2.5,9.9-1,12.5,3.3C92.2,356.3,90.7,361.9,86.4,364.5z M89.7,160c-2.5,4.3-8.1,5.8-12.5,3.3c-4.3-2.5-5.8-8.1-3.3-12.5c2.5-4.3,8.1-5.8,12.5-3.3C90.7,150.1,92.2,155.7,89.7,160z M150.9,73.9c4.3-2.5,9.9-1,12.5,3.3s1,9.9-3.3,12.5c-4.3,2.5-9.9,1-12.5-3.3C145,82.1,146.5,76.5,150.9,73.9z M163.3,434.7c-2.5,4.3-8.1,5.8-12.5,3.3c-4.3-2.5-5.8-8.1-3.3-12.5c2.5-4.3,8.1-5.8,12.5-3.3C164.3,424.8,165.8,430.4,163.3,434.7z M256,466.3c-5,0-9.1-4.1-9.1-9.1s4.1-9.1,9.1-9.1s9.1,4.1,9.1,9.1S261,466.3,256,466.3z M265.1,271.9v139.5c0,5-4.1,9.1-9.1,9.1s-9.1-4.1-9.1-9.1V271.8c-2.7-1.6-5-3.8-6.7-6.6c-3.4-5.9-3.1-13.1,0.2-18.6l-43-71.9c-2.6-4.3-1.1-9.9,3.1-12.6c4.3-2.6,9.9-1.1,12.6,3.1l43.4,72.5c6.2,0.1,12.1,3.4,15.3,9.1C276.9,255.7,273.9,266.7,265.1,271.9z M361.1,438.1c-4.3,2.5-9.9,1-12.5-3.3c-2.5-4.3-1-9.9,3.3-12.5s9.9-1,12.5,3.3C367,429.9,365.5,435.5,361.1,438.1z M364.5,86.4c-2.5,4.3-8.1,5.8-12.5,3.3s-5.8-8.1-3.3-12.5c2.5-4.3,8.1-5.8,12.5-3.3C365.5,76.5,367,82.1,364.5,86.4z M438.1,361.1c-2.5,4.3-8.1,5.8-12.5,3.3c-4.3-2.5-5.8-8.1-3.3-12.5c2.5-4.3,8.1-5.8,12.5-3.3C439.1,351.2,440.7,356.8,438.1,361.1z M434.7,163.3c-4.3,2.5-9.9,1-12.5-3.3c-2.5-4.3-1-9.9,3.3-12.5c4.3-2.5,9.9-1,12.5,3.3C440.7,155.2,439.1,160.8,434.7,163.3z M457.1,265.1c-5,0-9.1-4.1-9.1-9.1s4.1-9.1,9.1-9.1s9.1,4.1,9.1,9.1S462.2,265.1,457.1,265.1z"/></svg>',
+				'file_name'   => 'ios-time-filled.svg',
+			),
+
+			'twrp-cal-ii-it-ol'     => array(
+				'brand'       => 'Ionicons',
+				'description' => _x( 'Ios Time', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-ii-it-ol" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M424.1,424.1c-21.8,21.8-47.3,39-75.5,51c-29.3,12.3-60.5,18.6-92.6,18.6s-63.2-6.3-92.6-18.6c-28.3-12-53.7-29.1-75.5-51s-39-47.3-51-75.5c-12.3-29.4-18.6-60.5-18.6-92.6s6.3-63.2,18.6-92.6c12-28.3,29.1-53.7,51-75.5s47.3-39,75.5-51c29.4-12.3,60.5-18.6,92.6-18.6s63.2,6.3,92.6,18.6c28.3,12,53.7,29.1,75.5,51s39,47.3,51,75.5c12.3,29.3,18.6,60.5,18.6,92.6s-6.3,63.2-18.6,92.6C463.1,376.8,445.9,402.3,424.1,424.1z"/><circle cx="256" cy="54.9" r="9.1"/><circle cx="256" cy="457.1" r="9.1"/><circle cx="457.1" cy="256" r="9.1"/><circle cx="54.9" cy="256" r="9.1"/><circle cx="155.4" cy="81.8" r="9.1"/><circle cx="356.6" cy="430.2" r="9.1"/><circle cx="430.2" cy="155.4" r="9.1"/><circle cx="81.8" cy="356.6" r="9.1"/><circle cx="81.8" cy="155.4" r="9.1"/><circle cx="430.2" cy="356.6" r="9.1"/><circle cx="356.6" cy="81.8" r="9.1"/><circle cx="155.4" cy="430.2" r="9.1"/><path d="M271.9,246.9c-3.3-5.7-9.3-8.9-15.3-9.1l-43.4-72.5c-2.6-4.3-8.2-5.7-12.6-3.1c-4.3,2.6-5.7,8.2-3.1,12.6l43,71.9c-3.3,5.5-3.7,12.7-0.2,18.6c1.7,2.9,4,5.1,6.7,6.6v139.5c0,5,4.1,9.1,9.1,9.1c5,0,9.1-4.1,9.1-9.1V271.9C273.9,266.7,276.9,255.7,271.9,246.9z"/></svg>',
+				'file_name'   => 'ios-time-outlined.svg',
 			),
 
 			#endregion -- Ionicons Icons
@@ -339,6 +387,30 @@ class Date_Icons {
 				'file_name'   => '5-filled.svg',
 			),
 
+			'twrp-cal-im-c-f'       => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-im-c-f" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6 14h-7v-8h2v6h5v2z"/></svg>',
+				'file_name'   => 'clock-filled.svg',
+			),
+
+			'twrp-cal-im-c-ol'      => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-im-c-ol" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm1 12v-6h-2v8h7v-2h-5z"/></svg>',
+				'file_name'   => 'clock-outlined.svg',
+			),
+
+			'twrp-cal-im-c-t'       => array(
+				'brand'       => 'IconMonstr',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-cal-im-c-t" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M12 0c6.623 0 12 5.377 12 12s-5.377 12-12 12-12-5.377-12-12 5.377-12 12-12zm0 1c6.071 0 11 4.929 11 11s-4.929 11-11 11-11-4.929-11-11 4.929-11 11-11zm0 11h6v1h-7v-9h1v8z"/></svg>',
+				'file_name'   => 'clock-thin.svg',
+			),
+
 			#endregion -- IconMonstr Icons
 
 			#region -- Capicon Icons
@@ -347,7 +419,7 @@ class Date_Icons {
 				'brand'       => 'Capicon',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-ci-f" viewBox="-1.395 0 32 32.244"><path d="M28.858,5c-0.125-0.126-1.812,0.058-4.306,0.422c-0.156-1.221-0.684-5.247-0.881-5.401c-0.233-0.182-4.852,0.907-5.073,1.244c-0.187,0.284-0.13,3.947-0.106,5.119c-3.004,0.507-6.258,1.091-9.178,1.653C9.159,7.173,8.596,4.105,8.401,3.95c-0.226-0.183-3.3,0.998-3.411,1.361c-0.085,0.28-0.069,2.567-0.055,3.608c-2.66,0.566-4.502,1.035-4.709,1.269c-0.245,0.275-0.272,2.271-0.168,4.948l29.102-4.769C29.104,7.323,29.007,5.147,28.858,5z"/><path d="M29.188,12.498L1.289,15.874l0,0l-1.193,0.145c0.015,0.312,0.031,0.63,0.048,0.955l0.005,0.106l0,0c0.345,6.323,1.208,14.731,1.736,14.997c0.83,0.414,26.559,0,26.973-0.622C29.128,31.049,29.267,20.179,29.188,12.498z M27.125,29.812c-0.514,0.371-23.411,0.865-23.759,0.592c-0.35-0.271-1.128-6.969-1.378-12.842l25.456-3.104C27.462,21.541,27.457,29.569,27.125,29.812z"/><path d="M13.868,18.731c-2.529-3.812-6.225,0.194-7.431,4.437l1.751,1.983c0,0,1.984-5.096,3.54-1.983c0,0,1.4,1.75-2.256,4.513l0.545,1.984l6.263-1.051V25.19l-3.423,1.246C12.856,26.437,16.396,22.546,13.868,18.731z"/><polygon points="15.58,21.456 17.173,23.435 19.003,20.989 18.38,28.537 22,28.537 22,16.671 20.091,16.088 "/></svg>',
+				'svg'         => '<svg id="twrp-cal-ci-f" viewBox="-1.395 0 32 32.244"><path d="M28.858,5c-0.125-0.126-1.812,0.058-4.306,0.422c-0.156-1.221-0.684-5.247-0.881-5.401c-0.233-0.182-4.852,0.907-5.073,1.244c-0.187,0.284-0.13,3.947-0.106,5.119c-3.004,0.507-6.258,1.091-9.178,1.653C9.159,7.173,8.596,4.105,8.401,3.95c-0.226-0.183-3.3,0.998-3.411,1.361c-0.085,0.28-0.069,2.567-0.055,3.608c-2.66,0.566-4.502,1.035-4.709,1.269c-0.245,0.275-0.272,2.271-0.168,4.948l29.102-4.769C29.104,7.323,29.007,5.147,28.858,5z"/><path d="M29.188,12.498L1.289,15.874l0,0l-1.193,0.145c0.015,0.312,0.031,0.63,0.048,0.955l0.005,0.106l0,0c0.345,6.323,1.208,14.731,1.736,14.997c0.83,0.414,26.559,0,26.973-0.622C29.128,31.049,29.267,20.179,29.188,12.498z M27.125,29.812c-0.514,0.371-23.411,0.865-23.759,0.592c-0.35-0.271-1.128-6.969-1.378-12.842l25.456-3.104C27.462,21.541,27.457,29.569,27.125,29.812z"/><path d="M13.868,18.731c-2.529-3.812-6.225,0.194-7.431,4.437l1.751,1.983c0,0,1.984-5.096,3.54-1.983c0,0,1.4,1.75-2.256,4.513l0.545,1.984l6.263-1.051V25.19l-3.423,1.246C12.856,26.437,16.396,22.546,13.868,18.731z"/><polygon points="15.58,21.456 17.173,23.435 19.003,20.989 18.38,28.537 22,28.537 22,16.671 20.091,16.088"/></svg>',
 				'file_name'   => 'filled.svg',
 			),
 
@@ -447,7 +519,7 @@ class Date_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-li-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="10" x2="18" y2="10"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="12,10 1,10 1,58 63,58 63,10 52,10 	"/><rect x="12" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="46" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="10" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="10" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="44" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="44" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="27" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="27" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="1" y1="18" x2="63" y2="18"/></svg>',
+				'svg'         => '<svg id="twrp-cal-li-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="10" x2="18" y2="10"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="12,10 1,10 1,58 63,58 63,10 52,10"/><rect x="12" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="46" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="10" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="10" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="44" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="44" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="27" y="24" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><rect x="27" y="42" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="10" height="10"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="1" y1="18" x2="63" y2="18"/></svg>',
 				'file_name'   => 'calendar-outlined.svg',
 			),
 
@@ -455,7 +527,7 @@ class Date_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-li-2-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="10" x2="18" y2="10"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="12,10 1,10 1,58 63,58 63,10 52,10 	"/><rect x="12" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="46" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="1" y1="18" x2="63" y2="18"/></svg>',
+				'svg'         => '<svg id="twrp-cal-li-2-ol" viewBox="0 0 64 64"><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="46" y1="10" x2="18" y2="10"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="12,10 1,10 1,58 63,58 63,10 52,10"/><rect x="12" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><rect x="46" y="6" fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" width="6" height="8"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="1" y1="18" x2="63" y2="18"/></svg>',
 				'file_name'   => 'calendar-2-outlined.svg',
 			),
 
@@ -463,7 +535,7 @@ class Date_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-li-c-ol" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M53.92,10.081c12.107,12.105,12.107,31.732,0,43.838c-12.106,12.108-31.734,12.108-43.84,0c-12.107-12.105-12.107-31.732,0-43.838C22.186-2.027,41.813-2.027,53.92,10.081z"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,12 32,32 41,41 	"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="4" y1="32" x2="8" y2="32"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="56" y1="32" x2="60" y2="32"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="32" y1="60" x2="32" y2="56"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="32" y1="8" x2="32" y2="4"/></svg>',
+				'svg'         => '<svg id="twrp-cal-li-c-ol" viewBox="0 0 64 64"><path fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" d="M53.92,10.081c12.107,12.105,12.107,31.732,0,43.838c-12.106,12.108-31.734,12.108-43.84,0c-12.107-12.105-12.107-31.732,0-43.838C22.186-2.027,41.813-2.027,53.92,10.081z"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,12 32,32 41,41"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="4" y1="32" x2="8" y2="32"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="56" y1="32" x2="60" y2="32"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="32" y1="60" x2="32" y2="56"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="32" y1="8" x2="32" y2="4"/></svg>',
 				'file_name'   => 'clock-outlined.svg',
 			),
 
@@ -471,7 +543,7 @@ class Date_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Clock 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-li-c2-ol" viewBox="0 0 64 64"><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="26"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,20 32,32 40,36 "/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="21.995" y1="56.005" x2="15" y2="63"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="49" y1="63" x2="42.005" y2="56.005"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="1,8 5,4 15,6 3,18 "/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="59,4 63,8 61,18 49,6 "/></svg>',
+				'svg'         => '<svg id="twrp-cal-li-c2-ol" viewBox="0 0 64 64"><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="32" cy="32" r="26"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="32,20 32,32 40,36"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="21.995" y1="56.005" x2="15" y2="63"/><line fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" x1="49" y1="63" x2="42.005" y2="56.005"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="1,8 5,4 15,6 3,18"/><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="59,4 63,8 61,18 49,6"/></svg>',
 				'file_name'   => 'clock-2-outlined.svg',
 			),
 
@@ -491,7 +563,7 @@ class Date_Icons {
 				'brand'       => 'Octicons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg  id="twrp-cal-oi-c-ol" viewbox="0 0 24 24"><path d="m12.5,7.25a0.75,0.75 0 0 0 -1.5,0l0,5.5c0,0.27 0.144,0.518 0.378,0.651l3.5,2a0.75,0.75 0 0 0 0.744,-1.302l-3.122,-1.784l0,-5.065z"/><path d="m12,1c-6.075,0 -11,4.925 -11,11s4.925,11 11,11s11,-4.925 11,-11s-4.925,-11 -11,-11zm-9.5,11a9.5,9.5 0 1 1 19,0a9.5,9.5 0 0 1 -19,0z" fill-rule="evenodd"/></svg>',
+				'svg'         => '<svg id="twrp-cal-oi-c-ol" viewbox="0 0 24 24"><path d="m12.5,7.25a0.75,0.75 0 0 0 -1.5,0l0,5.5c0,0.27 0.144,0.518 0.378,0.651l3.5,2a0.75,0.75 0 0 0 0.744,-1.302l-3.122,-1.784l0,-5.065z"/><path d="m12,1c-6.075,0 -11,4.925 -11,11s4.925,11 11,11s11,-4.925 11,-11s-4.925,-11 -11,-11zm-9.5,11a9.5,9.5 0 1 1 19,0a9.5,9.5 0 0 1 -19,0z" fill-rule="evenodd"/></svg>',
 				'file_name'   => 'clock-outlined.svg',
 			),
 

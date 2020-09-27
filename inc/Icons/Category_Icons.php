@@ -710,7 +710,7 @@ class Category_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-tax-li-t-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="21.903,5 55,38.097 34.097,59 1,25.903 1,5"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="29.903,5 63,38.097 42.097,59 	"/><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="14" cy="18" r="5"/></svg>',
+				'svg'         => '<svg id="twrp-tax-li-t-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="21.903,5 55,38.097 34.097,59 1,25.903 1,5"/><polyline fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="29.903,5 63,38.097 42.097,59"/><circle fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" cx="14" cy="18" r="5"/></svg>',
 				'file_name'   => 'tags-outlined.svg',
 			),
 
@@ -718,7 +718,7 @@ class Category_Icons {
 				'brand'       => 'Linea',
 				'description' => _x( 'Folder', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-tax-li-f-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="63,18 63,54 1,54 1,10 22,10 30,18 "/></svg>',
+				'svg'         => '<svg id="twrp-tax-li-f-ol" viewBox="0 0 64 64"><polygon fill="none" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" points="63,18 63,54 1,54 1,10 22,10 30,18"/></svg>',
 				'file_name'   => 'folder-outlined.svg',
 			),
 
