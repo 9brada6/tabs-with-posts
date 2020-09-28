@@ -574,11 +574,6 @@ class SVG_Manager {
 				'type'        => 'DuoTone',
 				'file_prefix' => 'duotone',
 			),
-			// todo: only one select
-			'sf' => array(
-				'type'        => 'Semi Filled',
-				'file_prefix' => 'semi-filled',
-			),
 			'hf' => array(
 				'type'        => 'Half Filled',
 				'file_prefix' => 'half-filled',
