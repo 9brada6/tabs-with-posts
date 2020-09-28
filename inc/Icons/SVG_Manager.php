@@ -513,7 +513,20 @@ class SVG_Manager {
 			<?php
 		} else {
 			?>
-			<script>console.log('Ids that must be deleted: <?= esc_html( $founded_ids ); ?>');</script>
+			<script>console.log('Ids that must be renamed: <?= esc_html( $founded_ids ); ?>');</script>
+			<?php
+		}
+
+		// Verify filename format
+		$founded_ids = self::test_all_icons_filename();
+		$founded_ids = implode( ', ', $founded_ids );
+		if ( empty( $founded_ids ) ) {
+			?>
+			<script>console.log('All ids are correct.');</script>
+			<?php
+		} else {
+			?>
+			<script>console.log('Ids that have filenames wrong: <?= esc_html( $founded_ids ); ?>');</script>
 			<?php
 		}
 
@@ -528,7 +541,7 @@ class SVG_Manager {
 	public static function test_icons_must_be_missing_attributes() {
 		$all_icons_file_content = self::test_get_all_icons_content();
 
-		$attributes   = array( 'class', 'role', 'focusable', 'aria' );
+		$attributes   = array( 'class', 'role', 'focusable', 'aria', ' "', '  ', "\t" );
 		$founded_attr = array();
 
 		foreach ( $attributes as $attribute ) {
@@ -554,6 +567,36 @@ class SVG_Manager {
 		}
 
 		return $file_content;
+	}
+
+	/**
+	 * Get an array with all icon id's that do not have filenames that
+	 * corresponds to the style.
+	 *
+	 * @return array<string>
+	 */
+	protected static function test_all_icons_filename() {
+		$icons = self::get_all_icons();
+
+		$finish_format = array( 'filled', 'outlined', 'thin', 'twotone', 'sharp' );
+		$wrong_ids     = array();
+
+		foreach ( $icons as $icon_id => $icon ) {
+			$found = false;
+
+			foreach ( $finish_format as $format ) {
+				if ( isset( $icon['file_name'] ) && strstr( $icon['file_name'], $format ) !== false ) {
+					$found = true;
+					break;
+				}
+			}
+
+			if ( ! $found ) {
+				array_push( $wrong_ids, $icon_id );
+			}
+		}
+
+		return $wrong_ids;
 	}
 
 	/**

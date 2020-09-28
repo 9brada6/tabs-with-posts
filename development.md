@@ -70,7 +70,8 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Change all definitions from svg to symbol?
 - Add an automatic test that will check: The id's correspond to be similar. Check if all icons
 have in filename one of the words: thin, sharp, outlined, filled. Check if type is also one of the
-words. Does not have any color like #000 or #000000. Does not have double spaces, spaces before closed " or tabs
+words. Does not have any color like #000 or #000000. Does not have double spaces, spaces before closed " or tabs. Verify if filename, id and description corresponds(filled, outlined, thin ...etc).
+- Fix all octicons to be visible in adobe.
 
 ### JS/SCSS
 

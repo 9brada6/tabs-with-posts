@@ -99,12 +99,12 @@ class Views_Icons {
 				'file_name'   => 'bar-chart-filled.svg',
 			),
 
-			'twrp-views-goo-chart-r'  => array(
+			'twrp-views-goo-chart2-f' => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bar Chart', 'backend', 'twrp' ),
-				'type'        => _x( 'Rounded', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-views-goo-chart-r" viewBox="0 0 24 24"><path d="M4,8h0.3c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H4c-1.1,0-2-0.9-2-2V10C2,8.9,2.9,8,4,8z M12,2c1.1,0,2,0.9,2,2V20c0,1.1-0.9,2-2,2c-1.1,0-2-0.9-2-2V4C10,2.9,10.9,2,12,2z M20,13.4c1.1,0,2,0.9,2,2V20c0,1.1-0.9,2-2,2s-2-0.9-2-2v-4.6C18,14.3,18.9,13.4,20,13.4z"/></svg>',
-				'file_name'   => 'bar-chart-rounded.svg',
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-views-goo-chart2-f" viewBox="0 0 24 24"><path d="M4,8h0.3c1.1,0,2,0.9,2,2v10c0,1.1-0.9,2-2,2H4c-1.1,0-2-0.9-2-2V10C2,8.9,2.9,8,4,8z M12,2c1.1,0,2,0.9,2,2V20c0,1.1-0.9,2-2,2c-1.1,0-2-0.9-2-2V4C10,2.9,10.9,2,12,2z M20,13.4c1.1,0,2,0.9,2,2V20c0,1.1-0.9,2-2,2s-2-0.9-2-2v-4.6C18,14.3,18.9,13.4,20,13.4z"/></svg>',
+				'file_name'   => 'bar-chart-2-filled.svg',
 			),
 
 			#endregion -- Google Icons

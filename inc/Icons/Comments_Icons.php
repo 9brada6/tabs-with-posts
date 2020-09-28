@@ -401,7 +401,7 @@ class Comments_Icons {
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ii-ioc-f" viewBox="0 0 512 512"><polygon points="346,21 21,21 21,274 147,274 147,148 346,148 	"/><path d="M166,166v253h183.6l72.3,72H437v-72h54V166H166z"/></svg>',
+				'svg'         => '<svg id="twrp-com-ii-ioc-f" viewBox="0 0 512 512"><polygon points="346,21 21,21 21,274 147,274 147,148 346,148"/><path d="M166,166v253h183.6l72.3,72H437v-72h54V166H166z"/></svg>',
 				'file_name'   => 'ios-comments-filled.svg',
 			),
 
