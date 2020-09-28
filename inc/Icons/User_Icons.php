@@ -21,59 +21,59 @@ class User_Icons {
 
 			#region -- FontAwesome Icons
 
-			'twrp-user-fa-solid'          => array(
+			'twrp-user-fa-f'             => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-solid" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>',
+				'svg'         => '<svg id="twrp-user-fa-f" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg>',
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-fa-regular'        => array(
+			'twrp-user-fa-ol'            => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-regular" viewBox="0 0 448 512"><path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path></svg>',
+				'svg'         => '<svg id="twrp-user-fa-ol" viewBox="0 0 448 512"><path d="M313.6 304c-28.7 0-42.5 16-89.6 16-47.1 0-60.8-16-89.6-16C60.2 304 0 364.2 0 438.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-25.6c0-74.2-60.2-134.4-134.4-134.4zM400 464H48v-25.6c0-47.6 38.8-86.4 86.4-86.4 14.6 0 38.3 16 89.6 16 51.7 0 74.9-16 89.6-16 47.6 0 86.4 38.8 86.4 86.4V464zM224 288c79.5 0 144-64.5 144-144S303.5 0 224 0 80 64.5 80 144s64.5 144 144 144zm0-240c52.9 0 96 43.1 96 96s-43.1 96-96 96-96-43.1-96-96 43.1-96 96-96z"></path></svg>',
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-user-fa-alt-solid'      => array(
+			'twrp-user-fa-alt-f'         => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'User 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-alt-solid" viewBox="0 0 512 512"><path d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"></path></svg>',
+				'svg'         => '<svg id="twrp-user-fa-alt-f" viewBox="0 0 512 512"><path d="M256 288c79.5 0 144-64.5 144-144S335.5 0 256 0 112 64.5 112 144s64.5 144 144 144zm128 32h-55.1c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16H128C57.3 320 0 377.3 0 448v16c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48v-16c0-70.7-57.3-128-128-128z"></path></svg>',
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-user-fa-tie-solid'      => array(
+			'twrp-user-fa-tie-f'         => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Tie', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-tie-solid" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z"></path></svg>',
+				'svg'         => '<svg id="twrp-user-fa-tie-f" viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm95.8 32.6L272 480l-32-136 32-56h-96l32 56-32 136-47.8-191.4C56.9 292 0 350.3 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-72.1-56.9-130.4-128.2-133.8z"></path></svg>',
 				'file_name'   => 'tie-filled.svg',
 			),
 
-			'twrp-user-fa-graduate-solid' => array(
+			'twrp-user-fa-g-f'           => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Graduate', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-graduate-solid" viewBox="0 0 448 512"><path d="M319.4 320.6L224 416l-95.4-95.4C57.1 323.7 0 382.2 0 454.4v9.6c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-9.6c0-72.2-57.1-130.7-128.6-133.8zM13.6 79.8l6.4 1.5v58.4c-7 4.2-12 11.5-12 20.3 0 8.4 4.6 15.4 11.1 19.7L3.5 242c-1.7 6.9 2.1 14 7.6 14h41.8c5.5 0 9.3-7.1 7.6-14l-15.6-62.3C51.4 175.4 56 168.4 56 160c0-8.8-5-16.1-12-20.3V87.1l66 15.9c-8.6 17.2-14 36.4-14 57 0 70.7 57.3 128 128 128s128-57.3 128-128c0-20.6-5.3-39.8-14-57l96.3-23.2c18.2-4.4 18.2-27.1 0-31.5l-190.4-46c-13-3.1-26.7-3.1-39.7 0L13.6 48.2c-18.1 4.4-18.1 27.2 0 31.6z"></path></svg>',
+				'svg'         => '<svg id="twrp-user-fa-g-f" viewBox="0 0 448 512"><path d="M319.4 320.6L224 416l-95.4-95.4C57.1 323.7 0 382.2 0 454.4v9.6c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-9.6c0-72.2-57.1-130.7-128.6-133.8zM13.6 79.8l6.4 1.5v58.4c-7 4.2-12 11.5-12 20.3 0 8.4 4.6 15.4 11.1 19.7L3.5 242c-1.7 6.9 2.1 14 7.6 14h41.8c5.5 0 9.3-7.1 7.6-14l-15.6-62.3C51.4 175.4 56 168.4 56 160c0-8.8-5-16.1-12-20.3V87.1l66 15.9c-8.6 17.2-14 36.4-14 57 0 70.7 57.3 128 128 128s128-57.3 128-128c0-20.6-5.3-39.8-14-57l96.3-23.2c18.2-4.4 18.2-27.1 0-31.5l-190.4-46c-13-3.1-26.7-3.1-39.7 0L13.6 48.2c-18.1 4.4-18.1 27.2 0 31.6z"></path></svg>',
 				'file_name'   => 'graduate-filled.svg',
 			),
 
-			'twrp-user-fa-circle-solid'   => array(
+			'twrp-user-fa-c-f'           => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-circle-solid" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,99.1c50.2,0,90.8,40.7,90.8,90.8s-40.7,90.8-90.8,90.8s-90.8-40.7-90.8-90.8S205.8,99.1,256,99.1z M256,454.2c-60.6,0-114.9-27.5-151.2-70.4c19.4-36.5,57.4-61.7,101.7-61.7c2.5,0,5,0.4,7.3,1.1c13.4,4.3,27.5,7.1,42.2,7.1c14.8,0,28.9-2.8,42.2-7.1c2.4-0.7,4.9-1.1,7.3-1.1c44.3,0,82.3,25.2,101.7,61.7C370.9,426.7,316.6,454.2,256,454.2z"/></svg>',
+				'svg'         => '<svg id="twrp-user-fa-c-f" viewBox="0 0 512 512"><path d="M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,99.1c50.2,0,90.8,40.7,90.8,90.8s-40.7,90.8-90.8,90.8s-90.8-40.7-90.8-90.8S205.8,99.1,256,99.1z M256,454.2c-60.6,0-114.9-27.5-151.2-70.4c19.4-36.5,57.4-61.7,101.7-61.7c2.5,0,5,0.4,7.3,1.1c13.4,4.3,27.5,7.1,42.2,7.1c14.8,0,28.9-2.8,42.2-7.1c2.4-0.7,4.9-1.1,7.3-1.1c44.3,0,82.3,25.2,101.7,61.7C370.9,426.7,316.6,454.2,256,454.2z"/></svg>',
 				'file_name'   => 'circle-filled.svg',
 			),
 
-			'twrp-user-fa-circle-regular' => array(
+			'twrp-user-fa-c-ol'          => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-user-fa-circle-regular" viewBox="0 0 512 512"><path d="M256,99.1c-54.7,0-99.1,44.4-99.1,99.1s44.4,99.1,99.1,99.1s99.1-44.4,99.1-99.1S310.7,99.1,256,99.1z M256,247.8c-27.4,0-49.5-22.2-49.5-49.6s22.2-49.6,49.5-49.6s49.5,22.2,49.5,49.6S283.4,247.8,256,247.8z M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,462.4c-51.3,0-98.2-18.9-134.3-50c15.4-23.7,41.7-39.9,71.8-40.8c21.5,6.6,41.9,9.9,62.5,9.9s41-3.2,62.5-9.9c30.1,1,56.5,17,71.8,40.8C354.2,443.6,307.3,462.4,256,462.4z M423.9,375.6c-25.2-32.4-64.1-53.6-108.5-53.6c-10.5,0-26.8,9.9-59.5,9.9c-32.5,0-48.9-9.9-59.5-9.9c-44.3,0-83.2,21.1-108.5,53.6c-24.2-33.8-38.5-75-38.5-119.6c0-113.8,92.6-206.4,206.5-206.4S462.5,142.2,462.5,256C462.5,300.6,448.1,341.9,423.9,375.6z"/></svg>',
+				'svg'         => '<svg id="twrp-user-fa-c-ol" viewBox="0 0 512 512"><path d="M256,99.1c-54.7,0-99.1,44.4-99.1,99.1s44.4,99.1,99.1,99.1s99.1-44.4,99.1-99.1S310.7,99.1,256,99.1z M256,247.8c-27.4,0-49.5-22.2-49.5-49.6s22.2-49.6,49.5-49.6s49.5,22.2,49.5,49.6S283.4,247.8,256,247.8z M256,0C114.6,0,0,114.6,0,256s114.6,256,256,256s256-114.6,256-256S397.4,0,256,0z M256,462.4c-51.3,0-98.2-18.9-134.3-50c15.4-23.7,41.7-39.9,71.8-40.8c21.5,6.6,41.9,9.9,62.5,9.9s41-3.2,62.5-9.9c30.1,1,56.5,17,71.8,40.8C354.2,443.6,307.3,462.4,256,462.4z M423.9,375.6c-25.2-32.4-64.1-53.6-108.5-53.6c-10.5,0-26.8,9.9-59.5,9.9c-32.5,0-48.9-9.9-59.5-9.9c-44.3,0-83.2,21.1-108.5,53.6c-24.2-33.8-38.5-75-38.5-119.6c0-113.8,92.6-206.4,206.5-206.4S462.5,142.2,462.5,256C462.5,300.6,448.1,341.9,423.9,375.6z"/></svg>',
 				'file_name'   => 'circle-outlined.svg',
 			),
 
@@ -83,7 +83,7 @@ class User_Icons {
 
 			#region -- Normal User Icon
 
-			'twrp-user-goo-f'             => array(
+			'twrp-user-goo-f'            => array(
 				'brand'       => 'Google',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -91,7 +91,7 @@ class User_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-goo-ol'            => array(
+			'twrp-user-goo-ol'           => array(
 				'brand'       => 'Google',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -99,19 +99,19 @@ class User_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-user-goo-dt'            => array(
+			'twrp-user-goo-dt'           => array(
 				'brand'       => 'Google',
 				'description' => _x( 'User', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-user-goo-dt" viewBox="0 0 24 24"><circle style="opacity:0.3;" cx="12" cy="6" r="3.2"/><path style="opacity:0.3;" d="M12,16.3c-4.5,0-9.1,2.2-9.1,3.2v1.7h18.3v-1.7C21.2,18.5,16.5,16.3,12,16.3z"/><path d="M12,13.5c-4,0-12,2-12,6V24h24v-4.5C24,15.5,16,13.5,12,13.5z M21.2,21.2H2.9v-1.7c0-1,4.7-3.2,9.1-3.2s9.2,2.2,9.2,3.2V21.2z M12,12c3.3,0,6-2.7,6-6s-2.7-6-6-6S6,2.7,6,6S8.7,12,12,12z M12,2.9c1.7,0,3.2,1.4,3.2,3.1S13.7,9.2,12,9.2S8.8,7.7,8.8,6S10.3,2.9,12,2.9z"/></svg>',
-				'file_name'   => 'twotone.svg',
+				'file_name'   => 'duotone.svg',
 			),
 
 			#endregion -- Normal User Icon
 
 			#region -- Circle User Icon
 
-			'twrp-user-goo-circle-f'      => array(
+			'twrp-user-goo-circle-f'     => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -120,7 +120,7 @@ class User_Icons {
 				'fix_classes' => 'twrp-i--va-2',
 			),
 
-			'twrp-user-goo-circle-ol'     => array(
+			'twrp-user-goo-circle-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -129,12 +129,12 @@ class User_Icons {
 				'fix_classes' => 'twrp-i--va-2',
 			),
 
-			'twrp-user-goo-circle-dt'     => array(
+			'twrp-user-goo-circle-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-user-goo-circle-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M12,2.4c-5.3,0-9.6,4.3-9.6,9.6c0,2.2,0.7,4.2,2,5.8C6.1,15.7,10.2,15,12,15s5.9,0.7,7.6,2.8c1.2-1.6,2-3.6,2-5.8C21.6,6.7,17.3,2.4,12,2.4z M12,13.2c-2.3,0-4.2-1.9-4.2-4.2S9.7,4.8,12,4.8s4.2,1.9,4.2,4.2S14.3,13.2,12,13.2z"/><path d="M12,0C5.4,0,0,5.4,0,12s5.4,12,12,12s12-5.4,12-12S18.6,0,12,0z M6.1,19.5c0.5-1.1,3.7-2.1,5.9-2.1s5.4,1.1,5.9,2.1c-1.6,1.3-3.7,2.1-5.9,2.1S7.7,20.8,6.1,19.5z M19.6,17.8C17.9,15.7,13.8,15,12,15s-5.9,0.7-7.6,2.8c-1.2-1.6-2-3.6-2-5.8c0-5.3,4.3-9.6,9.6-9.6s9.6,4.3,9.6,9.6C21.6,14.2,20.9,16.2,19.6,17.8z M12,4.8C9.7,4.8,7.8,6.7,7.8,9s1.9,4.2,4.2,4.2s4.2-1.9,4.2-4.2S14.3,4.8,12,4.8z M12,10.8c-1,0-1.8-0.8-1.8-1.8S11,7.2,12,7.2S13.8,8,13.8,9S13,10.8,12,10.8z"/></svg>',
-				'file_name'   => 'circle-twotone.svg',
+				'file_name'   => 'circle-duotone.svg',
 				'fix_classes' => 'twrp-i--va-2',
 			),
 
@@ -142,7 +142,7 @@ class User_Icons {
 
 			#region -- Box User Icon
 
-			'twrp-user-goo-box-f'         => array(
+			'twrp-user-goo-box-f'        => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Box', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -150,7 +150,7 @@ class User_Icons {
 				'file_name'   => 'box-filled.svg',
 			),
 
-			'twrp-user-goo-box-ol'        => array(
+			'twrp-user-goo-box-ol'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Box', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -158,15 +158,15 @@ class User_Icons {
 				'file_name'   => 'box-outlined.svg',
 			),
 
-			'twrp-user-goo-box-dt'        => array(
+			'twrp-user-goo-box-dt'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Box', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-user-goo-box-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M2.7,21.3h18.7V2.7H2.7V21.3z M12,4c2.2,0,4,1.8,4,4s-1.8,4-4,4s-4-1.8-4-4S9.8,4,12,4z M4,18c0-3.3,5.3-4.8,8-4.8s8,1.4,8,4.8v2H4V18z"/><path d="M12,12c2.2,0,4-1.8,4-4s-1.8-4-4-4S8,5.8,8,8S9.8,12,12,12z M12,6.7c0.7,0,1.3,0.6,1.3,1.3S12.7,9.3,12,9.3S10.7,8.7,10.7,8S11.3,6.7,12,6.7z M21.3,0H2.7C1.2,0,0,1.2,0,2.7v18.7C0,22.8,1.2,24,2.7,24h18.7c1.5,0,2.7-1.2,2.7-2.7V2.7C24,1.2,22.8,0,21.3,0z M21.3,21.3H2.7V2.7h18.7V21.3z M20,18c0-3.3-5.3-4.8-8-4.8S4,14.6,4,18v2h16V18z M7.1,17.3c0.9-0.7,3.2-1.5,4.9-1.5s4,0.7,4.9,1.5H7.1z"/></svg>',
-				'file_name'   => 'box-twotone.svg',
+				'file_name'   => 'box-duotone.svg',
 			),
 
-			'twrp-user-goo-box-sh'        => array(
+			'twrp-user-goo-box-sh'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Box', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -180,7 +180,7 @@ class User_Icons {
 
 			#region -- Dashicons icons
 
-			'twrp-user-di-f'              => array(
+			'twrp-user-di-f'             => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -188,7 +188,7 @@ class User_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-di-p-f'            => array(
+			'twrp-user-di-p-f'           => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'Person', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -196,7 +196,7 @@ class User_Icons {
 				'file_name'   => 'person-filled.svg',
 			),
 
-			'twrp-user-di-m-f'            => array(
+			'twrp-user-di-m-f'           => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'Male', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -204,7 +204,7 @@ class User_Icons {
 				'file_name'   => 'man-filled.svg',
 			),
 
-			'twrp-user-di-f-f'            => array(
+			'twrp-user-di-f-f'           => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'Female', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -216,7 +216,7 @@ class User_Icons {
 
 			#region -- Foundation Icons
 
-			'twrp-user-found-male-f'      => array(
+			'twrp-user-found-male-f'     => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Male', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -224,7 +224,7 @@ class User_Icons {
 				'file_name'   => 'male-filled.svg',
 			),
 
-			'twrp-user-found-female-f'    => array(
+			'twrp-user-found-female-f'   => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Female', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -232,7 +232,7 @@ class User_Icons {
 				'file_name'   => 'female-filled.svg',
 			),
 
-			'twrp-user-found-tie-f'       => array(
+			'twrp-user-found-tie-f'      => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Tie', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -246,7 +246,7 @@ class User_Icons {
 
 			#region -- Ionicons Normal User Icons
 
-			'twrp-user-ii-f'              => array(
+			'twrp-user-ii-f'             => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -254,7 +254,7 @@ class User_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-ii-ol'             => array(
+			'twrp-user-ii-ol'            => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -262,7 +262,7 @@ class User_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-user-ii-sh'             => array(
+			'twrp-user-ii-sh'            => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -274,7 +274,7 @@ class User_Icons {
 
 			#region -- Ionicons Person Icons
 
-			'twrp-user-ii-person-f'       => array(
+			'twrp-user-ii-person-f'      => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Person', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -282,7 +282,7 @@ class User_Icons {
 				'file_name'   => 'person-filled.svg',
 			),
 
-			'twrp-user-ii-person-ol'      => array(
+			'twrp-user-ii-person-ol'     => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Person', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -294,7 +294,7 @@ class User_Icons {
 
 			#region -- Ionicons Person Circle Icons
 
-			'twrp-user-ii-ios-person-f'   => array(
+			'twrp-user-ii-ios-person-f'  => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Person', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -302,7 +302,7 @@ class User_Icons {
 				'file_name'   => 'ios-contact-filled.svg',
 			),
 
-			'twrp-user-ii-ios-person-ol'  => array(
+			'twrp-user-ii-ios-person-ol' => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Person', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -316,7 +316,7 @@ class User_Icons {
 
 			#region -- Iconmonstr Icons
 
-			'twrp-user-im-f'              => array(
+			'twrp-user-im-f'             => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -324,7 +324,7 @@ class User_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-im-ol'             => array(
+			'twrp-user-im-ol'            => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -332,7 +332,7 @@ class User_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-user-im-tie-f'          => array(
+			'twrp-user-im-tie-f'         => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Tie', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -340,7 +340,7 @@ class User_Icons {
 				'file_name'   => 'tie-filled.svg',
 			),
 
-			'twrp-user-im-female-f'       => array(
+			'twrp-user-im-female-f'      => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Female', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -348,7 +348,7 @@ class User_Icons {
 				'file_name'   => 'female-filled.svg',
 			),
 
-			'twrp-user-im-female-ol'      => array(
+			'twrp-user-im-female-ol'     => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Female', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -356,7 +356,7 @@ class User_Icons {
 				'file_name'   => 'female-outlined.svg',
 			),
 
-			'twrp-user-im-circle-f'       => array(
+			'twrp-user-im-circle-f'      => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -364,7 +364,7 @@ class User_Icons {
 				'file_name'   => 'circle-filled.svg',
 			),
 
-			'twrp-user-im-circle-ol'      => array(
+			'twrp-user-im-circle-ol'     => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -376,7 +376,7 @@ class User_Icons {
 
 			#region -- Capicon Icons
 
-			'twrp-user-ci-f'              => array(
+			'twrp-user-ci-f'             => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -384,7 +384,7 @@ class User_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-ci-alt-f'          => array(
+			'twrp-user-ci-alt-f'         => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'User 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -392,7 +392,7 @@ class User_Icons {
 				'file_name'   => 'user2-filled.svg',
 			),
 
-			'twrp-user-ci-man-f'          => array(
+			'twrp-user-ci-man-f'         => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Man', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -400,7 +400,7 @@ class User_Icons {
 				'file_name'   => 'man-filled.svg',
 			),
 
-			'twrp-user-ci-woman-f'        => array(
+			'twrp-user-ci-woman-f'       => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Woman', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -412,7 +412,7 @@ class User_Icons {
 
 			#region -- Feather Icons
 
-			'twrp-user-f-ol'              => array(
+			'twrp-user-f-ol'             => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -424,7 +424,7 @@ class User_Icons {
 
 			#region -- Jam Icons
 
-			'twrp-user-jam-ol'            => array(
+			'twrp-user-jam-ol'           => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -432,7 +432,7 @@ class User_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-user-jam-circle-ol'     => array(
+			'twrp-user-jam-circle-ol'    => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -440,7 +440,7 @@ class User_Icons {
 				'file_name'   => 'circle-outlined.svg',
 			),
 
-			'twrp-user-jam-square-ol'     => array(
+			'twrp-user-jam-square-ol'    => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Square', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -458,7 +458,7 @@ class User_Icons {
 
 			#region -- Octicons Icons
 
-			'twrp-user-oi-ol'             => array(
+			'twrp-user-oi-ol'            => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -470,7 +470,7 @@ class User_Icons {
 
 			#region -- Typicons Icons
 
-			'twrp-user-ti-f'              => array(
+			'twrp-user-ti-f'             => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -478,7 +478,7 @@ class User_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-user-ti-ol'             => array(
+			'twrp-user-ti-ol'            => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),

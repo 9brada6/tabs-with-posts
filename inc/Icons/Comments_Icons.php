@@ -116,9 +116,9 @@ class Comments_Icons {
 			'twrp-com-go-dt'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-dt" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23V3.2C23,2,22,1,20.8,1z M20.8,17.7l-1.3-1.3H3.2V3.2h17.6V17.7z"/><path style="opacity:0.3;" d="M3.2,3.2v13.2h16.3l1.3,1.3V3.2H3.2z"/></svg>',
-				'file_name'   => 'twotone.svg',
+				'file_name'   => 'duotone.svg',
 			),
 
 			'twrp-com-go-sh'      => array(
@@ -148,9 +148,9 @@ class Comments_Icons {
 			'twrp-com-go-2-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-2-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M20.8,17.7V3.2H3.2v13.2h16.3L20.8,17.7z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/><path d="M3.2,18.6h15.4L23,23l0-19.8C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2C1,17.6,2,18.6,3.2,18.6z M3.2,3.2h17.6v14.5l-1.3-1.3H3.2V3.2z M5.4,12h13.2v2.2H5.4V12z M5.4,8.7h13.2v2.2H5.4V8.7z M5.4,5.4h13.2v2.2H5.4V5.4z"/></svg>',
-				'file_name'   => 'alt-twotone.svg',
+				'file_name'   => 'alt-duotone.svg',
 			),
 
 			'twrp-com-go-2-sh'    => array(
@@ -180,9 +180,9 @@ class Comments_Icons {
 			'twrp-com-go-f-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-f-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M3.2,17.7l1.3-1.3h16.3V3.2H3.2V17.7z M10.9,5.4h2.2v4.4h-2.2V5.4z M10.9,12h2.2v2.2h-2.2V12z"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H4.5l-1.3,1.3V3.2h17.6V16.4z M10.9,12h2.2v2.2h-2.2V12z M10.9,5.4h2.2v4.4h-2.2V5.4z"/></svg>',
-				'file_name'   => 'feedback-twotone.svg',
+				'file_name'   => 'feedback-duotone.svg',
 			),
 
 			'twrp-com-go-f-sh'    => array(
@@ -212,9 +212,9 @@ class Comments_Icons {
 			'twrp-com-go-b-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
-				'type'        => _x( 'TwoTone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-com-go-b-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M3.2,18.6l2.2-2.2h15.4V3.2H3.2V18.6z M13.1,5.4h5.5v8.8l-2.8-1.6l-2.8,1.6V5.4z"/><polygon points="18.6,14.2 18.6,5.4 13.1,5.4 13.1,14.2 15.9,12.6"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H5.4l-2.2,2.2V3.2h17.6V16.4z"/></svg>',
-				'file_name'   => 'bank-twotone.svg',
+				'file_name'   => 'bank-duotone.svg',
 			),
 
 			'twrp-com-go-b-sh'    => array(
@@ -601,12 +601,12 @@ class Comments_Icons {
 				'file_name'   => 'comments-7-semi-filled.svg',
 			),
 
-			'twrp-com-im-c7-sol'  => array(
+			'twrp-com-im-c8-sf'   => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Comments 7', 'backend', 'twrp' ),
-				'type'        => _x( 'Semi Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-im-c7-sol" viewBox="0 0 24 24"><path d="M2.001 9.352c0 1.873.849 2.943 1.683 3.943.031 1 .085 1.668-.333 3.183 1.748-.558 2.038-.778 3.008-1.374 1 .244 1.474.381 2.611.491-.094.708-.081 1.275.055 2.023-.752-.06-1.528-.178-2.33-.374-1.397.857-4.481 1.725-6.649 2.115.811-1.595 1.708-3.785 1.661-5.312-1.09-1.305-1.705-2.984-1.705-4.695-.001-4.826 4.718-8.352 9.999-8.352 5.237 0 9.977 3.484 9.998 8.318-.644-.175-1.322-.277-2.021-.314-.229-3.34-3.713-6.004-7.977-6.004-4.411 0-8 2.85-8 6.352zm20.883 10.169c-.029 1.001.558 2.435 1.088 3.479-1.419-.258-3.438-.824-4.352-1.385-.772.188-1.514.274-2.213.274-3.865 0-6.498-2.643-6.498-5.442 0-3.174 3.11-5.467 6.546-5.467 3.457 0 6.546 2.309 6.546 5.467 0 1.12-.403 2.221-1.117 3.074zm-7.563-3.021c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82zm3 0c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82zm3 0c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82z"/></svg>',
-				'file_name'   => 'comments-7-semi-outlined.svg',
+				'description' => _x( 'Comments 8', 'backend', 'twrp' ),
+				'type'        => _x( 'Semi Filled', 'backend', 'twrp' ),
+				'svg'         => '<svg id="twrp-com-im-c8-sf" viewBox="0 0 24 24"><path d="M2.001 9.352c0 1.873.849 2.943 1.683 3.943.031 1 .085 1.668-.333 3.183 1.748-.558 2.038-.778 3.008-1.374 1 .244 1.474.381 2.611.491-.094.708-.081 1.275.055 2.023-.752-.06-1.528-.178-2.33-.374-1.397.857-4.481 1.725-6.649 2.115.811-1.595 1.708-3.785 1.661-5.312-1.09-1.305-1.705-2.984-1.705-4.695-.001-4.826 4.718-8.352 9.999-8.352 5.237 0 9.977 3.484 9.998 8.318-.644-.175-1.322-.277-2.021-.314-.229-3.34-3.713-6.004-7.977-6.004-4.411 0-8 2.85-8 6.352zm20.883 10.169c-.029 1.001.558 2.435 1.088 3.479-1.419-.258-3.438-.824-4.352-1.385-.772.188-1.514.274-2.213.274-3.865 0-6.498-2.643-6.498-5.442 0-3.174 3.11-5.467 6.546-5.467 3.457 0 6.546 2.309 6.546 5.467 0 1.12-.403 2.221-1.117 3.074zm-7.563-3.021c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82zm3 0c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82zm3 0c0-.453-.368-.82-.82-.82s-.82.367-.82.82.368.82.82.82.82-.367.82-.82z"/></svg>',
+				'file_name'   => 'comments-8-semi-filled.svg',
 			),
 
 			#endregion -- IconMonstr Icons
@@ -657,19 +657,19 @@ class Comments_Icons {
 
 			#region -- Feather Icons
 
-			'twrp-com-ci-sq-f'    => array(
+			'twrp-com-fe-sq-ol'   => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Square', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ci-sq-f" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
+				'svg'         => '<svg id="twrp-com-fe-sq-ol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>',
 				'file_name'   => 'square-outlined.svg',
 			),
 
-			'twrp-com-ci-ci-f'    => array(
+			'twrp-com-fe-ci-ol'   => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ci-ci-f" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>',
+				'svg'         => '<svg id="twrp-com-fe-ci-ol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>',
 				'file_name'   => 'circle-outlined.svg',
 			),
 
@@ -849,27 +849,27 @@ class Comments_Icons {
 
 			#region -- Typicons Icons
 
-			'twrp-com-ti-f'       => array(
+			'twrp-com-ti-ol'      => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ti-f" viewBox="0 0 24 24"><path d="M20,4.5c0.7,0,1.3,0.6,1.3,1.3v8.8c0,0.7-0.6,1.3-1.3,1.3H8.2L8,16v-0.2H4c-0.7,0-1.3-0.6-1.3-1.3V5.8c0-0.7,0.6-1.3,1.3-1.3H20 M20,2H4C1.8,2,0,3.7,0,5.8v8.8c0,2.1,1.8,3.8,4,3.8h1.3V22l4-3.8H20c2.2,0,4-1.7,4-3.8V5.8C24,3.7,22.2,2,20,2z"/></svg>',
+				'svg'         => '<svg id="twrp-com-ti-ol" viewBox="0 0 24 24"><path d="M20,4.5c0.7,0,1.3,0.6,1.3,1.3v8.8c0,0.7-0.6,1.3-1.3,1.3H8.2L8,16v-0.2H4c-0.7,0-1.3-0.6-1.3-1.3V5.8c0-0.7,0.6-1.3,1.3-1.3H20 M20,2H4C1.8,2,0,3.7,0,5.8v8.8c0,2.1,1.8,3.8,4,3.8h1.3V22l4-3.8H20c2.2,0,4-1.7,4-3.8V5.8C24,3.7,22.2,2,20,2z"/></svg>',
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-com-ti-d-f'     => array(
+			'twrp-com-ti-d-ol'    => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ti-d-f" viewBox="0 0 24 24"><path d="M20.1,2H3.8C1.7,2,0,3.7,0,5.8v8.8c0,2.1,1.7,3.8,3.8,3.8H5V22l3.8-3.8h11.3c2.1,0,3.8-1.7,3.8-3.8V5.8C23.9,3.7,22.2,2,20.1,2z M21.4,14.5c0,0.7-0.6,1.3-1.3,1.3H3.8c-0.7,0-1.3-0.6-1.3-1.3V5.8c0-0.7,0.6-1.3,1.3-1.3h16.4c0.7,0,1.3,0.6,1.3,1.3V14.5z M6.3,12.6c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S7.7,12.6,6.3,12.6z M6.3,8.9C5.6,8.9,5,9.4,5,10.1s0.6,1.3,1.3,1.3s1.3-0.6,1.3-1.3S7,8.9,6.3,8.9z M11.9,12.6c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S13.3,12.6,11.9,12.6z M11.9,8.9c-0.7,0-1.3,0.6-1.3,1.3s0.6,1.3,1.3,1.3s1.3-0.6,1.3-1.3S12.6,8.9,11.9,8.9z M17.6,12.6c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S19,12.6,17.6,12.6z M17.6,8.9c-0.7,0-1.3,0.6-1.3,1.3s0.6,1.3,1.3,1.3c0.7,0,1.3-0.6,1.3-1.3S18.3,8.9,17.6,8.9z"/></svg>',
+				'svg'         => '<svg id="twrp-com-ti-d-ol" viewBox="0 0 24 24"><path d="M20.1,2H3.8C1.7,2,0,3.7,0,5.8v8.8c0,2.1,1.7,3.8,3.8,3.8H5V22l3.8-3.8h11.3c2.1,0,3.8-1.7,3.8-3.8V5.8C23.9,3.7,22.2,2,20.1,2z M21.4,14.5c0,0.7-0.6,1.3-1.3,1.3H3.8c-0.7,0-1.3-0.6-1.3-1.3V5.8c0-0.7,0.6-1.3,1.3-1.3h16.4c0.7,0,1.3,0.6,1.3,1.3V14.5z M6.3,12.6c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S7.7,12.6,6.3,12.6z M6.3,8.9C5.6,8.9,5,9.4,5,10.1s0.6,1.3,1.3,1.3s1.3-0.6,1.3-1.3S7,8.9,6.3,8.9z M11.9,12.6c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S13.3,12.6,11.9,12.6z M11.9,8.9c-0.7,0-1.3,0.6-1.3,1.3s0.6,1.3,1.3,1.3s1.3-0.6,1.3-1.3S12.6,8.9,11.9,8.9z M17.6,12.6c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5S19,12.6,17.6,12.6z M17.6,8.9c-0.7,0-1.3,0.6-1.3,1.3s0.6,1.3,1.3,1.3c0.7,0,1.3-0.6,1.3-1.3S18.3,8.9,17.6,8.9z"/></svg>',
 				'file_name'   => 'dots-outlined.svg',
 			),
 
-			'twrp-com-ti-c-f'     => array(
+			'twrp-com-ti-c-ol'    => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-ti-c-f" viewBox="0 0 24 24"><path d="M21 7h-3c0-1.65-1.35-3-3-3h-12c-1.65 0-3 1.35-3 3v7c0 1.65 1.35 3 3 3v3l3-3c0 1.65 1.35 3 3 3h8l3 3v-3h1c1.65 0 3-1.35 3-3v-7c0-1.65-1.35-3-3-3zm-18 8c-.542 0-1-.458-1-1v-7c0-.542.458-1 1-1h12c.542 0 1 .458 1 1v1h-6.5c-1.379 0-2.5 1.121-2.5 2.5v4.5h-4zm19 2c0 .542-.458 1-1 1h-12c-.542 0-1-.458-1-1v-6.5c0-.827.673-1.5 1.5-1.5h11.5c.542 0 1 .458 1 1v7z"/></svg>',
+				'svg'         => '<svg id="twrp-com-ti-c-ol" viewBox="0 0 24 24"><path d="M21 7h-3c0-1.65-1.35-3-3-3h-12c-1.65 0-3 1.35-3 3v7c0 1.65 1.35 3 3 3v3l3-3c0 1.65 1.35 3 3 3h8l3 3v-3h1c1.65 0 3-1.35 3-3v-7c0-1.65-1.35-3-3-3zm-18 8c-.542 0-1-.458-1-1v-7c0-.542.458-1 1-1h12c.542 0 1 .458 1 1v1h-6.5c-1.379 0-2.5 1.121-2.5 2.5v4.5h-4zm19 2c0 .542-.458 1-1 1h-12c-.542 0-1-.458-1-1v-6.5c0-.827.673-1.5 1.5-1.5h11.5c.542 0 1 .458 1 1v7z"/></svg>',
 				'file_name'   => 'comments-outlined.svg',
 			),
 

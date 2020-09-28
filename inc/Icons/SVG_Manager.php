@@ -530,6 +530,87 @@ class SVG_Manager {
 			<?php
 		}
 
+		// Verify filename format
+		$founded_ids = self::test_icons_description_file_id_match();
+		$founded_ids = implode( ', ', $founded_ids );
+		if ( empty( $founded_ids ) ) {
+			?>
+			<script>console.log('All ids are correct.');</script>
+			<?php
+		} else {
+			?>
+			<script>console.log('Ids that do not correspond in id-description-filename: <?= esc_html( $founded_ids ); ?>');</script>
+			<?php
+		}
+
+	}
+
+	/**
+	 * Returns an array with all ids where the id, description, and filename do
+	 * not match in terms of type(filled, outlined, ..etc).
+	 *
+	 * @return array<string>
+	 */
+	protected static function test_icons_description_file_id_match() {
+		$all_icons    = self::get_all_icons();
+		$icon_matches = array(
+			'f'  => array(
+				'type'        => 'Filled',
+				'file_prefix' => 'filled',
+			),
+			'ol' => array(
+				'type'        => 'Outlined',
+				'file_prefix' => 'outlined',
+			),
+			'sh' => array(
+				'type'        => 'Sharp',
+				'file_prefix' => 'sharp',
+			),
+			't'  => array(
+				'type'        => 'Thin',
+				'file_prefix' => 'thin',
+			),
+			'dt' => array(
+				'type'        => 'DuoTone',
+				'file_prefix' => 'duotone',
+			),
+			// todo: only one select
+			'sf' => array(
+				'type'        => 'Semi Filled',
+				'file_prefix' => 'semi-filled',
+			),
+			'hf' => array(
+				'type'        => 'Half Filled',
+				'file_prefix' => 'half-filled',
+			),
+		);
+		$wrong_ids    = array();
+
+		foreach ( $all_icons as $icon_id => $icon ) {
+			$icon_id_pieces = explode( '-', $icon_id );
+			$icon_id_type   = $icon_id_pieces[ count( $icon_id_pieces ) - 1 ];
+
+			if ( $icon_id === 'twrp-user-goo-dt' ) {
+				$todo = 'pause';
+			}
+
+			if ( ! isset( $icon_matches[ $icon_id_type ] ) ) {
+				array_push( $wrong_ids, $icon_id );
+				continue;
+			}
+
+			if ( strstr( $icon['type'], $icon_matches[ $icon_id_type ]['type'] ) === false ) {
+				array_push( $wrong_ids, $icon_id );
+				continue;
+			}
+
+			if ( strstr( $icon['file_name'], $icon_matches[ $icon_id_type ]['file_prefix'] ) === false ) {
+				array_push( $wrong_ids, $icon_id );
+				continue;
+			}
+		}
+
+		return $wrong_ids;
 	}
 
 	/**
@@ -578,7 +659,7 @@ class SVG_Manager {
 	protected static function test_all_icons_filename() {
 		$icons = self::get_all_icons();
 
-		$finish_format = array( 'filled', 'outlined', 'thin', 'twotone', 'sharp' );
+		$finish_format = array( 'filled', 'outlined', 'thin', 'duotone', 'sharp' );
 		$wrong_ids     = array();
 
 		foreach ( $icons as $icon_id => $icon ) {

@@ -117,9 +117,9 @@ class Category_Icons {
 			'twrp-tax-go-dt'     => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M10.8,2.4H2.4v8.4l10.8,10.8l8.4-8.4L10.8,2.4z M5.4,7.2c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8s1.8,0.8,1.8,1.8S6.4,7.2,5.4,7.2z"/><path d="M12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7c0-0.7-0.3-1.3-0.7-1.7L12.5,0.7z M13.2,21.6L2.4,10.8V2.4h8.4v0l10.8,10.8L13.2,21.6z"/><circle cx="5.4" cy="5.4" r="1.8"/></svg>',
-				'file_name'   => 'tag-twotone.svg',
+				'file_name'   => 'tag-duotone.svg',
 			),
 
 			'twrp-tax-go-sh'     => array(
@@ -149,9 +149,9 @@ class Category_Icons {
 			'twrp-tax-go-f-dt'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Folder', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-f-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M11,7.2l-0.7-0.7L8.6,4.8H2.4v14.4h19.2v-12H12H11z"/><path d="M21.6,4.8H12L9.6,2.4H2.4C1.1,2.4,0,3.5,0,4.8l0,14.4c0,1.3,1.1,2.4,2.4,2.4h19.2c1.3,0,2.4-1.1,2.4-2.4v-12C24,5.9,22.9,4.8,21.6,4.8z M21.6,19.2H2.4V4.8h6.2l1.7,1.7L11,7.2h10.6V19.2z"/></svg>',
-				'file_name'   => 'folder-twotone.svg',
+				'file_name'   => 'folder-duotone.svg',
 			),
 
 			'twrp-tax-go-f-sh'   => array(
@@ -181,9 +181,9 @@ class Category_Icons {
 			'twrp-tax-go-h-dt'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-h-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M10.8,2.4H2.4v8.4l10.8,10.8l8.4-8.4L10.8,2.4z M5.4,7.2c-1,0-1.8-0.8-1.8-1.8s0.8-1.8,1.8-1.8s1.8,0.8,1.8,1.8S6.4,7.2,5.4,7.2z M13.2,11.6l0.7-0.7c0.4-0.4,1.1-0.7,1.7-0.7c1.4,0,2.5,1.1,2.5,2.5c0,0.7-0.3,1.3-0.7,1.7l-4.2,4.2L9,14.4c-0.4-0.5-0.7-1.1-0.7-1.7c0-1.4,1.1-2.5,2.5-2.5c0.7,0,1.3,0.3,1.7,0.7L13.2,11.6z"/><path d="M23.3,11.5L12.5,0.7c-0.4-0.4-1-0.7-1.7-0.7H2.4C1.1,0,0,1.1,0,2.4v8.4c0,0.7,0.3,1.3,0.7,1.7l10.8,10.8c0.4,0.4,1,0.7,1.7,0.7c0.7,0,1.3-0.3,1.7-0.7l8.4-8.4c0.4-0.4,0.7-1,0.7-1.7C24,12.5,23.7,11.9,23.3,11.5z M13.2,21.6L2.4,10.8V2.4h8.4v0l10.8,10.8L13.2,21.6z"/><circle cx="5.4" cy="5.4" r="1.8"/><path d="M8.3,12.7c0,0.7,0.3,1.3,0.7,1.7l4.2,4.2l4.2-4.2c0.4-0.4,0.7-1.1,0.7-1.7c0-1.4-1.1-2.5-2.5-2.5c-0.7,0-1.3,0.3-1.7,0.7l-0.7,0.7l-0.7-0.7c-0.4-0.5-1.1-0.7-1.7-0.7C9.4,10.2,8.3,11.3,8.3,12.7z"/></svg>',
-				'file_name'   => 'tag-heart-twotone.svg',
+				'file_name'   => 'tag-heart-duotone.svg',
 			),
 
 			'twrp-tax-go-h-sh'   => array(
@@ -213,9 +213,9 @@ class Category_Icons {
 			'twrp-tax-go-l-dt'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Label', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-l-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M16.4,5.6H2.5v12.9h13.9l4.5-6.4L16.4,5.6z"/><path d="M18.5,4.1C18,3.4,17.3,3,16.4,3L2.5,3C1.1,3,0,4.2,0,5.6v12.9C0,19.8,1.1,21,2.5,21l13.9,0c0.8,0,1.6-0.4,2.1-1.1L24,12C24,12,18.5,4.1,18.5,4.1z M16.4,18.4H2.5V5.6h13.9l4.5,6.4L16.4,18.4z"/></svg>',
-				'file_name'   => 'label-twotone.svg',
+				'file_name'   => 'label-duotone.svg',
 			),
 
 			'twrp-tax-go-l-sh'   => array(
@@ -237,9 +237,9 @@ class Category_Icons {
 			'twrp-tax-go-l2-dt'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Label 2', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-l2-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M15.5,5.6h-10l5,6.4l-5,6.4h10l5-6.4L15.5,5.6z"/><path d="M17.8,4.1C17.3,3.4,16.5,3,15.5,3H0l7.1,9L0,21h15.5c0.9,0,1.8-0.4,2.3-1.1L24,12C24,12,17.8,4.1,17.8,4.1z M15.5,18.4h-10l5-6.4l-5-6.4h10l5,6.4L15.5,18.4z"/></svg>',
-				'file_name'   => 'label-2-twotone.svg',
+				'file_name'   => 'label-2-duotone.svg',
 			),
 
 			'twrp-tax-go-b-f'    => array(
@@ -261,9 +261,9 @@ class Category_Icons {
 			'twrp-tax-go-b-dt'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-b-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M5.6,20l6.4-2.9l6.4,2.9V2.7H5.6V20z"/><path d="M18.4,0H5.6C4.2,0,3,1.2,3,2.7V24l9-4l9,4V2.7C21,1.2,19.8,0,18.4,0z M18.4,20L12,17.1L5.6,20V2.7h12.9V20z"/></svg>',
-				'file_name'   => 'bookmark-twotone.svg',
+				'file_name'   => 'bookmark-duotone.svg',
 			),
 
 			'twrp-tax-go-b-sh'   => array(
@@ -293,9 +293,9 @@ class Category_Icons {
 			'twrp-tax-go-bs-dt'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bookmarks', 'backend', 'twrp' ),
-				'type'        => _x( 'Twotone', 'backend', 'twrp' ),
+				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'svg'         => '<svg id="twrp-tax-go-bs-dt" viewBox="0 0 24 24"><path d="M19.8,0H8.7C7.4,0,6.4,1,6.4,2.2h11.1c1.2,0,2.2,1,2.2,2.2v14.2l2.2,1.1V2.2C22,1,21,0,19.8,0z M15.3,4.4H4.2C3,4.4,2,5.3,2,6.5V24l7.8-3.3l7.8,3.3V6.5C17.6,5.3,16.6,4.4,15.3,4.4z M15.3,20.7l-4.7-2l-0.9-0.4l-0.9,0.4l-4.7,2V6.5h11.1V20.7z"/><path style="opacity:0.3;" d="M4.2,20.7l5.6-2.3l5.6,2.3V6.5H4.2V20.7z"/></svg>',
-				'file_name'   => 'bookmarks-twotone.svg',
+				'file_name'   => 'bookmarks-duotone.svg',
 			),
 
 			'twrp-tax-go-bs-sh'  => array(
