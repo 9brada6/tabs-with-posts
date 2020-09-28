@@ -65,7 +65,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Fix all octicons to be visible in adobe.
 
 - Change all definitions from svg to symbol?
-- Test that each icon must have only one &lt;svg and only one svg&gt;
+- Find a way to remove the duplication of declaring the svg of an icon.
 
 - Add a way to invert category icons?
 - Add License to FontAwesome

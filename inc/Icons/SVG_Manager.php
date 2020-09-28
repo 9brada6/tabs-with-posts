@@ -547,6 +547,36 @@ class SVG_Manager {
 			<?php
 		}
 
+		// Verify that each icon contains only one svg html element.
+		$founded_ids = self::test_icon_only_one_svg_html_elem();
+		$founded_ids = implode( ', ', $founded_ids );
+		if ( empty( $founded_ids ) ) {
+			?>
+			<script>console.log('All icons are correct.');</script>
+			<?php
+		} else {
+			?>
+			<script>console.log('Ids that have not the desired "svg" html element: <?= esc_html( $founded_ids ); ?>');</script>
+			<?php
+		}
+	}
+
+	/**
+	 * Test to check that each icon has only one svg element.
+	 *
+	 * @return array<string>
+	 */
+	protected static function test_icon_only_one_svg_html_elem() {
+		$all_icons = self::get_all_icons();
+		$wrong_ids = array();
+
+		foreach ( $all_icons as $icon_id => $icon ) {
+			if ( substr_count( $icon['svg'], 'svg' ) !== 2 ) {
+				array_push( $wrong_ids, $icon_id );
+			}
+		}
+
+		return $wrong_ids;
 	}
 
 	/**
@@ -588,10 +618,6 @@ class SVG_Manager {
 		foreach ( $all_icons as $icon_id => $icon ) {
 			$icon_id_pieces = explode( '-', $icon_id );
 			$icon_id_type   = $icon_id_pieces[ count( $icon_id_pieces ) - 1 ];
-
-			if ( $icon_id === 'twrp-user-goo-dt' ) {
-				$todo = 'pause';
-			}
 
 			if ( ! isset( $icon_matches[ $icon_id_type ] ) ) {
 				array_push( $wrong_ids, $icon_id );
