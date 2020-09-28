@@ -53,14 +53,10 @@ class Date_Icon_Setting implements Component_Setting {
 	/**
 	 * Create the CSS for a given value.
 	 *
-	 * @param string $svg_name
+	 * @param string $icon_id
 	 * @return string The CSS.
 	 */
-	public static function get_css( $svg_name ) {
-		if ( $svg_name ) {
-			return '}</style>' . SVG_Manager::get_svg_def( $svg_name ) . '<style>.twrp-no{';
-		}
-
+	public static function get_css( $icon_id ) {
 		return '';
 	}
 
@@ -70,13 +66,11 @@ class Date_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$options = SVG_Manager::get_date_icons();
+		$icons   = SVG_Manager::get_date_icons();
+		$options = array();
 
-		foreach ( $options as $id => $option ) {
-			// todo: manage if key does not exist.
-			$description = $option['brand'] . '-' . $option['description'] . '-' . $option['type'];
-
-			$options[ $id ] = $description;
+		foreach ( $icons as $id => $icon ) {
+			$options[ $id ] = $icon->get_option_icon_description();
 		}
 
 		return array(

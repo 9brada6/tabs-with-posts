@@ -2,9 +2,11 @@
 
 namespace TWRP\Admin\Tabs;
 
+use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon;
 
 class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
@@ -417,13 +419,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_author_icon_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_user_icons() );
-
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
-			}
-		}
+		$options = self::create_select_options_by_brands( SVG_Manager::get_user_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default author icon:', 'backend', 'twrp' ),
@@ -438,13 +434,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_date_icon_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_date_icons() );
-
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
-			}
-		}
+		$options = self::create_select_options_by_brands( SVG_Manager::get_date_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default date icon:', 'backend', 'twrp' ),
@@ -459,13 +449,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_category_icon_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_category_icons() );
-
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
-			}
-		}
+		$options = self::create_select_options_by_brands( SVG_Manager::get_category_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default category icon:', 'backend', 'twrp' ),
@@ -480,13 +464,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_comments_icon_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_comment_icons() );
-
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
-			}
-		}
+		$options = self::create_select_options_by_brands( SVG_Manager::get_comment_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default comments icon:', 'backend', 'twrp' ),
@@ -501,13 +479,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_comments_disabled_icon_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_comment_disabled_icons() );
-
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
-			}
-		}
+		$options = self::create_select_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
@@ -522,13 +494,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_views_icon_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_views_icons() );
-
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
-			}
-		}
+		$options = self::create_select_options_by_brands( SVG_Manager::get_views_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default views icon:', 'backend', 'twrp' ),
@@ -543,11 +509,17 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_rating_pack_setting_args() {
-		$options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_rating_packs() );
+		// $options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_rating_packs() );
+		$options = array(); // todo.
 
 		foreach ( $options as $key => $brand_icons ) {
 			foreach ( $brand_icons as $icon_id => $icon ) {
-				$options[ $key ][ $icon_id ] = SVG_Manager::get_icon_description( $icon );
+				try {
+					$icon_class = new Icon( $icon_id, $icon );
+				} catch ( RuntimeException $e ) {
+					continue;
+				}
+				$options[ $key ][ $icon_id ] = $icon_class->get_option_icon_description();
 			}
 		}
 
@@ -559,5 +531,24 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	}
 
 	#endregion -- Settings Arguments
+
+	/**
+	 * Create an array with the brand as a key, and the value containing an
+	 * array of icons of the same brand.
+	 *
+	 * @param array<Icon> $icons
+	 * @return array
+	 */
+	protected static function create_select_options_by_brands( $icons ) {
+		$options = Icon::nest_icons_by_brands( $icons );
+
+		foreach ( $options as $brand => $brand_icons ) {
+			foreach ( $brand_icons as $icon_id => $icon ) {
+				$options[ $brand ][ $icon_id ] = $icon->get_option_icon_description();
+			}
+		}
+
+		return $options;
+	}
 
 }

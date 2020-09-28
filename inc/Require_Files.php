@@ -54,14 +54,17 @@ class Require_Files {
 		'Database/General_Options',
 
 		// Icons
+		'Icons/Icon',
 		'Icons/SVG_Manager',
-		'Icons/User_Icons',
-		'Icons/Date_Icons',
-		'Icons/Category_Icons',
-		'Icons/Comments_Icons',
-		'Icons/Comments_Disabled_Icons',
-		'Icons/Views_Icons',
-		'Icons/Rating_Icons',
+		'Icons/Create_And_Enqueue_Icons',
+
+		'Icons/Definitions/User_Icons',
+		'Icons/Definitions/Date_Icons',
+		'Icons/Definitions/Category_Icons',
+		'Icons/Definitions/Comments_Icons',
+		'Icons/Definitions/Comments_Disabled_Icons',
+		'Icons/Definitions/Views_Icons',
+		'Icons/Definitions/Rating_Icons',
 
 		// Plugins
 		'Plugins/Plugin_Info',

@@ -126,7 +126,7 @@ return array(
 		// This plugin checks for uses of getters on $this that can be avoided
 		// inside of a class. (E.g. calling $this->getFoo() when the property
 		// $this->foo is accessible, and there are no known overrides of the getter)
-		'AvoidableGetterPlugin'
+		// 'AvoidableGetterPlugin'
 	),
 
 	'processes' => 1,

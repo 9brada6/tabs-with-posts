@@ -13,7 +13,7 @@ class Category_Icons {
 	/**
 	 * Get all registered icons that represents the category.
 	 *
-	 * Keywords to search for:  tag, bookmark, hashtag, taxonomy, category.
+	 * Keywords to search for: tag, bookmark, hashtag, taxonomy, category, folder.
 	 *
 	 * @return array<string,array>
 	 */

@@ -66,6 +66,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Change all definitions from svg to symbol?
 - Find a way to remove the duplication of declaring the svg of an icon.
+- Make icons works also inline and via a file.
+
+- Make all icons from svg manager return icon object.
 
 - Add a way to invert category icons?
 - Add License to FontAwesome

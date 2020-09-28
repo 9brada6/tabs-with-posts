@@ -57,10 +57,6 @@ class Category_Icon_Setting implements Component_Setting {
 	 * @return string The CSS.
 	 */
 	public static function get_css( $svg_name ) {
-		if ( $svg_name ) {
-			return '}</style>' . SVG_Manager::get_svg_def( $svg_name ) . '<style>.twrp-no{';
-		}
-
 		return '';
 	}
 

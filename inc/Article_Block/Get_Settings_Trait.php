@@ -7,9 +7,11 @@
 
 namespace TWRP\Article_Block;
 
+use RuntimeException;
 use WP_Post;
 use TWRP\Database\General_Options;
 use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon;
 
 /**
  * In addition to trait Get_Widget_Settings_Trait, which will get only the settings
@@ -94,7 +96,12 @@ trait Get_Settings_Trait {
 	 * @return string The HTML is safe for output.
 	 */
 	public function get_author_icon_html() {
-		return SVG_Manager::get_html_svg( $this->get_selected_author_icon(), 'twrp-author-icon' );
+		try {
+			$icon = new Icon( $this->get_selected_author_icon() );
+			return $icon->get_html( 'twrp-i--author' );
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
 	}
 
 
@@ -136,7 +143,12 @@ trait Get_Settings_Trait {
 	 * @return string The HTML is safe for output.
 	 */
 	public function get_date_icon_html() {
-		return SVG_Manager::get_html_svg( $this->get_selected_date_icon(), 'twrp-date-icon' );
+		try {
+			$icon = new Icon( $this->get_selected_date_icon() );
+			return $icon->get_html( 'twrp-i--date' );
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
 	}
 
 
@@ -178,7 +190,12 @@ trait Get_Settings_Trait {
 	 * @return string The HTML is safe for output.
 	 */
 	public function get_views_icon_html() {
-		return SVG_Manager::get_html_svg( $this->get_selected_views_icon(), 'twrp-i--views' );
+		try {
+			$icon = new Icon( $this->get_selected_date_icon() );
+			return $icon->get_html( 'twrp-i--views' );
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
 	}
 
 
@@ -273,7 +290,12 @@ trait Get_Settings_Trait {
 			$comments_icon = $this->get_selected_comments_icon();
 		}
 
-		return SVG_Manager::get_html_svg( $comments_icon, 'twrp-i--comments' );
+		try {
+			$icon = new Icon( $comments_icon );
+			return $icon->get_html( 'twrp-i--comments' );
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
 	}
 
 	#endregion -- Icons

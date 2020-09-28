@@ -57,10 +57,6 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return string The CSS.
 	 */
 	public static function get_css( $svg_name ) {
-		if ( $svg_name ) {
-			return '}</style>' . SVG_Manager::get_svg_def( $svg_name ) . '<style>.twrp-no{';
-		}
-
 		return '';
 	}
 
@@ -70,10 +66,11 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$options = SVG_Manager::get_user_icons();
+		$icons   = SVG_Manager::get_user_icons();
+		$options = array();
 
-		foreach ( $options as $id => $option ) {
-			$options[ $id ] = $option['description'];
+		foreach ( $icons as $id => $icon ) {
+			$options[ $id ] = $icon->get_option_icon_description();
 		}
 
 		return array(
