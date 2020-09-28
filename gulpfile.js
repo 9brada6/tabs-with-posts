@@ -14,6 +14,7 @@ const header = require( 'gulp-header' );
 const footer = require( 'gulp-footer' );
 const fs = require( 'fs' );
 const parser = require( 'fast-xml-parser' );
+const replace = require( 'gulp-replace' );
 
 /** Change this variable to configure the script for production or development. */
 const production = false;
@@ -159,14 +160,16 @@ function createSvgFile() {
 	const beginDate = new Date();
 
 	const svgHeader =
-		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' + '\n' +
-		'<!-- This file is generated dynamically. Do NOT modify it. -->' + '\n' +
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
-	const svgFooter = '</defs></svg>';
+		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>\n' +
+		'<!-- This file is generated dynamically. Do NOT modify it. -->\n' +
+		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">\n\n';
+	const svgFooter = '\n</svg>';
 
 	fancyLog( 'SVG: \x1b[34m' + iconVars.name + '\x1b[0m ...' );
 	gulp.src( iconVars.src )
 		.pipe( concat( iconVars.fileName ) )
+		.pipe( replace( '<svg', '<symbol' ) )
+		.pipe( replace( 'svg>', 'symbol>' ) )
 		.pipe( header( svgHeader ) )
 		.pipe( footer( svgFooter ) )
 		.pipe( gulp.dest( iconVars.dest ) )

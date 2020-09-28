@@ -61,8 +61,11 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Check that all icons are aligned in adobe in middle.
 
 - Make all icons align perfectly, under all conditions.
-- Change all definitions from svg to symbol?
+
 - Fix all octicons to be visible in adobe.
+
+- Change all definitions from svg to symbol?
+- Test that each icon must have only one &lt;svg and only one svg&gt;
 
 - Add a way to invert category icons?
 - Add License to FontAwesome

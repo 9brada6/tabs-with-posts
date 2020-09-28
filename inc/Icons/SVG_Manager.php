@@ -302,16 +302,20 @@ class SVG_Manager {
 	 * @return string
 	 */
 	protected static function get_defs_file_all_needed_icons() {
-		$html =
+		$html_header =
 		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . "\n" .
 		'<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
+		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">';
+		$html_footer = '</svg>';
 
+		$html = '';
 		foreach ( self::get_all_used_icons() as $icon_id ) {
-			$html .= self::get_svg_def( $icon_id );
+			$html = self::get_svg_def( $icon_id );
 		}
+		$html = str_replace( '<svg', '<symbol', $html );
+		$html = str_replace( 'svg>', 'symbol>', $html );
 
-		$html .= '</defs></svg>';
+		$html = $html_header . $html . $html_footer;
 
 		return $html;
 	}
