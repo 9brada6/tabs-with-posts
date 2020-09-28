@@ -97,131 +97,131 @@ class Comments_Icons {
 
 			#region -- Google Icons
 
-			'twrp-com-go-f'       => array(
+			'twrp-com-goo-f'       => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-f" viewBox="0 0 24 24"><path d="M23,3.2C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23L23,3.2z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-f" viewBox="0 0 24 24"><path d="M23,3.2C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23L23,3.2z"/></svg>',
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-com-go-ol'      => array(
+			'twrp-com-goo-ol'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-ol" viewBox="0 0 24 24"><path d="M20.8,17.7l-1.3-1.3H3.2V3.2h17.6V17.7z M20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23V3.2C23,2,22,1,20.8,1z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-ol" viewBox="0 0 24 24"><path d="M20.8,17.7l-1.3-1.3H3.2V3.2h17.6V17.7z M20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23V3.2C23,2,22,1,20.8,1z"/></svg>',
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-com-go-dt'      => array(
+			'twrp-com-goo-dt'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-dt" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23V3.2C23,2,22,1,20.8,1z M20.8,17.7l-1.3-1.3H3.2V3.2h17.6V17.7z"/><path style="opacity:0.3;" d="M3.2,3.2v13.2h16.3l1.3,1.3V3.2H3.2z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-dt" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23V3.2C23,2,22,1,20.8,1z M20.8,17.7l-1.3-1.3H3.2V3.2h17.6V17.7z"/><path style="opacity:0.3;" d="M3.2,3.2v13.2h16.3l1.3,1.3V3.2H3.2z"/></svg>',
 				'file_name'   => 'duotone.svg',
 			),
 
-			'twrp-com-go-sh'      => array(
+			'twrp-com-goo-sh'      => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-sh" viewBox="0 0 24 24"><path d="M23,1H1v17.6h17.6L23,23V1z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-sh" viewBox="0 0 24 24"><path d="M23,1H1v17.6h17.6L23,23V1z"/></svg>',
 				'file_name'   => 'sharp.svg',
 			),
 
-			'twrp-com-go-2-f'     => array(
+			'twrp-com-goo-2-f'     => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-2-f" viewBox="0 0 24 24"><path d="M23,3.2C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23L23,3.2z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-2-f" viewBox="0 0 24 24"><path d="M23,3.2C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23L23,3.2z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/></svg>',
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-com-go-2-ol'    => array(
+			'twrp-com-goo-2-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-2-ol" viewBox="0 0 24 24"><path d="M23,3.2C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23L23,3.2z M20.8,3.2v14.5l-1.3-1.3H3.2V3.2H20.8z M5.4,12h13.2v2.2H5.4V12z M5.4,8.7h13.2v2.2H5.4V8.7z M5.4,5.4h13.2v2.2H5.4V5.4z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-2-ol" viewBox="0 0 24 24"><path d="M23,3.2C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2c0,1.2,1,2.2,2.2,2.2h15.4L23,23L23,3.2z M20.8,3.2v14.5l-1.3-1.3H3.2V3.2H20.8z M5.4,12h13.2v2.2H5.4V12z M5.4,8.7h13.2v2.2H5.4V8.7z M5.4,5.4h13.2v2.2H5.4V5.4z"/></svg>',
 				'file_name'   => 'alt-outlined.svg',
 			),
 
-			'twrp-com-go-2-dt'    => array(
+			'twrp-com-goo-2-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-2-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M20.8,17.7V3.2H3.2v13.2h16.3L20.8,17.7z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/><path d="M3.2,18.6h15.4L23,23l0-19.8C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2C1,17.6,2,18.6,3.2,18.6z M3.2,3.2h17.6v14.5l-1.3-1.3H3.2V3.2z M5.4,12h13.2v2.2H5.4V12z M5.4,8.7h13.2v2.2H5.4V8.7z M5.4,5.4h13.2v2.2H5.4V5.4z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-2-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M20.8,17.7V3.2H3.2v13.2h16.3L20.8,17.7z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/><path d="M3.2,18.6h15.4L23,23l0-19.8C23,2,22,1,20.8,1H3.2C2,1,1,2,1,3.2v13.2C1,17.6,2,18.6,3.2,18.6z M3.2,3.2h17.6v14.5l-1.3-1.3H3.2V3.2z M5.4,12h13.2v2.2H5.4V12z M5.4,8.7h13.2v2.2H5.4V8.7z M5.4,5.4h13.2v2.2H5.4V5.4z"/></svg>',
 				'file_name'   => 'alt-duotone.svg',
 			),
 
-			'twrp-com-go-2-sh'    => array(
+			'twrp-com-goo-2-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-2-sh" viewBox="0 0 24 24"><path d="M23,1H1v17.6h17.6L23,23L23,1z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-2-sh" viewBox="0 0 24 24"><path d="M23,1H1v17.6h17.6L23,23L23,1z M18.6,14.2H5.4V12h13.2V14.2z M18.6,10.9H5.4V8.7h13.2V10.9z M18.6,7.6H5.4V5.4h13.2V7.6z"/></svg>',
 				'file_name'   => 'alt-sharp.svg',
 			),
 
-			'twrp-com-go-f-f'     => array(
+			'twrp-com-goo-f-f'     => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-f-f" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M13.1,14.2h-2.2V12h2.2V14.2z M13.1,9.8h-2.2V5.4h2.2V9.8z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-f-f" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M13.1,14.2h-2.2V12h2.2V14.2z M13.1,9.8h-2.2V5.4h2.2V9.8z"/></svg>',
 				'file_name'   => 'feedback-filled.svg',
 			),
 
-			'twrp-com-go-f-ol'    => array(
+			'twrp-com-goo-f-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-f-ol" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H4.5L3.8,17l-0.6,0.6V3.2h17.6V16.4z M10.9,12h2.2v2.2h-2.2V12z M10.9,5.4h2.2v4.4h-2.2V5.4z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-f-ol" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H4.5L3.8,17l-0.6,0.6V3.2h17.6V16.4z M10.9,12h2.2v2.2h-2.2V12z M10.9,5.4h2.2v4.4h-2.2V5.4z"/></svg>',
 				'file_name'   => 'feedback-outlined.svg',
 			),
 
-			'twrp-com-go-f-dt'    => array(
+			'twrp-com-goo-f-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-f-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M3.2,17.7l1.3-1.3h16.3V3.2H3.2V17.7z M10.9,5.4h2.2v4.4h-2.2V5.4z M10.9,12h2.2v2.2h-2.2V12z"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H4.5l-1.3,1.3V3.2h17.6V16.4z M10.9,12h2.2v2.2h-2.2V12z M10.9,5.4h2.2v4.4h-2.2V5.4z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-f-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M3.2,17.7l1.3-1.3h16.3V3.2H3.2V17.7z M10.9,5.4h2.2v4.4h-2.2V5.4z M10.9,12h2.2v2.2h-2.2V12z"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2L1,23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H4.5l-1.3,1.3V3.2h17.6V16.4z M10.9,12h2.2v2.2h-2.2V12z M10.9,5.4h2.2v4.4h-2.2V5.4z"/></svg>',
 				'file_name'   => 'feedback-duotone.svg',
 			),
 
-			'twrp-com-go-f-sh'    => array(
+			'twrp-com-goo-f-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-f-sh" viewBox="0 0 24 24"><path d="M23,1H1l0,22l4.4-4.4H23V1z M13.1,14.2h-2.2V12h2.2V14.2z M13.1,9.8h-2.2V5.4h2.2V9.8z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-f-sh" viewBox="0 0 24 24"><path d="M23,1H1l0,22l4.4-4.4H23V1z M13.1,14.2h-2.2V12h2.2V14.2z M13.1,9.8h-2.2V5.4h2.2V9.8z"/></svg>',
 				'file_name'   => 'feedback-sharp.svg',
 			),
 
-			'twrp-com-go-b-f'     => array(
+			'twrp-com-goo-b-f'     => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-b-f" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M19.7,13.1L17,11.4l-2.8,1.7V4.3h5.5V13.1z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-b-f" viewBox="0 0 24 24"><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M19.7,13.1L17,11.4l-2.8,1.7V4.3h5.5V13.1z"/></svg>',
 				'file_name'   => 'bank-filled.svg',
 			),
 
-			'twrp-com-go-b-ol'    => array(
+			'twrp-com-goo-b-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-b-ol" viewBox="0 0 24 24"><polygon points="18.6,14.2 18.6,5.4 13.1,5.4 13.1,14.2 15.9,12.6"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H5.4l-2.2,2.2V3.2h17.6V16.4z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-b-ol" viewBox="0 0 24 24"><polygon points="18.6,14.2 18.6,5.4 13.1,5.4 13.1,14.2 15.9,12.6"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H5.4l-2.2,2.2V3.2h17.6V16.4z"/></svg>',
 				'file_name'   => 'bank-outlined.svg',
 			),
 
-			'twrp-com-go-b-dt'    => array(
+			'twrp-com-goo-b-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-b-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M3.2,18.6l2.2-2.2h15.4V3.2H3.2V18.6z M13.1,5.4h5.5v8.8l-2.8-1.6l-2.8,1.6V5.4z"/><polygon points="18.6,14.2 18.6,5.4 13.1,5.4 13.1,14.2 15.9,12.6"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H5.4l-2.2,2.2V3.2h17.6V16.4z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-b-dt" viewBox="0 0 24 24"><path style="opacity:0.3;" d="M3.2,18.6l2.2-2.2h15.4V3.2H3.2V18.6z M13.1,5.4h5.5v8.8l-2.8-1.6l-2.8,1.6V5.4z"/><polygon points="18.6,14.2 18.6,5.4 13.1,5.4 13.1,14.2 15.9,12.6"/><path d="M20.8,1H3.2C2,1,1,2,1,3.2V23l4.4-4.4h15.4c1.2,0,2.2-1,2.2-2.2V3.2C23,2,22,1,20.8,1z M20.8,16.4H5.4l-2.2,2.2V3.2h17.6V16.4z"/></svg>',
 				'file_name'   => 'bank-duotone.svg',
 			),
 
-			'twrp-com-go-b-sh'    => array(
+			'twrp-com-goo-b-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-com-go-b-sh" viewBox="0 0 24 24"><path d="M1,1v22l4.4-4.4H23V1H1z M19.7,13.1L17,11.4l-2.8,1.7V4.3h5.5V13.1z"/></svg>',
+				'svg'         => '<svg id="twrp-com-goo-b-sh" viewBox="0 0 24 24"><path d="M1,1v22l4.4-4.4H23V1H1z M19.7,13.1L17,11.4l-2.8,1.7V4.3h5.5V13.1z"/></svg>',
 				'file_name'   => 'bank-sharp.svg',
 			),
 

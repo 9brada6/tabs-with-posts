@@ -23,7 +23,7 @@ class Date_Icons {
 
 			#region -- FontAwesome Icons
 
-			'twrp-cal-fa-f'         => array(
+			'twrp-cal-fa-f'      => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -31,7 +31,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-fa-ol'        => array(
+			'twrp-cal-fa-ol'     => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -39,7 +39,7 @@ class Date_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-fa-2-f'       => array(
+			'twrp-cal-fa-2-f'    => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -47,7 +47,7 @@ class Date_Icons {
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-cal-fa-2-ol'      => array(
+			'twrp-cal-fa-2-ol'   => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -55,7 +55,7 @@ class Date_Icons {
 				'file_name'   => 'alt-outlined.svg',
 			),
 
-			'twrp-cal-fa-c-f'       => array(
+			'twrp-cal-fa-c-f'    => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -63,7 +63,7 @@ class Date_Icons {
 				'file_name'   => 'clock-filled.svg',
 			),
 
-			'twrp-cal-fa-c-ol'      => array(
+			'twrp-cal-fa-c-ol'   => array(
 				'brand'       => 'FontAwesome',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -75,7 +75,7 @@ class Date_Icons {
 
 			#region -- Google Icons
 
-			'twrp-cal-goo-f'        => array(
+			'twrp-cal-goo-f'     => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -83,7 +83,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-goo-ol'       => array(
+			'twrp-cal-goo-ol'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -91,7 +91,7 @@ class Date_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-goo-dt'       => array(
+			'twrp-cal-goo-dt'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
@@ -99,7 +99,7 @@ class Date_Icons {
 				'file_name'   => 'duotone.svg',
 			),
 
-			'twrp-cal-goo-sh'       => array(
+			'twrp-cal-goo-sh'    => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -107,71 +107,71 @@ class Date_Icons {
 				'file_name'   => 'sharp.svg',
 			),
 
-			'twrp-cal-range-goo-f'  => array(
+			'twrp-cal-goo-r-f'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-range-goo-f" viewBox="0 0 24 24"><path d="M8,10H6v2h2V10z M13,10h-2v2h2V10z M18,10h-2v2h2V10z M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V8h18V22z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-r-f" viewBox="0 0 24 24"><path d="M8,10H6v2h2V10z M13,10h-2v2h2V10z M18,10h-2v2h2V10z M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V8h18V22z"/></svg>',
 				'file_name'   => 'range-filled.svg',
 			),
 
-			'twrp-cal-range-goo-ol' => array(
+			'twrp-cal-goo-r-ol'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-range-goo-ol" viewBox="0 0 24 24"><path d="M6,11h2v2H6V11z M23,4v18c0,1.3-0.7,2-2,2H3c-1.4,0-2-0.7-2-2V4c0-1.3,0.6-2,2-2h2V0h2v2h10V0h2v2h2C22.3,2,23,2.7,23,4z M3,7h18V4H3V7z M21,22V9H3v13H21z M16,13h2v-2h-2V13z M11,13h2v-2h-2V13z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-r-ol" viewBox="0 0 24 24"><path d="M6,11h2v2H6V11z M23,4v18c0,1.3-0.7,2-2,2H3c-1.4,0-2-0.7-2-2V4c0-1.3,0.6-2,2-2h2V0h2v2h10V0h2v2h2C22.3,2,23,2.7,23,4z M3,7h18V4H3V7z M21,22V9H3v13H21z M16,13h2v-2h-2V13z M11,13h2v-2h-2V13z"/></svg>',
 				'file_name'   => 'range-outlined.svg',
 			),
 
-			'twrp-cal-range-goo-dt' => array(
+			'twrp-cal-goo-r-dt'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-range-goo-dt" viewBox="0 0 24 24"><path style="opacity:0.3" d="M3,7h18V4H3V7z"/><path d="M6,11h2v2H6V11z M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V9h18V22z M21,7H3V4h18V7z M16,11h2v2h-2V11z M11,11h2v2h-2V11z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-r-dt" viewBox="0 0 24 24"><path style="opacity:0.3" d="M3,7h18V4H3V7z"/><path d="M6,11h2v2H6V11z M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V9h18V22z M21,7H3V4h18V7z M16,11h2v2h-2V11z M11,11h2v2h-2V11z"/></svg>',
 				'file_name'   => 'range-duotone.svg',
 			),
 
-			'twrp-cal-range-goo-sh' => array(
+			'twrp-cal-goo-r-sh'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Range', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-range-goo-sh" viewBox="0 0 24 24"><path d="M8,10H6v2h2V10z M13,10h-2v2h2V10z M18,10h-2v2h2V10z M23,2h-4V0h-2v2H7V0H5v2H1v22h22V2z M21,22H3V8h18V22z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-r-sh" viewBox="0 0 24 24"><path d="M8,10H6v2h2V10z M13,10h-2v2h2V10z M18,10h-2v2h2V10z M23,2h-4V0h-2v2H7V0H5v2H1v22h22V2z M21,22H3V8h18V22z"/></svg>',
 				'file_name'   => 'range-sharp.svg',
 			),
 
-			'twrp-cal-day-goo-f'    => array(
+			'twrp-cal-goo-d-f'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-day-goo-f" viewBox="0 0 24 24"><path d="M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V8h18V22z M5,10h6v6H5V10z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-d-f" viewBox="0 0 24 24"><path d="M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V8h18V22z M5,10h6v6H5V10z"/></svg>',
 				'file_name'   => 'today-filled.svg',
 			),
 
-			'twrp-cal-day-goo-ol'   => array(
+			'twrp-cal-goo-d-ol'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-day-goo-ol" viewBox="0 0 24 24"><path d="M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,7H3V4h18V7z M21,22H3V9h18V22z M5,11h6v6H5V11z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-d-ol" viewBox="0 0 24 24"><path d="M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.3,0,2-0.7,2-2V4C23,2.7,22.3,2,21,2z M21,7H3V4h18V7z M21,22H3V9h18V22z M5,11h6v6H5V11z"/></svg>',
 				'file_name'   => 'today-outlined.svg',
 			),
 
-			'twrp-cal-day-goo-dt'   => array(
+			'twrp-cal-goo-d-dt'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-day-goo-dt" viewBox="0 0 24 24"><path d="M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.1,0,2-0.9,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V9h18V22 M21,7H3V4h18V7z M11,11H5v6h6V11z"/><path style="opacity:0.3" d="M3,4h18v3H3V4z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-d-dt" viewBox="0 0 24 24"><path d="M21,2h-2V0h-2v2H7V0H5v2H3C1.6,2,1,2.7,1,4v18c0,1.3,0.6,2,2,2h18c1.1,0,2-0.9,2-2V4C23,2.7,22.3,2,21,2z M21,22H3V9h18V22 M21,7H3V4h18V7z M11,11H5v6h6V11z"/><path style="opacity:0.3" d="M3,4h18v3H3V4z"/></svg>',
 				'file_name'   => 'today-duotone.svg',
 			),
 
-			'twrp-cal-day-goo-sh'   => array(
+			'twrp-cal-goo-d-sh'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Calendar Today', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-day-goo-sh" viewBox="0 0 24 24"><path d="M23,2h-4V0h-2v2H7V0H5v2H1v22h22V2z M21,22H3V8h18V22z M5,10h6v6H5V10z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-goo-d-sh" viewBox="0 0 24 24"><path d="M23,2h-4V0h-2v2H7V0H5v2H1v22h22V2z M21,22H3V8h18V22z M5,10h6v6H5V10z"/></svg>',
 				'file_name'   => 'today-sharp.svg',
 			),
 
-			'twrp-cal-goo-c-f'      => array(
+			'twrp-cal-goo-c-f'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -179,7 +179,7 @@ class Date_Icons {
 				'file_name'   => 'clock-filled.svg',
 			),
 
-			'twrp-cal-goo-c-ol'     => array(
+			'twrp-cal-goo-c-ol'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -187,7 +187,7 @@ class Date_Icons {
 				'file_name'   => 'clock-outlined.svg',
 			),
 
-			'twrp-cal-goo-c-dt'     => array(
+			'twrp-cal-goo-c-dt'  => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
@@ -199,7 +199,7 @@ class Date_Icons {
 
 			#region -- Dashicons
 
-			'twrp-cal-di-f'         => array(
+			'twrp-cal-di-f'      => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -207,7 +207,7 @@ class Date_Icons {
 				'file_name'   => 'calendar-filled.svg',
 			),
 
-			'twrp-cal-di-2-f'       => array(
+			'twrp-cal-di-2-f'    => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -215,7 +215,7 @@ class Date_Icons {
 				'file_name'   => 'calendar-2-filled.svg',
 			),
 
-			'twrp-cal-di-c-ol'      => array(
+			'twrp-cal-di-c-ol'   => array(
 				'brand'       => 'Dashicons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -227,7 +227,7 @@ class Date_Icons {
 
 			#region -- Foundation Icons
 
-			'twrp-cal-fi-f'         => array(
+			'twrp-cal-fi-f'      => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -235,7 +235,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-fi-c-ol'      => array(
+			'twrp-cal-fi-c-ol'   => array(
 				'brand'       => 'Foundation',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -247,7 +247,7 @@ class Date_Icons {
 
 			#region -- Ionicons Icons
 
-			'twrp-cal-ii-f'         => array(
+			'twrp-cal-ii-f'      => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -255,7 +255,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-ii-ol'        => array(
+			'twrp-cal-ii-ol'     => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -263,7 +263,7 @@ class Date_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-ii-sh'        => array(
+			'twrp-cal-ii-sh'     => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
@@ -271,7 +271,7 @@ class Date_Icons {
 				'file_name'   => 'sharp.svg',
 			),
 
-			'twrp-cal-ii-ios-f'     => array(
+			'twrp-cal-ii-ios-f'  => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -279,7 +279,7 @@ class Date_Icons {
 				'file_name'   => 'ios-filled.svg',
 			),
 
-			'twrp-cal-ii-ios-ol'    => array(
+			'twrp-cal-ii-ios-ol' => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -287,7 +287,7 @@ class Date_Icons {
 				'file_name'   => 'ios-outlined.svg',
 			),
 
-			'twrp-cal-ii-c-f'       => array(
+			'twrp-cal-ii-c-f'    => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -295,7 +295,7 @@ class Date_Icons {
 				'file_name'   => 'clock-filled.svg',
 			),
 
-			'twrp-cal-ii-c-ol'      => array(
+			'twrp-cal-ii-c-ol'   => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -303,7 +303,7 @@ class Date_Icons {
 				'file_name'   => 'clock-outlined.svg',
 			),
 
-			'twrp-cal-ii-ic-f'      => array(
+			'twrp-cal-ii-ic-f'   => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -311,7 +311,7 @@ class Date_Icons {
 				'file_name'   => 'ios-clock-filled.svg',
 			),
 
-			'twrp-cal-ii-ic-ol'     => array(
+			'twrp-cal-ii-ic-ol'  => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -319,7 +319,7 @@ class Date_Icons {
 				'file_name'   => 'ios-clock-outlined.svg',
 			),
 
-			'twrp-cal-ii-it-f'      => array(
+			'twrp-cal-ii-it-f'   => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Time', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -327,7 +327,7 @@ class Date_Icons {
 				'file_name'   => 'ios-time-filled.svg',
 			),
 
-			'twrp-cal-ii-it-ol'     => array(
+			'twrp-cal-ii-it-ol'  => array(
 				'brand'       => 'Ionicons',
 				'description' => _x( 'Ios Time', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -339,7 +339,7 @@ class Date_Icons {
 
 			#region -- IconMonstr Icons
 
-			'twrp-cal-im-f'         => array(
+			'twrp-cal-im-f'      => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -347,7 +347,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-im-t'         => array(
+			'twrp-cal-im-t'      => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
@@ -355,7 +355,7 @@ class Date_Icons {
 				'file_name'   => 'thin.svg',
 			),
 
-			'twrp-cal-im-2-f'       => array(
+			'twrp-cal-im-2-f'    => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -363,7 +363,7 @@ class Date_Icons {
 				'file_name'   => '2-filled.svg',
 			),
 
-			'twrp-cal-im-3-f'       => array(
+			'twrp-cal-im-3-f'    => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -371,7 +371,7 @@ class Date_Icons {
 				'file_name'   => '3-filled.svg',
 			),
 
-			'twrp-cal-im-4-f'       => array(
+			'twrp-cal-im-4-f'    => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar 4', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -379,7 +379,7 @@ class Date_Icons {
 				'file_name'   => '4-filled.svg',
 			),
 
-			'twrp-cal-im-5-f'       => array(
+			'twrp-cal-im-5-f'    => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Calendar 5', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -387,7 +387,7 @@ class Date_Icons {
 				'file_name'   => '5-filled.svg',
 			),
 
-			'twrp-cal-im-c-f'       => array(
+			'twrp-cal-im-c-f'    => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -395,7 +395,7 @@ class Date_Icons {
 				'file_name'   => 'clock-filled.svg',
 			),
 
-			'twrp-cal-im-c-ol'      => array(
+			'twrp-cal-im-c-ol'   => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -403,7 +403,7 @@ class Date_Icons {
 				'file_name'   => 'clock-outlined.svg',
 			),
 
-			'twrp-cal-im-c-t'       => array(
+			'twrp-cal-im-c-t'    => array(
 				'brand'       => 'IconMonstr',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
@@ -415,7 +415,7 @@ class Date_Icons {
 
 			#region -- Capicon Icons
 
-			'twrp-cal-ci-f'         => array(
+			'twrp-cal-ci-f'      => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -423,7 +423,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-ci-2-f'       => array(
+			'twrp-cal-ci-2-f'    => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -431,7 +431,7 @@ class Date_Icons {
 				'file_name'   => '2-filled.svg',
 			),
 
-			'twrp-cal-ci-c-ol'      => array(
+			'twrp-cal-ci-c-ol'   => array(
 				'brand'       => 'Capicon',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -443,7 +443,7 @@ class Date_Icons {
 
 			#region -- Feather Icons
 
-			'twrp-cal-fe-ol'        => array(
+			'twrp-cal-fe-ol'     => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -451,7 +451,7 @@ class Date_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-fe-c-ol'      => array(
+			'twrp-cal-fe-c-ol'   => array(
 				'brand'       => 'Feather',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -463,51 +463,51 @@ class Date_Icons {
 
 			#region -- Jam Icons
 
-			'twrp-cal-jam-f'        => array(
+			'twrp-cal-ji-f'      => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-jam-f" viewBox="0 0 24 24"><path d="M4.3,4.5v2.3c0,1.3,1,2.3,2.2,2.3s2.2-1,2.2-2.3V4.5h6.6v2.3c0,1.3,1,2.3,2.2,2.3s2.2-1,2.2-2.3V4.5C21.5,4.5,23,6,23,7.9v2.3H1V7.9C1,6,2.5,4.5,4.3,4.5z M23,12.6v6.9c0,1.9-1.5,3.5-3.3,3.5H4.3C2.5,23,1,21.4,1,19.5v-6.9H23z M17.5,1c0.6,0,1.1,0.5,1.1,1.2v4.6c0,0.6-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V2.2C16.4,1.5,16.9,1,17.5,1z M6.5,1c0.6,0,1.1,0.5,1.1,1.2v4.6c0,0.6-0.5,1.2-1.1,1.2S5.4,7.4,5.4,6.8V2.2C5.4,1.5,5.9,1,6.5,1z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-ji-f" viewBox="0 0 24 24"><path d="M4.3,4.5v2.3c0,1.3,1,2.3,2.2,2.3s2.2-1,2.2-2.3V4.5h6.6v2.3c0,1.3,1,2.3,2.2,2.3s2.2-1,2.2-2.3V4.5C21.5,4.5,23,6,23,7.9v2.3H1V7.9C1,6,2.5,4.5,4.3,4.5z M23,12.6v6.9c0,1.9-1.5,3.5-3.3,3.5H4.3C2.5,23,1,21.4,1,19.5v-6.9H23z M17.5,1c0.6,0,1.1,0.5,1.1,1.2v4.6c0,0.6-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V2.2C16.4,1.5,16.9,1,17.5,1z M6.5,1c0.6,0,1.1,0.5,1.1,1.2v4.6c0,0.6-0.5,1.2-1.1,1.2S5.4,7.4,5.4,6.8V2.2C5.4,1.5,5.9,1,6.5,1z"/></svg>',
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-jam-ol'       => array(
+			'twrp-cal-ji-ol'     => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-jam-ol" viewBox="0 0 24 24"><path d="M20.8,9.6V7.1c0-0.7-0.5-1.2-1.1-1.2h-1.1v1.2c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V5.9H7.6v1.2c0,0.7-0.5,1.2-1.1,1.2S5.4,7.8,5.4,7.1V5.9H4.3c-0.6,0-1.1,0.5-1.1,1.2v2.4H20.8z M20.8,12H3.2v7.3c0,0.7,0.5,1.2,1.1,1.2h15.4c0.6,0,1.1-0.5,1.1-1.2V12z M18.6,3.4h1.1c1.8,0,3.3,1.6,3.3,3.7v12.2c0,2-1.5,3.7-3.3,3.7H4.3C2.5,23,1,21.4,1,19.3V7.1c0-2,1.5-3.7,3.3-3.7h1.1V2.2C5.4,1.5,5.9,1,6.5,1s1.1,0.5,1.1,1.2v1.2h8.8V2.2c0-0.7,0.5-1.2,1.1-1.2s1.1,0.5,1.1,1.2V3.4z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-ji-ol" viewBox="0 0 24 24"><path d="M20.8,9.6V7.1c0-0.7-0.5-1.2-1.1-1.2h-1.1v1.2c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V5.9H7.6v1.2c0,0.7-0.5,1.2-1.1,1.2S5.4,7.8,5.4,7.1V5.9H4.3c-0.6,0-1.1,0.5-1.1,1.2v2.4H20.8z M20.8,12H3.2v7.3c0,0.7,0.5,1.2,1.1,1.2h15.4c0.6,0,1.1-0.5,1.1-1.2V12z M18.6,3.4h1.1c1.8,0,3.3,1.6,3.3,3.7v12.2c0,2-1.5,3.7-3.3,3.7H4.3C2.5,23,1,21.4,1,19.3V7.1c0-2,1.5-3.7,3.3-3.7h1.1V2.2C5.4,1.5,5.9,1,6.5,1s1.1,0.5,1.1,1.2v1.2h8.8V2.2c0-0.7,0.5-1.2,1.1-1.2s1.1,0.5,1.1,1.2V3.4z"/></svg>',
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-jam-2-f'      => array(
+			'twrp-cal-ji-2-f'    => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-jam-2-f" viewBox="0 0 24 24"><path d="M19.7,3.4c1.8,0,3.3,1.6,3.3,3.7v12.2c0,2-1.5,3.7-3.3,3.7H4.3C2.5,23,1,21.4,1,19.3V7.1c0-2,1.5-3.7,3.3-3.7v2.4c0,1.4,1,2.4,2.2,2.4s2.2-1.1,2.2-2.4V3.4h1.1v2.4c0,1.4,1,2.4,2.2,2.4s2.2-1.1,2.2-2.4V3.4h1.1v2.4c0,1.4,1,2.4,2.2,2.4s2.2-1.1,2.2-2.4V3.4z M4.3,10.8v2.4h2.2v-2.4H4.3z M4.3,15.7v2.4h2.2v-2.4H4.3z M17.5,15.7v2.4h2.2v-2.4H17.5z M17.5,10.8v2.4h2.2v-2.4H17.5z M8.7,10.8v2.4h2.2v-2.4H8.7z M13.1,10.8v2.4h2.2v-2.4H13.1z M13.1,15.7v2.4h2.2v-2.4H13.1z M8.7,15.7v2.4h2.2v-2.4H8.7z M6.5,1c0.6,0,1.1,0.5,1.1,1.2v3.7c0,0.7-0.5,1.2-1.1,1.2S5.4,6.6,5.4,5.9V2.2C5.4,1.5,5.9,1,6.5,1z M17.5,1c0.6,0,1.1,0.5,1.1,1.2v3.7c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V2.2C16.4,1.5,16.9,1,17.5,1z M12,1c0.6,0,1.1,0.5,1.1,1.2v3.7c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V2.2C10.9,1.5,11.4,1,12,1z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-ji-2-f" viewBox="0 0 24 24"><path d="M19.7,3.4c1.8,0,3.3,1.6,3.3,3.7v12.2c0,2-1.5,3.7-3.3,3.7H4.3C2.5,23,1,21.4,1,19.3V7.1c0-2,1.5-3.7,3.3-3.7v2.4c0,1.4,1,2.4,2.2,2.4s2.2-1.1,2.2-2.4V3.4h1.1v2.4c0,1.4,1,2.4,2.2,2.4s2.2-1.1,2.2-2.4V3.4h1.1v2.4c0,1.4,1,2.4,2.2,2.4s2.2-1.1,2.2-2.4V3.4z M4.3,10.8v2.4h2.2v-2.4H4.3z M4.3,15.7v2.4h2.2v-2.4H4.3z M17.5,15.7v2.4h2.2v-2.4H17.5z M17.5,10.8v2.4h2.2v-2.4H17.5z M8.7,10.8v2.4h2.2v-2.4H8.7z M13.1,10.8v2.4h2.2v-2.4H13.1z M13.1,15.7v2.4h2.2v-2.4H13.1z M8.7,15.7v2.4h2.2v-2.4H8.7z M6.5,1c0.6,0,1.1,0.5,1.1,1.2v3.7c0,0.7-0.5,1.2-1.1,1.2S5.4,6.6,5.4,5.9V2.2C5.4,1.5,5.9,1,6.5,1z M17.5,1c0.6,0,1.1,0.5,1.1,1.2v3.7c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V2.2C16.4,1.5,16.9,1,17.5,1z M12,1c0.6,0,1.1,0.5,1.1,1.2v3.7c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V2.2C10.9,1.5,11.4,1,12,1z"/></svg>',
 				'file_name'   => 'alt-filled.svg',
 			),
 
-			'twrp-cal-jam-2-ol'     => array(
+			'twrp-cal-ji-2-ol'   => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-jam-2-ol" viewBox="0 0 24 24"><path d="M10.9,3.4V2.2C10.9,1.5,11.4,1,12,1s1.1,0.5,1.1,1.2v1.2h3.3V2.2c0-0.7,0.5-1.2,1.1-1.2s1.1,0.5,1.1,1.2v1.2h1.1c1.8,0,3.3,1.6,3.3,3.7v12.2c0,2-1.5,3.7-3.3,3.7H4.3C2.5,23,1,21.4,1,19.3V7.1c0-2,1.5-3.7,3.3-3.7h1.1V2.2C5.4,1.5,5.9,1,6.5,1s1.1,0.5,1.1,1.2v1.2H10.9z M10.9,5.9H7.6v1.2c0,0.7-0.5,1.2-1.1,1.2S5.4,7.8,5.4,7.1V5.9H4.3c-0.6,0-1.1,0.5-1.1,1.2v12.2c0,0.7,0.5,1.2,1.1,1.2h15.4c0.6,0,1.1-0.5,1.1-1.2V7.1c0-0.7-0.5-1.2-1.1-1.2h-1.1v1.2c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V5.9h-3.3v1.2c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V5.9z M4.3,10.8h2.2v2.4H4.3V10.8z M4.3,15.7h2.2v2.4H4.3V15.7z M17.5,15.7h2.2v2.4h-2.2V15.7z M17.5,10.8h2.2v2.4h-2.2V10.8z M8.7,10.8h2.2v2.4H8.7V10.8z M13.1,10.8h2.2v2.4h-2.2V10.8z M13.1,15.7h2.2v2.4h-2.2V15.7z M8.7,15.7h2.2v2.4H8.7V15.7z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-ji-2-ol" viewBox="0 0 24 24"><path d="M10.9,3.4V2.2C10.9,1.5,11.4,1,12,1s1.1,0.5,1.1,1.2v1.2h3.3V2.2c0-0.7,0.5-1.2,1.1-1.2s1.1,0.5,1.1,1.2v1.2h1.1c1.8,0,3.3,1.6,3.3,3.7v12.2c0,2-1.5,3.7-3.3,3.7H4.3C2.5,23,1,21.4,1,19.3V7.1c0-2,1.5-3.7,3.3-3.7h1.1V2.2C5.4,1.5,5.9,1,6.5,1s1.1,0.5,1.1,1.2v1.2H10.9z M10.9,5.9H7.6v1.2c0,0.7-0.5,1.2-1.1,1.2S5.4,7.8,5.4,7.1V5.9H4.3c-0.6,0-1.1,0.5-1.1,1.2v12.2c0,0.7,0.5,1.2,1.1,1.2h15.4c0.6,0,1.1-0.5,1.1-1.2V7.1c0-0.7-0.5-1.2-1.1-1.2h-1.1v1.2c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V5.9h-3.3v1.2c0,0.7-0.5,1.2-1.1,1.2s-1.1-0.5-1.1-1.2V5.9z M4.3,10.8h2.2v2.4H4.3V10.8z M4.3,15.7h2.2v2.4H4.3V15.7z M17.5,15.7h2.2v2.4h-2.2V15.7z M17.5,10.8h2.2v2.4h-2.2V10.8z M8.7,10.8h2.2v2.4H8.7V10.8z M13.1,10.8h2.2v2.4h-2.2V10.8z M13.1,15.7h2.2v2.4h-2.2V15.7z M8.7,15.7h2.2v2.4H8.7V15.7z"/></svg>',
 				'file_name'   => 'alt-outlined.svg',
 			),
 
-			'twrp-cal-jam-c-f'      => array(
+			'twrp-cal-ji-c-f'    => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-jam-c-f" viewBox="-2 -2 24 24"><path d="M11 9V4a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-4zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10z" /></svg>',
+				'svg'         => '<svg id="twrp-cal-ji-c-f" viewBox="-2 -2 24 24"><path d="M11 9V4a1 1 0 0 0-2 0v6a1 1 0 0 0 1 1h5a1 1 0 0 0 0-2h-4zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10z" /></svg>',
 				'file_name'   => 'clock-filled.svg',
 			),
 
-			'twrp-cal-jam-c-ol'     => array(
+			'twrp-cal-ji-c-ol'   => array(
 				'brand'       => 'JamIcons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'svg'         => '<svg id="twrp-cal-jam-c-ol" viewBox="-2 -2 24 24"><path d="M11 9h4a1 1 0 0 1 0 2h-5a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v5zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>',
+				'svg'         => '<svg id="twrp-cal-ji-c-ol" viewBox="-2 -2 24 24"><path d="M11 9h4a1 1 0 0 1 0 2h-5a1 1 0 0 1-1-1V4a1 1 0 1 1 2 0v5zm-1 11C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/></svg>',
 				'file_name'   => 'clock-outlined.svg',
 			),
 
@@ -515,7 +515,7 @@ class Date_Icons {
 
 			#region -- Linea Icons
 
-			'twrp-cal-li-ol'        => array(
+			'twrp-cal-li-ol'     => array(
 				'brand'       => 'Linea',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -523,7 +523,7 @@ class Date_Icons {
 				'file_name'   => 'calendar-outlined.svg',
 			),
 
-			'twrp-cal-li-2-ol'      => array(
+			'twrp-cal-li-2-ol'   => array(
 				'brand'       => 'Linea',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -531,7 +531,7 @@ class Date_Icons {
 				'file_name'   => 'calendar-2-outlined.svg',
 			),
 
-			'twrp-cal-li-c-ol'      => array(
+			'twrp-cal-li-c-ol'   => array(
 				'brand'       => 'Linea',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -539,7 +539,7 @@ class Date_Icons {
 				'file_name'   => 'clock-outlined.svg',
 			),
 
-			'twrp-cal-li-c2-ol'     => array(
+			'twrp-cal-li-c2-ol'  => array(
 				'brand'       => 'Linea',
 				'description' => _x( 'Clock 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -551,7 +551,7 @@ class Date_Icons {
 
 			#region -- Octicons Icons
 
-			'twrp-cal-oi-ol'        => array(
+			'twrp-cal-oi-ol'     => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -559,7 +559,7 @@ class Date_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-oi-c-ol'      => array(
+			'twrp-cal-oi-c-ol'   => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -571,7 +571,7 @@ class Date_Icons {
 
 			#region -- Typicons Icons
 
-			'twrp-cal-ti-f'         => array(
+			'twrp-cal-ti-f'      => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
@@ -579,7 +579,7 @@ class Date_Icons {
 				'file_name'   => 'filled.svg',
 			),
 
-			'twrp-cal-ti-ol'        => array(
+			'twrp-cal-ti-ol'     => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -587,7 +587,7 @@ class Date_Icons {
 				'file_name'   => 'outlined.svg',
 			),
 
-			'twrp-cal-ti-c-ol'      => array(
+			'twrp-cal-ti-c-ol'   => array(
 				'brand'       => 'Typicons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),

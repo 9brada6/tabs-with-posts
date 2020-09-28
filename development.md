@@ -52,7 +52,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
-- Use Webpack and not Rollup.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 
 ### Icons
@@ -63,9 +62,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Make all icons align perfectly, under all conditions.
 - Change all definitions from svg to symbol?
-- Add an automatic test that will check: The id's correspond to be similar. Check if all icons
-have in filename one of the words: thin, sharp, outlined, filled. Check if type is also one of the
-words. Does not have any color like #000 or #000000.  Verify if filename, id and description corresponds(filled, outlined, thin ...etc).
 - Fix all octicons to be visible in adobe.
 
 - Add a way to invert category icons?

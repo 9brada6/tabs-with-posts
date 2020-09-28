@@ -65,8 +65,8 @@ class General_Options {
 			self::KEY__DATE_FORMAT            => '', // empty will default to WP date.
 			self::KEY__AUTHOR_ICON            => 'twrp-user-goo-ol',
 			self::KEY__DATE_ICON              => 'twrp-cal-goo-ol',
-			self::KEY__CATEGORY_ICON          => 'twrp-tax-go-ol',
-			self::KEY__COMMENTS_ICON          => 'twrp-com-go-ol',
+			self::KEY__CATEGORY_ICON          => 'twrp-tax-goo-ol',
+			self::KEY__COMMENTS_ICON          => 'twrp-com-goo-ol',
 			self::KEY__COMMENTS_DISABLED_ICON => 'twrp-dcom-im-f',
 			self::KEY__VIEWS_ICON             => 'twrp-views-goo-ol',
 			self::KEY__RATING_ICON_PACK       => 'fa-stars',

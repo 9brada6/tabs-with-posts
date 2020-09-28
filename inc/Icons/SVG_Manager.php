@@ -618,11 +618,18 @@ class SVG_Manager {
 		$all_icons_file_content = self::test_get_all_icons_content();
 
 		$attributes   = array( 'class', 'role', 'focusable', 'aria', ' "', '  ', "\t" );
+		$regex_verify = array( '/#(\d|[abcdef]){3}/i' );
 		$founded_attr = array();
 
 		foreach ( $attributes as $attribute ) {
 			if ( strpos( $all_icons_file_content, $attribute ) !== false ) {
 				array_push( $founded_attr, $attribute );
+			}
+		}
+
+		foreach ( $regex_verify as $regex_to_verify ) {
+			if ( preg_match( $regex_to_verify, $all_icons_file_content ) ) {
+				array_push( $founded_attr, $regex_to_verify );
 			}
 		}
 
@@ -684,8 +691,9 @@ class SVG_Manager {
 		$all_icons = self::get_all_icons();
 		$wrong_ids = array();
 
-		$prefix     = 'twrp-';
-		$icon_types = array( 'user', 'tax', 'com', 'dcom', 'rat', 'views', 'cal' );
+		$prefix         = 'twrp-';
+		$icon_id_types  = array( 'user', 'tax', 'com', 'dcom', 'rat', 'views', 'cal' );
+		$icon_id_brands = array( 'fa', 'goo', 'di', 'fi', 'ii', 'im', 'ci', 'fe', 'ji', 'li', 'oi', 'ti' );
 
 		foreach ( $all_icons as $icon_id => $icon ) {
 			if ( strpos( $icon_id, $prefix ) !== 0 ) {
@@ -695,7 +703,12 @@ class SVG_Manager {
 
 			$id_sections = explode( '-', $icon_id );
 
-			if ( ! in_array( $id_sections[1], $icon_types, true ) ) {
+			if ( ! in_array( $id_sections[1], $icon_id_types, true ) ) {
+				array_push( $wrong_ids, $icon_id );
+				continue;
+			}
+
+			if ( ! in_array( $id_sections[2], $icon_id_brands, true ) ) {
 				array_push( $wrong_ids, $icon_id );
 				continue;
 			}
