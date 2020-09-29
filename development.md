@@ -1,5 +1,11 @@
 # Tabs With Recommended Posts - Development Notes
 
+## Icons
+
+- Checked to see if they align in the middle:
+- Views( Capicon ).
+- User( Capicon )
+
 ## Plugins Used
 
 ### Rating Plugins
@@ -58,7 +64,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Add more no comment icons/ create them.
 - Finish Rating Icons
-- Check that all icons are aligned in adobe in middle.
+- Check that all icons are aligned in adobe in middle(views(capicons)).
 
 - Make all icons align perfectly, under all conditions.
 
@@ -67,6 +73,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Change all definitions from svg to symbol?
 - Find a way to remove the duplication of declaring the svg of an icon.
 - Make icons works also inline and via a file.
+- Add test to see if the same id as in file is designated.
 
 - Make all icons from svg manager return icon object.
 
