@@ -50,6 +50,13 @@ class Icon {
 	protected $file_name;
 
 	/**
+	 * Folder name of the category where icons are.
+	 *
+	 * @var string
+	 */
+	protected $category_folder_name = '';
+
+	/**
 	 * Classes to fix the icon, usually fix the icon vertical align.
 	 *
 	 * @var string
@@ -82,7 +89,10 @@ class Icon {
 		$this->file_name   = $icon_args['file_name'];
 
 		if ( isset( $icon_args['fix_classes'] ) ) {
-			$this->fix_classes = $icon_args['fix_classes']; }
+			$this->fix_classes = $icon_args['fix_classes'];
+		}
+
+		$this->category_folder_name = $this->construct_folder_name_category();
 	}
 
 	#region -- Get basic info
@@ -123,13 +133,17 @@ class Icon {
 		return $this->type;
 	}
 
+	protected function get_category_folder() {
+		return $this->category_folder_name;
+	}
+
 	/**
 	 * Returns the absolute path to a file that contains the icon.
 	 *
 	 * @return string
 	 */
 	public function get_icon_filename() {
-		$relative_path = 'assets/svgs/' . $this->get_icon_type() . '/' . strtolower( $this->get_icon_brand() ) . '/' . $this->file_name;
+		$relative_path = 'assets/svgs/' . $this->get_category_folder() . '/' . strtolower( $this->get_icon_brand() ) . '/' . $this->file_name;
 		return trailingslashit( TWRP_Main::get_plugin_directory() ) . $relative_path;
 	}
 
@@ -175,7 +189,10 @@ class Icon {
 	 * @return string|false False if icon cannot be retrieved.
 	 */
 	public function get_icon_svg_definition() {
-		// todo: verify if filesystem class exist.
+		if ( ! class_exists( 'WP_Filesystem_Base' ) || ! class_exists( 'WP_Filesystem_Direct' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
+			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+		}
 
 		$filesystem = new WP_Filesystem_Direct( null );
 		$content    = $filesystem->get_contents( $this->get_icon_filename() );
@@ -195,6 +212,48 @@ class Icon {
 		// todo.
 		return $this->get_icon_description();
 	}
+
+	#region -- Helpers
+
+	/**
+	 * Constructor helper, that will get the name of the folder category of the icons.
+	 *
+	 * @return string
+	 */
+	protected function construct_folder_name_category() {
+
+		if ( strstr( $this->id, 'views' ) ) {
+			return 'views';
+		}
+
+		if ( strstr( $this->id, 'cal' ) ) {
+			return 'date';
+		}
+
+		if ( strstr( $this->id, 'dcom' ) ) {
+			return 'disabled-comments';
+		}
+
+		if ( strstr( $this->id, 'com' ) && ! strstr( $this->id, 'dcom' ) ) {
+			return 'comments';
+		}
+
+		if ( strstr( $this->id, 'user' ) ) {
+			return 'user';
+		}
+
+		if ( strstr( $this->id, 'tax' ) ) {
+			return 'taxonomy';
+		}
+
+		if ( strstr( $this->id, 'rat' ) ) {
+			return 'rating';
+		}
+
+		return '';
+	}
+
+	#endregion -- Helpers
 
 	#region -- Static Helpers
 
@@ -222,4 +281,5 @@ class Icon {
 	}
 
 	#endregion -- Static Helpers
+
 }

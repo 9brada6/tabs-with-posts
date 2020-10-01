@@ -13,11 +13,15 @@
 		<testsuite name="query_settings">
 			<directory>tests/Query_Setting</directory>
 		</testsuite>
+		<testsuite name="icons">
+			<directory>tests/Icons</directory>
+		</testsuite>
   	</testsuites>
 
 	<filter>
 		<whitelist>
 			<directory suffix=".php">inc/Query_Setting</directory>
+			<directory suffix=".php">inc/Icons</directory>
 		</whitelist>
 	</filter>
 
