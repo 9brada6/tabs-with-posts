@@ -733,18 +733,32 @@ class Comments_Icons {
 
 			#region -- Octicons Icons
 
-			'twrp-com-oi-f'       => array(
+			'twrp-com-oi-ol'       => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'file_name'   => 'filled.svg',
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'file_name'   => 'comment-outlined.svg',
 			),
 
-			'twrp-com-oi-c-f'     => array(
+			'twrp-com-oi-t'       => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Comment', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'comment-thin.svg',
+			),
+
+			'twrp-com-oi-c-ol'     => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
-				'file_name'   => 'comments-filled.svg',
+				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'file_name'   => 'comments-outlined.svg',
+			),
+
+			'twrp-com-oi-c-t'     => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Comments', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'comments-thin.svg',
 			),
 
 			#endregion -- Octicons Icons

@@ -13,7 +13,7 @@ class Category_Icons {
 	/**
 	 * Get all registered icons that represents the category.
 	 *
-	 * Keywords to search for: tag, bookmark, hashtag, taxonomy, category, folder.
+	 * Keywords to search for: tag, bookmark, hashtag, taxonomy, category, folder, directory.
 	 *
 	 * @return array<string,array>
 	 */
@@ -818,6 +818,13 @@ class Category_Icons {
 				'file_name'   => 'tag-outlined.svg',
 			),
 
+			'twrp-tax-oi-t'     => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Tag', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'tag-thin.svg',
+			),
+
 			'twrp-tax-oi-f-f'    => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Folder', 'backend', 'twrp' ),
@@ -844,6 +851,13 @@ class Category_Icons {
 				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'bookmark-outlined.svg',
+			),
+
+			'twrp-tax-oi-b-t'    => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'bookmark-thin.svg',
 			),
 
 			#endregion -- Octicons Icons

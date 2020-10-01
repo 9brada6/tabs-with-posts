@@ -3,8 +3,14 @@
 ## Icons
 
 - Checked to see if they align in the middle:
-- Views( Capicon ).
-- User( Capicon )
+- Comments          ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- Date              ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- Disabled Comments ( Capicon*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr, Ionicons*, JamIcons*, Linea, Octicons*, TypIcons* )
+- Rating            ( Capicon*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr*, Ionicons*, JamIcons*, Linea*, Octicons*, TypIcons* )
+- Taxonomy          ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- User              ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea*, Octicons, TypIcons )
+- Views             ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- (*) = No icons yet.
 
 ## Plugins Used
 
@@ -64,11 +70,8 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Add more no comment icons/ create them.
 - Finish Rating Icons
-- Check that all icons are aligned in adobe in middle(views(capicons)).
 
 - Make all icons align perfectly, under all conditions.
-
-- Fix all octicons to be visible in adobe.
 
 - Change all definitions from svg to symbol?
 - Find a way to remove the duplication of declaring the svg of an icon.

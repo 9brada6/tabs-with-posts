@@ -400,11 +400,25 @@ class Views_Icons {
 				'file_name'   => 'eye-outlined.svg',
 			),
 
-			'twrp-views-oi-chart-ol'  => array(
+			'twrp-views-oi-t'         => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Eye', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'eye-thin.svg',
+			),
+
+			'twrp-views-oi-c-ol'  => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart-outlined.svg',
+			),
+
+			'twrp-views-oi-c-t'   => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Chart', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'chart-thin.svg',
 			),
 
 			#endregion -- Octicons Icons

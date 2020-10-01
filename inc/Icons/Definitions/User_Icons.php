@@ -7,6 +7,8 @@ namespace TWRP\Icons;
 
 /**
  * Class that holds all user icon definitions.
+ *
+ * Keywords: user, person, man, woman, people.
  */
 class User_Icons {
 
@@ -416,7 +418,14 @@ class User_Icons {
 				'brand'       => 'Octicons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'file_name'   => 'outlined.svg',
+				'file_name'   => 'user-outlined.svg',
+			),
+
+			'twrp-user-oi-t'             => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'User', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'user-thin.svg',
 			),
 
 			#endregion -- Octicons Icons

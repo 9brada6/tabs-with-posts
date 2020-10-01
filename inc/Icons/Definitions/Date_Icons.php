@@ -494,7 +494,14 @@ class Date_Icons {
 				'brand'       => 'Octicons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
-				'file_name'   => 'outlined.svg',
+				'file_name'   => 'calendar-outlined.svg',
+			),
+
+			'twrp-cal-oi-t'      => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Calendar', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'calendar-thin.svg',
 			),
 
 			'twrp-cal-oi-c-ol'   => array(
@@ -502,6 +509,13 @@ class Date_Icons {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+			),
+
+			'twrp-cal-oi-c-t'    => array(
+				'brand'       => 'Octicons',
+				'description' => _x( 'Clock', 'backend', 'twrp' ),
+				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'file_name'   => 'clock-thin.svg',
 			),
 
 			#endregion -- Octicons Icons
