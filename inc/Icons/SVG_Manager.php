@@ -210,10 +210,49 @@ class SVG_Manager {
 	#region -- Development test icons alignment
 
 	/**
-	 * @todo.
+	 * This function was created for testing and prototyping. It is not for use
+	 * in the theme directly.
+	 *
+	 * @return void
 	 */
 	public static function test_icons() {
+		$icons = self::get_all_icons();
+		Create_And_Enqueue_Icons::include_all_icons_file();
+		$icon_nr = 0;
 
+		?>
+		<style>
+		.twrp-test__icon-block-wrapper {
+			margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block; color:darkblue;
+		}
+		.twrp-test__icon-wrapper {
+			margin-right: 6px
+		}
+		</style>
+		<?php
+
+		echo '<p>';
+		foreach ( $icons as $icon ) {
+			$random_word = substr( str_shuffle( 'abcdefghijklmnopqrstuvwxyz' ), 0, 4 );
+
+			if ( 0 === $icon_nr % 3 ) {
+				echo '<div>';
+			}
+
+			echo '<span class="twrp-test__icon-block-wrapper">';
+			echo '<span class="twrp-test__icon-wrapper">';
+				echo $icon->get_html(); // phpcs:ignore
+			echo '</span>';
+			echo esc_html( $random_word );
+			echo '</span>';
+
+			if ( ( ( $icon_nr + 1 ) % 3 ) === 0 || ( count( $icons ) === $icon_nr ) ) {
+				echo '</div>';
+			}
+
+			$icon_nr++;
+		}
+		echo '</p>';
 	}
 
 	#endregion -- Development test icons alignment

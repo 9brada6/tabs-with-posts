@@ -64,6 +64,13 @@ class Icon {
 	protected $fix_classes = '';
 
 	/**
+	 * Holds the svg definition, to not retrieve multiple times.
+	 *
+	 * @var string
+	 */
+	protected $cache_definition = '';
+
+	/**
 	 * Construct the class. Either provide an icon id alongside with the needed
 	 * arguments, or provide just the $icon_id, and let arguments be auto set.
 	 *
@@ -187,8 +194,15 @@ class Icon {
 	 * Returns the HTML that define the icon.
 	 *
 	 * @return string|false False if icon cannot be retrieved.
+	 * @suppress PhanUndeclaredConstant
+	 * @psalm-suppress UnresolvableInclude
+	 * @psalm-suppress UndefinedConstant
 	 */
 	public function get_icon_svg_definition() {
+		if ( ! empty( $this->cache_definition ) ) {
+			return $this->cache_definition;
+		}
+
 		if ( ! class_exists( 'WP_Filesystem_Base' ) || ! class_exists( 'WP_Filesystem_Direct' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
 			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
@@ -197,6 +211,7 @@ class Icon {
 		$filesystem = new WP_Filesystem_Direct( null );
 		$content    = $filesystem->get_contents( $this->get_icon_filename() );
 		if ( is_string( $content ) ) {
+			$this->cache_definition = $content;
 			return $content;
 		}
 

@@ -33,7 +33,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 
 		$prefix         = 'twrp-';
 		$icon_id_types  = array( 'user', 'tax', 'com', 'dcom', 'rat', 'views', 'cal' );
-		$icon_id_brands = array( 'fa', 'goo', 'di', 'fi', 'ii', 'im', 'ci', 'fe', 'ji', 'li', 'oi', 'ti' );
+		$icon_id_brands = array( 'twrp', 'fa', 'goo', 'di', 'fi', 'ii', 'im', 'ci', 'fe', 'ji', 'li', 'oi', 'ti' );
 
 		foreach ( $all_icons as $icon_id => $icon ) {
 			// Verify that all Icons start with a prefix.

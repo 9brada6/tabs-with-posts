@@ -1,6 +1,6 @@
 # Tabs With Recommended Posts - Development Notes
 
-## Icons
+## Icons Manual Testing
 
 - Checked to see if they align in the middle:
 - Comments          ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
@@ -68,20 +68,17 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Add more no comment icons/ create them.
+- Add more no comment icons/create them.
 - Finish Rating Icons
 
 - Make all icons align perfectly, under all conditions.
 
 - Change all definitions from svg to symbol?
-- Find a way to remove the duplication of declaring the svg of an icon.
 - Make icons works also inline and via a file.
-- Add test to see if the same id as in file is designated.
-
-- Make all icons from svg manager return icon object.
 
 - Add a way to invert category icons?
 - Add License to FontAwesome
+- Add a test to not use presentational attributes. Instead put everything into a style attribute.
 
 ### JS/SCSS
 
