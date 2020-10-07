@@ -21,6 +21,12 @@ class Views_Icons {
 
 		$registered_views_vectors = array(
 
+			#region -- TWRP Icons
+
+			// No Icons...
+
+			#endregion -- TWRP Icons
+
 			#region -- FontAwesome Icons
 
 			'twrp-views-fa-f'         => array(
@@ -407,14 +413,14 @@ class Views_Icons {
 				'file_name'   => 'eye-thin.svg',
 			),
 
-			'twrp-views-oi-c-ol'  => array(
+			'twrp-views-oi-c-ol'      => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart-outlined.svg',
 			),
 
-			'twrp-views-oi-c-t'   => array(
+			'twrp-views-oi-c-t'       => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),

@@ -146,7 +146,7 @@ class Comments_Disabled_Icons {
 				'file_name'   => 'comments-alt-thin.svg',
 			),
 
-			#region -- TWRP Icons
+			#endregion -- TWRP Icons
 
 			#region -- FontAwesome Icons
 

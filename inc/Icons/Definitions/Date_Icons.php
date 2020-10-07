@@ -21,6 +21,12 @@ class Date_Icons {
 
 		$registered_date_vectors = array(
 
+			#region -- TWRP Icons
+
+			// No Icons...
+
+			#endregion -- TWRP Icons
+
 			#region -- FontAwesome Icons
 
 			'twrp-cal-fa-f'      => array(

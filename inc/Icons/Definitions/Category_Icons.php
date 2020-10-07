@@ -20,6 +20,12 @@ class Category_Icons {
 	public static function get_category_icons() {
 		$registered_category_vectors = array(
 
+			#region -- TWRP Icons
+
+			// No Icons...
+
+			#endregion -- TWRP Icons
+
 			#region -- FontAwesome Icons
 
 			'twrp-tax-fa-f'      => array(
@@ -818,7 +824,7 @@ class Category_Icons {
 				'file_name'   => 'tag-outlined.svg',
 			),
 
-			'twrp-tax-oi-t'     => array(
+			'twrp-tax-oi-t'      => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),

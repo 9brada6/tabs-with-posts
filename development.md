@@ -68,9 +68,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Add more no comment icons/create them.
 - Finish Rating Icons
-
 - Make all icons align perfectly, under all conditions.
 
 - Change all definitions from svg to symbol?

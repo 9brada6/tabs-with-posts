@@ -19,6 +19,12 @@ class Comments_Icons {
 
 		$registered_comment_vectors = array(
 
+			#region -- TWRP Icons
+
+			// No Icons...
+
+			#endregion -- TWRP Icons
+
 			#region -- FontAwesome Icons
 
 			'twrp-com-fa-f'       => array(
@@ -733,7 +739,7 @@ class Comments_Icons {
 
 			#region -- Octicons Icons
 
-			'twrp-com-oi-ol'       => array(
+			'twrp-com-oi-ol'      => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
@@ -747,7 +753,7 @@ class Comments_Icons {
 				'file_name'   => 'comment-thin.svg',
 			),
 
-			'twrp-com-oi-c-ol'     => array(
+			'twrp-com-oi-c-ol'    => array(
 				'brand'       => 'Octicons',
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),

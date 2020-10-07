@@ -58,6 +58,7 @@
 			".gitignore": true,
 			"**/vendor/**": true,
 			".eslintrc.json": true,
+			".svg-icons-src": true,
 			".phpcs.xml": true,
 			"cov.xml": true,
 			"cspell.json": true,
