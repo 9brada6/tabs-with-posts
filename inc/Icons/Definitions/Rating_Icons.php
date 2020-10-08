@@ -36,11 +36,11 @@ class Rating_Icons {
 				'file_name'   => 'heart-half-filled.svg',
 			),
 
-			'twrp-rat-twrp-h-hft' => array(
+			'twrp-rat-twrp-ht-hf' => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Heart', 'backend', 'twrp' ),
-				'type'        => _x( 'Half Filled Thin', 'backend', 'twrp' ),
-				'file_name'   => 'heart-half-filled-thin.svg',
+				'description' => _x( 'Heart Thin', 'backend', 'twrp' ),
+				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
+				'file_name'   => 'heart-thin-half-filled.svg',
 			),
 
 			'twrp-rat-twrp-h-ol'  => array(
@@ -50,9 +50,9 @@ class Rating_Icons {
 				'file_name'   => 'heart-outlined.svg',
 			),
 
-			'twrp-rat-twrp-h-t'   => array(
+			'twrp-rat-twrp-ht-t'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Heart', 'backend', 'twrp' ),
+				'description' => _x( 'Heart Thin', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'heart-thin.svg',
 			),
@@ -110,7 +110,7 @@ class Rating_Icons {
 			'twrp-rat-goo-sh-f'   => array(
 				'brand'       => 'Google',
 				'description' => _x( 'Star Sharp', 'backend', 'twrp' ),
-				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'star-sharp-filled.svg',
 			),
 
@@ -333,8 +333,8 @@ class Rating_Icons {
 				'brand'       => 'TWRP',
 				'description' => _x( 'Hearts Thin', 'backend', 'twrp' ),
 				'full'        => 'twrp-rat-twrp-h-f',
-				'half'        => 'twrp-rat-twrp-h-hft',
-				'empty'       => 'twrp-rat-twrp-h-t',
+				'half'        => 'twrp-rat-twrp-ht-hf',
+				'empty'       => 'twrp-rat-twrp-ht-t',
 			),
 
 			'fa-stars'         => array(

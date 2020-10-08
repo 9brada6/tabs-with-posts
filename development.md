@@ -77,7 +77,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Add License to FontAwesome
 
 - Add a test to not use presentational attributes. Instead put everything into a style attribute?
-
 - Add test: Each icon to be correct identified in the category.
 
 

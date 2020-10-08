@@ -2,6 +2,7 @@
 
 namespace TWRP\Icons;
 
+use RuntimeException;
 use WP_UnitTestCase;
 
 class Icons_Definitions_Test extends WP_UnitTestCase {
@@ -191,6 +192,25 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 
 		$error_message = 'Icons ' . implode( ', ', $wrong_ids ) . ' does contain forbidden attributes.';
 		$this->assertTrue( empty( $wrong_ids ), $error_message );
+	}
+
+	/**
+	 * Test that each icon must have a category.
+	 */
+	public function test__each_icon_must_be_in_a_category() {
+		$all_icons              = SVG_Manager::get_all_icons();
+		$icons_without_category = array();
+
+		foreach ( $all_icons as $icon ) {
+			try {
+				$icon->get_icon_category();
+			} catch ( RuntimeException $e ) {
+				array_push( $icons_without_category, $icon->get_id() );
+			}
+		}
+
+		$fail_message = 'Icons that are not having a category: ' . implode( ', ', $icons_without_category );
+		$this->assertTrue( empty( $icons_without_category ), $fail_message );
 	}
 
 }
