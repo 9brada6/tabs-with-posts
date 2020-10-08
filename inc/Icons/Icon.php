@@ -50,13 +50,6 @@ class Icon {
 	protected $file_name;
 
 	/**
-	 * Folder name of the category where icons are.
-	 *
-	 * @var string
-	 */
-	protected $category_folder_name = '';
-
-	/**
 	 * Classes to fix the icon, usually fix the icon vertical align.
 	 *
 	 * @var string
@@ -98,8 +91,6 @@ class Icon {
 		if ( isset( $icon_args['fix_classes'] ) ) {
 			$this->fix_classes = $icon_args['fix_classes'];
 		}
-
-		$this->category_folder_name = $this->construct_folder_name_category();
 	}
 
 	#region -- Get basic info
@@ -140,17 +131,18 @@ class Icon {
 		return $this->type;
 	}
 
-	protected function get_category_folder() {
-		return $this->category_folder_name;
-	}
-
 	/**
 	 * Returns the absolute path to a file that contains the icon.
 	 *
-	 * @return string
+	 * @return string|false False if filename cannot be retrieved.
 	 */
 	public function get_icon_filename() {
-		$relative_path = 'assets/svgs/' . $this->get_category_folder() . '/' . strtolower( $this->get_icon_brand() ) . '/' . $this->file_name;
+		try {
+			$relative_path = 'assets/svgs/' . $this->get_folder_name_category() . '/' . strtolower( $this->get_icon_brand() ) . '/' . $this->file_name;
+		} catch ( RuntimeException $e ) {
+			return false;
+		}
+
 		return trailingslashit( TWRP_Main::get_plugin_directory() ) . $relative_path;
 	}
 
@@ -176,6 +168,8 @@ class Icon {
 			$additional_class = ' ' . $additional_class;
 		}
 
+		$icon_category_class = ' ' . $this->get_icon_category_class();
+
 		$fix_icon_class = '';
 		if ( ! empty( $this->get_fix_classes() ) ) {
 			$fix_icon_class = ' ' . $this->get_fix_classes();
@@ -183,7 +177,7 @@ class Icon {
 
 		// todo: add aria-label and role="icon"?
 		$html =
-		'<span class="twrp-i' . esc_attr( $fix_icon_class . $additional_class ) . '">' .
+		'<span class="twrp-i' . esc_attr( $fix_icon_class . $additional_class . $icon_category_class ) . '">' .
 		'<svg><use xlink:href="#' . esc_attr( $this->get_id() ) . '"/></svg>' .
 		'</span>';
 
@@ -208,8 +202,14 @@ class Icon {
 			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
 		}
 
-		$filesystem = new WP_Filesystem_Direct( null );
-		$content    = $filesystem->get_contents( $this->get_icon_filename() );
+		$filesystem    = new WP_Filesystem_Direct( null );
+		$icon_filename = $this->get_icon_filename();
+
+		if ( ! is_string( $icon_filename ) ) {
+			return false;
+		}
+
+		$content = $filesystem->get_contents( $icon_filename );
 		if ( is_string( $content ) ) {
 			$this->cache_definition = $content;
 			return $content;
@@ -231,38 +231,81 @@ class Icon {
 	#region -- Helpers
 
 	/**
-	 * Constructor helper, that will get the name of the folder category of the icons.
+	 * Get a numeric value, representing the icon category. The numeric value
+	 * is a constant declared in this class. Return false otherwise.
+	 *
+	 * @throws RuntimeException In case the numeric value cannot be retrieved.
+	 *
+	 * @return int|false
+	 */
+	public function get_icon_category() {
+		$icon_id = $this->get_id();
+
+		if ( strstr( $icon_id, 'views' ) ) {
+			return SVG_Manager::VIEWS_ICON;
+		}
+
+		if ( strstr( $icon_id, 'cal' ) ) {
+			return SVG_Manager::DATE_ICON;
+		}
+
+		if ( strstr( $icon_id, 'dcom' ) ) {
+			return SVG_Manager::DISABLED_COMMENT_ICON;
+		}
+
+		if ( strstr( $icon_id, 'com' ) && ! strstr( $icon_id, 'dcom' ) ) {
+			return SVG_Manager::COMMENT_ICON;
+		}
+
+		if ( strstr( $icon_id, 'user' ) ) {
+			return SVG_Manager::USER_ICON;
+		}
+
+		if ( strstr( $icon_id, 'tax' ) ) {
+			return SVG_Manager::CATEGORY_ICON;
+		}
+
+		if ( strstr( $icon_id, 'rat' ) ) {
+			return SVG_Manager::RATING_ICON;
+		}
+
+		throw new RuntimeException();
+	}
+
+	/**
+	 * Constructor helper, that will get the name of the folder category of the
+	 * icons.
+	 *
+	 * @throws RuntimeException In case folder name cannot be retrieved.
 	 *
 	 * @return string
 	 */
-	protected function construct_folder_name_category() {
+	public function get_folder_name_category() {
+		$icon_category = $this->get_icon_category();
+		$icon_folders  = SVG_Manager::ICON_CATEGORY_FOLDER;
 
-		if ( strstr( $this->id, 'views' ) ) {
-			return 'views';
+		if ( isset( $icon_folders[ $icon_category ] ) ) {
+			return $icon_folders[ $icon_category ];
+		} else {
+			throw new RuntimeException();
 		}
+	}
 
-		if ( strstr( $this->id, 'cal' ) ) {
-			return 'date';
+	/**
+	 * Get the icon class, corresponding to icon category.
+	 *
+	 * @return string
+	 */
+	public function get_icon_category_class() {
+		try {
+			$category = $this->get_icon_category();
+		} catch ( RuntimeException $e ) {
+			return '';
 		}
+		$classes = SVG_Manager::ICON_CATEGORY_CLASS;
 
-		if ( strstr( $this->id, 'dcom' ) ) {
-			return 'disabled-comments';
-		}
-
-		if ( strstr( $this->id, 'com' ) && ! strstr( $this->id, 'dcom' ) ) {
-			return 'comments';
-		}
-
-		if ( strstr( $this->id, 'user' ) ) {
-			return 'user';
-		}
-
-		if ( strstr( $this->id, 'tax' ) ) {
-			return 'taxonomy';
-		}
-
-		if ( strstr( $this->id, 'rat' ) ) {
-			return 'rating';
+		if ( isset( $classes[ $category ] ) ) {
+			return $classes[ $category ];
 		}
 
 		return '';

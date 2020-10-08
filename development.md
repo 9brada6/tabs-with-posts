@@ -68,15 +68,18 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Finish Rating Icons
+- Do something with rating icons packs.
 - Make all icons align perfectly, under all conditions.
 
-- Change all definitions from svg to symbol?
-- Make icons works also inline and via a file.
+- Make icons work also inline and via a file.
 
 - Add a way to invert category icons?
 - Add License to FontAwesome
-- Add a test to not use presentational attributes. Instead put everything into a style attribute.
+
+- Add a test to not use presentational attributes. Instead put everything into a style attribute?
+
+- Add test: Each icon to be correct identified in the category.
+
 
 ### JS/SCSS
 

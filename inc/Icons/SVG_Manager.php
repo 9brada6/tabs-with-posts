@@ -5,11 +5,6 @@
 
 namespace TWRP\Icons;
 
-use RuntimeException;
-use WP_Filesystem_Direct;
-use TWRP_Main;
-use TWRP\Utils;
-use TWRP\Database\General_Options;
 use TWRP\Icons\Date_Icons;
 use TWRP\Icons\User_Icons;
 use TWRP\Icons\Category_Icons;
@@ -24,6 +19,69 @@ use TWRP\Icons\Rating_Icons;
  * as: twrp-{icon-meaning}-{brand/author}-[additional-icon-meaning]-{icon-type}.
  */
 class SVG_Manager {
+
+	/**
+	 * Numerical index, representing a user icon.
+	 */
+	const USER_ICON = 1;
+
+	/**
+	 * Numerical index, representing a date icon.
+	 */
+	const DATE_ICON = 2;
+
+	/**
+	 * Numerical index, representing a views icon.
+	 */
+	const VIEWS_ICON = 3;
+
+	/**
+	 * Numerical index, representing a rating icon.
+	 */
+	const RATING_ICON = 4;
+
+	/**
+	 * Numerical index, representing a rating icon.
+	 */
+	const CATEGORY_ICON = 5;
+
+	/**
+	 * Numerical index, representing a comment icon.
+	 */
+	const COMMENT_ICON = 6;
+
+	/**
+	 * Numerical index, representing a disabled comment icon.
+	 */
+	const DISABLED_COMMENT_ICON = 7;
+
+	/**
+	 * Each icon category has a folder where icons are found, these are declared
+	 * here.
+	 */
+	const ICON_CATEGORY_FOLDER = array(
+		self::USER_ICON             => 'user',
+		self::DATE_ICON             => 'date',
+		self::VIEWS_ICON            => 'views',
+		self::RATING_ICON           => 'rating',
+		self::CATEGORY_ICON         => 'taxonomy',
+		self::COMMENT_ICON          => 'comments',
+		self::DISABLED_COMMENT_ICON => 'disabled-comments',
+	);
+
+	/**
+	 * Each icon category will be wrapped in a HTML element, with a class name
+	 * of one of these.
+	 */
+	const ICON_CATEGORY_CLASS = array(
+		self::USER_ICON             => 'twrp-i--user',
+		self::DATE_ICON             => 'twrp-i--date',
+		self::VIEWS_ICON            => 'twrp-i--views',
+		self::RATING_ICON           => 'twrp-i--rating',
+		self::CATEGORY_ICON         => 'twrp-i--category',
+		self::COMMENT_ICON          => 'twrp-i--comment',
+		self::DISABLED_COMMENT_ICON => 'twrp-i--disabled-comment',
+	);
 
 	/**
 	 * Called before anything else, to initialize all the things that this class
@@ -223,7 +281,7 @@ class SVG_Manager {
 		?>
 		<style>
 		.twrp-test__icon-block-wrapper {
-			margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block; color:darkblue;
+			margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block;
 		}
 		.twrp-test__icon-wrapper {
 			margin-right: 6px
@@ -253,6 +311,22 @@ class SVG_Manager {
 			$icon_nr++;
 		}
 		echo '</p>';
+
+		echo '<p>';
+		foreach ( $icons as $icon ) {
+			echo '<div>';
+
+			echo '<span class="twrp-test__icon-block-wrapper">';
+				echo '<span class="twrp-test__icon-wrapper">';
+					echo $icon->get_html(); // phpcs:ignore
+				echo '</span>';
+				echo esc_html( $icon->get_option_icon_description() );
+			echo '</span>';
+
+			echo '</div>';
+		}
+		echo '</p>';
+
 	}
 
 	#endregion -- Development test icons alignment

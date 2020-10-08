@@ -98,7 +98,7 @@ trait Get_Settings_Trait {
 	public function get_author_icon_html() {
 		try {
 			$icon = new Icon( $this->get_selected_author_icon() );
-			return $icon->get_html( 'twrp-i--author' );
+			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
 		}
@@ -145,7 +145,7 @@ trait Get_Settings_Trait {
 	public function get_date_icon_html() {
 		try {
 			$icon = new Icon( $this->get_selected_date_icon() );
-			return $icon->get_html( 'twrp-i--date' );
+			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
 		}
@@ -192,7 +192,7 @@ trait Get_Settings_Trait {
 	public function get_views_icon_html() {
 		try {
 			$icon = new Icon( $this->get_selected_date_icon() );
-			return $icon->get_html( 'twrp-i--views' );
+			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
 		}
@@ -292,7 +292,7 @@ trait Get_Settings_Trait {
 
 		try {
 			$icon = new Icon( $comments_icon );
-			return $icon->get_html( 'twrp-i--comments' );
+			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
 		}

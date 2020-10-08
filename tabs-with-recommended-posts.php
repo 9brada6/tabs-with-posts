@@ -154,7 +154,6 @@ function twrp_register_settings() {
  * @return void
  */
 function twrp_enqueue_admin() {
-
 	wp_enqueue_style( 'twrp-frontend', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
 	wp_enqueue_style( 'twrp-backend', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), '1.0.0', 'all' );
 
@@ -185,7 +184,6 @@ function twrp_enqueue_admin() {
 
 	$php_mode_deps = array( 'twrp-codemirror', 'twrp-codemirror-xml', 'twrp-codemirror-js', 'twrp-codemirror-css', 'twrp-codemirror-html', 'twrp-codemirror-clike' );
 	wp_enqueue_script( 'twrp-codemirror-php', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/php.js' ), $php_mode_deps, '1.0.0', true );
-
 }
 
 add_action( 'admin_enqueue_scripts', 'twrp_enqueue_admin', 100 );

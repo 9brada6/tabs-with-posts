@@ -163,8 +163,10 @@ class Create_And_Enqueue_Icons {
 	 * @return string
 	 */
 	public static function get_defs_inline_all_needed_icons() {
-		$html = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;"><defs>';
+		$html_header = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">';
+		$html_footer = '</svg>';
 
+		$html = '';
 		foreach ( self::get_all_used_icons() as $icon_id ) {
 			try {
 				$icon = new Icon( $icon_id );
@@ -177,8 +179,10 @@ class Create_And_Enqueue_Icons {
 				$html .= $def;
 			}
 		}
+		$html = str_replace( '<svg', '<symbol', $html );
+		$html = str_replace( 'svg>', 'symbol>', $html );
 
-		$html .= '</defs></svg>';
+		$html = $html_header . $html . $html_footer;
 
 		return $html;
 	}
@@ -234,6 +238,5 @@ class Create_And_Enqueue_Icons {
 	}
 
 	#endregion -- Get all used website icons Ids
-
 
 }

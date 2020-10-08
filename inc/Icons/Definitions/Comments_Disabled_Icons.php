@@ -251,4 +251,17 @@ class Comments_Disabled_Icons {
 		return $registered_disabled_comments_vectors;
 	}
 
+	/**
+	 * Get an array where each key is a commend disabled id, an the value  is an
+	 * array with comments ids, that corresponds(best to look the same) to the
+	 * comment disabled.
+	 *
+	 * @return array;
+	 */
+	public static function get_comment_disabled_correspondings() {
+		$comment_disable_correspondings = array();
+
+		return $comment_disable_correspondings;
+	}
+
 }
