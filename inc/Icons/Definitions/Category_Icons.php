@@ -33,6 +33,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-fa-t-f'    => array(
@@ -40,6 +41,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tags-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-fa-f-f'    => array(
@@ -100,6 +102,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-ol'    => array(
@@ -107,6 +110,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-dt'    => array(
@@ -114,6 +118,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'tag-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-sh'    => array(
@@ -121,6 +126,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'tag-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-f-f'   => array(
@@ -156,6 +162,7 @@ class Category_Icons {
 				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-heart-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-h-ol'  => array(
@@ -163,6 +170,7 @@ class Category_Icons {
 				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-heart-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-h-dt'  => array(
@@ -170,6 +178,7 @@ class Category_Icons {
 				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'tag-heart-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-h-sh'  => array(
@@ -177,6 +186,7 @@ class Category_Icons {
 				'description' => _x( 'Tag Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'tag-heart-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-l-f'   => array(
@@ -184,6 +194,7 @@ class Category_Icons {
 				'description' => _x( 'Label', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'label-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-l-ol'  => array(
@@ -191,6 +202,7 @@ class Category_Icons {
 				'description' => _x( 'Label', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'label-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-l-dt'  => array(
@@ -198,6 +210,7 @@ class Category_Icons {
 				'description' => _x( 'Label', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'label-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-l-sh'  => array(
@@ -205,6 +218,7 @@ class Category_Icons {
 				'description' => _x( 'Label', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'label-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-l2-f'  => array(
@@ -212,6 +226,7 @@ class Category_Icons {
 				'description' => _x( 'Label 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'label-2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-l2-dt' => array(
@@ -219,6 +234,7 @@ class Category_Icons {
 				'description' => _x( 'Label 2', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'label-2-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-goo-b-f'   => array(
@@ -286,6 +302,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-di-c-f'    => array(
@@ -311,6 +328,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-fi-t-f'    => array(
@@ -318,6 +336,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tags-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-fi-f-f'    => array(
@@ -336,6 +355,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-ol'     => array(
@@ -343,6 +363,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-sh'     => array(
@@ -350,6 +371,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'tag-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-i-ol'   => array(
@@ -357,6 +379,7 @@ class Category_Icons {
 				'description' => _x( 'Ios Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-t-f'    => array(
@@ -364,6 +387,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tags-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-t-ol'   => array(
@@ -371,6 +395,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tags-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-t-sh'   => array(
@@ -378,6 +403,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'tags-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-it-ol'  => array(
@@ -385,6 +411,7 @@ class Category_Icons {
 				'description' => _x( 'Ios Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-tags-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ii-f-f'    => array(
@@ -487,6 +514,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-ol'     => array(
@@ -494,6 +522,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-t'      => array(
@@ -501,6 +530,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'tag-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-t-f'    => array(
@@ -508,6 +538,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tags-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-t-ol'   => array(
@@ -515,6 +546,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tags-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-t-t'    => array(
@@ -522,6 +554,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'tags-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-t2-f'   => array(
@@ -529,6 +562,7 @@ class Category_Icons {
 				'description' => _x( 'Tags 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tags-2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-im-t2-ol'  => array(
@@ -652,6 +686,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ci-2-f'    => array(
@@ -659,6 +694,7 @@ class Category_Icons {
 				'description' => _x( 'Tag 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ci-f-f'    => array(
@@ -684,6 +720,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-fe-f-ol'   => array(
@@ -716,6 +753,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ji-ol'     => array(
@@ -723,6 +761,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ji-t-f'    => array(
@@ -730,6 +769,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tags-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ji-t-ol'   => array(
@@ -737,6 +777,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tags-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ji-f-f'    => array(
@@ -783,6 +824,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-li-t-ol'   => array(
@@ -790,6 +832,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tags-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-li-f-ol'   => array(
@@ -822,6 +865,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-oi-t'      => array(
@@ -829,6 +873,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'tag-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-oi-f-f'    => array(
@@ -875,6 +920,7 @@ class Category_Icons {
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tag-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ti-t-ol'   => array(
@@ -882,6 +928,7 @@ class Category_Icons {
 				'description' => _x( 'Tags', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'tags-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-tax-ti-f-ol'   => array(

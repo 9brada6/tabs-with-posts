@@ -114,7 +114,6 @@ class User_Icons {
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'circle-filled.svg',
-				'fix_classes' => 'twrp-i--va-2',
 			),
 
 			'twrp-user-goo-circle-ol'    => array(
@@ -122,7 +121,6 @@ class User_Icons {
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'circle-outlined.svg',
-				'fix_classes' => 'twrp-i--va-2',
 			),
 
 			'twrp-user-goo-circle-dt'    => array(
@@ -130,7 +128,6 @@ class User_Icons {
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'circle-duotone.svg',
-				'fix_classes' => 'twrp-i--va-2',
 			),
 
 			#endregion -- Circle User Icon

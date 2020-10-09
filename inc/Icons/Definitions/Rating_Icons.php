@@ -27,6 +27,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'heart-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-rat-twrp-h-hf'  => array(
@@ -34,6 +35,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'heart-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-rat-twrp-ht-hf' => array(
@@ -41,6 +43,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart Thin', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'heart-thin-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-rat-twrp-h-ol'  => array(
@@ -48,6 +51,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'heart-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-rat-twrp-ht-t'  => array(
@@ -55,6 +59,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart Thin', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'heart-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- TWRP Icons
@@ -290,6 +295,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'heart-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-rat-ti-h-hf'    => array(
@@ -297,6 +303,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'heart-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-rat-ti-h-ol'    => array(
@@ -304,6 +311,7 @@ class Rating_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'heart-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Typicons Icons

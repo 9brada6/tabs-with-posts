@@ -155,6 +155,7 @@ class Comments_Disabled_Icons {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- FontAwesome Icons
@@ -172,6 +173,7 @@ class Comments_Disabled_Icons {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Dashicons
@@ -231,6 +233,7 @@ class Comments_Disabled_Icons {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Linea Icons
@@ -256,12 +259,12 @@ class Comments_Disabled_Icons {
 	 * array with comments ids, that corresponds(best to look the same) to the
 	 * comment disabled.
 	 *
-	 * @return array;
+	 * @return array
 	 */
-	public static function get_comment_disabled_correspondings() {
-		$comment_disable_correspondings = array();
+	public static function get_comment_disabled_corresponding() {
+		$comment_disable_corresponding = array();
 
-		return $comment_disable_correspondings;
+		return $comment_disable_corresponding;
 	}
 
 }

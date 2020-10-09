@@ -221,9 +221,10 @@ class Icon {
 	/**
 	 * Get the icon description to be displayed as an option.
 	 *
+	 * @param bool $with_brand Whether or not to include the brand in the name.
 	 * @return string
 	 */
-	public function get_option_icon_description() {
+	public function get_option_icon_description( $with_brand = false ) {
 		// todo.
 		return $this->get_icon_description();
 	}

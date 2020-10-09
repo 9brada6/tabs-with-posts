@@ -34,6 +34,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-fa-ol'        => array(
@@ -41,6 +42,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-fa-chart-f'   => array(
@@ -48,6 +50,7 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-fa-chart-ol'  => array(
@@ -55,6 +58,7 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- FontAwesome Icons
@@ -66,6 +70,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-goo-ol'       => array(
@@ -73,6 +78,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-goo-dt'       => array(
@@ -80,6 +86,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'eye-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-goo-line-f'   => array(
@@ -87,6 +94,7 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-goo-chart-f'  => array(
@@ -112,6 +120,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-di-c-f'       => array(
@@ -130,6 +139,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-fi-chart-f'   => array(
@@ -137,7 +147,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Foundation Icons
@@ -149,6 +158,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ii-ol'        => array(
@@ -156,6 +166,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ii-ios-f'     => array(
@@ -163,6 +174,7 @@ class Views_Icons {
 				'description' => _x( 'Ios Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'ios-eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ii-ios-ol'    => array(
@@ -170,6 +182,7 @@ class Views_Icons {
 				'description' => _x( 'Ios Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ii-chart-f'   => array(
@@ -177,7 +190,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ii-chart-ol'  => array(
@@ -185,7 +197,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart-outlined.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ii-chart-sh'  => array(
@@ -193,7 +204,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'chart-sharp.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Ionicons Icons
@@ -205,6 +215,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-ol'        => array(
@@ -212,6 +223,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-t'         => array(
@@ -219,6 +231,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'eye-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-2-f'       => array(
@@ -226,6 +239,7 @@ class Views_Icons {
 				'description' => _x( 'Eye 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-2-ol'      => array(
@@ -233,6 +247,7 @@ class Views_Icons {
 				'description' => _x( 'Eye 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye2-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-3-f'       => array(
@@ -240,6 +255,7 @@ class Views_Icons {
 				'description' => _x( 'Eye 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye3-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-3-ol'      => array(
@@ -247,6 +263,7 @@ class Views_Icons {
 				'description' => _x( 'Eye 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye3-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-4-ol'      => array(
@@ -254,6 +271,7 @@ class Views_Icons {
 				'description' => _x( 'Eye 4', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye4-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-im-chart-f'   => array(
@@ -289,7 +307,6 @@ class Views_Icons {
 				'description' => _x( 'Chart 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart3-filled.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-im-chart3-ol' => array(
@@ -297,7 +314,6 @@ class Views_Icons {
 				'description' => _x( 'Chart 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart3-outlined.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- IconMonstr Icons
@@ -309,6 +325,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ci-chart2-f'  => array(
@@ -316,7 +333,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart2-filled.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ci-chart-f'   => array(
@@ -324,7 +340,6 @@ class Views_Icons {
 				'description' => _x( 'Chart 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Capicon Icons
@@ -336,6 +351,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-fe-chart-ol'  => array(
@@ -361,6 +377,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ji-ol'        => array(
@@ -368,6 +385,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ji-chart-f'   => array(
@@ -386,6 +404,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-li-c-ol'      => array(
@@ -404,6 +423,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-oi-t'         => array(
@@ -411,6 +431,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'eye-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-oi-c-ol'      => array(
@@ -436,6 +457,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ti-ol'        => array(
@@ -443,6 +465,7 @@ class Views_Icons {
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'eye-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-ti-chart-f'   => array(
@@ -450,7 +473,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			'twrp-views-ti-chart-ol'  => array(
@@ -458,7 +480,6 @@ class Views_Icons {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart-outlined.svg',
-				'fix_classes' => 'twrp-i--va-1',
 			),
 
 			#endregion -- Typicons Icons

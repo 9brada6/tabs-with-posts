@@ -73,11 +73,16 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Make icons work also inline and via a file.
 
-- Add a way to invert category icons?
 - Add License to FontAwesome
 
 - Add a test to not use presentational attributes. Instead put everything into a style attribute?
 - Add test: Each icon to be correct identified in the category.
+- Add test: each id to be composed of maximum 5character words between "-".
+- Add a nice visual test to compare multiple inline icons.
+
+- Outlined Icons appear smaller than filled ones, even that they are the same size.
+
+- Fix some bad icons: twrp comments disabled sharp, almost all twrp disable comments needs to be reworked, octicons thin eye.
 
 
 ### JS/SCSS
@@ -87,3 +92,4 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - 🥇 Add taxonomy options(with post formats).
 - 📬 Add filters for all things.
 - Put all Query Notes in a separate class.
+- 🔀 Add a way to invert category icons?

@@ -46,6 +46,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'alt-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fa-2-ol'    => array(
@@ -53,6 +54,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'alt-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fa-dots-f'  => array(
@@ -99,6 +101,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-ol'     => array(
@@ -106,6 +109,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-dt'     => array(
@@ -113,6 +117,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-sh'     => array(
@@ -120,6 +125,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-2-f'    => array(
@@ -127,6 +133,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'alt-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-2-ol'   => array(
@@ -134,6 +141,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'alt-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-2-dt'   => array(
@@ -141,6 +149,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'alt-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-2-sh'   => array(
@@ -148,6 +157,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'alt-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-f-f'    => array(
@@ -155,6 +165,7 @@ class Comments_Icons {
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'feedback-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-f-ol'   => array(
@@ -162,6 +173,7 @@ class Comments_Icons {
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'feedback-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-f-dt'   => array(
@@ -169,6 +181,7 @@ class Comments_Icons {
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'feedback-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-f-sh'   => array(
@@ -176,6 +189,7 @@ class Comments_Icons {
 				'description' => _x( 'Feedback', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'feedback-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-b-f'    => array(
@@ -183,6 +197,7 @@ class Comments_Icons {
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'bank-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-b-ol'   => array(
@@ -190,6 +205,7 @@ class Comments_Icons {
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'bank-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-b-dt'   => array(
@@ -197,6 +213,7 @@ class Comments_Icons {
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'bank-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-goo-b-sh'   => array(
@@ -204,6 +221,7 @@ class Comments_Icons {
 				'description' => _x( 'Bank', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'bank-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Google Icons
@@ -215,6 +233,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-di-c-f'     => array(
@@ -222,6 +241,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-di-d-f'     => array(
@@ -229,6 +249,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-di-l-f'     => array(
@@ -236,6 +257,7 @@ class Comments_Icons {
 				'description' => _x( 'Lines', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'lines-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Dashicons
@@ -247,6 +269,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fi-2-f'     => array(
@@ -265,6 +288,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-ol'      => array(
@@ -272,6 +296,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-sh'      => array(
@@ -279,6 +304,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-2-f'     => array(
@@ -300,6 +326,7 @@ class Comments_Icons {
 				'description' => _x( 'Ios Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'ios-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-ios-ol'  => array(
@@ -307,6 +334,7 @@ class Comments_Icons {
 				'description' => _x( 'Ios Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-t-f'     => array(
@@ -314,6 +342,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-t-ol'    => array(
@@ -321,6 +350,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-t-sh'    => array(
@@ -328,6 +358,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'dots-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-t2-f'    => array(
@@ -363,6 +394,7 @@ class Comments_Icons {
 				'description' => _x( 'Ios Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'ios-comments-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ii-ioc-ol'  => array(
@@ -370,6 +402,7 @@ class Comments_Icons {
 				'description' => _x( 'Ios Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-comments-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Ionicons Icons
@@ -381,6 +414,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-ol'      => array(
@@ -388,6 +422,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-2-f'     => array(
@@ -395,6 +430,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-2-ol'    => array(
@@ -402,6 +438,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => '2-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-t-f'     => array(
@@ -409,6 +446,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-t-ol'    => array(
@@ -416,6 +454,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-t2-f'    => array(
@@ -423,6 +462,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-t2-ol'   => array(
@@ -430,6 +470,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-2-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-co-f'    => array(
@@ -437,6 +478,7 @@ class Comments_Icons {
 				'description' => _x( 'Content', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'content-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-co-ol'   => array(
@@ -444,6 +486,7 @@ class Comments_Icons {
 				'description' => _x( 'Content', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'content-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-co2-f'   => array(
@@ -451,6 +494,7 @@ class Comments_Icons {
 				'description' => _x( 'Content 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'content-2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-co2-ol'  => array(
@@ -458,6 +502,7 @@ class Comments_Icons {
 				'description' => _x( 'Content 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'content-2-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c-f'     => array(
@@ -465,6 +510,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c-ol'    => array(
@@ -472,6 +518,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comments-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c2-f'    => array(
@@ -493,6 +540,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-3-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c4-hf'   => array(
@@ -500,6 +548,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 4', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-4-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c5-hf'   => array(
@@ -507,6 +556,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 5', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-5-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c6-f'    => array(
@@ -514,6 +564,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 6', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-6-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c6-ol'   => array(
@@ -521,6 +572,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 6', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comments-6-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c6-t'    => array(
@@ -528,6 +580,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 6', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'comments-6-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c7-hf'   => array(
@@ -535,6 +588,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 7', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-7-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-im-c8-hf'   => array(
@@ -542,6 +596,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments 8', 'backend', 'twrp' ),
 				'type'        => _x( 'Half Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-8-half-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- IconMonstr Icons
@@ -553,6 +608,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ci-ol'      => array(
@@ -560,6 +616,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ci-2-f'     => array(
@@ -567,6 +624,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '2-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ci-3-f'     => array(
@@ -574,6 +632,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '3-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ci-4-f'     => array(
@@ -581,6 +640,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 4', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '4-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Capicon Icons
@@ -592,6 +652,7 @@ class Comments_Icons {
 				'description' => _x( 'Square', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'square-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fe-ci-ol'   => array(
@@ -599,6 +660,7 @@ class Comments_Icons {
 				'description' => _x( 'Circle', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'circle-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Feather Icons
@@ -610,6 +672,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-ol'      => array(
@@ -617,6 +680,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-2-f'     => array(
@@ -624,6 +688,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'alt-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-2-ol'    => array(
@@ -631,6 +696,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'alt-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-c-f'     => array(
@@ -638,6 +704,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comments-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-c-ol'    => array(
@@ -645,6 +712,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comments-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-c2-f'    => array(
@@ -666,6 +734,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-t-ol'    => array(
@@ -673,6 +742,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-t2-f'    => array(
@@ -680,6 +750,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-alt-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ji-t2-ol'   => array(
@@ -687,6 +758,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-alt-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Jam Icons
@@ -698,6 +770,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comment-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-li-c-ol'    => array(
@@ -705,6 +778,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comments-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-li-l-ol'    => array(
@@ -712,6 +786,7 @@ class Comments_Icons {
 				'description' => _x( 'Lines', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'lines-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-li-d-ol'    => array(
@@ -719,6 +794,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-li-he-ol'   => array(
@@ -726,6 +802,7 @@ class Comments_Icons {
 				'description' => _x( 'Heart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'heart-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-li-ha-ol'   => array(
@@ -733,6 +810,7 @@ class Comments_Icons {
 				'description' => _x( 'Happy', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'happy-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Linea Icons
@@ -744,6 +822,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comment-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-oi-t'       => array(
@@ -751,6 +830,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'comment-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-oi-c-ol'    => array(
@@ -776,6 +856,7 @@ class Comments_Icons {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ti-d-ol'    => array(
@@ -783,6 +864,7 @@ class Comments_Icons {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-ti-c-ol'    => array(
@@ -790,6 +872,7 @@ class Comments_Icons {
 				'description' => _x( 'Comments', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comments-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Typicons Icons
