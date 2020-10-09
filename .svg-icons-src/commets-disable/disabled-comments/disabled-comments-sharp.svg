@@ -4,7 +4,7 @@
 	 viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
 <polygon points="98,2 98,40.3 89.1,40.3 89.1,48 78,40.6 78,30 46,30 46,2 "/>
 <polygon points="61.7,87.6 29.5,87.6 14,98 14,87.6 2,87.6 2,36 10.1,36 "/>
-<polygon points="100,91.9 91.5,100.4 -0.4,8.5 8.1,0 44.1,36 72,36 72,63.9 "/>
-<rect x="45.5" y="-10.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -25.1857 48.1464)" width="0.1" height="130"/>
-<rect x="45.5" y="-10.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -25.1857 48.1464)" style="fill:#FFFFFF;" width="0.1" height="130"/>
+<polygon points="100,91.9 91.9,100 91.1,100 0,8.9 0,8.1 8.1,0 44.1,36 72,36 72,63.9 "/>
+<line style="fill:none;" x1="0" y1="8.9" x2="0" y2="8.1"/>
+<line style="fill:none;" x1="91.9" y1="100" x2="91.1" y2="100"/>
 </svg>

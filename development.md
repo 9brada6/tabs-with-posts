@@ -69,7 +69,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### Icons
 
 - Do something with rating icons packs.
-- Make all icons align perfectly, under all conditions.
+- Make all icons align perfectly, under all conditions, tested on Firefox.
 
 - Make icons work also inline and via a file.
 
@@ -77,13 +77,10 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Add a test to not use presentational attributes. Instead put everything into a style attribute?
 - Add test: Each icon to be correct identified in the category.
-- Add test: each id to be composed of maximum 5character words between "-".
+- Add test: each id to be composed of maximum 5character words between "-". Each icon to not have any group tag.
 - Add a nice visual test to compare multiple inline icons.
 
-- Outlined Icons appear smaller than filled ones, even that they are the same size.
-
-- Fix some bad icons: twrp comments disabled sharp, almost all twrp disable comments needs to be reworked, octicons thin eye.
-
+- Make TWRP thin comments pixel perfect?
 
 ### JS/SCSS
 
