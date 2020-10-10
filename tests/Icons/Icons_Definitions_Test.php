@@ -163,10 +163,10 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Return an array with all attributes present in all icons. The attributes
 	 * are only the one we care to not be present.
 	 */
-	public function test__icons_must_be_missing_attributes() {
+	public function test__icons_must_be_missing_attributes_or_characters() {
 		$icons = SVG_Manager::get_all_icons();
 
-		$attributes   = array( 'class', 'role', 'focusable', 'aria', ' "', '  ', "\t" );
+		$attributes   = array( 'class', 'role', 'focusable', 'aria', ' "', '  ', "\t", '<g', '</g' );
 		$regex_verify = array( '/#(\d|[abcdef]){3}/i' );
 		$wrong_ids    = array();
 
@@ -211,6 +211,93 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 
 		$fail_message = 'Icons that are not having a category: ' . implode( ', ', $icons_without_category );
 		$this->assertTrue( empty( $icons_without_category ), $fail_message );
+	}
+
+	/**
+	 * Test that each icon must have a category.
+	 */
+	public function test__each_icon_to_be_in_correct_category() {
+		$static_functions_to_call = array(
+			'get_user_icons',
+			'get_date_icons',
+			'get_category_icons',
+			'get_comment_icons',
+			'get_comment_disabled_icons',
+			'get_views_icons',
+			'get_rating_icons',
+		);
+
+		$bad_icons = array();
+
+		$verified_num  = 0;
+		$all_icons_num = count( SVG_Manager::get_all_icons() );
+
+		foreach ( $static_functions_to_call as $function_name ) {
+			$icons = SVG_Manager::$function_name();
+
+			$first_icon_category = null;
+			foreach ( $icons as $icon ) {
+				if ( ! $first_icon_category ) {
+					$first_icon_category = $icon->get_icon_category();
+				}
+
+				if ( ! $icon->get_icon_category() === $first_icon_category ) {
+					array_push( $bad_icons, $icon->get_id() );
+				}
+
+				$verified_num++;
+			}
+		}
+
+		$fail_message = 'Icons that are not in the correct category(or first icon from function is not): ' . implode( ', ', $bad_icons );
+		$this->assertTrue( empty( $bad_icons ), $fail_message );
+
+		$fail_message2 = 'Not all icons were verified.';
+		$this->assertEquals( $verified_num, $all_icons_num, $fail_message2 );
+	}
+
+	/**
+	 * Test that each comment icon must have a compatible(corresponding)
+	 * disabled icon.
+	 *
+	 * @return void
+	 */
+	public function test__each_comment_icon_have_a_compatible_disabled_comment() {
+		$comment_icons         = SVG_Manager::get_comment_icons();
+		$not_having_compatible = array();
+
+		foreach ( $comment_icons as $comment_icon ) {
+			$disabled_comment_icon = SVG_Manager::get_compatible_disabled_comment_icon( $comment_icon );
+
+			if ( null === $disabled_comment_icon ) {
+				array_push( $not_having_compatible, $comment_icon->get_id() );
+			}
+		}
+
+		$fail_message = 'Comment icons that do not have a compatible disabled comment: ' . implode( ', ', $not_having_compatible );
+		$this->assertTrue( empty( $not_having_compatible ), $fail_message );
+	}
+
+	/**
+	 * Test each icon id to have a maximum of 5 characters between "-".
+	 */
+	public function test__icon_id_must_have_maxim_5_char_words() {
+		$icons            = SVG_Manager::get_all_icons();
+		$allowed_keywords = array( 'views' );
+		$bad_icons_ids    = array();
+
+		foreach ( $icons as $icon ) {
+			$icon_id_words = explode( '-', $icon->get_id() );
+
+			foreach ( $icon_id_words as $id_word ) {
+				if ( strlen( $id_word ) > 4 && ! in_array( $id_word, $allowed_keywords ) ) {
+					array_push( $bad_icons_ids, $icon->get_id() );
+				}
+			}
+		}
+
+		$fail_message = 'Icons that exceed 5 characters words: ' . implode( ', ', $bad_icons_ids );
+		$this->assertTrue( empty( $bad_icons_ids ), $fail_message );
 	}
 
 }

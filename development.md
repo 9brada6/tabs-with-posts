@@ -81,14 +81,12 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Add a test to not use presentational attributes. Instead put everything into a style attribute?
 - Remove useless style attributes, like those with even odd.
 
-- Add test: Each icon to be correct identified in the category.
-- Add test: Each comment icon to have a corresponding disabled icon.
-- Add test: each id to be composed of maximum 5character words between "-". Each icon to not have any group tag.
 - Verify each icon comment corresponding if correct visually.
 
 - Make TWRP thin comments pixel perfect?
 
 - Make all comment icons to have a corresponding disabled icon, add a test.
+- Add task to execute docker test.
 
 ### JS/SCSS
 
