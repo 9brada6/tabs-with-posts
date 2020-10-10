@@ -5,6 +5,7 @@
 
 namespace TWRP\Icons;
 
+use RuntimeException;
 use TWRP\Icons\Date_Icons;
 use TWRP\Icons\User_Icons;
 use TWRP\Icons\Category_Icons;
@@ -265,6 +266,55 @@ class SVG_Manager {
 
 	#endregion -- Get all icons
 
+	#region -- Get compatible disabled comment icon
+
+	/**
+	 * For a comment icon, get the compatible disabled icon.
+	 *
+	 * @param Icon|string $icon Either an Icon object, or an icon id.
+	 * @return Icon|null The compatible disabled comment icon, or null if not found.
+	 */
+	public static function get_compatible_disabled_comment_icon( $icon ) {
+		$icon_id = self::get_compatible_disabled_comment_icon_id( $icon );
+
+		if ( ! is_string( $icon_id ) ) {
+			return null;
+		}
+
+		try {
+			$disabled_icon = new Icon( $icon_id );
+			return $disabled_icon;
+		} catch ( RuntimeException $e ) {
+			return null;
+		}
+	}
+
+	/**
+	 * For a comment icon, get the compatible disabled icon.
+	 *
+	 * @param Icon|string $icon Either an Icon object, or an icon id.
+	 * @return string|null The compatible disabled comment icon, or null if not found.
+	 */
+	public static function get_compatible_disabled_comment_icon_id( $icon ) {
+		if ( $icon instanceof Icon ) {
+			$icon_id = $icon->get_id();
+		} elseif ( is_string( $icon ) ) {
+			$icon_id = $icon;
+		} else {
+			return null;
+		}
+
+		$compatible_icons = Comments_Disabled_Icons::get_comment_disabled_compatibles();
+
+		if ( isset( $compatible_icons[ $icon_id ] ) ) {
+			return $compatible_icons[ $icon_id ];
+		}
+
+		return null;
+	}
+
+	#endregion -- Get compatible disabled comment icon
+
 	#region -- Development test icons alignment
 
 	/**
@@ -327,6 +377,47 @@ class SVG_Manager {
 		}
 		echo '</p>';
 
+		self::test__show_comment_icon_compatible_with_disabled_icon();
+	}
+
+	/**
+	 * For each comment icon, show the compatible disabled comment icon.
+	 *
+	 * @return void
+	 */
+	public static function test__show_comment_icon_compatible_with_disabled_icon() {
+		$icons = self::get_comment_icons();
+		?>
+		<div style="font-family:monospace">
+			<?php foreach ( $icons as $comment_icon ) : ?>
+				<?php
+					$disabled_comment_icon = self::get_compatible_disabled_comment_icon( $comment_icon );
+				?>
+				<div>
+					<?php
+
+					$comment_icon->display();
+					echo '&nbsp;=>&nbsp;';
+					if ( $disabled_comment_icon instanceof Icon ) {
+						$disabled_comment_icon->display();
+					}
+
+					echo '&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;';
+
+					echo esc_html( $comment_icon->get_id() );
+					$id_max_strlen    = 20;
+					$spaces_to_repeat = $id_max_strlen - strlen( $comment_icon->get_id() );
+					echo esc_html( str_repeat( '&nbsp;', $spaces_to_repeat ) );
+					echo '&nbsp;=>&nbsp;';
+					if ( $disabled_comment_icon instanceof Icon ) {
+						echo esc_html( $disabled_comment_icon->get_id() );
+					}
+
+					?>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<?php
 	}
 
 	#endregion -- Development test icons alignment

@@ -69,18 +69,26 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### Icons
 
 - Do something with rating icons packs.
+
 - Make all icons align perfectly, under all conditions, tested on Firefox.
+- Add a nice visual test to compare multiple inline icons.
 
 - Make icons work also inline and via a file.
 
-- Add License to FontAwesome
+- Add License to FontAwesome and all other icons.
+- Add accessibility to icons.
 
 - Add a test to not use presentational attributes. Instead put everything into a style attribute?
+- Remove useless style attributes, like those with even odd.
+
 - Add test: Each icon to be correct identified in the category.
+- Add test: Each comment icon to have a corresponding disabled icon.
 - Add test: each id to be composed of maximum 5character words between "-". Each icon to not have any group tag.
-- Add a nice visual test to compare multiple inline icons.
+- Verify each icon comment corresponding if correct visually.
 
 - Make TWRP thin comments pixel perfect?
+
+- Make all comment icons to have a corresponding disabled icon, add a test.
 
 ### JS/SCSS
 

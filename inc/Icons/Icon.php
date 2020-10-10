@@ -158,6 +158,16 @@ class Icon {
 	#endregion -- Get basic info
 
 	/**
+	 * Display the icon.
+	 *
+	 * @param string $additional_class Can be multiple classes separated by spaces.
+	 * @return void
+	 */
+	public function display( $additional_class = '' ) {
+		echo $this->get_html( $additional_class ); // phpcs:ignore
+	}
+
+	/**
 	 * Returns the HTML to include an icon.
 	 *
 	 * @param string $additional_class Can be multiple classes separated by spaces.
