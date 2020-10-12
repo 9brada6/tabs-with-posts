@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @covers \TWRP\Query_Setting\Search
- * @phan-file-suppress PhanThrowTypeAbsentForCall
  */
 class Search_Test extends TestCase {
 

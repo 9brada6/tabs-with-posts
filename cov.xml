@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1602357642">
-  <project timestamp="1602357642">
+<coverage generated="1602359690">
+  <project timestamp="1602359690">
     <package name="TWRP\Icons">
       <file name="/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Icons/Create_And_Enqueue_Icons.php">
         <class name="TWRP\Icons\Create_And_Enqueue_Icons" namespace="TWRP\Icons" fullPackage="Create.And.Enqueue">

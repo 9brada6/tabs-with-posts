@@ -12,28 +12,39 @@
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
 >
+
     <projectFiles>
-        <directory name="./" />
-        <file name="tabs-with-recommended-posts.php" />
+        <directory name="inc"/>
+        <file name="tabs-with-recommended-posts.php"/>
         <ignoreFiles>
-            <directory name=".git" />
-            <directory name=".svn" />
-            <directory name=".stubs" />
-            <directory name="node_modules" />
-            <directory name="vendor" />
+            <directory name=".git"/>
+            <directory name=".svn"/>
+            <directory name=".stubs"/>
+            <directory name=".svg-icons-src"/>
+            <directory name=".vscode"/>
+            <directory name="node_modules"/>
+            <directory name="vendor"/>
         </ignoreFiles>
     </projectFiles>
+
     <stubs>
-        <file name=".stubs/wordpress-stubs.php" />
-        <file name=".stubs/phpunit.php" />
-        <file name=".stubs/masterminds-html5parser.php" />
+        <file name=".stubs/wordpress-stubs.php"/>
     </stubs>
 
     <issueHandlers>
-        <!-- <MissingPropertyType errorLevel="suppress" /> -->
-        <!-- <MissingReturnType errorLevel="suppress" /> -->
-        <RedundantConditionGivenDocblockType errorLevel="suppress" />
-        <MoreSpecificImplementedParamType errorLevel="suppress" />
+        <RedundantConditionGivenDocblockType errorLevel="suppress"/>
+        <MoreSpecificImplementedParamType errorLevel="suppress"/>
 
+        <UndefinedClass>
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </UndefinedClass>
+
+        <UndefinedTrait>
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </UndefinedTrait>
     </issueHandlers>
 </psalm>

@@ -5,12 +5,7 @@
 
 namespace TWRP\Article_Block;
 
-use WP_Post;
 use TWRP\Artblock_Component\Widget_Component_Settings;
-use TWRP\Database\General_Options;
-use TWRP\Icons\SVG_Manager;
-use TWRP\Utils;
-use TWRP\Plugins\Post_Views;
 
 /**
  * The abstract for an article block. By extending this class, a class can

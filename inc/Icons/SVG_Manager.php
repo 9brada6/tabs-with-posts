@@ -266,6 +266,30 @@ class SVG_Manager {
 
 	#endregion -- Get all icons
 
+	#region -- Get aria labels
+
+	/**
+	 * Get an array, where the key is the icon category index, and the value
+	 * is the aria label for these type of icons.
+	 *
+	 * @return array
+	 */
+	public static function get_category_aria_label() {
+		$aria_labels = array(
+			self::USER_ICON             => _x( 'Author', 'accessibility text', 'twrp' ),
+			self::DATE_ICON             => _x( 'Date', 'accessibility text', 'twrp' ),
+			self::VIEWS_ICON            => _x( 'Views', 'accessibility text', 'twrp' ),
+			self::RATING_ICON           => _x( 'Rating', 'accessibility text', 'twrp' ),
+			self::CATEGORY_ICON         => _x( 'Category', 'accessibility text', 'twrp' ),
+			self::COMMENT_ICON          => _x( 'Comments', 'accessibility text', 'twrp' ),
+			self::DISABLED_COMMENT_ICON => _x( 'Comments Disabled', 'accessibility text', 'twrp' ),
+		);
+
+		return $aria_labels;
+	}
+
+	#endregion -- Get aria labels
+
 	#region -- Get compatible disabled comment icon
 
 	/**

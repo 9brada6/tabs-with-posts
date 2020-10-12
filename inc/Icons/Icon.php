@@ -187,7 +187,7 @@ class Icon {
 
 		// todo: add aria-label and role="icon"?
 		$html =
-		'<span class="twrp-i' . esc_attr( $fix_icon_class . $additional_class . $icon_category_class ) . '">' .
+		'<span class="twrp-i' . esc_attr( $fix_icon_class . $additional_class . $icon_category_class ) . '" role="icon" aria-label="' . esc_attr( $this->get_icon_aria_label() ) . '">' .
 		'<svg><use xlink:href="#' . esc_attr( $this->get_id() ) . '"/></svg>' .
 		'</span>';
 
@@ -317,6 +317,28 @@ class Icon {
 
 		if ( isset( $classes[ $category ] ) ) {
 			return $classes[ $category ];
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get the aria label for the icon. If the icon does not have an aria-label,
+	 * will return an empty string.
+	 *
+	 * @return string
+	 */
+	public function get_icon_aria_label() {
+		$labels = SVG_Manager::get_category_aria_label();
+
+		try {
+			$icon_category = $this->get_icon_category();
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+
+		if ( isset( $labels[ $icon_category ] ) ) {
+			return $labels[ $icon_category ];
 		}
 
 		return '';

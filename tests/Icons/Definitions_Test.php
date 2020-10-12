@@ -1,10 +1,16 @@
 <?php
+/**
+ * File that contains the class with the same name.
+ */
 
 namespace TWRP\Icons;
 
 use RuntimeException;
 use WP_UnitTestCase;
 
+/**
+ * Tests all the icon definitions.
+ */
 class Icons_Definitions_Test extends WP_UnitTestCase {
 
 	/**
@@ -149,7 +155,8 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 				continue;
 			}
 
-			if ( strstr( $icon->get_icon_filename(), $icon_matches[ $icon_id_type ]['file_prefix'] ) === false ) {
+			$icon_filename = $icon->get_icon_filename();
+			if ( ! is_string( $icon_filename ) || strstr( $icon_filename, $icon_matches[ $icon_id_type ]['file_prefix'] ) === false ) {
 				array_push( $wrong_ids, $icon_id );
 				continue;
 			}
@@ -290,7 +297,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 			$icon_id_words = explode( '-', $icon->get_id() );
 
 			foreach ( $icon_id_words as $id_word ) {
-				if ( strlen( $id_word ) > 4 && ! in_array( $id_word, $allowed_keywords ) ) {
+				if ( strlen( $id_word ) > 4 && ! in_array( $id_word, $allowed_keywords, true ) ) {
 					array_push( $bad_icons_ids, $icon->get_id() );
 				}
 			}

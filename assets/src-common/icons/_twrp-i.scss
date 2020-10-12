@@ -1,9 +1,10 @@
 .twrp-i {
+	position: relative;
+	top: 0.08em;
 	display: inline-block;
 	width: 1em;
 	height: 1em;
 	margin-right: 0.1em;
-	vertical-align: -0.1em;
 	fill: currentColor;
 
 	svg {
@@ -17,13 +18,13 @@
 /* Vertical align fix */
 
 .twrp-i--va-1 {
-	vertical-align: -0.1em;
+	top: 0.08em;
 }
 
 .twrp-i--va-15 {
-	vertical-align: -0.15em;
+	top: 0.13em;
 }
 
 .twrp-i--va-2 {
-	vertical-align: -0.2em;
+	top: 0.17em;
 }

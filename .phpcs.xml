@@ -43,9 +43,7 @@
 		<exclude name="Squiz.Commenting.FunctionComment.SpacingAfterParamType"/>
 		<!-- Allow regional comments. So we can use Phan annotations. -->
 		<exclude name="Squiz.Commenting.InlineComment.WrongStyle"/>
-		<!-- Allow missing short, so we can use @inheritdoc. -->
-		<exclude name="Generic.Commenting.DocComment.MissingShort" />
-		<!-- If some functions don't have a commet, the phpcs think that they
+		<!-- If some functions don't have a comment, the phpcs think that they
 		will inherit whatever is before. -->
 		<exclude name="Squiz.Commenting.FunctionComment.WrongStyle" />
 
@@ -55,11 +53,9 @@
 		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
 
 
-
-
 		<!-- The rules below are excluded during development: -->
 
-		<exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+		<!-- <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.VariableComment.Missing" />
@@ -68,7 +64,7 @@
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />
 		<exclude name="Squiz.PHP.CommentedOutCode.Found" />
 		<exclude name="Squiz.Commenting.InlineComment.InvalidEndChar" />
-		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" />
+		<exclude name="Squiz.Commenting.ClassComment.SpacingAfter" /> -->
     </rule>
 
 	<!-- Exclude prefix globals from template files, these files are not global files. -->
@@ -76,9 +72,19 @@
 		<exclude-pattern>*/templates/*</exclude-pattern>
 	</rule>
 
+	<!-- Exclude docblock commenting of functions/methods in tests. -->
+	<rule ref="Squiz.Commenting.FunctionComment.Missing">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+	<rule ref="Generic.Commenting.DocComment.MissingShort">
+		<exclude-pattern>*/tests/*</exclude-pattern>
+	</rule>
+
 	<!-- Check for cross-version support for PHP 7.0 and higher. -->
     <config name="testVersion" value="5.6"/>
 	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="Squiz.Commenting.FunctionComment.MissingReturn"/>
 
 	<!--
 		Slevomat Rules. Those come as addition to WPCS. Removing these should make

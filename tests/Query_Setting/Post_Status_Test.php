@@ -2,14 +2,13 @@
 
 namespace TWRP\Query_Setting;
 
-use PHPUnit\Framework\TestCase;
 use Masterminds\HTML5;
+use WP_UnitTestCase;
 
 /**
  * @covers \TWRP\Query_Setting\Post_Status
- * @phan-file-suppress PhanThrowTypeAbsentForCall
  */
-class Post_Status_Test extends TestCase {
+class Post_Status_Test extends WP_UnitTestCase {
 
 	use Verify_Basic_Settings;
 

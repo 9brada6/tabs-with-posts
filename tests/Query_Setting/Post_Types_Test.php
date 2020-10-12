@@ -1,4 +1,7 @@
 <?php
+/**
+ * File that contains the class with the same name.
+ */
 
 namespace TWRP\Query_Setting;
 
@@ -6,20 +9,33 @@ use PHPUnit\Framework\TestCase;
 use Masterminds\HTML5;
 
 /**
+ * Class that tests the Post_Types class.
+ *
  * @covers \TWRP\Query_Setting\Post_Types
- * @phan-file-suppress PhanThrowTypeAbsentForCall, PhanTypeVoidAssignment
  */
 class Post_Types_Test extends TestCase {
 
 	use Verify_Basic_Settings;
 
 	/**
+	 * Holds the class instance that needs to be tested.
+	 *
 	 * @var \TWRP\Query_Setting\Post_Types
 	 */
 	public static $class_instance;
 
+	/**
+	 * All the settings keys, aka, a string that identifies a setting.
+	 *
+	 * @var array
+	 */
 	public static $settings_keys = array();
 
+	/**
+	 * Selected Post Types setting key.
+	 *
+	 * @var string
+	 */
 	public static $selected_types_key = '';
 
 	public static function setUpBeforeClass() {

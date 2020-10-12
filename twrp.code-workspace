@@ -52,7 +52,6 @@
 		// those from the status bar.
 		"files.exclude": {
 			".phan": true,
-			".stubs": true,
 			".vscode": true,
 			"node_modules": true,
 			".gitignore": true,
@@ -99,6 +98,7 @@
 		"intelephense.format.enable": false,
 		"intelephense.diagnostics.run": "onType",
 		"intelephense.completion.maxItems": 100,
+
 
 		// =====================================================================
 
@@ -154,6 +154,11 @@
 		"phan.analyzeOnlyOnSave": true,
 
 		// "phan.enableDebugLog": true,
+
+		// =====================================================================
+
+		// =====================================================================
+		// Psalm - Static analyzer:
 
 		// =====================================================================
 
@@ -319,7 +324,7 @@
 		// Make todo work in docblocks and with @ in front.
 		"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*@*($TAGS)",
 
-		"psalm.connectToServerWithTcp":true,
+
 
 				// ===========================
 		// Prettier

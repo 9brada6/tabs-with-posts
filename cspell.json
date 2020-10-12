@@ -42,6 +42,7 @@
         "autoloader",
         "glsr",
         "prepended",
+        "testsuite",
         "totalviews"
     ]
 }

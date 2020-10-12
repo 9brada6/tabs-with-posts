@@ -6,7 +6,6 @@
 namespace TWRP\Query_Setting;
 
 use PHPUnit\Framework\TestCase;
-use Masterminds\HTML5;
 
 class Sticky_Posts_Test extends TestCase {
 
