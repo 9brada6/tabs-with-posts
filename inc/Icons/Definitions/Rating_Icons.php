@@ -237,11 +237,11 @@ class Rating_Icons {
 
 			#endregion -- IconMonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			// No Icons...
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 

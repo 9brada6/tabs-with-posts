@@ -208,11 +208,11 @@ class Comments_Disabled_Icons {
 
 			#endregion -- IconMonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			// No Icons...
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 
@@ -346,7 +346,7 @@ class Comments_Disabled_Icons {
 			'twrp-com-im-c7-hf'   => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-im-c8-hf'   => 'twrp-dcom-twrp-c2-ol',
 
-			// Capicon
+			// Captain Icons
 			'twrp-com-ci-f'       => 'twrp-dcom-twrp-c-f',
 			'twrp-com-ci-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-ci-2-f'     => 'twrp-dcom-twrp-c2-f',

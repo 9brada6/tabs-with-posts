@@ -318,10 +318,10 @@ class Views_Icons {
 
 			#endregion -- IconMonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			'twrp-views-ci-f'       => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Eye', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'eye-filled.svg',
@@ -329,20 +329,20 @@ class Views_Icons {
 			),
 
 			'twrp-views-ci-c2-f'    => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart2-filled.svg',
 			),
 
 			'twrp-views-ci-c-f'     => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Chart 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'chart-filled.svg',
 			),
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 

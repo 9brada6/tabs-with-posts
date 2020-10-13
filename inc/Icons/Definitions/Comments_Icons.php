@@ -601,10 +601,10 @@ class Comments_Icons {
 
 			#endregion -- IconMonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			'twrp-com-ci-f'       => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
@@ -612,7 +612,7 @@ class Comments_Icons {
 			),
 
 			'twrp-com-ci-ol'      => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
@@ -620,7 +620,7 @@ class Comments_Icons {
 			),
 
 			'twrp-com-ci-2-f'     => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Comment 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '2-filled.svg',
@@ -628,7 +628,7 @@ class Comments_Icons {
 			),
 
 			'twrp-com-ci-3-f'     => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Comment 3', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '3-filled.svg',
@@ -636,14 +636,14 @@ class Comments_Icons {
 			),
 
 			'twrp-com-ci-4-f'     => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Comment 4', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '4-filled.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 

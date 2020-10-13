@@ -10,7 +10,7 @@
         "abspath",
         "artblocks",
         "blazk",
-        "capicon",
+        "Captain Icons",
         "dcom",
         "dfactory",
         "fontawesome",
@@ -43,6 +43,7 @@
         "glsr",
         "prepended",
         "testsuite",
-        "totalviews"
+        "totalviews",
+        "twrpb"
     ]
 }

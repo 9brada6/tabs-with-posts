@@ -4,6 +4,7 @@ namespace TWRP;
 
 use TWRP\TWRP_Widget\Widget;
 use DateTimeZone;
+use TWRP_Main;
 
 class Utils {
 
@@ -293,6 +294,40 @@ class Utils {
 	#endregion -- WP Date and Time Polyfills
 
 	#region -- Directory Utilities
+
+	/**
+	 * Returns the path to this plugin directory.
+	 *
+	 * @return string|false The path is trail slashed, false if the path cannot be get.
+	 */
+	public static function get_plugin_directory_path() {
+		$folder_name = TWRP_Main::PLUGIN_FOLDER_NAME;
+		$file        = __FILE__;
+		$file        = str_replace( '\\', '/', $file );
+
+		$folder_name_position = strrpos( $file, $folder_name );
+
+		if ( false === $folder_name_position ) { // @phan-suppress-current-line PhanSuspiciousValueComparison
+			return false;
+		}
+
+		while ( true ) {
+			$last_separator                  = strrpos( $file, '/' );
+			$last_separator_must_be_position = $folder_name_position + strlen( $folder_name );
+			if ( $last_separator === $last_separator_must_be_position ) {
+				break;
+			}
+
+			$file = dirname( $file );
+			$file = str_replace( '\\', '/', $file );
+
+			if ( strrpos( $file, $folder_name ) === false ) {
+				return false;
+			}
+		}
+
+		return trailingslashit( plugin_dir_path( $file ) );
+	}
 
 	/**
 	 * Get this plugin assets URL.

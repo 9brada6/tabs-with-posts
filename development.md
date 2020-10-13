@@ -3,13 +3,13 @@
 ## Icons Manual Testing
 
 - Checked to see if they align in the middle:
-- Comments          ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- Date              ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- Disabled Comments ( Capicon*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr, Ionicons*, JamIcons*, Linea, Octicons*, TypIcons* )
-- Rating            ( Capicon*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr*, Ionicons*, JamIcons*, Linea*, Octicons*, TypIcons* )
-- Taxonomy          ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- User              ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea*, Octicons, TypIcons )
-- Views             ( Capicon, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- Comments          ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- Date              ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- Disabled Comments ( Captain Icons*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr, Ionicons*, JamIcons*, Linea, Octicons*, TypIcons* )
+- Rating            ( Captain Icons*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr*, Ionicons*, JamIcons*, Linea*, Octicons*, TypIcons* )
+- Taxonomy          ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
+- User              ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea*, Octicons, TypIcons )
+- Views             ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
 - (*) = No icons yet.
 
 ## Plugins Used
@@ -70,16 +70,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Do something with rating icons packs.
 
-- Make all icons align perfectly, under all conditions, tested on Firefox.
-
-- Add a nice visual test to compare multiple inline icons.
-- Verify if nice visual test works in every browser.
-
 - Make icons work also inline and via a file.
 
-- Add License to FontAwesome and all other icons.
-
-- Add a test to not use presentational attributes. Instead put everything into a style attribute?
+- Add a test that each icon folder have a license.txt file.
 
 ### JS/SCSS
 

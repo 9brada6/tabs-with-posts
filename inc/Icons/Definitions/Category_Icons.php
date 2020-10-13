@@ -679,10 +679,10 @@ class Category_Icons {
 
 			#endregion -- IconMonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			'twrp-tax-ci-f'      => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Tag', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-filled.svg',
@@ -690,7 +690,7 @@ class Category_Icons {
 			),
 
 			'twrp-tax-ci-2-f'    => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Tag 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'tag-2-filled.svg',
@@ -698,20 +698,20 @@ class Category_Icons {
 			),
 
 			'twrp-tax-ci-f-f'    => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Folder', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'folder-filled.svg',
 			),
 
 			'twrp-tax-ci-b-f'    => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Bookmark', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'bookmark-filled.svg',
 			),
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 

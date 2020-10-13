@@ -4,12 +4,14 @@ namespace TWRP\Admin\Tabs;
 
 use TWRP\Plugins\Post_Views;
 use TWRP\Plugins\Plugin_Info;
+use TWRP\Admin\License_Display;
 
 class Documentation_Tab implements Interface_Admin_Menu_Tab {
 	public function display_tab() {
 		?>
 		<div class="twrp-documentation-page">
 			<?php $this->display_views_plugin_support(); ?>
+			<?php License_Display::display_external_licenses(); ?>
 		</div>
 		<?php
 	}

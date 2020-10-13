@@ -70,7 +70,13 @@ class TWRP_Main {
 	 */
 	protected static $is_pro = false;
 
+	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';
+
 	const TEMPLATES_FOLDER = 'templates/';
+
+	const ASSETS_FOLDER = 'assets/';
+
+	const SVG_FOLDER = 'assets/svgs/';
 
 	/**
 	 * Returns the path to this plugin directory.

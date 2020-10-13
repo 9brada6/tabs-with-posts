@@ -7,11 +7,65 @@ namespace TWRP\Icons;
 
 use RuntimeException;
 use WP_UnitTestCase;
+use TWRP\Utils;
+use TWRP_Main;
 
 /**
  * Tests all the icon definitions.
  */
 class Icons_Definitions_Test extends WP_UnitTestCase {
+
+	/**
+	 * Test that each folder in the SVG assets have a license, and each brand
+	 * have the same license across all folders.
+	 */
+	public function test__each_folder_have_license() {
+		$plugin_folder = Utils::get_plugin_directory_path();
+		$svg_folder    = $plugin_folder . TWRP_Main::SVG_FOLDER;
+
+		$folders_without_license      = array();
+		$brands_with_not_same_license = array();
+
+		$brands_licenses = array();
+
+		$folders = @scandir( $svg_folder );
+		if ( false === $folders ) {
+			$this->assertTrue( false, 'Cannot find assets svg folders.' );
+		}
+
+		foreach ( $folders as $folder ) {
+			if ( '.' === $folder || '..' === $folder || strpos( $folder, '.' ) !== false ) {
+				continue;
+			}
+
+			$brand_folders = @scandir( trailingslashit( $svg_folder ) . $folder );
+			if ( false === $brand_folders ) {
+				$this->assertTrue( false, 'Cannot find assets svg folders.' );
+			}
+
+			foreach ( $brand_folders as $brand_folder ) {
+				if ( '.' === $brand_folder || '..' === $brand_folder ) {
+					continue;
+				}
+
+				$file = trailingslashit( $svg_folder ) . trailingslashit( $folder ) . trailingslashit( $brand_folder ) . 'LICENSE.txt';
+				if ( ! file_exists( $file ) ) {
+					array_push( $folders_without_license, $file );
+				} else {
+					if ( ! isset( $brands_licenses[ $brand_folder ] ) ) {
+						$brands_licenses[ $brand_folder ] = file_get_contents( $file ); // phpcs:ignore
+					}
+
+					if ( $brands_licenses[ $brand_folder ] !== file_get_contents( $file ) ) { // phpcs:ignore
+						array_push( $brands_with_not_same_license, $brand_folder );
+					}
+				}
+			}
+		}
+
+		$this->assertTrue( empty( $folders_without_license ), 'Files that should be licenses: ' . implode( ', ', $folders_without_license ) );
+		$this->assertTrue( empty( $brands_with_not_same_license ), 'Brands that have different licenses across folders: ' . implode( ', ', $brands_with_not_same_license ) );
+	}
 
 	/**
 	 * Check if an icon Id is the same as in file that reference it.
@@ -306,5 +360,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 		$fail_message = 'Icons that exceed 5 characters words: ' . implode( ', ', $bad_icons_ids );
 		$this->assertTrue( empty( $bad_icons_ids ), $fail_message );
 	}
+
+
 
 }

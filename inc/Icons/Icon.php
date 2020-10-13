@@ -138,7 +138,7 @@ class Icon {
 	 */
 	public function get_icon_filename() {
 		try {
-			$relative_path = 'assets/svgs/' . $this->get_folder_name_category() . '/' . strtolower( $this->get_icon_brand() ) . '/' . $this->file_name;
+			$relative_path = 'assets/svgs/' . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
 		} catch ( RuntimeException $e ) {
 			return false;
 		}
@@ -153,6 +153,17 @@ class Icon {
 	 */
 	public function get_fix_classes() {
 		return $this->fix_classes;
+	}
+
+	/**
+	 * Return the name of the folder, named after the icon brand.
+	 *
+	 * @return string
+	 */
+	protected function get_brand_folder() {
+		$folder = str_replace( ' ', '-', strtolower( $this->get_icon_brand() ) );
+
+		return $folder;
 	}
 
 	#endregion -- Get basic info

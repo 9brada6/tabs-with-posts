@@ -21,6 +21,8 @@ class Require_Files {
 		'Create_Tabs',
 
 		// Admin
+		'Admin/Interface Helpers/License_Display',
+
 		'Admin/Settings_Menu',
 		'Admin/Tabs/Interface_Admin_Menu_Tab',
 		'Admin/Tabs/Documentation_Tab',

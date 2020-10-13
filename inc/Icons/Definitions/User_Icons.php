@@ -341,37 +341,37 @@ class User_Icons {
 
 			#endregion -- Iconmonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			'twrp-user-ci-f'       => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'User', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
 			),
 
 			'twrp-user-ci-alt-f'   => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'User 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'user2-filled.svg',
 			),
 
 			'twrp-user-ci-man-f'   => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Man', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'man-filled.svg',
 			),
 
 			'twrp-user-ci-w-f'     => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Woman', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'woman-filled.svg',
 			),
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 

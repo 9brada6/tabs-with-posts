@@ -373,30 +373,30 @@ class Date_Icons {
 
 			#endregion -- IconMonstr Icons
 
-			#region -- Capicon Icons
+			#region -- Captain Icons
 
 			'twrp-cal-ci-f'      => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Calendar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
 			),
 
 			'twrp-cal-ci-2-f'    => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Calendar 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => '2-filled.svg',
 			),
 
 			'twrp-cal-ci-c-ol'   => array(
-				'brand'       => 'Capicon',
+				'brand'       => 'Captain Icons',
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
 			),
 
-			#endregion -- Capicon Icons
+			#endregion -- Captain Icons
 
 			#region -- Feather Icons
 

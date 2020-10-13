@@ -402,6 +402,8 @@ class SVG_Manager {
 		echo '</p>';
 
 		self::test__show_comment_icon_compatible_with_disabled_icon();
+
+		self::test__multiple_icons_align();
 	}
 
 	/**
@@ -440,6 +442,46 @@ class SVG_Manager {
 					?>
 				</div>
 			<?php endforeach; ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Visually test icons alignment via picking random icons and displaying
+	 * them alongside some text.
+	 *
+	 * @return void
+	 */
+	public static function test__multiple_icons_align() {
+		$author_icons = self::get_user_icons();
+		$date_icons   = self::get_date_icons();
+		$views_icons  = self::get_views_icons();
+		?>
+		<div style="font-variant-numeric: lining-nums;">
+			<?php for ( $i = 0; $i < 100; $i++ ) : ?>
+				<?php
+					$author_icon = $author_icons[ array_rand( $author_icons ) ];
+					$date_icon   = $date_icons[ array_rand( $date_icons ) ];
+					$views_icon  = $views_icons[ array_rand( $views_icons ) ];
+
+				?>
+				<div>
+					<span style="margin-right: 1rem;">
+						<?php $author_icon->display(); ?>
+						author
+					</span>
+
+					<span style="margin-right: 1rem;">
+						<?php $date_icon->display(); ?>
+						27 Nov
+					</span>
+
+					<span style="margin-right: 1rem;">
+						<?php $views_icon->display(); ?>
+						1430
+					</span>
+				</div>
+			<?php endfor; ?>
 		</div>
 		<?php
 	}

@@ -61,8 +61,8 @@ const tsVars = {
 
 const iconVars = {
 	name: 'All Icons',
-	watch: './assets/svgs/*/**/*',
-	src: './assets/svgs/*/**/*',
+	watch: './assets/svgs/*/**/*.svg',
+	src: './assets/svgs/*/**/*.svg',
 	fileName: 'all-icons.svg',
 	dest: './assets/svgs/',
 	xmlValidate: [ './assets/svgs/all-icons.svg', './assets/svgs/needed-icons.svg' ],
