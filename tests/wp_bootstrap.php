@@ -15,6 +15,7 @@ if ( \function_exists( 'xdebug_set_filter' ) ) {
 		\XDEBUG_PATH_WHITELIST,
 		array(
 			'/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Query_Setting/',
+			'/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Icons/',
 		)
 	);
 }

@@ -12,6 +12,15 @@ use TWRP_Main;
 
 /**
  * Tests all the icon definitions.
+ *
+ * @covers \TWRP\Icons\SVG_Manager
+ * @covers \TWRP\Icons\Category_Icons
+ * @covers \TWRP\Icons\Comments_Disabled_Icons
+ * @covers \TWRP\Icons\Comments_Icons
+ * @covers \TWRP\Icons\Date_Icons
+ * @covers \TWRP\Icons\Rating_Icons
+ * @covers \TWRP\Icons\User_Icons
+ * @covers \TWRP\Icons\Views_Icons
  */
 class Icons_Definitions_Test extends WP_UnitTestCase {
 
@@ -28,7 +37,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 
 		$brands_licenses = array();
 
-		$folders = @scandir( $svg_folder );
+		$folders = scandir( $svg_folder );
 		if ( false === $folders ) {
 			$this->assertTrue( false, 'Cannot find assets svg folders.' );
 		}
@@ -38,7 +47,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 				continue;
 			}
 
-			$brand_folders = @scandir( trailingslashit( $svg_folder ) . $folder );
+			$brand_folders = scandir( trailingslashit( $svg_folder ) . $folder );
 			if ( false === $brand_folders ) {
 				$this->assertTrue( false, 'Cannot find assets svg folders.' );
 			}
@@ -361,6 +370,27 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 		$this->assertTrue( empty( $bad_icons_ids ), $fail_message );
 	}
 
+	/**
+	 * Test that each rating packs have the same brand.
+	 */
+	public function test__rating_icons_pack() {
+		$rating_packs = SVG_Manager::get_rating_packs_attr();
+		$wrong_ids    = array();
 
+		foreach ( $rating_packs as $pack_id => $rating_pack ) {
+			$empty_id_parts  = explode( '-', $rating_pack['empty'] );
+			$half_id_parts   = explode( '-', $rating_pack['half'] );
+			$filled_id_parts = explode( '-', $rating_pack['full'] );
 
+			if ( $empty_id_parts[1] !== $half_id_parts[1] || $half_id_parts[1] !== $filled_id_parts[1] ) {
+				array_push( $wrong_ids, $pack_id );
+			}
+		}
+
+		$this->assertTrue( empty( $wrong_ids ), 'The following rating icon packs are incorrect: ' . implode( ', ', $wrong_ids ) );
+
+		$rating_packs_objects = SVG_Manager::get_rating_packs();
+
+		$this->assertTrue( count( $rating_packs_objects ) === count( $rating_packs ), 'Some rating packs are not valid.' );
+	}
 }

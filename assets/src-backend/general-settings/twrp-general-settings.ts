@@ -65,7 +65,7 @@ function updateIcon( selectName: string ): void {
 	const iconId = String( selectElem.val() );
 
 	selectWrapper.find( '.' + iconWrapperClassName ).remove();
-	selectWrapper.prepend( iconAndSvgElem );
+	$( iconAndSvgElem ).insertBefore( selectElem );
 	selectWrapper.find( 'use' ).attr( 'href', '#' + iconId );
 }
 
@@ -86,3 +86,76 @@ function getDocumentOnClickSelector(): string {
 }
 
 // #endregion -- Add an Icon preview on the right.
+
+// #region -- Add icons preview on the right for rating packs.
+
+const ratingIconsDataSetElementId = 'twrp-general-select__rating_pack_icons-wrapper';
+const dataHolderName = 'data-twrp-rating-packs';
+const selectRatingName = 'rating_pack_icons';
+
+const iconsPreviewWrapperClassName = 'twrp-general-select__rating_icons_preview';
+const iconsPreviewWrapper = '<span class="' + iconsPreviewWrapperClassName + '"></span>';
+let ratingIconsSet = null;
+
+$( updateRatingIcons );
+$( document ).on( 'change', 'select[name="' + selectRatingName + '"]', updateRatingIcons );
+
+function setRatingIconsData() {
+	const dataHolderElement = $( '#' + ratingIconsDataSetElementId );
+	if ( dataHolderElement.length === 0 ) {
+		return;
+	}
+
+	const toParse = dataHolderElement.attr( dataHolderName );
+
+	if ( ( typeof toParse ) !== 'string' ) {
+		return;
+	}
+
+	try {
+		ratingIconsSet = JSON.parse( toParse );
+	} catch ( e ) {
+		// Do nothing.
+	}
+}
+
+function updateRatingIcons() {
+	if ( null === ratingIconsSet ) {
+		setRatingIconsData();
+	}
+
+	const selectElem = $( 'select[name="' + selectRatingName + '"]' );
+
+	if ( selectElem.length === 0 ) {
+		return;
+	}
+
+	const selectWrapper = selectElem.parent();
+	const selectedRatingPack = String( selectElem.val() );
+
+	const emptyIconId = ratingIconsSet[ selectedRatingPack ].empty;
+	const halfFilledIconId = ratingIconsSet[ selectedRatingPack ].half;
+	const filledIconId = ratingIconsSet[ selectedRatingPack ].full;
+
+	selectWrapper.find( '.' + iconsPreviewWrapperClassName ).remove();
+	selectWrapper.prepend( iconsPreviewWrapper );
+
+	const iconsWrapperPreviewElement = selectWrapper.find( '.' + iconsPreviewWrapperClassName );
+	$( iconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + filledIconId );
+	$( iconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + halfFilledIconId );
+	$( iconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + emptyIconId );
+}
+
+// #endregion -- Add icons preview on the right for rating packs.
+
+// #region -- Auto-Choose the compatible disabled icon.
+
+const selectCommentIconSelector = '';
+const selectDisabledCommentIconSelector = '';
+const compatibleDisabledComments = null;
+
+function doDisabledCommentIconAutoSelect() {
+	const commentId = $( selectCommentIconSelector ).val();
+}
+
+// #endregion -- Auto-Choose the compatible disabled icon.

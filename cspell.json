@@ -40,7 +40,9 @@
     ],
     "ignoreWords": [
         "autoloader",
+        "endfor",
         "glsr",
+        "nums",
         "prepended",
         "testsuite",
         "totalviews",

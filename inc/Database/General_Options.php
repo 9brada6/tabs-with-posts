@@ -45,7 +45,7 @@ class General_Options {
 
 	const KEY__VIEWS_ICON = 'views_icon';
 
-	const KEY__RATING_ICON_PACK = 'rating_icon_icon';
+	const KEY__RATING_ICON_PACK = 'rating_pack_icons';
 
 	#endregion -- Icon Keys
 

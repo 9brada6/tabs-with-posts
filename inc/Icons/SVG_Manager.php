@@ -93,6 +93,8 @@ class SVG_Manager {
 	 * included in special pages, ...etc.
 	 *
 	 * @return void
+	 *
+	 * @suppress PhanEmptyPublicMethod
 	 */
 	public static function init() {}
 
@@ -219,18 +221,35 @@ class SVG_Manager {
 
 	#endregion -- Get specific icon sets
 
-	#region -- Todo
+	#region -- Get Rating Packs
+
+	/**
+	 * Get all rating packs attributes.
+	 *
+	 * @return array<string,array>
+	 */
+	public static function get_rating_packs_attr() {
+		return Rating_Icons::get_rating_packs();
+	}
 
 	/**
 	 * Get all rating icons packs.
 	 *
-	 * @return array<string,array>
+	 * @return array<string,Rating_Icon_Pack>
 	 */
 	public static function get_rating_packs() {
-		return Rating_Icons::get_rating_packs();
+		$rating_packs         = Rating_Icons::get_rating_packs();
+		$rating_packs_objects = array();
+
+		foreach ( $rating_packs as $rating_pack_id => $rating_pack ) {
+			$rating_pack                             = new Rating_Icon_Pack( $rating_pack_id );
+			$rating_packs_objects[ $rating_pack_id ] = $rating_pack;
+		}
+
+		return $rating_packs_objects;
 	}
 
-	#endregion -- Todo
+	#endregion -- Get Rating Packs
 
 	#region -- Get all icons
 
@@ -265,6 +284,99 @@ class SVG_Manager {
 	}
 
 	#endregion -- Get all icons
+
+	#region -- Get a specific Icon Attr
+
+	/**
+	 * Get the icon attributes array, or false if do not exist.
+	 *
+	 * @param string $icon_id
+	 * @return array|false
+	 */
+	public static function get_icon_attr( $icon_id ) {
+		try {
+			$icon_category = self::get_icon_category( $icon_id );
+		} catch ( RuntimeException $e ) {
+			return false;
+		}
+
+		if ( self::USER_ICON === $icon_category ) {
+			$icons_attr = User_Icons::get_user_icons();
+		}
+
+		if ( self::DATE_ICON === $icon_category ) {
+			$icons_attr = Date_Icons::get_date_icons();
+		}
+
+		if ( self::CATEGORY_ICON === $icon_category ) {
+			$icons_attr = Category_Icons::get_category_icons();
+		}
+
+		if ( self::COMMENT_ICON === $icon_category ) {
+			$icons_attr = Comments_Icons::get_comment_icons();
+		}
+
+		if ( self::DISABLED_COMMENT_ICON === $icon_category ) {
+			$icons_attr = Comments_Disabled_Icons::get_disabled_comment_icons();
+		}
+
+		if ( self::VIEWS_ICON === $icon_category ) {
+			$icons_attr = Views_Icons::get_views_icons();
+		}
+
+		if ( self::RATING_ICON === $icon_category ) {
+			$icons_attr = Rating_Icons::get_rating_icons();
+		}
+
+		if ( isset( $icons_attr[ $icon_id ] ) ) {
+			return $icons_attr[ $icon_id ];
+		}
+
+		return false; // @codeCoverageIgnore
+	}
+
+	#endregion -- Get a specific Icon Attr
+
+	/**
+	 * Get a numeric value, representing the icon category. The numeric value
+	 * is a constant declared in this class. Return false otherwise.
+	 *
+	 * @throws RuntimeException In case the numeric value cannot be retrieved.
+	 *
+	 * @param string $icon_id
+	 * @return int
+	 */
+	public static function get_icon_category( $icon_id ) {
+		if ( strstr( $icon_id, 'views' ) ) {
+			return self::VIEWS_ICON;
+		}
+
+		if ( strstr( $icon_id, 'cal' ) ) {
+			return self::DATE_ICON;
+		}
+
+		if ( strstr( $icon_id, 'dcom' ) ) {
+			return self::DISABLED_COMMENT_ICON;
+		}
+
+		if ( strstr( $icon_id, 'com' ) && ! strstr( $icon_id, 'dcom' ) ) {
+			return self::COMMENT_ICON;
+		}
+
+		if ( strstr( $icon_id, 'user' ) ) {
+			return self::USER_ICON;
+		}
+
+		if ( strstr( $icon_id, 'tax' ) ) {
+			return self::CATEGORY_ICON;
+		}
+
+		if ( strstr( $icon_id, 'rat' ) ) {
+			return self::RATING_ICON;
+		}
+
+		throw new RuntimeException();
+	}
 
 	#region -- Get aria labels
 
@@ -308,8 +420,8 @@ class SVG_Manager {
 		try {
 			$disabled_icon = new Icon( $icon_id );
 			return $disabled_icon;
-		} catch ( RuntimeException $e ) {
-			return null;
+		} catch ( RuntimeException $e ) { // @codeCoverageIgnore
+			return null; // @codeCoverageIgnore
 		}
 	}
 
@@ -328,13 +440,23 @@ class SVG_Manager {
 			return null;
 		}
 
-		$compatible_icons = Comments_Disabled_Icons::get_comment_disabled_compatibles();
+		$compatible_icons = self::get_compatibles_disabled_comments_attr();
 
 		if ( isset( $compatible_icons[ $icon_id ] ) ) {
 			return $compatible_icons[ $icon_id ];
 		}
 
 		return null;
+	}
+
+	/**
+	 * Get an array with the compatible disabled comment icons. The key is the
+	 * comment icon, while the value is the disabled comment that corresponds.
+	 *
+	 * @return array<string,string>
+	 */
+	public static function get_compatibles_disabled_comments_attr() {
+		return Comments_Disabled_Icons::get_comment_disabled_compatibles();
 	}
 
 	#endregion -- Get compatible disabled comment icon
@@ -346,6 +468,8 @@ class SVG_Manager {
 	 * in the theme directly.
 	 *
 	 * @return void
+	 *
+	 * @codeCoverageIgnore
 	 */
 	public static function test_icons() {
 		$icons = self::get_all_icons();
@@ -410,6 +534,8 @@ class SVG_Manager {
 	 * For each comment icon, show the compatible disabled comment icon.
 	 *
 	 * @return void
+	 *
+	 * @codeCoverageIgnore
 	 */
 	public static function test__show_comment_icon_compatible_with_disabled_icon() {
 		$icons = self::get_comment_icons();
@@ -451,6 +577,8 @@ class SVG_Manager {
 	 * them alongside some text.
 	 *
 	 * @return void
+	 *
+	 * @codeCoverageIgnore
 	 */
 	public static function test__multiple_icons_align() {
 		$author_icons = self::get_user_icons();
@@ -463,7 +591,6 @@ class SVG_Manager {
 					$author_icon = $author_icons[ array_rand( $author_icons ) ];
 					$date_icon   = $date_icons[ array_rand( $date_icons ) ];
 					$views_icon  = $views_icons[ array_rand( $views_icons ) ];
-
 				?>
 				<div>
 					<span style="margin-right: 1rem;">

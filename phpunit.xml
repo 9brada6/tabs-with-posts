@@ -20,13 +20,13 @@
 
 	<filter>
 		<whitelist>
-			<directory suffix=".php">inc/Query_Setting</directory>
+			<!-- <directory suffix=".php">inc/Query_Setting</directory> -->
 			<directory suffix=".php">inc/Icons</directory>
 		</whitelist>
 	</filter>
 
-  <logging>
-    <log type="coverage-text" target="php://stdout"/>
-    <log type="coverage-clover" target="cov.xml"/>
-  </logging>
+	<logging>
+		<log type="coverage-text" target="php://stdout"/>
+		<log type="coverage-clover" target="cov.xml"/>
+	</logging>
 </phpunit>

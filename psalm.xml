@@ -15,6 +15,7 @@
 
     <projectFiles>
         <directory name="inc"/>
+        <directory name="tests"/>
         <file name="tabs-with-recommended-posts.php"/>
         <ignoreFiles>
             <directory name=".git"/>
@@ -29,22 +30,38 @@
 
     <stubs>
         <file name=".stubs/wordpress-stubs.php"/>
+        <file name=".stubs/wp-phpunit.php"/>
+        <file name=".stubs/wp-phpunit-fix.php"/>
+        <file name=".stubs/phpunit-7.php"/>
     </stubs>
 
     <issueHandlers>
         <RedundantConditionGivenDocblockType errorLevel="suppress"/>
         <MoreSpecificImplementedParamType errorLevel="suppress"/>
 
+        <!-- Suppress in tests -->
         <UndefinedClass>
             <errorLevel type="suppress">
-                <directory name="tests" />
+                <directory name="tests"/>
             </errorLevel>
         </UndefinedClass>
 
         <UndefinedTrait>
             <errorLevel type="suppress">
-                <directory name="tests" />
+                <directory name="tests"/>
             </errorLevel>
         </UndefinedTrait>
+
+        <MissingReturnType>
+            <errorLevel type="suppress">
+                <directory name="tests"/>
+            </errorLevel>
+        </MissingReturnType>
+
+        <MissingThrowsDocblock>
+            <errorLevel type="suppress">
+                <directory name="tests"/>
+            </errorLevel>
+        </MissingThrowsDocblock>
     </issueHandlers>
-</psalm>
+<plugins><pluginClass class="Psalm\PhpUnitPlugin\Plugin"/></plugins></psalm>

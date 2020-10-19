@@ -238,5 +238,4 @@ class Create_And_Enqueue_Icons {
 	}
 
 	#endregion -- Get all used website icons Ids
-
 }

@@ -7,6 +7,7 @@ use TWRP\Database\General_Options;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Icons\SVG_Manager;
 use TWRP\Icons\Icon;
+use TWRP\Icons\Rating_Icon_Pack;
 
 class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
@@ -199,7 +200,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 *
 	 * @param string $name The name of the input.
 	 * @param string|null $value The current value of the input, null for default.
-	 * @param array{title:string,options:array,default:string} $args
+	 * @param array{title:string,options:array,default:string,additional_attrs:?array} $args
 	 * @return void
 	 */
 	protected static function create_select_option( $name, $value, $args ) {
@@ -210,8 +211,13 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
 		$select_id  = self::get_settings_attr_id( $name );
 
+		$additional_attrs = '';
+		if ( isset( $args['additional_attrs'] ) ) {
+			$additional_attrs = self::create_additional_attributes( $args['additional_attrs'] );
+		}
+
 		?>
-		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-select twrp-general-settings__select-group">
+		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-select twrp-general-settings__select-group"<?= $additional_attrs // phpcs:ignore -- Pre-escaped. ?>>
 			<div class="twrp-general-select__title">
 				<?= $args['title']; // phpcs:ignore -- No XSS ?>
 			</div>
@@ -279,6 +285,16 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	#endregion -- Option Creator
 
 	#region -- Option Creator Helpers
+
+	protected static function create_additional_attributes( $attrs ) {
+		$output_string = '';
+
+		foreach ( $attrs as $name => $value ) {
+			$output_string .= ' ' . $name . '="' . esc_attr( $value ) . '"';
+		}
+
+		return $output_string;
+	}
 
 	/**
 	 * Detect if the options passed to create_select_option() function are for
@@ -482,9 +498,12 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		$options = self::create_select_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
 
 		return array(
-			'title'   => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
-			'options' => $options,
-			'default' => General_Options::get_default_setting( General_Options::KEY__COMMENTS_DISABLED_ICON ),
+			'title'            => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
+			'options'          => $options,
+			'default'          => General_Options::get_default_setting( General_Options::KEY__COMMENTS_DISABLED_ICON ),
+			'additional_attrs' => array(
+				'data-twrp-related-comment-icons' => wp_json_encode( $rating_packs_data ),
+			),
 		);
 	}
 
@@ -509,24 +528,29 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_rating_pack_setting_args() {
-		// $options = SVG_Manager::nest_icons_by_brands( SVG_Manager::get_rating_packs() );
-		$options = array(); // todo.
+		$options = Rating_Icon_Pack::nest_packs_by_brands( SVG_Manager::get_rating_packs() );
 
-		foreach ( $options as $key => $brand_icons ) {
-			foreach ( $brand_icons as $icon_id => $icon ) {
-				try {
-					$icon_class = new Icon( $icon_id, $icon );
-				} catch ( RuntimeException $e ) {
-					continue;
-				}
-				$options[ $key ][ $icon_id ] = $icon_class->get_option_icon_description();
+		foreach ( $options as $rating_packs_brand => $rating_packs ) {
+			foreach ( $rating_packs as $rating_pack_id => $rating_pack ) {
+				$options[ $rating_packs_brand ][ $rating_pack_id ] = $rating_pack->get_option_pack_description();
+			}
+		}
+
+		$rating_packs_data = SVG_Manager::get_rating_packs_attr();
+		foreach ( $rating_packs_data as $id => $date ) {
+			if ( isset( $rating_packs_data[ $id ]['brand'], $rating_packs_data[ $id ]['description'] ) ) {
+				unset( $rating_packs_data[ $id ]['brand'] );
+				unset( $rating_packs_data[ $id ]['description'] );
 			}
 		}
 
 		return array(
-			'title'   => _x( 'Select the default rating pack icons:', 'backend', 'twrp' ),
-			'options' => $options,
-			'default' => General_Options::get_default_setting( General_Options::KEY__RATING_ICON_PACK ),
+			'title'            => _x( 'Select the default rating pack icons:', 'backend', 'twrp' ),
+			'options'          => $options,
+			'default'          => General_Options::get_default_setting( General_Options::KEY__RATING_ICON_PACK ),
+			'additional_attrs' => array(
+				'data-twrp-rating-packs' => wp_json_encode( $rating_packs_data ),
+			),
 		);
 	}
 

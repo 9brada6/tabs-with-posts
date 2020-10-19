@@ -1,17 +1,5 @@
 # Tabs With Recommended Posts - Development Notes
 
-## Icons Manual Testing
-
-- Checked to see if they align in the middle:
-- Comments          ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- Date              ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- Disabled Comments ( Captain Icons*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr, Ionicons*, JamIcons*, Linea, Octicons*, TypIcons* )
-- Rating            ( Captain Icons*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr*, Ionicons*, JamIcons*, Linea*, Octicons*, TypIcons* )
-- Taxonomy          ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- User              ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea*, Octicons, TypIcons )
-- Views             ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- (*) = No icons yet.
-
 ## Plugins Used
 
 ### Rating Plugins
@@ -68,11 +56,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Do something with rating icons packs.
-
 - Make icons work also inline and via a file.
-
-- Add a test that each icon folder have a license.txt file.
+- In tests, add coverage for each method.
+- Create an option to enable/disable, that will select the corresponding disabled comment icon.
 
 ### JS/SCSS
 

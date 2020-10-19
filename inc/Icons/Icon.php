@@ -1,9 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @todo: add a variable that will hold the definition, and will not search every time.
- * @todo: try to speed this line: $icons = SVG_Manager::get_all_icons_attr(); by detecting what icons should we get, and not all. After that delete get_all_icons_attr() function.
  */
 
 namespace TWRP\Icons;
@@ -74,10 +71,8 @@ class Icon {
 	 */
 	public function __construct( $icon_id, $icon_args = array() ) {
 		if ( empty( $icon_args ) ) {
-			$icons = SVG_Manager::get_all_icons_attr();
-			if ( isset( $icons[ $icon_id ] ) ) {
-				$icon_args = $icons[ $icon_id ];
-			} else {
+			$icon_args = SVG_Manager::get_icon_attr( $icon_id );
+			if ( false === $icon_args ) {
 				throw new RuntimeException( 'Icon id does not exist.' );
 			}
 		}
@@ -87,10 +82,7 @@ class Icon {
 		$this->description = $icon_args['description'];
 		$this->type        = $icon_args['type'];
 		$this->file_name   = $icon_args['file_name'];
-
-		if ( isset( $icon_args['fix_classes'] ) ) {
-			$this->fix_classes = $icon_args['fix_classes'];
-		}
+		$this->fix_classes = ( isset( $icon_args['fix_classes'] ) ? $icon_args['fix_classes'] : '' );
 	}
 
 	#region -- Get basic info
@@ -109,7 +101,7 @@ class Icon {
 	 *
 	 * @return string
 	 */
-	public function get_icon_brand() {
+	public function get_brand() {
 		return $this->brand;
 	}
 
@@ -118,7 +110,7 @@ class Icon {
 	 *
 	 * @return string
 	 */
-	public function get_icon_description() {
+	public function get_description() {
 		return $this->description;
 	}
 
@@ -161,7 +153,9 @@ class Icon {
 	 * @return string
 	 */
 	protected function get_brand_folder() {
-		$folder = str_replace( ' ', '-', strtolower( $this->get_icon_brand() ) );
+		$folder = str_replace( ' ', '-', strtolower( $this->get_brand() ) );
+		$folder = str_replace( '\'', '-', $folder );
+		$folder = str_replace( '--', '-', $folder );
 
 		return $folder;
 	}
@@ -196,7 +190,6 @@ class Icon {
 			$fix_icon_class = ' ' . $this->get_fix_classes();
 		}
 
-		// todo: add aria-label and role="icon"?
 		$html =
 		'<span class="twrp-i' . esc_attr( $fix_icon_class . $additional_class . $icon_category_class ) . '" role="icon" aria-label="' . esc_attr( $this->get_icon_aria_label() ) . '">' .
 		'<svg><use xlink:href="#' . esc_attr( $this->get_id() ) . '"/></svg>' .
@@ -219,8 +212,8 @@ class Icon {
 		}
 
 		if ( ! class_exists( 'WP_Filesystem_Base' ) || ! class_exists( 'WP_Filesystem_Direct' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php';
-			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php';
+			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php'; // @codeCoverageIgnore
+			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php'; // @codeCoverageIgnore
 		}
 
 		$filesystem    = new WP_Filesystem_Direct( null );
@@ -236,7 +229,7 @@ class Icon {
 			return $content;
 		}
 
-		return false;
+		return false; // @codeCoverageIgnore
 	}
 
 	/**
@@ -246,8 +239,13 @@ class Icon {
 	 * @return string
 	 */
 	public function get_option_icon_description( $with_brand = false ) {
-		// todo.
-		return $this->get_icon_description();
+		$return_description = $this->get_description() . ' (' . $this->get_icon_type() . ')';
+
+		if ( $with_brand ) {
+			$return_description = '[' . $this->get_brand() . '] ' . $return_description;
+		}
+
+		return $return_description;
 	}
 
 	#region -- Helpers
@@ -258,40 +256,10 @@ class Icon {
 	 *
 	 * @throws RuntimeException In case the numeric value cannot be retrieved.
 	 *
-	 * @return int|false
+	 * @return int
 	 */
 	public function get_icon_category() {
-		$icon_id = $this->get_id();
-
-		if ( strstr( $icon_id, 'views' ) ) {
-			return SVG_Manager::VIEWS_ICON;
-		}
-
-		if ( strstr( $icon_id, 'cal' ) ) {
-			return SVG_Manager::DATE_ICON;
-		}
-
-		if ( strstr( $icon_id, 'dcom' ) ) {
-			return SVG_Manager::DISABLED_COMMENT_ICON;
-		}
-
-		if ( strstr( $icon_id, 'com' ) && ! strstr( $icon_id, 'dcom' ) ) {
-			return SVG_Manager::COMMENT_ICON;
-		}
-
-		if ( strstr( $icon_id, 'user' ) ) {
-			return SVG_Manager::USER_ICON;
-		}
-
-		if ( strstr( $icon_id, 'tax' ) ) {
-			return SVG_Manager::CATEGORY_ICON;
-		}
-
-		if ( strstr( $icon_id, 'rat' ) ) {
-			return SVG_Manager::RATING_ICON;
-		}
-
-		throw new RuntimeException();
+		return SVG_Manager::get_icon_category( $this->get_id() );
 	}
 
 	/**
@@ -309,7 +277,7 @@ class Icon {
 		if ( isset( $icon_folders[ $icon_category ] ) ) {
 			return $icon_folders[ $icon_category ];
 		} else {
-			throw new RuntimeException();
+			throw new RuntimeException(); // @codeCoverageIgnore
 		}
 	}
 
@@ -330,7 +298,7 @@ class Icon {
 			return $classes[ $category ];
 		}
 
-		return '';
+		return ''; // @codeCoverageIgnore
 	}
 
 	/**
@@ -352,7 +320,7 @@ class Icon {
 			return $labels[ $icon_category ];
 		}
 
-		return '';
+		return ''; // @codeCoverageIgnore
 	}
 
 	#endregion -- Helpers
@@ -369,14 +337,14 @@ class Icon {
 	public static function nest_icons_by_brands( $icons ) {
 		$branded_icons = array();
 
-		foreach ( $icons as $icon_id => $icon ) {
-			$brand = $icon->get_icon_brand();
+		foreach ( $icons as $icon ) {
+			$brand = $icon->get_brand();
 
 			if ( ! isset( $branded_icons[ $brand ] ) ) {
 				$branded_icons[ $brand ] = array();
 			}
 
-			$branded_icons[ $brand ][ $icon_id ] = $icon;
+			$branded_icons[ $brand ][ $icon->get_id() ] = $icon;
 		}
 
 		return $branded_icons;
