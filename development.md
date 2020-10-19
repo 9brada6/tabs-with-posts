@@ -53,10 +53,12 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
+- Change all "twrp" css/classes backend prefix with "twrpb"
 
 ### Icons
 
 - Make icons work also inline and via a file.
+- In the TS files, make to not crash if a property is missing.
 - In tests, add coverage for each method.
 - Create an option to enable/disable, that will select the corresponding disabled comment icon.
 

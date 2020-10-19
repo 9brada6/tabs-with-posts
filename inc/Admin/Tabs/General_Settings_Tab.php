@@ -8,6 +8,7 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\Icons\SVG_Manager;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
+use TWRP\Admin\General_Select_Setting;
 
 class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
@@ -49,13 +50,27 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 					<legend class="twrp-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
 					self::create_radio_option( General_Options::KEY__PER_WIDGET_ICON, General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ), self::get_per_widget_icons_setting_args() );
-					self::create_select_option( General_Options::KEY__AUTHOR_ICON, General_Options::get_option( General_Options::KEY__AUTHOR_ICON ), self::get_author_icon_setting_args() );
-					self::create_select_option( General_Options::KEY__DATE_ICON, General_Options::get_option( General_Options::KEY__DATE_ICON ), self::get_date_icon_setting_args() );
-					self::create_select_option( General_Options::KEY__CATEGORY_ICON, General_Options::get_option( General_Options::KEY__CATEGORY_ICON ), self::get_category_icon_setting_args() );
-					self::create_select_option( General_Options::KEY__COMMENTS_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_ICON ), self::get_comments_icon_setting_args() );
-					self::create_select_option( General_Options::KEY__COMMENTS_DISABLED_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON ), self::get_comments_disabled_icon_setting_args() );
-					self::create_select_option( General_Options::KEY__VIEWS_ICON, General_Options::get_option( General_Options::KEY__VIEWS_ICON ), self::get_views_icon_setting_args() );
-					self::create_select_option( General_Options::KEY__RATING_ICON_PACK, General_Options::get_option( General_Options::KEY__RATING_ICON_PACK ), self::get_rating_pack_setting_args() );
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__AUTHOR_ICON, General_Options::get_option( General_Options::KEY__AUTHOR_ICON ), self::get_author_icon_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__DATE_ICON, General_Options::get_option( General_Options::KEY__DATE_ICON ), self::get_date_icon_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__CATEGORY_ICON, General_Options::get_option( General_Options::KEY__CATEGORY_ICON ), self::get_category_icon_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__COMMENTS_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_ICON ), self::get_comments_icon_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__COMMENTS_DISABLED_ICON, General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON ), self::get_comments_disabled_icon_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__VIEWS_ICON, General_Options::get_option( General_Options::KEY__VIEWS_ICON ), self::get_views_icon_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Select_Setting( General_Options::KEY__RATING_ICON_PACK, General_Options::get_option( General_Options::KEY__RATING_ICON_PACK ), self::get_rating_pack_setting_args() );
+					$setting_option->display();
 					?>
 				</fieldset>
 
@@ -196,54 +211,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	}
 
 	/**
-	 * Creates a select option and outputs the HTML.
-	 *
-	 * @param string $name The name of the input.
-	 * @param string|null $value The current value of the input, null for default.
-	 * @param array{title:string,options:array,default:string,additional_attrs:?array} $args
-	 * @return void
-	 */
-	protected static function create_select_option( $name, $value, $args ) {
-		if ( null === $value ) {
-			$value = $args['default'];
-		}
-
-		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
-		$select_id  = self::get_settings_attr_id( $name );
-
-		$additional_attrs = '';
-		if ( isset( $args['additional_attrs'] ) ) {
-			$additional_attrs = self::create_additional_attributes( $args['additional_attrs'] );
-		}
-
-		?>
-		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-select twrp-general-settings__select-group"<?= $additional_attrs // phpcs:ignore -- Pre-escaped. ?>>
-			<div class="twrp-general-select__title">
-				<?= $args['title']; // phpcs:ignore -- No XSS ?>
-			</div>
-
-			<div class="twrp-general-select__select-wrapper">
-				<select id="<?= esc_attr( $select_id ); ?>" name="<?= esc_attr( $name ); ?>">
-					<?php
-					if ( self::select_has_optgroup( $args['options'] ) ) :
-						foreach ( $args['options'] as $label => $options ) :
-							?>
-							<optgroup label="<?= esc_attr( $label ); ?>">
-								<?php self::create_select_options( $options, $value ); ?>
-							</optgroup>
-							<?php
-						endforeach;
-					else :
-						self::create_select_options( $args['options'], $value );
-					endif;
-					?>
-				</select>
-			</div>
-		</div>
-		<?php
-	}
-
-	/**
 	 * Create an input text and outputs the HTML.
 	 *
 	 * @param string $name The name of the input.
@@ -285,51 +252,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	#endregion -- Option Creator
 
 	#region -- Option Creator Helpers
-
-	protected static function create_additional_attributes( $attrs ) {
-		$output_string = '';
-
-		foreach ( $attrs as $name => $value ) {
-			$output_string .= ' ' . $name . '="' . esc_attr( $value ) . '"';
-		}
-
-		return $output_string;
-	}
-
-	/**
-	 * Detect if the options passed to create_select_option() function are for
-	 * creating a select with optgroup.
-	 *
-	 * @param array $options
-	 * @return bool
-	 */
-	protected static function select_has_optgroup( $options ) {
-		$first_value = reset( $options );
-
-		if ( is_array( $first_value ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Creates the options for a select input.
-	 *
-	 * @param array $options
-	 * @param string $value The current selected value.
-	 * @return void
-	 */
-	protected static function create_select_options( $options, $value ) {
-		foreach ( $options as $option_value => $option_label ) :
-			$selected = ( $option_value === $value ? ' selected' : '' );
-			?>
-			<option value="<?= esc_attr( $option_value ); ?>"<?= esc_attr( $selected ); ?>>
-				<?= esc_html( $option_label ); ?>
-			</option>
-			<?php
-		endforeach;
-	}
 
 	/**
 	 * Return the HTML wrapper id of a setting.
@@ -495,7 +417,8 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 * @return array
 	 */
 	protected static function get_comments_disabled_icon_setting_args() {
-		$options = self::create_select_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
+		$options           = self::create_select_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
+		$rating_packs_data = SVG_Manager::get_compatibles_disabled_comments_attr();
 
 		return array(
 			'title'            => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),

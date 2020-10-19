@@ -22,6 +22,8 @@ class Require_Files {
 
 		// Admin
 		'Admin/Interface Helpers/License_Display',
+		'Admin/General_Setting_Creator/General_Setting_Creator',
+		'Admin/General_Setting_Creator/General_Select_Setting',
 
 		'Admin/Settings_Menu',
 		'Admin/Tabs/Interface_Admin_Menu_Tab',

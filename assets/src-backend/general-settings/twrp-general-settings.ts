@@ -22,7 +22,7 @@ $( document ).on( 'click', showOrHideCustomDateFormat );
 
 // #region -- Add an Icon preview on the right.
 
-const iconWrapperClassName = 'twrp-general-settings__icon-preview';
+const iconWrapperClassName = 'twrpb-general-settings__icon-preview';
 const iconAndSvgElem = '<span class="' + iconWrapperClassName + '"><svg><use/></svg></span>';
 const selectNames = [ 'user_icon', 'date_icon', 'category_icon', 'comments_icon', 'comments_disabled_icon', 'views_icon' ];
 
@@ -89,11 +89,11 @@ function getDocumentOnClickSelector(): string {
 
 // #region -- Add icons preview on the right for rating packs.
 
-const ratingIconsDataSetElementId = 'twrp-general-select__rating_pack_icons-wrapper';
+const ratingIconsDataSetElementId = 'twrpb-general-select__rating_pack_icons-wrapper';
 const dataHolderName = 'data-twrp-rating-packs';
 const selectRatingName = 'rating_pack_icons';
 
-const iconsPreviewWrapperClassName = 'twrp-general-select__rating_icons_preview';
+const iconsPreviewWrapperClassName = 'twrpb-general-select__rating_icons_preview';
 const iconsPreviewWrapper = '<span class="' + iconsPreviewWrapperClassName + '"></span>';
 let ratingIconsSet = null;
 
