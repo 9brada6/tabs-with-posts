@@ -13,17 +13,19 @@ class Require_Files {
 	 * @var array<string>
 	 */
 	protected static $required_files = array(
-		// Inc Folder
+		// Inc Folder.
 		'Utils',
 		'Query_Settings_Manager',
 		'Article_Blocks_Manager',
 		'Get_Posts',
 		'Create_Tabs',
 
-		// Admin
+		// Admin.
 		'Admin/Interface Helpers/License_Display',
 		'Admin/General_Setting_Creator/General_Setting_Creator',
 		'Admin/General_Setting_Creator/General_Select_Setting',
+		'Admin/General_Setting_Creator/General_Radio_Setting',
+		'Admin/General_Setting_Creator/General_Text_Setting',
 
 		'Admin/Settings_Menu',
 		'Admin/Tabs/Interface_Admin_Menu_Tab',
@@ -31,7 +33,7 @@ class Require_Files {
 		'Admin/Tabs/General_Settings_Tab',
 		'Admin/Tabs/Queries_Tab',
 
-		// Artblock Component Settings
+		// Artblock Component Settings.
 		'Artblock_Component/Widget_Component_Settings',
 
 		'Artblock_Component/Widget_Component_Setting/Component_Setting',
@@ -45,7 +47,7 @@ class Require_Files {
 		'Artblock_Component/Widget_Component_Setting/Category_Icon_Setting',
 		'Artblock_Component/Widget_Component_Setting/Date_Icon_Setting',
 
-		// Article Blocks
+		// Article Blocks.
 		'Article_Block/Get_Widget_Settings_Trait',
 		'Article_Block/Get_Settings_Trait',
 		'Article_Block/Display_Post_Meta_Trait',
@@ -53,11 +55,11 @@ class Require_Files {
 		'Article_Block/Simple_Article_Block',
 		'Article_Block/Modern_Article_Block',
 
-		// Database
+		// Database.
 		'Database/Query_Options',
 		'Database/General_Options',
 
-		// Icons
+		// Icons.
 		'Icons/Icon',
 		'Icons/Rating_Icon_Pack',
 		'Icons/SVG_Manager',
@@ -71,7 +73,7 @@ class Require_Files {
 		'Icons/Definitions/Views_Icons',
 		'Icons/Definitions/Rating_Icons',
 
-		// Plugins
+		// Plugins.
 		'Plugins/Plugin_Info',
 		'Plugins/Post_Rating',
 		'Plugins/Post_Views',
@@ -88,7 +90,7 @@ class Require_Files {
 		'Plugins/Rating_Plugins/PaulR_Rating_Plugin',
 		'Plugins/Rating_Plugins/YASR_Rating_Plugin',
 
-		// Query_Setting
+		// Query_Setting.
 		'Query_Setting/Query_Setting',
 		'Query_Setting/Advanced_Arguments',
 		'Query_Setting/Author',
@@ -106,13 +108,13 @@ class Require_Files {
 		'Query_Setting/Sticky_Posts',
 		'Query_Setting/Suppress_Filters',
 
-		// TWRP_Widget
+		// TWRP_Widget.
 		'TWRP_Widget/Widget_Utilities',
 		'TWRP_Widget/Widget',
 		'TWRP_Widget/Widget_Ajax',
 		'TWRP_Widget/Widget_Form',
 
-		// Widget Control
+		// Widget Control.
 		'Widget_Control/Widget_Control',
 		'Widget_Control/Checkbox_Control',
 		'Widget_Control/Number_Control',

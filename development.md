@@ -62,6 +62,10 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - In tests, add coverage for each method.
 - Create an option to enable/disable, that will select the corresponding disabled comment icon.
 
+#### General Settings
+
+- CHange twrp to twrpb classes, change also ts filename, make ts scripts to work.
+
 ### JS/SCSS
 
 ### After first release

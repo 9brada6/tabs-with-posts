@@ -19,7 +19,12 @@ class General_Select_Setting extends General_Setting_Creator {
 	protected function display_internal_setting() {
 		?>
 		<div class="<?php $this->echo_bem_class( 'select-wrapper' ); ?>">
-			<select id="<?= esc_attr( $this->get_settings_attr_id() ); ?>" name="<?= esc_attr( $this->name ); ?>" class="<?php $this->echo_bem_class( 'select' ); ?>">
+			<select
+				id="<?= esc_attr( $this->get_settings_attr_id() ); ?>"
+				name="<?= esc_attr( $this->name ); ?>"
+				class="<?php $this->echo_bem_class( 'select' ); ?>"
+				<?php $this->display_input_attributes(); ?>
+			>
 				<?php
 				if ( $this->select_has_optgroup() ) :
 					$this->display_select_opt_groups();

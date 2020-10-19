@@ -2,13 +2,14 @@
 
 namespace TWRP\Admin\Tabs;
 
-use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Icons\SVG_Manager;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
 use TWRP\Admin\General_Select_Setting;
+use TWRP\Admin\General_Radio_Setting;
+use TWRP\Admin\General_Text_Setting;
 
 class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
@@ -40,16 +41,22 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 				<fieldset class="twrp-general-settings__fieldset">
 					<legend class="twrp-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
-					self::create_radio_option( General_Options::KEY__PER_WIDGET_DATE_FORMAT, General_Options::get_option( General_Options::KEY__PER_WIDGET_DATE_FORMAT ), self::get_per_widget_date_format_setting_args() );
-					self::create_radio_option( General_Options::KEY__HUMAN_READABLE_DATE, General_Options::get_option( General_Options::KEY__HUMAN_READABLE_DATE ), self::get_human_readable_setting_args() );
-					self::create_text_option( General_Options::KEY__DATE_FORMAT, General_Options::get_option( General_Options::KEY__DATE_FORMAT ), self::get_date_format_setting_args() );
+					$setting_option = new General_Radio_Setting( General_Options::KEY__PER_WIDGET_DATE_FORMAT, General_Options::get_option( General_Options::KEY__PER_WIDGET_DATE_FORMAT ), self::get_per_widget_date_format_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Radio_Setting( General_Options::KEY__HUMAN_READABLE_DATE, General_Options::get_option( General_Options::KEY__HUMAN_READABLE_DATE ), self::get_human_readable_setting_args() );
+					$setting_option->display();
+
+					$setting_option = new General_Text_Setting( General_Options::KEY__DATE_FORMAT, General_Options::get_option( General_Options::KEY__DATE_FORMAT ), self::get_date_format_setting_args() );
+					$setting_option->display();
 					?>
 				</fieldset>
 
 				<fieldset class="twrp-general-settings__fieldset">
 					<legend class="twrp-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
-					self::create_radio_option( General_Options::KEY__PER_WIDGET_ICON, General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ), self::get_per_widget_icons_setting_args() );
+					$setting_option = new General_Radio_Setting( General_Options::KEY__PER_WIDGET_ICON, General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ), self::get_per_widget_icons_setting_args() );
+					$setting_option->display();
 
 					$setting_option = new General_Select_Setting( General_Options::KEY__AUTHOR_ICON, General_Options::get_option( General_Options::KEY__AUTHOR_ICON ), self::get_author_icon_setting_args() );
 					$setting_option->display();
@@ -166,122 +173,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
 	#endregion -- Update Settings
 
-	#region -- Option Creator
-
-	// todo: add id's to wrappers.
-
-	/**
-	 * Creates a radio option and outputs the HTML.
-	 *
-	 * @param string $name The name of the input.
-	 * @param string|null $value The current value of the input, null for default.
-	 * @param array{title:string,options:array,default:string} $args
-	 * @return void
-	 */
-	protected static function create_radio_option( $name, $value, $args ) {
-		if ( null === $value ) {
-			$value = $args['default'];
-		}
-
-		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
-
-		?>
-		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-radio twrp-general-settings__radio-group">
-			<div class="twrp-general-radio__title">
-				<?= $args['title']; // phpcs:ignore -- No XSS ?>
-			</div>
-
-			<div class="twrp-general-radio__checkboxes">
-				<?php foreach ( $args['options'] as $option_value => $text ) : ?>
-					<?php
-						$radio_id = self::get_settings_attr_id( $name, $option_value );
-						$checked  = ( $option_value === $value ? ' checked' : '' );
-					?>
-					<span class="twrp-general-radio__selection">
-						<input id="<?= esc_attr( $radio_id ); ?>" type="radio" name="<?= esc_attr( $name ); ?>" value="<?= esc_attr( $option_value ); ?>"<?= esc_attr( $checked ); ?>>
-						<label for="<?= esc_attr( $radio_id ); ?>">
-							<?= $text; // phpcs:ignore -- No XSS ?>
-						</label>
-					</span>
-				<?php endforeach; ?>
-			</div>
-
-		</div>
-		<?php
-	}
-
-	/**
-	 * Create an input text and outputs the HTML.
-	 *
-	 * @param string $name The name of the input.
-	 * @param string|null $value The current value of the input, null for default.
-	 * @param array{title:string,placeholder:string,default:string,is_hidden:bool} $args
-	 * @return void
-	 */
-	protected static function create_text_option( $name, $value, $args ) {
-		if ( null === $value ) {
-			$value = $args['default'];
-		}
-
-		$wrapper_id = self::get_setting_wrapper_attr_id( $name );
-		$input_id   = self::get_settings_attr_id( $name );
-
-		$is_hidden = '';
-		if ( isset( $args['is_hidden'] ) && true === $args['is_hidden'] ) {
-			$is_hidden = ' twrp-hidden';
-		}
-
-		$placeholder = '';
-		if ( isset( $args['placeholder'] ) ) {
-			$placeholder = 'placeholder="' . $args['placeholder'] . '"';
-		}
-
-		?>
-		<div id="<?= esc_attr( $wrapper_id ); ?>" class="twrp-general-text twrp-general-settings__text-group<?= esc_attr( $is_hidden ) ?>">
-			<div class="twrp-general-text__title">
-			   <?= $args['title']; // phpcs:ignore -- No XSS ?>
-			</div>
-
-			<div class="twrp-general-text__wrapper">
-				<input id="<?= esc_attr( $input_id ); ?>" type="text" name="<?= esc_attr( $name ); ?>" value="<?= esc_attr( $value ); ?>" <?= $placeholder; // phpcs:ignore ?>/>
-			</div>
-		</div>
-		<?php
-	}
-
-	#endregion -- Option Creator
-
-	#region -- Option Creator Helpers
-
-	/**
-	 * Return the HTML wrapper id of a setting.
-	 *
-	 * @param string $name
-	 * @return string
-	 */
-	protected static function get_setting_wrapper_attr_id( $name ) {
-		return 'twrp-general-select__' . $name . '-wrapper';
-	}
-
-	/**
-	 * Return the HTML id of a setting.
-	 *
-	 * @param string $name
-	 * @param string $option_value If there are multiple id's separate them by an additional value.
-	 * @return string
-	 */
-	protected static function get_settings_attr_id( $name, $option_value = '' ) {
-		$id = 'twrp-general-select__' . $name . '-setting';
-
-		if ( '' !== $option_value ) {
-			$id = $id . '-' . $option_value;
-		}
-
-		return $id;
-	}
-
-	#endregion -- Option Creator Helpers
-
 	#region -- Settings Arguments
 
 	/**
@@ -328,10 +219,12 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		}
 
 		return array(
-			'title'       => _x( 'Enter custom date format(leave empty for WordPress default setting):', 'backend', 'twrp' ),
-			'placeholder' => _x( 'Ex: F j, Y', 'backend', 'twrp' ),
-			'default'     => General_Options::get_default_setting( General_Options::KEY__HUMAN_READABLE_DATE ),
-			'is_hidden'   => $is_hidden,
+			'title'      => _x( 'Enter custom date format(leave empty for WordPress default setting):', 'backend', 'twrp' ),
+			'input_attr' => array(
+				'placeholder' => _x( 'Ex: F j, Y', 'backend', 'twrp' ),
+			),
+			'default'    => General_Options::get_default_setting( General_Options::KEY__HUMAN_READABLE_DATE ),
+			'is_hidden'  => $is_hidden,
 		);
 	}
 

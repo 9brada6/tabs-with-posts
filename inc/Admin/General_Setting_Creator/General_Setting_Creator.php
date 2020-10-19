@@ -17,7 +17,12 @@ abstract class General_Setting_Creator {
 	/**
 	 * HTML class name for all settings.
 	 */
-	const ELEMENT_CLASS_NAME = 'twrpb-general-settings__setting-group';
+	const ADDITIONAL_BLOCK_CLASS_NAME = 'twrpb-general-settings__setting-group';
+
+	/**
+	 * HTML class name to add if a setting is hidden.
+	 */
+	const SETTING_IS_HIDDEN_CLASS_NAME = 'twrp-hidden';
 
 	/**
 	 * Holds the name of the setting. Used in HTML "name" attribute, so these
@@ -43,11 +48,14 @@ abstract class General_Setting_Creator {
 
 	/**
 	 * Holds the additional HTML attributes of the element. Usually used to
-	 * insert additional data-* attributes into HTML to use in JavaScript.
+	 * insert additional data-* attributes into HTML to use in JavaScript. This
+	 * value is escaped. These attributes are added at the outermost DIV block,
+	 * aka called in display() function, so no need to call it in
+	 * display_internal_setting(), this is why is marked as private.
 	 *
 	 * @var string
 	 */
-	protected $additional_attrs;
+	private $additional_attr;
 
 	/**
 	 * Hold the additional options for a setting. Not used in all settings.
@@ -57,12 +65,28 @@ abstract class General_Setting_Creator {
 	protected $options;
 
 	/**
+	 * Hold the additional input attributes. Used only if the setting is a
+	 * single input HTML element. Marked as private because it should be not
+	 * used in concrete classes, use display_input_attributes() instead.
+	 *
+	 * @var array
+	 */
+	private $input_attr;
+
+	/**
+	 * Whether or not the whole setting is hidden initially.
+	 *
+	 * @var bool
+	 */
+	private $is_hidden;
+
+	/**
 	 * Construct the Object that will display a setting in the General Settings
 	 * tab.
 	 *
 	 * @param string $name The name of the input.
 	 * @param string|null $value The current value of the input, null for default.
-	 * @param array{title:string,options:array,default:string,additional_attrs:?array} $args
+	 * @param array{title:string,default:string,options:?array,additional_attr:?array,input_attr:?array} $args
 	 */
 	public function __construct( $name, $value, $args ) {
 		$this->name = $name;
@@ -87,9 +111,19 @@ abstract class General_Setting_Creator {
 			$this->title = $args['title'];
 		}
 
-		$this->additional_attrs = '';
-		if ( isset( $args['additional_attrs'] ) && is_array( $args['additional_attrs'] ) ) {
-			$this->additional_attrs = $this->create_additional_attributes( $args['additional_attrs'] );
+		$this->additional_attr = '';
+		if ( isset( $args['additional_attr'] ) && is_array( $args['additional_attr'] ) ) {
+			$this->additional_attr = $this->create_additional_attributes( $args['additional_attr'] );
+		}
+
+		$this->input_attr = array();
+		if ( isset( $args['input_attr'] ) && is_array( $args['input_attr'] ) ) {
+			$this->input_attr = $args['input_attr'];
+		}
+
+		$this->is_hidden = false;
+		if ( isset( $args['is_hidden'] ) && true === $args['is_hidden'] ) {
+			$this->is_hidden = true;
 		}
 	}
 
@@ -103,7 +137,7 @@ abstract class General_Setting_Creator {
 		<div
 			id="<?= esc_attr( $this->get_setting_wrapper_attr_id() ); ?>"
 			class="<?= esc_html( $this->get_main_html_element_class_name() ) ?>"
-			<?= $this->additional_attrs // phpcs:ignore -- Pre-escaped. ?>
+			<?= $this->additional_attr // phpcs:ignore -- Pre-escaped. ?>
 		>
 
 			<div class="<?php $this->echo_bem_class( 'title' ); ?>">
@@ -125,15 +159,21 @@ abstract class General_Setting_Creator {
 	/**
 	 * Get the HTML classes for the main element.
 	 *
+	 * This is marked as private because it should be not used on child classes.
+	 *
 	 * @return string The returned classes are unescaped.
 	 */
-	protected function get_main_html_element_class_name() {
+	private function get_main_html_element_class_name() {
 		$class_name  = '';
-		$class_name .= static::ELEMENT_CLASS_NAME;
+		$class_name .= static::ADDITIONAL_BLOCK_CLASS_NAME;
 
 		$additional_element_class_name = $this->get_bem_class();
 		if ( ! empty( $additional_element_class_name ) ) {
 			$class_name .= ' ' . $additional_element_class_name;
+		}
+
+		if ( $this->is_hidden ) {
+			$class_name .= ' ' . static::SETTING_IS_HIDDEN_CLASS_NAME;
 		}
 
 		return $class_name;
@@ -187,6 +227,17 @@ abstract class General_Setting_Creator {
 	abstract protected function get_bem_base_class();
 
 	/**
+	 * Display the HTML input attributes. It will have a space before if
+	 * attributes are present.
+	 *
+	 * @return void
+	 */
+	protected function display_input_attributes() {
+		$output_string = $this->create_additional_attributes( $this->input_attr );
+		echo $output_string; // phpcs:ignore
+	}
+
+	/**
 	 * Creates the HTML element additional attributes inserted.
 	 *
 	 * It will have a space before if necessary. The returned string is escaped.
@@ -207,10 +258,13 @@ abstract class General_Setting_Creator {
 	/**
 	 * Return the HTML wrapper id of a setting.
 	 *
+	 * Marked as private because it is used on abstract class function, and
+	 * should not be used on concrete classes.
+	 *
 	 * @return string
 	 */
-	protected function get_setting_wrapper_attr_id() {
-		return 'twrpb-general-select__' . $this->name . '-wrapper';
+	private function get_setting_wrapper_attr_id() {
+		return 'twrpb-general-settings__' . $this->name . '-wrapper';
 	}
 
 	/**
@@ -220,7 +274,7 @@ abstract class General_Setting_Creator {
 	 * @return string The string is unescaped.
 	 */
 	protected function get_settings_attr_id( $option_value = '' ) {
-		$id = 'twrpb-general-select__' . $this->name . '-setting';
+		$id = 'twrpb-general-settings__' . $this->name . '-setting';
 
 		if ( '' !== $option_value ) {
 			$id = $id . '-' . $option_value;
