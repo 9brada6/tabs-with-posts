@@ -31,8 +31,6 @@ class General_Options {
 
 	#region -- Icon Keys
 
-	const KEY__PER_WIDGET_ICON = 'per_widget_icons';
-
 	const KEY__AUTHOR_ICON = 'user_icon';
 
 	const KEY__DATE_ICON = 'date_icon';
@@ -60,7 +58,6 @@ class General_Options {
 	 */
 	public static function get_default_settings() {
 		return array(
-			self::KEY__PER_WIDGET_ICON        => 'false',
 			self::KEY__HUMAN_READABLE_DATE    => 'true',
 			self::KEY__DATE_FORMAT            => '', // empty will default to WP date.
 			self::KEY__AUTHOR_ICON            => 'twrp-user-goo-ol',
@@ -78,7 +75,7 @@ class General_Options {
 	 * Get a default setting by name.
 	 *
 	 * @param string $name
-	 * @return mixed|null Null in case of setting name does not exist.
+	 * @return string|array|null Null in case of setting name does not exist.
 	 */
 	public static function get_default_setting( $name ) {
 		$defaults = self::get_default_settings();
@@ -111,7 +108,7 @@ class General_Options {
 	 * Get the option with the specific name. Return null if option is not set.
 	 *
 	 * @param string $name The key of the option.
-	 * @return mixed Can return a string/array or null if is not set.
+	 * @return string|array|null Return null if is not set.
 	 */
 	public static function get_option( $name ) {
 		$options = self::get_all_options();
@@ -211,8 +208,6 @@ class General_Options {
 				return self::sanitize_string_choice( $value, self::get_human_readable_date_setting_args() );
 			case self::KEY__DATE_FORMAT:
 				return self::sanitize_date_format( $value );
-			case self::KEY__PER_WIDGET_ICON:
-				return self::sanitize_string_choice( $value, self::get_per_widget_icon_setting_args() );
 			case self::KEY__AUTHOR_ICON:
 				return self::sanitize_string_choice( $value, self::get_author_icon_setting_args() );
 			case self::KEY__DATE_ICON:
@@ -288,21 +283,6 @@ class General_Options {
 	 */
 	protected static function get_human_readable_date_setting_args() {
 		$default_value = self::get_default_setting( self::KEY__HUMAN_READABLE_DATE );
-
-		return array(
-			'default' => $default_value,
-			'options' => array( 'true', 'false' ),
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting to enable the choosing of icon per
-	 * widget.
-	 *
-	 * @return array
-	 */
-	protected static function get_per_widget_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__PER_WIDGET_ICON );
 
 		return array(
 			'default' => $default_value,

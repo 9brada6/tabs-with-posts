@@ -65,6 +65,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 #### General Settings
 
 - CHange twrp to twrpb classes, change also ts filename, make ts scripts to work.
+- Safe remove per widget icons setting.
 
 ### JS/SCSS
 

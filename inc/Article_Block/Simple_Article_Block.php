@@ -54,10 +54,6 @@ class Simple_Article_Block extends Article_Block {
 			'.twrp-ss__date' => Widget_Component_Settings::TEXT_SETTINGS,
 			'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
 		);
-		// Append Icon setting if necessary.
-		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$date_css_components[''] = array( Widget_Component_Settings::DATE_ICON_SETTING );
-		}
 
 		$date_component      = new Widget_Component_Settings( $this->widget_id, $this->query_id, 'date', _x( 'Date', 'backend', 'twrp' ), $date_component_current_settings, $date_css_components );
 		$components ['date'] = $date_component;
@@ -70,10 +66,6 @@ class Simple_Article_Block extends Article_Block {
 			'.twrp-ss__author' => Widget_Component_Settings::TEXT_SETTINGS,
 			'.twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Widget_Component_Settings::HOVER_COLOR_SETTING ),
 		);
-		// Append Icon setting if necessary.
-		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$author_css_components[''] = array( Widget_Component_Settings::AUTHOR_ICON_SETTING );
-		}
 
 		$author_component_current_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
 		$author_component                  = new Widget_Component_Settings( $this->widget_id, $this->query_id, 'author', _x( 'Author', 'backend', 'twrp' ), $author_component_current_settings, $author_css_components );

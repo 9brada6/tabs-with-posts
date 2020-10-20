@@ -8,6 +8,8 @@ const fancyLog = require( 'fancy-log' );
 const sizeReport = require( 'gulp-sizereport' );
 const buffer = require( 'vinyl-buffer' );
 const minifyStream = require( 'minify-stream' );
+const exorcist = require( 'exorcist' );
+const sourcemaps = require( 'gulp-sourcemaps' );
 const autoprefixer = require( 'gulp-autoprefixer' );
 const concat = require( 'gulp-concat' );
 const header = require( 'gulp-header' );
@@ -15,11 +17,12 @@ const footer = require( 'gulp-footer' );
 const fs = require( 'fs' );
 const parser = require( 'fast-xml-parser' );
 const replace = require( 'gulp-replace' );
+const terser = require( 'gulp-terser' );
 
 /** Change this variable to configure the script for production or development. */
 const production = false;
 
-const sourceMap = ! production;
+// const sourceMap = ! production;
 
 const sassVars = {
 	backend: {
@@ -44,6 +47,7 @@ const tsVars = {
 		name: 'Backend',
 		src: 'assets/src-backend/script.ts',
 		dest: 'assets/backend',
+		mapFile: 'assets/backend/script.js.map',
 		watchifyOptions: {
 			ignoreWatch: [ '**/node_modules/**', '**/assets/src-frontend/**' ],
 		},
@@ -53,6 +57,7 @@ const tsVars = {
 		name: 'Frontend',
 		src: 'assets/src-frontend/script.ts',
 		dest: 'assets/frontend',
+		mapFile: 'assets/frontend/script.js.map',
 		watchifyOptions: {
 			ignoreWatch: [ '**/node_modules/**', '**/assets/src-backend/**' ],
 		},
@@ -132,10 +137,12 @@ function bundleBrowserify( toBundle, type ) {
 	toBundle = toBundle
 		.bundle()
 		.on( 'error', fancyLog.error )
-		.pipe( minifyStream( { sourceMap } ) )
 		.pipe( source( 'script.js' ) )
-		.pipe( gulp.dest( type.dest ) )
 		.pipe( buffer() )
+		.pipe( sourcemaps.init( { loadMaps: true } ) )
+		.pipe( terser() )
+		.pipe( sourcemaps.write( './' ) )
+		.pipe( gulp.dest( type.dest ) )
 		.on( 'end', function( ) {
 			const title = 'TypeScript: \x1b[34m' + type.name + '\x1b[0m --- \x1b[32m' + ( Math.round( ( new Date() - beginDate ) / 100 ) / 10 ) + ' s\x1b[0m';
 			fancyLog( title );

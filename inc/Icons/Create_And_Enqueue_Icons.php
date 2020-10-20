@@ -197,21 +197,6 @@ class Create_And_Enqueue_Icons {
 	 * @return array<string>
 	 */
 	public static function get_all_used_icons() {
-		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			return self::get_all_global_used_icons();
-		}
-
-		return self::get_all_per_widget_used_icons();
-	}
-
-	/**
-	 * Get an array with all global used icons ids.
-	 *
-	 * @todo: add rating icons.
-	 *
-	 * @return array<string>
-	 */
-	protected static function get_all_global_used_icons() {
 		$icons = array();
 
 		$options = array(
@@ -230,11 +215,6 @@ class Create_And_Enqueue_Icons {
 		}
 
 		return $icons;
-	}
-
-	// todo:
-	protected static function get_all_per_widget_used_icons() {
-		return array();
 	}
 
 	#endregion -- Get all used website icons Ids

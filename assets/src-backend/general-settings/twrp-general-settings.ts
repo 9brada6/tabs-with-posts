@@ -4,8 +4,8 @@ import { showUp, hideUp } from '../framework-blocks/twrp-hidden/twrp-hidden';
 
 // #region -- Hide or show custom date format depending on human readable date format.
 
-const humanReadableEnabledCheckbox = $( '#twrp-general-select__human_readable_date-setting-true' );
-const customDateWrapper = $( '#twrp-general-select__date_format-wrapper' );
+const humanReadableEnabledCheckbox = $( '#twrpb-general-select__human_readable_date-setting-true' );
+const customDateWrapper = $( '#twrpb-general-select__date_format-wrapper' );
 
 function showOrHideCustomDateFormat() {
 	if ( humanReadableEnabledCheckbox.is( ':checked' ) ) {
@@ -89,12 +89,13 @@ function getDocumentOnClickSelector(): string {
 
 // #region -- Add icons preview on the right for rating packs.
 
-const ratingIconsDataSetElementId = 'twrpb-general-select__rating_pack_icons-wrapper';
+const ratingIconsDataSetElementId = 'twrpb-general-settings__rating_pack_icons-wrapper';
 const dataHolderName = 'data-twrp-rating-packs';
 const selectRatingName = 'rating_pack_icons';
 
 const iconsPreviewWrapperClassName = 'twrpb-general-select__rating_icons_preview';
 const iconsPreviewWrapper = '<span class="' + iconsPreviewWrapperClassName + '"></span>';
+const ratingIconAndSvgElem = iconAndSvgElem;
 let ratingIconsSet = null;
 
 $( updateRatingIcons );
@@ -133,6 +134,8 @@ function updateRatingIcons() {
 	const selectWrapper = selectElem.parent();
 	const selectedRatingPack = String( selectElem.val() );
 
+	// todo: check if we can access ratingIconsSet object.
+
 	const emptyIconId = ratingIconsSet[ selectedRatingPack ].empty;
 	const halfFilledIconId = ratingIconsSet[ selectedRatingPack ].half;
 	const filledIconId = ratingIconsSet[ selectedRatingPack ].full;
@@ -141,9 +144,9 @@ function updateRatingIcons() {
 	selectWrapper.prepend( iconsPreviewWrapper );
 
 	const iconsWrapperPreviewElement = selectWrapper.find( '.' + iconsPreviewWrapperClassName );
-	$( iconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + filledIconId );
-	$( iconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + halfFilledIconId );
-	$( iconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + emptyIconId );
+	$( ratingIconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + filledIconId );
+	$( ratingIconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + halfFilledIconId );
+	$( ratingIconAndSvgElem ).appendTo( iconsWrapperPreviewElement ).find( 'use' ).attr( 'href', '#' + emptyIconId );
 }
 
 // #endregion -- Add icons preview on the right for rating packs.

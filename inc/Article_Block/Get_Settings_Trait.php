@@ -10,7 +10,6 @@ namespace TWRP\Article_Block;
 use RuntimeException;
 use WP_Post;
 use TWRP\Database\General_Options;
-use TWRP\Icons\SVG_Manager;
 use TWRP\Icons\Icon;
 
 /**
@@ -65,29 +64,13 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_author_icon() {
-		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__AUTHOR_ICON );
+		$option = General_Options::get_option( General_Options::KEY__AUTHOR_ICON );
 
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
+		if ( ! is_string( $option ) ) {
+			return '';
 		}
 
-		if ( $this->get_widget_author_icon() ) {
-			return $this->get_widget_author_icon();
-		}
-
-		if ( null !== General_Options::get_option( General_Options::KEY__AUTHOR_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__AUTHOR_ICON );
-
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
-		}
-
-		return '';
+		return $option;
 	}
 
 	/**
@@ -112,29 +95,12 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_date_icon() {
-		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__DATE_ICON );
+		$option = General_Options::get_option( General_Options::KEY__DATE_ICON );
 
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
+		if ( ! is_string( $option ) ) {
+			return '';
 		}
-
-		if ( $this->get_widget_date_icon() ) {
-			return $this->get_widget_date_icon();
-		}
-
-		if ( null !== General_Options::get_option( General_Options::KEY__DATE_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__DATE_ICON );
-
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
-		}
-
-		return '';
+		return $option;
 	}
 
 	/**
@@ -159,29 +125,12 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_views_icon() {
-		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__VIEWS_ICON );
+		$option = General_Options::get_option( General_Options::KEY__VIEWS_ICON );
 
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
+		if ( ! is_string( $option ) ) {
+			return '';
 		}
-
-		if ( $this->get_widget_views_icon() ) {
-			return $this->get_widget_views_icon();
-		}
-
-		if ( null !== General_Options::get_option( General_Options::KEY__VIEWS_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__VIEWS_ICON );
-
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
-		}
-
-		return '';
+		return $option;
 	}
 
 	/**
@@ -206,29 +155,12 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_comments_icon() {
-		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__COMMENTS_ICON );
+		$option = General_Options::get_option( General_Options::KEY__COMMENTS_ICON );
 
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
+		if ( ! is_string( $option ) ) {
+			return '';
 		}
-
-		if ( $this->get_widget_comments_icon() ) {
-			return $this->get_widget_comments_icon();
-		}
-
-		if ( null !== General_Options::get_option( General_Options::KEY__COMMENTS_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__COMMENTS_ICON );
-
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
-		}
-
-		return '';
+		return $option;
 	}
 
 	/**
@@ -238,29 +170,12 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_disabled_comments_icon() {
-		if ( 'false' === General_Options::get_option( General_Options::KEY__PER_WIDGET_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON );
+		$option = General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON );
 
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
+		if ( ! is_string( $option ) ) {
+			return '';
 		}
-
-		if ( $this->get_widget_comments_disabled_icon() ) {
-			return $this->get_widget_comments_disabled_icon();
-		}
-
-		if ( null !== General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON ) ) {
-			$option = General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON );
-
-			if ( ! is_string( $option ) ) {
-				return '';
-			}
-			return $option;
-		}
-
-		return '';
+		return $option;
 	}
 
 	/**

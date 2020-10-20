@@ -22,10 +22,12 @@ class Require_Files {
 
 		// Admin.
 		'Admin/Interface Helpers/License_Display',
-		'Admin/General_Setting_Creator/General_Setting_Creator',
-		'Admin/General_Setting_Creator/General_Select_Setting',
-		'Admin/General_Setting_Creator/General_Radio_Setting',
-		'Admin/General_Setting_Creator/General_Text_Setting',
+		'Admin/General_Settings/General_Setting_Creator/General_Setting_Creator',
+		'Admin/General_Settings/General_Setting_Creator/General_Select_Setting',
+		'Admin/General_Settings/General_Setting_Creator/General_Radio_Setting',
+		'Admin/General_Settings/General_Setting_Creator/General_Text_Setting',
+		'Admin/General_Settings/General_Settings_Factory',
+
 
 		'Admin/Settings_Menu',
 		'Admin/Tabs/Interface_Admin_Menu_Tab',

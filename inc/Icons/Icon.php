@@ -350,6 +350,25 @@ class Icon {
 		return $branded_icons;
 	}
 
+	/**
+	 * Create an array with the brand as a key, and the value containing an
+	 * array of icons of the same brand.
+	 *
+	 * @param array<Icon> $icons
+	 * @return array
+	 */
+	public static function get_description_options_by_brands( $icons ) {
+		$options = self::nest_icons_by_brands( $icons );
+
+		foreach ( $options as $brand => $brand_icons ) {
+			foreach ( $brand_icons as $icon_id => $icon ) {
+				$options[ $brand ][ $icon_id ] = $icon->get_option_icon_description();
+			}
+		}
+
+		return $options;
+	}
+
 	#endregion -- Static Helpers
 
 }
