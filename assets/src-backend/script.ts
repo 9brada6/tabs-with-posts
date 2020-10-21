@@ -17,6 +17,6 @@ import './widget-blocks/twrp-color-picker';
 import './widget-blocks/twrp-icon-select-preview';
 
 // General Settings
-import './general-settings/twrp-general-settings';
+import './general-settings/twrpb-general-settings';
 
 export default {};

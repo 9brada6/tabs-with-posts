@@ -54,18 +54,20 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Remove twrp_get_name and id from widget utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 - Change all "twrp" css/classes backend prefix with "twrpb"
+- Custom date format is not working, make it disabled(not to hide).
 
 ### Icons
 
 - Make icons work also inline and via a file.
-- In the TS files, make to not crash if a property is missing.
 - In tests, add coverage for each method.
-- Create an option to enable/disable, that will select the corresponding disabled comment icon.
+- Google Clock, Filled, Outline, Duotone is wrong.
+- Set default icon settings.
+
 
 #### General Settings
 
-- CHange twrp to twrpb classes, change also ts filename, make ts scripts to work.
-- Safe remove per widget icons setting.
+- Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
+- Remove redundant get_default_option, and also remove all redundant 'default' keys from creating classes.
 
 ### JS/SCSS
 

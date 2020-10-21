@@ -34,6 +34,8 @@ class General_Settings_Factory {
 
 	const TEXT_SETTING_CLASS = 'General_Text_Setting';
 
+	const SELECT_SETTING_WITH_SWITCH_CLASS = 'General_Select_With_Switch_Setting';
+
 	/**
 	 * Constructor is private, display_setting() is the only static method to
 	 * use.
@@ -127,7 +129,7 @@ class General_Settings_Factory {
 			General_Options::KEY__DATE_ICON              => self::SELECT_SETTING_CLASS,
 			General_Options::KEY__CATEGORY_ICON          => self::SELECT_SETTING_CLASS,
 			General_Options::KEY__COMMENTS_ICON          => self::SELECT_SETTING_CLASS,
-			General_Options::KEY__COMMENTS_DISABLED_ICON => self::SELECT_SETTING_CLASS,
+			General_Options::KEY__COMMENTS_DISABLED_ICON => self::SELECT_SETTING_WITH_SWITCH_CLASS,
 			General_Options::KEY__VIEWS_ICON             => self::SELECT_SETTING_CLASS,
 			General_Options::KEY__RATING_ICON_PACK       => self::SELECT_SETTING_CLASS,
 		);
@@ -280,11 +282,18 @@ class General_Settings_Factory {
 		$options           = Icon::get_description_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
 		$rating_packs_data = SVG_Manager::get_compatibles_disabled_comments_attr();
 
+		$switch_value = General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT );
+
 		return array(
 			'title'           => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
 			'options'         => $options,
 			'additional_attr' => array(
 				'data-twrp-related-comment-icons' => wp_json_encode( $rating_packs_data ),
+			),
+			'switch'          => array(
+				'title' => _x( 'Auto-select this icon(best-looking) based on the comment icon.', 'backend', 'twrp' ),
+				'value' => $switch_value,
+				'name'  => General_Options::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT,
 			),
 		);
 	}

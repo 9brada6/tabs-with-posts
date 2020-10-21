@@ -26,6 +26,7 @@ class Require_Files {
 		'Admin/General_Settings/General_Setting_Creator/General_Select_Setting',
 		'Admin/General_Settings/General_Setting_Creator/General_Radio_Setting',
 		'Admin/General_Settings/General_Setting_Creator/General_Text_Setting',
+		'Admin/General_Settings/General_Setting_Creator/General_Select_With_Switch_Setting',
 		'Admin/General_Settings/General_Settings_Factory',
 
 

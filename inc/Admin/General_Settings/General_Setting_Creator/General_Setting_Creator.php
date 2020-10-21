@@ -65,6 +65,13 @@ abstract class General_Setting_Creator {
 	protected $options;
 
 	/**
+	 * Holds all raw arguments passed in the constructor as the third argument.
+	 *
+	 * @var array
+	 */
+	protected $all_args;
+
+	/**
 	 * Hold the additional input attributes. Used only if the setting is a
 	 * single input HTML element. Marked as private because it should be not
 	 * used in concrete classes, use display_input_attributes() instead.
@@ -125,6 +132,8 @@ abstract class General_Setting_Creator {
 		if ( isset( $args['is_hidden'] ) && true === $args['is_hidden'] ) {
 			$this->is_hidden = true;
 		}
+
+		$this->all_args = $args;
 	}
 
 	/**

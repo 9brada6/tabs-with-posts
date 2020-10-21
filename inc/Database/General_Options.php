@@ -39,6 +39,8 @@ class General_Options {
 
 	const KEY__COMMENTS_ICON = 'comments_icon';
 
+	const KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT = 'comments_disabled_icon_auto_select';
+
 	const KEY__COMMENTS_DISABLED_ICON = 'comments_disabled_icon';
 
 	const KEY__VIEWS_ICON = 'views_icon';
@@ -58,16 +60,17 @@ class General_Options {
 	 */
 	public static function get_default_settings() {
 		return array(
-			self::KEY__HUMAN_READABLE_DATE    => 'true',
-			self::KEY__DATE_FORMAT            => '', // empty will default to WP date.
-			self::KEY__AUTHOR_ICON            => 'twrp-user-goo-ol',
-			self::KEY__DATE_ICON              => 'twrp-cal-goo-ol',
-			self::KEY__CATEGORY_ICON          => 'twrp-tax-goo-ol',
-			self::KEY__COMMENTS_ICON          => 'twrp-com-goo-ol',
-			self::KEY__COMMENTS_DISABLED_ICON => 'twrp-dcom-im-f',
-			self::KEY__VIEWS_ICON             => 'twrp-views-goo-ol',
-			self::KEY__RATING_ICON_PACK       => 'fa-stars',
-			self::KEY__PER_WIDGET_DATE_FORMAT => 'false',
+			self::KEY__HUMAN_READABLE_DATE                => 'true',
+			self::KEY__DATE_FORMAT                        => '', // empty will default to WP date.
+			self::KEY__AUTHOR_ICON                        => 'twrp-user-goo-ol',
+			self::KEY__DATE_ICON                          => 'twrp-cal-goo-ol',
+			self::KEY__CATEGORY_ICON                      => 'twrp-tax-goo-ol',
+			self::KEY__COMMENTS_ICON                      => 'twrp-com-goo-ol',
+			self::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT => 'true',
+			self::KEY__COMMENTS_DISABLED_ICON             => 'twrp-dcom-im-f',
+			self::KEY__VIEWS_ICON                         => 'twrp-views-goo-ol',
+			self::KEY__RATING_ICON_PACK                   => 'fa-stars',
+			self::KEY__PER_WIDGET_DATE_FORMAT             => 'false',
 		);
 	}
 
@@ -216,6 +219,8 @@ class General_Options {
 				return self::sanitize_string_choice( $value, self::get_category_icon_setting_args() );
 			case self::KEY__COMMENTS_ICON:
 				return self::sanitize_string_choice( $value, self::get_comments_icon_setting_args() );
+			case self::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT:
+				return self::sanitize_string_choice( $value, self::get_comments_disabled_icon_auto_select_setting_args() );
 			case self::KEY__COMMENTS_DISABLED_ICON:
 				return self::sanitize_string_choice( $value, self::get_comments_disabled_icon_setting_args() );
 			case self::KEY__VIEWS_ICON:
@@ -351,6 +356,20 @@ class General_Options {
 		return array(
 			'default' => $default_value,
 			'options' => $icons,
+		);
+	}
+
+	/**
+	 * Get the arguments for the setting to enable disabled comment icon auto select.
+	 *
+	 * @return array
+	 */
+	protected static function get_comments_disabled_icon_auto_select_setting_args() {
+		$default_value = self::get_default_setting( self::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT );
+
+		return array(
+			'default' => $default_value,
+			'options' => array( 'true', 'false' ),
 		);
 	}
 

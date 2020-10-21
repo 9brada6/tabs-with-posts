@@ -7,8 +7,6 @@ const tsify = require( 'tsify' );
 const fancyLog = require( 'fancy-log' );
 const sizeReport = require( 'gulp-sizereport' );
 const buffer = require( 'vinyl-buffer' );
-const minifyStream = require( 'minify-stream' );
-const exorcist = require( 'exorcist' );
 const sourcemaps = require( 'gulp-sourcemaps' );
 const autoprefixer = require( 'gulp-autoprefixer' );
 const concat = require( 'gulp-concat' );
@@ -18,9 +16,6 @@ const fs = require( 'fs' );
 const parser = require( 'fast-xml-parser' );
 const replace = require( 'gulp-replace' );
 const terser = require( 'gulp-terser' );
-
-/** Change this variable to configure the script for production or development. */
-const production = false;
 
 // const sourceMap = ! production;
 

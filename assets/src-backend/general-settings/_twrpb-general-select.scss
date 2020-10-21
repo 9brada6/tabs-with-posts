@@ -10,4 +10,17 @@
 	&__select-wrapper select {
 		font-size: 0.9rem;
 	}
+
+	&__switch {
+		margin-right: 0.3rem;
+	}
+
+	&__switch-wrapper {
+		margin-bottom: 0.4rem;
+	}
+
+	&__switch-title {
+		display: inline-block;
+		vertical-align: 0.6em;
+	}
 }
