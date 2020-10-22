@@ -54,15 +54,14 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Remove twrp_get_name and id from widget utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 - Change all "twrp" css/classes backend prefix with "twrpb"
-- Custom date format is not working, make it disabled(not to hide).
+- Custom date format, make it disabled(not to hide).
 
 ### Icons
 
 - Make icons work also inline and via a file.
 - In tests, add coverage for each method.
-- Google Clock, Filled, Outline, Duotone is wrong.
 - Set default icon settings.
-
+- Add a way to see each icon sets in the settings.
 
 #### General Settings
 
