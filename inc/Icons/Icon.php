@@ -7,7 +7,7 @@ namespace TWRP\Icons;
 
 use TWRP_Main;
 use RuntimeException;
-use WP_Filesystem_Direct;
+use TWRP\Utils;
 
 class Icon {
 
@@ -128,14 +128,14 @@ class Icon {
 	 *
 	 * @return string|false False if filename cannot be retrieved.
 	 */
-	public function get_icon_filename() {
+	public function get_icon_file_path() {
 		try {
-			$relative_path = 'assets/svgs/' . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
+			$relative_path = trailingslashit( Utils::get_assets_directory_path() ) . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
 		} catch ( RuntimeException $e ) {
 			return false;
 		}
 
-		return trailingslashit( TWRP_Main::get_plugin_directory() ) . $relative_path;
+		return $relative_path;
 	}
 
 	/**
@@ -202,28 +202,19 @@ class Icon {
 	 * Returns the HTML that define the icon.
 	 *
 	 * @return string|false False if icon cannot be retrieved.
-	 * @suppress PhanUndeclaredConstant
-	 * @psalm-suppress UnresolvableInclude
-	 * @psalm-suppress UndefinedConstant
 	 */
 	public function get_icon_svg_definition() {
 		if ( ! empty( $this->cache_definition ) ) {
 			return $this->cache_definition;
 		}
 
-		if ( ! class_exists( 'WP_Filesystem_Base' ) || ! class_exists( 'WP_Filesystem_Direct' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-base.php'; // @codeCoverageIgnore
-			require_once ABSPATH . 'wp-admin/includes/class-wp-filesystem-direct.php'; // @codeCoverageIgnore
-		}
-
-		$filesystem    = new WP_Filesystem_Direct( null );
-		$icon_filename = $this->get_icon_filename();
+		$icon_filename = $this->get_icon_file_path();
 
 		if ( ! is_string( $icon_filename ) ) {
 			return false;
 		}
 
-		$content = $filesystem->get_contents( $icon_filename );
+		$content = Utils::get_file_contents( $icon_filename );
 		if ( is_string( $content ) ) {
 			$this->cache_definition = $content;
 			return $content;

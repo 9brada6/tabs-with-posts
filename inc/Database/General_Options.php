@@ -173,27 +173,6 @@ class General_Options {
 
 	#endregion -- Setting Options
 
-	#region -- Setting Options
-
-	/**
-	 * Set a new option.
-	 *
-	 * @param string $name
-	 * @param mixed $value
-	 * @return void
-	 */
-	public static function set_setting( $name, $value ) {
-		$options = self::get_all_options();
-
-		$sanitized_setting = self::sanitize_setting( $name, $value );
-
-		$options[ $name ] = $sanitized_setting;
-
-		update_option( 'twrp_general_options', $options );
-	}
-
-	#endregion -- Setting Options
-
 	#region -- Sanitization
 
 	/**

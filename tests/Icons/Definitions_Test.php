@@ -218,7 +218,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 				continue;
 			}
 
-			$icon_filename = $icon->get_icon_filename();
+			$icon_filename = $icon->get_icon_file_path();
 			if ( ! is_string( $icon_filename ) || strstr( $icon_filename, $icon_matches[ $icon_id_type ]['file_prefix'] ) === false ) {
 				array_push( $wrong_ids, $icon_id );
 				continue;

@@ -6,6 +6,7 @@
 namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
+use TWRP\Utils;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -151,7 +152,7 @@ abstract class Article_Block {
 	 */
 	public function include_template() {
 		$artblock = $this;
-		include \TWRP_Main::get_templates_directory() . static::get_file_name();
+		include Utils::get_template_directory_path() . static::get_file_name();
 	}
 
 	/**

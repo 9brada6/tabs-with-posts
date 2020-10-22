@@ -9,6 +9,7 @@ use TWRP_Main;
 use TWRP\Utils;
 use RuntimeException;
 use TWRP\Database\General_Options;
+use TWRP\Database\Inline_Icons_Option;
 
 class Create_And_Enqueue_Icons {
 
@@ -26,10 +27,19 @@ class Create_And_Enqueue_Icons {
 		add_action( 'admin_head', array( __CLASS__, 'include_all_icons_file' ) );
 
 		// todo: remove:
-		add_action( 'admin_footer', array( __CLASS__, 'write_all_needed_icons_to_file' ) );
+		add_action( 'admin_footer', array( __CLASS__, 'write_needed_icons_to_file' ) );
 	}
 
 	#region -- Enqueue icons
+
+	/**
+	 * Echo the HTML to include all icons as inline svg defs.
+	 *
+	 * @return void
+	 */
+	public static function include_defs_inline_needed_icons() {
+		echo Inline_Icons_Option::get_inline_icons(); // phpcs:ignore
+	}
 
 	/**
 	 * Enqueue all needed icons file. This function needs to be called at the
@@ -39,19 +49,11 @@ class Create_And_Enqueue_Icons {
 	 *
 	 * @return void
 	 */
-	public static function include_all_needed_icons_file() {
-		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
-		$ver       = '1.0.0';
-		self::ajax_include_svg_file( $file_path );
-	}
-
-	/**
-	 * Echo the HTML to include all icons as inline svg defs.
-	 *
-	 * @return void
-	 */
-	public static function include_defs_inline_all_needed_icons() {
-		echo self::get_defs_inline_all_needed_icons(); // phpcs:ignore
+	public static function include_needed_icons_file() {
+		// @todo: here needs a path.
+		$file_url = Utils::get_needed_icons_url();
+		$ver      = '1.0.0';
+		self::ajax_include_svg_file( $file_url );
 	}
 
 	/**
@@ -63,7 +65,7 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function include_all_icons_file() {
-		$file_path = trailingslashit( Utils::get_assets_directory_url() ) . 'svgs/all-icons.svg';
+		$file_path = Utils::get_all_icons_url();
 		self::ajax_include_svg_file( $file_path );
 	}
 
@@ -95,33 +97,25 @@ class Create_And_Enqueue_Icons {
 	#region -- Create needed icons, inline and in a file
 
 	/**
-	 * Write all needed icons to a file named assets/svgs/needed-icons.svg
+	 * Write needed icons to a specific file in assets folder.
 	 *
-	 * @todo: WP_Filesystem check for credentials.
 	 * @return bool Whether or not the file was written.
 	 */
-	public static function write_all_needed_icons_to_file() {
-		$file_path = trailingslashit( TWRP_Main::get_plugin_directory() ) . 'assets/svgs/needed-icons.svg';
+	public static function write_needed_icons_to_file() {
+		$file_path = Utils::get_needed_icons_path();
+		$html      = self::get_defs_file_needed_icons();
 
-		if ( ! file_exists( $file_path ) ) {
-			return false;
-		}
+		return Utils::set_file_contents( $file_path, $html );
+	}
 
-		$wp_filesystem_available = WP_Filesystem();
-		if ( ! $wp_filesystem_available ) {
-			return false;
-		}
-
-		global $wp_filesystem;
-		$html = self::get_defs_file_all_needed_icons();
-
-		/** @psalm-suppress UndefinedConstant */
-		// @phan-suppress-next-line PhanUndeclaredConstant -- FS_CHMOD_FILE is declared.
-		if ( ! $wp_filesystem->put_contents( $file_path, $html, FS_CHMOD_FILE ) ) {
-			return false;
-		}
-
-		return true;
+	/**
+	 * Write needed icons to a option in database.
+	 *
+	 * @return bool Whether or not the option was updated.
+	 */
+	public static function write_needed_icons_to_option_in_database() {
+		$html = self::get_defs_inline_needed_icons();
+		return Inline_Icons_Option::set_inline_icons( $html );
 	}
 
 	/**
@@ -129,7 +123,7 @@ class Create_And_Enqueue_Icons {
 	 *
 	 * @return string
 	 */
-	protected static function get_defs_file_all_needed_icons() {
+	protected static function get_defs_file_needed_icons() {
 		$html_header =
 		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . "\n" .
 		'<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
@@ -162,7 +156,7 @@ class Create_And_Enqueue_Icons {
 	 *
 	 * @return string
 	 */
-	public static function get_defs_inline_all_needed_icons() {
+	public static function get_defs_inline_needed_icons() {
 		$html_header = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">';
 		$html_footer = '</svg>';
 
@@ -194,6 +188,8 @@ class Create_And_Enqueue_Icons {
 	/**
 	 * Get an array with all used icons ids, for all widgets.
 	 *
+	 * @todo: add rating icons, and all missing ones.
+	 *
 	 * @return array<string>
 	 */
 	public static function get_all_used_icons() {
@@ -205,11 +201,12 @@ class Create_And_Enqueue_Icons {
 			General_Options::KEY__VIEWS_ICON,
 			General_Options::KEY__CATEGORY_ICON,
 			General_Options::KEY__COMMENTS_ICON,
+			General_Options::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT,
 		);
 
 		foreach ( $options as $option_key ) {
 			$option_value = General_Options::get_option( $option_key );
-			if ( ! empty( $option_value ) ) {
+			if ( ! empty( $option_value ) && is_string( $option_value ) ) {
 				array_push( $icons, $option_value );
 			}
 		}

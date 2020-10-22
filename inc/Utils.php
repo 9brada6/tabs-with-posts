@@ -5,10 +5,11 @@ namespace TWRP;
 use TWRP\TWRP_Widget\Widget;
 use DateTimeZone;
 use TWRP_Main;
+use WP_Filesystem_Direct;
 
 class Utils {
 
-	const PLUGIN_DIR_NAME = 'tabs-with-recommended-posts';
+	const HOW_MANY_FOLDERS_THIS_FILE_IS_NESTED = 1;
 
 	/**
 	 * Verify that a value is a number bigger than 0.
@@ -298,69 +299,203 @@ class Utils {
 	/**
 	 * Returns the path to this plugin directory.
 	 *
-	 * @return string|false The path is trail slashed, false if the path cannot be get.
+	 * @return string The path is trail slashed.
 	 */
 	public static function get_plugin_directory_path() {
-		$folder_name = TWRP_Main::PLUGIN_FOLDER_NAME;
-		$file        = __FILE__;
-		$file        = str_replace( '\\', '/', $file );
-
-		$folder_name_position = strrpos( $file, $folder_name );
-
-		if ( false === $folder_name_position ) { // @phan-suppress-current-line PhanSuspiciousValueComparison
-			return false;
-		}
-
-		while ( true ) {
-			$last_separator                  = strrpos( $file, '/' );
-			$last_separator_must_be_position = $folder_name_position + strlen( $folder_name );
-			if ( $last_separator === $last_separator_must_be_position ) {
-				break;
-			}
-
+		$file = __FILE__;
+		for ( $i = self::HOW_MANY_FOLDERS_THIS_FILE_IS_NESTED; $i > 0; $i-- ) {
 			$file = dirname( $file );
-			$file = str_replace( '\\', '/', $file );
-
-			if ( strrpos( $file, $folder_name ) === false ) {
-				return false;
-			}
 		}
 
 		return trailingslashit( plugin_dir_path( $file ) );
 	}
 
 	/**
-	 * Get this plugin assets URL.
+	 * Get this plugin directory URL.
 	 *
-	 * @return string
+	 * @return string Url has a trailing slash.
 	 */
-	public static function get_assets_directory_url() {
-		$plugin_dir = self::get_plugin_directory_url();
+	public static function get_plugin_directory_url() {
+		$file = __FILE__;
 
-		$assets_dir = trailingslashit( $plugin_dir ) . 'assets/';
-		return $assets_dir;
+		for ( $i = self::HOW_MANY_FOLDERS_THIS_FILE_IS_NESTED; $i > 0; $i-- ) {
+			$file = dirname( $file );
+		}
+
+		return trailingslashit( plugin_dir_url( $file ) );
 	}
 
 	/**
-	 * Get this plugin directory URL.
+	 * Get the path to plugin "templates" folder.
+	 *
+	 * @return string The path is has an ending slash.
+	 */
+	public static function get_template_directory_path() {
+		$directory = trailingslashit( self::get_plugin_directory_path() ) . ltrim( TWRP_Main::TEMPLATES_FOLDER, '/' );
+		return trailingslashit( $directory );
+	}
+
+	/**
+	 * Get the url to plugin "templates" folder.
+	 *
+	 * @return string The path is has an ending slash.
+	 */
+	public static function get_template_directory_url() {
+		$url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( TWRP_Main::TEMPLATES_FOLDER, '/' );
+		return trailingslashit( $url );
+	}
+
+	/**
+	 * Get plugin assets directory path.
+	 *
+	 * @return string Path has a trailing slash.
+	 */
+	public static function get_assets_directory_path() {
+		$assets_dir = trailingslashit( self::get_plugin_directory_path() ) . ltrim( TWRP_Main::ASSETS_FOLDER, '/' );
+		return trailingslashit( $assets_dir );
+	}
+
+	/**
+	 * Get plugin assets URL.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_assets_directory_url() {
+		$assets_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( TWRP_Main::ASSETS_FOLDER, '/' );
+		return trailingslashit( $assets_url );
+	}
+
+	/**
+	 * Get plugin assets svgs directory path.
+	 *
+	 * @return string Path has a trailing slash.
+	 */
+	public static function get_assets_svgs_directory_path() {
+		$assets_svgs_dir = trailingslashit( self::get_plugin_directory_path() ) . ltrim( TWRP_Main::SVG_FOLDER, '/' );
+		return trailingslashit( $assets_svgs_dir );
+	}
+
+	/**
+	 * Get plugin assets svgs URL.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_assets_svgs_directory_url() {
+		$assets_svgs_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( TWRP_Main::SVG_FOLDER, '/' );
+		return trailingslashit( $assets_svgs_url );
+	}
+
+	/**
+	 * Get path for the all icons file.
 	 *
 	 * @return string
 	 */
-	protected static function get_plugin_directory_url() {
-		$directory = __DIR__;
+	public static function get_all_icons_path() {
+		$file = trailingslashit( self::get_plugin_directory_path() ) . ltrim( TWRP_Main::ALL_ICONS_FILE, '/' );
+		return $file;
+	}
 
-		$index_of_directory = strrpos( $directory, self::PLUGIN_DIR_NAME );
+	/**
+	 * Get url for the all icons file.
+	 *
+	 * @return string
+	 */
+	public static function get_all_icons_url() {
+		$file = trailingslashit( self::get_plugin_directory_url() ) . ltrim( TWRP_Main::ALL_ICONS_FILE, '/' );
+		return $file;
+	}
 
-		if ( false === $index_of_directory ) { // @phan-suppress-current-line PhanSuspiciousValueComparison
-			return $directory;
-		}
+	/**
+	 * Get path for the needed icons file.
+	 *
+	 * @return string
+	 */
+	public static function get_needed_icons_path() {
+		$file = trailingslashit( self::get_plugin_directory_path() ) . ltrim( TWRP_Main::NEEDED_ICONS_FILE, '/' );
+		return $file;
+	}
 
-		$directory     = substr( $directory, 0, $index_of_directory + strlen( self::PLUGIN_DIR_NAME ) ) . '/non-existent-file.php';
-		$directory_url = plugin_dir_url( $directory );
-
-		return $directory_url;
+	/**
+	 * Get url for the needed icons file.
+	 *
+	 * @return string
+	 */
+	public static function get_needed_icons_url() {
+		$file = trailingslashit( self::get_plugin_directory_url() ) . ltrim( TWRP_Main::NEEDED_ICONS_FILE, '/' );
+		return $file;
 	}
 
 	#endregion -- Directory Utilities
+
+	#region -- Filesystem Utilities
+
+	/**
+	 * Get the WP_Filesystem_Direct class. This class should be used only to
+	 * get contents, to write anything.
+	 *
+	 * @psalm-suppress UnresolvableInclude
+	 *
+	 * @return null|WP_Filesystem_Direct
+	 */
+	public static function get_direct_filesystem() {
+		if ( ! \defined( 'ABSPATH' ) ) {
+			return null;
+		}
+
+		if ( ! class_exists( 'WP_Filesystem_Base' ) || ! class_exists( 'WP_Filesystem_Direct' ) ) {
+			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/class-wp-filesystem-base.php'; // @codeCoverageIgnore
+			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/class-wp-filesystem-direct.php'; // @codeCoverageIgnore
+		}
+
+		return new WP_Filesystem_Direct( null );
+	}
+
+	/**
+	 * Get the contents of a file.
+	 *
+	 * This function use WP_Filesystem_Direct class, to check if file exist and
+	 * to get the contents.
+	 *
+	 * @param string $file_path
+	 * @return string|false
+	 */
+	public static function get_file_contents( $file_path ) {
+		$direct_filesystem = self::get_direct_filesystem();
+		if ( is_null( $direct_filesystem ) || ! $direct_filesystem->exists( $file_path ) ) {
+			return false;
+		}
+
+		$content = $direct_filesystem->get_contents( $file_path );
+		if ( is_string( $content ) ) {
+			return $content;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Set the contents of a file, will work only if the file exist.
+	 *
+	 * This function use WP_Filesystem_Direct class, to check if file exist and
+	 * to set the contents.
+	 *
+	 * @param string $file_path
+	 * @param string $content
+	 * @return bool True on success, false on failure.
+	 */
+	public static function set_file_contents( $file_path, $content ) {
+		$direct_filesystem = self::get_direct_filesystem();
+		if ( is_null( $direct_filesystem ) || ! $direct_filesystem->exists( $file_path ) ) {
+			return false;
+		}
+
+		if ( $direct_filesystem->put_contents( $file_path, $content, 0664 ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	#endregion -- Filesystem Utilities
 
 }

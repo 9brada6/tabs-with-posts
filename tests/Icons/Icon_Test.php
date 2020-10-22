@@ -55,12 +55,12 @@ class Icon_Test extends WP_UnitTestCase {
 		$random_icon_id = array_rand( $icons_attr );
 		$icon           = new Icon( $random_icon_id ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
-		$this->assertTrue( file_exists( $icon->get_icon_filename() ) ); // @phan-suppress-current-line PhanPossiblyFalseTypeArgumentInternal
+		$this->assertTrue( file_exists( $icon->get_icon_file_path() ) ); // @phan-suppress-current-line PhanPossiblyFalseTypeArgumentInternal
 
 		$false_icon_attr              = $icons_attr[ $random_icon_id ];
 		$false_icon_attr['file_name'] = 'bad_filename';
 		$icon                         = new Icon( 'bad-id', $false_icon_attr );
-		$this->assertFalse( $icon->get_icon_filename() );
+		$this->assertFalse( $icon->get_icon_file_path() );
 	}
 
 	/**

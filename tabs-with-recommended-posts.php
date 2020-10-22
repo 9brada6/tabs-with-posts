@@ -24,6 +24,7 @@ use TWRP\Plugins\Post_Views;
 use TWRP\Get_Posts;
 use TWRP\Icons\SVG_Manager;
 use TWRP\Icons\Create_And_Enqueue_Icons;
+use TWRP\Utils;
 
 
 /**
@@ -64,7 +65,7 @@ add_action( 'after_setup_theme', 'twrp_initialize' );
 class TWRP_Main {
 
 	/**
-	 * Whether or not a pro plugin is installed.
+	 * Whether or not the pro plugin is installed.
 	 *
 	 * @var bool
 	 */
@@ -78,26 +79,9 @@ class TWRP_Main {
 
 	const SVG_FOLDER = 'assets/svgs/';
 
-	/**
-	 * Returns the path to this plugin directory.
-	 *
-	 * @return string The path is trail slashed.
-	 */
-	public static function get_plugin_directory() {
-		return plugin_dir_path( __FILE__ );
-	}
+	const ALL_ICONS_FILE = 'assets/svgs/all-icons.svg';
 
-	/**
-	 * Returns the absolute path to the directory where the templates are found.
-	 *
-	 * @return string The path is trail slashed.
-	 */
-	public static function get_templates_directory() {
-		// get_plugin_directory() return a trailing slash path, so we use ltrim
-		// to be sure not to have "//".
-		$directory = self::get_plugin_directory() . ltrim( self::TEMPLATES_FOLDER, '/' );
-		return trailingslashit( $directory );
-	}
+	const NEEDED_ICONS_FILE = 'assets/svgs/needed-icons.svg';
 }
 
 
@@ -326,3 +310,5 @@ add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 // phpcs:disable
 
 #endregion -- Testing
+
+echo 'la' . fileperms( ABSPATH );
