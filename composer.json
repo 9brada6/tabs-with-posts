@@ -1,6 +1,8 @@
 {
     "name": "brada/tabs-with-recommended-posts",
 	"type": "project",
+	"minimum-stability": "dev",
+	"prefer-stable" : true,
     "require-dev": {
 		"squizlabs/php_codesniffer": "*",
 		"wp-coding-standards/wpcs": "*",
@@ -13,12 +15,13 @@
 		"masterminds/html5": "^2.7",
         "phpstan/phpstan": "^0.12.32",
 		"php-stubs/wordpress-stubs": "4.9.11",
-        "psalm/plugin-phpunit": "^0.12.2"
+		"psalm/plugin-phpunit": "^0.12.2"
 	},
 	"scripts": {
 		"test": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit",
 		"test-query-settings": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite query_settings",
-		"test-icons": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite icons"
+		"test-icons": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite icons",
+		"graph":  "composer global exec analyze-deps graph --output W:\\Projects\\wp-plugin-twrp\\wordpress\\wp-content\\plugins\\tabs-with-recommended-posts\\graph.puml W:\\Projects\\wp-plugin-twrp\\wordpress\\wp-content\\plugins\\tabs-with-recommended-posts\\inc"
 	},
 	"autoload": {
         "psr-4": {}

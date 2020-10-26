@@ -1,6 +1,8 @@
 <?php
 /**
  * File that contains the class with the same name.
+ *
+ * @todo: change option name to have prefix twrp__, and put it in a constant.
  */
 
 namespace TWRP\Database;
@@ -30,6 +32,16 @@ class General_Options {
 	#endregion -- Date Keys
 
 	#region -- Icon Keys
+
+	const ICON_KEYS = array(
+		self::KEY__AUTHOR_ICON,
+		self::KEY__DATE_ICON,
+		self::KEY__CATEGORY_ICON,
+		self::KEY__COMMENTS_ICON,
+		self::KEY__COMMENTS_DISABLED_ICON,
+		self::KEY__VIEWS_ICON,
+		self::KEY__RATING_ICON_PACK,
+	);
 
 	const KEY__AUTHOR_ICON = 'user_icon';
 

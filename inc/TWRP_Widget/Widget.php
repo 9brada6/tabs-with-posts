@@ -12,8 +12,9 @@ use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\TWRP_Widget\Widget_Form;
 use TWRP\Utils;
+use WP_Widget;
 
-class Widget extends \WP_Widget {
+class Widget extends WP_Widget {
 
 	const TWRP_BASE_ID             = 'twrp_tabs_with_recommended_posts';
 	const ARTBLOCK_SELECTOR__NAME  = 'article_block';

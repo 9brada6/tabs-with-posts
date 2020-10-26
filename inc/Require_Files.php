@@ -61,6 +61,8 @@ class Require_Files {
 		// Database.
 		'Database/Query_Options',
 		'Database/General_Options',
+		'Database/Aside_Options',
+		'Database/Inline_Icons_Option',
 
 		// Icons.
 		'Icons/Icon',

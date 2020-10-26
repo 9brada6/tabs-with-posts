@@ -10,6 +10,7 @@ use TWRP\Utils;
 use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Database\Inline_Icons_Option;
+use TWRP\Database\Aside_Options;
 
 class Create_And_Enqueue_Icons {
 
@@ -24,10 +25,10 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function init() {
+		// todo
 		add_action( 'admin_head', array( __CLASS__, 'include_all_icons_file' ) );
 
-		// todo: remove:
-		add_action( 'admin_footer', array( __CLASS__, 'write_needed_icons_to_file' ) );
+		add_action( 'twrp_general_settings_submitted', array( __CLASS__, 'write_needed_icons_on_settings_submitted' ) );
 	}
 
 	#region -- Enqueue icons
@@ -45,28 +46,23 @@ class Create_And_Enqueue_Icons {
 	 * Enqueue all needed icons file. This function needs to be called at the
 	 * correct action, usually "wp_enqueue_scripts".
 	 *
-	 * @todo: make $ver to change when the file has been updated.
-	 *
 	 * @return void
 	 */
 	public static function include_needed_icons_file() {
-		// @todo: here needs a path.
 		$file_url = Utils::get_needed_icons_url();
-		$ver      = '1.0.0';
-		self::ajax_include_svg_file( $file_url );
+		$time     = Aside_Options::get_needed_icons_generation_timestamp();
+		self::ajax_include_svg_file( $file_url . '?time="' . $time . '"' );
 	}
 
 	/**
 	 * Enqueue all needed icons file. This function needs to be called at
 	 * 'wp_head' or 'admin_head' action.
 	 *
-	 * @todo: make $ver to change when the file has been updated.
-	 *
 	 * @return void
 	 */
 	public static function include_all_icons_file() {
 		$file_path = Utils::get_all_icons_url();
-		self::ajax_include_svg_file( $file_path );
+		self::ajax_include_svg_file( $file_path . '?version="' . TWRP_MAIN::VERSION . '"' );
 	}
 
 	/**
@@ -96,12 +92,21 @@ class Create_And_Enqueue_Icons {
 
 	#region -- Create needed icons, inline and in a file
 
+	public static function write_needed_icons_on_settings_submitted( $updated_settings ) {
+		$settings_have_changed = false;
+
+		if ( $settings_have_changed ) {
+			self::write_needed_icons_to_file();
+			self::write_needed_icons_to_option_in_database();
+		}
+	}
+
 	/**
 	 * Write needed icons to a specific file in assets folder.
 	 *
 	 * @return bool Whether or not the file was written.
 	 */
-	public static function write_needed_icons_to_file() {
+	protected static function write_needed_icons_to_file() {
 		$file_path = Utils::get_needed_icons_path();
 		$html      = self::get_defs_file_needed_icons();
 
@@ -113,8 +118,9 @@ class Create_And_Enqueue_Icons {
 	 *
 	 * @return bool Whether or not the option was updated.
 	 */
-	public static function write_needed_icons_to_option_in_database() {
+	protected static function write_needed_icons_to_option_in_database() {
 		$html = self::get_defs_inline_needed_icons();
+		Aside_Options::set_icons_generation_timestamp_to_current_timestamp();
 		return Inline_Icons_Option::set_inline_icons( $html );
 	}
 

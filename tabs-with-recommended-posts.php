@@ -71,6 +71,8 @@ class TWRP_Main {
 	 */
 	protected static $is_pro = false;
 
+	const VERSION = '1.0.0';
+
 	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';
 
 	const TEMPLATES_FOLDER = 'templates/';
@@ -310,5 +312,3 @@ add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 // phpcs:disable
 
 #endregion -- Testing
-
-echo 'la' . fileperms( ABSPATH );

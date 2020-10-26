@@ -6,11 +6,13 @@
 namespace TWRP\Database;
 
 /**
- * Manages the inline icons setting, in the WP_Options table.
+ * Manages the inline icons definitions setting, in the WP_Options table.
+ *
+ * Basically, hold the HTML generated for the inline icons.
  */
 class Inline_Icons_Option {
 
-	const TABLE_OPTION_KEY = 'twrp__inline_icons';
+	const TABLE_OPTION_KEY = 'twrp__inline_icons_definition';
 
 	/**
 	 * Set the inline icons definitions.

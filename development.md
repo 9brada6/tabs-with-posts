@@ -76,3 +76,26 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - 📬 Add filters for all things.
 - Put all Query Notes in a separate class.
 - 🔀 Add a way to invert category icons?
+
+
+```plantuml
+@startuml
+package "General Settings Creator" #DDDDDD {
+
+class General_Settings_Factory
+
+interface General_Settings_Creator
+class General_Select_Setting
+class General_Select_With_Switch_Setting
+class General_Text_Setting
+class General_Radio_Setting
+
+General_Settings_Factory --> General_Settings_Creator
+General_Settings_Creator <|.. General_Select_Setting
+General_Settings_Creator <|..  General_Text_Setting
+General_Settings_Creator <|.. General_Radio_Setting
+General_Select_Setting <|-l- General_Select_With_Switch_Setting
+
+}
+@enduml
+```
