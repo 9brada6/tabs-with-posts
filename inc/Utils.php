@@ -498,4 +498,8 @@ class Utils {
 
 	#endregion -- Filesystem Utilities
 
+	public static function get_all_classes_that_implements( $interface_name ) {
+		return array();
+	}
+
 }

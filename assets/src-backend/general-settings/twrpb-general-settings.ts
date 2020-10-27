@@ -175,6 +175,7 @@ const autoSelectIconSwitchName = 'comments_disabled_icon_auto_select';
 $( enableOrDisableIconSelect );
 $( document ).on( 'change', selectCommentIconSelector, onChangeAutoSelectHandler );
 $( document ).on( 'change', 'input[name="' + autoSelectIconSwitchName + '"]', enableOrDisableIconSelect );
+$( document ).on( 'submit', onSubmitSendDisable );
 
 function setCommentsData() {
 	const dataHolderElement = $( dataHolderElementSelector );
@@ -247,6 +248,10 @@ function disableIconSelector() {
 
 function enableIconSelector() {
 	$( selectDisabledCommentIconSelector ).removeProp( 'disabled' );
+}
+
+function onSubmitSendDisable() {
+	enableIconSelector();
 }
 
 // #endregion -- Auto-Choose the compatible disabled icon.

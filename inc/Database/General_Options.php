@@ -8,6 +8,7 @@
 namespace TWRP\Database;
 
 use TWRP\Icons\SVG_Manager;
+use TWRP\Database\Settings\General_Option_Setting;
 
 /**
  * This class manages retrieving and setting the general options in the database.
@@ -61,6 +62,12 @@ class General_Options {
 
 	#endregion -- Icon Keys
 
+	#region -- SVG Inclusion Keys
+
+	const KEY__SVG_INCLUDE_INLINE = 'svg_include_inline';
+
+	#endregion -- SVG Inclusion Keys
+
 	#region -- Getting Options
 
 	/**
@@ -83,6 +90,7 @@ class General_Options {
 			self::KEY__VIEWS_ICON                         => 'twrp-views-goo-ol',
 			self::KEY__RATING_ICON_PACK                   => 'fa-stars',
 			self::KEY__PER_WIDGET_DATE_FORMAT             => 'false',
+			self::KEY__SVG_INCLUDE_INLINE                 => 'false',
 		);
 	}
 
@@ -128,6 +136,13 @@ class General_Options {
 	public static function get_option( $name ) {
 		$options = self::get_all_options();
 
+		$object = self::get_option_object( $name );
+		if ( $object ) {
+			if ( isset( $options[ $object->get_key_name() ] ) ) {
+				return $options[ $object->get_key_name() ];
+			}
+		}
+
 		if ( isset( $options[ $name ] ) ) {
 			return $options[ $name ];
 		}
@@ -169,7 +184,8 @@ class General_Options {
 	 * @return void
 	 */
 	public static function set_options( $options ) {
-		$db_options = self::get_all_options();
+		$db_options       = self::get_all_options();
+		$previous_options = $db_options;
 
 		foreach ( $options as $key => $value ) {
 			$sanitized_value = self::sanitize_setting( $key, $value );
@@ -180,7 +196,9 @@ class General_Options {
 			}
 		}
 
+		do_action( 'twrp_before_set_general_options', $db_options, $previous_options );
 		update_option( 'twrp_general_options', $db_options );
+		do_action( 'twrp_after_set_general_options', $db_options, $previous_options );
 	}
 
 	#endregion -- Setting Options
@@ -190,11 +208,19 @@ class General_Options {
 	/**
 	 * Sanitize a setting based on his name and value.
 	 *
-	 * @param string $name The name or key of the setting.
+	 * @param string|General_Option_Setting $name The name or key of the setting.
 	 * @param mixed $value The value to sanitize.
 	 * @return string|bool|null Null if setting doesn't have a sanitization method.
+	 *
+	 * @psalm-param string|class-string<General_Option_Setting>|General_Option_Setting
 	 */
 	public static function sanitize_setting( $name, $value ) {
+
+		$object = self::get_option_object( $name );
+		if ( $object ) {
+			return $object->sanitize( $value );
+		}
+
 		switch ( $name ) {
 			case self::KEY__PER_WIDGET_DATE_FORMAT:
 				return self::sanitize_string_choice( $value, self::get_per_widget_date_format_setting_args() );
@@ -218,6 +244,16 @@ class General_Options {
 				return self::sanitize_string_choice( $value, self::get_views_icon_setting_args() );
 			case self::KEY__RATING_ICON_PACK:
 				return self::sanitize_string_choice( $value, self::get_rating_pack_setting_args() );
+			case self::KEY__SVG_INCLUDE_INLINE:
+				return self::sanitize_string_choice( $value, self::get_svg_include_inline_setting_args() );
+		}
+
+		return null;
+	}
+
+	protected static function get_option_object( $object ) {
+		if ( is_object( $name ) && is_subclass_of( $name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
+			return $object;
 		}
 
 		return null;
@@ -412,6 +448,20 @@ class General_Options {
 		);
 	}
 
-	#endregion -- Sanitization Arguments
+	/**
+	 * Get the arguments for the setting of include inline svgs.
+	 *
+	 * @return array
+	 */
+	protected static function get_svg_include_inline_setting_args() {
+		$default_value = self::get_default_setting( self::KEY__SVG_INCLUDE_INLINE );
+
+		return array(
+			'default' => $default_value,
+			'options' => array( 'true', 'false' ),
+		);
+	}
+
+		#endregion -- Sanitization Arguments
 
 }

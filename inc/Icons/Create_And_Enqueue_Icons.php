@@ -25,10 +25,19 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function init() {
-		// todo
+		$include_inline = General_Options::get_option( General_Options::KEY__SVG_INCLUDE_INLINE );
+		if ( 'true' === $include_inline ) {
+			add_action( 'wp_head', array( __CLASS__, 'include_needed_icons_file' ) );
+		} else {
+			// todo:
+			// Include inline icons before the tabs are getting displayed
+		}
+
+		// In admin, include all icons file.
 		add_action( 'admin_head', array( __CLASS__, 'include_all_icons_file' ) );
 
-		add_action( 'twrp_general_settings_submitted', array( __CLASS__, 'write_needed_icons_on_settings_submitted' ) );
+		// When settings get updated, generate the needed icons file and inline svg.
+		add_action( 'twrp_general_before_settings_submitted', array( __CLASS__, 'write_needed_icons_on_settings_submitted' ) );
 	}
 
 	#region -- Enqueue icons
@@ -93,11 +102,17 @@ class Create_And_Enqueue_Icons {
 	#region -- Create needed icons, inline and in a file
 
 	public static function write_needed_icons_on_settings_submitted( $updated_settings ) {
-		$settings_have_changed = false;
-
-		if ( $settings_have_changed ) {
-			self::write_needed_icons_to_file();
-			self::write_needed_icons_to_option_in_database();
+		foreach ( General_Options::ICON_KEYS as $icon_setting ) {
+			if ( isset( $updated_settings[ $icon_setting ] ) && General_Options::get_option( $icon_setting ) !== $updated_settings[ $icon_setting ] ) {
+				add_action(
+					'twrp_general_after_settings_submitted',
+					function() {
+						self::write_needed_icons_to_file();
+						self::write_needed_icons_to_option_in_database();
+					}
+				);
+				break;
+			}
 		}
 	}
 
@@ -133,7 +148,7 @@ class Create_And_Enqueue_Icons {
 		$html_header =
 		'<?xml version="1.0" encoding="UTF-8" standalone="no"?>' . "\n" .
 		'<!-- This file is generated dynamically. Do NOT modify it. -->' . "\n" .
-		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">';
+		'<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">' . "\n";
 		$html_footer = '</svg>';
 
 		$html = '';
@@ -194,24 +209,30 @@ class Create_And_Enqueue_Icons {
 	/**
 	 * Get an array with all used icons ids, for all widgets.
 	 *
-	 * @todo: add rating icons, and all missing ones.
-	 *
 	 * @return array<string>
 	 */
 	public static function get_all_used_icons() {
 		$icons = array();
 
-		$options = array(
-			General_Options::KEY__AUTHOR_ICON,
-			General_Options::KEY__DATE_ICON,
-			General_Options::KEY__VIEWS_ICON,
-			General_Options::KEY__CATEGORY_ICON,
-			General_Options::KEY__COMMENTS_ICON,
-			General_Options::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT,
-		);
-
+		$options = General_Options::ICON_KEYS;
 		foreach ( $options as $option_key ) {
 			$option_value = General_Options::get_option( $option_key );
+
+			if ( General_Options::KEY__RATING_ICON_PACK === $option_key ) {
+				if ( is_string( $option_value ) ) {
+					$rating_pack = new Rating_Icon_Pack( $option_value );
+
+					$icon = $rating_pack->get_filled_icon();
+					array_push( $icons, $icon->get_id() );
+					$icon = $rating_pack->get_half_filled_icon();
+					array_push( $icons, $icon->get_id() );
+					$icon = $rating_pack->get_empty_icon();
+					array_push( $icons, $icon->get_id() );
+				}
+
+				continue;
+			}
+
 			if ( ! empty( $option_value ) && is_string( $option_value ) ) {
 				array_push( $icons, $option_value );
 			}

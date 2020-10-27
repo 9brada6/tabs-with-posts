@@ -149,9 +149,11 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	protected static function save_settings_submitted() {
 		$settings = $_POST; // phpcs:ignore -- No need to check for nonce here.
 
-		do_action( 'twrp_general_settings_submitted', $settings );
+		do_action( 'twrp_general_before_settings_submitted', $settings );
 
 		General_Options::set_options( $settings );
+
+		do_action( 'twrp_general_after_settings_submitted', $settings );
 	}
 
 	#endregion -- Update Settings

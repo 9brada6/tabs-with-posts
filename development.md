@@ -50,6 +50,8 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### General
 
+!- Move all General Settings into a class.
+
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
@@ -58,10 +60,10 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Make icons work also inline and via a file.
+- Make icons work inline(add before tabs, only one time, but we will do this later).
 - In tests, add coverage for each method.
 - Set default icon settings.
-- Add a way to see each icon sets in the settings.
+- Add a way to see each icon sets(categories) in the settings.
 
 #### General Settings
 
@@ -77,25 +79,4 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Put all Query Notes in a separate class.
 - 🔀 Add a way to invert category icons?
 
-
-```plantuml
-@startuml
-package "General Settings Creator" #DDDDDD {
-
-class General_Settings_Factory
-
-interface General_Settings_Creator
-class General_Select_Setting
-class General_Select_With_Switch_Setting
-class General_Text_Setting
-class General_Radio_Setting
-
-General_Settings_Factory --> General_Settings_Creator
-General_Settings_Creator <|.. General_Select_Setting
-General_Settings_Creator <|..  General_Text_Setting
-General_Settings_Creator <|.. General_Radio_Setting
-General_Select_Setting <|-l- General_Select_With_Switch_Setting
-
-}
-@enduml
-```
+![General_Settings_Creator](./puml/General_Settings_Creator.svg)

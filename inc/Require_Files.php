@@ -59,6 +59,8 @@ class Require_Files {
 		'Article_Block/Modern_Article_Block',
 
 		// Database.
+		'Database\General_Options_Settings\General_Option_Setting',
+		'Database\General_Options_Settings\Svg_Include_Inline',
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',

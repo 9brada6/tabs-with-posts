@@ -130,7 +130,7 @@ class Icon {
 	 */
 	public function get_icon_file_path() {
 		try {
-			$relative_path = trailingslashit( Utils::get_assets_directory_path() ) . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
+			$relative_path = trailingslashit( Utils::get_assets_svgs_directory_path() ) . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
 		} catch ( RuntimeException $e ) {
 			return false;
 		}
