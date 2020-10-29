@@ -1,13 +1,10 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @todo: change option name to have prefix twrp__, and put it in a constant.
  */
 
 namespace TWRP\Database;
 
-use TWRP\Icons\SVG_Manager;
 use TWRP\Database\Settings\General_Option_Setting;
 
 /**
@@ -22,49 +19,51 @@ use TWRP\Database\Settings\General_Option_Setting;
  */
 class General_Options {
 
+	const TABLE_OPTION_KEY = 'twrp__general_options';
+
 	#region -- Date Keys
 
-	const KEY__PER_WIDGET_DATE_FORMAT = 'per_widget_date_format';
+	const PER_WIDGET_DATE_FORMAT = 'Per_Widget_Date_Format';
 
-	const KEY__HUMAN_READABLE_DATE = 'human_readable_date';
+	const HUMAN_READABLE_DATE = 'Human_Readable_Date';
 
-	const KEY__DATE_FORMAT = 'date_format';
+	const DATE_FORMAT = 'Date_Format';
 
 	#endregion -- Date Keys
 
 	#region -- Icon Keys
 
 	const ICON_KEYS = array(
-		self::KEY__AUTHOR_ICON,
-		self::KEY__DATE_ICON,
-		self::KEY__CATEGORY_ICON,
-		self::KEY__COMMENTS_ICON,
-		self::KEY__COMMENTS_DISABLED_ICON,
-		self::KEY__VIEWS_ICON,
-		self::KEY__RATING_ICON_PACK,
+		self::AUTHOR_ICON,
+		self::DATE_ICON,
+		self::CATEGORY_ICON,
+		self::COMMENTS_ICON,
+		self::COMMENTS_DISABLED_ICON,
+		self::VIEWS_ICON,
+		self::RATING_ICON_PACK,
 	);
 
-	const KEY__AUTHOR_ICON = 'user_icon';
+	const AUTHOR_ICON = 'Author_Icon';
 
-	const KEY__DATE_ICON = 'date_icon';
+	const DATE_ICON = 'Date_Icon';
 
-	const KEY__CATEGORY_ICON = 'category_icon';
+	const CATEGORY_ICON = 'Category_Icon';
 
-	const KEY__COMMENTS_ICON = 'comments_icon';
+	const COMMENTS_ICON = 'Comments_Icon';
 
-	const KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT = 'comments_disabled_icon_auto_select';
+	const COMMENTS_DISABLED_ICON_AUTO_SELECT = 'Comments_Disabled_Icon_Auto_Select';
 
-	const KEY__COMMENTS_DISABLED_ICON = 'comments_disabled_icon';
+	const COMMENTS_DISABLED_ICON = 'Comments_Disabled_Icon';
 
-	const KEY__VIEWS_ICON = 'views_icon';
+	const VIEWS_ICON = 'Views_Icon';
 
-	const KEY__RATING_ICON_PACK = 'rating_pack_icons';
+	const RATING_ICON_PACK = 'Rating_Pack_Icons';
 
 	#endregion -- Icon Keys
 
 	#region -- SVG Inclusion Keys
 
-	const KEY__SVG_INCLUDE_INLINE = 'svg_include_inline';
+	const SVG_INCLUDE_INLINE = 'Svg_Include_Inline';
 
 	#endregion -- SVG Inclusion Keys
 
@@ -78,20 +77,31 @@ class General_Options {
 	 * @return array
 	 */
 	public static function get_default_settings() {
-		return array(
-			self::KEY__HUMAN_READABLE_DATE                => 'true',
-			self::KEY__DATE_FORMAT                        => '', // empty will default to WP date.
-			self::KEY__AUTHOR_ICON                        => 'twrp-user-goo-ol',
-			self::KEY__DATE_ICON                          => 'twrp-cal-goo-ol',
-			self::KEY__CATEGORY_ICON                      => 'twrp-tax-goo-ol',
-			self::KEY__COMMENTS_ICON                      => 'twrp-com-goo-ol',
-			self::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT => 'true',
-			self::KEY__COMMENTS_DISABLED_ICON             => 'twrp-dcom-im-f',
-			self::KEY__VIEWS_ICON                         => 'twrp-views-goo-ol',
-			self::KEY__RATING_ICON_PACK                   => 'fa-stars',
-			self::KEY__PER_WIDGET_DATE_FORMAT             => 'false',
-			self::KEY__SVG_INCLUDE_INLINE                 => 'false',
+		$settings_class_names = array(
+			self::PER_WIDGET_DATE_FORMAT,
+			self::HUMAN_READABLE_DATE,
+			self::DATE_FORMAT,
+			self::AUTHOR_ICON,
+			self::DATE_ICON,
+			self::CATEGORY_ICON,
+			self::COMMENTS_ICON,
+			self::COMMENTS_DISABLED_ICON_AUTO_SELECT,
+			self::COMMENTS_DISABLED_ICON,
+			self::VIEWS_ICON,
+			self::RATING_ICON_PACK,
+			self::SVG_INCLUDE_INLINE,
 		);
+
+		$default_settings = array();
+		foreach ( $settings_class_names as $class_name ) {
+			$object = self::get_option_object( $class_name );
+			if ( null === $object ) {
+				continue;
+			}
+			$default_settings[ $object->get_key_name() ] = $object->get_default_value();
+		}
+
+		return $default_settings;
 	}
 
 	/**
@@ -103,8 +113,8 @@ class General_Options {
 	public static function get_default_setting( $name ) {
 		$defaults = self::get_default_settings();
 
-		if ( isset( $defaults[ $name ] ) ) {
-			return $defaults[ $name ];
+		if ( isset( $defaults[ self::get_key_by_class( $name ) ] ) ) {
+			return $defaults[ self::get_key_by_class( $name ) ];
 		}
 
 		return null;
@@ -118,7 +128,7 @@ class General_Options {
 	 * @return array
 	 */
 	public static function get_all_options() {
-		$options = get_option( 'twrp_general_options', self::get_default_settings() );
+		$options = get_option( self::TABLE_OPTION_KEY, self::get_default_settings() );
 
 		if ( ! is_array( $options ) ) {
 			return self::get_default_settings();
@@ -130,21 +140,14 @@ class General_Options {
 	/**
 	 * Get the option with the specific name. Return null if option is not set.
 	 *
-	 * @param string $name The key of the option.
+	 * @param string|General_Option_Setting $name The key of the option.
 	 * @return string|array|null Return null if is not set.
 	 */
 	public static function get_option( $name ) {
 		$options = self::get_all_options();
 
-		$object = self::get_option_object( $name );
-		if ( $object ) {
-			if ( isset( $options[ $object->get_key_name() ] ) ) {
-				return $options[ $object->get_key_name() ];
-			}
-		}
-
-		if ( isset( $options[ $name ] ) ) {
-			return $options[ $name ];
+		if ( isset( $options[ self::get_key_by_class( $name ) ] ) ) {
+			return $options[ self::get_key_by_class( $name ) ];
 		}
 
 		return null;
@@ -158,22 +161,25 @@ class General_Options {
 	/**
 	 * Set a new value for the option.
 	 *
-	 * @param string $key
+	 * @param string|General_Option_Setting $key The Key of the option, or the class name, or the object.
 	 * @param mixed $value
 	 * @return void
 	 */
 	public static function set_option( $key, $value ) {
-		$value = self::sanitize_setting( $key, $value );
+		$value         = self::sanitize_setting( $key, $value );
+		$option_object = self::get_option_object( $key );
 
 		// If is null, then the setting doesn't have a sanitization method.
-		if ( null === $value ) {
+		if ( null === $value || null === $option_object ) {
 			return;
 		}
 
-		$options         = self::get_all_options();
-		$options[ $key ] = $value;
+		$key_string = $option_object->get_key_name();
 
-		update_option( 'twrp_general_options', $options );
+		$options                = self::get_all_options();
+		$options[ $key_string ] = $value;
+
+		update_option( self::TABLE_OPTION_KEY, $options );
 	}
 
 	/**
@@ -197,7 +203,7 @@ class General_Options {
 		}
 
 		do_action( 'twrp_before_set_general_options', $db_options, $previous_options );
-		update_option( 'twrp_general_options', $db_options );
+		update_option( self::TABLE_OPTION_KEY, $db_options );
 		do_action( 'twrp_after_set_general_options', $db_options, $previous_options );
 	}
 
@@ -210,258 +216,59 @@ class General_Options {
 	 *
 	 * @param string|General_Option_Setting $name The name or key of the setting.
 	 * @param mixed $value The value to sanitize.
-	 * @return string|bool|null Null if setting doesn't have a sanitization method.
+	 * @return string|array|null Null if setting doesn't have a sanitization method.
 	 *
-	 * @psalm-param string|class-string<General_Option_Setting>|General_Option_Setting
+	 * @psalm-param class-string<General_Option_Setting>|General_Option_Setting
 	 */
 	public static function sanitize_setting( $name, $value ) {
-
 		$object = self::get_option_object( $name );
 		if ( $object ) {
 			return $object->sanitize( $value );
 		}
 
-		switch ( $name ) {
-			case self::KEY__PER_WIDGET_DATE_FORMAT:
-				return self::sanitize_string_choice( $value, self::get_per_widget_date_format_setting_args() );
-			case self::KEY__HUMAN_READABLE_DATE:
-				return self::sanitize_string_choice( $value, self::get_human_readable_date_setting_args() );
-			case self::KEY__DATE_FORMAT:
-				return self::sanitize_date_format( $value );
-			case self::KEY__AUTHOR_ICON:
-				return self::sanitize_string_choice( $value, self::get_author_icon_setting_args() );
-			case self::KEY__DATE_ICON:
-				return self::sanitize_string_choice( $value, self::get_date_icon_setting_args() );
-			case self::KEY__CATEGORY_ICON:
-				return self::sanitize_string_choice( $value, self::get_category_icon_setting_args() );
-			case self::KEY__COMMENTS_ICON:
-				return self::sanitize_string_choice( $value, self::get_comments_icon_setting_args() );
-			case self::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT:
-				return self::sanitize_string_choice( $value, self::get_comments_disabled_icon_auto_select_setting_args() );
-			case self::KEY__COMMENTS_DISABLED_ICON:
-				return self::sanitize_string_choice( $value, self::get_comments_disabled_icon_setting_args() );
-			case self::KEY__VIEWS_ICON:
-				return self::sanitize_string_choice( $value, self::get_views_icon_setting_args() );
-			case self::KEY__RATING_ICON_PACK:
-				return self::sanitize_string_choice( $value, self::get_rating_pack_setting_args() );
-			case self::KEY__SVG_INCLUDE_INLINE:
-				return self::sanitize_string_choice( $value, self::get_svg_include_inline_setting_args() );
-		}
-
 		return null;
-	}
-
-	protected static function get_option_object( $object ) {
-		if ( is_object( $name ) && is_subclass_of( $name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
-			return $object;
-		}
-
-		return null;
-	}
-
-	/**
-	 * Sanitize choices the strings.
-	 *
-	 * @param mixed $value
-	 * @param array{default:string,options:array<string>} $args
-	 * @return string
-	 */
-	protected static function sanitize_string_choice( $value, $args ) {
-		if ( is_array( $args['options'] ) && in_array( $value, $args['options'], true ) ) {
-			return $value;
-		}
-
-		return $args['default'];
-	}
-
-	/**
-	 * Sanitize the date format.
-	 *
-	 * @param mixed $value
-	 * @return string
-	 */
-	protected static function sanitize_date_format( $value ) {
-		if ( ! is_string( $value ) ) {
-			return '';
-		}
-
-		return $value;
 	}
 
 	#endregion -- Sanitization
 
-	#region -- Sanitization Arguments
-
 	/**
-	 * Get the arguments for the setting to enable the choosing of date format
-	 * per widget.
+	 * Get the Setting option class by the class name(or option key), if is not available, then
+	 * will return null.
 	 *
-	 * @return array
+	 * @param string|General_Option_Setting $class_name
+	 * @return null|General_Option_Setting
 	 */
-	protected static function get_per_widget_date_format_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__PER_WIDGET_DATE_FORMAT );
+	public static function get_option_object( $class_name ) {
+		if ( is_object( $class_name ) && is_subclass_of( $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
+			return $class_name;
+		}
 
-		return array(
-			'default' => $default_value,
-			'options' => array( 'true', 'false' ),
-		);
+		$class_name = str_replace( '_', ' ', $class_name );
+		ucwords( $class_name );
+		$class_name = str_replace( ' ', '_', $class_name );
+
+		if ( is_string( $class_name ) && is_subclass_of( 'TWRP\\Database\\Settings\\' . $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
+			$object_name = 'TWRP\\Database\\Settings\\' . $class_name;
+			return new $object_name();
+		}
+
+		return null;
 	}
 
 	/**
-	 * Get the arguments for the setting to enable/disable the human readable
-	 * date format.
+	 * Get the key of the option by the Setting class name, or from a setting object.
 	 *
-	 * @return array
+	 * @param string|General_Option_Setting $class_name
+	 * @return string
 	 */
-	protected static function get_human_readable_date_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__HUMAN_READABLE_DATE );
+	public static function get_key_by_class( $class_name ) {
+		$object = self::get_option_object( $class_name );
 
-		return array(
-			'default' => $default_value,
-			'options' => array( 'true', 'false' ),
-		);
+		if ( null === $object ) {
+			return '';
+		}
+
+		return $object->get_key_name();
 	}
-
-	/**
-	 * Get the arguments for the setting of author icon.
-	 *
-	 * @return array
-	 */
-	protected static function get_author_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__AUTHOR_ICON );
-		$icons         = SVG_Manager::get_user_icons();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of date icon.
-	 *
-	 * @return array
-	 */
-	protected static function get_date_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__DATE_ICON );
-		$icons         = SVG_Manager::get_date_icons();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of category icon.
-	 *
-	 * @return array
-	 */
-	public static function get_category_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__CATEGORY_ICON );
-		$icons         = SVG_Manager::get_category_icons();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of comments icon.
-	 *
-	 * @return array
-	 */
-	protected static function get_comments_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__COMMENTS_ICON );
-		$icons         = SVG_Manager::get_comment_icons();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting to enable disabled comment icon auto select.
-	 *
-	 * @return array
-	 */
-	protected static function get_comments_disabled_icon_auto_select_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT );
-
-		return array(
-			'default' => $default_value,
-			'options' => array( 'true', 'false' ),
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of comments disabled icon.
-	 *
-	 * @return array
-	 */
-	protected static function get_comments_disabled_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__COMMENTS_DISABLED_ICON );
-		$icons         = SVG_Manager::get_comment_disabled_icons();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of views icon.
-	 *
-	 * @return array
-	 */
-	protected static function get_views_icon_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__VIEWS_ICON );
-		$icons         = SVG_Manager::get_views_icons();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of rating pack icons.
-	 *
-	 * @return array
-	 */
-	protected static function get_rating_pack_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__RATING_ICON_PACK );
-		$icons         = SVG_Manager::get_rating_packs();
-		$icons         = array_keys( $icons );
-
-		return array(
-			'default' => $default_value,
-			'options' => $icons,
-		);
-	}
-
-	/**
-	 * Get the arguments for the setting of include inline svgs.
-	 *
-	 * @return array
-	 */
-	protected static function get_svg_include_inline_setting_args() {
-		$default_value = self::get_default_setting( self::KEY__SVG_INCLUDE_INLINE );
-
-		return array(
-			'default' => $default_value,
-			'options' => array( 'true', 'false' ),
-		);
-	}
-
-		#endregion -- Sanitization Arguments
 
 }

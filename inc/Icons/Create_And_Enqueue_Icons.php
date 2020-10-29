@@ -25,7 +25,7 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function init() {
-		$include_inline = General_Options::get_option( General_Options::KEY__SVG_INCLUDE_INLINE );
+		$include_inline = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
 		if ( 'true' === $include_inline ) {
 			add_action( 'wp_head', array( __CLASS__, 'include_needed_icons_file' ) );
 		} else {
@@ -218,7 +218,7 @@ class Create_And_Enqueue_Icons {
 		foreach ( $options as $option_key ) {
 			$option_value = General_Options::get_option( $option_key );
 
-			if ( General_Options::KEY__RATING_ICON_PACK === $option_key ) {
+			if ( General_Options::RATING_ICON_PACK === $option_key ) {
 				if ( is_string( $option_value ) ) {
 					$rating_pack = new Rating_Icon_Pack( $option_value );
 

@@ -7,17 +7,22 @@
 
 namespace TWRP\Database\Settings;
 
+use TWRP\Icons\SVG_Manager;
+
 /**
- * Class that manages the setting of the inclusion of all svgs inline.
+ * Class that manages the setting of the Category Icon.
  */
-class Svg_Include_Inline extends General_Option_Setting {
+class Category_Icon extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'false';
+		return 'twrp-tax-goo-ol';
 	}
 
 	public function get_possible_options() {
-		return array( 'true', 'false' );
+		$icons = SVG_Manager::get_category_icons();
+		$icons = array_keys( $icons );
+
+		return $icons;
 	}
 
 }

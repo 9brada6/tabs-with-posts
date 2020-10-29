@@ -4,12 +4,6 @@ namespace TWRP\Admin\Tabs;
 
 use TWRP\Database\General_Options;
 use TWRP\Admin\Settings_Menu;
-use TWRP\Icons\SVG_Manager;
-use TWRP\Icons\Icon;
-use TWRP\Icons\Rating_Icon_Pack;
-use TWRP\Admin\General_Select_Setting;
-use TWRP\Admin\General_Radio_Setting;
-use TWRP\Admin\General_Text_Setting;
 use TWRP\Admin\General_Settings_Factory;
 
 class General_Settings_Tab implements Interface_Admin_Menu_Tab {
@@ -42,22 +36,23 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 				<fieldset class="twrp-general-settings__fieldset">
 					<legend class="twrp-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
-					General_Settings_Factory::display_setting( General_Options::KEY__PER_WIDGET_DATE_FORMAT );
-					General_Settings_Factory::display_setting( General_Options::KEY__HUMAN_READABLE_DATE );
-					General_Settings_Factory::display_setting( General_Options::KEY__DATE_FORMAT );
+					General_Settings_Factory::display_setting( General_Options::PER_WIDGET_DATE_FORMAT );
+					General_Settings_Factory::display_setting( General_Options::HUMAN_READABLE_DATE );
+					General_Settings_Factory::display_setting( General_Options::DATE_FORMAT );
 					?>
 				</fieldset>
 
 				<fieldset class="twrp-general-settings__fieldset">
 					<legend class="twrp-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
-					General_Settings_Factory::display_setting( General_Options::KEY__AUTHOR_ICON );
-					General_Settings_Factory::display_setting( General_Options::KEY__DATE_ICON );
-					General_Settings_Factory::display_setting( General_Options::KEY__CATEGORY_ICON );
-					General_Settings_Factory::display_setting( General_Options::KEY__COMMENTS_ICON );
-					General_Settings_Factory::display_setting( General_Options::KEY__COMMENTS_DISABLED_ICON );
-					General_Settings_Factory::display_setting( General_Options::KEY__VIEWS_ICON );
-					General_Settings_Factory::display_setting( General_Options::KEY__RATING_ICON_PACK );
+					General_Settings_Factory::display_setting( General_Options::AUTHOR_ICON );
+					General_Settings_Factory::display_setting( General_Options::DATE_ICON );
+					General_Settings_Factory::display_setting( General_Options::CATEGORY_ICON );
+					General_Settings_Factory::display_setting( General_Options::COMMENTS_ICON );
+					General_Settings_Factory::display_setting( General_Options::COMMENTS_DISABLED_ICON );
+					General_Settings_Factory::display_setting( General_Options::VIEWS_ICON );
+					General_Settings_Factory::display_setting( General_Options::RATING_ICON_PACK );
+					General_Settings_Factory::display_setting( General_Options::SVG_INCLUDE_INLINE );
 					?>
 				</fieldset>
 

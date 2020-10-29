@@ -8,9 +8,9 @@
 namespace TWRP\Database\Settings;
 
 /**
- * Class that manages the setting of the inclusion of all svgs inline.
+ * Class that manages the setting to enable per widget date format.
  */
-class Svg_Include_Inline extends General_Option_Setting {
+class Per_Widget_Date_Format extends General_Option_Setting {
 
 	public function get_default_value() {
 		return 'false';

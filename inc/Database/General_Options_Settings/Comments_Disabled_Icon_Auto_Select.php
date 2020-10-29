@@ -8,12 +8,12 @@
 namespace TWRP\Database\Settings;
 
 /**
- * Class that manages the setting of the inclusion of all svgs inline.
+ * Class that manages the setting of auto selecting the comments disabled icon.
  */
-class Svg_Include_Inline extends General_Option_Setting {
+class Comments_Disabled_Icon_Auto_Select extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'false';
+		return 'true';
 	}
 
 	public function get_possible_options() {

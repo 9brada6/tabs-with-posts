@@ -27,7 +27,7 @@ $( document ).on( 'click', showOrHideCustomDateFormat );
 
 const iconWrapperClassName = 'twrpb-general-settings__icon-preview';
 const iconAndSvgElem = '<span class="' + iconWrapperClassName + '"><svg><use/></svg></span>';
-const selectNames = [ 'user_icon', 'date_icon', 'category_icon', 'comments_icon', 'comments_disabled_icon', 'views_icon' ];
+const selectNames = [ 'author_icon', 'date_icon', 'category_icon', 'comments_icon', 'comments_disabled_icon', 'views_icon' ];
 
 $( updateAllIcons );
 $( document ).on( 'change', getDocumentOnClickSelector(), onChangeHandler );

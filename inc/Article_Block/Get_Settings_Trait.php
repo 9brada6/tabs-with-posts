@@ -32,12 +32,12 @@ trait Get_Settings_Trait {
 	 * to use the default WP date format.
 	 */
 	public function get_date_format() {
-		if ( 'true' === General_Options::get_option( General_Options::KEY__PER_WIDGET_DATE_FORMAT ) ) {
-			if ( 'true' === General_Options::get_option( General_Options::KEY__HUMAN_READABLE_DATE ) ) {
+		if ( 'true' === General_Options::get_option( General_Options::PER_WIDGET_DATE_FORMAT ) ) {
+			if ( 'true' === General_Options::get_option( General_Options::HUMAN_READABLE_DATE ) ) {
 				return 'HUMAN_READABLE';
 
 			} else {
-				return General_Options::get_option( General_Options::KEY__DATE_FORMAT );
+				return General_Options::get_option( General_Options::DATE_FORMAT );
 			}
 		}
 
@@ -64,7 +64,7 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_author_icon() {
-		$option = General_Options::get_option( General_Options::KEY__AUTHOR_ICON );
+		$option = General_Options::get_option( General_Options::AUTHOR_ICON );
 
 		if ( ! is_string( $option ) ) {
 			return '';
@@ -95,7 +95,7 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_date_icon() {
-		$option = General_Options::get_option( General_Options::KEY__DATE_ICON );
+		$option = General_Options::get_option( General_Options::DATE_ICON );
 
 		if ( ! is_string( $option ) ) {
 			return '';
@@ -125,7 +125,7 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_views_icon() {
-		$option = General_Options::get_option( General_Options::KEY__VIEWS_ICON );
+		$option = General_Options::get_option( General_Options::VIEWS_ICON );
 
 		if ( ! is_string( $option ) ) {
 			return '';
@@ -155,7 +155,7 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_comments_icon() {
-		$option = General_Options::get_option( General_Options::KEY__COMMENTS_ICON );
+		$option = General_Options::get_option( General_Options::COMMENTS_ICON );
 
 		if ( ! is_string( $option ) ) {
 			return '';
@@ -170,7 +170,7 @@ trait Get_Settings_Trait {
 	 * @return string
 	 */
 	public function get_selected_disabled_comments_icon() {
-		$option = General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON );
+		$option = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON );
 
 		if ( ! is_string( $option ) ) {
 			return '';

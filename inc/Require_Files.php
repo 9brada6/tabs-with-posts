@@ -60,6 +60,17 @@ class Require_Files {
 
 		// Database.
 		'Database\General_Options_Settings\General_Option_Setting',
+		'Database\General_Options_Settings\Per_Widget_Date_Format',
+		'Database\General_Options_Settings\Human_Readable_Date',
+		'Database\General_Options_Settings\Date_Format',
+		'Database\General_Options_Settings\Author_Icon',
+		'Database\General_Options_Settings\Date_Icon',
+		'Database\General_Options_Settings\Category_Icon',
+		'Database\General_Options_Settings\Comments_Icon',
+		'Database\General_Options_Settings\Comments_Disabled_Icon_Auto_Select',
+		'Database\General_Options_Settings\Comments_Disabled_Icon',
+		'Database\General_Options_Settings\Views_Icon',
+		'Database\General_Options_Settings\Rating_Pack_Icons',
 		'Database\General_Options_Settings\Svg_Include_Inline',
 		'Database/Query_Options',
 		'Database/General_Options',

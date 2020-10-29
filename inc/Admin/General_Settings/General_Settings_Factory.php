@@ -65,7 +65,7 @@ class General_Settings_Factory {
 			return;
 		}
 
-		$setting_class = new $setting_class_name( $setting_name, $current_value, $setting_arguments );
+		$setting_class = new $setting_class_name( General_Options::get_key_by_class( $setting_name ), $current_value, $setting_arguments );
 		$setting_class->display();
 	}
 
@@ -122,16 +122,17 @@ class General_Settings_Factory {
 	 */
 	protected static function get_setting_classes_correlated() {
 		$correlated_classes = array(
-			General_Options::KEY__PER_WIDGET_DATE_FORMAT => self::RADIO_SETTING_CLASS,
-			General_Options::KEY__HUMAN_READABLE_DATE    => self::RADIO_SETTING_CLASS,
-			General_Options::KEY__DATE_FORMAT            => self::TEXT_SETTING_CLASS,
-			General_Options::KEY__AUTHOR_ICON            => self::SELECT_SETTING_CLASS,
-			General_Options::KEY__DATE_ICON              => self::SELECT_SETTING_CLASS,
-			General_Options::KEY__CATEGORY_ICON          => self::SELECT_SETTING_CLASS,
-			General_Options::KEY__COMMENTS_ICON          => self::SELECT_SETTING_CLASS,
-			General_Options::KEY__COMMENTS_DISABLED_ICON => self::SELECT_SETTING_WITH_SWITCH_CLASS,
-			General_Options::KEY__VIEWS_ICON             => self::SELECT_SETTING_CLASS,
-			General_Options::KEY__RATING_ICON_PACK       => self::SELECT_SETTING_CLASS,
+			General_Options::PER_WIDGET_DATE_FORMAT => self::RADIO_SETTING_CLASS,
+			General_Options::HUMAN_READABLE_DATE    => self::RADIO_SETTING_CLASS,
+			General_Options::DATE_FORMAT            => self::TEXT_SETTING_CLASS,
+			General_Options::AUTHOR_ICON            => self::SELECT_SETTING_CLASS,
+			General_Options::DATE_ICON              => self::SELECT_SETTING_CLASS,
+			General_Options::CATEGORY_ICON          => self::SELECT_SETTING_CLASS,
+			General_Options::COMMENTS_ICON          => self::SELECT_SETTING_CLASS,
+			General_Options::COMMENTS_DISABLED_ICON => self::SELECT_SETTING_WITH_SWITCH_CLASS,
+			General_Options::VIEWS_ICON             => self::SELECT_SETTING_CLASS,
+			General_Options::RATING_ICON_PACK       => self::SELECT_SETTING_CLASS,
+			General_Options::SVG_INCLUDE_INLINE     => self::RADIO_SETTING_CLASS,
 		);
 
 		return $correlated_classes;
@@ -146,16 +147,17 @@ class General_Settings_Factory {
 	 */
 	protected static function get_argument_functions_correlated() {
 		$correlated_functions = array(
-			General_Options::KEY__PER_WIDGET_DATE_FORMAT => 'get_per_widget_date_format_setting_args',
-			General_Options::KEY__HUMAN_READABLE_DATE    => 'get_human_readable_setting_args',
-			General_Options::KEY__DATE_FORMAT            => 'get_date_format_setting_args',
-			General_Options::KEY__AUTHOR_ICON            => 'get_author_icon_setting_args',
-			General_Options::KEY__DATE_ICON              => 'get_date_icon_setting_args',
-			General_Options::KEY__CATEGORY_ICON          => 'get_category_icon_setting_args',
-			General_Options::KEY__COMMENTS_ICON          => 'get_comments_icon_setting_args',
-			General_Options::KEY__COMMENTS_DISABLED_ICON => 'get_comments_disabled_icon_setting_args',
-			General_Options::KEY__VIEWS_ICON             => 'get_views_icon_setting_args',
-			General_Options::KEY__RATING_ICON_PACK       => 'get_rating_pack_setting_args',
+			General_Options::PER_WIDGET_DATE_FORMAT => 'get_per_widget_date_format_setting_args',
+			General_Options::HUMAN_READABLE_DATE    => 'get_human_readable_setting_args',
+			General_Options::DATE_FORMAT            => 'get_date_format_setting_args',
+			General_Options::AUTHOR_ICON            => 'get_author_icon_setting_args',
+			General_Options::DATE_ICON              => 'get_date_icon_setting_args',
+			General_Options::CATEGORY_ICON          => 'get_category_icon_setting_args',
+			General_Options::COMMENTS_ICON          => 'get_comments_icon_setting_args',
+			General_Options::COMMENTS_DISABLED_ICON => 'get_comments_disabled_icon_setting_args',
+			General_Options::VIEWS_ICON             => 'get_views_icon_setting_args',
+			General_Options::RATING_ICON_PACK       => 'get_rating_pack_setting_args',
+			General_Options::SVG_INCLUDE_INLINE     => 'get_svg_include_inline_args',
 		);
 
 		return $correlated_functions;
@@ -177,7 +179,7 @@ class General_Settings_Factory {
 				'true'  => __( 'Yes', 'twrp' ),
 				'false' => __( 'No', 'twrp' ),
 			),
-			'default' => General_Options::get_default_setting( General_Options::KEY__PER_WIDGET_DATE_FORMAT ),
+			'default' => General_Options::get_default_setting( General_Options::PER_WIDGET_DATE_FORMAT ),
 		);
 	}
 
@@ -193,7 +195,7 @@ class General_Settings_Factory {
 				'true'  => __( 'Yes', 'twrp' ),
 				'false' => __( 'No', 'twrp' ),
 			),
-			'default' => General_Options::get_default_setting( General_Options::KEY__HUMAN_READABLE_DATE ),
+			'default' => General_Options::get_default_setting( General_Options::HUMAN_READABLE_DATE ),
 		);
 	}
 
@@ -204,7 +206,7 @@ class General_Settings_Factory {
 	 */
 	protected static function get_date_format_setting_args() {
 		$is_hidden = false;
-		if ( 'true' === General_Options::get_option( General_Options::KEY__HUMAN_READABLE_DATE ) ) {
+		if ( 'true' === General_Options::get_option( General_Options::HUMAN_READABLE_DATE ) ) {
 			$is_hidden = true;
 		}
 
@@ -282,7 +284,7 @@ class General_Settings_Factory {
 		$options           = Icon::get_description_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
 		$rating_packs_data = SVG_Manager::get_compatibles_disabled_comments_attr();
 
-		$switch_value = General_Options::get_option( General_Options::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT );
+		$switch_value = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON_AUTO_SELECT );
 
 		return array(
 			'title'           => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
@@ -293,7 +295,7 @@ class General_Settings_Factory {
 			'switch'          => array(
 				'title' => _x( 'Auto-select this icon(best-looking) based on the comment icon.', 'backend', 'twrp' ),
 				'value' => $switch_value,
-				'name'  => General_Options::KEY__COMMENTS_DISABLED_ICON_AUTO_SELECT,
+				'name'  => General_Options::get_key_by_class( General_Options::COMMENTS_DISABLED_ICON_AUTO_SELECT ),
 			),
 		);
 	}
@@ -309,7 +311,7 @@ class General_Settings_Factory {
 		return array(
 			'title'   => _x( 'Select the default views icon:', 'backend', 'twrp' ),
 			'options' => $options,
-			'default' => General_Options::get_default_setting( General_Options::KEY__VIEWS_ICON ),
+			'default' => General_Options::get_default_setting( General_Options::VIEWS_ICON ),
 		);
 	}
 
@@ -340,6 +342,21 @@ class General_Settings_Factory {
 			'options'         => $options,
 			'additional_attr' => array(
 				'data-twrp-rating-packs' => wp_json_encode( $rating_packs_data ),
+			),
+		);
+	}
+
+	/**
+	 * Return the arguments of the setting to enable date format selection per widget.
+	 *
+	 * @return array
+	 */
+	protected static function get_svg_include_inline_args() {
+		return array(
+			'title'   => _x( 'Include SVG icons inline?', 'backend', 'twrp' ),
+			'options' => array(
+				'true'  => __( 'Yes', 'twrp' ),
+				'false' => __( 'No', 'twrp' ),
 			),
 		);
 	}

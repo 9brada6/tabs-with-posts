@@ -68,7 +68,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 #### General Settings
 
 - Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
-- Remove redundant get_default_option, and also remove all redundant 'default' keys from creating classes.
+- Add a diagram, and explain everything, how this package works.
 
 ### JS/SCSS
 
