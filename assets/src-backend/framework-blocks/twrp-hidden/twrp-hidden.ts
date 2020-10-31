@@ -5,6 +5,14 @@ import 'jqueryui';
 
 const effectDuration = 500;
 
+function toggleDisplay( element: JQuery ): void {
+	if ( element.hasClass( 'twrp-hidden' ) ) {
+		showUp( element );
+	} else {
+		hideUp( element );
+	}
+}
+
 // #region -- Hide/Show Vertically
 
 function hideUp( element: JQuery ): void {
@@ -92,6 +100,7 @@ function removeElement( element: JQuery ): void {
 // =============================================================================
 
 export {
+	toggleDisplay,
 	showUp,
 	hideUp,
 	hideLeft,

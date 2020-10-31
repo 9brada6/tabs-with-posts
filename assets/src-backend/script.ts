@@ -19,4 +19,7 @@ import './widget-blocks/twrp-icon-select-preview';
 // General Settings
 import './general-settings/twrpb-general-settings';
 
+// Documentation Page
+import './documentation-page/twrpb-documentation-page';
+
 export default {};

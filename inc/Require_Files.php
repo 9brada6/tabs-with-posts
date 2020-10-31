@@ -22,6 +22,7 @@ class Require_Files {
 
 		// Admin.
 		'Admin/Interface Helpers/License_Display',
+		'Admin/Interface Helpers/Icons_Documentation',
 		'Admin/General_Settings/General_Setting_Creator/General_Setting_Creator',
 		'Admin/General_Settings/General_Setting_Creator/General_Select_Setting',
 		'Admin/General_Settings/General_Setting_Creator/General_Radio_Setting',

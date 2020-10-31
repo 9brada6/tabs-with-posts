@@ -2,14 +2,16 @@
 
 !include ./colors.iuml
 
-package "General Settings Creator" #DDDDDD {
-	class General_Settings_Factory
+package "TWRP\Admin\General_Settings -- General Settings Creator" {
+	class General_Settings_Factory <<public class>> <<Facade>> {
+		+ display( $setting_name )
+	}
 
-	interface General_Settings_Creator
-	class General_Select_Setting
-	class General_Select_With_Switch_Setting
-	class General_Text_Setting
-	class General_Radio_Setting
+	interface General_Settings_Creator <<private class>>
+	class General_Select_Setting <<private class>>
+	class General_Select_With_Switch_Setting <<private class>>
+	class General_Text_Setting <<private class>>
+	class General_Radio_Setting <<private class>>
 
 	General_Settings_Factory --> General_Settings_Creator
 	General_Settings_Creator <|.. General_Select_Setting

@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin;
+namespace TWRP\Admin\General_Settings;
 
 use TWRP\Database\General_Options;
 use TWRP\Icons\SVG_Manager;
@@ -24,7 +24,7 @@ use TWRP\Icons\Rating_Icon_Pack;
  */
 class General_Settings_Factory {
 
-	const SETTING_CLASSES_NAMESPACE = 'TWRP\\Admin\\';
+	const SETTING_CLASSES_NAMESPACE = 'TWRP\\Admin\\General_Settings\\';
 
 	const SETTING_CLASS_CREATOR = 'General_Setting_Creator';
 

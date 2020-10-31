@@ -1,0 +1,48 @@
+.twrpb-icons-spoiler {
+	&__category {
+		margin: 1rem 0;
+	}
+
+	&__spoiler {
+		padding: 0 16px 16px;
+		margin: 0.5rem 0 0;
+		background-color: white;
+		border-radius: 4px;
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	&__icon-group {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__brand-title {
+		flex-basis: 100%;
+		margin: 1.3rem 5px 0.7rem;
+		font-size: 1.3rem;
+	}
+
+	&__icon-presentation {
+		flex-basis: 100%;
+		flex-grow: 1;
+		padding: 10px;
+		margin: 5px;
+		font-size: 1.2rem;
+		line-height: 1;
+		background-color: white;
+		border-radius: 4px;
+		box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+	}
+
+	@media screen and (min-width: 992px) {
+		&__spoiler--comment_disabled &__icon-presentation {
+			flex-basis: calc(50% - 31px);
+			max-width: calc(50% - 31px);
+		}
+
+		&__icon-presentation {
+			flex-basis: calc(33% - 30px);
+			max-width: calc(33% - 27px);
+		}
+	}
+}

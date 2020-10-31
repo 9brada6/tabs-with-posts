@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin;
+namespace TWRP\Admin\General_Settings;
 
 /**
  * Abstract class used to create the settings in "General Settings" tab.

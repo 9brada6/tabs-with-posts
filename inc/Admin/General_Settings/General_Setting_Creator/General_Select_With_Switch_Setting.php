@@ -5,7 +5,7 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing
  */
 
-namespace TWRP\Admin;
+namespace TWRP\Admin\General_Settings;
 
 /**
  * Class used to create a select setting with switch, in the general settings

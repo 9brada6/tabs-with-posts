@@ -79,4 +79,17 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Put all Query Notes in a separate class.
 - 🔀 Add a way to invert category icons?
 
+## Read Before Development
+
+This documentation is split between packages.
+
+### TWRP\Admin\ Package
+
+#### TWRP\Admin\General_Settings Package
+
+The only access to create the settings should be through
+General_Settings_Factory class. This class, contains a public static method
+display(), in which, giving a setting name, will display the specific setting
+into the form.
+
 ![General_Settings_Creator](./puml/General_Settings_Creator.svg)
