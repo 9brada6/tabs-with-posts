@@ -62,7 +62,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Make icons work inline(add before tabs, only one time, but we will do this later).
 - In tests, add coverage for each method.
-- Add a way to see each icon sets(categories) in the settings.
 
 #### General Settings
 

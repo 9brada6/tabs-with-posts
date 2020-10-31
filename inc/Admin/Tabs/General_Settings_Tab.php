@@ -20,7 +20,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 
 	public function display_tab() {
 		?>
-		<div class="twrp-general-settings">
+		<div class="twrpb-general-settings">
 			<?php
 			if ( self::are_settings_submitted() ) {
 				if ( self::is_nonce_correct() ) {
@@ -32,9 +32,9 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			}
 			?>
 
-			<form class="twrp-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
-				<fieldset class="twrp-general-settings__fieldset">
-					<legend class="twrp-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
+			<form class="twrpb-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
+				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::PER_WIDGET_DATE_FORMAT );
 					General_Settings_Factory::display_setting( General_Options::HUMAN_READABLE_DATE );
@@ -42,8 +42,20 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 					?>
 				</fieldset>
 
-				<fieldset class="twrp-general-settings__fieldset">
-					<legend class="twrp-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
+				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
+					<p>
+						<?php
+						$icon_reference_link = Settings_Menu::get_tab_url( new Documentation_Tab() );
+						$icon_reference_link = $icon_reference_link . '#twrp-documentation-page__all-icons-reference';
+						echo sprintf(
+							/* translators: %1$s and %2$s are placeholder where HTML code will be inserted, as a link wrapper(going to another page). No translation words are inserted there. Just translate the whole sentence, and be sure the corresponding words are between %$1s and %2$s tags. */
+							_x( 'Note: To see a long list with all the icons, please look at %1$s documentation icons reference %2$s.', 'backend', 'twrp' ),
+							'<a href="' . esc_url( $icon_reference_link ) . '" target="_blank">',
+							'</a>'
+						);
+						?>
+					</p>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::AUTHOR_ICON );
 					General_Settings_Factory::display_setting( General_Options::DATE_ICON );
@@ -71,7 +83,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 */
 	protected static function settings_submitted_message() {
 		?>
-		<div class="twrp-general-settings__success-submitted-wrapper">
+		<div class="twrpb-general-settings__success-submitted-wrapper">
 			<?= _x( 'Settings successfully saved.', 'backend', 'twrp' ); ?>
 		</div>
 		<?php
@@ -106,9 +118,9 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 */
 	protected static function display_submit_button() {
 		?>
-		<div class="twrp-general-settings__submit-btn-wrapper">
-			<?php wp_nonce_field( 'twrp_general_submit_nonce', 'twrp_general_nonce', true, true ); ?>
-			<button id="twrp-general-settings__submit-btn" class="twrp-general-settings__submit-btn" type="submit" name="submit" value="submit">
+		<div class="twrpb-general-settings__submit-btn-wrapper">
+			<?php wp_nonce_field( 'twrpb_general_submit_nonce', 'twrpb_general_nonce', true, true ); ?>
+			<button id="twrpb-general-settings__submit-btn" class="twrpb-general-settings__submit-btn" type="submit" name="submit" value="submit">
 				<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
 			</button>
 		</div>
