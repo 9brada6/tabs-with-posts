@@ -8,14 +8,14 @@ namespace TWRP\Icons;
 /**
  * Class that holds all comments icon definitions.
  */
-class Comments_Icons {
+class Comments_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the comments.
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_comment_icons() {
+	public static function get_definitions() {
 
 		$registered_comment_vectors = array(
 

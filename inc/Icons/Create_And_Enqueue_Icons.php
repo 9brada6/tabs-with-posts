@@ -154,7 +154,7 @@ class Create_And_Enqueue_Icons {
 		$html = '';
 		foreach ( self::get_all_used_icons() as $icon_id ) {
 			try {
-				$icon = new Icon( $icon_id );
+				$icon = SVG_Manager::get_icon( $icon_id );
 			} catch ( RuntimeException $e ) {
 				continue;
 			}
@@ -184,7 +184,7 @@ class Create_And_Enqueue_Icons {
 		$html = '';
 		foreach ( self::get_all_used_icons() as $icon_id ) {
 			try {
-				$icon = new Icon( $icon_id );
+				$icon = SVG_Manager::get_icon( $icon_id );
 			} catch ( RuntimeException $e ) {
 				continue;
 			}
@@ -220,7 +220,11 @@ class Create_And_Enqueue_Icons {
 
 			if ( General_Options::RATING_ICON_PACK === $option_key ) {
 				if ( is_string( $option_value ) ) {
-					$rating_pack = new Rating_Icon_Pack( $option_value );
+					try {
+						$rating_pack = SVG_Manager::get_rating_pack( $option_value );
+					} catch ( RuntimeException $e ) {
+						continue;
+					}
 
 					$icon = $rating_pack->get_filled_icon();
 					array_push( $icons, $icon->get_id() );

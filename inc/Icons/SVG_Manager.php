@@ -22,69 +22,6 @@ use TWRP\Icons\Rating_Icons;
 class SVG_Manager {
 
 	/**
-	 * Numerical index, representing a user icon.
-	 */
-	const USER_ICON = 1;
-
-	/**
-	 * Numerical index, representing a date icon.
-	 */
-	const DATE_ICON = 2;
-
-	/**
-	 * Numerical index, representing a views icon.
-	 */
-	const VIEWS_ICON = 3;
-
-	/**
-	 * Numerical index, representing a rating icon.
-	 */
-	const RATING_ICON = 4;
-
-	/**
-	 * Numerical index, representing a rating icon.
-	 */
-	const CATEGORY_ICON = 5;
-
-	/**
-	 * Numerical index, representing a comment icon.
-	 */
-	const COMMENT_ICON = 6;
-
-	/**
-	 * Numerical index, representing a disabled comment icon.
-	 */
-	const DISABLED_COMMENT_ICON = 7;
-
-	/**
-	 * Each icon category has a folder where icons are found, these are declared
-	 * here.
-	 */
-	const ICON_CATEGORY_FOLDER = array(
-		self::USER_ICON             => 'user',
-		self::DATE_ICON             => 'date',
-		self::VIEWS_ICON            => 'views',
-		self::RATING_ICON           => 'rating',
-		self::CATEGORY_ICON         => 'taxonomy',
-		self::COMMENT_ICON          => 'comments',
-		self::DISABLED_COMMENT_ICON => 'disabled-comments',
-	);
-
-	/**
-	 * Each icon category will be wrapped in a HTML element, with a class name
-	 * of one of these.
-	 */
-	const ICON_CATEGORY_CLASS = array(
-		self::USER_ICON             => 'twrp-i--user',
-		self::DATE_ICON             => 'twrp-i--date',
-		self::VIEWS_ICON            => 'twrp-i--views',
-		self::RATING_ICON           => 'twrp-i--rating',
-		self::CATEGORY_ICON         => 'twrp-i--category',
-		self::COMMENT_ICON          => 'twrp-i--comment',
-		self::DISABLED_COMMENT_ICON => 'twrp-i--disabled-comment',
-	);
-
-	/**
 	 * Called before anything else, to initialize all the things that this class
 	 * needs.
 	 *
@@ -98,6 +35,52 @@ class SVG_Manager {
 	 */
 	public static function init() {}
 
+	/**
+	 * Get an Icon object, based on the id.
+	 *
+	 * @throws RuntimeException If icon id does not exist.
+	 *
+	 * @param string $icon_id
+	 * @return Icon
+	 */
+	public static function get_icon( $icon_id ) {
+		// Search only in specific category.
+		$icons = self::get_all_icons_attr();
+
+		if ( ! isset( $icons[ $icon_id ] ) ) {
+			throw new RuntimeException();
+		}
+
+		$icon_attr = $icons[ $icon_id ];
+
+		$icon = new Icon( $icon_id, $icon_attr );
+
+		return $icon;
+	}
+
+	/**
+	 * Get a rating icon pack by id.
+	 *
+	 * @throws RuntimeException If icon id does not exist.
+	 *
+	 * @param string $rating_pack_id
+	 * @return Rating_Icon_Pack
+	 */
+	public static function get_rating_pack( $rating_pack_id ) {
+		// Search only in specific category.
+		$packs = self::get_rating_packs_attr();
+
+		if ( ! isset( $packs[ $rating_pack_id ] ) ) {
+			throw new RuntimeException();
+		}
+
+		$pack_attr = $packs[ $rating_pack_id ];
+
+		$pack = new Rating_Icon_Pack( $rating_pack_id, $pack_attr );
+
+		return $pack;
+	}
+
 	#region -- Get specific icon sets
 
 	/**
@@ -106,7 +89,7 @@ class SVG_Manager {
 	 * @return array<string,Icon>
 	 */
 	public static function get_user_icons() {
-		$icons = User_Icons::get_user_icons();
+		$icons = User_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -123,7 +106,7 @@ class SVG_Manager {
 	 * @return array<string,Icon>
 	 */
 	public static function get_date_icons() {
-		$icons = Date_Icons::get_date_icons();
+		$icons = Date_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -140,7 +123,7 @@ class SVG_Manager {
 	 * @return array<string,Icon>
 	 */
 	public static function get_category_icons() {
-		$icons = Category_Icons::get_category_icons();
+		$icons = Category_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -157,7 +140,7 @@ class SVG_Manager {
 	 * @return array<string,Icon>
 	 */
 	public static function get_comment_icons() {
-		$icons = Comments_Icons::get_comment_icons();
+		$icons = Comments_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -174,7 +157,7 @@ class SVG_Manager {
 	 * @return array<string,Icon>
 	 */
 	public static function get_comment_disabled_icons() {
-		$icons = Comments_Disabled_Icons::get_disabled_comment_icons();
+		$icons = Comments_Disabled_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -191,7 +174,7 @@ class SVG_Manager {
 	 * @return array<string,Icon>
 	 */
 	public static function get_views_icons() {
-		$icons = Views_Icons::get_views_icons();
+		$icons = Views_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -229,7 +212,7 @@ class SVG_Manager {
 	 * @return array<string,array>
 	 */
 	public static function get_rating_packs_attr() {
-		return Rating_Icons::get_rating_packs();
+		return Rating_Icons::get_definitions();
 	}
 
 	/**
@@ -238,11 +221,15 @@ class SVG_Manager {
 	 * @return array<string,Rating_Icon_Pack>
 	 */
 	public static function get_rating_packs() {
-		$rating_packs         = Rating_Icons::get_rating_packs();
+		$rating_packs         = Rating_Icons::get_definitions();
 		$rating_packs_objects = array();
 
 		foreach ( $rating_packs as $rating_pack_id => $rating_pack ) {
-			$rating_pack                             = new Rating_Icon_Pack( $rating_pack_id );
+			try {
+				$rating_pack = self::get_rating_pack( $rating_pack_id );
+			} catch ( RuntimeException $e ) {
+				continue;
+			}
 			$rating_packs_objects[ $rating_pack_id ] = $rating_pack;
 		}
 
@@ -259,12 +246,12 @@ class SVG_Manager {
 	 * @return array<string,array>
 	 */
 	public static function get_all_icons_attr() {
-		return User_Icons::get_user_icons() +
-			Date_Icons::get_date_icons() +
-			Category_Icons::get_category_icons() +
-			Comments_Icons::get_comment_icons() +
-			Comments_Disabled_Icons::get_disabled_comment_icons() +
-			Views_Icons::get_views_icons() +
+		return User_Icons::get_definitions() +
+			Date_Icons::get_definitions() +
+			Category_Icons::get_definitions() +
+			Comments_Icons::get_definitions() +
+			Comments_Disabled_Icons::get_definitions() +
+			Views_Icons::get_definitions() +
 			Rating_Icons::get_rating_icons();
 	}
 
@@ -285,123 +272,6 @@ class SVG_Manager {
 
 	#endregion -- Get all icons
 
-	#region -- Get a specific Icon Attr
-
-	/**
-	 * Get the icon attributes array, or false if do not exist.
-	 *
-	 * @param string $icon_id
-	 * @return array|false
-	 */
-	public static function get_icon_attr( $icon_id ) {
-		try {
-			$icon_category = self::get_icon_category( $icon_id );
-		} catch ( RuntimeException $e ) {
-			return false;
-		}
-
-		if ( self::USER_ICON === $icon_category ) {
-			$icons_attr = User_Icons::get_user_icons();
-		}
-
-		if ( self::DATE_ICON === $icon_category ) {
-			$icons_attr = Date_Icons::get_date_icons();
-		}
-
-		if ( self::CATEGORY_ICON === $icon_category ) {
-			$icons_attr = Category_Icons::get_category_icons();
-		}
-
-		if ( self::COMMENT_ICON === $icon_category ) {
-			$icons_attr = Comments_Icons::get_comment_icons();
-		}
-
-		if ( self::DISABLED_COMMENT_ICON === $icon_category ) {
-			$icons_attr = Comments_Disabled_Icons::get_disabled_comment_icons();
-		}
-
-		if ( self::VIEWS_ICON === $icon_category ) {
-			$icons_attr = Views_Icons::get_views_icons();
-		}
-
-		if ( self::RATING_ICON === $icon_category ) {
-			$icons_attr = Rating_Icons::get_rating_icons();
-		}
-
-		if ( isset( $icons_attr[ $icon_id ] ) ) {
-			return $icons_attr[ $icon_id ];
-		}
-
-		return false; // @codeCoverageIgnore
-	}
-
-	#endregion -- Get a specific Icon Attr
-
-	/**
-	 * Get a numeric value, representing the icon category. The numeric value
-	 * is a constant declared in this class. Return false otherwise.
-	 *
-	 * @throws RuntimeException In case the numeric value cannot be retrieved.
-	 *
-	 * @param string $icon_id
-	 * @return int
-	 */
-	public static function get_icon_category( $icon_id ) {
-		if ( strstr( $icon_id, 'views' ) ) {
-			return self::VIEWS_ICON;
-		}
-
-		if ( strstr( $icon_id, 'cal' ) ) {
-			return self::DATE_ICON;
-		}
-
-		if ( strstr( $icon_id, 'dcom' ) ) {
-			return self::DISABLED_COMMENT_ICON;
-		}
-
-		if ( strstr( $icon_id, 'com' ) && ! strstr( $icon_id, 'dcom' ) ) {
-			return self::COMMENT_ICON;
-		}
-
-		if ( strstr( $icon_id, 'user' ) ) {
-			return self::USER_ICON;
-		}
-
-		if ( strstr( $icon_id, 'tax' ) ) {
-			return self::CATEGORY_ICON;
-		}
-
-		if ( strstr( $icon_id, 'rat' ) ) {
-			return self::RATING_ICON;
-		}
-
-		throw new RuntimeException();
-	}
-
-	#region -- Get aria labels
-
-	/**
-	 * Get an array, where the key is the icon category index, and the value
-	 * is the aria label for these type of icons.
-	 *
-	 * @return array
-	 */
-	public static function get_category_aria_label() {
-		$aria_labels = array(
-			self::USER_ICON             => _x( 'Author', 'accessibility text', 'twrp' ),
-			self::DATE_ICON             => _x( 'Date', 'accessibility text', 'twrp' ),
-			self::VIEWS_ICON            => _x( 'Views', 'accessibility text', 'twrp' ),
-			self::RATING_ICON           => _x( 'Rating', 'accessibility text', 'twrp' ),
-			self::CATEGORY_ICON         => _x( 'Category', 'accessibility text', 'twrp' ),
-			self::COMMENT_ICON          => _x( 'Comments', 'accessibility text', 'twrp' ),
-			self::DISABLED_COMMENT_ICON => _x( 'Comments Disabled', 'accessibility text', 'twrp' ),
-		);
-
-		return $aria_labels;
-	}
-
-	#endregion -- Get aria labels
-
 	#region -- Get compatible disabled comment icon
 
 	/**
@@ -418,7 +288,7 @@ class SVG_Manager {
 		}
 
 		try {
-			$disabled_icon = new Icon( $icon_id );
+			$disabled_icon = self::get_icon( $icon_id );
 			return $disabled_icon;
 		} catch ( RuntimeException $e ) { // @codeCoverageIgnore
 			return null; // @codeCoverageIgnore
@@ -460,159 +330,5 @@ class SVG_Manager {
 	}
 
 	#endregion -- Get compatible disabled comment icon
-
-	#region -- Development test icons alignment
-
-	/**
-	 * This function was created for testing and prototyping. It is not for use
-	 * in the theme directly.
-	 *
-	 * @return void
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public static function test_icons() {
-		$icons = self::get_all_icons();
-		Create_And_Enqueue_Icons::include_all_icons_file();
-		$icon_nr = 0;
-
-		?>
-		<style>
-		.twrp-test__icon-block-wrapper {
-			margin:3px; margin-right: 10px; font-size: 1.5rem; display:inline-block;
-		}
-		.twrp-test__icon-wrapper {
-			margin-right: 6px
-		}
-		</style>
-		<?php
-
-		echo '<p>';
-		foreach ( $icons as $icon ) {
-			$random_word = substr( str_shuffle( 'abcdefghijklmnopqrstuvwxyz' ), 0, 4 );
-
-			if ( 0 === $icon_nr % 3 ) {
-				echo '<div>';
-			}
-
-			echo '<span class="twrp-test__icon-block-wrapper">';
-			echo '<span class="twrp-test__icon-wrapper">';
-				echo $icon->get_html(); // phpcs:ignore
-			echo '</span>';
-			echo esc_html( $random_word );
-			echo '</span>';
-
-			if ( ( ( $icon_nr + 1 ) % 3 ) === 0 || ( count( $icons ) === $icon_nr ) ) {
-				echo '</div>';
-			}
-
-			$icon_nr++;
-		}
-		echo '</p>';
-
-		echo '<p>';
-		foreach ( $icons as $icon ) {
-			echo '<div>';
-
-			echo '<span class="twrp-test__icon-block-wrapper">';
-				echo '<span class="twrp-test__icon-wrapper">';
-					echo $icon->get_html(); // phpcs:ignore
-				echo '</span>';
-				echo esc_html( $icon->get_option_icon_description() );
-			echo '</span>';
-
-			echo '</div>';
-		}
-		echo '</p>';
-
-		self::test__show_comment_icon_compatible_with_disabled_icon();
-
-		self::test__multiple_icons_align();
-	}
-
-	/**
-	 * For each comment icon, show the compatible disabled comment icon.
-	 *
-	 * @return void
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public static function test__show_comment_icon_compatible_with_disabled_icon() {
-		$icons = self::get_comment_icons();
-		?>
-		<div style="font-family:monospace">
-			<?php foreach ( $icons as $comment_icon ) : ?>
-				<?php
-					$disabled_comment_icon = self::get_compatible_disabled_comment_icon( $comment_icon );
-				?>
-				<div>
-					<?php
-
-					$comment_icon->display();
-					echo '&nbsp;=>&nbsp;';
-					if ( $disabled_comment_icon instanceof Icon ) {
-						$disabled_comment_icon->display();
-					}
-
-					echo '&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;';
-
-					echo esc_html( $comment_icon->get_id() );
-					$id_max_strlen    = 20;
-					$spaces_to_repeat = $id_max_strlen - strlen( $comment_icon->get_id() );
-					echo esc_html( str_repeat( '&nbsp;', $spaces_to_repeat ) );
-					echo '&nbsp;=>&nbsp;';
-					if ( $disabled_comment_icon instanceof Icon ) {
-						echo esc_html( $disabled_comment_icon->get_id() );
-					}
-
-					?>
-				</div>
-			<?php endforeach; ?>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Visually test icons alignment via picking random icons and displaying
-	 * them alongside some text.
-	 *
-	 * @return void
-	 *
-	 * @codeCoverageIgnore
-	 */
-	public static function test__multiple_icons_align() {
-		$author_icons = self::get_user_icons();
-		$date_icons   = self::get_date_icons();
-		$views_icons  = self::get_views_icons();
-		?>
-		<div style="font-variant-numeric: lining-nums;">
-			<?php for ( $i = 0; $i < 100; $i++ ) : ?>
-				<?php
-					$author_icon = $author_icons[ array_rand( $author_icons ) ];
-					$date_icon   = $date_icons[ array_rand( $date_icons ) ];
-					$views_icon  = $views_icons[ array_rand( $views_icons ) ];
-				?>
-				<div>
-					<span style="margin-right: 1rem;">
-						<?php $author_icon->display(); ?>
-						author
-					</span>
-
-					<span style="margin-right: 1rem;">
-						<?php $date_icon->display(); ?>
-						27 Nov
-					</span>
-
-					<span style="margin-right: 1rem;">
-						<?php $views_icon->display(); ?>
-						1430
-					</span>
-				</div>
-			<?php endfor; ?>
-		</div>
-		<?php
-	}
-
-	#endregion -- Development test icons alignment
 
 }

@@ -10,7 +10,7 @@ namespace TWRP\Icons;
  *
  * Keywords to search: star, stars, heart.
  */
-class Rating_Icons {
+class Rating_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the rating.
@@ -326,7 +326,7 @@ class Rating_Icons {
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_rating_packs() {
+	public static function get_definitions() {
 		return array(
 
 			'twrp-hearts'      => array(

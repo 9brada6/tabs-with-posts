@@ -8,14 +8,14 @@ namespace TWRP\Icons;
 /**
  * Class that holds all comments disabled icon definitions.
  */
-class Comments_Disabled_Icons {
+class Comments_Disabled_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the disabled comments.
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_disabled_comment_icons() {
+	public static function get_definitions() {
 		$registered_disabled_comments_vectors = array(
 
 			#region -- TWRP Icons

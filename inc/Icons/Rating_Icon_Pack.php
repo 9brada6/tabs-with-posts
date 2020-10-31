@@ -62,22 +62,15 @@ class Rating_Icon_Pack {
 	 *                          id does not exist.
 	 *
 	 * @param string $rating_pack_id
+	 * @param array $pack_attr
 	 */
-	public function __construct( $rating_pack_id ) {
-		$rating_packs = SVG_Manager::get_rating_packs_attr();
-
-		if ( isset( $rating_packs[ $rating_pack_id ] ) ) {
-			$pack_attr = $rating_packs[ $rating_pack_id ];
-		} else {
-			throw new RuntimeException( 'Rating pack id does not exist.' );
-		}
-
+	public function __construct( $rating_pack_id, $pack_attr ) {
 		$this->id               = $rating_pack_id;
 		$this->brand            = $pack_attr['brand'];
 		$this->description      = $pack_attr['description'];
-		$this->empty_icon       = new Icon( $pack_attr['empty'] );
-		$this->half_filled_icon = new Icon( $pack_attr['half'] );
-		$this->filled_icon      = new Icon( $pack_attr['full'] );
+		$this->empty_icon       = SVG_Manager::get_icon( $pack_attr['empty'] );
+		$this->half_filled_icon = SVG_Manager::get_icon( $pack_attr['half'] );
+		$this->filled_icon      = SVG_Manager::get_icon( $pack_attr['full'] );
 	}
 
 	#region -- Get basic info

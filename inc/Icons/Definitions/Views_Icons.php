@@ -10,14 +10,14 @@ namespace TWRP\Icons;
  *
  * Keywords to search for icons: eye, chart, graph.
  */
-class Views_Icons {
+class Views_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the number of views.
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_views_icons() {
+	public static function get_definitions() {
 
 		$registered_views_vectors = array(
 

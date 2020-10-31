@@ -62,11 +62,15 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Make icons work inline(add before tabs, only one time, but we will do this later).
 - In tests, add coverage for each method.
+- Change SVG_Manager to Icon_Factory?
 
 #### General Settings
 
 - Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
 - Add a diagram, and explain everything, how this package works.
+- Change by default to include icons inline?
+- Add a help button, and with a pop-out to document something, also the document
+might be exactly as in documentation.
 
 ### JS/SCSS
 

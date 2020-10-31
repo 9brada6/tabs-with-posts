@@ -183,25 +183,4 @@ class Icon_Test extends WP_UnitTestCase {
 
 		$this->assertTrue( strlen( $wrong_icon->get_icon_aria_label() ) === 0 );
 	}
-
-	/**
-	 * @throws RuntimeException Phpcs comment.
-	 *
-	 * @covers TWRP\Icons\Icon::get_folder_name_category
-	 * @covers TWRP\Icons\Icon::get_icon_category
-	 */
-	public function test__get_folder_name_category__get_icon_category() {
-		$all_icons = SVG_Manager::get_all_icons();
-
-		foreach ( $all_icons as $icon ) {
-			$icon->get_folder_name_category();
-		}
-
-		$icons_attr     = SVG_Manager::get_all_icons_attr();
-		$random_icon_id = array_rand( $icons_attr );
-		$wrong_icon     = new Icon( 'bad-id', $icons_attr[ $random_icon_id ] );
-
-		$this->expectException( RuntimeException::class );
-		$wrong_icon->get_folder_name_category();
-	}
 }

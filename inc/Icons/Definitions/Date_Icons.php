@@ -10,14 +10,14 @@ namespace TWRP\Icons;
  *
  * Keywords to search: calendar, clock.
  */
-class Date_Icons {
+class Date_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the date.
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_date_icons() {
+	public static function get_definitions() {
 
 		$registered_date_vectors = array(
 

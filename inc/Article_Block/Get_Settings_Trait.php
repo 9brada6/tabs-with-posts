@@ -11,6 +11,7 @@ use RuntimeException;
 use WP_Post;
 use TWRP\Database\General_Options;
 use TWRP\Icons\Icon;
+use TWRP\Icons\SVG_Manager;
 
 /**
  * In addition to trait Get_Widget_Settings_Trait, which will get only the settings
@@ -80,7 +81,7 @@ trait Get_Settings_Trait {
 	 */
 	public function get_author_icon_html() {
 		try {
-			$icon = new Icon( $this->get_selected_author_icon() );
+			$icon = SVG_Manager::get_icon( $this->get_selected_author_icon() );
 			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
@@ -110,7 +111,7 @@ trait Get_Settings_Trait {
 	 */
 	public function get_date_icon_html() {
 		try {
-			$icon = new Icon( $this->get_selected_date_icon() );
+			$icon = SVG_Manager::get_icon( $this->get_selected_date_icon() );
 			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
@@ -140,7 +141,7 @@ trait Get_Settings_Trait {
 	 */
 	public function get_views_icon_html() {
 		try {
-			$icon = new Icon( $this->get_selected_date_icon() );
+			$icon = SVG_Manager::get_icon( $this->get_selected_date_icon() );
 			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
@@ -206,7 +207,7 @@ trait Get_Settings_Trait {
 		}
 
 		try {
-			$icon = new Icon( $comments_icon );
+			$icon = SVG_Manager::get_icon( $comments_icon );
 			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';

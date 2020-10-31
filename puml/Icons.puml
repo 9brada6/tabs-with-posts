@@ -1,0 +1,37 @@
+@startuml
+
+!include ./colors.iuml
+
+package "TWRP\Icons" {
+	class SVG_Manager <<public class>> {}
+	class Icon <<public class>> {}
+	class Rating_Icon_Pack <<public class>> {}
+	class Create_And_Enqueue_Icons {}
+
+	class Icon_Categories <<private class>> {}
+
+	package "Definitions" {
+		interface Icon_Definitions <<private class>> {}
+		class User_Icons <<private class>> {}
+		class Date_Icons <<private class>> {}
+		class Other_Category_With_Icons <<more identical siblings classes>> <<private class>> {}
+		class Rating_Icons <<private class>> {}
+	}
+
+	SVG_Manager ..> Icon : Create Icon by Id.
+	SVG_Manager ..> Rating_Icon_Pack : Create Pack by Id.
+
+	Rating_Icon_Pack -r-> Icon : Contains 3 Icons
+
+	Icon --> Icon_Categories
+
+	SVG_Manager --> Definitions : Know everything
+	Icon_Categories --> Definitions : Know everything
+	Icon_Definitions <|.. User_Icons
+	Icon_Definitions <|.. Date_Icons
+	Icon_Definitions <|.. Other_Category_With_Icons
+	Icon_Definitions <|.. Rating_Icons
+
+}
+
+@enduml

@@ -5,7 +5,6 @@
 
 namespace TWRP\Icons;
 
-use TWRP_Main;
 use RuntimeException;
 use TWRP\Utils;
 
@@ -64,19 +63,10 @@ class Icon {
 	 * Construct the class. Either provide an icon id alongside with the needed
 	 * arguments, or provide just the $icon_id, and let arguments be auto set.
 	 *
-	 * @throws RuntimeException In case that Icon Id does not exist.
-	 *
 	 * @param string $icon_id
 	 * @param array $icon_args Defaults to the icon id arguments.
 	 */
-	public function __construct( $icon_id, $icon_args = array() ) {
-		if ( empty( $icon_args ) ) {
-			$icon_args = SVG_Manager::get_icon_attr( $icon_id );
-			if ( false === $icon_args ) {
-				throw new RuntimeException( 'Icon id does not exist.' );
-			}
-		}
-
+	public function __construct( $icon_id, $icon_args ) {
 		$this->id          = $icon_id;
 		$this->brand       = $icon_args['brand'];
 		$this->description = $icon_args['description'];
@@ -250,7 +240,7 @@ class Icon {
 	 * @return int
 	 */
 	public function get_icon_category() {
-		return SVG_Manager::get_icon_category( $this->get_id() );
+		return Icon_Categories::get_icon_category( $this->get_id() );
 	}
 
 	/**
@@ -263,7 +253,7 @@ class Icon {
 	 */
 	public function get_folder_name_category() {
 		$icon_category = $this->get_icon_category();
-		$icon_folders  = SVG_Manager::ICON_CATEGORY_FOLDER;
+		$icon_folders  = Icon_Categories::ICON_CATEGORY_FOLDER;
 
 		if ( isset( $icon_folders[ $icon_category ] ) ) {
 			return $icon_folders[ $icon_category ];
@@ -283,7 +273,7 @@ class Icon {
 		} catch ( RuntimeException $e ) {
 			return '';
 		}
-		$classes = SVG_Manager::ICON_CATEGORY_CLASS;
+		$classes = Icon_Categories::ICON_CATEGORY_CLASS;
 
 		if ( isset( $classes[ $category ] ) ) {
 			return $classes[ $category ];
@@ -299,7 +289,7 @@ class Icon {
 	 * @return string
 	 */
 	public function get_icon_aria_label() {
-		$labels = SVG_Manager::get_category_aria_label();
+		$labels = Icon_Categories::get_category_aria_label();
 
 		try {
 			$icon_category = $this->get_icon_category();

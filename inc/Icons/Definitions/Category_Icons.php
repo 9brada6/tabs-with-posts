@@ -8,7 +8,7 @@ namespace TWRP\Icons;
 /**
  * Class that holds all category icon definitions.
  */
-class Category_Icons {
+class Category_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the category.
@@ -17,7 +17,7 @@ class Category_Icons {
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_category_icons() {
+	public static function get_definitions() {
 		$registered_category_vectors = array(
 
 			#region -- TWRP Icons

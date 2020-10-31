@@ -20,7 +20,7 @@ class Rating_Icon_Pack_Test extends WP_UnitTestCase {
 		$rating_pack_attr = $rating_pack_attr['twrp-hearts'];
 
 		// For a valid icon pack id, returns a correct object.
-		$rating_pack = new Rating_Icon_Pack( 'twrp-hearts' );
+		$rating_pack = SVG_Manager::get_rating_pack( 'twrp-hearts' );
 		$this->assertTrue( $rating_pack instanceof Rating_Icon_Pack ); // @phan-suppress-current-line PhanRedundantCondition
 
 		$this->assertTrue( $rating_pack->get_id() === 'twrp-hearts' );
@@ -60,6 +60,6 @@ class Rating_Icon_Pack_Test extends WP_UnitTestCase {
 	 */
 	public function test__constructor_throw_exception() {
 		$this->expectException( RuntimeException::class );
-		$icon = new Rating_Icon_Pack( 'bad-id' );
+		$icon = SVG_Manager::get_rating_pack( 'bad-id' );
 	}
 }

@@ -10,14 +10,14 @@ namespace TWRP\Icons;
  *
  * Keywords: user, person, man, woman, people.
  */
-class User_Icons {
+class User_Icons implements Icon_Definitions {
 
 	/**
 	 * Get all registered icons that represents the user.
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_user_icons() {
+	public static function get_definitions() {
 
 		$registered_user_vectors = array(
 
