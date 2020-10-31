@@ -15,7 +15,7 @@ use TWRP\Icons\SVG_Manager;
 class Category_Icon extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'twrp-tax-goo-ol';
+		return 'twrp-tax-fa-f-f';
 	}
 
 	public function get_possible_options() {

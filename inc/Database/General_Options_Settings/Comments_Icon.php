@@ -15,7 +15,7 @@ use TWRP\Icons\SVG_Manager;
 class Comments_Icon extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'twrp-com-goo-ol';
+		return 'twrp-com-fa-f';
 	}
 
 	public function get_possible_options() {

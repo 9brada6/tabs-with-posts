@@ -15,7 +15,7 @@ use TWRP\Icons\SVG_Manager;
 class Views_Icon extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'twrp-views-goo-ol';
+		return 'twrp-views-fa-f';
 	}
 
 	public function get_possible_options() {

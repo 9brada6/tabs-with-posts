@@ -15,7 +15,7 @@ use TWRP\Icons\SVG_Manager;
 class Author_Icon extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'twrp-user-goo-ol';
+		return 'twrp-user-fa-f';
 	}
 
 	public function get_possible_options() {

@@ -15,7 +15,7 @@ use TWRP\Icons\SVG_Manager;
 class Date_Icon extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'twrp-cal-goo-ol';
+		return 'twrp-cal-fa-2-ol';
 	}
 
 	public function get_possible_options() {
