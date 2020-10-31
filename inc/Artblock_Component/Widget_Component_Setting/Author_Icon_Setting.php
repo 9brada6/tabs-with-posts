@@ -6,7 +6,7 @@
 namespace TWRP\Artblock_Component;
 
 use TWRP\Widget_Control\Select_Control;
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 
 /**
  * Setting that let administrator select what author icon they want.
@@ -66,7 +66,7 @@ class Author_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$icons   = SVG_Manager::get_user_icons();
+		$icons   = Icon_Factory::get_user_icons();
 		$options = array();
 
 		foreach ( $icons as $id => $icon ) {

@@ -119,7 +119,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	protected static function display_submit_button() {
 		?>
 		<div class="twrpb-general-settings__submit-btn-wrapper">
-			<?php wp_nonce_field( 'twrpb_general_submit_nonce', 'twrpb_general_nonce', true, true ); ?>
+			<?php wp_nonce_field( 'twrp_general_submit_nonce', 'twrp_general_nonce', true, true ); ?>
 			<button id="twrpb-general-settings__submit-btn" class="twrpb-general-settings__submit-btn" type="submit" name="submit" value="submit">
 				<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
 			</button>

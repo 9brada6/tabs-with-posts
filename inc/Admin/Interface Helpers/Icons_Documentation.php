@@ -5,7 +5,7 @@
 
 namespace TWRP\Admin;
 
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
 
@@ -118,37 +118,37 @@ class Icons_Documentation {
 		$title_and_icons = array(
 			'author'           => array(
 				'title' => _x( 'Author Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_user_icons(),
+				'icons' => Icon_Factory::get_user_icons(),
 			),
 
 			'date'             => array(
 				'title' => _x( 'Date Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_date_icons(),
+				'icons' => Icon_Factory::get_date_icons(),
 			),
 
 			'category'         => array(
 				'title' => _x( 'Category Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_category_icons(),
+				'icons' => Icon_Factory::get_category_icons(),
 			),
 
 			'comment'          => array(
 				'title' => _x( 'Comment Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_comment_icons(),
+				'icons' => Icon_Factory::get_comment_icons(),
 			),
 
 			'comment_disabled' => array(
 				'title' => _x( 'Comment Disabled Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_comment_disabled_icons(),
+				'icons' => Icon_Factory::get_comment_disabled_icons(),
 			),
 
 			'views'            => array(
 				'title' => _x( 'Views Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_views_icons(),
+				'icons' => Icon_Factory::get_views_icons(),
 			),
 
 			'rating_packs'     => array(
 				'title' => _x( 'Rating Icons', 'backend documentation', 'twrp' ),
-				'icons' => SVG_Manager::get_rating_packs(),
+				'icons' => Icon_Factory::get_rating_packs(),
 			),
 		);
 

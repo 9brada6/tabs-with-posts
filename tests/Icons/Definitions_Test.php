@@ -13,7 +13,7 @@ use TWRP_Main;
 /**
  * Tests all the icon definitions.
  *
- * @covers \TWRP\Icons\SVG_Manager
+ * @covers \TWRP\Icons\Icon_Factory
  * @covers \TWRP\Icons\Category_Icons
  * @covers \TWRP\Icons\Comments_Disabled_Icons
  * @covers \TWRP\Icons\Comments_Icons
@@ -80,7 +80,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Check if an icon Id is the same as in file that reference it.
 	 */
 	public function test__id_match_in_file() {
-		$icons     = SVG_Manager::get_all_icons();
+		$icons     = Icon_Factory::get_all_icons();
 		$wrong_ids = array();
 
 		foreach ( $icons as $icon ) {
@@ -98,7 +98,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Test the icons id's to have similar structure.
 	 */
 	public function test__icons_ids() {
-		$all_icons = SVG_Manager::get_all_icons();
+		$all_icons = Icon_Factory::get_all_icons();
 		$wrong_ids = array();
 
 		$prefix         = 'twrp-';
@@ -135,7 +135,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Test to check that each icon has only one svg element.
 	 */
 	public function test__icon_only_one_svg_html_elem() {
-		$all_icons = SVG_Manager::get_all_icons();
+		$all_icons = Icon_Factory::get_all_icons();
 		$wrong_ids = array();
 
 		foreach ( $all_icons as $icon_id => $icon ) {
@@ -155,7 +155,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * additional XML declaration.
 	 */
 	public function test__icon_not_have_xml_declaration() {
-		$all_icons = SVG_Manager::get_all_icons();
+		$all_icons = Icon_Factory::get_all_icons();
 		$wrong_ids = array();
 
 		foreach ( $all_icons as $icon_id => $icon ) {
@@ -174,7 +174,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Test to check if type/filename/id acronym match.
 	 */
 	public function test__icons_description_file_id_match() {
-		$all_icons    = SVG_Manager::get_all_icons();
+		$all_icons    = Icon_Factory::get_all_icons();
 		$icon_matches = array(
 			'f'  => array(
 				'type'        => 'Filled',
@@ -234,7 +234,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * are only the one we care to not be present.
 	 */
 	public function test__icons_must_be_missing_attributes_or_characters() {
-		$icons = SVG_Manager::get_all_icons();
+		$icons = Icon_Factory::get_all_icons();
 
 		$attributes   = array( 'class', 'role', 'focusable', 'aria', ' "', '  ', "\t", '<g', '</g' );
 		$regex_verify = array( '/#(\d|[abcdef]){3}/i' );
@@ -268,7 +268,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Test that each icon must have a category.
 	 */
 	public function test__each_icon_must_be_in_a_category() {
-		$all_icons              = SVG_Manager::get_all_icons();
+		$all_icons              = Icon_Factory::get_all_icons();
 		$icons_without_category = array();
 
 		foreach ( $all_icons as $icon ) {
@@ -300,10 +300,10 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 		$bad_icons = array();
 
 		$verified_num  = 0;
-		$all_icons_num = count( SVG_Manager::get_all_icons() );
+		$all_icons_num = count( Icon_Factory::get_all_icons() );
 
 		foreach ( $static_functions_to_call as $function_name ) {
-			$icons = SVG_Manager::$function_name();
+			$icons = Icon_Factory::$function_name();
 
 			$first_icon_category = null;
 			foreach ( $icons as $icon ) {
@@ -333,11 +333,11 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * @return void
 	 */
 	public function test__each_comment_icon_have_a_compatible_disabled_comment() {
-		$comment_icons         = SVG_Manager::get_comment_icons();
+		$comment_icons         = Icon_Factory::get_comment_icons();
 		$not_having_compatible = array();
 
 		foreach ( $comment_icons as $comment_icon ) {
-			$disabled_comment_icon = SVG_Manager::get_compatible_disabled_comment_icon( $comment_icon );
+			$disabled_comment_icon = Icon_Factory::get_compatible_disabled_comment_icon( $comment_icon );
 
 			if ( null === $disabled_comment_icon ) {
 				array_push( $not_having_compatible, $comment_icon->get_id() );
@@ -352,7 +352,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Test each icon id to have a maximum of 5 characters between "-".
 	 */
 	public function test__icon_id_must_have_maxim_5_char_words() {
-		$icons            = SVG_Manager::get_all_icons();
+		$icons            = Icon_Factory::get_all_icons();
 		$allowed_keywords = array( 'views' );
 		$bad_icons_ids    = array();
 
@@ -374,7 +374,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * Test that each rating packs have the same brand.
 	 */
 	public function test__rating_icons_pack() {
-		$rating_packs = SVG_Manager::get_rating_packs_attr();
+		$rating_packs = Icon_Factory::get_rating_packs_attr();
 		$wrong_ids    = array();
 
 		foreach ( $rating_packs as $pack_id => $rating_pack ) {
@@ -389,7 +389,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 
 		$this->assertTrue( empty( $wrong_ids ), 'The following rating icon packs are incorrect: ' . implode( ', ', $wrong_ids ) );
 
-		$rating_packs_objects = SVG_Manager::get_rating_packs();
+		$rating_packs_objects = Icon_Factory::get_rating_packs();
 
 		$this->assertTrue( count( $rating_packs_objects ) === count( $rating_packs ), 'Some rating packs are not valid.' );
 	}

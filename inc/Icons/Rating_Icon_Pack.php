@@ -68,9 +68,9 @@ class Rating_Icon_Pack {
 		$this->id               = $rating_pack_id;
 		$this->brand            = $pack_attr['brand'];
 		$this->description      = $pack_attr['description'];
-		$this->empty_icon       = SVG_Manager::get_icon( $pack_attr['empty'] );
-		$this->half_filled_icon = SVG_Manager::get_icon( $pack_attr['half'] );
-		$this->filled_icon      = SVG_Manager::get_icon( $pack_attr['full'] );
+		$this->empty_icon       = Icon_Factory::get_icon( $pack_attr['empty'] );
+		$this->half_filled_icon = Icon_Factory::get_icon( $pack_attr['half'] );
+		$this->filled_icon      = Icon_Factory::get_icon( $pack_attr['full'] );
 	}
 
 	#region -- Get basic info

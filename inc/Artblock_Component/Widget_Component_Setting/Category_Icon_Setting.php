@@ -6,7 +6,7 @@
 namespace TWRP\Artblock_Component;
 
 use TWRP\Widget_Control\Select_Control;
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 
 /**
  * Setting that let administrator select what category icon they want.
@@ -66,7 +66,7 @@ class Category_Icon_Setting implements Component_Setting {
 	 * @return array
 	 */
 	protected static function get_control_setting_args() {
-		$options = SVG_Manager::get_all_category_vectors();
+		$options = Icon_Factory::get_all_category_vectors();
 
 		foreach ( $options as $id => $option ) {
 			$options[ $id ] = $option['description'];

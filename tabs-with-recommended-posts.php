@@ -22,7 +22,7 @@ use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
 use TWRP\Get_Posts;
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Create_And_Enqueue_Icons;
 use TWRP\Utils;
 
@@ -51,7 +51,7 @@ function twrp_initialize() {
 	Post_Views::init();
 
 	// Doesn't matter order of init:
-	SVG_Manager::init();
+	Icon_Factory::init();
 	Create_And_Enqueue_Icons::init();
 }
 add_action( 'after_setup_theme', 'twrp_initialize' );

@@ -7,7 +7,7 @@
 
 namespace TWRP\Database\Settings;
 
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 
 /**
  * Class that manages the setting of the comments icon.
@@ -19,7 +19,7 @@ class Comments_Icon extends General_Option_Setting {
 	}
 
 	public function get_possible_options() {
-		$icons = SVG_Manager::get_comment_icons();
+		$icons = Icon_Factory::get_comment_icons();
 		$icons = array_keys( $icons );
 
 		return $icons;

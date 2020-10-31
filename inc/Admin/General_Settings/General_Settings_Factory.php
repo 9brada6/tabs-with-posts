@@ -6,7 +6,7 @@
 namespace TWRP\Admin\General_Settings;
 
 use TWRP\Database\General_Options;
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
 
@@ -225,7 +225,7 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_author_icon_setting_args() {
-		$options = Icon::get_description_options_by_brands( SVG_Manager::get_user_icons() );
+		$options = Icon::get_description_options_by_brands( Icon_Factory::get_user_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default author icon:', 'backend', 'twrp' ),
@@ -239,7 +239,7 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_date_icon_setting_args() {
-		$options = Icon::get_description_options_by_brands( SVG_Manager::get_date_icons() );
+		$options = Icon::get_description_options_by_brands( Icon_Factory::get_date_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default date icon:', 'backend', 'twrp' ),
@@ -253,7 +253,7 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_category_icon_setting_args() {
-		$options = Icon::get_description_options_by_brands( SVG_Manager::get_category_icons() );
+		$options = Icon::get_description_options_by_brands( Icon_Factory::get_category_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default category icon:', 'backend', 'twrp' ),
@@ -267,7 +267,7 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_comments_icon_setting_args() {
-		$options = Icon::get_description_options_by_brands( SVG_Manager::get_comment_icons() );
+		$options = Icon::get_description_options_by_brands( Icon_Factory::get_comment_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default comments icon:', 'backend', 'twrp' ),
@@ -281,8 +281,8 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_comments_disabled_icon_setting_args() {
-		$options           = Icon::get_description_options_by_brands( SVG_Manager::get_comment_disabled_icons() );
-		$rating_packs_data = SVG_Manager::get_compatibles_disabled_comments_attr();
+		$options           = Icon::get_description_options_by_brands( Icon_Factory::get_comment_disabled_icons() );
+		$rating_packs_data = Icon_Factory::get_compatibles_disabled_comments_attr();
 
 		$switch_value = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON_AUTO_SELECT );
 
@@ -306,7 +306,7 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_views_icon_setting_args() {
-		$options = Icon::get_description_options_by_brands( SVG_Manager::get_views_icons() );
+		$options = Icon::get_description_options_by_brands( Icon_Factory::get_views_icons() );
 
 		return array(
 			'title'   => _x( 'Select the default views icon:', 'backend', 'twrp' ),
@@ -321,7 +321,7 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_rating_pack_setting_args() {
-		$options = Rating_Icon_Pack::nest_packs_by_brands( SVG_Manager::get_rating_packs() );
+		$options = Rating_Icon_Pack::nest_packs_by_brands( Icon_Factory::get_rating_packs() );
 
 		foreach ( $options as $rating_packs_brand => $rating_packs ) {
 			foreach ( $rating_packs as $rating_pack_id => $rating_pack ) {
@@ -329,7 +329,7 @@ class General_Settings_Factory {
 			}
 		}
 
-		$rating_packs_data = SVG_Manager::get_rating_packs_attr();
+		$rating_packs_data = Icon_Factory::get_rating_packs_attr();
 		foreach ( $rating_packs_data as $id => $date ) {
 			if ( isset( $rating_packs_data[ $id ]['brand'], $rating_packs_data[ $id ]['description'] ) ) {
 				unset( $rating_packs_data[ $id ]['brand'] );

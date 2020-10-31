@@ -81,7 +81,7 @@ class Require_Files {
 		// Icons.
 		'Icons/Icon',
 		'Icons/Rating_Icon_Pack',
-		'Icons/SVG_Manager',
+		'Icons/Icon_Factory',
 		'Icons/Icon_Categories',
 		'Icons/Create_And_Enqueue_Icons',
 

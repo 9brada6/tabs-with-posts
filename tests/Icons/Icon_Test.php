@@ -23,7 +23,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::get_fix_classes
 	 */
 	public function test__basic_functions() {
-		$icons_attr       = SVG_Manager::get_all_icons_attr();
+		$icons_attr       = Icon_Factory::get_all_icons_attr();
 		$random_icon_id   = array_rand( $icons_attr );
 		$random_icon_attr = $icons_attr[ $random_icon_id ];
 
@@ -51,7 +51,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::get_brand_folder
 	 */
 	public function test__get_icon_filename() {
-		$icons_attr     = SVG_Manager::get_all_icons_attr();
+		$icons_attr     = Icon_Factory::get_all_icons_attr();
 		$random_icon_id = array_rand( $icons_attr );
 		$icon           = new Icon( $random_icon_id ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
@@ -68,7 +68,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::display
 	 */
 	public function test__get_html() {
-		$icons_attr       = SVG_Manager::get_all_icons_attr();
+		$icons_attr       = Icon_Factory::get_all_icons_attr();
 		$random_icon_id   = array_rand( $icons_attr );
 		$random_icon_attr = $icons_attr[ $random_icon_id ];
 
@@ -91,7 +91,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::get_icon_svg_definition
 	 */
 	public function test__get_icon_svg_definition() {
-		$icons_attr       = SVG_Manager::get_all_icons_attr();
+		$icons_attr       = Icon_Factory::get_all_icons_attr();
 		$random_icon_id   = array_rand( $icons_attr );
 		$random_icon_attr = $icons_attr[ $random_icon_id ];
 		$icon             = new Icon( $random_icon_id, $random_icon_attr ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
@@ -111,7 +111,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::nest_icons_by_brands
 	 */
 	public function test__nest_icons_by_brands() {
-		$all_nested_icons = Icon::nest_icons_by_brands( SVG_Manager::get_all_icons() );
+		$all_nested_icons = Icon::nest_icons_by_brands( Icon_Factory::get_all_icons() );
 		$nested_is_wrong  = false;
 		$number_of_packs  = 0;
 
@@ -125,7 +125,7 @@ class Icon_Test extends WP_UnitTestCase {
 			}
 		}
 
-		$this->assertTrue( count( SVG_Manager::get_all_icons() ) === $number_of_packs );
+		$this->assertTrue( count( Icon_Factory::get_all_icons() ) === $number_of_packs );
 		$this->assertFalse( $nested_is_wrong );
 	}
 
@@ -133,7 +133,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::get_option_icon_description
 	 */
 	public function test__get_option_icon_description() {
-		$icons_attr     = SVG_Manager::get_all_icons_attr();
+		$icons_attr     = Icon_Factory::get_all_icons_attr();
 		$random_icon_id = array_rand( $icons_attr );
 		$icon           = new Icon( $random_icon_id, $icons_attr[ $random_icon_id ] ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
@@ -146,7 +146,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::get_icon_category_class
 	 */
 	public function test__get_icon_category_class() {
-		$all_icons = SVG_Manager::get_all_icons();
+		$all_icons = Icon_Factory::get_all_icons();
 
 		$all_icons_category = true;
 		foreach ( $all_icons as $icon ) {
@@ -156,7 +156,7 @@ class Icon_Test extends WP_UnitTestCase {
 		}
 		$this->assertTrue( $all_icons_category );
 
-		$icons_attr     = SVG_Manager::get_all_icons_attr();
+		$icons_attr     = Icon_Factory::get_all_icons_attr();
 		$random_icon_id = array_rand( $icons_attr );
 		$wrong_icon     = new Icon( 'bad-id', $icons_attr[ $random_icon_id ] );
 
@@ -167,7 +167,7 @@ class Icon_Test extends WP_UnitTestCase {
 	 * @covers TWRP\Icons\Icon::get_icon_aria_label
 	 */
 	public function test__get_icon_aria_label() {
-		$all_icons = SVG_Manager::get_all_icons();
+		$all_icons = Icon_Factory::get_all_icons();
 
 		$all_icons_have_label = true;
 		foreach ( $all_icons as $icon ) {
@@ -177,7 +177,7 @@ class Icon_Test extends WP_UnitTestCase {
 		}
 		$this->assertTrue( $all_icons_have_label );
 
-		$icons_attr     = SVG_Manager::get_all_icons_attr();
+		$icons_attr     = Icon_Factory::get_all_icons_attr();
 		$random_icon_id = array_rand( $icons_attr );
 		$wrong_icon     = new Icon( 'bad-id', $icons_attr[ $random_icon_id ] );
 

@@ -16,11 +16,11 @@ use WP_UnitTestCase;
 class Rating_Icon_Pack_Test extends WP_UnitTestCase {
 
 	public function test__basic_functions() {
-		$rating_pack_attr = SVG_Manager::get_rating_packs_attr();
+		$rating_pack_attr = Icon_Factory::get_rating_packs_attr();
 		$rating_pack_attr = $rating_pack_attr['twrp-hearts'];
 
 		// For a valid icon pack id, returns a correct object.
-		$rating_pack = SVG_Manager::get_rating_pack( 'twrp-hearts' );
+		$rating_pack = Icon_Factory::get_rating_pack( 'twrp-hearts' );
 		$this->assertTrue( $rating_pack instanceof Rating_Icon_Pack ); // @phan-suppress-current-line PhanRedundantCondition
 
 		$this->assertTrue( $rating_pack->get_id() === 'twrp-hearts' );
@@ -38,7 +38,7 @@ class Rating_Icon_Pack_Test extends WP_UnitTestCase {
 	}
 
 	public function test__nest_packs_by_brands() {
-		$rating_pack_nested_by_brands = Rating_Icon_Pack::nest_packs_by_brands( SVG_Manager::get_rating_packs() );
+		$rating_pack_nested_by_brands = Rating_Icon_Pack::nest_packs_by_brands( Icon_Factory::get_rating_packs() );
 		$icons_pack_nested_is_wrong   = false;
 		$number_of_packs              = 0;
 		foreach ( $rating_pack_nested_by_brands as $brand => $icon_packs ) {
@@ -51,7 +51,7 @@ class Rating_Icon_Pack_Test extends WP_UnitTestCase {
 			}
 		}
 
-		$this->assertTrue( count( SVG_Manager::get_rating_packs() ) === $number_of_packs );
+		$this->assertTrue( count( Icon_Factory::get_rating_packs() ) === $number_of_packs );
 		$this->assertFalse( $icons_pack_nested_is_wrong );
 	}
 
@@ -60,6 +60,6 @@ class Rating_Icon_Pack_Test extends WP_UnitTestCase {
 	 */
 	public function test__constructor_throw_exception() {
 		$this->expectException( RuntimeException::class );
-		$icon = SVG_Manager::get_rating_pack( 'bad-id' );
+		$icon = Icon_Factory::get_rating_pack( 'bad-id' );
 	}
 }

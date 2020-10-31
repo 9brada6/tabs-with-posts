@@ -62,7 +62,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Make icons work inline(add before tabs, only one time, but we will do this later).
 - In tests, add coverage for each method.
-- Change SVG_Manager to Icon_Factory?
+- Changing an icon setting do not work.
 
 #### General Settings
 

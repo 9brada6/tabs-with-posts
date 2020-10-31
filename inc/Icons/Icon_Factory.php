@@ -19,7 +19,7 @@ use TWRP\Icons\Rating_Icons;
  * By convention, to make the working more easily, every Id should be composed
  * as: twrp-{icon-meaning}-{brand/author}-[additional-icon-meaning]-{icon-type}.
  */
-class SVG_Manager {
+class Icon_Factory {
 
 	/**
 	 * Called before anything else, to initialize all the things that this class

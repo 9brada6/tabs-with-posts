@@ -6,7 +6,7 @@
 namespace TWRP\Development_Tests;
 
 use TWRP\Icons\Icon;
-use TWRP\Icons\SVG_Manager;
+use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Create_And_Enqueue_Icons;
 
 /**
@@ -24,7 +24,7 @@ class Icon_Display_Test {
 	 * @return void
 	 */
 	public static function test_icons() {
-		$icons = SVG_Manager::get_all_icons();
+		$icons = Icon_Factory::get_all_icons();
 		Create_And_Enqueue_Icons::include_all_icons_file();
 		$icon_nr = 0;
 
@@ -88,12 +88,12 @@ class Icon_Display_Test {
 	 * @return void
 	 */
 	public static function test__show_comment_icon_compatible_with_disabled_icon() {
-		$icons = SVG_Manager::get_comment_icons();
+		$icons = Icon_Factory::get_comment_icons();
 		?>
 		<div style="font-family:monospace">
 			<?php foreach ( $icons as $comment_icon ) : ?>
 				<?php
-					$disabled_comment_icon = SVG_Manager::get_compatible_disabled_comment_icon( $comment_icon );
+					$disabled_comment_icon = Icon_Factory::get_compatible_disabled_comment_icon( $comment_icon );
 				?>
 				<div>
 					<?php
@@ -129,9 +129,9 @@ class Icon_Display_Test {
 	 * @return void
 	 */
 	public static function test__multiple_icons_align() {
-		$author_icons = SVG_Manager::get_user_icons();
-		$date_icons   = SVG_Manager::get_date_icons();
-		$views_icons  = SVG_Manager::get_views_icons();
+		$author_icons = Icon_Factory::get_user_icons();
+		$date_icons   = Icon_Factory::get_date_icons();
+		$views_icons  = Icon_Factory::get_views_icons();
 		?>
 		<div style="font-variant-numeric: lining-nums;">
 			<?php for ( $i = 0; $i < 100; $i++ ) : ?>

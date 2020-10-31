@@ -3,7 +3,7 @@
 !include ./colors.iuml
 
 package "TWRP\Icons" {
-	class SVG_Manager <<public class>> {}
+	class Icon_Factory <<public class>> {}
 	class Icon <<public class>> {}
 	class Rating_Icon_Pack <<public class>> {}
 	class Create_And_Enqueue_Icons {}
@@ -18,14 +18,14 @@ package "TWRP\Icons" {
 		class Rating_Icons <<private class>> {}
 	}
 
-	SVG_Manager ..> Icon : Create Icon by Id.
-	SVG_Manager ..> Rating_Icon_Pack : Create Pack by Id.
+	Icon_Factory ..> Icon : Create Icon by Id.
+	Icon_Factory ..> Rating_Icon_Pack : Create Pack by Id.
 
 	Rating_Icon_Pack -r-> Icon : Contains 3 Icons
 
 	Icon --> Icon_Categories
 
-	SVG_Manager --> Definitions : Know everything
+	Icon_Factory --> Definitions : Know everything
 	Icon_Categories --> Definitions : Know everything
 	Icon_Definitions <|.. User_Icons
 	Icon_Definitions <|.. Date_Icons
