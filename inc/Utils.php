@@ -6,6 +6,7 @@ use TWRP\TWRP_Widget\Widget;
 use DateTimeZone;
 use TWRP_Main;
 use WP_Filesystem_Direct;
+use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
 
 class Utils {
 
@@ -499,22 +500,43 @@ class Utils {
 	#endregion -- Filesystem Utilities
 
 	/**
-	 * Get all classes that implements a certain interface
+	 * Get all the Query_Setting_Display objects.
+	 *
+	 * @return array<Query_Setting_Display>
+	 *
+	 * @psalm-suppress InvalidReturnStatement
+	 * @psalm-suppress InvalidReturnType
+	 */
+	public static function get_all_display_query_settings_objects() {
+		$class_names = static::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );
+		$class_names = self::order_class_name( $class_names );
+
+		foreach ( $class_names as $key => $class_name ) {
+			$class_names[ $key ] = new $class_name();
+		}
+
+		return $class_names;
+	}
+
+	/**
+	 * Get all classes that implements/extends a certain interface/class.
 	 *
 	 * @param string $parent_class
 	 * @return array
+	 *
+	 * @psalm-return array<class-string>
 	 */
-	public static function get_all_child_classes( $parent_class ) {
-		$classes_array    = array();
+	protected static function get_all_child_classes( $parent_class ) {
+		$children_classes = array();
 		$declared_classes = get_declared_classes();
 
-		foreach ( $declared_classes as $class_name ) {
-			if ( is_subclass_of( $class_name, $parent_class ) ) {
-				array_push( $classes_array, $class_name );
+		foreach ( $declared_classes as $declared_class ) {
+			if ( is_subclass_of( $declared_class, $parent_class ) ) {
+				array_push( $children_classes, $declared_class );
 			}
 		}
 
-		return self::order_class_name( $classes_array );
+		return $children_classes;
 	}
 
 	/**
@@ -523,16 +545,30 @@ class Utils {
 	 * @param array<string> $class_names
 	 * @return array
 	 */
-	public static function order_class_name( $class_names ) {
+	private static function order_class_name( $class_names ) {
 		usort( $class_names, array( get_called_class(), 'sort_classes_algorithm' ) );
 		return $class_names;
 	}
 
-	public static function sort_classes_algorithm( $first_class_name, $second_class_name ) {
+	/**
+	 * Function to be passed as an algorithm to usort function, to order class
+	 * by CLASS_ORDER constant if defined.
+	 *
+	 * @param string $first_class_name
+	 * @param string $second_class_name
+	 * @return int
+	 */
+	private static function sort_classes_algorithm( $first_class_name, $second_class_name ) {
+		if ( ! defined( $first_class_name . '::CLASS_ORDER' ) ) {
+			return 0;
+		}
+
+		if ( ! defined( $second_class_name . '::CLASS_ORDER' ) ) {
+			return 0;
+		}
+
 		$first_class_order  = $first_class_name::CLASS_ORDER;
 		$second_class_order = $second_class_name::CLASS_ORDER;
-
-		// todo: catch error trying to access constant or if they aren't int or string.
 
 		if ( $first_class_order === $second_class_order ) {
 			return 0;

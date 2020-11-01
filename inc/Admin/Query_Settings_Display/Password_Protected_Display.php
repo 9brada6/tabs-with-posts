@@ -16,7 +16,7 @@ class Password_Protected_Display extends Query_Setting_Display {
 
 	const CLASS_ORDER = 120;
 
-	public function get_setting_class() {
+	protected function get_setting_class() {
 		return new Password_Protected();
 	}
 

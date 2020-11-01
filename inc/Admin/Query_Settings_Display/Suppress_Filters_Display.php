@@ -16,7 +16,7 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 
 	const CLASS_ORDER = 140;
 
-	public function get_setting_class() {
+	protected function get_setting_class() {
 		return new Suppress_Filters();
 	}
 

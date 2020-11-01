@@ -13,11 +13,40 @@ use TWRP\Query_Setting\Query_Setting;
 abstract class Query_Setting_Display {
 
 	/**
+	 * Initialize the class. The constructor must not take any parameter.
+	 *
+	 * @phan-suppress PhanEmptyPublicMethod
+	 */
+	final public function __construct() {
+		// Do nothing.
+	}
+
+	/**
 	 * Return the query setting class corresponding to this controller.
 	 *
 	 * @return Query_Setting
 	 */
-	abstract public function get_setting_class();
+	abstract protected function get_setting_class();
+
+	/**
+	 * Get the setting name(used as key to store in database) for this setting.
+	 *
+	 * @return string
+	 */
+	public function get_setting_name() {
+		$setting_class = $this->get_setting_class();
+		return $setting_class->get_setting_name();
+	}
+
+	/**
+	 * Get the default setting.
+	 *
+	 * @return array
+	 */
+	public function get_default_setting() {
+		$setting_class = $this->get_setting_class();
+		return $setting_class->get_default_setting();
+	}
 
 	/**
 	 * The title of the setting accordion.

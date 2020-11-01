@@ -275,14 +275,16 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_query_form() {
-		$settings_classes = Utils::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );
+		$settings_classes = Utils::get_all_display_query_settings_objects();
 
 		?>
 		<div class="twrp-query-settings">
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
-				<?php foreach ( $settings_classes as $setting_class ) : ?>
-					<?php $this->display_query_setting( $setting_class ); ?>
-				<?php endforeach ?>
+				<?php
+				foreach ( $settings_classes as $setting_class ) :
+					$this->display_query_setting( $setting_class );
+				endforeach;
+				?>
 
 				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
 				<button name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" type="submit"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
@@ -291,19 +293,24 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		<?php
 	}
 
-	protected function display_query_setting( $setting_class ) {
-		$setting_class   = new $setting_class();
-		$current_setting = $this->get_query_input_setting( $setting_class );
-		$collapsed       = $this->get_if_setting_collapsed( $setting_class, $current_setting ) ? '1' : '0';
+	/**
+	 * Display a specific setting control in query settings.
+	 *
+	 * @param Query_Setting_Display $setting_display_class
+	 * @return void
+	 */
+	protected function display_query_setting( $setting_display_class ) {
+		$current_setting = $this->get_query_input_setting( $setting_display_class );
+		$collapsed       = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
 
 		?>
 		<div class="twrp-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
 			<h2 class="twrp-collapsible__title">
 				<span class="twrp-collapsible__indicator"></span>
-				<?= $setting_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
+				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
 			</h2>
 			<div class="twrp-collapsible__content">
-				<?php $setting_class->display_setting( $current_setting ); ?>
+				<?php $setting_display_class->display_setting( $current_setting ); ?>
 			</div>
 		</div>
 		<?php
@@ -312,7 +319,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	/**
 	 * Get the current setting of the query.
 	 *
-	 * @param Query_Setting $setting_class
+	 * @param Query_Setting_Display $setting_class
 	 * @return mixed The specific settings of the query, sanitized.
 	 */
 	protected function get_query_input_setting( $setting_class ) {
@@ -321,10 +328,6 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			$all_query_settings = Query_Options::get_all_query_settings( $query_id );
 		} catch ( RuntimeException $e ) { // phpcs:ignore -- Empty catch.
 			// Do nothing.
-		}
-
-		if ( $setting_class instanceof Query_Setting_Display ) {
-			$setting_class = $setting_class->get_setting_class();
 		}
 
 		if ( isset( $all_query_settings[ $setting_class->get_setting_name() ] ) ) {
@@ -337,19 +340,17 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	/**
 	 * Get whether or not the setting should be collapsed
 	 *
-	 * @param Query_Setting $setting_class
+	 * @param Query_Setting_Display $display_setting_class
 	 * @param array $current_settings
 	 * @return bool
 	 */
-	protected function get_if_setting_collapsed( $setting_class, $current_settings ) {
-		$setting_is_collapsed = $setting_class->setting_is_collapsed();
+	protected function get_if_setting_collapsed( $display_setting_class, $current_settings ) {
+		$setting_is_collapsed = $display_setting_class->setting_is_collapsed();
 		if ( is_bool( $setting_is_collapsed ) ) {
 			return $setting_is_collapsed;
 		}
 
-		$parent_setting_class = $setting_class->get_setting_class();
-
-		$default_settings = $parent_setting_class::get_default_setting();
+		$default_settings = $display_setting_class->get_default_setting();
 
 		array_multisort( $default_settings );
 		array_multisort( $current_settings );
@@ -423,13 +424,11 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function update_form_submitted_settings() {
-		$settings_classes_name = Utils::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );
+		$settings_classes_name = Utils::get_all_display_query_settings_objects();
 		$query_settings        = array();
 
-		foreach ( $settings_classes_name as $setting_class_name ) {
-			$setting_class        = new $setting_class_name();
-			$parent_setting_class = $setting_class->get_setting_class();
-			$query_settings[ $parent_setting_class::get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
+		foreach ( $settings_classes_name as $setting_class ) {
+			$query_settings[ $setting_class->get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
 		}
 
 		$query_key = $this->get_id_of_query_being_modified();

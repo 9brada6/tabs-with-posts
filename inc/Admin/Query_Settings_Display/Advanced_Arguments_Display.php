@@ -8,7 +8,6 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Setting\Advanced_Arguments;
-use TWRP\Utils;
 
 /**
  * Used to display the advanced arguments query setting control.
@@ -17,7 +16,7 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 
 	const CLASS_ORDER = 1000;
 
-	public function get_setting_class() {
+	protected function get_setting_class() {
 		return new Advanced_Arguments();
 	}
 

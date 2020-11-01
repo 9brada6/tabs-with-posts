@@ -16,7 +16,7 @@ class Post_Comments_Display extends Query_Setting_Display {
 
 	const CLASS_ORDER = 100;
 
-	public function get_setting_class() {
+	protected function get_setting_class() {
 		return new Post_Comments();
 	}
 
