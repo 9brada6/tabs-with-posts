@@ -23,12 +23,31 @@ class Require_Files {
 		// Admin.
 		'Admin/Interface Helpers/License_Display',
 		'Admin/Interface Helpers/Icons_Documentation',
+
 		'Admin/General_Settings/General_Setting_Creator/General_Setting_Creator',
 		'Admin/General_Settings/General_Setting_Creator/General_Select_Setting',
 		'Admin/General_Settings/General_Setting_Creator/General_Radio_Setting',
 		'Admin/General_Settings/General_Setting_Creator/General_Text_Setting',
 		'Admin/General_Settings/General_Setting_Creator/General_Select_With_Switch_Setting',
 		'Admin/General_Settings/General_Settings_Factory',
+
+		'Admin/Query_Settings_Display/Query_Setting_Display',
+		'Admin/Query_Settings_Display/Advanced_Arguments_Display',
+		'Admin/Query_Settings_Display/Author_Display',
+		'Admin/Query_Settings_Display/Categories_Display',
+		'Admin/Query_Settings_Display/Meta_Display',
+		'Admin/Query_Settings_Display/Password_Protected_Display',
+		'Admin/Query_Settings_Display/Post_Comments_Display',
+		'Admin/Query_Settings_Display/Post_Date_Display',
+		'Admin/Query_Settings_Display/Post_Order_Display',
+		'Admin/Query_Settings_Display/Post_Settings_Display',
+		'Admin/Query_Settings_Display/Post_Status_Display',
+		'Admin/Query_Settings_Display/Post_Types_Display',
+		'Admin/Query_Settings_Display/Query_Name_Display',
+		'Admin/Query_Settings_Display/Search_Display',
+		'Admin/Query_Settings_Display/Sticky_Posts_Display',
+		'Admin/Query_Settings_Display/Suppress_Filters_Display',
+
 
 
 		'Admin/Settings_Menu',
@@ -128,22 +147,6 @@ class Require_Files {
 		'Query_Setting/Meta_Setting',
 		'Query_Setting/Sticky_Posts',
 		'Query_Setting/Suppress_Filters',
-
-		// Query Creator
-		'Query_Setting_Inserter/Query_Setting_Inserter',
-		'Query_Setting_Inserter/Advanced_Arguments_Inserter',
-		'Query_Setting_Inserter/Author_Inserter',
-		'Query_Setting_Inserter/Categories_Inserter',
-		'Query_Setting_Inserter/Meta_Inserter',
-		'Query_Setting_Inserter/Password_Protected_Inserter',
-		'Query_Setting_Inserter/Post_Comments_Inserter',
-
-
-
-
-
-		'Query_Setting_Inserter/Search_Inserter',
-
 
 		// TWRP_Widget.
 		'TWRP_Widget/Widget_Utilities',

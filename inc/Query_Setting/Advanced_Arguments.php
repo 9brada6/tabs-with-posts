@@ -38,62 +38,11 @@ class Advanced_Arguments implements Query_Setting {
 		return 'advanced_args';
 	}
 
-	public function get_title() {
-		return _x( 'Advanced query settings', 'backend', 'twrp' );
-	}
-
-	public static function setting_is_collapsed() {
-		return 'auto';
-	}
-
-	public function display_setting( $current_setting ) {
-		$selector_name = self::get_setting_name() . '[' . self::IS_APPLIED__SETTING_NAME . ']';
-		$textarea_name = self::get_setting_name() . '[' . self::CUSTOM_ARGS__SETTING_NAME . ']';
-
-		$advanced_args  = $current_setting[ self::CUSTOM_ARGS__SETTING_NAME ];
-		$selector_value = $current_setting[ self::IS_APPLIED__SETTING_NAME ];
-
-		?>
-		<div class="twrp-advanced-args">
-
-			<p class="twrp-query-settings__paragraph">
-				<select
-					id="twrp-advanced-args__is-applied-selector"
-					class="twrp-advanced-args__is-applied-selector"
-					name="<?= esc_attr( $selector_name ); ?>"  rows="10"
-				>
-					<option value="not_apply" <?php selected( $selector_value, 'not_apply' ); ?>>
-						<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
-					</option>
-
-					<option value="apply" <?php selected( $selector_value, 'apply' ); ?>>
-						<?= _x( 'Apply settings', 'backend', 'twrp' ); ?>
-					</option>
-				</select>
-			</p>
-
-			<textarea
-				id="twrp-advanced-args__codemirror-textarea"
-				name="<?= esc_attr( $textarea_name ); ?>"  rows="10"
-			><?= esc_html( $advanced_args ); ?></textarea>
-		</div>
-		<?php
-	}
-
 	public static function get_default_setting() {
 		return array(
 			self::IS_APPLIED__SETTING_NAME  => 'not_apply',
 			self::CUSTOM_ARGS__SETTING_NAME => self::advanced_arguments_example(),
 		);
-	}
-
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
-		}
-
-		return self::get_default_setting();
 	}
 
 	public static function sanitize_setting( $setting ) {

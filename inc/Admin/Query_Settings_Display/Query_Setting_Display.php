@@ -3,11 +3,21 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin\Query_Setting_Display;
+namespace TWRP\Admin\Query_Settings_Display;
 
+use TWRP\Query_Setting\Query_Setting;
+
+/**
+ * Used to display a control for a query setting.
+ */
 abstract class Query_Setting_Display {
 
-	const CLASS_ORDER = 0;
+	/**
+	 * Return the query setting class corresponding to this controller.
+	 *
+	 * @return Query_Setting
+	 */
+	abstract public function get_setting_class();
 
 	/**
 	 * The title of the setting accordion.
@@ -23,7 +33,17 @@ abstract class Query_Setting_Display {
 	 *
 	 * @return bool|'auto'
 	 */
-	abstract public function setting_is_collapsed();
+	public function setting_is_collapsed() {
+		return 'auto';
+	}
+
+	/**
+	 * Get the setting submitted from the form. The setting is sanitized and
+	 * ready to use.
+	 *
+	 * @return array
+	 */
+	abstract public function get_submitted_sanitized_setting();
 
 	/**
 	 * Display the backend HTML for the setting.
@@ -34,13 +54,5 @@ abstract class Query_Setting_Display {
 	 * @return void
 	 */
 	abstract public function display_setting( $current_setting );
-
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
-	abstract public function get_submitted_sanitized_setting();
 
 }

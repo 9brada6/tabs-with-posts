@@ -189,7 +189,7 @@ class Query_Options {
 	 */
 	public static function sanitize_settings( $settings ) {
 		$sanitized_settings  = array();
-		$registered_settings = Query_Settings_Manager::get_registered_backend_settings();
+		$registered_settings = Query_Settings_Manager::get_registered_query_args_settings();
 
 		foreach ( $registered_settings as $setting_class ) {
 			$setting_name = $setting_class->get_setting_name();

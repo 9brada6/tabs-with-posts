@@ -26,47 +26,10 @@ class Sticky_Posts implements Query_Setting {
 		return 'sticky_posts';
 	}
 
-	public function get_title() {
-		return _x( 'Sticky posts inclusion', 'backend', 'twrp' );
-	}
-
-	public static function setting_is_collapsed() {
-		return 'auto';
-	}
-
-	public function display_setting( $current_setting ) {
-		$name            = self::get_setting_name() . '[' . self::INCLUSION__SETTING_NAME . ']';
-		$selected_option = $current_setting[ self::INCLUSION__SETTING_NAME ];
-		?>
-		<div class="twrp-sticky-setting">
-			<p class="twrp-query-settings__paragraph">
-				<select class="twrp-sticky-setting__selector" name="<?= esc_attr( $name ); ?>">
-					<option value="not_include" <?php selected( $selected_option, 'not_include' ); ?>>
-						<?= _x( 'Do not include sticky posts', 'backend', 'twrp' ); ?>
-					</option>
-
-					<option value="include" <?php selected( $selected_option, 'include' ); ?>>
-						<?= _x( 'Include sticky posts', 'backend', 'twrp' ); ?>
-					</option>
-				</select>
-			</p>
-		</div>
-		<?php
-	}
-
 	public static function get_default_setting() {
 		return array(
 			self::INCLUSION__SETTING_NAME => 'not_include',
 		);
-	}
-
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
-		}
-
-		return self::get_default_setting();
 	}
 
 	public static function sanitize_setting( $setting ) {

@@ -22,47 +22,6 @@ class Meta_Setting implements Query_Setting {
 		return 'meta_settings';
 	}
 
-	public function get_title() {
-		return _x( 'Meta key', 'backend', 'twrp' );
-	}
-
-	public static function setting_is_collapsed() {
-		return 'auto';
-	}
-
-	public function display_setting( $current_setting ) {
-		$comparators    = self::get_meta_key_comparators();
-		$meta_key_name  = self::get_setting_name() . '[' . self::META_KEY_NAME__SETTING_NAME . ']';
-		$meta_key_value = $current_setting[ self::META_KEY_NAME__SETTING_NAME ];
-
-		$meta_compare_name  = self::get_setting_name() . '[' . self::META_KEY_COMPARATOR__SETTING_NAME . ']';
-		$meta_compare_value = $current_setting[ self::META_KEY_COMPARATOR__SETTING_NAME ];
-
-		$meta_value_name  = self::get_setting_name() . '[' . self::META_KEY_VALUE__SETTING_NAME . ']';
-		$meta_value_value = $current_setting[ self::META_KEY_VALUE__SETTING_NAME ];
-
-		?>
-		<div class="twrp-meta-setting">
-			<div class="twrp-query-settings__paragraph">
-				<input id="twrp-meta-setting__meta-key" type="text" name="<?= esc_attr( $meta_key_name ); ?>" value="<?= esc_attr( $meta_key_value ); ?>"/>
-
-				<select name="<?= esc_attr( $meta_compare_name ); ?>">
-					<?php foreach ( $comparators as $value => $display ) : ?>
-						<option
-							value="<?= esc_attr( $value ); ?>"
-							<?php selected( $value, $meta_compare_value ); ?>
-						>
-							<?= esc_html( $display ); ?>
-						</option>
-					<?php endforeach; ?>
-				</select>
-
-				<input id="twrp-meta-setting__meta-key-value" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
-			</div>
-		</div>
-		<?php
-	}
-
 	/**
 	 * Get an array where the key is meta comparator and the value is a
 	 * description of the comparator.
@@ -88,15 +47,6 @@ class Meta_Setting implements Query_Setting {
 			self::META_KEY_VALUE__SETTING_NAME      => '',
 			self::META_KEY_COMPARATOR__SETTING_NAME => '',
 		);
-	}
-
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
-		}
-
-		return self::get_default_setting();
 	}
 
 	public static function sanitize_setting( $settings ) {

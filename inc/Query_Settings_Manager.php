@@ -24,34 +24,6 @@ class Query_Settings_Manager {
 	protected static $query_args_settings = array();
 
 	/**
-	 * Register a Query_Setting class to display its settings in backend.
-	 *
-	 * @param string $setting_class_name
-	 * @param int|null $priority Defaults to be added after the last one.
-	 * @return void
-	 *
-	 * @psalm-param class-string $setting_class_name
-	 */
-	public static function register_backend_setting_class( $setting_class_name, $priority = 0 ) {
-		if ( ! class_exists( $setting_class_name ) ) {
-			trigger_error( 'The class: ' . esc_html( $setting_class_name ) . ' does not exist.' );
-			return;
-		}
-
-		$setting_class = new $setting_class_name();
-
-		if ( $setting_class instanceof Query_Setting ) {
-			if ( is_numeric( $priority ) && ! empty( $priority ) && ! array_key_exists( $priority, self::$query_backend_settings ) ) {
-				self::$query_backend_settings[ $priority ] = $setting_class;
-			} else {
-				self::$query_backend_settings [] = $setting_class;
-			}
-		}
-
-		ksort( self::$query_backend_settings, SORT_NUMERIC );
-	}
-
-	/**
 	 * Register a Query_Setting class to add its settings to the WP query args
 	 * when needed.
 	 *
@@ -94,20 +66,6 @@ class Query_Settings_Manager {
 	public static function init() {
 		add_action( 'twrp_add_query_backend_setting', array( 'TWRP\\Query_Settings_Manager', 'add_plugin_query_settings' ) );
 		do_action( 'twrp_add_query_backend_setting' );
-
-		foreach ( self::get_registered_backend_settings() as $setting_class ) {
-			$setting_class::init();
-		}
-	}
-
-	/**
-	 * Return the registered classes used to display backend settings for the
-	 * WP Query.
-	 *
-	 * @return Query_Setting[]
-	 */
-	public static function get_registered_backend_settings() {
-		return self::$query_backend_settings;
 	}
 
 	/**
@@ -124,22 +82,6 @@ class Query_Settings_Manager {
 	 * @return void
 	 */
 	public static function add_plugin_query_settings() {
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Query_Name'::class, 10 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Types'::class, 20 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Status'::class, 30 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Order'::class, 40 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Settings'::class, 50 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Categories'::class, 60 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Date'::class, 70 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Author'::class, 80 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Sticky_Posts'::class, 90 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Post_Comments'::class, 100 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Search'::class, 110 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Password_Protected'::class, 120 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Meta_Setting'::class, 125 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Suppress_Filters'::class, 130 );
-		self::register_backend_setting_class( 'TWRP\Query_Setting\Advanced_Arguments'::class, 150 );
-
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Types'::class, 20 );
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Status'::class, 30 );
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Order'::class, 40 );

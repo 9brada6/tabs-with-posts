@@ -34,45 +34,11 @@ interface Query_Setting {
 	public static function get_setting_name();
 
 	/**
-	 * The title of the setting accordion.
-	 *
-	 * @return string
-	 */
-	public function get_title();
-
-	/**
-	 * Whether or not when displaying the setting in the backend only the title
-	 * is shown and the setting HTML is hidden(return false), or both are
-	 * shown(return true).
-	 *
-	 * @return bool|'auto'
-	 */
-	public static function setting_is_collapsed();
-
-	/**
-	 * Display the backend HTML for the setting.
-	 *
-	 * @param mixed $current_setting An array filled with only the settings that
-	 * this class work with. The settings are sanitized.
-	 *
-	 * @return void
-	 */
-	public function display_setting( $current_setting );
-
-	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
 	 * @return array
 	 */
 	public static function get_default_setting();
-
-	/**
-	 * Get the setting submitted from the form. The setting is sanitized and
-	 * ready to use.
-	 *
-	 * @return array
-	 */
-	public function get_submitted_sanitized_setting();
 
 	/**
 	 * Sanitize a variable, to be safe for processing.

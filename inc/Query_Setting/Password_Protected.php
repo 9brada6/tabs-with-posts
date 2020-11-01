@@ -27,54 +27,10 @@ class Password_Protected implements Query_Setting {
 		return 'password_protected';
 	}
 
-	public function get_title() {
-		return _x( 'Filter by password', 'backend', 'twrp' );
-	}
-
-	public static function setting_is_collapsed() {
-		return 'auto';
-	}
-
-	public function display_setting( $current_setting ) {
-		$select_name     = self::get_setting_name() . '[' . self::PASSWORD_PROTECTED__SETTING_NAME . ']';
-		$current_setting = $current_setting[ self::PASSWORD_PROTECTED__SETTING_NAME ];
-
-		$not_applied_text  = _x( 'Not Applied (Posts with and without password)', 'backend', 'twrp' );
-		$has_password_text = _x( 'Only posts with password', 'backend', 'twrp' );
-		$no_password_text  = _x( 'Only posts without password', 'backend', 'twrp' );
-
-		?>
-		<div class="twrp-password-settings">
-			<div class="twrp-query-settings__paragraph">
-				<select name="<?= esc_attr( $select_name ); ?>">
-					<option value="not_applied" <?php selected( 'not_applied', $current_setting ); ?>>
-						<?= esc_html( $not_applied_text ); ?>
-					</option>
-					<option value="has_password" <?php selected( 'has_password', $current_setting ); ?>>
-						<?= esc_html( $has_password_text ); ?>
-					</option>
-					<option value="no_password" <?php selected( 'no_password', $current_setting ); ?>>
-						<?= esc_html( $no_password_text ); ?>
-					</option>
-				</select>
-			</div>
-		</div>
-		<?php
-	}
-
 	public static function get_default_setting() {
 		return array(
 			self::PASSWORD_PROTECTED__SETTING_NAME => 'not_applied',
 		);
-	}
-
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
-		}
-
-		return self::get_default_setting();
 	}
 
 	public static function sanitize_setting( $setting ) {

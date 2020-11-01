@@ -514,7 +514,31 @@ class Utils {
 			}
 		}
 
-		return $classes_array;
+		return self::order_class_name( $classes_array );
+	}
+
+	/**
+	 * Order class name by CLASS_ORDER constant.
+	 *
+	 * @param array<string> $class_names
+	 * @return array
+	 */
+	public static function order_class_name( $class_names ) {
+		usort( $class_names, array( get_called_class(), 'sort_classes_algorithm' ) );
+		return $class_names;
+	}
+
+	public static function sort_classes_algorithm( $first_class_name, $second_class_name ) {
+		$first_class_order  = $first_class_name::CLASS_ORDER;
+		$second_class_order = $second_class_name::CLASS_ORDER;
+
+		// todo: catch error trying to access constant or if they aren't int or string.
+
+		if ( $first_class_order === $second_class_order ) {
+			return 0;
+		}
+
+		return ( $first_class_order < $second_class_order ) ? -1 : 1;
 	}
 
 }

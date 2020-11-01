@@ -58,38 +58,6 @@ class Get_Posts {
 	}
 
 	/**
-	 * Todo:
-	 *
-	 * Construct the WP Query Arguments for a registered query, based on the
-	 * setting classes registered.
-	 *
-	 * @see \TWRP\Query_Settings_Manager On how to add a setting class.
-	 * @throws \RuntimeException If the Query ID does not exist, or something went wrong.
-	 *
-	 * @param int|string $query_id The Id to construct query for.
-	 *
-	 * @return array
-	 */
-	public static function test_get_wp_query_arguments( $query_id ) {
-		$registered_settings_classes = Utils::get_all_child_classes( 'TWRP\\Query_Setting_Inserter\\Query_Setting_Inserter' );
-		$query_args                  = self::get_starting_query_args();
-
-		try {
-			$query_options = Query_Options::get_all_query_settings( $query_id );
-		} catch ( \RuntimeException $exception ) {
-			throw $exception;
-		}
-
-		foreach ( $registered_settings_classes as $query_inserter_class_name ) {
-			$query_inserter_class = new $query_inserter_class_name();
-			$query_args           = $query_inserter_class->add_query_arg( $query_args, $query_options );
-		}
-
-		return $query_args;
-	}
-
-
-	/**
 	 * Get the WP Query arguments before even any other setting is applied.
 	 *
 	 * @return array

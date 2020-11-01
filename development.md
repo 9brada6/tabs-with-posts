@@ -21,12 +21,14 @@
 ### Query Settings
 
 - Finish Advanced Arguments.
+- Call init on every setting classes that have something in that function.
 
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 - Meta Settings verify if add_query_args is good, hasn't been verified before.
 - When settings are saved, redirect to table of queries, not edit queries.
 - Add a back button from settings to the table.
+- Change namespace/folder name from settings from plural to singular.
 
 - Meta-Key: Add meta_key for the post order or separately.
 - Hide meta key value if comparator is exists or not exists.

@@ -29,57 +29,10 @@ class Query_Name implements Query_Setting {
 		return 'query_name';
 	}
 
-	public function get_title() {
-		return _x( 'Name of the query', 'backend', 'twrp' );
-	}
-
-	public static function setting_is_collapsed() {
-		return true;
-	}
-
-	public function display_setting( $current_setting ) {
-		$name        = self::get_setting_name() . '[' . self::QUERY_NAME__SETTING_NAME . ']';
-		$value       = $current_setting[ self::QUERY_NAME__SETTING_NAME ];
-		$placeholder = _x( 'Ex: Related Posts', 'backend', 'twrp' );
-
-		?>
-		<div class="twrp-name-setting">
-			<div class="twrp-query-settings__paragraph">
-			<input
-				id="twrp-name-setting__name"
-				class="twrp-name-setting__name" type="text"
-				name="<?= esc_attr( $name ) ?>"
-				value="<?= esc_attr( $value ) ?>"
-				placeholder="<?= esc_attr( $placeholder ) ?>"
-			/>
-			</div>
-
-
-			<div class="twrp-setting-note twrp-query-settings__paragraph">
-				<span class="twrp-setting-note__label">
-					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
-				</span>
-				<span class="twrp-setting-note__text">
-					<?= _x( 'The name will be visible ONLY in the admin screen.', 'backend', 'twrp' ); ?>
-				</span>
-			</div>
-		</div>
-		<?php
-	}
-
 	public static function get_default_setting() {
 		return array(
 			self::QUERY_NAME__SETTING_NAME => '',
 		);
-	}
-
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ self::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return self::sanitize_setting( wp_unslash( $_POST[ self::get_setting_name() ] ) );
-		}
-
-		return self::get_default_setting();
 	}
 
 	public static function sanitize_setting( $setting ) {

@@ -5,11 +5,12 @@
 
 namespace TWRP\Admin\Tabs;
 
+use TWRP\Utils;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
-use TWRP\Query_Settings_Manager;
 use TWRP\Query_Setting\Query_Setting;
 use TWRP\Query_Setting\Query_Name;
+use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
 use RuntimeException;
 
 /**
@@ -274,29 +275,36 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_query_form() {
-		$setting_classes = Query_Settings_Manager::get_registered_backend_settings();
+		$settings_classes = Utils::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );
+
 		?>
 		<div class="twrp-query-settings">
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
-				<?php foreach ( $setting_classes as $setting_class ) : ?>
-					<?php
-					$current_setting = $this->get_query_input_setting( $setting_class );
-					$collapsed       = $this->get_if_setting_collapsed( $setting_class, $current_setting ) ? '1' : '0';
-					?>
-					<div class="twrp-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
-						<h2 class="twrp-collapsible__title">
-							<span class="twrp-collapsible__indicator"></span>
-							<?= $setting_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
-						</h2>
-						<div class="twrp-collapsible__content">
-							<?php $setting_class->display_setting( $current_setting ); ?>
-						</div>
-					</div>
+				<?php foreach ( $settings_classes as $setting_class ) : ?>
+					<?php $this->display_query_setting( $setting_class ); ?>
 				<?php endforeach ?>
 
 				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
 				<button name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" type="submit"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
 			</form>
+		</div>
+		<?php
+	}
+
+	protected function display_query_setting( $setting_class ) {
+		$setting_class   = new $setting_class();
+		$current_setting = $this->get_query_input_setting( $setting_class );
+		$collapsed       = $this->get_if_setting_collapsed( $setting_class, $current_setting ) ? '1' : '0';
+
+		?>
+		<div class="twrp-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
+			<h2 class="twrp-collapsible__title">
+				<span class="twrp-collapsible__indicator"></span>
+				<?= $setting_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
+			</h2>
+			<div class="twrp-collapsible__content">
+				<?php $setting_class->display_setting( $current_setting ); ?>
+			</div>
 		</div>
 		<?php
 	}
@@ -315,6 +323,10 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			// Do nothing.
 		}
 
+		if ( $setting_class instanceof Query_Setting_Display ) {
+			$setting_class = $setting_class->get_setting_class();
+		}
+
 		if ( isset( $all_query_settings[ $setting_class->get_setting_name() ] ) ) {
 			return $all_query_settings[ $setting_class->get_setting_name() ];
 		}
@@ -330,12 +342,14 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return bool
 	 */
 	protected function get_if_setting_collapsed( $setting_class, $current_settings ) {
-		$setting_is_collapsed = $setting_class::setting_is_collapsed();
+		$setting_is_collapsed = $setting_class->setting_is_collapsed();
 		if ( is_bool( $setting_is_collapsed ) ) {
 			return $setting_is_collapsed;
 		}
 
-		$default_settings = $setting_class::get_default_setting();
+		$parent_setting_class = $setting_class->get_setting_class();
+
+		$default_settings = $parent_setting_class::get_default_setting();
 
 		array_multisort( $default_settings );
 		array_multisort( $current_settings );
@@ -409,11 +423,13 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function update_form_submitted_settings() {
-		$setting_classes = Query_Settings_Manager::get_registered_backend_settings();
-		$query_settings  = array();
+		$settings_classes_name = Utils::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );
+		$query_settings        = array();
 
-		foreach ( $setting_classes as $setting_class ) {
-			$query_settings[ $setting_class->get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
+		foreach ( $settings_classes_name as $setting_class_name ) {
+			$setting_class        = new $setting_class_name();
+			$parent_setting_class = $setting_class->get_setting_class();
+			$query_settings[ $parent_setting_class::get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
 		}
 
 		$query_key = $this->get_id_of_query_being_modified();
