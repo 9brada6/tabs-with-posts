@@ -129,6 +129,22 @@ class Require_Files {
 		'Query_Setting/Sticky_Posts',
 		'Query_Setting/Suppress_Filters',
 
+		// Query Creator
+		'Query_Setting_Inserter/Query_Setting_Inserter',
+		'Query_Setting_Inserter/Advanced_Arguments_Inserter',
+		'Query_Setting_Inserter/Author_Inserter',
+		'Query_Setting_Inserter/Categories_Inserter',
+		'Query_Setting_Inserter/Meta_Inserter',
+		'Query_Setting_Inserter/Password_Protected_Inserter',
+		'Query_Setting_Inserter/Post_Comments_Inserter',
+
+
+
+
+
+		'Query_Setting_Inserter/Search_Inserter',
+
+
 		// TWRP_Widget.
 		'TWRP_Widget/Widget_Utilities',
 		'TWRP_Widget/Widget',

@@ -498,8 +498,23 @@ class Utils {
 
 	#endregion -- Filesystem Utilities
 
-	public static function get_all_classes_that_implements( $interface_name ) {
-		return array();
+	/**
+	 * Get all classes that implements a certain interface
+	 *
+	 * @param string $parent_class
+	 * @return array
+	 */
+	public static function get_all_child_classes( $parent_class ) {
+		$classes_array    = array();
+		$declared_classes = get_declared_classes();
+
+		foreach ( $declared_classes as $class_name ) {
+			if ( is_subclass_of( $class_name, $parent_class ) ) {
+				array_push( $classes_array, $class_name );
+			}
+		}
+
+		return $classes_array;
 	}
 
 }

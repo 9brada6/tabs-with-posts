@@ -24,6 +24,9 @@
 
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
+- Meta Settings verify if add_query_args is good, hasn't been verified before.
+- When settings are saved, redirect to table of queries, not edit queries.
+- Add a back button from settings to the table.
 
 - Meta-Key: Add meta_key for the post order or separately.
 - Hide meta key value if comparator is exists or not exists.
@@ -60,9 +63,8 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Icons
 
-- Make icons work inline(add before tabs, only one time, but we will do this later).
+- Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
 - In tests, add coverage for each method.
-- Changing an icon setting do not work.
 
 #### General Settings
 
@@ -73,6 +75,11 @@ to make another get_plugin_file_relative_path for MU plugins?.
 might be exactly as in documentation.
 
 ### JS/SCSS
+
+### Today
+
+- Split all Query_Settings classes in half, and move them inside admin menu.
+- Add a way to order query settings.
 
 ### After first release
 

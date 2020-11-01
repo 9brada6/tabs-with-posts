@@ -147,6 +147,7 @@ class Query_Settings_Manager {
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Categories'::class, 60 );
 
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Sticky_Posts'::class, 33 );
+		self::register_query_arg_setting( 'TWRP\Query_Setting\Meta_Setting'::class, 33 );
 
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Post_Date'::class, 35 );
 		self::register_query_arg_setting( 'TWRP\Query_Setting\Author'::class, 40 );

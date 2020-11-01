@@ -255,6 +255,10 @@ function twrp_dump_query_settings() {
 		)
 	);
 
+	\Debug\console_dump( "Query Settings:" );
+	\Debug\console_dump( Get_Posts::get_wp_query_arguments( 1 ) );
+	\Debug\console_dump( Get_Posts::test_get_wp_query_arguments( 1 ) );
+
 	$args = array(
 		'orderby'  => array(
 			'comment_count'  => 'DESC',
