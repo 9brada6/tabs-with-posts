@@ -13,7 +13,7 @@
  * Domain Path:       @todo
  */
 
-use TWRP\Require_Files;
+use TWRP\Plugin_Bootstrap;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
@@ -31,8 +31,8 @@ require_once __DIR__ . '/debug-and-development.php';
 
 // Require all files. An autoloader is not used, because other plugins can use
 // an autoloader that is slow, making this plugin slow as well.
-require_once __DIR__ . '/inc/Require_Files.php';
-Require_Files::init();
+require_once __DIR__ . '/inc/Plugin_Bootstrap.php';
+Plugin_Bootstrap::init();
 
 #region -- Initializing
 

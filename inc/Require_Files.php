@@ -5,7 +5,7 @@
 
 namespace TWRP;
 
-class Require_Files {
+class Plugin_Bootstrap {
 
 	/**
 	 * All files that needs to be required for the plugin.
