@@ -19,7 +19,7 @@ use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
-use TWRP\Query_Generator;
+use TWRP\Query_Generator\Query_Generator;
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Create_And_Enqueue_Icons;
 

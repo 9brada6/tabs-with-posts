@@ -7,7 +7,7 @@ namespace TWRP\TWRP_Widget;
 
 use TWRP\Article_Block\Article_Block;
 use TWRP\Create_Tabs;
-use TWRP\Query_Generator;
+use TWRP\Query_Generator\Query_Generator;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\TWRP_Widget\Widget_Form;
