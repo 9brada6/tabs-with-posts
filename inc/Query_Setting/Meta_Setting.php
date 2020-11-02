@@ -8,7 +8,9 @@ namespace TWRP\Query_Setting;
 /**
  * Filter the posts based on if the posts contain a meta key or not.
  */
-class Meta_Setting implements Query_Setting {
+class Meta_Setting extends Query_Setting {
+
+	const CLASS_ORDER = 33;
 
 	const META_KEY_NAME__SETTING_NAME       = 'meta_name';
 	const META_KEY_VALUE__SETTING_NAME      = 'meta_value';

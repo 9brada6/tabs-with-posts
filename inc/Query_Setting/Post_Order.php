@@ -17,7 +17,9 @@ namespace TWRP\Query_Setting;
  * Creates the possibility to select the order in which the posts will be
  * displayed.
  */
-class Post_Order implements Query_Setting {
+class Post_Order extends Query_Setting {
+
+	const CLASS_ORDER = 40;
 
 	/**
 	 * The name of the first select to set orderby.

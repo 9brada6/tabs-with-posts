@@ -13,7 +13,9 @@ use TWRP\Get_Posts;
 use TWRP\Utils;
 use RuntimeException;
 
-class Author implements Query_Setting {
+class Author extends Query_Setting {
+
+	const CLASS_ORDER = 40;
 
 	/**
 	 * The setting attribute name, and the array key of the author filter type.

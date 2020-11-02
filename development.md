@@ -20,6 +20,7 @@
 
 ### Query Settings
 
+- Make a nice CLASS_CONSTANT across all Query_Settings, and across all Query_Display_Settings, write the in this documentation.
 - Finish Advanced Arguments.
 - Call init on every setting classes that have something in that function.
 

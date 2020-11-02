@@ -5,7 +5,7 @@
 
 namespace TWRP\TWRP_Widget;
 
-use TWRP\Article_Blocks_Manager;
+use TWRP\Utils;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 
@@ -100,12 +100,14 @@ trait Widget_Utilities {
 		}
 		$artblock_id = $instance_options[ $query_id ][ self::get_artblock_selector_name() ];
 
-		$registered_artblocks = Article_Blocks_Manager::get_style_classes();
-		if ( ! isset( $registered_artblocks[ $artblock_id ] ) ) {
-			return self::get_default_artblock_id();
+		$registered_artblocks = Utils::get_all_article_block_names();
+		foreach ( $registered_artblocks as $artblock ) {
+			if ( $artblock::get_id() === $artblock_id ) {
+				return $artblock_id;
+			}
 		}
 
-		return $artblock_id;
+		return self::get_default_artblock_id();
 	}
 
 	/**

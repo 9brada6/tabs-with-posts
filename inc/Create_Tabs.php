@@ -6,7 +6,6 @@
 namespace TWRP;
 
 use TWRP\TWRP_Widget\Widget;
-use TWRP\Article_Blocks_Manager;
 use RuntimeException;
 use TWRP\Article_Block\Article_Block;
 
@@ -103,7 +102,7 @@ class Create_Tabs {
 		try {
 			$artblock_id = Widget::get_selected_artblock_id( $this->widget_id, $query_id );
 			$settings    = Widget::get_query_instance_settings( $this->widget_id, $query_id );
-			$artblock    = Article_Blocks_Manager::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $settings );
+			$artblock    = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $settings );
 			$settings    = $artblock->sanitize_widget_settings();
 		} catch ( RuntimeException $e ) {
 			throw new RuntimeException();

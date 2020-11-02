@@ -41,7 +41,7 @@ class Get_Posts {
 	 * @return array
 	 */
 	public static function get_wp_query_arguments( $query_id ) {
-		$registered_settings_classes = Query_Settings_Manager::get_registered_query_args_settings();
+		$registered_settings_classes = Utils::get_all_query_settings_objects();
 		$query_args                  = self::get_starting_query_args();
 
 		try {

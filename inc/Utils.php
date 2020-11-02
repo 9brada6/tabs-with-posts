@@ -6,6 +6,8 @@ use TWRP\TWRP_Widget\Widget;
 use DateTimeZone;
 use TWRP_Main;
 use WP_Filesystem_Direct;
+use TWRP\Article_Block\Article_Block;
+use TWRP\Query_Setting\Query_Setting;
 use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
 
 class Utils {
@@ -500,12 +502,38 @@ class Utils {
 	#endregion -- Filesystem Utilities
 
 	/**
+	 * Get all the Article_Block objects.
+	 *
+	 * @return array<string,string>
+	 * @psalm-return array<string,class-string<Article_Block>>
+	 */
+	public static function get_all_article_block_names() {
+		$class_names = static::get_all_child_classes( 'TWRP\\Article_Block\\Article_Block' );
+		$class_names = self::order_class_name( $class_names );
+
+		return $class_names;
+	}
+
+	/**
+	 * Get all the Query_Setting objects.
+	 *
+	 * @return array<Query_Setting>
+	 */
+	public static function get_all_query_settings_objects() {
+		$class_names = static::get_all_child_classes( 'TWRP\\Query_Setting\\Query_Setting' );
+		$class_names = self::order_class_name( $class_names );
+
+		foreach ( $class_names as $key => $class_name ) {
+			$class_names[ $key ] = new $class_name();
+		}
+
+		return $class_names;
+	}
+
+	/**
 	 * Get all the Query_Setting_Display objects.
 	 *
 	 * @return array<Query_Setting_Display>
-	 *
-	 * @psalm-suppress InvalidReturnStatement
-	 * @psalm-suppress InvalidReturnType
 	 */
 	public static function get_all_display_query_settings_objects() {
 		$class_names = static::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );

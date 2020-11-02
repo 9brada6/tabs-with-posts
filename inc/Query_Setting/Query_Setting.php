@@ -13,7 +13,9 @@ namespace TWRP\Query_Setting;
  * Each one of this setting will be displayed with a title taken from
  * get_title() function, and display below the HTML in display_setting() function.
  */
-interface Query_Setting {
+abstract class Query_Setting {
+
+	const CLASS_ORDER = 0;
 
 	/**
 	 * Called before anything else, to initialize actions and filters.
@@ -24,21 +26,21 @@ interface Query_Setting {
 	 *
 	 * @return void
 	 */
-	public static function init();
+	abstract public static function init();
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.
 	 *
 	 * @return string
 	 */
-	public static function get_setting_name();
+	abstract public static function get_setting_name();
 
 	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
 	 * @return array
 	 */
-	public static function get_default_setting();
+	abstract public static function get_default_setting();
 
 	/**
 	 * Sanitize a variable, to be safe for processing.
@@ -46,7 +48,7 @@ interface Query_Setting {
 	 * @param mixed $setting
 	 * @return array The sanitized variable.
 	 */
-	public static function sanitize_setting( $setting );
+	abstract public static function sanitize_setting( $setting );
 
 	/**
 	 * Create and insert the new arguments for the WP_Query.
@@ -61,5 +63,5 @@ interface Query_Setting {
 	 * @param array $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
 	 */
-	public static function add_query_arg( $previous_query_args, $query_settings );
+	abstract public static function add_query_arg( $previous_query_args, $query_settings );
 }

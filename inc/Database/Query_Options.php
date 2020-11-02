@@ -6,7 +6,7 @@
 namespace TWRP\Database;
 
 use TWRP\Query_Setting\Query_Name;
-use TWRP\Query_Settings_Manager;
+use TWRP\Utils;
 
 /**
  * Class that contains functions to manage the settings stored in WordPress
@@ -189,7 +189,7 @@ class Query_Options {
 	 */
 	public static function sanitize_settings( $settings ) {
 		$sanitized_settings  = array();
-		$registered_settings = Query_Settings_Manager::get_registered_query_args_settings();
+		$registered_settings = Utils::get_all_query_settings_objects();
 
 		foreach ( $registered_settings as $setting_class ) {
 			$setting_name = $setting_class->get_setting_name();

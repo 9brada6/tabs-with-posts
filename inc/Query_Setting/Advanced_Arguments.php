@@ -17,7 +17,9 @@ use \TWRP\Admin\Tabs\Queries_Tab;
  * Class that will let administrators custom modifying the advanced arguments
  * via JSON parameters.
  */
-class Advanced_Arguments implements Query_Setting {
+class Advanced_Arguments extends Query_Setting {
+
+	const CLASS_ORDER = 1000;
 
 	/**
 	 * The setting name and the array key of the option that remembers whether

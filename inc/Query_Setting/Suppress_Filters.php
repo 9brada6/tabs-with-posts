@@ -15,7 +15,9 @@ namespace TWRP\Query_Setting;
  * The default of this setting is true(opposed from WP default false), to try
  * to not have unexpected behaviour because of a plugin/theme/custom filter.
  */
-class Suppress_Filters implements Query_Setting {
+class Suppress_Filters extends Query_Setting {
+
+	const CLASS_ORDER = 90;
 
 	/**
 	 * The array key of the setting that remember whether or not to suppress the

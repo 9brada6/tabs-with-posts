@@ -12,7 +12,9 @@ namespace TWRP\Query_Setting;
 /**
  * Creates the possibility to filter a query based on post statuses.
  */
-class Post_Status implements Query_Setting {
+class Post_Status extends Query_Setting {
+
+	const CLASS_ORDER = 30;
 
 	const APPLY_STATUSES__SETTING_NAME = 'status_type';
 

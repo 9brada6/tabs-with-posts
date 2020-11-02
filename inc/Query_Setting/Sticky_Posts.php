@@ -10,7 +10,9 @@ namespace TWRP\Query_Setting;
 /**
  * Class that will create the setting to include or not sticky posts.
  */
-class Sticky_Posts implements Query_Setting {
+class Sticky_Posts extends Query_Setting {
+
+	const CLASS_ORDER = 33;
 
 	/**
 	 * The name of the setting which represents whether or not to include sticky

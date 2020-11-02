@@ -14,7 +14,9 @@ use DateTime;
 /**
  * Creates the possibility to filter a query based on post dates.
  */
-class Post_Date implements Query_Setting {
+class Post_Date extends Query_Setting {
+
+	const CLASS_ORDER = 35;
 
 	const DATE_TYPE_NAME = 'date_type';
 

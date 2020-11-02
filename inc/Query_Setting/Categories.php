@@ -14,7 +14,9 @@ use TWRP\Utils;
 /**
  * Class that will filter posts via categories.
  */
-class Categories implements Query_Setting {
+class Categories extends Query_Setting {
+
+	const CLASS_ORDER = 60;
 
 	const CATEGORIES_TYPE__SETTING_KEY  = 'setting_type';
 	const INCLUDE_CHILDREN__SETTING_KEY = 'include_children';

@@ -10,7 +10,9 @@ namespace TWRP\Query_Setting;
 /**
  * Creates the possibility to filter a query based on post comments.
  */
-class Post_Comments implements Query_Setting {
+class Post_Comments extends Query_Setting {
+
+	const CLASS_ORDER = 60;
 
 	/**
 	 * Name of the form input field, that holds the number of comments to

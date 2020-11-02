@@ -10,7 +10,9 @@ namespace TWRP\Query_Setting;
 /**
  * Class that will filter the articles via selected posts types.
  */
-class Post_Types implements Query_Setting {
+class Post_Types extends Query_Setting {
+
+	const CLASS_ORDER = 20;
 
 	const SELECTED_TYPES__SETTING_NAME = 'selected_post_types';
 

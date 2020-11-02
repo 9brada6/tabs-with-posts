@@ -18,7 +18,9 @@ use TWRP\Utils;
  * Class that will filter the articles via selected post ids. Can include/exclude
  * for posts Ids and posts parents.
  */
-class Post_Settings implements Query_Setting {
+class Post_Settings extends Query_Setting {
+
+	const CLASS_ORDER = 50;
 
 	const FILTER_TYPE__SETTING_NAME = 'posts_filter';
 

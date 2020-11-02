@@ -5,7 +5,6 @@
 
 namespace TWRP\TWRP_Widget;
 
-use TWRP\Article_Blocks_Manager;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\Utils;
@@ -185,7 +184,7 @@ class Widget_Form {
 	protected static function display_query_select_artblock( $widget_id, $query_id ) {
 		$instance_options     = Widget::get_instance_settings( $widget_id );
 		$artblock_id_selected = Widget::get_selected_artblock_id( $widget_id, $query_id );
-		$registered_artblocks = Article_Blocks_Manager::get_artblocks_names();
+		$registered_artblocks = Utils::get_all_article_block_names();
 
 		$select_name = Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::ARTBLOCK_SELECTOR__NAME . ']' );
 		$select_val  = $instance_options[ $query_id ][ Widget::ARTBLOCK_SELECTOR__NAME ];
@@ -193,7 +192,11 @@ class Widget_Form {
 		<p>
 			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
 			<select class="twrp-widget-form__article-block-selector" name="<?= esc_attr( $select_name ); ?>" value="<?= esc_attr( $select_val ); ?>">
-				<?php foreach ( $registered_artblocks as $artblock_id => $article_name ) : ?>
+				<?php foreach ( $registered_artblocks as $artblock ) : ?>
+					<?php
+						$artblock_id  = $artblock::get_id();
+						$article_name = $artblock::get_name();
+					?>
 					<option
 						class="twrp-widget-form__article-block-select-option"
 						value="<?= esc_attr( (string) $artblock_id ); ?>"
@@ -250,10 +253,10 @@ class Widget_Form {
 		}
 
 		try {
-			$artblock = Article_Blocks_Manager::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $artblock_settings );
+			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $artblock_settings );
 		} catch ( \RuntimeException $e ) {
 			try {
-				$artblock = Article_Blocks_Manager::construct_class_by_name_or_id( Widget::DEFAULT_SELECTED_ARTBLOCK_ID, $widget_id, $query_id, $artblock_settings );
+				$artblock = Article_Block::construct_class_by_name_or_id( Widget::DEFAULT_SELECTED_ARTBLOCK_ID, $widget_id, $query_id, $artblock_settings );
 			} catch ( \RuntimeException $e ) {
 				return;
 			}

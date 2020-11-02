@@ -5,7 +5,7 @@
 
 namespace TWRP\TWRP_Widget;
 
-use TWRP\Article_Blocks_Manager;
+use TWRP\Article_Block\Article_Block;
 use TWRP\Create_Tabs;
 use TWRP\Get_Posts;
 use TWRP\Database\Query_Options;
@@ -65,7 +65,7 @@ class Widget extends WP_Widget {
 		try {
 			$artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
 			$settings    = self::get_query_instance_settings( $widget_id, $query_id );
-			$artblock    = Article_Blocks_Manager::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $settings );
+			$artblock    = Article_Block::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $settings );
 			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
 			$artblock->sanitize_widget_settings();
 		} catch ( \RuntimeException $e ) {
@@ -111,7 +111,7 @@ class Widget extends WP_Widget {
 			$selected_artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
 			try {
 				$query_settings = self::get_query_instance_settings( $widget_id, $query_id );
-				$artblock       = Article_Blocks_Manager::construct_class_by_name_or_id( $selected_artblock_id, $widget_id, $query_id, $query_settings );
+				$artblock       = Article_Block::construct_class_by_name_or_id( $selected_artblock_id, $widget_id, $query_id, $query_settings );
 				$query_settings = $artblock->sanitize_widget_settings();
 			} catch ( \RuntimeException $e ) {
 				continue;
@@ -171,7 +171,7 @@ class Widget extends WP_Widget {
 		}
 
 		if ( isset( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
-			if ( Article_Blocks_Manager::article_block_id_exist( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
+			if ( Article_Block::article_block_id_exist( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
 				$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = $query_settings[ self::ARTBLOCK_SELECTOR__NAME ];
 			} else {
 				$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
@@ -187,7 +187,7 @@ class Widget extends WP_Widget {
 		}
 
 		try {
-			$artblock = Article_Blocks_Manager::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], $widget_id, $query_id, $query_settings );
+			$artblock = Article_Block::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], $widget_id, $query_id, $query_settings );
 		} catch ( \RuntimeException $e ) {
 			return $sanitized_settings;
 		}

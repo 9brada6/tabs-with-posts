@@ -4,6 +4,8 @@ namespace TWRP\Article_Block;
 
 class Modern_Article_Block extends Article_Block {
 
+	const CLASS_ORDER = 100;
+
 	protected $widget_id;
 	protected $query_id;
 	protected $settings;

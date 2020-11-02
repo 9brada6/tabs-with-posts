@@ -14,6 +14,8 @@ use TWRP\Database\General_Options;
 
 class Simple_Article_Block extends Article_Block {
 
+	const CLASS_ORDER = 50;
+
 	const AUTHOR_ATTR           = 'author';
 	const DATE_ATTR             = 'date';
 	const TITLE_FONT_SIZE_ATTR  = 'font-size';

@@ -14,7 +14,9 @@ namespace TWRP\Query_Setting;
  * simple name to remember and describe what a query do. This name will be
  * visible only in the backend of the website.
  */
-class Query_Name implements Query_Setting {
+class Query_Name extends Query_Setting {
+
+	const CLASS_ORDER = 0;
 
 	/**
 	 * The name of the setting and array key which represents the query name.

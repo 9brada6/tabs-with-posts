@@ -15,8 +15,6 @@ class Require_Files {
 	protected static $required_files = array(
 		// Inc Folder.
 		'Utils',
-		'Query_Settings_Manager',
-		'Article_Blocks_Manager',
 		'Get_Posts',
 		'Create_Tabs',
 

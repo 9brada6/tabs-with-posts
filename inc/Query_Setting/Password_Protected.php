@@ -11,7 +11,9 @@ namespace TWRP\Query_Setting;
  * Creates the possibility to filter a query based on the post passwords,
  * if they are set.
  */
-class Password_Protected implements Query_Setting {
+class Password_Protected extends Query_Setting {
+
+	const CLASS_ORDER = 80;
 
 	/**
 	 * The name of the setting and array key which represents whether or not the

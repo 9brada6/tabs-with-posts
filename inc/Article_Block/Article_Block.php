@@ -22,6 +22,8 @@ abstract class Article_Block {
 
 	use Display_Post_Meta_Trait;
 
+	const CLASS_ORDER = 1000;
+
 	/**
 	 * Holds the widget id of these article blocks.
 	 *
@@ -118,7 +120,7 @@ abstract class Article_Block {
 	 * @param int $query_id
 	 * @param array $settings
 	 */
-	public function __construct( $widget_id, $query_id, $settings ) {
+	final public function __construct( $widget_id, $query_id, $settings ) {
 		$this->widget_id = $widget_id;
 		$this->query_id  = $query_id;
 		$this->settings  = $settings;
@@ -191,5 +193,65 @@ abstract class Article_Block {
 
 		return $css;
 	}
+
+	#region -- Helper methods
+
+	/**
+	 * Factory function to construct if a name exist.
+	 *
+	 * @throws \RuntimeException If class is not found.
+	 *
+	 * @param string $name_or_id For the name of the class, can be either just
+	 *                           the class name, or fully qualified name.
+	 * @param int|string $widget_id A numerical parameter.
+	 * @param int|string $query_id A numerical parameter.
+	 * @param array $settings
+	 * @return Article_Block
+	 */
+	public static function construct_class_by_name_or_id( $name_or_id, $widget_id, $query_id, $settings ) {
+		$artblock_class_names  = Utils::get_all_article_block_names();
+		$founded_artblock_name = '';
+
+		foreach ( $artblock_class_names as $artblock_name ) {
+			// find the class by id.
+			if ( $artblock_name::get_id() === $name_or_id ) {
+				$founded_artblock_name = $artblock_name;
+				break;
+			}
+
+			// find the class by class name.
+			if ( strpos( $artblock_name, $name_or_id ) !== false ) {
+				$founded_artblock_name = $artblock_name;
+				break;
+			}
+		}
+
+		if ( ! class_exists( $founded_artblock_name ) ) {
+			throw new \RuntimeException( 'Could not find class ' . $founded_artblock_name );
+		} else {
+			return new $founded_artblock_name( $widget_id, $query_id, $settings );
+		}
+
+	}
+
+	/**
+	 * Return whether or not the article block is registered.
+	 *
+	 * @param string $artblock_id
+	 * @return bool
+	 */
+	public static function article_block_id_exist( $artblock_id ) {
+		$article_block_names = Utils::get_all_article_block_names();
+
+		foreach ( $article_block_names as $article_block_name ) {
+			if ( $article_block_name::get_id() === $artblock_id ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	#endregion -- Helper methods
 
 }

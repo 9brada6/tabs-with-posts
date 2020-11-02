@@ -14,8 +14,6 @@
  */
 
 use TWRP\Require_Files;
-use TWRP\Query_Settings_Manager;
-use TWRP\Article_Blocks_Manager;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
@@ -46,7 +44,6 @@ Require_Files::init();
  * @return void
  */
 function twrp_initialize() {
-	Query_Settings_Manager::init();
 	Widget_Ajax::init();
 	Post_Views::init();
 
@@ -123,20 +120,6 @@ function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
-
-
-add_action( 'after_setup_theme', 'twrp_register_settings' );
-
-/**
- * @todo: Move and comment.
- *
- * @return void
- */
-function twrp_register_settings() {
-	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Simple_Article_Block' );
-	Article_Blocks_Manager::add_style_class( 'TWRP\Article_Block\Modern_Article_Block' );
-}
-
 
 \TWRP\Query_Setting\Advanced_Arguments::init();
 

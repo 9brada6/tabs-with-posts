@@ -10,7 +10,9 @@ namespace TWRP\Query_Setting;
 /**
  * Creates the possibility to filter a query based on a search string.
  */
-class Search implements Query_Setting {
+class Search extends Query_Setting {
+
+	const CLASS_ORDER = 70;
 
 	/**
 	 * The name of the setting and array key which represents the search string.
