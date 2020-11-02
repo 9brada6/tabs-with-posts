@@ -7,7 +7,7 @@ namespace TWRP\TWRP_Widget;
 
 use TWRP\Article_Block\Article_Block;
 use TWRP\Create_Tabs;
-use TWRP\Get_Posts;
+use TWRP\Query_Generator;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\TWRP_Widget\Widget_Form;
@@ -66,7 +66,7 @@ class Widget extends WP_Widget {
 			$artblock_id = self::get_selected_artblock_id( $widget_id, $query_id );
 			$settings    = self::get_query_instance_settings( $widget_id, $query_id );
 			$artblock    = Article_Block::construct_class_by_name_or_id( $artblock_id, $widget_id, $query_id, $settings );
-			$posts       = Get_Posts::get_posts_by_query_id( $query_id );
+			$posts       = Query_Generator::get_posts_by_query_id( $query_id );
 			$artblock->sanitize_widget_settings();
 		} catch ( \RuntimeException $e ) {
 			return;

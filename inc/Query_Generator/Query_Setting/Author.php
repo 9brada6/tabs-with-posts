@@ -9,7 +9,7 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
-use TWRP\Get_Posts;
+use TWRP\Query_Generator;
 use TWRP\Simple_Utils;
 use RuntimeException;
 
@@ -125,7 +125,7 @@ class Author extends Query_Setting {
 		}
 
 		if ( self::AUTHORS_TYPE__SAME === $authors_type ) {
-			$global_post = Get_Posts::get_global_post();
+			$global_post = Query_Generator::get_global_post();
 			if ( ( ! $global_post ) || ( ! is_singular() ) ) {
 				throw new RuntimeException( 'Author cannot be retrieved in a non single page.' );
 			}

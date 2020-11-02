@@ -19,7 +19,7 @@ use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Plugins\Post_Views;
-use TWRP\Get_Posts;
+use TWRP\Query_Generator;
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Create_And_Enqueue_Icons;
 
@@ -229,8 +229,8 @@ function twrp_dump_query_settings() {
 	// var_dump( pvc_get_post_views( $ids_array ) );
 
 	try {
-		\Debug\console_dump( \TWRP\Get_Posts::get_wp_query_arguments( 3 ), 'Query ID 3 Arguments' );
-		\Debug\console_dump( \TWRP\Get_Posts::get_wp_query_arguments( 4 ), 'Query ID 4 Arguments' );
+		\Debug\console_dump( \TWRP\Query_Generator::get_wp_query_arguments( 3 ), 'Query ID 3 Arguments' );
+		\Debug\console_dump( \TWRP\Query_Generator::get_wp_query_arguments( 4 ), 'Query ID 4 Arguments' );
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Query with Id 4 does not exist' );
 		// Do nothing
@@ -279,7 +279,7 @@ function twrp_enqueue_scripts_debug() {
 	\Debug\console_dump( get_taxonomies() );
 	try {
 		\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
-		\Debug\console_dump( Get_Posts::get_wp_query_arguments( 1 ), 'Query 1 settings:' );
+		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 1 ), 'Query 1 settings:' );
 
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );

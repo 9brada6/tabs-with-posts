@@ -14,7 +14,6 @@ class Require_Files {
 	 */
 	protected static $required_files = array(
 		// Inc Folder.
-		'Get_Posts',
 		'Create_Tabs',
 
 		// Utils.
@@ -135,6 +134,7 @@ class Require_Files {
 		'Plugins/Rating_Plugins/YASR_Rating_Plugin',
 
 		// Query_Setting.
+		'Query_Generator/Query_Generator',
 		'Query_Generator/Query_Setting/Query_Setting',
 		'Query_Generator/Query_Setting/Advanced_Arguments',
 		'Query_Generator/Query_Setting/Author',

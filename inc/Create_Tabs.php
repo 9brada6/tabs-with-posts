@@ -8,6 +8,7 @@ namespace TWRP;
 use TWRP\TWRP_Widget\Widget;
 use RuntimeException;
 use TWRP\Article_Block\Article_Block;
+use TWRP\Query_Generator\Query_Generator;
 
 class Create_Tabs {
 
@@ -74,7 +75,7 @@ class Create_Tabs {
 		global $post;
 
 		try {
-			$query_posts = Get_Posts::get_posts_by_query_id( $query_id );
+			$query_posts = Query_Generator::get_posts_by_query_id( $query_id );
 			$artblock    = $this->get_artblock( $query_id );
 			$artblock->sanitize_widget_settings();
 		} catch ( \RuntimeException $e ) {
