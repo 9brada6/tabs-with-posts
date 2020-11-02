@@ -7,7 +7,8 @@ namespace TWRP\TWRP_Widget;
 
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
-use TWRP\Utils;
+use TWRP\Simple_Utils;
+use TWRP\Class_Retriever_Utils;
 
 /**
  * Class responsible with displaying the widget form.
@@ -91,7 +92,7 @@ class Widget_Form {
 			$selected_queries_list = $instance_settings['queries'];
 		}
 		$selected_queries_ids = explode( ';', $selected_queries_list );
-		$selected_queries_ids = Utils::get_valid_wp_ids( $selected_queries_ids );
+		$selected_queries_ids = Simple_Utils::get_valid_wp_ids( $selected_queries_ids );
 
 		$queries_field_id   = Widget::twrp_get_field_id( $widget_id, 'queries' );
 		$queries_field_name = Widget::twrp_get_field_name( $widget_id, 'queries' );
@@ -184,7 +185,7 @@ class Widget_Form {
 	protected static function display_query_select_artblock( $widget_id, $query_id ) {
 		$instance_options     = Widget::get_instance_settings( $widget_id );
 		$artblock_id_selected = Widget::get_selected_artblock_id( $widget_id, $query_id );
-		$registered_artblocks = Utils::get_all_article_block_names();
+		$registered_artblocks = Class_Retriever_Utils::get_all_article_block_names();
 
 		$select_name = Widget::twrp_get_field_name( $widget_id, $query_id . '[' . Widget::ARTBLOCK_SELECTOR__NAME . ']' );
 		$select_val  = $instance_options[ $query_id ][ Widget::ARTBLOCK_SELECTOR__NAME ];

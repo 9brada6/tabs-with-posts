@@ -2,8 +2,9 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Utils;
+use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\Artblock_Component\Component_Setting;
+use TWRP\Simple_Utils;
 
 /**
  * Class that represents an artblock component and its settings.
@@ -103,11 +104,11 @@ class Widget_Component_Settings {
 	}
 
 	protected function get_component_prefix_name() {
-		return Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, $this->name );
+		return Widget_Utilities::get_twrp_widget_name( $this->widget_id, $this->query_id, $this->name );
 	}
 
 	protected function get_component_prefix_id() {
-		return Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, $this->name );
+		return Widget_Utilities::get_twrp_widget_id( $this->widget_id, $this->query_id, $this->name );
 	}
 
 	#region -- Sanitization
@@ -139,7 +140,7 @@ class Widget_Component_Settings {
 	#endregion -- Sanitization
 
 	public static function get_component_classes( $component_setting_classes ) {
-		$classes_names   = Utils::flatten_array( $component_setting_classes );
+		$classes_names   = Simple_Utils::flatten_array( $component_setting_classes );
 		$setting_classes = array();
 
 		foreach ( $classes_names as $component_setting_class_name ) {

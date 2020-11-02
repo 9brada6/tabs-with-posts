@@ -8,7 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Setting\Post_Settings;
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 
 /**
  * Used to display the post settings query setting control.
@@ -96,7 +96,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) ) {
 			$ids = $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ];
 			$ids = explode( ';', $ids );
-			$ids = Utils::get_valid_wp_ids( $ids );
+			$ids = Simple_Utils::get_valid_wp_ids( $ids );
 			if ( ! empty( $ids ) ) {
 				$posts = get_posts(
 					array(

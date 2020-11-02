@@ -5,7 +5,7 @@
 
 namespace TWRP\Plugins;
 
-use TWRP\Utils;
+use TWRP\Directory_Utils;
 
 abstract class Plugin_Info {
 
@@ -67,7 +67,7 @@ abstract class Plugin_Info {
 	 * @return string
 	 */
 	public static function get_plugin_avatar_src() {
-		$assets_dir = Utils::get_assets_directory_url();
+		$assets_dir = Directory_Utils::get_assets_directory_url();
 
 		$fully_class_name = get_called_class();
 		$class_name       = substr( $fully_class_name, (int) strrpos( $fully_class_name, '\\' ) + 1 );

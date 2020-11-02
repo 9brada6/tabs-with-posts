@@ -8,7 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Setting\Author;
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 
 /**
  * Used to display the author query setting control.
@@ -88,7 +88,7 @@ class Author_Display extends Query_Setting_Display {
 		$authors = array();
 		if ( isset( $current_setting[ Author::AUTHORS_IDS__SETTING_NAME ] ) ) {
 			$authors_ids = explode( ';', $current_setting[ Author::AUTHORS_IDS__SETTING_NAME ] );
-			$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+			$authors_ids = Simple_Utils::get_valid_wp_ids( $authors_ids );
 
 			if ( ! empty( $authors_ids ) ) {
 				$authors_args = array(

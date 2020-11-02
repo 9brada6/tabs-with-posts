@@ -12,7 +12,7 @@
 
 namespace TWRP\Query_Setting;
 
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 
 /**
  * Class that will filter the articles via selected post ids. Can include/exclude
@@ -56,7 +56,7 @@ class Post_Settings extends Query_Setting {
 
 		$sanitized_settings = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
 		$posts_ids          = explode( ';', $posts_ids );
-		$posts_ids          = Utils::get_valid_wp_ids( $posts_ids );
+		$posts_ids          = Simple_Utils::get_valid_wp_ids( $posts_ids );
 
 		foreach ( $posts_ids as $key => $id ) {
 			$post = get_post( (int) $id );
@@ -91,7 +91,7 @@ class Post_Settings extends Query_Setting {
 		}
 
 		$posts_ids = explode( ';', $settings[ self::POSTS_INPUT__SETTING_NAME ] );
-		$posts_ids = Utils::get_valid_wp_ids( $posts_ids );
+		$posts_ids = Simple_Utils::get_valid_wp_ids( $posts_ids );
 
 		if ( empty( $posts_ids ) ) {
 			return $previous_query_args;

@@ -14,9 +14,15 @@ class Require_Files {
 	 */
 	protected static $required_files = array(
 		// Inc Folder.
-		'Utils',
 		'Get_Posts',
 		'Create_Tabs',
+
+		// Utils.
+		'Utils/Simple_Utils',
+		'Utils/Class_Retriever_Utils',
+		'Utils/Date_Utils',
+		'Utils/Directory_Utils',
+		'Utils/Filesystem_Utils',
 
 		// Admin.
 		'Admin/Interface Helpers/License_Display',

@@ -22,7 +22,6 @@ use TWRP\Plugins\Post_Views;
 use TWRP\Get_Posts;
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Create_And_Enqueue_Icons;
-use TWRP\Utils;
 
 
 /**
@@ -70,8 +69,14 @@ class TWRP_Main {
 
 	const VERSION = '1.0.0';
 
+		/**
+	 * The folder name of this plugin.
+	 */
 	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';
 
+	/**
+	 * The folder where article blocks templates are to be found.
+	 */
 	const TEMPLATES_FOLDER = 'templates/';
 
 	const ASSETS_FOLDER = 'assets/';
@@ -121,7 +126,7 @@ function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
 
-\TWRP\Query_Setting\Advanced_Arguments::init();
+\TWRP\Query_Generator\Query_Setting\Advanced_Arguments::init();
 
 /**
  * @todo: Move and comment.

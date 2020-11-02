@@ -3,8 +3,7 @@
 namespace TWRP;
 
 use TWRP\Database\Query_Options;
-use TWRP\Query_Settings_Manager;
-use TWRP\Utils;
+use TWRP\Class_Retriever_Utils;
 
 class Get_Posts {
 
@@ -41,7 +40,7 @@ class Get_Posts {
 	 * @return array
 	 */
 	public static function get_wp_query_arguments( $query_id ) {
-		$registered_settings_classes = Utils::get_all_query_settings_objects();
+		$registered_settings_classes = Class_Retriever_Utils::get_all_query_settings_objects();
 		$query_args                  = self::get_starting_query_args();
 
 		try {

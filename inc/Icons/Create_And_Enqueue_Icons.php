@@ -6,11 +6,13 @@
 namespace TWRP\Icons;
 
 use TWRP_Main;
-use TWRP\Utils;
+use TWRP\Directory_Utils;
+use TWRP\Filesystem_Utils;
 use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Database\Inline_Icons_Option;
 use TWRP\Database\Aside_Options;
+
 
 class Create_And_Enqueue_Icons {
 
@@ -58,7 +60,7 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function include_needed_icons_file() {
-		$file_url = Utils::get_needed_icons_url();
+		$file_url = Directory_Utils::get_needed_icons_url();
 		$time     = Aside_Options::get_needed_icons_generation_timestamp();
 		self::ajax_include_svg_file( $file_url . '?time="' . $time . '"' );
 	}
@@ -70,7 +72,7 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function include_all_icons_file() {
-		$file_path = Utils::get_all_icons_url();
+		$file_path = Directory_Utils::get_all_icons_url();
 		self::ajax_include_svg_file( $file_path . '?version="' . TWRP_MAIN::VERSION . '"' );
 	}
 
@@ -122,10 +124,10 @@ class Create_And_Enqueue_Icons {
 	 * @return bool Whether or not the file was written.
 	 */
 	protected static function write_needed_icons_to_file() {
-		$file_path = Utils::get_needed_icons_path();
+		$file_path = Directory_Utils::get_needed_icons_path();
 		$html      = self::get_defs_file_needed_icons();
 
-		return Utils::set_file_contents( $file_path, $html );
+		return Filesystem_Utils::set_file_contents( $file_path, $html );
 	}
 
 	/**

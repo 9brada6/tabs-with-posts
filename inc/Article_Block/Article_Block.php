@@ -6,7 +6,8 @@
 namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
-use TWRP\Utils;
+use TWRP\Class_Retriever_Utils;
+use TWRP\Directory_Utils;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -154,7 +155,7 @@ abstract class Article_Block {
 	 */
 	public function include_template() {
 		$artblock = $this;
-		include Utils::get_template_directory_path() . static::get_file_name();
+		include Directory_Utils::get_template_directory_path() . static::get_file_name();
 	}
 
 	/**
@@ -209,7 +210,7 @@ abstract class Article_Block {
 	 * @return Article_Block
 	 */
 	public static function construct_class_by_name_or_id( $name_or_id, $widget_id, $query_id, $settings ) {
-		$artblock_class_names  = Utils::get_all_article_block_names();
+		$artblock_class_names  = Class_Retriever_Utils::get_all_article_block_names();
 		$founded_artblock_name = '';
 
 		foreach ( $artblock_class_names as $artblock_name ) {
@@ -241,7 +242,7 @@ abstract class Article_Block {
 	 * @return bool
 	 */
 	public static function article_block_id_exist( $artblock_id ) {
-		$article_block_names = Utils::get_all_article_block_names();
+		$article_block_names = Class_Retriever_Utils::get_all_article_block_names();
 
 		foreach ( $article_block_names as $article_block_name ) {
 			if ( $article_block_name::get_id() === $artblock_id ) {

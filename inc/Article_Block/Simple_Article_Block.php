@@ -8,9 +8,8 @@
 namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
-use TWRP\Utils;
+use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\Widget_Control\Checkbox_Control;
-use TWRP\Database\General_Options;
 
 class Simple_Article_Block extends Article_Block {
 
@@ -80,26 +79,26 @@ class Simple_Article_Block extends Article_Block {
 
 	public function display_form_settings() {
 		// Display Author Setting
-		$id              = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_author' );
-		$name            = Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_author' );
+		$id              = Widget_Utilities::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_author' );
+		$name            = Widget_Utilities::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_author' );
 		$current_setting = ( isset( $this->settings['display_author'] ) && is_string( $this->settings['display_author'] ) ) ? $this->settings['display_author'] : null;
 		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_display_author_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
 		// Display Date Setting
-		$id              = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_date' );
-		$name            = Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_date' );
+		$id              = Widget_Utilities::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_date' );
+		$name            = Widget_Utilities::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_date' );
 		$current_setting = ( isset( $this->settings['display_date'] ) && is_string( $this->settings['display_date'] ) ) ? $this->settings['display_date'] : null;
 		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_display_date_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
 		// Display Date in readable format Setting
-		$id              = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'human_readable_date' );
-		$name            = Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, 'human_readable_date' );
+		$id              = Widget_Utilities::get_twrp_widget_id( $this->widget_id, $this->query_id, 'human_readable_date' );
+		$name            = Widget_Utilities::get_twrp_widget_name( $this->widget_id, $this->query_id, 'human_readable_date' );
 		$current_setting = ( isset( $this->settings['human_readable_date'] ) && is_string( $this->settings['human_readable_date'] ) ) ? $this->settings['human_readable_date'] : null;
 		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_human_readable_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
 		// Display Comments
-		$id              = Utils::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_comments' );
-		$name            = Utils::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_comments' );
+		$id              = Widget_Utilities::get_twrp_widget_id( $this->widget_id, $this->query_id, 'display_comments' );
+		$name            = Widget_Utilities::get_twrp_widget_name( $this->widget_id, $this->query_id, 'display_comments' );
 		$current_setting = ( isset( $this->settings['display_comments'] ) && is_string( $this->settings['display_comments'] ) ) ? $this->settings['display_comments'] : null;
 		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_comments_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 

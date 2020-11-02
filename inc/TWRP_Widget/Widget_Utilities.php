@@ -5,7 +5,7 @@
 
 namespace TWRP\TWRP_Widget;
 
-use TWRP\Utils;
+use TWRP\Class_Retriever_Utils;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 
@@ -100,7 +100,7 @@ trait Widget_Utilities {
 		}
 		$artblock_id = $instance_options[ $query_id ][ self::get_artblock_selector_name() ];
 
-		$registered_artblocks = Utils::get_all_article_block_names();
+		$registered_artblocks = Class_Retriever_Utils::get_all_article_block_names();
 		foreach ( $registered_artblocks as $artblock ) {
 			if ( $artblock::get_id() === $artblock_id ) {
 				return $artblock_id;
@@ -239,4 +239,53 @@ trait Widget_Utilities {
 	protected static function get_query_button_title_name() {
 		return Widget::QUERY_BUTTON_TITLE__NAME;
 	}
+
+	/**
+	 * Get the name of a control for the Tabs with Recommended Posts Widget.
+	 *
+	 * @param int|string $widget_id
+	 * @param int|string ...$other_name_keys
+	 * @return string
+	 *
+	 * @psalm-param numeric $widget_id
+	 * @psalm-param array-key ...$other_name_keys
+	 */
+	public static function get_twrp_widget_name( $widget_id, ...$other_name_keys ) {
+		$suffix = '[' . $widget_id . ']';
+		foreach ( $other_name_keys as $name_key ) {
+			$name_key = sanitize_key( (string) $name_key );
+			if ( empty( $name_key ) ) {
+				continue;
+			}
+
+			$suffix .= '[' . $name_key . ']';
+		}
+
+		$twrp_widget_base_id = Widget::TWRP_BASE_ID;
+
+		$name = 'widget-' . $twrp_widget_base_id . $suffix;
+		return $name;
+	}
+
+	/**
+	 * Get the name of a control for the Tabs with Recommended Posts Widget.
+	 *
+	 * @param int|string $widget_id
+	 * @param int|string ...$other_name_keys
+	 * @return string
+	 *
+	 * @psalm-param numeric $widget_id
+	 */
+	public static function get_twrp_widget_id( $widget_id, ...$other_name_keys ) {
+		$suffix = '-' . $widget_id;
+		foreach ( $other_name_keys as $name_key ) {
+			$suffix .= '-' . $name_key;
+		}
+
+		$twrp_widget_base_id = Widget::TWRP_BASE_ID;
+
+		$name = 'widget-' . $twrp_widget_base_id . $suffix;
+		return $name;
+	}
+
 }

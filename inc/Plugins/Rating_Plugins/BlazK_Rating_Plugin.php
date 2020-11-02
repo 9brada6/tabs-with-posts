@@ -5,7 +5,7 @@
 
 namespace TWRP\Plugins;
 
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 
 class BlazK_Plugin implements Post_Rating_Plugin {
 
@@ -57,7 +57,7 @@ class BlazK_Plugin implements Post_Rating_Plugin {
 			return null;
 		}
 
-		$post_id = Utils::get_valid_wp_id( $post_id );
+		$post_id = Simple_Utils::get_valid_wp_id( $post_id );
 		if ( ! $post_id ) {
 			return null;
 		}
@@ -83,7 +83,7 @@ class BlazK_Plugin implements Post_Rating_Plugin {
 			return null;
 		}
 
-		$post_id = Utils::get_valid_wp_id( $post_id );
+		$post_id = Simple_Utils::get_valid_wp_id( $post_id );
 		if ( ! $post_id ) {
 			return null;
 		}

@@ -5,7 +5,7 @@
 
 namespace TWRP\Admin\Tabs;
 
-use TWRP\Utils;
+use TWRP\Class_Retriever_Utils;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\Query_Setting\Query_Setting;
@@ -275,7 +275,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_query_form() {
-		$settings_classes = Utils::get_all_display_query_settings_objects();
+		$settings_classes = Class_Retriever_Utils::get_all_display_query_settings_objects();
 
 		?>
 		<div class="twrp-query-settings">
@@ -424,7 +424,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function update_form_submitted_settings() {
-		$settings_classes_name = Utils::get_all_display_query_settings_objects();
+		$settings_classes_name = Class_Retriever_Utils::get_all_display_query_settings_objects();
 		$query_settings        = array();
 
 		foreach ( $settings_classes_name as $setting_class ) {

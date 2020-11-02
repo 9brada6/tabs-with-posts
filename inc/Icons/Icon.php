@@ -6,7 +6,8 @@
 namespace TWRP\Icons;
 
 use RuntimeException;
-use TWRP\Utils;
+use TWRP\Filesystem_Utils;
+use TWRP\Directory_Utils;
 
 class Icon {
 
@@ -120,7 +121,7 @@ class Icon {
 	 */
 	public function get_icon_file_path() {
 		try {
-			$relative_path = trailingslashit( Utils::get_assets_svgs_directory_path() ) . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
+			$relative_path = trailingslashit( Directory_Utils::get_assets_svgs_directory_path() ) . $this->get_folder_name_category() . '/' . $this->get_brand_folder() . '/' . $this->file_name;
 		} catch ( RuntimeException $e ) {
 			return false;
 		}
@@ -204,7 +205,7 @@ class Icon {
 			return false;
 		}
 
-		$content = Utils::get_file_contents( $icon_filename );
+		$content = Filesystem_Utils::get_file_contents( $icon_filename );
 		if ( is_string( $content ) ) {
 			$this->cache_definition = $content;
 			return $content;

@@ -4,7 +4,7 @@ namespace TWRP\Article_Block;
 
 use WP_Post;
 use TWRP\Plugins\Post_Views;
-use TWRP\Utils;
+use TWRP\Date_Utils;
 
 trait Display_Post_Meta_Trait {
 
@@ -58,8 +58,8 @@ trait Display_Post_Meta_Trait {
 	public function get_the_date( $post = null ) {
 		$date_format = $this->get_date_format();
 		if ( 'HUMAN_READABLE' === $date_format ) {
-			$from = Utils::get_post_timestamp( $post );
-			$to   = date_timestamp_get( Utils::current_datetime() );
+			$from = Date_Utils::get_post_timestamp( $post );
+			$to   = date_timestamp_get( Date_Utils::current_datetime() );
 
 			if ( false === $from || 0 === $to ) {
 				$date_text = false;

@@ -7,7 +7,7 @@ namespace TWRP\Icons;
 
 use RuntimeException;
 use WP_UnitTestCase;
-use TWRP\Utils;
+use TWRP\Directory_Utils;
 use TWRP_Main;
 
 /**
@@ -29,7 +29,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 	 * have the same license across all folders.
 	 */
 	public function test__each_folder_have_license() {
-		$plugin_folder = Utils::get_plugin_directory_path();
+		$plugin_folder = Directory_Utils::get_plugin_directory_path();
 		$svg_folder    = $plugin_folder . TWRP_Main::SVG_FOLDER;
 
 		$folders_without_license      = array();

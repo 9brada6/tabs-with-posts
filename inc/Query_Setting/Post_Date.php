@@ -7,7 +7,7 @@
 
 namespace TWRP\Query_Setting;
 
-use TWRP\Utils;
+use TWRP\Date_Utils;
 use DateInterval;
 use DateTime;
 
@@ -164,7 +164,7 @@ class Post_Date extends Query_Setting {
 	protected static function get_last_period_args( $date_settings ) {
 		if ( 'LW' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
-			$time->setTimezone( Utils::wp_timezone() );
+			$time->setTimezone( Date_Utils::wp_timezone() );
 			$time->modify( 'tomorrow' );
 			$time->modify( 'last Monday' );
 			$time->modify( 'last Monday' );
@@ -172,7 +172,7 @@ class Post_Date extends Query_Setting {
 
 		if ( 'LM' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'first day of this month' );
-			$time->setTimezone( Utils::wp_timezone() );
+			$time->setTimezone( Date_Utils::wp_timezone() );
 			$time->sub( new DateInterval( 'P2D' ) );
 			$time->modify( 'first day of this month' );
 		}
@@ -183,7 +183,7 @@ class Post_Date extends Query_Setting {
 
 		if ( 'C' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
-			$time->setTimezone( Utils::wp_timezone() );
+			$time->setTimezone( Date_Utils::wp_timezone() );
 
 			if ( ! isset( $date_settings[ self::DATE_LAST_DAYS_NAME ] ) ) {
 				return null;

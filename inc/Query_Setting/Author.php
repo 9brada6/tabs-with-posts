@@ -10,7 +10,7 @@
 namespace TWRP\Query_Setting;
 
 use TWRP\Get_Posts;
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 use RuntimeException;
 
 class Author extends Query_Setting {
@@ -87,7 +87,7 @@ class Author extends Query_Setting {
 		}
 
 		$authors_ids = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
-		$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+		$authors_ids = Simple_Utils::get_valid_wp_ids( $authors_ids );
 
 		$sanitized_authors_ids = array();
 		foreach ( $authors_ids as $author_id ) {
@@ -136,7 +136,7 @@ class Author extends Query_Setting {
 		}
 
 		$authors_ids = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
-		$authors_ids = Utils::get_valid_wp_ids( $authors_ids );
+		$authors_ids = Simple_Utils::get_valid_wp_ids( $authors_ids );
 
 		if ( empty( $authors_ids ) ) {
 			return $previous_query_args;

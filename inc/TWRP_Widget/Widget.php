@@ -11,7 +11,7 @@ use TWRP\Get_Posts;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\TWRP_Widget\Widget_Form;
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 use WP_Widget;
 
 class Widget extends WP_Widget {
@@ -147,7 +147,7 @@ class Widget extends WP_Widget {
 			$settings['queries'] = '';
 		}
 		$queries            = explode( ';', $settings['queries'] );
-		$queries            = Utils::get_valid_wp_ids( $queries );
+		$queries            = Simple_Utils::get_valid_wp_ids( $queries );
 		$valid_queries_ids  = array();
 		$sanitized_settings = array();
 

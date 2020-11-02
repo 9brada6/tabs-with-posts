@@ -9,7 +9,7 @@
 
 namespace TWRP\Query_Setting;
 
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 
 /**
  * Class that will filter posts via categories.
@@ -86,7 +86,7 @@ class Categories extends Query_Setting {
 
 		// Explode the categories into an array of ids and verify them.
 		$categories = explode( ';', $setting[ self::CATEGORIES_IDS__SETTING_KEY ] );
-		$categories = Utils::get_valid_wp_ids( $categories );
+		$categories = Simple_Utils::get_valid_wp_ids( $categories );
 		$categories = array_values( $categories );
 
 		// Checking to see if the array exist.
@@ -132,7 +132,7 @@ class Categories extends Query_Setting {
 			return $previous_query_args;
 		}
 		$cat_ids = explode( ';', $settings[ self::CATEGORIES_IDS__SETTING_KEY ] );
-		$cat_ids = Utils::get_valid_wp_ids( $cat_ids );
+		$cat_ids = Simple_Utils::get_valid_wp_ids( $cat_ids );
 
 		if ( '0' === $settings[ self::INCLUDE_CHILDREN__SETTING_KEY ] ) {
 			// Do not include children.

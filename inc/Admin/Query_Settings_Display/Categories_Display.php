@@ -8,7 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Setting\Categories;
-use TWRP\Utils;
+use TWRP\Simple_Utils;
 use WP_Term;
 
 /**
@@ -175,7 +175,7 @@ class Categories_Display extends Query_Setting_Display {
 
 		$categories_ids = $current_setting[ Categories::CATEGORIES_IDS__SETTING_KEY ];
 		$categories_ids = explode( ';', $categories_ids );
-		$categories_ids = Utils::get_valid_wp_ids( $categories_ids );
+		$categories_ids = Simple_Utils::get_valid_wp_ids( $categories_ids );
 
 		$categories_are_displayed = array();
 		if ( ! empty( $categories_ids ) ) {
