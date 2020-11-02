@@ -126,6 +126,7 @@ function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
 
+// todo:
 \TWRP\Query_Generator\Query_Setting\Advanced_Arguments::init();
 
 /**

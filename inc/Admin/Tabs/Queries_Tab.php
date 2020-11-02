@@ -8,8 +8,8 @@ namespace TWRP\Admin\Tabs;
 use TWRP\Class_Retriever_Utils;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
-use TWRP\Query_Setting\Query_Setting;
-use TWRP\Query_Setting\Query_Name;
+use TWRP\Query_Generator\Query_Setting\Query_Setting;
+use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
 use RuntimeException;
 
@@ -44,7 +44,10 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 
 	/**
 	 * The name of the input that holds the query name in the Add/Edit Page.
-	 * This value should be the same as TWRP\Query_Setting\Query_Name::get_setting_name().
+	 * This value should be the same as
+	 * TWRP\Query_Generator\Query_Setting\Query_Name::get_setting_name().
+	 *
+	 * @todo: See where it is used and remove.
 	 */
 	const QUERY_NAME = 'query_name';
 

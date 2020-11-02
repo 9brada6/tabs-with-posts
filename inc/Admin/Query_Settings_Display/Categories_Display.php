@@ -7,7 +7,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Categories;
+use TWRP\Query_Generator\Query_Setting\Categories;
 use TWRP\Simple_Utils;
 use WP_Term;
 

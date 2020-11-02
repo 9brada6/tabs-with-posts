@@ -7,7 +7,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Password_Protected;
+use TWRP\Query_Generator\Query_Setting\Password_Protected;
 
 /**
  * Used to display the password protected query setting control.

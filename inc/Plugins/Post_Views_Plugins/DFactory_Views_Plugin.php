@@ -95,7 +95,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	 * @return array
 	 */
 	public static function modify_query_arg_if_necessary( $query_args ) {
-		$orderby_value = \TWRP\Query_Setting\Post_Order::PLUGIN_DFACTORY_ORDERBY_VALUE;
+		$orderby_value = \TWRP\Query_Generator\Query_Setting\Post_Order::PLUGIN_DFACTORY_ORDERBY_VALUE;
 		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
 		}

@@ -1,6 +1,6 @@
 <?php
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use Masterminds\HTML5;
 

@@ -7,7 +7,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Post_Date;
+use TWRP\Query_Generator\Query_Setting\Post_Date;
 
 /**
  * Used to display the post date query setting control.

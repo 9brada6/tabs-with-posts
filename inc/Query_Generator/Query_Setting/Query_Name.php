@@ -1,11 +1,11 @@
 <?php
 /**
- * File that define the TWRP\Query_Setting\Query_Name class.
+ * File that contains the same class as the file name.
  *
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 /**
  * Implements the query name setting.

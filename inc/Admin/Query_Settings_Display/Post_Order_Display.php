@@ -7,7 +7,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Post_Order;
+use TWRP\Query_Generator\Query_Setting\Post_Order;
 
 /**
  * Used to display the post order query setting control.

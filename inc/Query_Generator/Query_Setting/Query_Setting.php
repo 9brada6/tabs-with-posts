@@ -3,7 +3,7 @@
  * Contains the interface needed for all the query settings to exist.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 /**
  * Implements the functions needed to be calling in displaying the settings in

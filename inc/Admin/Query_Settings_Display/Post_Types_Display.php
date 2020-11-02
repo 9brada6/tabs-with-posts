@@ -7,7 +7,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Post_Types;
+use TWRP\Query_Generator\Query_Setting\Post_Types;
 
 /**
  * Used to display the search query setting control.

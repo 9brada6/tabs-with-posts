@@ -7,7 +7,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Sticky_Posts;
+use TWRP\Query_Generator\Query_Setting\Sticky_Posts;
 
 /**
  * Used to display the sticky posts query setting control.

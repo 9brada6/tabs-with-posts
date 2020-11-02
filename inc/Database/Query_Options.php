@@ -5,7 +5,7 @@
 
 namespace TWRP\Database;
 
-use TWRP\Query_Setting\Query_Name;
+use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Class_Retriever_Utils;
 
 /**

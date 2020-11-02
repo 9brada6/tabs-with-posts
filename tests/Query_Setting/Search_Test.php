@@ -1,18 +1,18 @@
 <?php
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use PHPUnit\Framework\TestCase;
 
 /**
- * @covers \TWRP\Query_Setting\Search
+ * @covers \TWRP\Query_Generator\Query_Setting\Search
  */
 class Search_Test extends TestCase {
 
 	use Verify_Basic_Settings;
 
 	/**
-	 * @var \TWRP\Query_Setting\Search
+	 * @var \TWRP\Query_Generator\Query_Setting\Search
 	 */
 	public static $class_instance;
 
@@ -30,35 +30,35 @@ class Search_Test extends TestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Search::get_setting_name
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::get_setting_name
 	 */
 	public function test__get_setting_name() {
 		$this->verify_setting_name( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Search::get_title
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::get_title
 	 */
 	public function test__get_title() {
 		$this->verify_title( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Search::setting_is_collapsed
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::setting_is_collapsed
 	 */
 	public function test__setting_is_collapsed() {
 		$this->verify_setting_is_collapsed( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Search::get_default_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::get_default_setting
 	 */
 	public function test__get_default_setting() {
 		$this->verify_get_default_setting( self::$class_instance, self::$settings_keys );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Search::display_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::display_setting
 	 */
 	public function test__display_setting() {
 		$this->verify_display_the_setting( self::$class_instance, self::$settings_keys, self::$class_instance::get_default_setting() );
@@ -66,7 +66,7 @@ class Search_Test extends TestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
-	 * @covers \TWRP\Query_Setting\Search::sanitize_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::sanitize_setting
 	 *
 	 * @param mixed $value
 	 */
@@ -83,7 +83,7 @@ class Search_Test extends TestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
-	 * @covers \TWRP\Query_Setting\Search::get_submitted_sanitized_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Search::get_submitted_sanitized_setting
 	 *
 	 * @param mixed $value
 	 */

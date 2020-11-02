@@ -11,7 +11,7 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 /**
  * Creates the possibility to select the order in which the posts will be

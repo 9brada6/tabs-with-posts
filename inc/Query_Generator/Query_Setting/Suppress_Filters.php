@@ -6,7 +6,7 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 /**
  * Class that will make a setting that will decide whether or not to suppress

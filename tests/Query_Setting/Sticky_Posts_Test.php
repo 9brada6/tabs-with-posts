@@ -3,7 +3,7 @@
  * @phan-file-suppress PhanThrowTypeAbsentForCall
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use PHPUnit\Framework\TestCase;
 
@@ -12,7 +12,7 @@ class Sticky_Posts_Test extends TestCase {
 	use Verify_Basic_Settings;
 
 	/**
-	 * @var \TWRP\Query_Setting\Sticky_Posts
+	 * @var \TWRP\Query_Generator\Query_Setting\Sticky_Posts
 	 */
 	public static $class_instance;
 
@@ -38,14 +38,14 @@ class Sticky_Posts_Test extends TestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Sticky_Posts::get_default_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Sticky_Posts::get_default_setting
 	 */
 	public function test__get_default_setting() {
 		$this->verify_get_default_setting( self::$class_instance, self::$settings_keys );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Sticky_Posts::display_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Sticky_Posts::display_setting
 	 */
 	public function test__display_setting( $setting = null ) {
 		$this->verify_display_the_setting( self::$class_instance, self::$settings_keys, self::$class_instance::get_default_setting() );

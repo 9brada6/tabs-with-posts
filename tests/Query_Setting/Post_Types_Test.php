@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use PHPUnit\Framework\TestCase;
 use Masterminds\HTML5;
@@ -11,7 +11,7 @@ use Masterminds\HTML5;
 /**
  * Class that tests the Post_Types class.
  *
- * @covers \TWRP\Query_Setting\Post_Types
+ * @covers \TWRP\Query_Generator\Query_Setting\Post_Types
  */
 class Post_Types_Test extends TestCase {
 
@@ -20,7 +20,7 @@ class Post_Types_Test extends TestCase {
 	/**
 	 * Holds the class instance that needs to be tested.
 	 *
-	 * @var \TWRP\Query_Setting\Post_Types
+	 * @var \TWRP\Query_Generator\Query_Setting\Post_Types
 	 */
 	public static $class_instance;
 
@@ -70,28 +70,28 @@ class Post_Types_Test extends TestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Types::get_setting_name
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::get_setting_name
 	 */
 	public function test__get_setting_name() {
 		$this->verify_setting_name( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Types::get_title
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::get_title
 	 */
 	public function test__get_title() {
 		$this->verify_title( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Types::setting_is_collapsed
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::setting_is_collapsed
 	 */
 	public function test__setting_is_collapsed() {
 		$this->verify_setting_is_collapsed( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Types::get_default_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::get_default_setting
 	 */
 	public function test__get_default_setting() {
 		$this->verify_get_default_setting( self::$class_instance, self::$settings_keys );
@@ -109,8 +109,8 @@ class Post_Types_Test extends TestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Types::display_setting
-	 * @covers \TWRP\Query_Setting\Post_Types::display_post_type_setting_checkbox
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::display_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::display_post_type_setting_checkbox
 	 */
 	public function test__display_setting() {
 		$class           = self::$class_instance;
@@ -135,7 +135,7 @@ class Post_Types_Test extends TestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
-	 * @covers \TWRP\Query_Setting\Post_Types::sanitize_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::sanitize_setting
 	 *
 	 * @param mixed $value
 	 */
@@ -150,7 +150,7 @@ class Post_Types_Test extends TestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Types::get_available_types
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::get_available_types
 	 */
 	public function test__get_available_types() {
 		$available_types_obj   = self::$class_instance::get_available_types( 'objects' );
@@ -162,7 +162,7 @@ class Post_Types_Test extends TestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
-	 * @covers \TWRP\Query_Setting\Post_Types::get_submitted_sanitized_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::get_submitted_sanitized_setting
 	 *
 	 * @param mixed $value
 	 */
@@ -180,7 +180,7 @@ class Post_Types_Test extends TestCase {
 
 	/**
 	 * @dataProvider add_query_arg_settings_provider
-	 * @covers \TWRP\Query_Setting\Post_Types::add_query_arg
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Types::add_query_arg
 	 *
 	 * @param mixed $value
 	 */

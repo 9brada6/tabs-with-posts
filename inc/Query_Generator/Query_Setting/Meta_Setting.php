@@ -3,7 +3,7 @@
  * Contains the class with the same name.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 /**
  * Filter the posts based on if the posts contain a meta key or not.

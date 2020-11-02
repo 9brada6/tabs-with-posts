@@ -8,7 +8,7 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use TWRP\Admin\Settings_Menu;
 use \TWRP\Admin\Tabs\Queries_Tab;
@@ -33,7 +33,7 @@ class Advanced_Arguments extends Query_Setting {
 	const CUSTOM_ARGS__SETTING_NAME = 'custom_args_json';
 
 	public static function init() {
-		add_action( 'admin_enqueue_scripts', array( 'TWRP\\Query_Setting\\Advanced_Arguments', 'enqueue_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( 'TWRP\\Query_Generator\\Query_Setting\\Advanced_Arguments', 'enqueue_scripts' ) );
 	}
 
 	public static function get_setting_name() {

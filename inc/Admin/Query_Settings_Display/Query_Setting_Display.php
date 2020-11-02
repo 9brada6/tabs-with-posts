@@ -5,7 +5,7 @@
 
 namespace TWRP\Admin\Query_Settings_Display;
 
-use TWRP\Query_Setting\Query_Setting;
+use TWRP\Query_Generator\Query_Setting\Query_Setting;
 
 /**
  * Used to display a control for a query setting.

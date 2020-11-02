@@ -5,7 +5,7 @@
 
 namespace TWRP;
 
-use TWRP\Query_Setting\Query_Setting;
+use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
 
 /**
@@ -37,7 +37,7 @@ class Class_Retriever_Utils {
 	 * @return array<Query_Setting>
 	 */
 	public static function get_all_query_settings_objects() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Query_Setting\\Query_Setting' );
+		$class_names = static::get_all_child_classes( 'TWRP\\Query_Generator\\Query_Setting\\Query_Setting' );
 		$class_names = self::order_class_name( $class_names );
 
 		foreach ( $class_names as $key => $class_name ) {

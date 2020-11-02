@@ -10,7 +10,7 @@
  * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use TWRP\Simple_Utils;
 

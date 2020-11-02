@@ -1,19 +1,19 @@
 <?php
 
-namespace TWRP\Query_Setting;
+namespace TWRP\Query_Generator\Query_Setting;
 
 use Masterminds\HTML5;
 use WP_UnitTestCase;
 
 /**
- * @covers \TWRP\Query_Setting\Post_Status
+ * @covers \TWRP\Query_Generator\Query_Setting\Post_Status
  */
 class Post_Status_Test extends WP_UnitTestCase {
 
 	use Verify_Basic_Settings;
 
 	/**
-	 * @var \TWRP\Query_Setting\Post_Status
+	 * @var \TWRP\Query_Generator\Query_Setting\Post_Status
 	 */
 	public static $class_instance;
 
@@ -36,28 +36,28 @@ class Post_Status_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::get_setting_name
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::get_setting_name
 	 */
 	public function test__get_setting_name() {
 		$this->verify_setting_name( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::get_title
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::get_title
 	 */
 	public function test__get_title() {
 		$this->verify_title( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::setting_is_collapsed
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::setting_is_collapsed
 	 */
 	public function test__setting_is_collapsed() {
 		$this->verify_setting_is_collapsed( self::$class_instance );
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::display_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::display_setting
 	 */
 	public function test__display_setting() {
 		$class            = self::$class_instance;
@@ -88,7 +88,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::get_post_statuses
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::get_post_statuses
 	 */
 	public function test__get_post_statuses() {
 		$post_statuses = self::$class_instance::get_post_statuses();
@@ -100,7 +100,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::get_default_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::get_default_setting
 	 */
 	public function test__get_default_setting() {
 		$this->verify_get_default_setting( self::$class_instance, self::$settings_keys );
@@ -110,7 +110,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
-	 * @covers \TWRP\Query_Setting\Post_Status::sanitize_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::sanitize_setting
 	 *
 	 * @param mixed $value
 	 */
@@ -125,7 +125,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::sanitize_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::sanitize_setting
 	 */
 	public function test_sanitize_setting_2() {
 		$class              = self::$class_instance;
@@ -165,7 +165,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 
 	/**
 	 * @dataProvider sanitization_provider
-	 * @covers \TWRP\Query_Setting\Post_Status::get_submitted_sanitized_setting
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::get_submitted_sanitized_setting
 	 *
 	 * @param mixed $value
 	 */
@@ -182,7 +182,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 
 	/**
 	 * @dataProvider add_query_arg_settings_provider
-	 * @covers \TWRP\Query_Setting\Post_Status::add_query_arg
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::add_query_arg
 	 *
 	 * @param mixed $setting
 	 */
@@ -199,7 +199,7 @@ class Post_Status_Test extends WP_UnitTestCase {
 	}
 
 	/**
-	 * @covers \TWRP\Query_Setting\Post_Status::add_query_arg
+	 * @covers \TWRP\Query_Generator\Query_Setting\Post_Status::add_query_arg
 	 */
 	public function test__add_query_arg_2() {
 		$class = self::$class_instance;
