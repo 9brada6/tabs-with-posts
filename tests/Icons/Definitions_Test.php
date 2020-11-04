@@ -311,7 +311,7 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 					$first_icon_category = $icon->get_icon_category();
 				}
 
-				if ( ! $icon->get_icon_category() === $first_icon_category ) {
+				if ( ! ( $icon->get_icon_category() === $first_icon_category ) ) {
 					array_push( $bad_icons, $icon->get_id() );
 				}
 

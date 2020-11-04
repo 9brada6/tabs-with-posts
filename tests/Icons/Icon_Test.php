@@ -117,7 +117,7 @@ class Icon_Test extends WP_UnitTestCase {
 
 		foreach ( $all_nested_icons as $brand => $same_brand_icons ) {
 			foreach ( $same_brand_icons as $icon ) {
-				if ( $icon->get_brand() !== $brand ) {
+				if ( $icon->get_brand() === $brand ) {
 					$nested_is_wrong = true;
 				}
 

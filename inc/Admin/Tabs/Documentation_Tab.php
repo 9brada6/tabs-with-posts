@@ -92,7 +92,7 @@ class Documentation_Tab implements Interface_Admin_Menu_Tab {
 							echo '<span class="twrp-plugins-support__not-active-text">';
 							echo ' (' . _x( 'Not Active', 'backend', 'twrp' ) . ')';
 							echo '</span>';
-						} elseif ( false !== $plugin_in_use && get_class( $plugin_in_use ) === get_class( $plugin ) ) {
+						} elseif ( ( false !== $plugin_in_use ) && ( get_class( $plugin_in_use ) === get_class( $plugin ) ) ) {
 							echo '<span class="twrp-plugins-support__used-text">';
 							echo ' (' . _x( 'Used', 'backend', 'twrp' ) . ')';
 							echo '</span>';

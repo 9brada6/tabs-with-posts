@@ -74,7 +74,7 @@ class Categories extends Query_Setting {
 		// Sanitizing the category relation.
 		$possible_cat_relation = array( 'OR', 'AND' );
 		$has_valid_setting     = in_array( $setting[ self::RELATION__SETTING_KEY ], $possible_cat_relation, true );
-		if ( ! $has_valid_setting || 'OUT' === $setting[ self::CATEGORIES_TYPE__SETTING_KEY ] ) {
+		if ( ( ! $has_valid_setting ) || ( 'OUT' === $setting[ self::CATEGORIES_TYPE__SETTING_KEY ] ) ) {
 			$setting[ self::RELATION__SETTING_KEY ] = 'OR';
 		}
 		$sanitized_setting[ self::RELATION__SETTING_KEY ] = $setting[ self::RELATION__SETTING_KEY ];

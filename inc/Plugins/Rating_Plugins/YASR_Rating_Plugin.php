@@ -80,7 +80,7 @@ class YASR_Rating_Plugin implements Post_Rating_Plugin {
 		$sum_votes       = + $votes['sum_votes'];
 		$number_of_votes = + $votes['number_of_votes'];
 
-		if ( ( ! $sum_votes > 0 ) || ( ! $number_of_votes > 0 ) ) {
+		if ( ! ( $sum_votes > 0 ) || ! ( $number_of_votes > 0 ) ) {
 			return 0;
 		}
 

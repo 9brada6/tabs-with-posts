@@ -60,7 +60,7 @@ class KK_Rating_Plugin implements Post_Rating_Plugin {
 
 		$rating = get_post_meta( $post_id, '_kksr_avg', true );
 
-		if ( ( ! is_numeric( $rating ) ) ) {
+		if ( ! is_numeric( $rating ) ) {
 			return 0;
 		}
 

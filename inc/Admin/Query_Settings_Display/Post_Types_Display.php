@@ -41,7 +41,7 @@ class Post_Types_Display extends Query_Setting_Display {
 				<?php
 				$available_post_types = Post_Types::get_available_types();
 				foreach ( $available_post_types as $post_type ) :
-					if ( ! is_string( $post_type ) && isset( $post_type->name, $post_type->label ) ) :
+					if ( ( ! is_string( $post_type ) ) && isset( $post_type->name, $post_type->label ) ) :
 						$is_checked = in_array( $post_type->name, $selected_post_types, true );
 						$this->display_post_type_setting_checkbox( $post_type->name, $post_type->label, $is_checked );
 					endif;

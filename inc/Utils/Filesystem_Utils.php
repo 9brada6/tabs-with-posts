@@ -25,7 +25,7 @@ class Filesystem_Utils {
 	 * @return null|WP_Filesystem_Direct
 	 */
 	public static function get_direct_filesystem() {
-		if ( ! \defined( 'ABSPATH' ) ) {
+		if ( ! defined( 'ABSPATH' ) ) {
 			return null;
 		}
 

@@ -70,7 +70,7 @@ class Post_Date extends Query_Setting {
 			}
 			$sanitized_settings[ self::DATE_LAST_PERIOD_NAME ] = $setting[ self::DATE_LAST_PERIOD_NAME ];
 
-			if ( ! ( 'C' === $setting[ self::DATE_LAST_PERIOD_NAME ] ) ) {
+			if ( 'C' !== $setting[ self::DATE_LAST_PERIOD_NAME ] ) {
 				return $sanitized_settings;
 			}
 

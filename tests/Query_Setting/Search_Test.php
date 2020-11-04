@@ -108,7 +108,7 @@ class Search_Test extends TestCase {
 		$full_settings = array( $class::get_setting_name() => $setting );
 
 		$query_var       = $class::add_query_arg( array(), $full_settings );
-		$valid_query_var = ( ! isset( $query_var['s'] ) ) || ( ! empty( $query_var['s'] ) );
+		$valid_query_var = ( ( ! isset( $query_var['s'] ) ) || ( ! empty( $query_var['s'] ) ) );
 		$this->assertTrue( $valid_query_var );
 	}
 

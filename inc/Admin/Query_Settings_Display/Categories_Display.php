@@ -206,7 +206,7 @@ class Categories_Display extends Query_Setting_Display {
 					<?php
 					$category = get_category( (int) $category_id );
 
-					if ( ! $category instanceof WP_Term ) {
+					if ( ! ( $category instanceof WP_Term ) ) {
 						continue;
 					}
 

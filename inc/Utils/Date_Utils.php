@@ -133,7 +133,7 @@ class Date_Utils {
 	protected static function get_post_datetime_polyfill( $post = null, $field = 'date', $source = 'local' ) {
 		$post = get_post( $post );
 
-		if ( ! $post || is_array( $post ) ) {
+		if ( ( ! $post ) || is_array( $post ) ) {
 			return false;
 		}
 

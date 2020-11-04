@@ -92,7 +92,7 @@ trait Display_Post_Meta_Trait {
 			return;
 		}
 
-		if ( ! comments_open( $post ) && ! $this->get_the_comments_number() ) {
+		if ( ( ! comments_open( $post ) ) && ( ! $this->get_the_comments_number() ) ) {
 			return;
 		}
 
