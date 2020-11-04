@@ -7,7 +7,7 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
-use TWRP\Date_Utils;
+use TWRP\Utils\Date_Utils;
 use DateInterval;
 use DateTime;
 

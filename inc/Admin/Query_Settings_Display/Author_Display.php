@@ -8,7 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Author;
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Used to display the author query setting control.

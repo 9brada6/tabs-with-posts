@@ -1,8 +1,6 @@
 <?php
 
-namespace TWRP;
-
-use TWRP\TWRP_Widget\Widget;
+namespace TWRP\Utils;
 
 /**
  * Class that contain a list of static methods, that can be used everywhere.

@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP;
+namespace TWRP\Utils;
 
 use WP_Filesystem_Direct;
 

@@ -3,7 +3,7 @@
 namespace TWRP\Query_Generator;
 
 use TWRP\Database\Query_Options;
-use TWRP\Class_Retriever_Utils;
+use TWRP\Utils\Class_Retriever_Utils;
 
 class Query_Generator {
 

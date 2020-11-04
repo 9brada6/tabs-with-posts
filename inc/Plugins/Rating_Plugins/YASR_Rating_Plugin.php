@@ -2,7 +2,7 @@
 
 namespace TWRP\Plugins;
 
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 
 class YASR_Rating_Plugin implements Post_Rating_Plugin {
 

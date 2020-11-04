@@ -4,7 +4,7 @@ namespace TWRP\Artblock_Component;
 
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\Artblock_Component\Component_Setting;
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Class that represents an artblock component and its settings.

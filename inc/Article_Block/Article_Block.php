@@ -6,8 +6,8 @@
 namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
-use TWRP\Class_Retriever_Utils;
-use TWRP\Directory_Utils;
+use TWRP\Utils\Class_Retriever_Utils;
+use TWRP\Utils\Directory_Utils;
 
 /**
  * The abstract for an article block. By extending this class, a class can

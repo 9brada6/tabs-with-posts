@@ -7,7 +7,7 @@ namespace TWRP\Icons;
 
 use RuntimeException;
 use WP_UnitTestCase;
-use TWRP\Directory_Utils;
+use TWRP\Utils\Directory_Utils;
 use TWRP_Main;
 
 /**

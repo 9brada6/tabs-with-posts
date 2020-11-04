@@ -6,7 +6,7 @@
  * @todo: Use these methods in wp_enqueue_scripts.
  */
 
-namespace TWRP;
+namespace TWRP\Utils;
 
 /**
  * Class that is a collection of static methods, that can be used everywhere,

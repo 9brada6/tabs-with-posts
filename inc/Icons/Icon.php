@@ -6,8 +6,8 @@
 namespace TWRP\Icons;
 
 use RuntimeException;
-use TWRP\Filesystem_Utils;
-use TWRP\Directory_Utils;
+use TWRP\Utils\Filesystem_Utils;
+use TWRP\Utils\Directory_Utils;
 
 class Icon {
 

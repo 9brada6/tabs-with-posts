@@ -4,7 +4,7 @@ namespace TWRP\Article_Block;
 
 use WP_Post;
 use TWRP\Plugins\Post_Views;
-use TWRP\Date_Utils;
+use TWRP\Utils\Date_Utils;
 
 trait Display_Post_Meta_Trait {
 

@@ -6,8 +6,8 @@
 namespace TWRP\Icons;
 
 use TWRP_Main;
-use TWRP\Directory_Utils;
-use TWRP\Filesystem_Utils;
+use TWRP\Utils\Directory_Utils;
+use TWRP\Utils\Filesystem_Utils;
 use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Database\Inline_Icons_Option;

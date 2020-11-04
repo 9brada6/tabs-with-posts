@@ -5,7 +5,7 @@
 
 namespace TWRP\Admin\Tabs;
 
-use TWRP\Class_Retriever_Utils;
+use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;

@@ -5,7 +5,7 @@
 
 namespace TWRP\Plugins;
 
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 
 class BlazK_Plugin implements Post_Rating_Plugin {
 

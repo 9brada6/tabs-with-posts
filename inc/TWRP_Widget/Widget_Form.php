@@ -7,8 +7,8 @@ namespace TWRP\TWRP_Widget;
 
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
-use TWRP\Simple_Utils;
-use TWRP\Class_Retriever_Utils;
+use TWRP\Utils\Simple_Utils;
+use TWRP\Utils\Class_Retriever_Utils;
 
 /**
  * Class responsible with displaying the widget form.

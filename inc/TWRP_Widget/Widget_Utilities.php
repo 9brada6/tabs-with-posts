@@ -5,7 +5,7 @@
 
 namespace TWRP\TWRP_Widget;
 
-use TWRP\Class_Retriever_Utils;
+use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 

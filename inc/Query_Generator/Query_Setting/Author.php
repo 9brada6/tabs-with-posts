@@ -10,7 +10,7 @@
 namespace TWRP\Query_Generator\Query_Setting;
 
 use TWRP\Query_Generator\Query_Generator;
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 use RuntimeException;
 
 class Author extends Query_Setting {

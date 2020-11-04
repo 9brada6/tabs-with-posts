@@ -5,7 +5,7 @@
 
 namespace TWRP\Plugins;
 
-use TWRP\Directory_Utils;
+use TWRP\Utils\Directory_Utils;
 
 abstract class Plugin_Info {
 

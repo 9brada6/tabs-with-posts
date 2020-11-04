@@ -9,7 +9,7 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Class that will filter posts via categories.

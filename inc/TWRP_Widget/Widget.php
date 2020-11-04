@@ -11,7 +11,7 @@ use TWRP\Query_Generator\Query_Generator;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget_Utilities;
 use TWRP\TWRP_Widget\Widget_Form;
-use TWRP\Simple_Utils;
+use TWRP\Utils\Simple_Utils;
 use WP_Widget;
 
 class Widget extends WP_Widget {
