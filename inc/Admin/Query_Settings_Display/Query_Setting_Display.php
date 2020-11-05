@@ -75,7 +75,15 @@ abstract class Query_Setting_Display {
 	 *
 	 * @return array
 	 */
-	abstract public function get_submitted_sanitized_setting();
+	public function get_submitted_sanitized_setting() {
+		$setting_class = $this->get_setting_class();
+		if ( isset( $_POST[ $setting_class::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
+			// phpcs:ignore -- Nonce verified and the setting is sanitized.
+			return $setting_class::sanitize_setting( wp_unslash( $_POST[ $setting_class::get_setting_name() ] ) );
+		}
+
+		return $setting_class::get_default_setting();
+	}
 
 	/**
 	 * Display the backend HTML for the setting.

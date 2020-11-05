@@ -24,15 +24,6 @@ class Post_Order_Display extends Query_Setting_Display {
 		return _x( 'Order of posts', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Post_Order::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Post_Order::sanitize_setting( wp_unslash( $_POST[ Post_Order::get_setting_name() ] ) );
-		}
-
-		return Post_Order::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$first_select_orderby_name  = Post_Order::get_setting_name() . '[' . Post_Order::FIRST_ORDERBY_SELECT_NAME . ']';
 		$second_select_orderby_name = Post_Order::get_setting_name() . '[' . Post_Order::SECOND_ORDERBY_SELECT_NAME . ']';

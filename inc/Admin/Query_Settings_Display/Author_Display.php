@@ -210,15 +210,6 @@ class Author_Display extends Query_Setting_Display {
 		<?php
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Author::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Author::sanitize_setting( wp_unslash( $_POST[ Author::get_setting_name() ] ) );
-		}
-
-		return Author::get_default_setting();
-	}
-
 	// todo.
 	protected function get_bem_base_class() {
 		return 'twrp-author-settings';

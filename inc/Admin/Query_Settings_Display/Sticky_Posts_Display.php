@@ -24,15 +24,6 @@ class Sticky_Posts_Display extends Query_Setting_Display {
 		return _x( 'Sticky posts inclusion', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Sticky_Posts::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Sticky_Posts::sanitize_setting( wp_unslash( $_POST[ Sticky_Posts::get_setting_name() ] ) );
-		}
-
-		return Sticky_Posts::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$name            = Sticky_Posts::get_setting_name() . '[' . Sticky_Posts::INCLUSION__SETTING_NAME . ']';
 		$selected_option = $current_setting[ Sticky_Posts::INCLUSION__SETTING_NAME ];

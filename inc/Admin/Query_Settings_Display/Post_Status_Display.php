@@ -24,15 +24,6 @@ class Post_Status_Display extends Query_Setting_Display {
 		return _x( 'Filter by post statuses', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Post_Status::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Post_Status::sanitize_setting( wp_unslash( $_POST[ Post_Status::get_setting_name() ] ) );
-		}
-
-		return Post_Status::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$info_label = _x( 'Note: ', 'backend', 'twrp' );
 		$info_text  = _x( 'Default value is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' );

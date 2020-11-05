@@ -25,15 +25,6 @@ class Post_Settings_Display extends Query_Setting_Display {
 		return _x( 'Include/Exclude posts by ID or parent ID.', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Post_Settings::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Post_Settings::sanitize_setting( wp_unslash( $_POST[ Post_Settings::get_setting_name() ] ) );
-		}
-
-		return Post_Settings::get_default_setting();
-	}
-
 	#region -- Display settings
 
 	public function display_setting( $current_setting ) {

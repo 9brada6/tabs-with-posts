@@ -20,15 +20,6 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 		return new Advanced_Arguments();
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Advanced_Arguments::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Advanced_Arguments::sanitize_setting( wp_unslash( $_POST[ Advanced_Arguments::get_setting_name() ] ) );
-		}
-
-		return Advanced_Arguments::get_default_setting();
-	}
-
 	public function get_title() {
 		return _x( 'Advanced query settings', 'backend', 'twrp' );
 	}

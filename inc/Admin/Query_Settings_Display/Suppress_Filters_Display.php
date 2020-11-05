@@ -24,15 +24,6 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 		return _x( 'Suppress other plugins/theme query filters', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Suppress_Filters::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Suppress_Filters::sanitize_setting( wp_unslash( $_POST[ Suppress_Filters::get_setting_name() ] ) );
-		}
-
-		return Suppress_Filters::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$suppress_the_filters = $current_setting[ Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME ];
 		$name                 = Suppress_Filters::get_setting_name() . '[' . Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME . ']';

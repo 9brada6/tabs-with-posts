@@ -28,15 +28,6 @@ class Query_Name_Display extends Query_Setting_Display {
 		return true;
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Query_Name::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Query_Name::sanitize_setting( wp_unslash( $_POST[ Query_Name::get_setting_name() ] ) );
-		}
-
-		return Query_Name::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$name        = Query_Name::get_setting_name() . '[' . Query_Name::QUERY_NAME__SETTING_NAME . ']';
 		$value       = $current_setting[ Query_Name::QUERY_NAME__SETTING_NAME ];

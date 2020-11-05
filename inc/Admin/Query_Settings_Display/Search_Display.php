@@ -24,15 +24,6 @@ class Search_Display extends Query_Setting_Display {
 		return _x( 'Filter by search keywords', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Search::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Search::sanitize_setting( wp_unslash( $_POST[ Search::get_setting_name() ] ) );
-		}
-
-		return Search::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$search_keywords = $current_setting[ Search::SEARCH_KEYWORDS__SETTING_NAME ];
 

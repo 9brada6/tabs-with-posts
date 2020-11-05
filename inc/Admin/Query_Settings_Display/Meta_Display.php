@@ -24,15 +24,6 @@ class Meta_Display extends Query_Setting_Display {
 		return _x( 'Meta key', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Meta_Setting::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Meta_Setting::sanitize_setting( wp_unslash( $_POST[ Meta_Setting::get_setting_name() ] ) );
-		}
-
-		return Meta_Setting::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$comparators    = Meta_Setting::get_meta_key_comparators();
 		$meta_key_name  = Meta_Setting::get_setting_name() . '[' . Meta_Setting::META_KEY_NAME__SETTING_NAME . ']';

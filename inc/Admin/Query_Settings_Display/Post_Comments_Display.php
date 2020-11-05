@@ -24,15 +24,6 @@ class Post_Comments_Display extends Query_Setting_Display {
 		return _x( 'Filter by comments', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Post_Comments::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Post_Comments::sanitize_setting( wp_unslash( $_POST[ Post_Comments::get_setting_name() ] ) );
-		}
-
-		return Post_Comments::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$hidden_class = '';
 		if ( 'NA' === $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ) {

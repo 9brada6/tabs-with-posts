@@ -26,15 +26,6 @@ class Categories_Display extends Query_Setting_Display {
 		return _x( 'Include/Exclude posts by categories', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Categories::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Categories::sanitize_setting( wp_unslash( $_POST[ Categories::get_setting_name() ] ) );
-		}
-
-		return Categories::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$cat_type_setting = $current_setting[ Categories::CATEGORIES_TYPE__SETTING_KEY ];
 

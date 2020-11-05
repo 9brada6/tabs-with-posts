@@ -24,15 +24,6 @@ class Post_Types_Display extends Query_Setting_Display {
 		return _x( 'Post types to include', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Post_Types::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Post_Types::sanitize_setting( wp_unslash( $_POST[ Post_Types::get_setting_name() ] ) );
-		}
-
-		return Post_Types::get_default_setting();
-	}
-
 	public function display_setting( $current_setting ) {
 		$selected_post_types = $current_setting[ Post_Types::SELECTED_TYPES__SETTING_NAME ];
 		?>

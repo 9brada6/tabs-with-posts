@@ -24,15 +24,6 @@ class Post_Date_Display extends Query_Setting_Display {
 		return _x( 'Filter by date', 'backend', 'twrp' );
 	}
 
-	public function get_submitted_sanitized_setting() {
-		if ( isset( $_POST[ Post_Date::get_setting_name() ] ) ) { // phpcs:ignore -- Nonce verified
-			// phpcs:ignore -- Nonce verified and the setting is sanitized.
-			return Post_Date::sanitize_setting( wp_unslash( $_POST[ Post_Date::get_setting_name() ] ) );
-		}
-
-		return Post_Date::get_default_setting();
-	}
-
 	#region -- Display Settings
 
 	public function display_setting( $current_setting ) {
