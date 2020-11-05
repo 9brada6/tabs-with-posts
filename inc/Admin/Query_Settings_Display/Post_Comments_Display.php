@@ -40,15 +40,15 @@ class Post_Comments_Display extends Query_Setting_Display {
 		}
 
 		?>
-			<div class="twrp-comments-settings">
-				<div class="twrp-query-settings__paragraph twrp-comments-settings__wrapper">
+			<div class="<?php $this->bem_class(); ?>">
+				<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'wrapper' ); ?>">
 					<span>
 						<?= _x( 'Filter articles by number of comments: ', 'backend', 'twrp' ); ?>
 					</span>
 
 					<select
-						id="twrp-comments-settings__js-comparator"
-						class="twrp-comments-settings__comparator"
+						id="<?php $this->bem_class( 'js-comparator' ); ?>"
+						class="<?php $this->bem_class( 'comparator' ); ?>"
 						name="<?= esc_attr( Post_Comments::get_setting_name() . '[' . Post_Comments::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
 					>
 						<option value="NA" <?php selected( 'NA', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
@@ -69,8 +69,8 @@ class Post_Comments_Display extends Query_Setting_Display {
 					</select>
 
 					<input
-						id="twrp-comments-settings__js-num_comments"
-						class="twrp-comments-settings__num_comments<?= esc_attr( $hidden_class ); ?>"
+						id="<?php $this->bem_class( 'js-num_comments' ); ?>"
+						class="<?php $this->bem_class( 'num_comments' ); ?><?= esc_attr( $hidden_class ); ?>"
 						type="number" min="0" step="1"
 						placeholder="<?= _x( 'Number of comments', 'backend', 'twrp' ); ?>"
 						name="<?= esc_attr( Post_Comments::get_setting_name() . '[' . Post_Comments::COMMENTS_VALUE_NAME . ']' ); ?>"
@@ -79,6 +79,10 @@ class Post_Comments_Display extends Query_Setting_Display {
 				</div>
 			</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-comments-settings';
 	}
 
 }

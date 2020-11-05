@@ -43,11 +43,11 @@ class Query_Name_Display extends Query_Setting_Display {
 		$placeholder = _x( 'Ex: Related Posts', 'backend', 'twrp' );
 
 		?>
-		<div class="twrp-name-setting">
-			<div class="twrp-query-settings__paragraph">
+		<div class="<?php $this->bem_class(); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?>">
 			<input
-				id="twrp-name-setting__name"
-				class="twrp-name-setting__name" type="text"
+				id="<?php $this->bem_class( 'name' ); ?>"
+				class="<?php $this->bem_class( 'name' ); ?>" type="text"
 				name="<?= esc_attr( $name ) ?>"
 				value="<?= esc_attr( $value ) ?>"
 				placeholder="<?= esc_attr( $placeholder ) ?>"
@@ -55,7 +55,7 @@ class Query_Name_Display extends Query_Setting_Display {
 			</div>
 
 
-			<div class="twrp-setting-note twrp-query-settings__paragraph">
+			<div class="twrp-setting-note <?php $this->query_setting_paragraph_class(); ?>">
 				<span class="twrp-setting-note__label">
 					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
 				</span>
@@ -67,4 +67,7 @@ class Query_Name_Display extends Query_Setting_Display {
 		<?php
 	}
 
+	protected function get_bem_base_class() {
+		return 'twrp-name-setting';
+	}
 }

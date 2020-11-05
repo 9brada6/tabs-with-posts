@@ -41,12 +41,12 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 		$selector_value = $current_setting[ Advanced_Arguments::IS_APPLIED__SETTING_NAME ];
 
 		?>
-		<div class="twrp-advanced-args">
+		<div class="<?php $this->bem_class(); ?>">
 
-			<p class="twrp-query-settings__paragraph">
+			<p class="<?php $this->query_setting_paragraph_class(); ?>">
 				<select
-					id="twrp-advanced-args__is-applied-selector"
-					class="twrp-advanced-args__is-applied-selector"
+					id="<?php $this->bem_class( 'is-applied-selector' ); ?>"
+					class="<?php $this->bem_class( 'is-applied-selector' ); ?>"
 					name="<?= esc_attr( $selector_name ); ?>"  rows="10"
 				>
 					<option value="not_apply" <?php selected( $selector_value, 'not_apply' ); ?>>
@@ -60,12 +60,16 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 			</p>
 
 			<textarea
-				id="twrp-advanced-args__codemirror-textarea"
+				id="<?php $this->bem_class( 'textarea' ); ?>"
+				class="<?php $this->bem_class( 'textarea' ); ?>"
 				name="<?= esc_attr( $textarea_name ); ?>"  rows="10"
 			><?= esc_html( $advanced_args ); ?></textarea>
 		</div>
 		<?php
 	}
 
+	protected function get_bem_base_class() {
+		return 'twrp-advanced-args';
+	}
 
 }

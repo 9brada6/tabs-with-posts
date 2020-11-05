@@ -37,8 +37,8 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 		$suppress_the_filters = $current_setting[ Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME ];
 		$name                 = Suppress_Filters::get_setting_name() . '[' . Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME . ']';
 		?>
-		<div class="twrp-filters-setting">
-			<div class="twrp-query-settings__paragraph twrp-setting-note">
+		<div class="<?php $this->bem_class(); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
 				<span class="twrp-setting-note__label">
 					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
 				</span>
@@ -47,8 +47,8 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 				</span>
 			</div>
 
-			<div class="twrp-query-settings__paragraph">
-				<select id="twrp-filters-setting__suppress-filters" name="<?= esc_attr( $name ); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?>">
+				<select id="<?php $this->bem_class( 'suppress-filters' ); ?>" name="<?= esc_attr( $name ); ?>">
 					<option value="true" <?= selected( $suppress_the_filters, 'true' ); ?>>
 						<?= _x( 'Suppress the filters', 'backend', 'twrp' ); ?>
 					</option>
@@ -59,6 +59,10 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 			</div>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-filters-setting';
 	}
 
 }

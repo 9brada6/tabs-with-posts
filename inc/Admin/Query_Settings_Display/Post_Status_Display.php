@@ -43,18 +43,18 @@ class Post_Status_Display extends Query_Setting_Display {
 
 		$additional_hide_class = 'not_applied' === $current_apply_statuses ? ' twrp-hidden' : '';
 		?>
-		<p class="twrp-query-settings__paragraph twrp-setting-note">
+		<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
 			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
 			<span class="twrp-setting-note__text"><?= esc_html( $info_text ); ?></span>
 		</p>
 
-		<p class="twrp-query-settings__paragraph twrp-setting-note">
+		<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
 			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
 			<span class="twrp-setting-note__text"><?= esc_html( $info_text2 ); ?></span>
 		</p>
 
-		<div class="twrp-query-settings__paragraph">
-			<select id="twrp-statuses-settings__js-apply-select" name="<?= esc_attr( $apply_statuses_name ); ?>">
+		<div class="<?php $this->query_setting_paragraph_class(); ?>">
+			<select id="<?php $this->bem_class( 'js-apply-select' ); ?>" name="<?= esc_attr( $apply_statuses_name ); ?>">
 				<option value="not_applied" <?= selected( $current_apply_statuses, 'not_applied' ); ?>>
 					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
 				</option>
@@ -64,28 +64,28 @@ class Post_Status_Display extends Query_Setting_Display {
 			</select>
 		</div>
 
-		<div id="twrp-statuses-settings__js-statuses-wrapper" class="twrp-query-settings__paragraph twrp-statuses-settings__statuses-wrap<?= esc_attr( $additional_hide_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-statuses-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'statuses-wrap' ); ?><?= esc_attr( $additional_hide_class ); ?>">
 			<?php
 			$post_stats = Post_Status::get_post_statuses();
 			foreach ( $post_stats as $status ) :
 				if ( isset( $status->name, $status->label ) ) :
-					$id = 'twrp-statuses-settings__' . $status->name;
+					$id = $this->get_bem_class( $status->name );
 
 					$checked = '';
 					if ( in_array( $status->name, $current_setting[ Post_Status::POST_STATUSES__SETTING_NAME ], true ) ) {
 						$checked = 'checked';
 					}
 					?>
-					<div class="twrp-query-settings__checkbox-line">
+					<div class="<?php $this->query_setting_checkbox_line_class(); ?>">
 						<input
 							id="<?= esc_attr( $id ); ?>"
-							class="twrp-statuses-settings__input"
+							class="<?php $this->bem_class( 'input' ); ?>"
 							name="<?= esc_attr( Post_Status::get_setting_name() . '[' . Post_Status::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
 							type="checkbox"
 							value="<?= esc_attr( $status->name ); ?>"
 							<?= esc_attr( $checked ); ?>
 						/>
-						<label class="twrp-statuses-settings__label" for="<?= esc_attr( $id ); ?>">
+						<label class="<?php $this->bem_class( 'label' ); ?>" for="<?= esc_attr( $id ); ?>">
 							<?= esc_html( $status->label ); ?>
 						</label>
 					</div>
@@ -95,6 +95,10 @@ class Post_Status_Display extends Query_Setting_Display {
 			?>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-statuses-settings';
 	}
 
 }

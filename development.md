@@ -24,6 +24,9 @@
 - Finish Advanced Arguments.
 - Call init on every setting classes that have something in that function.
 
+- Move to note all notes in query settings, including the warning ones, and those with info.
+- Remove all get_submitted_sanitized_setting classes.
+
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 - Meta Settings verify if add_query_args is good, hasn't been verified before.

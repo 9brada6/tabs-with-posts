@@ -51,16 +51,16 @@ class Search_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div class="twrp-search-setting">
-			<p class="twrp-query-settings__paragraph twrp-setting-note twrp-search-setting__paragraph">
+		<div class="<?php $this->bem_class(); ?>">
+			<p class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'paragraph' ); ?> twrp-setting-note">
 				<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
 				<span class="twrp-setting-note__text"><?= esc_html( $info_text ); ?> <?= esc_html( $info_text2 ); ?></span>
 			</p>
 
-			<div class="twrp-query-settings__paragraph twrp-search-setting__paragraph">
+			<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'paragraph' ); ?>">
 				<input
-					id="twrp-search-setting__js-search-input"
-					class="twrp-search-setting__input"
+					id="<?php $this->bem_class( 'js-search-input' ); ?>"
+					class="<?php $this->bem_class( 'input' ); ?>"
 					type="text"
 					name="<?= esc_attr( Search::get_setting_name() . '[' . Search::SEARCH_KEYWORDS__SETTING_NAME . ']' ); ?>"
 					value="<?= esc_attr( $search_keywords ) ?>"
@@ -68,7 +68,7 @@ class Search_Display extends Query_Setting_Display {
 				/>
 			</div>
 
-			<p id="twrp-search-setting__js-words-warning" class="twrp-query-settings__paragraph twrp-setting-warning twrp-search-setting__paragraph <?= esc_attr( $warning_hidden_class ); ?>">
+			<p id="<?php $this->bem_class( 'js-words-warning' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'paragraph' ); ?> twrp-setting-warning<?= esc_attr( $warning_hidden_class ); ?>">
 				<span class="twrp-setting-warning__label">
 					<?= esc_html( $warning_label ); ?>
 				</span>
@@ -78,6 +78,10 @@ class Search_Display extends Query_Setting_Display {
 			</p>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-search-setting';
 	}
 
 }

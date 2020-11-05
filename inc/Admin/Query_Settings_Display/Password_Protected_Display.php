@@ -42,9 +42,9 @@ class Password_Protected_Display extends Query_Setting_Display {
 		$no_password_text  = _x( 'Only posts without password', 'backend', 'twrp' );
 
 		?>
-		<div class="twrp-password-settings">
-			<div class="twrp-query-settings__paragraph">
-				<select name="<?= esc_attr( $select_name ); ?>">
+		<div class="<?php $this->bem_class(); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?>">
+				<select name="<?= esc_attr( $select_name ); ?>" class="<?php $this->bem_class( 'selector' ); ?>">
 					<option value="not_applied" <?php selected( 'not_applied', $current_setting ); ?>>
 						<?= esc_html( $not_applied_text ); ?>
 					</option>
@@ -60,5 +60,7 @@ class Password_Protected_Display extends Query_Setting_Display {
 		<?php
 	}
 
-
+	protected function get_bem_base_class() {
+		return 'twrp-password-settings';
+	}
 }

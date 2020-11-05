@@ -54,10 +54,10 @@ class Author_Display extends Query_Setting_Display {
 	protected function display_authors_select_type( $current_setting ) {
 		$selected_option = $current_setting[ Author::AUTHORS_TYPE__SETTING_NAME ];
 		?>
-		<div class="twrp-query-settings__paragraph">
+		<div class="<?php $this->query_setting_paragraph_class(); ?>">
 			<select
-				id="twrp-author-settings__select_type"
-				class="twrp-author-settings__select_type"
+				id="<?php $this->bem_class( 'select_type' ); ?>"
+				class="<?php $this->bem_class( 'select_type' ); ?>"
 				name="<?= esc_attr( Author::get_setting_name() . '[' . Author::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
 			>
 				<option value="<?= esc_attr( Author::AUTHORS_TYPE__DISABLED ) ?>" <?php selected( Author::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
@@ -115,11 +115,11 @@ class Author_Display extends Query_Setting_Display {
 
 		?>
 		<div
-			id="twrp-author-settings__js-authors-list"
-			class="twrp-display-list twrp-query-settings__paragraph twrp-author-settings__display-list<?= esc_attr( $additional_list_class ); ?>"
+			id="<?php $this->bem_class( 'js-authors-list' ); ?>"
+			class="twrp-display-list <?php $this->bem_class( 'display-list' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_list_class ); ?>"
 			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
-			<div id="twrp-author-settings__js-no-authors-selected" class="twrp-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
+			<div id="<?php $this->bem_class( 'js-no-authors-selected' ); ?>" class="twrp-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
 			<?php foreach ( $authors as $author ) : ?>
@@ -129,12 +129,12 @@ class Author_Display extends Query_Setting_Display {
 				// The following HTML can also be generated in JS, so it will
 				// be need to be changed there as well.
 				?>
-				<div class="twrp-display-list__item twrp-author-settings__author-item" data-author-id="<?= esc_attr( (string) $author->ID ); ?>">
-					<div class="twrp-author-settings__author-item-name">
+				<div class="<?php $this->bem_class( 'author-item' ); ?> twrp-display-list__item" data-author-id="<?= esc_attr( (string) $author->ID ); ?>">
+					<div class="<?php $this->bem_class( 'author-item-name' ); ?>">
 						<?= esc_html( $author_display_name ); ?>
 					</div>
 					<button
-						class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn"
+						class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'js-author-remove-btn' ); ?>"
 						type="button"
 						aria-label="<?= esc_attr( sprintf( $remove_aria_label, $author_display_name ) ); ?>"
 					>
@@ -161,22 +161,22 @@ class Author_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="twrp-author-settings__author-search-wrap" class="twrp-author-settings__author-search-wrap twrp-query-settings__paragraph<?= esc_attr( $additional_class ); ?>">
+		<div id="<?php $this->bem_class( 'author-search-wrap' ); ?>" class="<?php $this->bem_class( 'author-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_class ); ?>">
 			<input
-				id="twrp-author-settings__js-author-search" type="text"
-				class="twrp-author-settings__author-search"
+				id="<?php $this->bem_class( 'js-author-search' ); ?>" type="text"
+				class="<?php $this->bem_class( 'author-search' ); ?>"
 				placeholder="<?= _x( 'Search for Author', 'backend', 'twrp' ); ?>"
 			/>
 
 			<button
-				id="twrp-author-settings__js-author-add-btn" type="button"
-				class="twrp-author-settings__js-author-add-btn button button-primary"
+				id="<?php $this->bem_class( 'js-author-add-btn' ); ?>" type="button"
+				class="<?php $this->bem_class( 'js-author-add-btn' ); ?> button button-primary"
 			>
 				<?= _x( 'Add Author', 'backend', 'twrp' ); ?>
 			</button>
 
 			<input
-				id="twrp-author-settings__js-author-ids" type="hidden"
+				id="<?php $this->bem_class( 'js-author-ids' ); ?>" type="hidden"
 				name="<?= esc_attr( Author::get_setting_name() . '[' . Author::AUTHORS_IDS__SETTING_NAME . ']' ) ?>"
 				value="<?= esc_attr( $current_setting[ Author::AUTHORS_IDS__SETTING_NAME ] ) ?>"
 			/>
@@ -197,7 +197,7 @@ class Author_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="twrp-author-settings__js-same-author-notice" class="twrp-setting-note twrp-query-settings__paragraph twrp-author-settings__same-author-note<?= esc_attr( $additional_note_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-same-author-notice' ); ?>" class="twrp-setting-note <?php $this->bem_class( 'same-author-note' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_note_class ); ?>">
 			<span class="twrp-setting-note__label"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
 			<span class="twrp-setting-note__text">
 				<?= _x(
@@ -217,6 +217,11 @@ class Author_Display extends Query_Setting_Display {
 		}
 
 		return Author::get_default_setting();
+	}
+
+	// todo.
+	protected function get_bem_base_class() {
+		return 'twrp-author-settings';
 	}
 
 }

@@ -70,34 +70,34 @@ class Post_Order_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div class="twrp-order-setting">
-			<p id="twrp-order-setting__js-first-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph">
-				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $first_select_orderby_name ); ?>>
+		<div class="<?php $this->bem_class(); ?>">
+			<p id="<?php $this->bem_class( 'js-first-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
+				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $first_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
 					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_orderby_single_select_options() ); ?>
 				</select>
 
-				<select class="twrp-order-setting__js-order-type<?= esc_html( $additional_first_order_type_class ); ?>" name=<?= esc_attr( $first_select_order_type_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_first_order_type_class ); ?>" name=<?= esc_attr( $first_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $first_order_type_setting ); ?>
 				</select>
 			</p>
 
-			<p id="twrp-order-setting__js-second-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph<?= esc_html( $additional_second_order_class ); ?>">
-				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $second_select_orderby_name ); ?>>
+			<p id="<?php $this->bem_class( 'js-second-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_html( $additional_second_order_class ); ?>">
+				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $second_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $second_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
 				</select>
 
-				<select class="twrp-order-setting__js-order-type<?= esc_html( $additional_second_order_type_class ); ?>" name=<?= esc_attr( $second_select_order_type_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_second_order_type_class ); ?>" name=<?= esc_attr( $second_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $second_order_type_setting ); ?>
 				</select>
 			</p>
 
-			<p id="twrp-order-setting__js-third-order-group" class="twrp-order-setting__order-group twrp-query-settings__paragraph<?= esc_html( $additional_third_order_class ); ?>">
-				<select class="twrp-order-setting__js-orderby" name=<?= esc_attr( $third_select_orderby_name ); ?>>
+			<p id="<?php $this->bem_class( 'js-third-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_html( $additional_third_order_class ); ?>">
+				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $third_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $third_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
 				</select>
 
-				<select class="twrp-order-setting__js-order-type<?= esc_html( $additional_third_order_type_class ); ?>" name=<?= esc_attr( $third_select_order_type_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_third_order_type_class ); ?>" name=<?= esc_attr( $third_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $third_order_type_setting ); ?>
 				</select>
 			</p>
@@ -145,6 +145,10 @@ class Post_Order_Display extends Query_Setting_Display {
 				</option>
 			<?php
 		}
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-order-setting';
 	}
 
 }

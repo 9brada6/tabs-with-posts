@@ -6,11 +6,14 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
  * Used to display a control for a query setting.
  */
 abstract class Query_Setting_Display {
+
+	use BEM_Class_Naming_Trait;
 
 	/**
 	 * Initialize the class. The constructor must not take any parameter.
@@ -83,5 +86,15 @@ abstract class Query_Setting_Display {
 	 * @return void
 	 */
 	abstract public function display_setting( $current_setting );
+
+	// Todo: remove all these functions.
+
+	protected function query_setting_paragraph_class() {
+		echo esc_attr( 'twrp-query-settings__paragraph' );
+	}
+
+	protected function query_setting_checkbox_line_class() {
+		echo esc_attr( 'twrp-query-settings__checkbox-line' );
+	}
 
 }

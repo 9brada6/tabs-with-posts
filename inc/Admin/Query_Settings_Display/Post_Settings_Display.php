@@ -38,7 +38,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 	public function display_setting( $current_setting ) {
 		?>
-		<div class="twrp-posts-settings">
+		<div class="<?php $this->bem_class(); ?>">
 			<?php $this->display_select_posts_inclusion_type( $current_setting ); ?>
 			<?php $this->display_selected_posts_list( $current_setting ); ?>
 			<?php $this->display_search_and_add_posts_to_list( $current_setting ); ?>
@@ -61,8 +61,8 @@ class Post_Settings_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div class="twrp-query-settings__paragraph">
-			<select id="twrp-posts-settings__js-filter-type" name="<?= esc_attr( $select_name ); ?>">
+		<div class="<?php $this->query_setting_paragraph_class(); ?>">
+			<select id="<?php $this->bem_class( 'js-filter-type' ); ?>" name="<?= esc_attr( $select_name ); ?>">
 				<option value="NA" <?php selected( 'NA', $option_selected ); ?>>
 					<?= _x( 'Not Applied', 'backend', 'twrp' ); ?>
 				</option>
@@ -122,12 +122,12 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 		?>
 		<div
-			id="twrp-posts-settings__js-posts-list"
-			class="twrp-display-list twrp-query-settings__paragraph twrp-posts-settings__posts-list<?= esc_attr( $list_is_hidden_class ); ?>"
+			id="<?php $this->bem_class( 'js-posts-list' ); ?>"
+			class="twrp-display-list <?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'posts-list' ); ?><?= esc_attr( $list_is_hidden_class ); ?>"
 			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
 			<div
-				id="twrp-posts-settings__js-no-posts-selected"
+				id="<?php $this->bem_class( 'js-no-posts-selected' ); ?>"
 				class="twrp-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
 			>
 				<?= _x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'twrp' ); ?>
@@ -143,9 +143,9 @@ class Post_Settings_Display extends Query_Setting_Display {
 				$remove_btn_label = sprintf( $remove_aria_label, $title );
 				?>
 
-				<div class="twrp-display-list__item twrp-posts-settings__post-item" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
-					<div class="twrp-posts-settings__post-item-title"><?= $title // phpcs:ignore ?></div>
-					<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
+				<div class="twrp-display-list__item <?php $this->bem_class( 'post-item' ); ?>" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
+					<div class="<?php $this->bem_class( 'post-item-title' ); ?>"><?= $title // phpcs:ignore ?></div>
+					<button class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'js-post-remove-btn' ); ?>" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
 						<span class="dashicons dashicons-no"></span>
 					</button>
 				</div>
@@ -167,16 +167,16 @@ class Post_Settings_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="twrp-posts-settings__js-posts-search-wrap" class="twrp-posts-settings__posts-search-wrap twrp-query-settings__paragraph<?= esc_attr( $list_is_hidden_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-posts-search-wrap' ); ?>" class="<?php $this->bem_class( 'posts-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $list_is_hidden_class ); ?>">
 			<input
-				id="twrp-posts-settings__js-posts-search" type="text"
-				class="twrp-posts-settings__posts-search"
+				id="<?php $this->bem_class( 'js-posts-search' ); ?>" type="text"
+				class="<?php $this->bem_class( 'posts-search' ); ?>"
 				placeholder="<?= _x( 'Search for a post', 'backend', 'twrp' ); ?>"
 			/>
 
 			<button
-				id="twrp-posts-settings__js-posts-add-btn" type="button"
-				class="twrp-posts-settings__js-posts-add-btn button button-primary"
+				id="<?php $this->bem_class( 'js-posts-add-btn' ); ?>" type="button"
+				class="<?php $this->bem_class( 'js-posts-add-btn' ); ?> button button-primary"
 			>
 				<?= _x( 'Add Post', 'backend', 'twrp' ); ?>
 			</button>
@@ -200,7 +200,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<input id="twrp-posts-settings__js-posts-ids"
+		<input id="<?php $this->bem_class( 'js-posts-ids' ); ?>"
 			name="<?= esc_attr( $input_name ); ?>" type="hidden"
 			value="<?= esc_attr( $value ); ?>"
 		>
@@ -209,6 +209,8 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 	#endregion -- Display settings
 
-
+	protected function get_bem_base_class() {
+		return 'twrp-posts-settings';
+	}
 
 }

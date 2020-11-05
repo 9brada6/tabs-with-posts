@@ -45,9 +45,9 @@ class Meta_Display extends Query_Setting_Display {
 		$meta_value_value = $current_setting[ Meta_Setting::META_KEY_VALUE__SETTING_NAME ];
 
 		?>
-		<div class="twrp-meta-setting">
-			<div class="twrp-query-settings__paragraph">
-				<input id="twrp-meta-setting__meta-key" type="text" name="<?= esc_attr( $meta_key_name ); ?>" value="<?= esc_attr( $meta_key_value ); ?>"/>
+		<div class="<?php $this->bem_class(); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?>">
+				<input id="<?php $this->bem_class( 'meta-key' ); ?>" type="text" name="<?= esc_attr( $meta_key_name ); ?>" value="<?= esc_attr( $meta_key_value ); ?>"/>
 
 				<select name="<?= esc_attr( $meta_compare_name ); ?>">
 					<?php foreach ( $comparators as $value => $display ) : ?>
@@ -60,10 +60,14 @@ class Meta_Display extends Query_Setting_Display {
 					<?php endforeach; ?>
 				</select>
 
-				<input id="twrp-meta-setting__meta-key-value" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
+				<input id="<?php $this->bem_class( 'meta-key-value' ); ?>" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
 			</div>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-meta-setting';
 	}
 
 }

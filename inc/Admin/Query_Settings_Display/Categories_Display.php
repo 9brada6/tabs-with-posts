@@ -44,17 +44,17 @@ class Categories_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div class="twrp-cat-settings twrp-collapsible-content">
+		<div class="<?php $this->bem_class(); ?> twrp-collapsible-content">
 			<?php
 			$this->display_category_select_type( $current_setting );
 
 			?>
-			<div id="twrp-cat-settings__js-settings-wrapper" class="twrp-cat-settings__settings-wrapper<?= esc_attr( $additional_class ); ?>">
+			<div id="<?php $this->bem_class( 'js-settings-wrapper' ); ?>" class="<?php $this->bem_class( 'settings-wrapper' ); ?><?= esc_attr( $additional_class ); ?>">
 				<?php
 				$this->display_category_include_children( $current_setting );
 				$this->display_categories_relation_setting( $current_setting );
 
-				echo '<hr class="twrp-admin-settings-separator twrp-cat-settings__separator" />';
+				echo '<hr class="twrp-admin-settings-separator ' . esc_attr( $this->get_bem_class( 'separator' ) ) . '" />';
 
 				$this->display_categories_list( $current_setting );
 				$this->display_category_dropdown_selector( $current_setting );
@@ -77,10 +77,10 @@ class Categories_Display extends Query_Setting_Display {
 	protected function display_category_select_type( $current_setting ) {
 		$cat_type_setting = $current_setting[ Categories::CATEGORIES_TYPE__SETTING_KEY ];
 		?>
-		<div class="twrp-query-settings__paragraph twrp-cat-settings__select-type-wrap">
+		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'select-type-wrap' ); ?>">
 			<select
-				id="twrp-cat-settings__type"
-				class="twrp-cat-settings__type"
+				id="<?php $this->bem_class( 'type' ); ?>"
+				class="<?php $this->bem_class( 'type' ); ?>"
 				name="<?= esc_attr( Categories::get_setting_name() . '[' . Categories::CATEGORIES_TYPE__SETTING_KEY . ']' ) ?>"
 			>
 				<option value="NA" <?php selected( $cat_type_setting, 'NA' ); ?>>
@@ -108,15 +108,15 @@ class Categories_Display extends Query_Setting_Display {
 	 */
 	protected function display_category_include_children( $current_setting ) {
 		?>
-		<div class="twrp-query-settings__paragraph twrp-cat-settings__include-children-wrap">
+		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'include-children-wrap' ); ?>">
 			<input
-				id="twrp-cat-settings__include-children"
+				id="<?php $this->bem_class( 'include-children' ); ?>"
 				type="checkbox"
 				value="1"
 				name="<?= esc_attr( Categories::get_setting_name() . '[' . Categories::INCLUDE_CHILDREN__SETTING_KEY . ']' ) ?>"
 				<?php checked( '1', $current_setting[ Categories::INCLUDE_CHILDREN__SETTING_KEY ] ); ?>
 			/>
-			<label for="twrp-cat-settings__include-children" class="twrp-cat-settings__include-children-label">
+			<label for="<?php $this->bem_class( 'include-children' ); ?>" class="<?php $this->bem_class( 'include-children-label' ); ?>">
 				<?= _x( 'For each category selected include also all children categories.', 'backend', 'twrp' ); ?>
 			</label>
 		</div>
@@ -140,16 +140,16 @@ class Categories_Display extends Query_Setting_Display {
 
 		?>
 		<div
-			id="twrp-cat-settings__js-select-relation-wrap"
-			class="twrp-query-settings__paragraph twrp-cat-settings__select-relation-wrap<?= esc_attr( $additional_class ); ?>"
+			id="<?php $this->bem_class( 'js-select-relation-wrap' ); ?>"
+			class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'select-relation-wrap' ); ?><?= esc_attr( $additional_class ); ?>"
 		>
-			<p class="twrp-cat-settings__select-relation-text">
+			<p class="<?php $this->bem_class( 'select-relation-text' ); ?>">
 				<?= _x( 'An article should have:', 'backend', 'twrp' ); ?>
 			</p>
 
 			<select
-				id="twrp-cat-settings__relation"
-				class="twrp-cat-settings__relation"
+				id="<?php $this->bem_class( 'relation' ); ?>"
+				class="<?php $this->bem_class( 'relation' ); ?>"
 				name="<?= esc_attr( $select_name ); ?>"
 			>
 				<option value="OR" <?php selected( $cat_relation, 'OR' ); ?>>
@@ -191,10 +191,10 @@ class Categories_Display extends Query_Setting_Display {
 		<h4 class="twrp-collapsible-content__section-title">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
 		</h4>
-		<div class="twrp-cat-settings__cat-list-section twrp-query-settings__paragraph">
+		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'cat-list-section' ); ?>">
 			<div
-				id="twrp-cat-settings__cat-list-wrap"
-				class="twrp-display-list twrp-cat-settings__cat-list-wrap"
+				id="<?php $this->bem_class( 'cat-list-wrap' ); ?>"
+				class="twrp-display-list <?php $this->bem_class( 'cat-list-wrap' ); ?>"
 				data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 			>
 				<div class="twrp-display-list__empty-msg<?= esc_attr( $additional_empty_msg_class ); ?>">
@@ -212,12 +212,12 @@ class Categories_Display extends Query_Setting_Display {
 
 					$remove_button_aria_label = sprintf( $remove_aria_label, $category->name );
 					?>
-					<div class="twrp-display-list__item twrp-cat-settings__cat-list-item" data-cat-id="<?= esc_attr( (string) $category->term_id ); ?>">
-						<div class="twrp-display-list__item-name twrp-cat-settings__cat-item-name">
+					<div class="twrp-display-list__item <?php $this->bem_class( 'cat-list-item' ); ?>" data-cat-id="<?= esc_attr( (string) $category->term_id ); ?>">
+						<div class="twrp-display-list__item-name <?php $this->bem_class( 'cat-item-name' ); ?>">
 							<?= esc_html( $category->name ); ?>
 						</div>
 						<button
-							class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn"
+							class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'cat-remove-btn' ); ?>"
 							type="button"
 							aria-label=<?= esc_html( $remove_button_aria_label ); ?>
 						>
@@ -242,8 +242,8 @@ class Categories_Display extends Query_Setting_Display {
 			array(
 				'echo'         => false,
 				'name'         => 'cat_dropdown',
-				'id'           => 'twrp-cat-settings__js-cat-dropdown',
-				'class'        => 'twrp-cat-settings__cat-dropdown',
+				'id'           => $this->get_bem_class( 'js-cat-dropdown' ),
+				'class'        => $this->get_bem_class( 'cat-dropdown' ),
 				'show_count'   => '1',
 				'hide_empty'   => Categories::CATEGORIES_HIDE_EMPTY,
 				'hierarchical' => true,
@@ -251,9 +251,9 @@ class Categories_Display extends Query_Setting_Display {
 		);
 
 		?>
-		<div class="twrp-cat-settings__add-cat-wrapper twrp-query-settings__paragraph">
+		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'add-cat-wrapper' ); ?>">
 			<?= $categories_dropdown; // phpcs:ignore -- No need to escape. ?>
-			<button id="twrp-cat-settings__add-cat-btn" class="button button-primary" type="button">
+			<button id="<?php $this->bem_class( 'add-cat-btn' ); ?>" class="button button-primary" type="button">
 				<?= _x( 'Add Category To List', 'backend', 'twrp' ); ?>
 			</button>
 		</div>
@@ -269,8 +269,8 @@ class Categories_Display extends Query_Setting_Display {
 	protected function display_hidden_input_with_cat_ids( $current_setting ) {
 		?>
 			<input
-				id="twrp-cat-settings__cat-ids"
-				class="twrp-cat-settings__cat-ids"
+				id="<?php $this->bem_class( 'cat-ids' ); ?>"
+				class="<?php $this->bem_class( 'cat-ids' ); ?>"
 				type="hidden"
 				name="<?= esc_attr( Categories::get_setting_name() . '[' . Categories::CATEGORIES_IDS__SETTING_KEY . ']' ) ?>"
 				value="<?= esc_attr( $current_setting[ Categories::CATEGORIES_IDS__SETTING_KEY ] ) ?>"
@@ -280,6 +280,8 @@ class Categories_Display extends Query_Setting_Display {
 
 	#endregion -- Display settings
 
-
+	protected function get_bem_base_class() {
+		return 'twrp-cat-settings';
+	}
 
 }

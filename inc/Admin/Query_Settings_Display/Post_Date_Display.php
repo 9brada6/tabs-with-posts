@@ -37,7 +37,7 @@ class Post_Date_Display extends Query_Setting_Display {
 
 	public function display_setting( $current_setting ) {
 		?>
-		<div class="twrp-date-settings">
+		<div class="<?php $this->bem_class(); ?>">
 			<?php $this->display_date_filter_type( $current_setting[ Post_Date::DATE_TYPE_NAME ] ); ?>
 			<?php $this->display_last_period_of_time_settings( $current_setting ); ?>
 			<?php $this->display_between_fixed_point_in_time_settings( $current_setting ); ?>
@@ -54,8 +54,8 @@ class Post_Date_Display extends Query_Setting_Display {
 	 */
 	protected function display_date_filter_type( $date_type ) {
 		?>
-		<div class="twrp-date-settings__type-selector-wrapper twrp-query-settings__paragraph">
-			<select id="twrp-date-settings__js-date-type" name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ) ?>">
+		<div class="<?php $this->bem_class( 'type-selector-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
+			<select id="<?php $this->bem_class( 'js-date-type' ); ?>" name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ) ?>">
 				<option value="NA" <?php selected( 'NA', $date_type ); ?>>
 					<?= _x( 'Not Applied', 'backend', 'twrp' ) ?>
 				</option>
@@ -105,8 +105,8 @@ class Post_Date_Display extends Query_Setting_Display {
 		$note_text2  = _x( 'When putting a custom number of days, do not forget to also check the last option.', 'backend', 'twrp' );
 
 		?>
-		<div id="twrp-date-settings__js-last-period-wrapper" class="twrp-date-settings__last-period-wrapper twrp-query-settings__paragraph twrp-query-settings__paragraph<?= esc_attr( $additional_settings_hidden_class ); ?>">
-			<p class="twrp-query-settings__paragraph twrp-setting-note">
+		<div id="<?php $this->bem_class( 'js-last-period-wrapper' ); ?>" class="<?php $this->bem_class( 'last-period-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_settings_hidden_class ); ?>">
+			<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
 				<span class="twrp-setting-note__label">
 					<?= esc_html( $note_label ); ?>
 				</span>
@@ -115,7 +115,7 @@ class Post_Date_Display extends Query_Setting_Display {
 				</span>
 			</p>
 
-			<p class="twrp-query-settings__paragraph twrp-setting-note">
+			<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
 				<span class="twrp-setting-note__label">
 				<?= esc_html( $note_label2 ); ?>
 				</span>
@@ -124,47 +124,47 @@ class Post_Date_Display extends Query_Setting_Display {
 				</span>
 			</p>
 
-			<p class="twrp-query-settings__checkbox-line">
-				<input id="twrp-date-settings__last-week" type="radio" value="LW"
+			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
+				<input id="<?php $this->bem_class( 'last-week' ); ?>" type="radio" value="LW"
 					name="<?= esc_attr( $name ) ?>"
 					<?php checked( 'LW', $last_period ); ?>
 				/>
-				<label for="twrp-date-settings__last-week">
+				<label for="<?php $this->bem_class( 'last-week' ); ?>">
 					<?= _x( 'This and last week', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 
-			<p class="twrp-query-settings__checkbox-line">
-				<input id="twrp-date-settings__last-month" type="radio" value="LM"
+			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
+				<input id="<?php $this->bem_class( 'last-month' ); ?>" type="radio" value="LM"
 					name="<?= esc_attr( $name ) ?>"
 					<?php checked( 'LM', $last_period ); ?>
 				/>
-				<label for="twrp-date-settings__last-month">
+				<label for="<?php $this->bem_class( 'last-month' ); ?>">
 					<?= _x( 'This and last month', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 
-			<p class="twrp-query-settings__checkbox-line">
-				<input id="twrp-date-settings__this-year" type="radio" value="TY"
+			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
+				<input id="<?php $this->bem_class( 'this-year' ); ?>" type="radio" value="TY"
 					name="<?= esc_attr( $name ) ?>"
 					<?php checked( 'TY', $last_period ); ?>
 				/>
-				<label for="twrp-date-settings__this-year">
+				<label for="<?php $this->bem_class( 'this-year' ); ?>">
 					<?= _x( 'This year', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 
-			<p class="twrp-query-settings__checkbox-line twrp-date-settings__custom-last-days-wrapper">
-				<input id="twrp-date-settings__js-custom" type="radio" value="C"
+			<p class="<?php $this->query_setting_checkbox_line_class(); ?> <?php $this->bem_class( 'custom-last-days-wrapper' ); ?>">
+				<input id="<?php $this->bem_class( 'js-custom' ); ?>" type="radio" value="C"
 					name="<?= esc_attr( $name ) ?>"
 					<?php checked( 'C', $last_period ); ?>
 				/>
-				<label for="twrp-date-settings__js-custom">
+				<label for="<?php $this->bem_class( 'js-custom' ); ?>">
 					<?= _x( 'Last n days:', 'backend', 'twrp' ); ?>
 				</label>
 
 				<input
-					class="twrp-date-settings__last-days-input"
+					class="<?php $this->bem_class( 'last-days-input' ); ?>"
 					min="0" step="1" type="number"
 					name="<?= esc_attr( $last_days_name ); ?>"
 					placeholder="<?= esc_attr_x( 'Last number of days...', 'backend', 'twrp' ); ?>"
@@ -202,8 +202,8 @@ class Post_Date_Display extends Query_Setting_Display {
 		$info_text = _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after 2020, set only "after": 01/01/2020.', 'backend', 'twrp' );
 
 		?>
-		<div id="twrp-date-settings__js-between-wrapper" class="twrp-query-settings__paragraph twrp-date-settings__between-wrapper <?= esc_attr( $is_hidden_class ); ?>">
-			<p class="twrp-query-settings__paragraph twrp-setting-note">
+		<div id="<?php $this->bem_class( 'js-between-wrapper' ); ?>" class="<?php $this->bem_class( 'js-between-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $is_hidden_class ); ?>">
+			<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
 				<span class="twrp-setting-note__label">
 					<?= esc_html( $info_tag ); ?>
 				</span>
@@ -211,25 +211,25 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?= esc_html( $info_text ); ?>
 				</span>
 			</p>
-			<span class="twrp-date-settings__after-wrapper">
-				<label for="twrp-date-settings__after" class="twrp-date-settings__after-label">
+			<span class="<?php $this->bem_class( 'after-wrapper' ); ?>">
+				<label for="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after-label' ); ?>">
 					<?= _x( 'After:', 'backend', 'twrp' ); ?>
 				</label>
 				<br />
-				<input id="twrp-date-settings__after" class="twrp-date-settings__after" type="date" autocomplete="off"
+				<input id="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after' ); ?>" type="date" autocomplete="off"
 					name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::AFTER_DATE_NAME . ']' ); ?>"
 					value="<?= esc_attr( $after_value ); ?>"
 				/>
 			</span>
 
-			<span class="twrp-date-settings__after-before-separator"> &nbsp;&ndash;&nbsp; </span>
+			<span class="<?php $this->bem_class( 'after-before-separator' ); ?>"> &nbsp;&ndash;&nbsp; </span>
 
-			<span class="twrp-date-settings__before-wrapper">
-				<label for="twrp-date-settings__before" class="twrp-date-settings__before-label">
+			<span class="<?php $this->bem_class( 'before-wrapper' ); ?>">
+				<label for="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before-label' ); ?>">
 					<?= _x( 'Before:', 'backend', 'twrp' ); ?>
 				</label>
 				<br />
-				<input id="twrp-date-settings__before" class="twrp-date-settings__before" type="date" autocomplete="off"
+				<input id="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before' ); ?>" type="date" autocomplete="off"
 					name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::BEFORE_DATE_NAME . ']' ); ?>"
 					value="<?= esc_attr( $before_value ); ?>"
 				/>
@@ -240,5 +240,8 @@ class Post_Date_Display extends Query_Setting_Display {
 
 	#endregion -- Display Settings
 
+	protected function get_bem_base_class() {
+		return 'twrp-date-settings';
+	}
 
 }

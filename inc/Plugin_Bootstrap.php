@@ -17,6 +17,9 @@ class Plugin_Bootstrap {
 		'Create_Tabs',
 
 		// Utils.
+		// These traits should be included first.
+		'Utils/Helper_Trait/BEM_Class_Naming_Trait',
+		'Utils/Helper_Trait/After_Setup_Theme_Init_Trait',
 		'Utils/Simple_Utils',
 		'Utils/Class_Retriever_Utils',
 		'Utils/Date_Utils',

@@ -37,9 +37,9 @@ class Sticky_Posts_Display extends Query_Setting_Display {
 		$name            = Sticky_Posts::get_setting_name() . '[' . Sticky_Posts::INCLUSION__SETTING_NAME . ']';
 		$selected_option = $current_setting[ Sticky_Posts::INCLUSION__SETTING_NAME ];
 		?>
-		<div class="twrp-sticky-setting">
-			<p class="twrp-query-settings__paragraph">
-				<select class="twrp-sticky-setting__selector" name="<?= esc_attr( $name ); ?>">
+		<div class="<?php $this->bem_class(); ?>">
+			<p class="<?php $this->query_setting_paragraph_class(); ?>">
+				<select class="<?php $this->bem_class( 'selector' ); ?>" name="<?= esc_attr( $name ); ?>">
 					<option value="not_include" <?php selected( $selected_option, 'not_include' ); ?>>
 						<?= _x( 'Do not include sticky posts', 'backend', 'twrp' ); ?>
 					</option>
@@ -51,6 +51,10 @@ class Sticky_Posts_Display extends Query_Setting_Display {
 			</p>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-sticky-setting';
 	}
 
 }

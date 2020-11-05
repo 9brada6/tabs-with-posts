@@ -36,8 +36,8 @@ class Post_Types_Display extends Query_Setting_Display {
 	public function display_setting( $current_setting ) {
 		$selected_post_types = $current_setting[ Post_Types::SELECTED_TYPES__SETTING_NAME ];
 		?>
-		<div class="twrp-types-setting">
-			<div class="twrp-query-settings__paragraph">
+		<div class="<?php $this->bem_class(); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?>">
 				<?php
 				$available_post_types = Post_Types::get_available_types();
 				foreach ( $available_post_types as $post_type ) :
@@ -62,11 +62,11 @@ class Post_Types_Display extends Query_Setting_Display {
 	 */
 	protected function display_post_type_setting_checkbox( $name, $label, $is_checked ) {
 		$checked_attr  = $is_checked ? 'checked="checked"' : '';
-		$checkbox_id   = 'twrp-post-type-checkbox__' . $name;
+		$checkbox_id   = $this->get_bem_class( 'checkbox-' . $name );
 		$checkbox_name = 'post_types[' . Post_Types::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
 
 		?>
-		<div class="twrp-types-setting__checkbox twrp-query-settings__checkbox-line">
+		<div class="<?php $this->bem_class( 'checkbox' ); ?> <?php $this->query_setting_checkbox_line_class(); ?>">
 			<input
 				id="<?= esc_attr( $checkbox_id ); ?>"
 				name="<?= esc_attr( $checkbox_name ); ?>"
@@ -79,6 +79,10 @@ class Post_Types_Display extends Query_Setting_Display {
 			</label>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-types-setting';
 	}
 
 }
