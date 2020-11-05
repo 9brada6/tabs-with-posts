@@ -39,10 +39,16 @@ class Author_Display extends Query_Setting_Display {
 			$same_author_note_showing = true;
 		}
 
-		$this->display_authors_select_type( $current_setting );
-		$this->display_selected_authors_list( $current_setting, $is_showing );
-		$this->display_add_authors_to_list( $current_setting, $is_showing );
-		$this->display_note( $same_author_note_showing );
+		?>
+		<div class="<?php $this->bem_class(); ?>">
+			<?php
+			$this->display_authors_select_type( $current_setting );
+			$this->display_selected_authors_list( $current_setting, $is_showing );
+			$this->display_add_authors_to_list( $current_setting, $is_showing );
+			$this->display_note( $same_author_note_showing );
+			?>
+		</div>
+		<?php
 	}
 
 	/**

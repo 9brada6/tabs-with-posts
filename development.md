@@ -36,7 +36,7 @@
 - Meta-Key: Add meta_key for the post order or separately.
 - Hide meta key value if comparator is exists or not exists.
 - Remove order from orderby that does not depend, like post__in
-- Make transition better in Post_Settings and Author.
+
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
 
 ### Plugins
@@ -65,6 +65,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 - Change all "twrp" css/classes backend prefix with "twrpb"
 - Custom date format, make it disabled(not to hide).
+
+- Find in typescript files if "show" or "hide" jquery function are used by default only hideUp or showUp functions should
+be used.
 
 ### Icons
 

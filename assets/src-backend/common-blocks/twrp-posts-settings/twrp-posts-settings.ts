@@ -22,11 +22,11 @@ function hideOrShowVisualList() {
 	const authorTypeVal = postTypeSelect.val();
 
 	if ( 'NA' === authorTypeVal ) {
-		searchingWrapper.hide( 'blind' );
-		postVisualList.hide( 'blind' );
+		hideUp( searchingWrapper );
+		hideUp( postVisualList );
 	} else {
-		searchingWrapper.show( 'blind' );
-		postVisualList.show( 'blind' );
+		showUp( searchingWrapper );
+		showUp( postVisualList );
 	}
 }
 

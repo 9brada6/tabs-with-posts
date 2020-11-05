@@ -46,9 +46,9 @@ function handleSameAuthorNotice() {
 	const authorTypeVal = authorTypeSelector.val();
 
 	if ( 'SAME' === authorTypeVal ) {
-		sameAuthorNotice.show( 'blind' );
+		showUp( sameAuthorNotice );
 	} else {
-		sameAuthorNotice.hide( 'blind' );
+		hideUp( sameAuthorNotice );
 	}
 }
 
