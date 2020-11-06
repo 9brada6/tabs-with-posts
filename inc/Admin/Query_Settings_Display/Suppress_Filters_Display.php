@@ -48,7 +48,7 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-filters-setting';
+		return 'twrpb-filters-setting';
 	}
 
 }
