@@ -4,19 +4,19 @@ import { showUp, hideUp, showLeft, hideLeft } from '../../framework-blocks/twrp-
 
 // #region -- Defining some global variables.
 
-const categorySelector = $( '#twrp-cat-settings__js-cat-dropdown' );
+const categorySelector = $( '#twrpb-cat-settings__js-cat-dropdown' );
 
-const categoriesInput = $( '#twrp-cat-settings__cat-ids' );
+const categoriesInput = $( '#twrpb-cat-settings__cat-ids' );
 
 const categoryIdAttrName = 'data-cat-id';
 
-const categoriesItemsWrapper = $( '#twrp-cat-settings__cat-list-wrap' );
-const categoriesEmptyMessage = categoriesItemsWrapper.find( '.twrp-display-list__empty-msg' );
+const categoriesItemsWrapper = $( '#twrpb-cat-settings__cat-list-wrap' );
+const categoriesEmptyMessage = categoriesItemsWrapper.find( '.twrpb-display-list__empty-msg' );
 const categoryItem = $(
-	'<div class="twrp-display-list__item twrp-cat-settings__cat-list-item">' +
-		'<div class="twrp-display-list__item-name twrp-cat-settings__cat-item-name">' +
+	'<div class="twrpb-display-list__item twrpb-cat-settings__cat-list-item">' +
+		'<div class="twrpb-display-list__item-name twrpb-cat-settings__cat-item-name">' +
 		'</div>' +
-		'<button class="twrp-display-list__item-remove-btn twrp-cat-settings__cat-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
+		'<button class="twrpb-display-list__item-remove-btn twrpb-cat-settings__cat-remove-btn" type="button"><span class="dashicons dashicons-no"></span></button>' +
 	'</div>'
 );
 
@@ -24,7 +24,7 @@ const categoryItem = $(
 
 // #region -- Add a categories on the lists.
 
-$( document ).on( 'click', '#twrp-cat-settings__add-cat-btn', handleAddCategoryButton );
+$( document ).on( 'click', '#twrpb-cat-settings__add-cat-btn', handleAddCategoryButton );
 
 /**
  * Handle the addition of a new category via the button click.
@@ -65,8 +65,8 @@ function addCatToVisual( categoryId: string|number, name: string ): void {
 		const toAppend = categoryItem.clone();
 		const removeButtonAriaLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizeCategoryName( name ) );
 
-		toAppend.find( '.twrp-cat-settings__cat-item-name' ).text( sanitizeCategoryName( name ) );
-		toAppend.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonAriaLabel );
+		toAppend.find( '.twrpb-cat-settings__cat-item-name' ).text( sanitizeCategoryName( name ) );
+		toAppend.find( '.twrpb-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonAriaLabel );
 		toAppend.attr( categoryIdAttrName, categoryId );
 
 		categoriesItemsWrapper.append( toAppend );
@@ -79,7 +79,7 @@ function addCatToVisual( categoryId: string|number, name: string ): void {
 
 // #region -- Removing categories.
 
-$( document ).on( 'click', '.twrp-cat-settings__cat-remove-btn', handleRemoveCategory );
+$( document ).on( 'click', '.twrpb-cat-settings__cat-remove-btn', handleRemoveCategory );
 
 /**
  * Removes a selected category when a button is clicked.
@@ -153,7 +153,7 @@ function _hideEmptyMessageIfNecessary(): void {
  * Check to see if a category item is displayed in the Visual List of categories.
  */
 function categoryItemIsDisplayed( categoryId: string|number ): boolean {
-	const items = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
+	const items = categoriesItemsWrapper.find( '.twrpb-cat-settings__cat-list-item' );
 
 	let sameIdFound = false;
 
@@ -195,7 +195,7 @@ $( makeItemsSortable );
 
 function makeItemsSortable(): void {
 	categoriesItemsWrapper.sortable( {
-		placeholder: 'twrp-display-list__placeholder',
+		placeholder: 'twrpb-display-list__placeholder',
 		stop: refreshInputtedCategories,
 	} );
 }
@@ -204,13 +204,13 @@ function makeItemsSortable(): void {
 
 // #region -- Show/Hide Select For Category Relation.
 
-const categoryTypeSelect = $( '#twrp-cat-settings__type' );
-const categoryRelationWrapper = $( '#twrp-cat-settings__js-select-relation-wrap' );
-const mainCategorySettings = $( '#twrp-cat-settings__js-settings-wrapper' );
+const categoryTypeSelect = $( '#twrpb-cat-settings__type' );
+const categoryRelationWrapper = $( '#twrpb-cat-settings__js-select-relation-wrap' );
+const mainCategorySettings = $( '#twrpb-cat-settings__js-settings-wrapper' );
 
 // todo: uncomment document.ready.
 // $( hideOrShowCategorySettings );
-$( document ).on( 'change', '#twrp-cat-settings__type', hideOrShowCategorySettings );
+$( document ).on( 'change', '#twrpb-cat-settings__type', hideOrShowCategorySettings );
 
 function hideOrShowCategorySettings(): void {
 	const selectVal = categoryTypeSelect.val();
@@ -242,7 +242,7 @@ function hideOrShowCategorySettings(): void {
  * "%s", which will need to be replaced with an author.
  */
 function getRemoveButtonAriaLabel(): string {
-	const ariaLabel = categoriesItemsWrapper.attr( 'data-twrp-aria-remove-label' );
+	const ariaLabel = categoriesItemsWrapper.attr( 'data-twrpb-aria-remove-label' );
 	if ( ! ariaLabel ) {
 		return '';
 	}
@@ -269,7 +269,7 @@ function sanitizeCategoryName( name: string ): string {
  * Refresh the hidden input categories, with Ids taken from the visual list.
  */
 function refreshInputtedCategories(): void {
-	const categoriesItems = categoriesItemsWrapper.find( '.twrp-cat-settings__cat-list-item' );
+	const categoriesItems = categoriesItemsWrapper.find( '.twrpb-cat-settings__cat-list-item' );
 
 	let categoriesIds = '';
 	categoriesItems.each( function() {

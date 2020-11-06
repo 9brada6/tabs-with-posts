@@ -24,7 +24,7 @@
 - Finish Advanced Arguments.
 - Call init on every setting classes that have something in that function.
 
-- Change all Twrp to twrpb(Done: advanced args, author,  ... status, post types, name, search, suppress filters, sticky).
+- Change all Twrp to twrpb(Done: advanced args, author, categories, meta, password  ... post settings, status, post types, name, search, suppress filters, sticky).
 
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
@@ -33,10 +33,14 @@
 - Add a back button from settings to the table.
 - Change namespace/folder name from settings from plural to singular
 
+- Meta setting hide if exist or not exist also in PHP file, currently only ts implemented.
+
 - Remove order from orderby that does not depend, like post__in
 
 - In author setting, and maybe in all other, when searching for an author and selecting with
 arrows/mouse hover, no css indication of the element selected is done.
+
+- Search and remove this class: twrp-collapsible-content__section-title and this twrp-admin-settings-separator.
 
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
 

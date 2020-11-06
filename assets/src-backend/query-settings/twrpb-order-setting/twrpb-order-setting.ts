@@ -2,11 +2,11 @@ import $ from 'jquery';
 import 'jqueryui';
 import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
-const firstOrderGroup = $( '#twrp-order-setting__js-first-order-group' );
-const secondOrderGroup = $( '#twrp-order-setting__js-second-order-group' );
-const thirdOrderGroup = $( '#twrp-order-setting__js-third-order-group' );
+const firstOrderGroup = $( '#twrpb-order-setting__js-first-order-group' );
+const secondOrderGroup = $( '#twrpb-order-setting__js-second-order-group' );
+const thirdOrderGroup = $( '#twrpb-order-setting__js-third-order-group' );
 
-const orderByClassName = 'twrp-order-setting__js-orderby';
+const orderByClassName = 'twrpb-order-setting__js-orderby';
 
 const orderGroups = [ firstOrderGroup, secondOrderGroup, thirdOrderGroup ];
 
@@ -30,9 +30,9 @@ function hideOrShowUnnecessarySelectors() {
 
 		if ( orderGroups[ i ].find( `.${ orderByClassName }` ).val() === 'not_applied' ) {
 			hideNext = true;
-			hideUp( orderGroups[ i ].find( '.twrp-order-setting__js-order-type' ) );
+			hideUp( orderGroups[ i ].find( '.twrpb-order-setting__js-order-type' ) );
 		} else {
-			showUp( orderGroups[ i ].find( '.twrp-order-setting__js-order-type' ) );
+			showUp( orderGroups[ i ].find( '.twrpb-order-setting__js-order-type' ) );
 		}
 	}
 }

@@ -4,9 +4,9 @@ import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
 // #region -- Polyfill Datepicker
 
-const after = $( '#twrp-date-settings__after' );
+const after = $( '#twrpb-date-settings__after' );
 
-const before = $( '#twrp-date-settings__before' );
+const before = $( '#twrpb-date-settings__before' );
 
 $( enableDatePickerIfNecessary );
 
@@ -39,17 +39,17 @@ function inputDateTypeIsAvailable() {
 
 // #region -- Hide/Show Date
 
-const selectDateType = $( '#twrp-date-settings__js-date-type' );
+const selectDateType = $( '#twrpb-date-settings__js-date-type' );
 
-const lastPeriodWrapper = $( '#twrp-date-settings__js-last-period-wrapper' );
+const lastPeriodWrapper = $( '#twrpb-date-settings__js-last-period-wrapper' );
 
-const betweenPeriodWrapper = $( '#twrp-date-settings__js-between-wrapper' );
+const betweenPeriodWrapper = $( '#twrpb-date-settings__js-between-wrapper' );
 
 $( hideOrShowLastPeriodSettings );
-$( document ).on( 'change', '#twrp-date-settings__js-date-type', hideOrShowLastPeriodSettings );
+$( document ).on( 'change', '#twrpb-date-settings__js-date-type', hideOrShowLastPeriodSettings );
 
 $( hideOrShowBetweenTimeSettings );
-$( document ).on( 'change', '#twrp-date-settings__js-date-type', hideOrShowBetweenTimeSettings );
+$( document ).on( 'change', '#twrpb-date-settings__js-date-type', hideOrShowBetweenTimeSettings );
 
 function hideOrShowLastPeriodSettings() {
 	const selectedType = selectDateType.val();

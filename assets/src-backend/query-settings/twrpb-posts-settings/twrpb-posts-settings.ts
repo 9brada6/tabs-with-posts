@@ -6,14 +6,14 @@ declare const wpApiSettings: any;
 
 // #region -- Show/Hide Posts List.
 
-const postTypeSelect = $( '#twrp-posts-settings__js-filter-type' );
+const postTypeSelect = $( '#twrpb-posts-settings__js-filter-type' );
 
-const postVisualList = $( '#twrp-posts-settings__js-posts-list' );
+const postVisualList = $( '#twrpb-posts-settings__js-posts-list' );
 
-const searchingWrapper = $( '#twrp-posts-settings__js-posts-search-wrap' );
+const searchingWrapper = $( '#twrpb-posts-settings__js-posts-search-wrap' );
 
 $( hideOrShowVisualList );
-$( document ).on( 'change', '#twrp-posts-settings__js-filter-type', hideOrShowVisualList );
+$( document ).on( 'change', '#twrpb-posts-settings__js-filter-type', hideOrShowVisualList );
 
 /**
  * Hide or show the visual list and the form input to search for users.
@@ -37,7 +37,7 @@ function hideOrShowVisualList() {
 /**
  * The search input where administrators will search for posts.
  */
-const postsSearchInput = $( '#twrp-posts-settings__js-posts-search' );
+const postsSearchInput = $( '#twrpb-posts-settings__js-posts-search' );
 
 $( initializeAutoComplete );
 
@@ -80,7 +80,7 @@ async function showSearchedPosts( request: any, sendToControl: CallableFunction 
 
 // #region -- Add Post.
 
-const postsIdsInput = $( '#twrp-posts-settings__js-posts-ids' );
+const postsIdsInput = $( '#twrpb-posts-settings__js-posts-ids' );
 
 /**
  * The post attribute name that hold the Id of a visual item.
@@ -93,16 +93,16 @@ const postIdAttrName = 'data-post-id';
  * also a change there, and vice-versa.
  */
 const postVisualItem = $(
-	'<div class="twrp-display-list__item twrp-posts-settings__post-item">' +
-		'<div class="twrp-posts-settings__post-item-title"></div>' +
-		'<button class="twrp-display-list__item-remove-btn twrp-posts-settings__js-post-remove-btn" type="button">' +
+	'<div class="twrpb-display-list__item twrpb-posts-settings__post-item">' +
+		'<div class="twrpb-posts-settings__post-item-title"></div>' +
+		'<button class="twrpb-display-list__item-remove-btn twrpb-posts-settings__js-post-remove-btn" type="button">' +
 			'<span class="dashicons dashicons-no"></span>' +
 		'</button>' +
 	'</div>'
 );
 
-$( document ).on( 'click', '#twrp-posts-settings__js-posts-add-btn', handleAddPostClick );
-$( document ).on( 'keypress', '#twrp-posts-settings__js-posts-search', handleSearchInputKeypress );
+$( document ).on( 'click', '#twrpb-posts-settings__js-posts-add-btn', handleAddPostClick );
+$( document ).on( 'keypress', '#twrpb-posts-settings__js-posts-search', handleSearchInputKeypress );
 
 /**
  * When a user click "enter", add the current selected author to the list.
@@ -167,8 +167,8 @@ function _addPostToVisualList( id: number|string, name: string ): void {
 	const newAuthorItem = postVisualItem.clone();
 	const removeButtonLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizePostName( name ) );
 
-	newAuthorItem.find( '.twrp-posts-settings__post-item-title' ).text( sanitizePostName( name ) );
-	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonLabel );
+	newAuthorItem.find( '.twrpb-posts-settings__post-item-title' ).text( sanitizePostName( name ) );
+	newAuthorItem.find( '.twrpb-display-list__item-remove-btn' ).attr( 'aria-label', removeButtonLabel );
 
 	newAuthorItem.attr( postIdAttrName, id );
 	postVisualList.append( newAuthorItem );
@@ -199,7 +199,7 @@ function _addPostToHiddenInput( id: number|string ): void {
 
 // #region -- Remove post
 
-$( document ).on( 'click', '.twrp-posts-settings__js-post-remove-btn', handleRemovePost );
+$( document ).on( 'click', '.twrpb-posts-settings__js-post-remove-btn', handleRemovePost );
 
 /**
  * Handle the removing of the posts from the selected list.
@@ -257,7 +257,7 @@ function _removePostFromHiddenInput( id: number|string ): void {
 /**
  * Contains the HTML Element that will be inserted/removed as necessary.
  */
-const noPostsText = $( '#twrp-posts-settings__js-no-posts-selected' );
+const noPostsText = $( '#twrpb-posts-settings__js-no-posts-selected' );
 
 $( removeOrAddNoPostsText );
 
@@ -302,7 +302,7 @@ $( initializeSorting );
  */
 function initializeSorting() {
 	postVisualList.sortable( {
-		placeholder: 'twrp-display-list__placeholder',
+		placeholder: 'twrpb-display-list__placeholder',
 		stop: updatePostsIdsFromVisualList,
 	} );
 }
@@ -353,7 +353,7 @@ function postExistInHiddenInput( id: number|string ): boolean {
  * from the visual list.
  */
 function updatePostsIdsFromVisualList(): void {
-	const postItems = postVisualList.find( '.twrp-posts-settings__post-item' ).filter( '[' + postIdAttrName + ']' );
+	const postItems = postVisualList.find( '.twrpb-posts-settings__post-item' ).filter( '[' + postIdAttrName + ']' );
 	const authorsIds = [];
 
 	postItems.each( function() {

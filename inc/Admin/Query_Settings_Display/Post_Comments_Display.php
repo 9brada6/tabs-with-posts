@@ -71,7 +71,7 @@ class Post_Comments_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-comments-settings';
+		return 'twrpb-comments-settings';
 	}
 
 }

@@ -101,7 +101,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 		$list_is_hidden_class = '';
 		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) && 'NA' === $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) {
-			$list_is_hidden_class = ' twrp_hidden';
+			$list_is_hidden_class = ' twrp-hidden';
 		}
 
 		$text_is_hidden_class = '';
@@ -112,12 +112,12 @@ class Post_Settings_Display extends Query_Setting_Display {
 		?>
 		<div
 			id="<?php $this->bem_class( 'js-posts-list' ); ?>"
-			class="twrp-display-list <?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'posts-list' ); ?><?= esc_attr( $list_is_hidden_class ); ?>"
+			class="twrpb-display-list <?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'posts-list' ); ?><?= esc_attr( $list_is_hidden_class ); ?>"
 			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
 			<div
 				id="<?php $this->bem_class( 'js-no-posts-selected' ); ?>"
-				class="twrp-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
+				class="twrpb-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
 			>
 				<?= _x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
@@ -132,9 +132,9 @@ class Post_Settings_Display extends Query_Setting_Display {
 				$remove_btn_label = sprintf( $remove_aria_label, $title );
 				?>
 
-				<div class="twrp-display-list__item <?php $this->bem_class( 'post-item' ); ?>" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
+				<div class="twrpb-display-list__item <?php $this->bem_class( 'post-item' ); ?>" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
 					<div class="<?php $this->bem_class( 'post-item-title' ); ?>"><?= $title // phpcs:ignore -- No XSS. ?></div>
-					<button class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'js-post-remove-btn' ); ?>" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
+					<button class="twrpb-display-list__item-remove-btn <?php $this->bem_class( 'js-post-remove-btn' ); ?>" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
 						<span class="dashicons dashicons-no"></span>
 					</button>
 				</div>
@@ -152,7 +152,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 	protected function display_search_and_add_posts_to_list( $current_setting ) {
 		$list_is_hidden_class = '';
 		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) && 'NA' === $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) {
-			$list_is_hidden_class = ' twrp_hidden';
+			$list_is_hidden_class = ' twrp-hidden';
 		}
 
 		?>
@@ -199,7 +199,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 	#endregion -- Display settings
 
 	protected function get_bem_base_class() {
-		return 'twrp-posts-settings';
+		return 'twrpb-posts-settings';
 	}
 
 }

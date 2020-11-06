@@ -50,6 +50,6 @@ class Password_Protected_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-password-settings';
+		return 'twrpb-password-settings';
 	}
 }

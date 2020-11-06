@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
 
-const metaTypeSelector = '#twrp-meta-setting__js-meta-type';
-const metaValueSelector = '#twrp-meta-setting__js-meta-value';
+const metaTypeSelector = '#twrpb-meta-setting__js-meta-type';
+const metaValueSelector = '#twrpb-meta-setting__js-meta-value';
 
 $( showOrHideValueInput );
 $( document ).on( 'change', metaTypeSelector, showOrHideValueInput );

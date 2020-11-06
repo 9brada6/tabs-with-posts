@@ -209,7 +209,7 @@ class Post_Date_Display extends Query_Setting_Display {
 	#endregion -- Display Settings
 
 	protected function get_bem_base_class() {
-		return 'twrp-date-settings';
+		return 'twrpb-date-settings';
 	}
 
 }

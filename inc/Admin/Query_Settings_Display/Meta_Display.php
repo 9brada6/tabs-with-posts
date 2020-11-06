@@ -56,7 +56,7 @@ class Meta_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-meta-setting';
+		return 'twrpb-meta-setting';
 	}
 
 }

@@ -183,10 +183,10 @@ class Categories_Display extends Query_Setting_Display {
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'cat-list-section' ); ?>">
 			<div
 				id="<?php $this->bem_class( 'cat-list-wrap' ); ?>"
-				class="twrp-display-list <?php $this->bem_class( 'cat-list-wrap' ); ?>"
-				data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+				class="twrpb-display-list <?php $this->bem_class( 'cat-list-wrap' ); ?>"
+				data-twrpb-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 			>
-				<div class="twrp-display-list__empty-msg<?= esc_attr( $additional_empty_msg_class ); ?>">
+				<div class="twrpb-display-list__empty-msg<?= esc_attr( $additional_empty_msg_class ); ?>">
 					<span>
 						<?= _x( 'No categories added. Select a category and click the button to add.', 'backend', 'twrp' ) ?>
 					</span>
@@ -201,12 +201,12 @@ class Categories_Display extends Query_Setting_Display {
 
 					$remove_button_aria_label = sprintf( $remove_aria_label, $category->name );
 					?>
-					<div class="twrp-display-list__item <?php $this->bem_class( 'cat-list-item' ); ?>" data-cat-id="<?= esc_attr( (string) $category->term_id ); ?>">
-						<div class="twrp-display-list__item-name <?php $this->bem_class( 'cat-item-name' ); ?>">
+					<div class="twrpb-display-list__item <?php $this->bem_class( 'cat-list-item' ); ?>" data-cat-id="<?= esc_attr( (string) $category->term_id ); ?>">
+						<div class="twrpb-display-list__item-name <?php $this->bem_class( 'cat-item-name' ); ?>">
 							<?= esc_html( $category->name ); ?>
 						</div>
 						<button
-							class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'cat-remove-btn' ); ?>"
+							class="twrpb-display-list__item-remove-btn <?php $this->bem_class( 'cat-remove-btn' ); ?>"
 							type="button"
 							aria-label=<?= esc_html( $remove_button_aria_label ); ?>
 						>
@@ -270,7 +270,7 @@ class Categories_Display extends Query_Setting_Display {
 	#endregion -- Display settings
 
 	protected function get_bem_base_class() {
-		return 'twrp-cat-settings';
+		return 'twrpb-cat-settings';
 	}
 
 }
