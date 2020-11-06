@@ -33,6 +33,9 @@
 - Add a back button from settings to the table.
 - Change namespace/folder name from settings from plural to singular
 
+- Remove "No order" from posts order setting. Is very confusing especially if
+is not selected.
+
 - Meta setting hide if exist or not exist also in PHP file, currently only ts implemented.
 
 - Remove order from orderby that does not depend, like post__in
