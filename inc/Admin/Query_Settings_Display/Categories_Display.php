@@ -29,11 +29,11 @@ class Categories_Display extends Query_Setting_Display {
 
 		$additional_class = '';
 		if ( 'NA' === $cat_type_setting ) {
-			$additional_class = ' twrp-hidden';
+			$additional_class = ' twrpb-hidden';
 		}
 
 		?>
-		<div class="<?php $this->bem_class(); ?> twrp-collapsible-content">
+		<div class="<?php $this->bem_class(); ?> twrpb-collapsible-content">
 			<?php
 			$this->display_category_select_type( $current_setting );
 
@@ -124,7 +124,7 @@ class Categories_Display extends Query_Setting_Display {
 
 		$additional_class = '';
 		if ( 'IN' !== $current_setting[ Categories::CATEGORIES_TYPE__SETTING_KEY ] ) {
-			$additional_class = ' twrp-hidden';
+			$additional_class = ' twrpb-hidden';
 		}
 
 		?>
@@ -173,11 +173,11 @@ class Categories_Display extends Query_Setting_Display {
 
 		$additional_empty_msg_class = '';
 		if ( count( $categories_are_displayed ) > 0 ) {
-			$additional_empty_msg_class = ' twrp-hidden';
+			$additional_empty_msg_class = ' twrpb-hidden';
 		}
 
 		?>
-		<h4 class="twrp-collapsible-content__section-title">
+		<h4 class="twrpb-collapsible-content__section-title">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
 		</h4>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'cat-list-section' ); ?>">

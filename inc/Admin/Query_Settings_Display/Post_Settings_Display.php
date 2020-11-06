@@ -101,12 +101,12 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 		$list_is_hidden_class = '';
 		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) && 'NA' === $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) {
-			$list_is_hidden_class = ' twrp-hidden';
+			$list_is_hidden_class = ' twrpb-hidden';
 		}
 
 		$text_is_hidden_class = '';
 		if ( ! empty( $posts ) ) {
-			$text_is_hidden_class = ' twrp-hidden';
+			$text_is_hidden_class = ' twrpb-hidden';
 		}
 
 		?>
@@ -152,7 +152,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 	protected function display_search_and_add_posts_to_list( $current_setting ) {
 		$list_is_hidden_class = '';
 		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) && 'NA' === $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) {
-			$list_is_hidden_class = ' twrp-hidden';
+			$list_is_hidden_class = ' twrpb-hidden';
 		}
 
 		?>

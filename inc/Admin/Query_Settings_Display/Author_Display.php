@@ -107,12 +107,12 @@ class Author_Display extends Query_Setting_Display {
 
 		$additional_list_class = '';
 		if ( ! $is_showing ) {
-			$additional_list_class = ' twrp-hidden';
+			$additional_list_class = ' twrpb-hidden';
 		}
 
 		$additional_no_authors_class = '';
 		if ( ! empty( $authors ) ) {
-			$additional_no_authors_class = ' twrp-hidden';
+			$additional_no_authors_class = ' twrpb-hidden';
 		}
 
 		/* translators: %s -> display name of the author. */
@@ -162,7 +162,7 @@ class Author_Display extends Query_Setting_Display {
 	protected function display_add_authors_to_list( $current_setting, $is_showing ) {
 		$additional_class = '';
 		if ( ! $is_showing ) {
-			$additional_class = ' twrp-hidden';
+			$additional_class = ' twrpb-hidden';
 		}
 
 		?>
@@ -198,7 +198,7 @@ class Author_Display extends Query_Setting_Display {
 	protected function display_note( $is_showing ) {
 		$additional_note_class = '';
 		if ( ! $is_showing ) {
-			$additional_note_class = ' twrp-hidden';
+			$additional_note_class = ' twrpb-hidden';
 		}
 
 		?>

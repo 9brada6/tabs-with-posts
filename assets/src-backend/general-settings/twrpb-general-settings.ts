@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { showUp, hideUp } from '../admin-blocks/twrp-hidden/twrp-hidden';
+import { showUp, hideUp } from '../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 // #region -- Hide or show custom date format depending on human readable date format.
 

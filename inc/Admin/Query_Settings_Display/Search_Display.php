@@ -28,7 +28,7 @@ class Search_Display extends Query_Setting_Display {
 
 		$warning_text_is_shown = ( strlen( $search_keywords ) < 4 ) && ( strlen( $search_keywords ) !== -1 );
 
-		$warning_hidden_class = ' twrp-hidden';
+		$warning_hidden_class = ' twrpb-hidden';
 		if ( $warning_text_is_shown ) {
 			$warning_hidden_class = '';
 		}

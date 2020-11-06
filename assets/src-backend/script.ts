@@ -1,5 +1,5 @@
 // Admin Blocks
-import './admin-blocks/twrp-hidden/twrp-hidden';
+import './admin-blocks/twrpb-hidden/twrpb-hidden';
 import './admin-blocks/twrpb-collapsible/twrpb-collapsible';
 
 // Documentation Page

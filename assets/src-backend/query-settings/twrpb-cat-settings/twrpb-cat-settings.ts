@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { showUp, hideUp, showLeft, hideLeft } from '../../admin-blocks/twrp-hidden/twrp-hidden';
+import { showUp, hideUp, showLeft, hideLeft } from '../../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 // #region -- Defining some global variables.
 

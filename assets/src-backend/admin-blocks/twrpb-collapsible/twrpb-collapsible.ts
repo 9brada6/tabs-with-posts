@@ -4,7 +4,7 @@ import 'jqueryui';
 $( enableCollapsibleSettings );
 
 function enableCollapsibleSettings() {
-	$( '.twrp-collapsible' ).each( function() {
+	$( '.twrpb-collapsible' ).each( function() {
 		const element = $( this );
 		const activeTabIndex = ( element.attr( 'data-twrp-is-collapsed' ) === '1' ) ? 0 : false;
 

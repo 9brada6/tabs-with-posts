@@ -85,7 +85,7 @@ class Post_Date_Display extends Query_Setting_Display {
 
 		$additional_settings_hidden_class = '';
 		if ( ( ! isset( $current_setting[ Post_Date::DATE_TYPE_NAME ] ) ) || ( 'LT' !== $current_setting[ Post_Date::DATE_TYPE_NAME ] ) ) {
-			$additional_settings_hidden_class = ' twrp-hidden';
+			$additional_settings_hidden_class = ' twrpb-hidden';
 		}
 
 		?>
@@ -169,7 +169,7 @@ class Post_Date_Display extends Query_Setting_Display {
 
 		$is_hidden_class = '';
 		if ( 'FT' !== $current_setting[ Post_Date::DATE_TYPE_NAME ] ) {
-			$is_hidden_class = ' twrp-hidden';
+			$is_hidden_class = ' twrpb-hidden';
 		}
 
 		?>

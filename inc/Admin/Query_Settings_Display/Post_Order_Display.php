@@ -42,20 +42,20 @@ class Post_Order_Display extends Query_Setting_Display {
 		$additional_second_order_class     = '';
 		$additional_first_order_type_class = '';
 		if ( 'not_applied' === $first_orderby_setting ) {
-			$additional_first_order_type_class = ' twrp-hidden';
-			$additional_second_order_class     = ' twrp-hidden';
+			$additional_first_order_type_class = ' twrpb-hidden';
+			$additional_second_order_class     = ' twrpb-hidden';
 		}
 
 		$additional_third_order_class       = '';
 		$additional_second_order_type_class = '';
 		if ( 'not_applied' === $second_orderby_setting ) {
-			$additional_second_order_type_class = ' twrp-hidden';
-			$additional_third_order_class       = ' twrp-hidden';
+			$additional_second_order_type_class = ' twrpb-hidden';
+			$additional_third_order_class       = ' twrpb-hidden';
 		}
 
 		$additional_third_order_type_class = '';
 		if ( 'not_applied' === $third_orderby_setting ) {
-			$additional_third_order_type_class = ' twrp-hidden';
+			$additional_third_order_type_class = ' twrpb-hidden';
 		}
 
 		?>

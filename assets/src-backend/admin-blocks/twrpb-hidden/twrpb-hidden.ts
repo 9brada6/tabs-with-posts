@@ -6,7 +6,7 @@ import 'jqueryui';
 const effectDuration = 500;
 
 function toggleDisplay( element: JQuery ): void {
-	if ( element.hasClass( 'twrp-hidden' ) ) {
+	if ( element.hasClass( 'twrpb-hidden' ) ) {
 		showUp( element );
 	} else {
 		hideUp( element );
@@ -70,7 +70,7 @@ function hideLeft( element: JQuery, remove: string = '' ): void {
  */
 function showLeft( element: JQuery, hideFirst: string = '' ): void {
 	if ( hideFirst === 'hide_first' ) {
-		element.addClass( 'twrp-hidden' );
+		element.addClass( 'twrpb-hidden' );
 	}
 
 	$( element ).show( {
@@ -86,11 +86,11 @@ function showLeft( element: JQuery, hideFirst: string = '' ): void {
 // =============================================================================
 
 function addHideClass( element: JQuery ): void {
-	$( element ).addClass( 'twrp-hidden' );
+	$( element ).addClass( 'twrpb-hidden' );
 }
 
 function removeHideClass( element: JQuery ): void {
-	$( element ).removeClass( 'twrp-hidden' ).css( 'display', '' );
+	$( element ).removeClass( 'twrpb-hidden' ).css( 'display', '' );
 }
 
 function removeElement( element: JQuery ): void {

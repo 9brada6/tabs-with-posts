@@ -1,4 +1,4 @@
-.twrp-collapsible {
+.twrpb-collapsible {
 	background-color: white;
 	border: 1px solid #c1c1c1;
 	border-radius: 3px;
@@ -29,6 +29,6 @@
 /**
  * Using default jQuery ui classes.
  */
-.ui-accordion-header-active .twrp-collapsible__indicator {
+.ui-accordion-header-active .twrpb-collapsible__indicator {
 	transform: rotate(90deg);
 }

@@ -22,7 +22,7 @@ abstract class General_Setting_Creator {
 	/**
 	 * HTML class name to add if a setting is hidden.
 	 */
-	const SETTING_IS_HIDDEN_CLASS_NAME = 'twrp-hidden';
+	const SETTING_IS_HIDDEN_CLASS_NAME = 'twrpb-hidden';
 
 	/**
 	 * Holds the name of the setting. Used in HTML "name" attribute, so these

@@ -2,12 +2,10 @@
 @import '../src-common/style';
 
 // Admin Blocks
-@import 'admin-blocks/jquery-ui-datepicker/jquery-ui-datepicker';
-@import 'admin-blocks/twrp-hidden/twrp-hidden';
-// todo: fix the upper problems: try to use twrpb-hidden and try to add twrpb in front of jquery.
-
 @import 'admin-blocks/twrpb-admin/twrpb-admin';
 @import 'admin-blocks/twrpb-collapsible/twrpb-collapsible';
+@import 'admin-blocks/twrpb-hidden/twrpb-hidden';
+@import 'admin-blocks/twrpb-jqueryui-datepicker/twrpb-jqueryui-datepicker';
 @import 'admin-blocks/twrpb-setting-note/twrpb-setting-note';
 @import 'admin-blocks/twrpb-switch/twrpb-switch';
 
@@ -51,7 +49,7 @@
 	border: 0;
 }
 
-.twrp-collapsible-content {
+.twrpb-collapsible-content {
 	&__section-title {
 		margin-top: 1rem;
 		margin-bottom: 0.5rem;

@@ -27,7 +27,7 @@ class Post_Status_Display extends Query_Setting_Display {
 		$apply_statuses_name    = Post_Status::get_setting_name() . '[' . Post_Status::APPLY_STATUSES__SETTING_NAME . ']';
 		$current_apply_statuses = $current_setting[ Post_Status::APPLY_STATUSES__SETTING_NAME ];
 
-		$additional_hide_class = 'not_applied' === $current_apply_statuses ? ' twrp-hidden' : '';
+		$additional_hide_class = 'not_applied' === $current_apply_statuses ? ' twrpb-hidden' : '';
 
 		$remember_note = new Remember_Note( Remember_Note::NOTE__POST_STATUS_INFO );
 		$remember_note->display_note( $this->get_query_setting_paragraph_class() );

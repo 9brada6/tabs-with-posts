@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp, showUp } from '../../admin-blocks/twrp-hidden/twrp-hidden';
+import { hideUp, showUp } from '../../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 const searchInput = $( '#twrpb-search-setting__js-search-input' );
 const warningWrapper = $( '#twrpb-search-setting__js-words-warning' );

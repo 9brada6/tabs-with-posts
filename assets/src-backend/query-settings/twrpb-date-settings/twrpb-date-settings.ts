@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp, showUp } from '../../admin-blocks/twrp-hidden/twrp-hidden';
+import { hideUp, showUp } from '../../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 // #region -- Polyfill Datepicker
 

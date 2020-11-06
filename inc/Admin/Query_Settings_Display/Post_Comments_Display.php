@@ -25,7 +25,7 @@ class Post_Comments_Display extends Query_Setting_Display {
 	public function display_setting( $current_setting ) {
 		$hidden_class = '';
 		if ( 'NA' === $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ) {
-			$hidden_class = ' twrp-hidden';
+			$hidden_class = ' twrpb-hidden';
 		}
 
 		?>

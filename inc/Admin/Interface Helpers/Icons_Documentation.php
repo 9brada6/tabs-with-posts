@@ -68,7 +68,7 @@ class Icons_Documentation {
 		$icons              = Icon::nest_icons_by_brands( $icons );
 		$bem_modifier_class = ' twrpb-icons-spoiler__spoiler--' . $additional_class_modifier;
 		?>
-		<div class="twrpb-icons-spoiler__spoiler twrp-hidden<?= esc_attr( $bem_modifier_class ); ?>">
+		<div class="twrpb-icons-spoiler__spoiler twrpb-hidden<?= esc_attr( $bem_modifier_class ); ?>">
 		<?php foreach ( $icons as $brand => $brand_icons ) : ?>
 			<div class="twrpb-icons-spoiler__icon-group">
 				<h4 class="twrpb-icons-spoiler__brand-title">
