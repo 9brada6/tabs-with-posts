@@ -281,7 +281,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$settings_classes = Class_Retriever_Utils::get_all_display_query_settings_objects();
 
 		?>
-		<div class="twrp-query-settings">
+		<div class="twrpb-query-settings">
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php
 				foreach ( $settings_classes as $setting_class ) :
@@ -307,7 +307,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$collapsed       = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
 
 		?>
-		<div class="twrp-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
+		<div class="twrpb-query-settings__setting twrp-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
 			<h2 class="twrp-collapsible__title">
 				<span class="twrp-collapsible__indicator"></span>
 				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>

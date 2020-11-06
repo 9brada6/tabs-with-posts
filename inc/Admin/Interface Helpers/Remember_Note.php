@@ -224,7 +224,7 @@ class Remember_Note {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-setting-note';
+		return 'twrpb-setting-note';
 	}
 
 }

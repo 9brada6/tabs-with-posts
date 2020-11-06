@@ -1,11 +1,9 @@
-import './framework-blocks/twrp-hidden/twrp-hidden';
-import './common-blocks/twrp-collapsible/twrp-collapsible';
+// Admin Blocks
+import './admin-blocks/twrp-hidden/twrp-hidden';
+import './admin-blocks/twrpb-collapsible/twrpb-collapsible';
 
-// Widget Blocks
-import './widget-blocks/twrp-widget-form';
-import './widget-blocks/twrp-widget-components';
-import './widget-blocks/twrp-color-picker';
-import './widget-blocks/twrp-icon-select-preview';
+// Documentation Page
+import './documentation-page/twrpb-documentation-page';
 
 // General Settings
 import './general-settings/twrpb-general-settings';
@@ -22,7 +20,10 @@ import './query-settings/twrpb-posts-settings/twrpb-posts-settings';
 import './query-settings/twrpb-search-setting/twrpb-search-setting';
 import './query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 
-// Documentation Page
-import './documentation-page/twrpb-documentation-page';
+// Widget Blocks
+import './widget-blocks/twrp-color-picker';
+import './widget-blocks/twrp-icon-select-preview';
+import './widget-blocks/twrp-widget-form';
+import './widget-blocks/twrp-widget-components';
 
 export default {};

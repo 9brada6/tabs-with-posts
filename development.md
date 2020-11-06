@@ -95,6 +95,9 @@ might be exactly as in documentation.
 
 ### JS/SCSS
 
+- Need to do something with jquery-ui-datepicker. Best thing to do is to prefix
+it with twrpb or something like that.
+
 ### Today
 
 - Split all Query_Settings classes in half, and move them inside admin menu.

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { showUp, hideUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
+import { showUp, hideUp } from '../../admin-blocks/twrp-hidden/twrp-hidden';
 
 const metaTypeSelector = '#twrpb-meta-setting__js-meta-type';
 const metaValueSelector = '#twrpb-meta-setting__js-meta-value';

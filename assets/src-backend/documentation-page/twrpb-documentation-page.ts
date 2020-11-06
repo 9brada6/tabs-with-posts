@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import { toggleDisplay } from '../framework-blocks/twrp-hidden/twrp-hidden';
+import { toggleDisplay } from '../admin-blocks/twrp-hidden/twrp-hidden';
 
 const showButtonSelector = '.twrpb-icons-spoiler__btn';
 

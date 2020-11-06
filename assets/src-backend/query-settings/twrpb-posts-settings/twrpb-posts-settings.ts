@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp, showUp, hideLeft, showLeft } from '../../framework-blocks/twrp-hidden/twrp-hidden';
+import { hideUp, showUp, hideLeft, showLeft } from '../../admin-blocks/twrp-hidden/twrp-hidden';
 
 declare const wpApiSettings: any;
 

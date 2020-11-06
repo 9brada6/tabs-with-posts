@@ -39,11 +39,11 @@ class Settings_Menu {
 	 * ID => HTML classes.
 	 */
 	const CLASSES = array(
-		'page'                => 'twrp-admin wrap',
-		'tab-btns-wrapper'    => 'twrp-admin__tabs nav-tab-wrapper',
-		'tab-btn'             => 'twrp-admin__tab-btn nav-tab',
-		'tab-btn-active'      => 'twrp-admin__tab-btn--active nav-tab-active',
-		'tab-content-wrapper' => 'twrp-admin__tab-content',
+		'page'                => 'twrpb-admin wrap',
+		'tab-btns-wrapper'    => 'twrpb-admin__tabs nav-tab-wrapper',
+		'tab-btn'             => 'twrpb-admin__tab-btn nav-tab',
+		'tab-btn-active'      => 'twrpb-admin__tab-btn--active nav-tab-active',
+		'tab-content-wrapper' => 'twrpb-admin__tab-content',
 	);
 
 	/**

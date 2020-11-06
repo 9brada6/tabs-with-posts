@@ -1,6 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
-import { hideUp, showUp } from '../../framework-blocks/twrp-hidden/twrp-hidden';
+import { hideUp, showUp } from '../../admin-blocks/twrp-hidden/twrp-hidden';
 
 const selectCommentsComparator = $( '#twrpb-comments-settings__js-comparator' );
 
