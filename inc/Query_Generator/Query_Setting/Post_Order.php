@@ -7,8 +7,6 @@
  * @todo: If an option is choose, then remove the option from the next one/two
  * select possibilities.
  * @todo: Add notes.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

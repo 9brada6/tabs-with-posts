@@ -1,8 +1,6 @@
 <?php
 /**
  * File that holds the class with the same name.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Plugins;

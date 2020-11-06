@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the class that will filter articles via the post types.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

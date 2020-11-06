@@ -1,5 +1,5 @@
 <?php
-// phpcs:disable
+// phpcs:disable -- No need for phpcs in config file.
 
 return array(
 	'analyzed_file_extensions' => array( 'php' ),

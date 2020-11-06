@@ -205,14 +205,14 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 				<a class="twrp-queries-table__delete-link" href="<?= esc_url( $this->get_query_delete_link( $query_id ) ); ?>">
 					<?php
 						/* translators: %s: delete dashicon html. */
-						echo sprintf( _x( 'Delete', 'backend', 'twrp' ), $delete_icon ); // phpcs:ignore
+						echo sprintf( _x( 'Delete', 'backend', 'twrp' ), $delete_icon ); // phpcs:ignore -- No XSS.
 					?>
 				</a>
 				/
 				<a class="twrp-queries-table__edit-link" href="<?= esc_url( $this->get_query_edit_link( $query_id ) ); ?>">
 					<?php
 						/* translators: %s: edit dashicon html. */
-						echo sprintf( _x( 'Edit', 'backend', 'twrp' ), $edit_icon ); // phpcs:ignore
+						echo sprintf( _x( 'Edit', 'backend', 'twrp' ), $edit_icon ); // phpcs:ignore -- No XSS.
 					?>
 				</a>
 			</td>
@@ -234,7 +234,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		<a class="twrp-existing-queries__btn button button-primary button-large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
 			<?php
 				/* translators: %s: plus dashicon html. */
-				echo sprintf( _x( '%s Add New Query', 'backend', 'twrp' ), $add_btn_icon ); // phpcs:ignore
+				echo sprintf( _x( '%s Add New Query', 'backend', 'twrp' ), $add_btn_icon ); // phpcs:ignore -- No XSS.
 			?>
 		</a>
 		<?php
@@ -371,7 +371,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return bool
 	 */
 	protected function edit_query_screen_is_displayed() {
-		// phpcs:ignore
+		// phpcs:ignore -- No need for sanitization
 		if ( isset( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] ) ) {
 			return true;
 		}
@@ -488,7 +488,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return bool True if has been clicked, false otherwise.
 	 */
 	protected function delete_button_clicked() {
-		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore
+		if ( isset( $_GET[ self::DELETE_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore -- Nonce verified.
 			return true;
 		}
 

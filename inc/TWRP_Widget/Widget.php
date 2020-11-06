@@ -52,10 +52,10 @@ class Widget extends WP_Widget {
 	 * @param array $instance_settings The settings for the particular instance of the widget.
 	 */
 	public function widget( $args, $instance_settings ) {
-		echo $args['before_widget']; // phpcs:ignore
+		echo $args['before_widget']; // phpcs:ignore -- No XSS.
 			$tabs_creator = new Create_Tabs( (int) $this->number );
 			$tabs_creator->display_tabs();
-		echo $args['after_widget']; // phpcs:ignore
+		echo $args['after_widget']; // phpcs:ignore -- No XSS.
 	}
 
 	protected function display_query( $query_id, $is_shown ) {

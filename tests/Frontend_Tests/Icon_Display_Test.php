@@ -49,7 +49,7 @@ class Icon_Display_Test {
 
 			echo '<span class="twrp-test__icon-block-wrapper">';
 			echo '<span class="twrp-test__icon-wrapper">';
-				echo $icon->get_html(); // phpcs:ignore
+				echo $icon->get_html(); // phpcs:ignore -- No XSS.
 			echo '</span>';
 			echo esc_html( $random_word );
 			echo '</span>';
@@ -68,7 +68,7 @@ class Icon_Display_Test {
 
 			echo '<span class="twrp-test__icon-block-wrapper">';
 				echo '<span class="twrp-test__icon-wrapper">';
-					echo $icon->get_html(); // phpcs:ignore
+					echo $icon->get_html(); // phpcs:ignore -- No XSS.
 				echo '</span>';
 				echo esc_html( $icon->get_option_icon_description() );
 			echo '</span>';

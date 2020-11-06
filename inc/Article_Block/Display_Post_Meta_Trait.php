@@ -151,7 +151,7 @@ trait Display_Post_Meta_Trait {
 	 * @return void
 	 */
 	public function display_author_icon() {
-		echo $this->get_author_icon_html(); // phpcs:ignore
+		echo $this->get_author_icon_html(); // phpcs:ignore -- No XSS.
 	}
 
 	/**
@@ -160,7 +160,7 @@ trait Display_Post_Meta_Trait {
 	 * @return void
 	 */
 	public function display_date_icon() {
-		echo $this->get_date_icon_html(); // phpcs:ignore
+		echo $this->get_date_icon_html(); // phpcs:ignore -- No XSS.
 	}
 
 	/**
@@ -169,7 +169,7 @@ trait Display_Post_Meta_Trait {
 	 * @return void
 	 */
 	public function display_views_icon() {
-		echo $this->get_views_icon_html(); // phpcs:ignore
+		echo $this->get_views_icon_html(); // phpcs:ignore -- No XSS.
 	}
 
 	/**
@@ -183,7 +183,7 @@ trait Display_Post_Meta_Trait {
 	 * @return void
 	 */
 	public function display_comments_icon( $post = null ) {
-		echo $this->get_comments_icon_html( $post ); // phpcs:ignore
+		echo $this->get_comments_icon_html( $post ); // phpcs:ignore -- No XSS.
 	}
 
 	#endregion -- Icons

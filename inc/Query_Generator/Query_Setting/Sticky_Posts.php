@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the class that will include or not sticky posts.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

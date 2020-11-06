@@ -180,7 +180,7 @@ class License_Display {
 				</h3>
 
 				<div class="twrpb-licenses__license-description">
-					<?= $license['description']; // phpcs:ignore ?>
+					<?= $license['description']; // phpcs:ignore -- It's a feature to include HTML. ?>
 				</div>
 
 				<div class="twrpb-licenses__license-link-wrapper">

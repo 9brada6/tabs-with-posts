@@ -6,8 +6,6 @@
  * and status.
  * @todo: Check to see if posts fetching work in IE 11.
  * @todo post__in (array) – use post ids. Specify posts to retrieve. ATTENTION If you use sticky posts, they will be included (prepended!) in the posts you retrieve whether you want it or not. To suppress this behaviour use ignore_sticky_posts.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

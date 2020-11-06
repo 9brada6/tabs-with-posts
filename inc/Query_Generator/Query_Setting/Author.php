@@ -3,8 +3,6 @@
  * File containing the class with the same name.
  *
  * @todo File and class comment.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

@@ -3,8 +3,6 @@
  * File containing the class with the same name.
  *
  * @todo: Remove the margin-bottom of categories classes and move to setting section classes.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

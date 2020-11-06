@@ -160,7 +160,7 @@ class Icon {
 	 * @return void
 	 */
 	public function display( $additional_class = '' ) {
-		echo $this->get_html( $additional_class ); // phpcs:ignore
+		echo $this->get_html( $additional_class ); // phpcs:ignore -- No XSS.
 	}
 
 	/**

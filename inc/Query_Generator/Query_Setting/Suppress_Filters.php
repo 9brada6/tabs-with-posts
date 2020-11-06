@@ -2,8 +2,6 @@
 /**
  * Contains the class that will select whether or not to apply filters when
  * querying for posts.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

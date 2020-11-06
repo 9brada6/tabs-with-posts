@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @phpcs:disable Squiz.Commenting.FunctionComment.Missing
  */
 
 namespace TWRP\Admin\Query_Settings_Display;
@@ -63,7 +61,7 @@ class Post_Types_Display extends Query_Setting_Display {
 				name="<?= esc_attr( $checkbox_name ); ?>"
 				type="checkbox"
 				value="<?= esc_attr( $name ); ?>"
-				<?= $checked_attr //phpcs:ignore ?>
+				<?= $checked_attr //phpcs:ignore -- No XSS. ?>
 			/>
 			<label for="<?= esc_attr( $checkbox_id ); ?>">
 				<?= esc_html( $label ) ?>

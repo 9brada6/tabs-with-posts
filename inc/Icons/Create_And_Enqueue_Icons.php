@@ -50,7 +50,7 @@ class Create_And_Enqueue_Icons {
 	 * @return void
 	 */
 	public static function include_defs_inline_needed_icons() {
-		echo Inline_Icons_Option::get_inline_icons(); // phpcs:ignore
+		echo Inline_Icons_Option::get_inline_icons(); // phpcs:ignore -- No XSS.
 	}
 
 	/**

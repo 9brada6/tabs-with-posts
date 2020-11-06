@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @phpcs:disable Squiz.Commenting.FunctionComment.Missing
  */
 
 namespace TWRP\Database\Settings;

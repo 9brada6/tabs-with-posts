@@ -62,10 +62,10 @@ class Icons_Definitions_Test extends WP_UnitTestCase {
 					array_push( $folders_without_license, $file );
 				} else {
 					if ( ! isset( $brands_licenses[ $brand_folder ] ) ) {
-						$brands_licenses[ $brand_folder ] = file_get_contents( $file ); // phpcs:ignore
+						$brands_licenses[ $brand_folder ] = file_get_contents( $file ); // phpcs:ignore - Allowed on tests.
 					}
 
-					if ( $brands_licenses[ $brand_folder ] !== file_get_contents( $file ) ) { // phpcs:ignore
+					if ( $brands_licenses[ $brand_folder ] !== file_get_contents( $file ) ) { // phpcs:ignore - Allowed on tests.
 						array_push( $brands_with_not_same_license, $brand_folder );
 					}
 				}

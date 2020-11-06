@@ -104,7 +104,7 @@ class Post_Types_Test extends TestCase {
 
 			$this->verify_get_default_setting( self::$class_instance, self::$settings_keys );
 
-			$wp_post_types['post'] = $backup_post_type; // phpcs:ignore
+			$wp_post_types['post'] = $backup_post_type; // phpcs:ignore -- Not prohibited in tests.
 		}
 	}
 

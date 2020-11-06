@@ -4,8 +4,6 @@
  * arguments via a JSON object.
  *
  * @todo: change class from twrp-advanced-args into twrp-advanced-settings.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

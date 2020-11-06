@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the same class as the file name.
- *
- * phpcs:disable Squiz.Commenting.FunctionComment.Missing -- Inherited from interface.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

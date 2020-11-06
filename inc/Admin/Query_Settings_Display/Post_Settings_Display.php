@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @phpcs:disable Squiz.Commenting.FunctionComment.Missing
  */
 
 namespace TWRP\Admin\Query_Settings_Display;
@@ -135,7 +133,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 				?>
 
 				<div class="twrp-display-list__item <?php $this->bem_class( 'post-item' ); ?>" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
-					<div class="<?php $this->bem_class( 'post-item-title' ); ?>"><?= $title // phpcs:ignore ?></div>
+					<div class="<?php $this->bem_class( 'post-item-title' ); ?>"><?= $title // phpcs:ignore -- No XSS. ?></div>
 					<button class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'js-post-remove-btn' ); ?>" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
 						<span class="dashicons dashicons-no"></span>
 					</button>
