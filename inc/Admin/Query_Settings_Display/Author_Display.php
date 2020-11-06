@@ -9,6 +9,7 @@ namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Author;
 use TWRP\Utils\Simple_Utils;
+use TWRP\Admin\Remember_Note;
 
 /**
  * Used to display the author query setting control.
@@ -203,15 +204,11 @@ class Author_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="<?php $this->bem_class( 'js-same-author-notice' ); ?>" class="twrp-setting-note <?php $this->bem_class( 'same-author-note' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_note_class ); ?>">
-			<span class="twrp-setting-note__label"><?= _x( 'Note: ', 'backend', 'twrp' ); ?></span>
-			<span class="twrp-setting-note__text">
-				<?= _x(
-					'This query(tab) will be displayed only on singular pages(post, page, attachments, custom post types), but not on blogroll pages, categories pages, ..etc, because these pages do not display an article from where the author can be retrieved.',
-					'backend',
-					'twrp'
-				); ?>
-			</span>
+		<div id="<?php $this->bem_class( 'js-same-author-notice' ); ?>" class="<?php $this->bem_class( 'same-author-note' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_note_class ); ?>">
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__SAME_AUTHOR_SETTING_NOTE );
+			$remember_note->display_note();
+			?>
 		</div>
 		<?php
 	}

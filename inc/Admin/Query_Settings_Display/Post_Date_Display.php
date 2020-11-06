@@ -8,6 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Post_Date;
+use TWRP\Admin\Remember_Note;
 
 /**
  * Used to display the post date query setting control.
@@ -89,31 +90,15 @@ class Post_Date_Display extends Query_Setting_Display {
 			$additional_settings_hidden_class = ' twrp-hidden';
 		}
 
-		$note_label = _x( 'Note:', 'backend', 'twrp' );
-		$note_text  = _x( 'You can either put a number of days manually(7 for week, 30 for a month, ..etc), or calculate the first day of last week/month and include everything after.', 'backend', 'twrp' );
-
-		$note_label2 = _x( 'Note 2:', 'backend', 'twrp' );
-		$note_text2  = _x( 'When putting a custom number of days, do not forget to also check the last option.', 'backend', 'twrp' );
-
 		?>
 		<div id="<?php $this->bem_class( 'js-last-period-wrapper' ); ?>" class="<?php $this->bem_class( 'last-period-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_settings_hidden_class ); ?>">
-			<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
-				<span class="twrp-setting-note__label">
-					<?= esc_html( $note_label ); ?>
-				</span>
-				<span class="twrp-setting-note__text">
-					<?= esc_html( $note_text ); ?>
-				</span>
-			</p>
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_INFO );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
 
-			<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
-				<span class="twrp-setting-note__label">
-				<?= esc_html( $note_label2 ); ?>
-				</span>
-				<span class="twrp-setting-note__text">
-				<?= esc_html( $note_text2 ); ?>
-				</span>
-			</p>
+			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_REMEMBER );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+			?>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'last-week' ); ?>" type="radio" value="LW"
@@ -189,19 +174,13 @@ class Post_Date_Display extends Query_Setting_Display {
 			$is_hidden_class = ' twrp-hidden';
 		}
 
-		$info_tag  = _x( 'Note:', 'backend', 'twrp' );
-		$info_text = _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after 2020, set only "after": 01/01/2020.', 'backend', 'twrp' );
-
 		?>
-		<div id="<?php $this->bem_class( 'js-between-wrapper' ); ?>" class="<?php $this->bem_class( 'js-between-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $is_hidden_class ); ?>">
-			<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
-				<span class="twrp-setting-note__label">
-					<?= esc_html( $info_tag ); ?>
-				</span>
-				<span class="twrp-setting-note__text">
-					<?= esc_html( $info_text ); ?>
-				</span>
-			</p>
+		<div id="<?php $this->bem_class( 'js-between-wrapper' ); ?>" class="<?php $this->bem_class( 'between-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $is_hidden_class ); ?>">
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_AFTER_BEFORE_SETTING_EXAMPLE );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+			?>
+
 			<span class="<?php $this->bem_class( 'after-wrapper' ); ?>">
 				<label for="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after-label' ); ?>">
 					<?= _x( 'After:', 'backend', 'twrp' ); ?>

@@ -8,6 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Suppress_Filters;
+use TWRP\Admin\Remember_Note;
 
 /**
  * Used to display the advanced arguments query setting control.
@@ -29,14 +30,10 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 		$name                 = Suppress_Filters::get_setting_name() . '[' . Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME . ']';
 		?>
 		<div class="<?php $this->bem_class(); ?>">
-			<div class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
-				<span class="twrp-setting-note__label">
-					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
-				</span>
-				<span class="twrp-setting-note__text">
-					<?= _x( 'Some theme/plugins can alter any WP database query, modifying it\'s results in unexpected ways. Fortunately, with this setting we can suppress/allow them all together.', 'backend', 'twrp' ); ?>
-				</span>
-			</div>
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__SUPPRESS_FILTERS_INFO );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+			?>
 
 			<div class="<?php $this->query_setting_paragraph_class(); ?>">
 				<select id="<?php $this->bem_class( 'suppress-filters' ); ?>" name="<?= esc_attr( $name ); ?>">

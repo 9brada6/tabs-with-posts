@@ -5,6 +5,12 @@
 @import '../src-common/style';
 
 //
+@import 'common-blocks/twrp-setting-note/twrp-setting-note';
+@import 'framework-blocks/twrp-hidden/twrp-hidden';
+@import 'framework-blocks/twrpb-switch/twrpb-switch';
+@import 'framework-blocks/twrp-setting-note/twrp-setting-note';
+
+//
 @import 'common-blocks/twrp-collapsible/twrp-collapsible';
 @import 'common-blocks/twrp-queries-table/twrp-queries-table';
 @import 'common-blocks/twrp-existing-queries/twrp-existing-queries';
@@ -19,11 +25,6 @@
 @import 'common-blocks/twrp-date-settings/twrp-date-settings';
 @import 'common-blocks/twrp-order-setting/twrp-order-setting';
 @import 'common-blocks/twrp-statuses-settings/twrp-statuses-settings';
-
-//
-@import 'common-blocks/twrp-setting-note/twrp-setting-note';
-@import 'framework-blocks/twrp-hidden/twrp-hidden';
-@import 'framework-blocks/twrpb-switch/twrpb-switch';
 
 // Widget blocks
 @import 'widget-blocks/twrp-widget-form';

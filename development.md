@@ -24,6 +24,8 @@
 - Finish Advanced Arguments.
 - Call init on every setting classes that have something in that function.
 
+- Change all Twrp to twrpb.
+
 - Move to note all notes in query settings, including the warning ones, and those with info.
 
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
@@ -59,6 +61,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### General
 
 !- Move all General Settings into a class.
+
+- We need to remove all phpcs:disable Squiz.Commenting.FunctionComment.Missing
+from our files, since we use Psalm.
 
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.

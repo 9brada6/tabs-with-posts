@@ -98,7 +98,11 @@ abstract class Query_Setting_Display {
 	// Todo: remove all these functions.
 
 	protected function query_setting_paragraph_class() {
-		echo esc_attr( 'twrp-query-settings__paragraph' );
+		echo esc_attr( $this->get_query_setting_paragraph_class() );
+	}
+
+	protected function get_query_setting_paragraph_class() {
+		return 'twrp-query-settings__paragraph';
 	}
 
 	protected function query_setting_checkbox_line_class() {

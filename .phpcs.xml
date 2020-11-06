@@ -52,11 +52,15 @@
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName" />
 		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag" />
 
-
+		<!-- We have Psalm which will tell which function comment is missing,
+		Psalm is more accurate than PHPCS, because it inherits by default the
+		comment from the extendend class, which is how should be done and is not
+		implemented in PHPCS. -->
+		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
 
 		<!-- The rules below are excluded during development: -->
 
-		<!-- <exclude name="Squiz.Commenting.FunctionComment.Missing"/>
+		<!--
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.VariableComment.Missing" />

@@ -29,6 +29,7 @@ class Plugin_Bootstrap {
 		// Admin.
 		'Admin/Interface Helpers/License_Display',
 		'Admin/Interface Helpers/Icons_Documentation',
+		'Admin/Interface Helpers/Remember_Note',
 
 		'Admin/General_Settings/General_Setting_Creator/General_Setting_Creator',
 		'Admin/General_Settings/General_Setting_Creator/General_Select_Setting',
@@ -53,7 +54,6 @@ class Plugin_Bootstrap {
 		'Admin/Query_Settings_Display/Search_Display',
 		'Admin/Query_Settings_Display/Sticky_Posts_Display',
 		'Admin/Query_Settings_Display/Suppress_Filters_Display',
-
 
 
 		'Admin/Settings_Menu',

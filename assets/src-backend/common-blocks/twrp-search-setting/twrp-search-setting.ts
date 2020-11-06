@@ -12,7 +12,7 @@ function hiderOrShowSearchWarning(): void {
 	const searchString = String( searchInput.val() );
 	const searchStringLength = searchString.length;
 
-	if ( ( searchStringLength !== 0 ) && ( searchStringLength < 3 ) ) {
+	if ( ( searchStringLength !== 0 ) && ( searchStringLength < 4 ) ) {
 		showUp( warningWrapper );
 	} else {
 		hideUp( warningWrapper );

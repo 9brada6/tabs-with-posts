@@ -8,6 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Post_Status;
+use TWRP\Admin\Remember_Note;
 
 /**
  * Used to display the search query setting control.
@@ -25,24 +26,17 @@ class Post_Status_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$info_label = _x( 'Note: ', 'backend', 'twrp' );
-		$info_text  = _x( 'Default value is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' );
-		$info_text2 = _x( 'Modifying this setting will make query get only posts that the current user has permission to read. For example if a post is "private", it will not show on normal users, only on logged in users(if they have permission to read).', 'backend', 'twrp' );
-
 		$apply_statuses_name    = Post_Status::get_setting_name() . '[' . Post_Status::APPLY_STATUSES__SETTING_NAME . ']';
 		$current_apply_statuses = $current_setting[ Post_Status::APPLY_STATUSES__SETTING_NAME ];
 
 		$additional_hide_class = 'not_applied' === $current_apply_statuses ? ' twrp-hidden' : '';
-		?>
-		<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
-			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
-			<span class="twrp-setting-note__text"><?= esc_html( $info_text ); ?></span>
-		</p>
 
-		<p class="<?php $this->query_setting_paragraph_class(); ?> twrp-setting-note">
-			<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
-			<span class="twrp-setting-note__text"><?= esc_html( $info_text2 ); ?></span>
-		</p>
+		$remember_note = new Remember_Note( Remember_Note::NOTE__POST_STATUS_INFO );
+		$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+
+		$remember_note = new Remember_Note( Remember_Note::NOTE__POST_STATUS_INFO2 );
+		$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+		?>
 
 		<div class="<?php $this->query_setting_paragraph_class(); ?>">
 			<select id="<?php $this->bem_class( 'js-apply-select' ); ?>" name="<?= esc_attr( $apply_statuses_name ); ?>">

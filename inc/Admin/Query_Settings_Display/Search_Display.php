@@ -8,6 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Search;
+use TWRP\Admin\Remember_Note;
 
 /**
  * Used to display the search query setting control.
@@ -27,14 +28,7 @@ class Search_Display extends Query_Setting_Display {
 	public function display_setting( $current_setting ) {
 		$search_keywords = $current_setting[ Search::SEARCH_KEYWORDS__SETTING_NAME ];
 
-		$info_label = _x( 'Info:', 'backend', 'twrp' );
-		$info_text  = _x( 'You can remove keywords by placing "-" in front of them: "pillow -sofa".', 'backend', 'twrp' );
-		$info_text2 = _x( 'Leave empty to not apply.', 'backend', 'twrp' );
-
-		$warning_label = _x( 'Warning:.', 'backend', 'twrp' );
-		$warning_text  = _x( 'You have searched for a very small keyword, this can be a mistake. The query will work and include the search result whatsoever.', 'backend', 'twrp' );
-
-		$warning_text_is_shown = ( strlen( $search_keywords ) < 3 ) && ( strlen( $search_keywords ) !== -1 );
+		$warning_text_is_shown = ( strlen( $search_keywords ) < 4 ) && ( strlen( $search_keywords ) !== -1 );
 
 		$warning_hidden_class = ' twrp-hidden';
 		if ( $warning_text_is_shown ) {
@@ -43,10 +37,10 @@ class Search_Display extends Query_Setting_Display {
 
 		?>
 		<div class="<?php $this->bem_class(); ?>">
-			<p class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'paragraph' ); ?> twrp-setting-note">
-				<span class="twrp-setting-note__label"><?= esc_html( $info_label ); ?></span>
-				<span class="twrp-setting-note__text"><?= esc_html( $info_text ); ?> <?= esc_html( $info_text2 ); ?></span>
-			</p>
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__SEARCH_QUERY_INFO );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+			?>
 
 			<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'paragraph' ); ?>">
 				<input
@@ -59,14 +53,12 @@ class Search_Display extends Query_Setting_Display {
 				/>
 			</div>
 
-			<p id="<?php $this->bem_class( 'js-words-warning' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'paragraph' ); ?> twrp-setting-warning<?= esc_attr( $warning_hidden_class ); ?>">
-				<span class="twrp-setting-warning__label">
-					<?= esc_html( $warning_label ); ?>
-				</span>
-				<span class="twrp-setting-warning__text">
-					<?= esc_html( $warning_text ); ?>
-				</span>
-			</p>
+			<div id="<?php $this->bem_class( 'js-words-warning' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?><?php esc_attr( $warning_hidden_class ); ?>">
+				<?php
+				$remember_note = new Remember_Note( Remember_Note::NOTE__SEARCH_QUERY_TOO_SHORT_WARNING, 'warning' );
+				$remember_note->display_note();
+				?>
+			</div>
 		</div>
 		<?php
 	}

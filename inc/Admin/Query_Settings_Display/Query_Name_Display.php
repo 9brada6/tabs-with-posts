@@ -8,6 +8,7 @@
 namespace TWRP\Admin\Query_Settings_Display;
 
 use TWRP\Query_Generator\Query_Setting\Query_Name;
+use TWRP\Admin\Remember_Note;
 
 /**
  * Used to display the query name setting control.
@@ -45,15 +46,10 @@ class Query_Name_Display extends Query_Setting_Display {
 			/>
 			</div>
 
-
-			<div class="twrp-setting-note <?php $this->query_setting_paragraph_class(); ?>">
-				<span class="twrp-setting-note__label">
-					<?= _x( 'Note:', 'backend', 'twrp' ); ?>
-				</span>
-				<span class="twrp-setting-note__text">
-					<?= _x( 'The name will be visible ONLY in the admin screen.', 'backend', 'twrp' ); ?>
-				</span>
-			</div>
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__QUERY_NAME_INFO );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+			?>
 		</div>
 		<?php
 	}
