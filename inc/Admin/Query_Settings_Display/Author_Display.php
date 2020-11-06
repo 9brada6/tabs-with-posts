@@ -121,10 +121,10 @@ class Author_Display extends Query_Setting_Display {
 		?>
 		<div
 			id="<?php $this->bem_class( 'js-authors-list' ); ?>"
-			class="twrp-display-list <?php $this->bem_class( 'display-list' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_list_class ); ?>"
+			class="twrpb-display-list <?php $this->bem_class( 'display-list' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_list_class ); ?>"
 			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
-			<div id="<?php $this->bem_class( 'js-no-authors-selected' ); ?>" class="twrp-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
+			<div id="<?php $this->bem_class( 'js-no-authors-selected' ); ?>" class="twrpb-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>
 			</div>
 			<?php foreach ( $authors as $author ) : ?>
@@ -134,12 +134,12 @@ class Author_Display extends Query_Setting_Display {
 				// The following HTML can also be generated in JS, so it will
 				// be need to be changed there as well.
 				?>
-				<div class="<?php $this->bem_class( 'author-item' ); ?> twrp-display-list__item" data-author-id="<?= esc_attr( (string) $author->ID ); ?>">
+				<div class="<?php $this->bem_class( 'author-item' ); ?> twrpb-display-list__item" data-author-id="<?= esc_attr( (string) $author->ID ); ?>">
 					<div class="<?php $this->bem_class( 'author-item-name' ); ?>">
 						<?= esc_html( $author_display_name ); ?>
 					</div>
 					<button
-						class="twrp-display-list__item-remove-btn <?php $this->bem_class( 'js-author-remove-btn' ); ?>"
+						class="twrpb-display-list__item-remove-btn <?php $this->bem_class( 'js-author-remove-btn' ); ?>"
 						type="button"
 						aria-label="<?= esc_attr( sprintf( $remove_aria_label, $author_display_name ) ); ?>"
 					>
@@ -213,7 +213,7 @@ class Author_Display extends Query_Setting_Display {
 
 	// todo.
 	protected function get_bem_base_class() {
-		return 'twrp-author-settings';
+		return 'twrpb-author-settings';
 	}
 
 }

@@ -35,6 +35,9 @@
 
 - Remove order from orderby that does not depend, like post__in
 
+- In author setting, and maybe in all other, when searching for an author and selecting with
+arrows/mouse hover, no css indication of the element selected is done.
+
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
 
 ### Plugins
@@ -66,6 +69,9 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Find in typescript files if "show" or "hide" jquery function are used by default only hideUp or showUp functions should
 be used.
+
+- In Gulp, when a SCSS file fail to compile, no error is displayed. Try to fix it. For example, if we add an import
+that does not exist, the gulp won't show an error, it just will not compile.
 
 ### Icons
 

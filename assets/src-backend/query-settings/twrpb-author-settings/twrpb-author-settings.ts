@@ -6,13 +6,13 @@ declare const wp: any;
 
 // #region -- Hide/Show Author List and Add Button based on option selected.
 
-const authorTypeSelector = $( '#twrp-author-settings__select_type' );
+const authorTypeSelector = $( '#twrpb-author-settings__select_type' );
 
-const authorSearchWrap = $( '#twrp-author-settings__author-search-wrap' );
-const authorToHideList = $( '#twrp-author-settings__js-authors-list' );
+const authorSearchWrap = $( '#twrpb-author-settings__author-search-wrap' );
+const authorToHideList = $( '#twrpb-author-settings__js-authors-list' );
 
 // $( hideOrShowVisualList );
-$( document ).on( 'change', '#twrp-author-settings__select_type', hideOrShowVisualList );
+$( document ).on( 'change', '#twrpb-author-settings__select_type', hideOrShowVisualList );
 
 /**
  * Hide or show the visual list and the form input to search for users.
@@ -33,10 +33,10 @@ function hideOrShowVisualList() {
 
 // #region -- Hide/Show Same author notice.
 
-const sameAuthorNotice = $( '#twrp-author-settings__js-same-author-notice' );
+const sameAuthorNotice = $( '#twrpb-author-settings__js-same-author-notice' );
 
 $( handleSameAuthorNotice );
-$( document ).on( 'change', '#twrp-author-settings__select_type', handleSameAuthorNotice );
+$( document ).on( 'change', '#twrpb-author-settings__select_type', handleSameAuthorNotice );
 
 /**
  * Hide or show a notice that says that when the author is set to the same as
@@ -61,7 +61,7 @@ $( initializeAutoComplete );
 /**
  * The search input where administrators will search for users.
  */
-const authorSearchInput = $( '#twrp-author-settings__js-author-search' );
+const authorSearchInput = $( '#twrpb-author-settings__js-author-search' );
 
 /**
  * Initialize the search input, when a user enter some characters, it will
@@ -124,14 +124,14 @@ function showSearchedUsers( request: any, sendToControl: CallableFunction ): voi
 
 // #region -- Add an author
 
-const authorsIdsInput = $( '#twrp-author-settings__js-author-ids' );
+const authorsIdsInput = $( '#twrpb-author-settings__js-author-ids' );
 
-const authorsVisualList = $( '#twrp-author-settings__js-authors-list' );
+const authorsVisualList = $( '#twrpb-author-settings__js-authors-list' );
 
 /**
  * Attribute on authorsVisualList that holds the aria label for the remove button.
  */
-const ariaLabelDataAttr = 'data-twrp-aria-remove-label';
+const ariaLabelDataAttr = 'data-twrpb-aria-remove-label';
 
 /**
  * The template for an author item, to be appended to the visual list. Note that
@@ -139,9 +139,9 @@ const ariaLabelDataAttr = 'data-twrp-aria-remove-label';
  * also a change there, and vice-versa.
  */
 const authorVisualItem = $(
-	'<div class="twrp-display-list__item twrp-author-settings__author-item">' +
-		'<div class="twrp-author-settings__author-item-name"></div>' +
-		'<button class="twrp-display-list__item-remove-btn twrp-author-settings__js-author-remove-btn" type="button">' +
+	'<div class="twrpb-display-list__item twrpb-author-settings__author-item">' +
+		'<div class="twrpb-author-settings__author-item-name"></div>' +
+		'<button class="twrpb-display-list__item-remove-btn twrpb-author-settings__js-author-remove-btn" type="button">' +
 			'<span class="dashicons dashicons-no"></span>' +
 		'</button>' +
 	'</div>'
@@ -152,8 +152,8 @@ const authorVisualItem = $(
  */
 const authorIdAttrName = 'data-author-id';
 
-$( document ).on( 'click', '#twrp-author-settings__js-author-add-btn', handleAddAuthorClick );
-$( document ).on( 'keypress', '#twrp-author-settings__js-author-search', handleSearchInputKeypress );
+$( document ).on( 'click', '#twrpb-author-settings__js-author-add-btn', handleAddAuthorClick );
+$( document ).on( 'keypress', '#twrpb-author-settings__js-author-search', handleSearchInputKeypress );
 
 /**
  * When a user click "enter", add the current selected author to the list.
@@ -217,8 +217,8 @@ function _addAuthorToVisualList( id: number|string, name: string ): void {
 
 	const newAuthorItem = authorVisualItem.clone();
 	const removeBtnAriaLabel = getRemoveButtonAriaLabel().replace( '%s', sanitizeAuthorName( name ) );
-	newAuthorItem.find( '.twrp-author-settings__author-item-name' ).text( sanitizeAuthorName( name ) );
-	newAuthorItem.find( '.twrp-display-list__item-remove-btn' ).attr( 'aria-label', removeBtnAriaLabel );
+	newAuthorItem.find( '.twrpb-author-settings__author-item-name' ).text( sanitizeAuthorName( name ) );
+	newAuthorItem.find( '.twrpb-display-list__item-remove-btn' ).attr( 'aria-label', removeBtnAriaLabel );
 	newAuthorItem.attr( authorIdAttrName, id );
 	authorsVisualList.append( newAuthorItem );
 	showLeft( newAuthorItem, 'hide_first' );
@@ -248,7 +248,7 @@ function _addAuthorToHiddenInput( id: number|string ): void {
 
 // #region -- Remove an author
 
-$( document ).on( 'click', '.twrp-author-settings__js-author-remove-btn', handleRemoveAuthor );
+$( document ).on( 'click', '.twrpb-author-settings__js-author-remove-btn', handleRemoveAuthor );
 
 /**
  * Handle the removing of the authors from the selected list.
@@ -307,7 +307,7 @@ function _removeAuthorFromHiddenInput( id: number|string ): void {
 /**
  * Contains the HTML Element that will be inserted/removed as necessary.
  */
-const noAuthorsText = $( '#twrp-author-settings__js-no-authors-selected' );
+const noAuthorsText = $( '#twrpb-author-settings__js-no-authors-selected' );
 
 $( removeOrAddNoAuthorsText );
 
@@ -352,7 +352,7 @@ $( initializeSorting );
  */
 function initializeSorting() {
 	authorsVisualList.sortable( {
-		placeholder: 'twrp-display-list__placeholder',
+		placeholder: 'twrpb-display-list__placeholder',
 		stop: updateAuthorsIdsFromVisualList,
 	} );
 }
@@ -403,7 +403,7 @@ function authorExistInHiddenInput( id: number|string ): boolean {
  * from the visual list.
  */
 function updateAuthorsIdsFromVisualList(): void {
-	const authorItems = authorsVisualList.find( '.twrp-author-settings__author-item' );
+	const authorItems = authorsVisualList.find( '.twrpb-author-settings__author-item' );
 	const authorsIds:Array<number> = [];
 
 	authorItems.each( function() {
