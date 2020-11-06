@@ -81,7 +81,7 @@ class Post_Status_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-statuses-settings';
+		return 'twrpb-statuses-settings';
 	}
 
 }

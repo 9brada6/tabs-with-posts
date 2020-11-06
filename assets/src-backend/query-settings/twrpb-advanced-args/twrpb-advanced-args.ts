@@ -5,7 +5,7 @@ declare let CodeMirror: any;
 $( enableCodeMirror );
 
 function enableCodeMirror(): void {
-	const element = document.getElementById( 'twrp-advanced-args__textarea' );
+	const element = document.getElementById( 'twrpb-advanced-args__textarea' );
 
 	if ( element ) {
 		CodeMirror.fromTextArea( element, {

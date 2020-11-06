@@ -24,7 +24,7 @@
 - Finish Advanced Arguments.
 - Call init on every setting classes that have something in that function.
 
-- Change all Twrp to twrpb.
+- Change all Twrp to twrpb(Done: advanced args, author,  ... status, post types, name, search, suppress filters, sticky).
 
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).

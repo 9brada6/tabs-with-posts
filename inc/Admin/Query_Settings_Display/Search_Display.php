@@ -62,7 +62,7 @@ class Search_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-search-setting';
+		return 'twrpb-search-setting';
 	}
 
 }

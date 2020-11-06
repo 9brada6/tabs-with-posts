@@ -53,6 +53,6 @@ class Query_Name_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-name-setting';
+		return 'twrpb-name-setting';
 	}
 }

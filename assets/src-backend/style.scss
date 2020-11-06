@@ -24,7 +24,6 @@
 @import 'common-blocks/twrp-artblock-form/twrp-artblock-form';
 @import 'common-blocks/twrp-date-settings/twrp-date-settings';
 @import 'common-blocks/twrp-order-setting/twrp-order-setting';
-@import 'common-blocks/twrp-statuses-settings/twrp-statuses-settings';
 
 // Widget blocks
 @import 'widget-blocks/twrp-widget-form';
@@ -43,8 +42,9 @@
 @import 'general-settings/twrpb-general-text';
 
 // Query Settings
-@import 'query-settings/twrpb-display-list/twrpb-display-list';
 @import 'query-settings/twrpb-author-settings/twrpb-author-settings';
+@import 'query-settings/twrpb-display-list/twrpb-display-list';
+@import 'query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 
 .twrp-admin-settings-separator {
 	width: 100%;

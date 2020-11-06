@@ -43,7 +43,7 @@ class Sticky_Posts_Display extends Query_Setting_Display {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-sticky-setting';
+		return 'twrpb-sticky-setting';
 	}
 
 }
