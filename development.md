@@ -26,6 +26,10 @@
 
 - Change all Twrp to twrpb(Done: advanced args, author, categories, meta, password  ... post settings, status, post types, name, search, suppress filters, sticky).
 
+- Create a nice query tab, including the message when no queries are present. Maybe move the actions button to the right?
+
+- Add bem class to twrpb-exiting-queries and twrpb-queries-table(they are the only ones who dont have BEM cass in query-settings sub folder).
+
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 - Meta Settings verify if add_query_args is good, hasn't been verified before.

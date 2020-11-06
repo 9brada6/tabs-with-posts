@@ -1,18 +1,15 @@
+// Common Style
+@import '../src-common/style';
+
 // Admin Blocks
 @import 'admin-blocks/jquery-ui-datepicker/jquery-ui-datepicker';
 @import 'admin-blocks/twrp-hidden/twrp-hidden';
 // todo: fix the upper problems: try to use twrpb-hidden and try to add twrpb in front of jquery.
+
 @import 'admin-blocks/twrpb-admin/twrpb-admin';
 @import 'admin-blocks/twrpb-collapsible/twrpb-collapsible';
 @import 'admin-blocks/twrpb-setting-note/twrpb-setting-note';
 @import 'admin-blocks/twrpb-switch/twrpb-switch';
-
-// Common Style
-@import '../src-common/style';
-
-//
-@import 'common-blocks/twrp-queries-table/twrp-queries-table';
-@import 'common-blocks/twrp-existing-queries/twrp-existing-queries';
 
 // Documentation tab
 @import 'documentation-page/twrp-plugins-support';
@@ -32,8 +29,10 @@
 @import 'query-settings/twrpb-comments-settings/twrpb-comments-settings';
 @import 'query-settings/twrpb-date-settings/twrpb-date-settings';
 @import 'query-settings/twrpb-display-list/twrpb-display-list';
+@import 'query-settings/twrpb-existing-queries/twrpb-existing-queries';
 @import 'query-settings/twrpb-meta-setting/twrpb-meta-setting';
 @import 'query-settings/twrpb-order-setting/twrpb-order-setting';
+@import 'query-settings/twrpb-queries-table/twrpb-queries-table';
 @import 'query-settings/twrpb-query-settings/twrpb-query-settings';
 @import 'query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 

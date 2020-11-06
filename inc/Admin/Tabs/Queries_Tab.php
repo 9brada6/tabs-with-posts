@@ -142,8 +142,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function display_existing_queries_page() {
 
 		?>
-		<div class="twrp-existing-queries">
-			<h3 class="twrp-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
+		<div class="twrpb-existing-queries">
+			<h3 class="twrpb-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
 			$this->display_existing_queries_table();
@@ -162,13 +162,13 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function display_existing_queries_table() {
 		$existing_queries = Query_Options::get_all_queries();
 		?>
-		<table class="twrp-existing-queries__table twrp-queries-table wp-list-table widefat striped">
+		<table class="twrpb-existing-queries__table twrpb-queries-table">
 			<thead>
 				<tr>
-					<th class="twrp-queries-table__edit-head">
+					<th class="twrpb-queries-table__edit-head">
 						<?= _x( 'Actions', 'backend', 'twrp' ) ?>
 					</th>
-					<th class="twrp-queries-table__title-head"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
+					<th class="twrpb-queries-table__title-head"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -178,7 +178,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 					<?php endforeach; ?>
 				<?php else : ?>
 					<tr>
-						<td class="twrp-queries-table__no-queries-col" colspan="2">
+						<td class="twrpb-queries-table__no-queries-col" colspan="2">
 						<?= _x( 'No queries added', 'backend', 'twrp' ); ?>
 						</td>
 					</tr>
@@ -197,26 +197,22 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries_row( $query_id, $query_settings ) {
-		$edit_icon   = '<span class="twrp-queries-table__edit-icon dashicons dashicons-edit"></span>';
-		$delete_icon = '<span class="twrp-existing-queries__delete-icon dashicons dashicons-trash"></span>';
+		$edit_icon   = '<span class="twrpb-queries-table__edit-icon dashicons dashicons-edit"></span>';
+		$delete_icon = '<span class="twrpb-queries-table__delete-icon dashicons dashicons-trash"></span>';
+
+		/* translators: %s: edit dashicon html. */
+		$edit_text = sprintf( _x( '%sEdit', 'backend', 'twrp' ), $edit_icon );
+		/* translators: %s: delete dashicon html. */
+		$delete_text = sprintf( _x( '%sDelete', 'backend', 'twrp' ), $delete_icon );
+
 		?>
 		<tr>
-			<td class="twrp-queries-table__edit-col">
-				<a class="twrp-queries-table__delete-link" href="<?= esc_url( $this->get_query_delete_link( $query_id ) ); ?>">
-					<?php
-						/* translators: %s: delete dashicon html. */
-						echo sprintf( _x( 'Delete', 'backend', 'twrp' ), $delete_icon ); // phpcs:ignore -- No XSS.
-					?>
-				</a>
-				/
-				<a class="twrp-queries-table__edit-link" href="<?= esc_url( $this->get_query_edit_link( $query_id ) ); ?>">
-					<?php
-						/* translators: %s: edit dashicon html. */
-						echo sprintf( _x( 'Edit', 'backend', 'twrp' ), $edit_icon ); // phpcs:ignore -- No XSS.
-					?>
-				</a>
+			<td class="twrpb-queries-table__edit-col">
+				<a class="twrpb-queries-table__delete-link" href="<?= esc_url( $this->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
+				<span class="twrpb-queries-table__edit-delete-separator">|</span>
+				<a class="twrpb-queries-table__edit-link" href="<?= esc_url( $this->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
 			</td>
-			<td class="twrp-queries-table__title-col">
+			<td class="twrpb-queries-table__title-col">
 				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
 			</td>
 		</tr>
@@ -229,9 +225,9 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries_add_new_btn() {
-		$add_btn_icon = '<span class="twrp-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
+		$add_btn_icon = '<span class="twrpb-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
 		?>
-		<a class="twrp-existing-queries__btn button button-primary button-large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
+		<a class="twrpb-existing-queries__btn button button-primary button-large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
 			<?php
 				/* translators: %s: plus dashicon html. */
 				echo sprintf( _x( '%s Add New Query', 'backend', 'twrp' ), $add_btn_icon ); // phpcs:ignore -- No XSS.
