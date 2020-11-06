@@ -1,0 +1,10 @@
+.twrp-meta-setting {
+	&__setting-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+
+		& > * {
+			margin-right: 0.5rem;
+		}
+	}
+}

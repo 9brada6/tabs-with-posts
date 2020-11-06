@@ -31,10 +31,8 @@
 - Meta Settings verify if add_query_args is good, hasn't been verified before.
 - When settings are saved, redirect to table of queries, not edit queries.
 - Add a back button from settings to the table.
-- Change namespace/folder name from settings from plural to singular.
+- Change namespace/folder name from settings from plural to singular
 
-- Meta-Key: Add meta_key for the post order or separately.
-- Hide meta key value if comparator is exists or not exists.
 - Remove order from orderby that does not depend, like post__in
 
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.

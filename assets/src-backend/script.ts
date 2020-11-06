@@ -9,6 +9,7 @@ import './common-blocks/twrp-statuses-settings/twrp-statuses-settings';
 import './common-blocks/twrp-date-settings/twrp-date-settings';
 import './common-blocks/twrp-posts-settings/twrp-posts-settings';
 import './common-blocks/twrp-order-setting/twrp-order-setting';
+import './common-blocks/twrp-meta-setting/twrp-meta-setting';
 
 // Widget Blocks
 import './widget-blocks/twrp-widget-form';

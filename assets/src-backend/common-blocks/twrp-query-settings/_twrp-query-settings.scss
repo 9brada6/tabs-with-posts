@@ -17,4 +17,11 @@
 		margin: 0.7rem 0 0.85rem;
 		line-height: 1.3;
 	}
+
+	// WP adds by default a min-height to all inputs, which will prevent jQuery
+	// hide or show to transition nicely.
+	input,
+	select {
+		min-height: auto !important;
+	}
 }
