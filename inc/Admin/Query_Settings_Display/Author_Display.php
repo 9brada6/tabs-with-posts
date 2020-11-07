@@ -122,7 +122,7 @@ class Author_Display extends Query_Setting_Display {
 		<div
 			id="<?php $this->bem_class( 'js-authors-list' ); ?>"
 			class="twrpb-display-list <?php $this->bem_class( 'display-list' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_list_class ); ?>"
-			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+			data-twrpb-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
 			<div id="<?php $this->bem_class( 'js-no-authors-selected' ); ?>" class="twrpb-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
 				<?= _x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'twrp' ); ?>

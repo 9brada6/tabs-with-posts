@@ -93,7 +93,7 @@ function getDocumentOnClickSelector(): string {
 // #region -- Add icons preview on the right for rating packs.
 
 const ratingIconsDataSetElementId = 'twrpb-general-settings__rating_pack_icons-wrapper';
-const dataHolderName = 'data-twrp-rating-packs';
+const dataHolderName = 'data-twrpb-rating-packs';
 const selectRatingName = 'rating_pack_icons';
 
 const iconsPreviewWrapperClassName = 'twrpb-general-select__rating_icons_preview';
@@ -167,7 +167,7 @@ const selectCommentIconSelector = '#twrpb-general-settings__comments_icon-settin
 const selectDisabledCommentIconSelector = '#twrpb-general-settings__comments_disabled_icon-setting';
 
 const dataHolderElementSelector = '#twrpb-general-settings__comments_disabled_icon-wrapper';
-const dataHolderAttrName = 'data-twrp-related-comment-icons';
+const dataHolderAttrName = 'data-twrpb-related-comment-icons';
 let compatibleDisabledComments = null;
 
 const autoSelectIconSwitchName = 'comments_disabled_icon_auto_select';

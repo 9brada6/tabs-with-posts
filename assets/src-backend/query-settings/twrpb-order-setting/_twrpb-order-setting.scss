@@ -3,7 +3,7 @@
 		display: flex;
 		flex-wrap: wrap;
 
-		&:not(.twrp-order-setting__order-group:first-child) {
+		&:not(.twrpb-order-setting__order-group:first-child) {
 			margin-top: 0;
 		}
 	}

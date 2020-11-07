@@ -6,7 +6,7 @@ $( enableCollapsibleSettings );
 function enableCollapsibleSettings() {
 	$( '.twrpb-collapsible' ).each( function() {
 		const element = $( this );
-		const activeTabIndex = ( element.attr( 'data-twrp-is-collapsed' ) === '1' ) ? 0 : false;
+		const activeTabIndex = ( element.attr( 'data-twrpb-is-collapsed' ) === '1' ) ? 0 : false;
 
 		element.accordion( {
 			active: activeTabIndex,

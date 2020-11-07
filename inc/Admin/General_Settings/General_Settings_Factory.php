@@ -290,7 +290,7 @@ class General_Settings_Factory {
 			'title'           => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
 			'options'         => $options,
 			'additional_attr' => array(
-				'data-twrp-related-comment-icons' => wp_json_encode( $rating_packs_data ),
+				'data-twrpb-related-comment-icons' => wp_json_encode( $rating_packs_data ),
 			),
 			'switch'          => array(
 				'title' => _x( 'Auto-select this icon(best-looking) based on the comment icon.', 'backend', 'twrp' ),
@@ -341,7 +341,7 @@ class General_Settings_Factory {
 			'title'           => _x( 'Select the default rating pack icons:', 'backend', 'twrp' ),
 			'options'         => $options,
 			'additional_attr' => array(
-				'data-twrp-rating-packs' => wp_json_encode( $rating_packs_data ),
+				'data-twrpb-rating-packs' => wp_json_encode( $rating_packs_data ),
 			),
 		);
 	}

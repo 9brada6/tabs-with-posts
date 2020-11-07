@@ -19,6 +19,9 @@ function enableDatePickerIfNecessary() {
 		dateFormat: 'yy-mm-dd',
 		changeMonth: true,
 		changeYear: true,
+		beforeShow() {
+			$( '#ui-datepicker-div' ).addClass( 'twrpb-jqueryui-datepicker' );
+		},
 	};
 
 	after.datepicker( options );

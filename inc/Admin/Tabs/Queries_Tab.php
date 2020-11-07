@@ -303,7 +303,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$collapsed       = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
 
 		?>
-		<div class="twrpb-query-settings__setting twrpb-collapsible" data-twrp-is-collapsed="<?= esc_attr( $collapsed ) ?>">
+		<div class="twrpb-query-settings__setting twrpb-collapsible" data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>">
 			<h2 class="twrpb-collapsible__title">
 				<span class="twrpb-collapsible__indicator"></span>
 				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>

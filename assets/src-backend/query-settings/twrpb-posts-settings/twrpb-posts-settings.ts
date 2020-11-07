@@ -380,7 +380,7 @@ function sanitizePostName( name: string ): string {
  * "%s", which will need to be replaced with an author.
  */
 function getRemoveButtonAriaLabel(): string {
-	const ariaLabel = postVisualList.attr( 'data-twrp-aria-remove-label' );
+	const ariaLabel = postVisualList.attr( 'data-twrpb-aria-remove-label' );
 	if ( ! ariaLabel ) {
 		return '';
 	}

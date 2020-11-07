@@ -113,7 +113,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 		<div
 			id="<?php $this->bem_class( 'js-posts-list' ); ?>"
 			class="twrpb-display-list <?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'posts-list' ); ?><?= esc_attr( $list_is_hidden_class ); ?>"
-			data-twrp-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+			data-twrpb-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
 		>
 			<div
 				id="<?php $this->bem_class( 'js-no-posts-selected' ); ?>"
