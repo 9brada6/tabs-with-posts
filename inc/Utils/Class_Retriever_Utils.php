@@ -6,7 +6,7 @@
 namespace TWRP\Utils;
 
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
-use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
+use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 
 /**
  * Class that is a collection of static methods, that can be used everywhere
@@ -53,7 +53,7 @@ class Class_Retriever_Utils {
 	 * @return array<Query_Setting_Display>
 	 */
 	public static function get_all_display_query_settings_objects() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Admin\\Query_Settings_Display\\Query_Setting_Display' );
+		$class_names = static::get_all_child_classes( 'TWRP\\Admin\\Tabs\\Query_Options\\Query_Setting_Display' );
 		$class_names = self::order_class_name( $class_names );
 
 		foreach ( $class_names as $key => $class_name ) {

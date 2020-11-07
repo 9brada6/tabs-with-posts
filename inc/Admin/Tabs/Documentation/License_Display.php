@@ -3,7 +3,7 @@
  * File containing the class with the same.
  */
 
-namespace TWRP\Admin;
+namespace TWRP\Admin\Tabs\Documentation;
 
 /**
  * Class that is used to display licenses of the external works, and the license

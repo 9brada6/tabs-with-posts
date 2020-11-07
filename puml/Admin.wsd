@@ -1,0 +1,14 @@
+@startuml
+
+!include ./colors.iuml
+
+package "TWRP\Admin -- The backend of the website" {
+	class Settings_Menu <<private class>> {}
+
+	interface Interface_Admin_Menu_Tab <<private class>> {}
+	class Documentation_Tab <<private class>> {}
+	class General_Settings_Tab <<private class>> {}
+	class Queries_Tab <<private class>> {}
+}
+
+@enduml

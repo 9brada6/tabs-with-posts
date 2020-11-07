@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin\Query_Settings_Display;
+namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Post_Settings;
 use TWRP\Utils\Simple_Utils;

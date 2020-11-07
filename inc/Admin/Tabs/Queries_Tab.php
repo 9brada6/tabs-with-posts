@@ -10,8 +10,10 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Query_Generator\Query_Setting\Query_Name;
-use TWRP\Admin\Query_Settings_Display\Query_Setting_Display;
+use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 use RuntimeException;
+use TWRP\Admin\Tabs\Query_Options\Modify_Query_Settings;
+use TWRP\Admin\Tabs\Query_Options\Query_Existing_Table;
 
 /**
  * Implements a tab in the Settings Menu called "Queries Tab". The implemented
@@ -105,7 +107,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	public function display_tab() {
 		if ( $this->form_has_been_submitted() ) {
 			if ( $this->edit_nonce_is_valid() ) {
-				$this->update_form_submitted_settings();
+				$modify_query_settings = new Modify_Query_Settings();
+				$modify_query_settings->update_form_submitted_settings();
 				/**
 				 * @todo
 				 */
@@ -132,21 +135,21 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		}
 	}
 
-	// =========================================================================
+	#region -- Existing Queries Table Methods
 
 	/**
 	 * Creates a table that display the existing queries.
 	 *
 	 * @return void
 	 */
-	protected function display_existing_queries_page() {
-
+	public function display_existing_queries_page() {
+		$existing_queries_table = new Query_Existing_Table();
 		?>
 		<div class="twrpb-existing-queries">
 			<h3 class="twrpb-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
-			$this->display_existing_queries_table();
+			$existing_queries_table->display();
 			$this->display_existing_queries_add_new_btn();
 			do_action( 'twrp_after_displaying_existing_queries_table' );
 			?>
@@ -155,68 +158,41 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	}
 
 	/**
-	 * Display the existing queries table.
+	 * Return the url to edit a query. If query doesn't exist it will
+	 * return the tab link.
 	 *
-	 * @return void
+	 * @param int|string $query_id The ID.
+	 *
+	 * @return string
 	 */
-	protected function display_existing_queries_table() {
-		$existing_queries = Query_Options::get_all_queries();
-		?>
-		<table class="twrpb-existing-queries__table twrpb-queries-table">
-			<thead>
-				<tr>
-					<th class="twrpb-queries-table__edit-head">
-						<?= _x( 'Actions', 'backend', 'twrp' ) ?>
-					</th>
-					<th class="twrpb-queries-table__title-head"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php if ( ! empty( $existing_queries ) ) : ?>
-					<?php foreach ( $existing_queries as $query_id => $query ) : ?>
-						<?php $this->display_existing_queries_row( $query_id, $query ); ?>
-					<?php endforeach; ?>
-				<?php else : ?>
-					<tr>
-						<td class="twrpb-queries-table__no-queries-col" colspan="2">
-						<?= _x( 'No queries added', 'backend', 'twrp' ); ?>
-						</td>
-					</tr>
-				<?php endif; ?>
-			</tbody>
-		</table>
-		<?php
+	public function get_query_edit_link( $query_id ) {
+		$tab_url = Settings_Menu::get_tab_url( $this );
+
+		if ( Query_Options::query_exists( $query_id ) ) {
+			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, (string) $query_id, $tab_url );
+		}
+
+		return $tab_url;
 	}
 
 	/**
-	 * Display a row with the corresponding query names and their actions.
+	 * Return the url to delete a query. If query doesn't exist it will
+	 * return the tab link.
 	 *
-	 * @param int|string $query_id
-	 * @param array $query_settings
+	 * @param int|string $query_id The ID.
 	 *
-	 * @return void
+	 * @return string
 	 */
-	protected function display_existing_queries_row( $query_id, $query_settings ) {
-		$edit_icon   = '<span class="twrpb-queries-table__edit-icon dashicons dashicons-edit"></span>';
-		$delete_icon = '<span class="twrpb-queries-table__delete-icon dashicons dashicons-trash"></span>';
+	public function get_query_delete_link( $query_id ) {
+		$tab_url = Settings_Menu::get_tab_url( $this );
 
-		/* translators: %s: edit dashicon html. */
-		$edit_text = sprintf( _x( '%sEdit', 'backend', 'twrp' ), $edit_icon );
-		/* translators: %s: delete dashicon html. */
-		$delete_text = sprintf( _x( '%sDelete', 'backend', 'twrp' ), $delete_icon );
+		if ( Query_Options::query_exists( $query_id ) ) {
+			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, (string) $query_id, $tab_url );
+			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
+			return $url;
+		}
 
-		?>
-		<tr>
-			<td class="twrpb-queries-table__edit-col">
-				<a class="twrpb-queries-table__delete-link" href="<?= esc_url( $this->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
-				<span class="twrpb-queries-table__edit-delete-separator">|</span>
-				<a class="twrpb-queries-table__edit-link" href="<?= esc_url( $this->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
-			</td>
-			<td class="twrpb-queries-table__title-col">
-				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
-			</td>
-		</tr>
-		<?php
+		return $tab_url;
 	}
 
 	/**
@@ -237,24 +213,6 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	}
 
 	/**
-	 * Return the url to edit a query. If query doesn't exist it will
-	 * return the tab link.
-	 *
-	 * @param int|string $query_id The ID.
-	 *
-	 * @return string
-	 */
-	protected function get_query_edit_link( $query_id ) {
-		$tab_url = Settings_Menu::get_tab_url( $this );
-
-		if ( Query_Options::query_exists( $query_id ) ) {
-			return add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, (string) $query_id, $tab_url );
-		}
-
-		return $tab_url;
-	}
-
-	/**
 	 * Return the url to add a new query.
 	 *
 	 * @return string
@@ -264,218 +222,6 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$add_new_link = add_query_arg( self::EDIT_QUERY__URL_PARAM_KEY, '', $add_new_link );
 
 		return $add_new_link;
-	}
-
-	// =========================================================================
-
-	/**
-	 * Display the form to add a new query or to modify a pre-existed query.
-	 *
-	 * @return void
-	 */
-	protected function display_query_form() {
-		$settings_classes = Class_Retriever_Utils::get_all_display_query_settings_objects();
-
-		?>
-		<div class="twrpb-query-settings">
-			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
-				<?php
-				foreach ( $settings_classes as $setting_class ) :
-					$this->display_query_setting( $setting_class );
-				endforeach;
-				?>
-
-				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
-				<button name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" type="submit"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
-			</form>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Display a specific setting control in query settings.
-	 *
-	 * @param Query_Setting_Display $setting_display_class
-	 * @return void
-	 */
-	protected function display_query_setting( $setting_display_class ) {
-		$current_setting = $this->get_query_input_setting( $setting_display_class );
-		$collapsed       = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
-
-		?>
-		<div class="twrpb-query-settings__setting twrpb-collapsible" data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>">
-			<h2 class="twrpb-collapsible__title">
-				<span class="twrpb-collapsible__indicator"></span>
-				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
-			</h2>
-			<div class="twrpb-collapsible__content">
-				<?php $setting_display_class->display_setting( $current_setting ); ?>
-			</div>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Get the current setting of the query.
-	 *
-	 * @param Query_Setting_Display $setting_class
-	 * @return mixed The specific settings of the query, sanitized.
-	 */
-	protected function get_query_input_setting( $setting_class ) {
-		try {
-			$query_id           = $this->get_id_of_query_being_modified();
-			$all_query_settings = Query_Options::get_all_query_settings( $query_id );
-		} catch ( RuntimeException $e ) { // phpcs:ignore -- Empty catch.
-			// Do nothing.
-		}
-
-		if ( isset( $all_query_settings[ $setting_class->get_setting_name() ] ) ) {
-			return $all_query_settings[ $setting_class->get_setting_name() ];
-		}
-
-		return $setting_class->get_default_setting();
-	}
-
-	/**
-	 * Get whether or not the setting should be collapsed
-	 *
-	 * @param Query_Setting_Display $display_setting_class
-	 * @param array $current_settings
-	 * @return bool
-	 */
-	protected function get_if_setting_collapsed( $display_setting_class, $current_settings ) {
-		$setting_is_collapsed = $display_setting_class->setting_is_collapsed();
-		if ( is_bool( $setting_is_collapsed ) ) {
-			return $setting_is_collapsed;
-		}
-
-		$default_settings = $display_setting_class->get_default_setting();
-
-		array_multisort( $default_settings );
-		array_multisort( $current_settings );
-
-		if ( $current_settings === $default_settings ) {
-			return false;
-		}
-
-		return true;
-	}
-
-	/**
-	 * Check to see if the user is currently editing a query.
-	 *
-	 * @return bool
-	 */
-	protected function edit_query_screen_is_displayed() {
-		// phpcs:ignore -- No need for sanitization
-		if ( isset( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] ) ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Returns the ID of the query being modified. Returns an empty string if
-	 * a new query is added.
-	 *
-	 * @return string The ID of the query being modified, or an empty string.
-	 */
-	protected function get_id_of_query_being_modified() {
-		if ( isset( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore -- Nonce verified.
-			// phpcs:ignore WordPress.Security -- The setting is sanitized below.
-			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
-
-			if ( is_numeric( $key ) && Query_Options::query_exists( $key ) ) {
-				return $key;
-			}
-		}
-
-		return '';
-	}
-
-	/**
-	 * Get the HTML form action attribute(URL).
-	 *
-	 * @return string
-	 */
-	protected function get_edit_query_form_action() {
-		return $this->get_query_edit_link( $this->get_id_of_query_being_modified() );
-	}
-
-	/**
-	 * Whether or not the user have submitted the form.
-	 *
-	 * @return bool
-	 */
-	protected function form_has_been_submitted() {
-		// phpcs:ignore -- Nonce verified.
-		if ( isset( $_POST[ self::SUBMIT_BTN_NAME ] ) && self::SUBMIT_BTN_NAME === $_POST[ self::SUBMIT_BTN_NAME ] ) {
-			return true;
-		}
-
-		return false;
-	}
-
-	/**
-	 * Add a new query settings, or updates a query when the form is submitted.
-	 *
-	 * @return void
-	 */
-	protected function update_form_submitted_settings() {
-		$settings_classes_name = Class_Retriever_Utils::get_all_display_query_settings_objects();
-		$query_settings        = array();
-
-		foreach ( $settings_classes_name as $setting_class ) {
-			$query_settings[ $setting_class->get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
-		}
-
-		$query_key = $this->get_id_of_query_being_modified();
-		if ( '' === $query_key ) {
-			Query_Options::add_new_query( $query_settings );
-		} elseif ( Query_Options::query_exists( $query_key ) ) {
-			Query_Options::update_query( $query_key, $query_settings );
-		}
-	}
-
-
-	/**
-	 * Verify if the nonce from the edit query screen is valid.
-	 *
-	 * @return bool True if is valid, false otherwise.
-	 */
-	protected function edit_nonce_is_valid() {
-		if ( isset( $_POST[ self::NONCE_EDIT_NAME ] ) ) {
-			$nonce_value = sanitize_key( (string) $_POST[ self::NONCE_EDIT_NAME ] );
-			$nonce_check = wp_verify_nonce( $nonce_value, self::NONCE_EDIT_ACTION );
-			if ( 1 === $nonce_check ) {
-				return true;
-			}
-		}
-
-		return false;
-	}
-
-	// =========================================================================
-
-	/**
-	 * Return the url to delete a query. If query doesn't exist it will
-	 * return the tab link.
-	 *
-	 * @param int|string $query_id The ID.
-	 *
-	 * @return string
-	 */
-	protected function get_query_delete_link( $query_id ) {
-		$tab_url = Settings_Menu::get_tab_url( $this );
-
-		if ( Query_Options::query_exists( $query_id ) ) {
-			$url = add_query_arg( self::DELETE_QUERY__URL_PARAM_KEY, (string) $query_id, $tab_url );
-			$url = add_query_arg( self::NONCE_DELETE_NAME, wp_create_nonce( self::NONCE_DELETE_ACTION ), $url );
-			return $url;
-		}
-
-		return $tab_url;
 	}
 
 	/**
@@ -525,6 +271,100 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 				Query_Options::delete_query( $key );
 			}
 		}
+	}
+
+	#endregion -- Existing Queries Table Methods
+
+
+	/**
+	 * Display the form to add a new query or to modify a pre-existed query.
+	 *
+	 * @return void
+	 */
+	protected function display_query_form() {
+		$query_settings_display = new Modify_Query_Settings()
+		?>
+		<div class="twrpb-query-settings">
+			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
+				<?php $query_settings_display->display(); ?>
+				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
+				<button name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" type="submit"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
+			</form>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Check to see if the user is currently editing a query.
+	 *
+	 * @return bool
+	 */
+	protected function edit_query_screen_is_displayed() {
+		// phpcs:ignore -- No need for sanitization
+		if ( isset( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Returns the ID of the query being modified. Returns an empty string if
+	 * a new query is added.
+	 *
+	 * @return string The ID of the query being modified, or an empty string.
+	 */
+	public function get_id_of_query_being_modified() {
+		if ( isset( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore -- Nonce verified.
+			// phpcs:ignore WordPress.Security -- The setting is sanitized below.
+			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
+
+			if ( is_numeric( $key ) && Query_Options::query_exists( $key ) ) {
+				return $key;
+			}
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get the HTML form action attribute(URL).
+	 *
+	 * @return string
+	 */
+	protected function get_edit_query_form_action() {
+		return $this->get_query_edit_link( $this->get_id_of_query_being_modified() );
+	}
+
+	/**
+	 * Whether or not the user have submitted the form.
+	 *
+	 * @return bool
+	 */
+	protected function form_has_been_submitted() {
+		// phpcs:ignore -- Nonce verified.
+		if ( isset( $_POST[ self::SUBMIT_BTN_NAME ] ) && self::SUBMIT_BTN_NAME === $_POST[ self::SUBMIT_BTN_NAME ] ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Verify if the nonce from the edit query screen is valid.
+	 *
+	 * @return bool True if is valid, false otherwise.
+	 */
+	protected function edit_nonce_is_valid() {
+		if ( isset( $_POST[ self::NONCE_EDIT_NAME ] ) ) {
+			$nonce_value = sanitize_key( (string) $_POST[ self::NONCE_EDIT_NAME ] );
+			$nonce_check = wp_verify_nonce( $nonce_value, self::NONCE_EDIT_ACTION );
+			if ( 1 === $nonce_check ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }

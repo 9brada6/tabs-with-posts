@@ -4,7 +4,7 @@ namespace TWRP\Admin\Tabs;
 
 use TWRP\Database\General_Options;
 use TWRP\Admin\Settings_Menu;
-use TWRP\Admin\General_Settings\General_Settings_Factory;
+use TWRP\Admin\Tabs\General_Settings\General_Settings_Factory;
 
 class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 

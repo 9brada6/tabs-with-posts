@@ -3,7 +3,7 @@
  * File containing the class with the same.
  */
 
-namespace TWRP\Admin;
+namespace TWRP\Admin\Tabs\Documentation;
 
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;

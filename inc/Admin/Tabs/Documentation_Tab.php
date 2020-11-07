@@ -4,8 +4,8 @@ namespace TWRP\Admin\Tabs;
 
 use TWRP\Plugins\Post_Views;
 use TWRP\Plugins\Plugin_Info;
-use TWRP\Admin\License_Display;
-use TWRP\Admin\Icons_Documentation;
+use TWRP\Admin\Tabs\Documentation\License_Display;
+use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 
 class Documentation_Tab implements Interface_Admin_Menu_Tab {
 	public function display_tab() {

@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin\General_Settings;
+namespace TWRP\Admin\Tabs\General_Settings;
 
 /**
  * Class used to create a radio setting, in the general settings tab.

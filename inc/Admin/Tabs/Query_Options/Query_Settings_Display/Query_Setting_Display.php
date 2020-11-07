@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin\Query_Settings_Display;
+namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
