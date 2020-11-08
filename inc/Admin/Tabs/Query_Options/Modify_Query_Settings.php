@@ -10,9 +10,16 @@ use TWRP\Database\Query_Options;
 
 class Modify_Query_Settings {
 
+	const NAME__QUERY_ID_HIDDEN_INPUT = 'query_id_being_modified';
+
 	public function display() {
 		$settings_classes = Class_Retriever_Utils::get_all_display_query_settings_objects();
+		$queries_tab      = new Queries_Tab();
+		$query_id         = $queries_tab->get_sanitized_id_of_query_being_modified();
 
+		?>
+			<input type="hidden" name="<?= esc_attr( self::NAME__QUERY_ID_HIDDEN_INPUT ) ?>" value="<?= esc_attr( $query_id ); ?>">
+		<?php
 		foreach ( $settings_classes as $setting_class ) :
 			$this->display_query_setting( $setting_class );
 		endforeach;
@@ -51,7 +58,7 @@ class Modify_Query_Settings {
 	protected function get_query_input_setting( $setting_class ) {
 		$queries_tab_class = new Queries_Tab();
 		try {
-			$query_id           = $queries_tab_class->get_id_of_query_being_modified();
+			$query_id           = $queries_tab_class->get_sanitized_id_of_query_being_modified();
 			$all_query_settings = Query_Options::get_all_query_settings( $query_id );
 		} catch ( RuntimeException $e ) { // phpcs:ignore -- Empty catch.
 			// Do nothing.
@@ -97,17 +104,35 @@ class Modify_Query_Settings {
 	public function update_form_submitted_settings() {
 		$settings_classes_name = Class_Retriever_Utils::get_all_display_query_settings_objects();
 		$query_settings        = array();
-		$queries_tab_class     = new Queries_Tab();
 
 		foreach ( $settings_classes_name as $setting_class ) {
 			$query_settings[ $setting_class->get_setting_name() ] = $setting_class->get_submitted_sanitized_setting();
 		}
 
-		$query_key = $queries_tab_class->get_id_of_query_being_modified();
-		if ( '' === $query_key ) {
+		$query_key = $this->get_sanitized_submitted_query_id_being_modified();
+		if ( ! $query_key ) {
 			Query_Options::add_new_query( $query_settings );
 		} elseif ( Query_Options::query_exists( $query_key ) ) {
 			Query_Options::update_query( $query_key, $query_settings );
 		}
+	}
+
+	/**
+	 * Get the submitted query id that the settings are modified.
+	 *
+	 * @return int|false False if the query id does not exist, or the id is not valid.
+	 */
+	protected function get_sanitized_submitted_query_id_being_modified() {
+		if ( ! isset( $_POST, $_POST[ self::NAME__QUERY_ID_HIDDEN_INPUT ] ) ) { // phpcs:ignore -- Nonce verified.
+			return false;
+		}
+
+		$query_id = intval( wp_unslash( $_POST[ self::NAME__QUERY_ID_HIDDEN_INPUT ] ) ); // phpcs:ignore -- Nonce verified.
+
+		if ( Query_Options::query_exists( $query_id ) ) {
+			return $query_id;
+		}
+
+		return false;
 	}
 }

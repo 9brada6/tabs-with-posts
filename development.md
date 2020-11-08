@@ -20,8 +20,11 @@
 
 ### Query Settings
 
-- Make a nice CLASS_CONSTANT across all Query_Settings, and across all Query_Display_Settings, write the in this documentation.
 - Finish Advanced Arguments.
+- Meta Value: Maybe do not add meta_value if the comparator is Exist or not exist. Maybe try to
+detect if an int is present in intval, and add as a comparator to int. Maybe add a note that
+say leave empty to not apply, or add a checkbox that must be checked to apply the setting.
+
 - Call init on every setting classes that have something in that function.
 
 - Create a nice query tab, including the message when no queries are present. Maybe move the actions button to the right?

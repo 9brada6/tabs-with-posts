@@ -321,7 +321,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 *
 	 * @return string The ID of the query being modified, or an empty string.
 	 */
-	public function get_id_of_query_being_modified() {
+	public function get_sanitized_id_of_query_being_modified() {
 		if ( isset( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] ) ) { // phpcs:ignore -- Nonce verified.
 			// phpcs:ignore WordPress.Security -- The setting is sanitized below.
 			$key = wp_unslash( $_GET[ self::EDIT_QUERY__URL_PARAM_KEY ] );
@@ -340,7 +340,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return string
 	 */
 	protected function get_edit_query_form_action() {
-		return $this->get_query_edit_link( $this->get_id_of_query_being_modified() );
+		return Settings_Menu::get_tab_url( $this );
 	}
 
 	/**

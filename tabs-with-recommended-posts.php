@@ -229,8 +229,8 @@ function twrp_dump_query_settings() {
 	// var_dump( pvc_get_post_views( $ids_array ) );
 
 	try {
-		\Debug\console_dump( \TWRP\Query_Generator::get_wp_query_arguments( 3 ), 'Query ID 3 Arguments' );
-		\Debug\console_dump( \TWRP\Query_Generator::get_wp_query_arguments( 4 ), 'Query ID 4 Arguments' );
+		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 3 ), 'Query ID 3 Arguments' );
+		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 4 ), 'Query ID 4 Arguments' );
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Query with Id 4 does not exist' );
 		// Do nothing
