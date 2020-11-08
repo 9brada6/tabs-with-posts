@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Admin;
+namespace TWRP\Admin\Helpers;
 
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 

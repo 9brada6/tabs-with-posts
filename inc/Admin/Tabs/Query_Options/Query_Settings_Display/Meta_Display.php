@@ -33,6 +33,11 @@ class Meta_Display extends Query_Setting_Display {
 		$meta_value_name  = Meta_Setting::get_setting_name() . '[' . Meta_Setting::META_KEY_VALUE__SETTING_NAME . ']';
 		$meta_value_value = $current_setting[ Meta_Setting::META_KEY_VALUE__SETTING_NAME ];
 
+		$additional_input_hidden_class = '';
+		if ( 'EXISTS' === $meta_compare_value || 'NOT EXISTS' === $meta_compare_value ) {
+			$additional_input_hidden_class = ' twrpb-hidden';
+		}
+
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<div class="<?php $this->bem_class( 'setting-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
@@ -49,7 +54,7 @@ class Meta_Display extends Query_Setting_Display {
 					<?php endforeach; ?>
 				</select>
 
-				<input id="<?php $this->bem_class( 'js-meta-value' ); ?>" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
+				<input id="<?php $this->bem_class( 'js-meta-value' ); ?>" class="<?php $this->bem_class( 'meta-value' ); ?><?= esc_attr( $additional_input_hidden_class ); ?>" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
 			</div>
 		</div>
 		<?php

@@ -13,7 +13,6 @@
  * Domain Path:       @todo
  */
 
-use TWRP\Admin\Remember_Note;
 use TWRP\Plugin_Bootstrap;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;

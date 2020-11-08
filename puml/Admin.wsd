@@ -5,10 +5,62 @@
 package "TWRP\Admin -- The backend of the website" {
 	class Settings_Menu <<private class>> {}
 
-	interface Interface_Admin_Menu_Tab <<private class>> {}
-	class Documentation_Tab <<private class>> {}
-	class General_Settings_Tab <<private class>> {}
-	class Queries_Tab <<private class>> {}
+	package "TWRP\Admin\Helpers" {
+		class Remember_Note <<private class>> {}
+	}
+
+	package "TWRP\Admin\Tabs" {
+		interface Interface_Admin_Menu_Tab <<private class>> {}
+		class Documentation_Tab <<private class>> {}
+		class General_Settings_Tab <<private class>> {}
+		class Queries_Tab <<private class>> {}
+
+		package "TWRP\Admin\Tabs\Documentation" {
+			class Icons_Documentation <<private class>> {}
+			class License_Display <<private class>> {}
+		}
+
+		package "TWRP\Admin\Tabs\General_Settings" {
+			class General_Settings_Factory <<private class>> <<Facade>> {
+				+ display( $setting_name )
+			}
+
+			interface General_Settings_Creator <<private class>>
+			class General_Select_Setting <<private class>>
+			class General_Select_With_Switch_Setting <<private class>>
+			class General_Text_Setting <<private class>>
+			class General_Radio_Setting <<private class>>
+
+			General_Settings_Factory --> General_Settings_Creator
+			General_Settings_Creator <|.. General_Select_Setting
+			General_Settings_Creator <|..  General_Text_Setting
+			General_Settings_Creator <|.. General_Radio_Setting
+			General_Select_Setting <|-l- General_Select_With_Switch_Setting
+		}
+
+		package "TWRP\Admin\Tabs\Query_Options" {
+			class Existing_Table <<private class>> {}
+			class Modify_Query_Settings <<private class>> {}
+
+			interface Query_Setting_Display <<private class>> {}
+			class Author_Display <<private class>> {}
+			class Category_Display <<private class>> {}
+			class All_Other_Classes_From_This_Folder <<private class>> {}
+
+			Query_Setting_Display <|.. Author_Display
+			Query_Setting_Display <|.. Category_Display
+			Query_Setting_Display <|.. All_Other_Classes_From_This_Folder
+		}
+
+			Documentation_Tab --> TWRP\Admin\Tabs\Documentation
+			General_Settings_Tab --> General_Settings_Factory
+			Queries_Tab <--> TWRP\Admin\Tabs\Query_Options
+	}
+
+	Settings_Menu ..> Interface_Admin_Menu_Tab
+	Interface_Admin_Menu_Tab <|.. Documentation_Tab
+	Interface_Admin_Menu_Tab <|.. General_Settings_Tab
+	Interface_Admin_Menu_Tab <|.. Queries_Tab
 }
 
 @enduml

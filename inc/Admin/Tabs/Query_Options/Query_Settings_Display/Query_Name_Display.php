@@ -6,7 +6,7 @@
 namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Query_Name;
-use TWRP\Admin\Remember_Note;
+use TWRP\Admin\Helpers\Remember_Note;
 
 /**
  * Used to display the query name setting control.

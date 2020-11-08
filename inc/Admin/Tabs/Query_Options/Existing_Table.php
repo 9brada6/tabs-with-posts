@@ -5,8 +5,11 @@ namespace TWRP\Admin\Tabs\Query_Options;
 use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Database\Query_Options;
 use TWRP\Query_Generator\Query_Setting\Query_Name;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 class Query_Existing_Table {
+
+	use BEM_Class_Naming_Trait;
 
 	/**
 	 * Display the existing queries table.
@@ -16,13 +19,13 @@ class Query_Existing_Table {
 	public function display() {
 		$existing_queries = Query_Options::get_all_queries();
 		?>
-		<table class="twrpb-existing-queries__table twrpb-queries-table">
+		<table class="<?php $this->bem_class(); ?>">
 			<thead>
 				<tr>
-					<th class="twrpb-queries-table__edit-head">
+					<th class="<?php $this->bem_class( 'edit-head' ); ?>">
 						<?= _x( 'Actions', 'backend', 'twrp' ) ?>
 					</th>
-					<th class="twrpb-queries-table__title-head"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
+					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -32,7 +35,7 @@ class Query_Existing_Table {
 					<?php endforeach; ?>
 				<?php else : ?>
 					<tr>
-						<td class="twrpb-queries-table__no-queries-col" colspan="2">
+						<td class="<?php $this->bem_class( 'no-queries-col' ); ?>" colspan="2">
 						<?= _x( 'No queries added', 'backend', 'twrp' ); ?>
 						</td>
 					</tr>
@@ -53,8 +56,8 @@ class Query_Existing_Table {
 	protected function display_existing_queries_row( $query_id, $query_settings ) {
 		$queries_tab = new Queries_Tab();
 
-		$edit_icon   = '<span class="twrpb-queries-table__edit-icon dashicons dashicons-edit"></span>';
-		$delete_icon = '<span class="twrpb-queries-table__delete-icon dashicons dashicons-trash"></span>';
+		$edit_icon   = '<span class="' . $this->get_bem_class( 'edit-icon' ) . ' dashicons dashicons-edit"></span>';
+		$delete_icon = '<span class="' . $this->get_bem_class( 'delete-icon' ) . ' dashicons dashicons-trash"></span>';
 
 		/* translators: %s: edit dashicon html. */
 		$edit_text = sprintf( _x( '%sEdit', 'backend', 'twrp' ), $edit_icon );
@@ -63,15 +66,19 @@ class Query_Existing_Table {
 
 		?>
 		<tr>
-			<td class="twrpb-queries-table__edit-col">
-				<a class="twrpb-queries-table__delete-link" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
-				<span class="twrpb-queries-table__edit-delete-separator">|</span>
-				<a class="twrpb-queries-table__edit-link" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
+			<td class="<?php $this->bem_class( 'edit-col' ); ?>">
+				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
+				<span class="<?php $this->bem_class( 'edit-delete-separator' ); ?>">|</span>
+				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
 			</td>
-			<td class="twrpb-queries-table__title-col">
+			<td class="<?php $this->bem_class( 'title-col' ); ?>">
 				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
 			</td>
 		</tr>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrpb-queries-table';
 	}
 }

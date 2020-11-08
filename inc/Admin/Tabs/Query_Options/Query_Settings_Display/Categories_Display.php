@@ -33,7 +33,7 @@ class Categories_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div class="<?php $this->bem_class(); ?> twrpb-collapsible-content">
+		<div class="<?php $this->bem_class(); ?>">
 			<?php
 			$this->display_category_select_type( $current_setting );
 
@@ -43,7 +43,7 @@ class Categories_Display extends Query_Setting_Display {
 				$this->display_category_include_children( $current_setting );
 				$this->display_categories_relation_setting( $current_setting );
 
-				echo '<hr class="twrp-admin-settings-separator ' . esc_attr( $this->get_bem_class( 'separator' ) ) . '" />';
+				echo '<hr class="' . esc_attr( $this->get_bem_class( 'separator' ) ) . '"/>';
 
 				$this->display_categories_list( $current_setting );
 				$this->display_category_dropdown_selector( $current_setting );
@@ -177,7 +177,7 @@ class Categories_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<h4 class="twrpb-collapsible-content__section-title">
+		<h4 class="<?php $this->bem_class( 'section-title' ); ?> twrpb-collapsible-content__section-title">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
 		</h4>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'cat-list-section' ); ?>">

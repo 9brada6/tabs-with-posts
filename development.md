@@ -26,28 +26,24 @@
 
 - Create a nice query tab, including the message when no queries are present. Maybe move the actions button to the right?
 
-- Add bem class trait to twrpb-exiting-queries and twrpb-queries-table(they are the only ones who dont have BEM cass in query-settings sub folder).
-
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 - Meta Settings verify if add_query_args is good, hasn't been verified before.
 - When settings are saved, redirect to table of queries, not edit queries.
-- Add a back button from settings to the table.
-- Change namespace/folder name from settings from plural to singular
 
 - Remove "No order" from posts order setting. Is very confusing especially if
 is not selected.
-
-- Meta setting hide if exist or not exist also in PHP file, currently only ts implemented.
 
 - Remove order from orderby that does not depend, like post__in
 
 - In author setting, and maybe in all other, when searching for an author and selecting with
 arrows/mouse hover, no css indication of the element selected is done.
 
-- Search and remove this class: twrp-collapsible-content__section-title and this twrp-admin-settings-separator.
+- Search and remove this class: twrp-collapsible-content__section-title and this twrp-admin-settings-separator and twrp-collapsible-content.
 
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
+
+- change all WP button classes with twrpb-button.
 
 ### Plugins
 

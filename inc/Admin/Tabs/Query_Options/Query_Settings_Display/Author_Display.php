@@ -7,7 +7,7 @@ namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Author;
 use TWRP\Utils\Simple_Utils;
-use TWRP\Admin\Remember_Note;
+use TWRP\Admin\Helpers\Remember_Note;
 
 /**
  * Used to display the author query setting control.

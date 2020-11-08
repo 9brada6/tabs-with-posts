@@ -15,7 +15,7 @@ function enableDatePickerIfNecessary() {
 		return;
 	}
 
-	const options = {
+	const options: any = {
 		dateFormat: 'yy-mm-dd',
 		changeMonth: true,
 		changeYear: true,

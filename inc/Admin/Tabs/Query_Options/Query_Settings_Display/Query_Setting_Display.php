@@ -5,6 +5,7 @@
 
 namespace TWRP\Admin\Tabs\Query_Options;
 
+use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
@@ -95,18 +96,33 @@ abstract class Query_Setting_Display {
 	 */
 	abstract public function display_setting( $current_setting );
 
-	// Todo: remove all these functions.
-
+	/**
+	 * Echo the query setting class for paragraphs.
+	 *
+	 * @return void
+	 */
 	protected function query_setting_paragraph_class() {
 		echo esc_attr( $this->get_query_setting_paragraph_class() );
 	}
 
+	/**
+	 * Get the query setting class for paragraphs.
+	 *
+	 * @return string
+	 */
 	protected function get_query_setting_paragraph_class() {
-		return 'twrpb-query-settings__paragraph';
+		$query_tab = new Queries_Tab();
+		return $query_tab->get_query_setting_paragraph_class();
 	}
 
+	/**
+	 * Echo the query setting class for line checkboxes.
+	 *
+	 * @return void
+	 */
 	protected function query_setting_checkbox_line_class() {
-		echo esc_attr( 'twrpb-query-settings__checkbox-line' );
+		$query_tab = new Queries_Tab();
+		echo esc_attr( $query_tab->query_setting_checkbox_line_class() );
 	}
 
 }

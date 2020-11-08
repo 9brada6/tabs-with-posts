@@ -5,15 +5,11 @@
 
 namespace TWRP\Admin\Tabs;
 
-use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
-use TWRP\Query_Generator\Query_Setting\Query_Setting;
-use TWRP\Query_Generator\Query_Setting\Query_Name;
-use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
-use RuntimeException;
 use TWRP\Admin\Tabs\Query_Options\Modify_Query_Settings;
 use TWRP\Admin\Tabs\Query_Options\Query_Existing_Table;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
  * Implements a tab in the Settings Menu called "Queries Tab". The implemented
@@ -25,6 +21,8 @@ use TWRP\Admin\Tabs\Query_Options\Query_Existing_Table;
  * filter has it's own class, and implement Query_Setting interface.
  */
 class Queries_Tab implements Interface_Admin_Menu_Tab {
+
+	use BEM_Class_Naming_Trait;
 
 	/**
 	 * The value that represents the tab in the query URL parameter.
@@ -43,15 +41,6 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * The URL parameter key which say which query should be deleted.
 	 */
 	const DELETE_QUERY__URL_PARAM_KEY = 'query_delete_id';
-
-	/**
-	 * The name of the input that holds the query name in the Add/Edit Page.
-	 * This value should be the same as
-	 * TWRP\Query_Generator\Query_Setting\Query_Name::get_setting_name().
-	 *
-	 * @todo: See where it is used and remove.
-	 */
-	const QUERY_NAME = 'query_name';
 
 	/**
 	 * Name of the nonce from the edit form.
@@ -145,8 +134,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	public function display_existing_queries_page() {
 		$existing_queries_table = new Query_Existing_Table();
 		?>
-		<div class="twrpb-existing-queries">
-			<h3 class="twrpb-existing-queries__title"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
+		<div class="<?php $this->bem_class(); ?>">
+			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
 			$existing_queries_table->display();
@@ -201,9 +190,9 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	protected function display_existing_queries_add_new_btn() {
-		$add_btn_icon = '<span class="twrpb-existing-queries__add-btn-icon dashicons dashicons-plus"></span>';
+		$add_btn_icon = '<span class="' . $this->get_bem_class( 'add-query-btn-icon' ) . ' dashicons dashicons-plus"></span>';
 		?>
-		<a class="twrpb-existing-queries__btn button button-primary button-large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
+		<a class="<?php $this->bem_class( 'add-query-btn' ); ?> button button-primary button-large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
 			<?php
 				/* translators: %s: plus dashicon html. */
 				echo sprintf( _x( '%s Add New Query', 'backend', 'twrp' ), $add_btn_icon ); // phpcs:ignore -- No XSS.
@@ -275,6 +264,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 
 	#endregion -- Existing Queries Table Methods
 
+	#region -- Edit Queries Settings
 
 	/**
 	 * Display the form to add a new query or to modify a pre-existed query.
@@ -284,7 +274,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function display_query_form() {
 		$query_settings_display = new Modify_Query_Settings()
 		?>
-		<div class="twrpb-query-settings">
+		<div class="<?php $this->bem_class(); ?>">
+			<?php $this->display_back_to_existing_tables_btn(); ?>
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php $query_settings_display->display(); ?>
 				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
@@ -293,6 +284,22 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		</div>
 		<?php
 	}
+
+	/**
+	 * Display a button to get back to the existing queries table.
+	 *
+	 * @return void
+	 */
+	protected function display_back_to_existing_tables_btn() {
+		$link        = Settings_Menu::get_tab_url( $this );
+		$button_text = _x( '< Back to the Queries Overview', 'backend', 'twrp' );
+		?>
+		<a href="<?= esc_url( $link ); ?>" class="<?php $this->bem_class( 'back-btn' ); ?> twrpb-button">
+			<?= esc_html( $button_text ); ?>
+		</a>
+		<?php
+	}
+
 
 	/**
 	 * Check to see if the user is currently editing a query.
@@ -365,6 +372,39 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		}
 
 		return false;
+	}
+
+	#endregion -- Edit Queries Settings
+
+	protected function get_bem_base_class() {
+		return 'twrpb-query-settings';
+	}
+
+	/**
+	 * Get the query setting class that all collapsible settings should have.
+	 *
+	 * @return string
+	 */
+	public function get_query_setting_wrapper_class() {
+		return $this->get_bem_class( 'setting' );
+	}
+
+	/**
+	 * Get the query setting class for paragraphs.
+	 *
+	 * @return string
+	 */
+	public function get_query_setting_paragraph_class() {
+		return $this->get_bem_class( 'paragraph' );
+	}
+
+	/**
+	 * Get the query setting class for line checkboxes.
+	 *
+	 * @return string
+	 */
+	public function query_setting_checkbox_line_class() {
+		return $this->get_bem_class( 'checkbox-line' );
 	}
 
 }

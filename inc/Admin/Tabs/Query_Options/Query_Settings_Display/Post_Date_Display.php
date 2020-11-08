@@ -6,7 +6,7 @@
 namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Post_Date;
-use TWRP\Admin\Remember_Note;
+use TWRP\Admin\Helpers\Remember_Note;
 
 /**
  * Used to display the post date query setting control.

@@ -27,9 +27,10 @@ class Modify_Query_Settings {
 	protected function display_query_setting( $setting_display_class ) {
 		$current_setting = $this->get_query_input_setting( $setting_display_class );
 		$collapsed       = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
+		$queries_tab     = new Queries_Tab();
 
 		?>
-		<div class="twrpb-query-settings__setting twrpb-collapsible" data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>">
+		<div class="<?= esc_attr( $queries_tab->get_query_setting_wrapper_class() ); ?> twrpb-collapsible" data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>">
 			<h2 class="twrpb-collapsible__title">
 				<span class="twrpb-collapsible__indicator"></span>
 				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
