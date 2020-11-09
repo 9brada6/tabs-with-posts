@@ -89,7 +89,6 @@ class Post_Order extends Query_Setting {
 	public static function get_orderby_select_options() {
 		$select_options = array(
 			'not_applied'   => _x( 'Not applied', 'backend', 'twrp' ),
-			'none'          => _x( 'No order', 'backend', 'twrp' ),
 			'ID'            => _x( 'Order by post id', 'backend', 'twrp' ),
 			'author'        => _x( 'Order by author', 'backend', 'twrp' ),
 			'name'          => _x( 'Order by post slug', 'backend', 'twrp' ),

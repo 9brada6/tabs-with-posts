@@ -62,19 +62,14 @@ say leave empty to not apply, or add a checkbox that must be checked to apply th
 - Meta Settings verify if add_query_args is good, hasn't been verified before.
 - When settings are saved, redirect to table of queries, not edit queries.
 
-- Remove "No order" from posts order setting. Is very confusing especially if
-is not selected.
-
-- Remove order from orderby that does not depend, like post__in
-
 - In author setting, and maybe in all other, when searching for an author and selecting with
 arrows/mouse hover, no css indication of the element selected is done.
-
-- Search and remove this class: twrp-collapsible-content__section-title and this twrp-admin-settings-separator and twrp-collapsible-content.
 
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
 
 - change all WP button classes with twrpb-button.
+
+- Order: maybe add more orders, like post__in?.
 
 ### Plugins
 

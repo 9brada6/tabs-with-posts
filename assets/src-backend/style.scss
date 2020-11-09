@@ -37,32 +37,4 @@
 // Widget blocks
 @import 'widget-blocks/twrp-widget-components';
 @import 'widget-blocks/twrp-widget-form';
-
-// Todo: move what is below.
-
-.twrpb-collapsible-content {
-	&__section-title {
-		margin-top: 1rem;
-		margin-bottom: 0.5rem;
-	}
-
-	&__section {
-		margin-bottom: 1rem;
-	}
-}
-
-//
-.twrp-widget-icon-preview {
-	display: inline-block;
-	width: 2rem;
-	height: 2rem;
-	padding: 0.1rem;
-	margin: 6px;
-	margin-left: 0.6rem;
-	vertical-align: middle;
-
-	svg {
-		width: 100%;
-		height: 100%;
-	}
-}
+@import 'widget-blocks/twrp-widget-icon-preview';

@@ -179,7 +179,7 @@ class Categories_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<h4 class="<?php $this->bem_class( 'section-title' ); ?> twrpb-collapsible-content__section-title">
+		<h4 class="<?php $this->bem_class( 'section-title' ); ?>">
 			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
 		</h4>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'cat-list-section' ); ?>">
