@@ -73,10 +73,6 @@ class Post_Order extends Query_Setting {
 	 */
 	const PLUGIN_GAMERZ_RATING_ORDERBY_VALUE = 'post_rating_gamerz';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'post_order';
 	}

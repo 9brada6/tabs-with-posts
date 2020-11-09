@@ -5,6 +5,10 @@
 
 namespace TWRP;
 
+use TWRP\Icons\Create_And_Enqueue_Icons;
+use TWRP\TWRP_Widget\Widget_Ajax;
+use TWRP\Utils\Class_Retriever_Utils;
+
 class Plugin_Bootstrap {
 
 	/**
@@ -176,11 +180,27 @@ class Plugin_Bootstrap {
 	 * Require all the files needed for the plugin.
 	 *
 	 * @return void
+	 *
+	 * @psalm-suppress all
 	 */
-	public static function init() {
+	public static function include_all_files() {
 		foreach ( self::$required_files as $file ) {
-			/** @psalm-suppress all */
 			require __DIR__ . '/' . $file . '.php';
 		}
 	}
+
+	/**
+	 * This method should be called immediately after include_all_files()
+	 * method.
+	 *
+	 * @return void
+	 */
+	public static function initialize_after_setup_theme_hooks() {
+		$trait_classes = Class_Retriever_Utils::get_all_classes_that_uses_after_init_theme_trait();
+
+		foreach ( $trait_classes as $trait_class ) {
+			$trait_class::after_setup_theme_init();
+		}
+	}
+
 }

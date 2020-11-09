@@ -73,21 +73,6 @@ abstract class Article_Block {
 	abstract protected static function get_file_name();
 
 	/**
-	 * Called before anything else, to initialize actions and filters.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 *
-	 * @phan-suppress PhanEmptyPublicMethod
-	 */
-	public static function init() {
-		// Do nothing for now.
-	}
-
-	/**
 	 * Get the widget Id this artblock is build for.
 	 *
 	 * @return int

@@ -26,10 +26,6 @@ class Post_Date extends Query_Setting {
 
 	const AFTER_DATE_NAME = 'after';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'post_date';
 	}

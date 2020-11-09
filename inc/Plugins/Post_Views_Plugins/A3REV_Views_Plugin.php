@@ -35,10 +35,6 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		return false;
 	}
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function is_installed_and_can_be_used() {
 		if ( ! class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
 			return false;

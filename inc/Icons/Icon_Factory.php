@@ -22,20 +22,6 @@ use TWRP\Icons\Rating_Icons;
 class Icon_Factory {
 
 	/**
-	 * Called before anything else, to initialize all the things that this class
-	 * needs.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 *
-	 * @suppress PhanEmptyPublicMethod
-	 */
-	public static function init() {}
-
-	/**
 	 * Get an Icon object, based on the id.
 	 *
 	 * @throws RuntimeException If icon id does not exist.

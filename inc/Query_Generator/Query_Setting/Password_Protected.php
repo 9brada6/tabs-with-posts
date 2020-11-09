@@ -19,10 +19,6 @@ class Password_Protected extends Query_Setting {
 	 */
 	const PASSWORD_PROTECTED__SETTING_NAME = 'password_protected';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'password_protected';
 	}

@@ -18,10 +18,6 @@ class Post_Status extends Query_Setting {
 
 	const POST_STATUSES__SETTING_NAME = 'selected_statuses';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'post_status';
 	}

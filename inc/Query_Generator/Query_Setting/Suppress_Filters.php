@@ -23,10 +23,6 @@ class Suppress_Filters extends Query_Setting {
 	 */
 	const SUPPRESS_FILTERS__SETTING_NAME = 'suppress';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'suppress_filters';
 	}

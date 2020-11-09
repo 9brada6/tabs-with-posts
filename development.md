@@ -81,6 +81,8 @@ be used.
 - In Gulp, when a SCSS file fail to compile, no error is displayed. Try to fix it. For example, if we add an import
 that does not exist, the gulp won't show an error, it just will not compile.
 
+- Move the class order to a trait
+
 ### Icons
 
 - Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.

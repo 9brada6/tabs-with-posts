@@ -16,10 +16,6 @@ class Meta_Setting extends Query_Setting {
 	const META_KEY_VALUE__SETTING_NAME      = 'meta_value';
 	const META_KEY_COMPARATOR__SETTING_NAME = 'meta_comparator';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'meta_settings';
 	}

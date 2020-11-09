@@ -52,10 +52,6 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 		return true;
 	}
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function is_installed_and_can_be_used() {
 		return function_exists( 'pvc_get_post_views' );
 	}

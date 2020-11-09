@@ -17,11 +17,7 @@ use TWRP\Plugin_Bootstrap;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
-use TWRP\TWRP_Widget\Widget_Ajax;
-use TWRP\Plugins\Post_Views;
 use TWRP\Query_Generator\Query_Generator;
-use TWRP\Icons\Icon_Factory;
-use TWRP\Icons\Create_And_Enqueue_Icons;
 
 
 /**
@@ -32,25 +28,10 @@ require_once __DIR__ . '/debug-and-development.php';
 // Require all files. An autoloader is not used, because other plugins can use
 // an autoloader that is slow, making this plugin slow as well.
 require_once __DIR__ . '/inc/Plugin_Bootstrap.php';
-Plugin_Bootstrap::init();
+Plugin_Bootstrap::include_all_files();
+add_action( 'after_setup_theme', array( 'TWRP\\Plugin_Bootstrap', 'initialize_after_setup_theme_hooks' ) );
 
 #region -- Initializing
-
-
-/**
- * Initialize all classes init() static methods.
- *
- * @return void
- */
-function twrp_initialize() {
-	Widget_Ajax::init();
-	Post_Views::init();
-
-	// Doesn't matter order of init:
-	Icon_Factory::init();
-	Create_And_Enqueue_Icons::init();
-}
-add_action( 'after_setup_theme', 'twrp_initialize' );
 
 
 #endregion -- Initializing
@@ -125,9 +106,6 @@ function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
-
-// todo:
-\TWRP\Query_Generator\Query_Setting\Advanced_Arguments::init();
 
 /**
  * @todo: Move and comment.

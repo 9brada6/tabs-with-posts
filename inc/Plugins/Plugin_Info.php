@@ -6,19 +6,11 @@
 namespace TWRP\Plugins;
 
 use TWRP\Utils\Directory_Utils;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 abstract class Plugin_Info {
 
-	/**
-	 * Called before anything else, to initialize actions and filters.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 */
-	abstract public static function init();
+	use After_Setup_Theme_Init_Trait;
 
 	/**
 	 * Get the title of the plugin.

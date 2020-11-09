@@ -5,6 +5,8 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
+
 /**
  * Implements the functions needed to be calling in displaying the settings in
  * the backend, and to create a query setting in general. As the name says, this
@@ -16,17 +18,6 @@ namespace TWRP\Query_Generator\Query_Setting;
 abstract class Query_Setting {
 
 	const CLASS_ORDER = 0;
-
-	/**
-	 * Called before anything else, to initialize actions and filters.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 */
-	abstract public static function init();
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.

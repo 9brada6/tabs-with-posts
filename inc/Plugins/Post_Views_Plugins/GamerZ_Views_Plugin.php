@@ -39,10 +39,6 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 		return true;
 	}
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function is_installed_and_can_be_used() {
 		if ( ! function_exists( 'the_views' ) ) {
 			return false;

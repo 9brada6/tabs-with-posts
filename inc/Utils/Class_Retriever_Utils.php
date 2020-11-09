@@ -64,6 +64,16 @@ class Class_Retriever_Utils {
 	}
 
 	/**
+	 * Get all classes that implements After_Setup_Theme_Init_Trait trait.
+	 *
+	 * @return array<string>
+	 */
+	public static function get_all_classes_that_uses_after_init_theme_trait() {
+		$trait_classes = self::get_all_trait_classes( 'TWRP\\Utils\\Helper_Trait\\After_Setup_Theme_Init_Trait' );
+		return $trait_classes;
+	}
+
+	/**
 	 * Get all classes that implements/extends a certain interface/class.
 	 *
 	 * @param string $parent_class
@@ -82,6 +92,50 @@ class Class_Retriever_Utils {
 		}
 
 		return $children_classes;
+	}
+
+	/**
+	 * Get all classes that use a specific trait.
+	 *
+	 * @param string $trait_name
+	 * @return array
+	 *
+	 * @psalm-return array<class-string>
+	 */
+	protected static function get_all_trait_classes( $trait_name ) {
+		$trait_classes    = array();
+		$declared_classes = get_declared_classes();
+
+		foreach ( $declared_classes as $declared_class ) {
+			if ( self::class_use_trait( $declared_class, $trait_name ) ) {
+				array_push( $trait_classes, $declared_class );
+			}
+		}
+
+		return $trait_classes;
+	}
+
+	/**
+	 * Get if a class uses a specific trait
+	 *
+	 * @param string $class_name
+	 * @param string $trait_name
+	 * @return bool
+	 */
+	protected static function class_use_trait( $class_name, $trait_name ) {
+		while ( true ) {
+			$traits = class_uses( $class_name );
+			if ( is_array( $traits ) && isset( $traits[ $trait_name ] ) ) {
+				return true;
+			}
+
+			$class_name = get_parent_class( $class_name );
+			if ( false === $class_name ) {
+				break;
+			}
+		}
+
+		return false;
 	}
 
 	/**

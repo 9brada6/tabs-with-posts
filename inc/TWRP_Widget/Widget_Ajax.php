@@ -6,17 +6,13 @@
 namespace TWRP\TWRP_Widget;
 
 use TWRP\TWRP_Widget\Widget_Form;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 class Widget_Ajax {
 
-	/**
-	 * Called before anything else, to initialize actions and filters.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 */
-	public static function init() {
+	use After_Setup_Theme_Init_Trait;
+
+	public static function after_setup_theme_init() {
 		add_action( 'wp_ajax_twrp_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
 		add_action( 'wp_ajax_twrp_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
 	}

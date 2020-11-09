@@ -18,10 +18,6 @@ class Sticky_Posts extends Query_Setting {
 	 */
 	const INCLUSION__SETTING_NAME = 'inclusion';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'sticky_posts';
 	}

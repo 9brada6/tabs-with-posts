@@ -72,24 +72,6 @@ class Post_Views {
 	}
 
 	/**
-	 * Called before anything else, to initialize all others plugin adapter
-	 * classes.
-	 *
-	 * Always called at 'after_setup_theme' action. Other things added here should be
-	 * additionally checked, for example by admin hooks, or whether or not to be
-	 * included in special pages, ...etc.
-	 *
-	 * @return void
-	 */
-	public static function init() {
-		$classes = self::get_plugin_classes();
-
-		foreach ( $classes as $view_class ) {
-			$view_class::init();
-		}
-	}
-
-	/**
 	 * Given an array with WP_Query args return the new WP_Query args that will
 	 * have the parameters added to order by the views plugin selected.
 	 *

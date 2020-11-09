@@ -30,10 +30,6 @@ class Advanced_Arguments extends Query_Setting {
 	 */
 	const CUSTOM_ARGS__SETTING_NAME = 'custom_args_json';
 
-	public static function init() {
-		add_action( 'admin_enqueue_scripts', array( 'TWRP\\Query_Generator\\Query_Setting\\Advanced_Arguments', 'enqueue_scripts' ) );
-	}
-
 	public static function get_setting_name() {
 		return 'advanced_args';
 	}
@@ -78,12 +74,6 @@ class Advanced_Arguments extends Query_Setting {
 		// todo:
 
 		return $previous_query_args;
-	}
-
-	public static function enqueue_scripts() {
-		if ( Settings_Menu::is_tab_active( new Queries_Tab() ) ) {
-			wp_enqueue_script( 'wp-codemirror' );
-		}
 	}
 
 	public static function is_valid_json( $json ) {

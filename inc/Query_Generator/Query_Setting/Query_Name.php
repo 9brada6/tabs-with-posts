@@ -21,10 +21,6 @@ class Query_Name extends Query_Setting {
 	 */
 	const QUERY_NAME__SETTING_NAME = 'name';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'query_name';
 	}

@@ -17,10 +17,6 @@ class Search extends Query_Setting {
 	 */
 	const SEARCH_KEYWORDS__SETTING_NAME = 'search_keywords';
 
-	public static function init() {
-		// Do nothing.
-	}
-
 	public static function get_setting_name() {
 		return 'search';
 	}
