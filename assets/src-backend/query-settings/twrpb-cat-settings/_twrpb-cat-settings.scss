@@ -23,6 +23,15 @@
 		border: 0;
 	}
 
+	&__add-cat-wrapper {
+		display: flex;
+		flex-wrap: wrap;
+
+		select {
+			margin-right: 0.3rem;
+		}
+	}
+
 	&__include-children-wrap {
 		margin-top: 0 !important;
 	}

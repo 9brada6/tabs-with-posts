@@ -177,7 +177,7 @@ class Author_Display extends Query_Setting_Display {
 
 			<button
 				id="<?php $this->bem_class( 'js-author-add-btn' ); ?>" type="button"
-				class="<?php $this->bem_class( 'js-author-add-btn' ); ?> button button-primary"
+				class="<?php $this->bem_class( 'js-author-add-btn' ); ?> twrpb-button"
 			>
 				<?= _x( 'Add Author', 'backend', 'twrp' ); ?>
 			</button>

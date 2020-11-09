@@ -244,7 +244,7 @@ class Categories_Display extends Query_Setting_Display {
 		?>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'add-cat-wrapper' ); ?>">
 			<?= $categories_dropdown; // phpcs:ignore -- No need to escape. ?>
-			<button id="<?php $this->bem_class( 'add-cat-btn' ); ?>" class="button button-primary" type="button">
+			<button id="<?php $this->bem_class( 'add-cat-btn' ); ?>" class="<?php $this->bem_class( 'add-cat-btn' ); ?> twrpb-button" type="button">
 				<?= _x( 'Add Category To List', 'backend', 'twrp' ); ?>
 			</button>
 		</div>

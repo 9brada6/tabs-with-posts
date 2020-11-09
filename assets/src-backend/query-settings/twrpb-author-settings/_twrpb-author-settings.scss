@@ -2,7 +2,10 @@
 	&__author-search-wrap {
 		display: flex;
 		flex-wrap: wrap;
-		align-items: center;
+
+		input {
+			margin-right: 0.3rem;
+		}
 	}
 
 	&__author-search {

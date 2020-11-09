@@ -71,7 +71,7 @@ function initializeAutoComplete() {
 	authorSearchInput.autocomplete( {
 		source: showSearchedUsers,
 		minLength: 2,
-	} );
+	} ).autocomplete( 'widget' ).addClass( 'twrpb-jqueryui-autocomplete-menu' );
 }
 
 /**

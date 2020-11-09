@@ -60,14 +60,8 @@ say leave empty to not apply, or add a checkbox that must be checked to apply th
 - Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
 - checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 - Meta Settings verify if add_query_args is good, hasn't been verified before.
-- When settings are saved, redirect to table of queries, not edit queries.
-
-- In author setting, and maybe in all other, when searching for an author and selecting with
-arrows/mouse hover, no css indication of the element selected is done.
 
 - Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
-
-- change all WP button classes with twrpb-button.
 
 - Order: maybe add more orders, like post__in?.
 

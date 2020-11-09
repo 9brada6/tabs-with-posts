@@ -49,7 +49,7 @@ function initializeAutoComplete() {
 	postsSearchInput.autocomplete( {
 		source: showSearchedPosts,
 		minLength: 2,
-	} );
+	} ).autocomplete( 'widget' ).addClass( 'twrpb-jqueryui-autocomplete-menu' );
 }
 
 /**

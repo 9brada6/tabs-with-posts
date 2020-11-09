@@ -1,0 +1,10 @@
+.twrpb-posts-settings {
+	&__posts-search-wrap {
+		display: flex;
+		flex-wrap: wrap;
+
+		input {
+			margin-right: 0.3rem;
+		}
+	}
+}

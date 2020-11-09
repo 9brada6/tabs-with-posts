@@ -167,7 +167,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 			<button
 				id="<?php $this->bem_class( 'js-posts-add-btn' ); ?>" type="button"
-				class="<?php $this->bem_class( 'js-posts-add-btn' ); ?> button button-primary"
+				class="<?php $this->bem_class( 'js-posts-add-btn' ); ?> twrpb-button"
 			>
 				<?= _x( 'Add Post', 'backend', 'twrp' ); ?>
 			</button>
