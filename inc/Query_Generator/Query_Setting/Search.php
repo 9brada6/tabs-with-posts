@@ -10,7 +10,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Search extends Query_Setting {
 
-	const CLASS_ORDER = 70;
+	public static function get_class_order_among_siblings() {
+		return 70;
+	}
 
 	/**
 	 * The name of the setting and array key which represents the search string.

@@ -8,6 +8,7 @@ namespace TWRP\Admin\Tabs\Query_Options;
 use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
 /**
  * Used to display a control for a query setting.
@@ -15,6 +16,8 @@ use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 abstract class Query_Setting_Display {
 
 	use BEM_Class_Naming_Trait;
+
+	use Class_Children_Order_Trait;
 
 	/**
 	 * Initialize the class. The constructor must not take any parameter.

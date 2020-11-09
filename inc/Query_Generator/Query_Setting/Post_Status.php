@@ -12,7 +12,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Post_Status extends Query_Setting {
 
-	const CLASS_ORDER = 30;
+	public static function get_class_order_among_siblings() {
+		return 30;
+	}
 
 	const APPLY_STATUSES__SETTING_NAME = 'status_type';
 

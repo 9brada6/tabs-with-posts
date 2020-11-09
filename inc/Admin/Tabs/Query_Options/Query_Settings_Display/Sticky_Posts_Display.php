@@ -12,7 +12,9 @@ use TWRP\Query_Generator\Query_Setting\Sticky_Posts;
  */
 class Sticky_Posts_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 90;
+	public static function get_class_order_among_siblings() {
+		return 90;
+	}
 
 	protected function get_setting_class() {
 		return new Sticky_Posts();

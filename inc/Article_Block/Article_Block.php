@@ -8,6 +8,7 @@ namespace TWRP\Article_Block;
 use TWRP\Artblock_Component\Widget_Component_Settings;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
+use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -23,7 +24,7 @@ abstract class Article_Block {
 
 	use Display_Post_Meta_Trait;
 
-	const CLASS_ORDER = 1000;
+	use Class_Children_Order_Trait;
 
 	/**
 	 * Holds the widget id of these article blocks.

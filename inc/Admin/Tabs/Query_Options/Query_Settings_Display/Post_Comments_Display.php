@@ -12,7 +12,9 @@ use TWRP\Query_Generator\Query_Setting\Post_Comments;
  */
 class Post_Comments_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 100;
+	public static function get_class_order_among_siblings() {
+		return 100;
+	}
 
 	protected function get_setting_class() {
 		return new Post_Comments();

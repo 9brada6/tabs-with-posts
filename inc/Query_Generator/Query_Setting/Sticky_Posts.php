@@ -10,7 +10,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Sticky_Posts extends Query_Setting {
 
-	const CLASS_ORDER = 33;
+	public static function get_class_order_among_siblings() {
+		return 33;
+	}
 
 	/**
 	 * The name of the setting which represents whether or not to include sticky

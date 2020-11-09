@@ -15,7 +15,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Suppress_Filters extends Query_Setting {
 
-	const CLASS_ORDER = 90;
+	public static function get_class_order_among_siblings() {
+		return 90;
+	}
 
 	/**
 	 * The array key of the setting that remember whether or not to suppress the

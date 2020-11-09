@@ -14,7 +14,9 @@ use DateTime;
  */
 class Post_Date extends Query_Setting {
 
-	const CLASS_ORDER = 35;
+	public static function get_class_order_among_siblings() {
+		return 35;
+	}
 
 	const DATE_TYPE_NAME = 'date_type';
 

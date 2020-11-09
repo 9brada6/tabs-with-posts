@@ -13,7 +13,9 @@ use TWRP\Admin\Helpers\Remember_Note;
  */
 class Suppress_Filters_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 140;
+	public static function get_class_order_among_siblings() {
+		return 140;
+	}
 
 	protected function get_setting_class() {
 		return new Suppress_Filters();

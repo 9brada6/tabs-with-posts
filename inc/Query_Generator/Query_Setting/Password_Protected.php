@@ -11,7 +11,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Password_Protected extends Query_Setting {
 
-	const CLASS_ORDER = 80;
+	public static function get_class_order_among_siblings() {
+		return 80;
+	}
 
 	/**
 	 * The name of the setting and array key which represents whether or not the

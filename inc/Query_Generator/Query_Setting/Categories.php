@@ -14,7 +14,9 @@ use TWRP\Utils\Simple_Utils;
  */
 class Categories extends Query_Setting {
 
-	const CLASS_ORDER = 60;
+	public static function get_class_order_among_siblings() {
+		return 60;
+	}
 
 	const CATEGORIES_TYPE__SETTING_KEY  = 'setting_type';
 	const INCLUDE_CHILDREN__SETTING_KEY = 'include_children';

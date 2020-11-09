@@ -13,7 +13,9 @@ use RuntimeException;
 
 class Author extends Query_Setting {
 
-	const CLASS_ORDER = 40;
+	public static function get_class_order_among_siblings() {
+		return 40;
+	}
 
 	/**
 	 * The setting attribute name, and the array key of the author filter type.

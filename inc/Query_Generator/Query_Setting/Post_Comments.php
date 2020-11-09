@@ -10,7 +10,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Post_Comments extends Query_Setting {
 
-	const CLASS_ORDER = 60;
+	public static function get_class_order_among_siblings() {
+		return 60;
+	}
 
 	/**
 	 * Name of the form input field, that holds the number of comments to

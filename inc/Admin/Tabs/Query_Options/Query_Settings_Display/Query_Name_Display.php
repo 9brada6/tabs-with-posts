@@ -13,7 +13,9 @@ use TWRP\Admin\Helpers\Remember_Note;
  */
 class Query_Name_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 0;
+	public static function get_class_order_among_siblings() {
+		return 0;
+	}
 
 	protected function get_setting_class() {
 		return new Query_Name();

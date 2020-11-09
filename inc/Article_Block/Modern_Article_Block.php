@@ -4,7 +4,9 @@ namespace TWRP\Article_Block;
 
 class Modern_Article_Block extends Article_Block {
 
-	const CLASS_ORDER = 100;
+	public static function get_class_order_among_siblings() {
+		return 100;
+	}
 
 	protected $widget_id;
 	protected $query_id;

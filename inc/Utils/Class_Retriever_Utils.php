@@ -13,8 +13,8 @@ use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
  * to retrieve a list of classes of a specific type. Like classes that extends
  * another class, or all the classes that implements a certain interface.
  *
- * If the class order is important, some of the methods will retrieve the
- * classes ordered by a class constant, named CLASS_ORDER.
+ * If the class order is important, the class parents that use the trait
+ * Class_Children_Order_Trait will be retrieved in order of what int they return.
  */
 class Class_Retriever_Utils {
 
@@ -26,7 +26,6 @@ class Class_Retriever_Utils {
 	 */
 	public static function get_all_article_block_names() {
 		$class_names = static::get_all_child_classes( 'TWRP\\Article_Block\\Article_Block' );
-		$class_names = self::order_class_name( $class_names );
 
 		return $class_names;
 	}
@@ -38,7 +37,6 @@ class Class_Retriever_Utils {
 	 */
 	public static function get_all_query_settings_objects() {
 		$class_names = static::get_all_child_classes( 'TWRP\\Query_Generator\\Query_Setting\\Query_Setting' );
-		$class_names = self::order_class_name( $class_names );
 
 		foreach ( $class_names as $key => $class_name ) {
 			$class_names[ $key ] = new $class_name();
@@ -54,7 +52,6 @@ class Class_Retriever_Utils {
 	 */
 	public static function get_all_display_query_settings_objects() {
 		$class_names = static::get_all_child_classes( 'TWRP\\Admin\\Tabs\\Query_Options\\Query_Setting_Display' );
-		$class_names = self::order_class_name( $class_names );
 
 		foreach ( $class_names as $key => $class_name ) {
 			$class_names[ $key ] = new $class_name();
@@ -76,6 +73,9 @@ class Class_Retriever_Utils {
 	/**
 	 * Get all classes that implements/extends a certain interface/class.
 	 *
+	 * If the parent class uses the trait Class_Children_Order_Trait, then the
+	 * classes will be ordered by the int they return.
+	 *
 	 * @param string $parent_class
 	 * @return array
 	 *
@@ -89,6 +89,10 @@ class Class_Retriever_Utils {
 			if ( is_subclass_of( $declared_class, $parent_class ) ) {
 				array_push( $children_classes, $declared_class );
 			}
+		}
+
+		if ( self::class_use_trait( $parent_class, 'TWRP\\Utils\\Helper_Trait\\Class_Children_Order_Trait' ) ) {
+			$children_classes = self::order_class_name( $children_classes );
 		}
 
 		return $children_classes;
@@ -139,7 +143,7 @@ class Class_Retriever_Utils {
 	}
 
 	/**
-	 * Order class name by CLASS_ORDER constant.
+	 * Order class name by a method in the trait Class_Children_Order_Trait.
 	 *
 	 * @param array<string> $class_names
 	 * @return array
@@ -151,23 +155,24 @@ class Class_Retriever_Utils {
 
 	/**
 	 * Function to be passed as an algorithm to usort function, to order class
-	 * by CLASS_ORDER constant if defined.
+	 * by a method in the trait Class_Children_Order_Trait that returns an int.
 	 *
 	 * @param string $first_class_name
 	 * @param string $second_class_name
 	 * @return int
+	 *
+	 * @phan-suppress PhanSuspiciousValueComparison
 	 */
 	private static function sort_classes_algorithm( $first_class_name, $second_class_name ) {
-		if ( ! defined( $first_class_name . '::CLASS_ORDER' ) ) {
-			return 0;
+		$first_class_order = 0;
+		if ( is_callable( array( $first_class_name, 'get_class_order_among_siblings' ) ) ) {
+			$first_class_order = $first_class_name::get_class_order_among_siblings();
 		}
 
-		if ( ! defined( $second_class_name . '::CLASS_ORDER' ) ) {
-			return 0;
+		$second_class_order = 0;
+		if ( is_callable( array( $second_class_name, 'get_class_order_among_siblings' ) ) ) {
+			$second_class_order = $second_class_name::get_class_order_among_siblings();
 		}
-
-		$first_class_order  = $first_class_name::CLASS_ORDER;
-		$second_class_order = $second_class_name::CLASS_ORDER;
 
 		if ( $first_class_order === $second_class_order ) {
 			return 0;

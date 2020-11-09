@@ -17,7 +17,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Post_Order extends Query_Setting {
 
-	const CLASS_ORDER = 40;
+	public static function get_class_order_among_siblings() {
+		return 40;
+	}
 
 	/**
 	 * The name of the first select to set orderby.

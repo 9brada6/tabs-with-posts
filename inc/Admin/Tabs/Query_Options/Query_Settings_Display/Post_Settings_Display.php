@@ -13,7 +13,9 @@ use TWRP\Utils\Simple_Utils;
  */
 class Post_Settings_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 50;
+	public static function get_class_order_among_siblings() {
+		return 50;
+	}
 
 	protected function get_setting_class() {
 		return new Post_Settings();

@@ -6,6 +6,7 @@
 namespace TWRP\Query_Generator\Query_Setting;
 
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
+use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
 /**
  * Implements the functions needed to be calling in displaying the settings in
@@ -17,7 +18,7 @@ use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
  */
 abstract class Query_Setting {
 
-	const CLASS_ORDER = 0;
+	use Class_Children_Order_Trait;
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.

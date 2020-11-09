@@ -13,7 +13,9 @@ use TWRP\Admin\Helpers\Remember_Note;
  */
 class Search_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 110;
+	public static function get_class_order_among_siblings() {
+		return 100;
+	}
 
 	protected function get_setting_class() {
 		return new Search();

@@ -13,7 +13,9 @@ use TWRP\Admin\Helpers\Remember_Note;
  */
 class Post_Date_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 70;
+	public static function get_class_order_among_siblings() {
+		return 70;
+	}
 
 	protected function get_setting_class() {
 		return new Post_Date();

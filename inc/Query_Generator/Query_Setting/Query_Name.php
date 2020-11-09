@@ -14,7 +14,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Query_Name extends Query_Setting {
 
-	const CLASS_ORDER = 0;
+	public static function get_class_order_among_siblings() {
+		return 0;
+	}
 
 	/**
 	 * The name of the setting and array key which represents the query name.

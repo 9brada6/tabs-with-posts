@@ -17,7 +17,9 @@ use \TWRP\Admin\Tabs\Queries_Tab;
  */
 class Advanced_Arguments extends Query_Setting {
 
-	const CLASS_ORDER = 1000;
+	public static function get_class_order_among_siblings() {
+		return 1000;
+	}
 
 	/**
 	 * The setting name and the array key of the option that remembers whether

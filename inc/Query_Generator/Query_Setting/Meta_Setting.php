@@ -10,7 +10,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Meta_Setting extends Query_Setting {
 
-	const CLASS_ORDER = 33;
+	public static function get_class_order_among_siblings() {
+		return 33;
+	}
 
 	const META_KEY_NAME__SETTING_NAME       = 'meta_name';
 	const META_KEY_VALUE__SETTING_NAME      = 'meta_value';

@@ -13,7 +13,9 @@ use TWRP\Admin\Helpers\Remember_Note;
  */
 class Post_Status_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 30;
+	public static function get_class_order_among_siblings() {
+		return 30;
+	}
 
 	protected function get_setting_class() {
 		return new Post_Status();

@@ -14,7 +14,9 @@ use WP_Term;
  */
 class Categories_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 60;
+	public static function get_class_order_among_siblings() {
+		return 60;
+	}
 
 	protected function get_setting_class() {
 		return new Categories();

@@ -14,7 +14,9 @@ use TWRP\Admin\Helpers\Remember_Note;
  */
 class Author_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 80;
+	public static function get_class_order_among_siblings() {
+		return 80;
+	}
 
 	protected function get_setting_class() {
 		return new Author();

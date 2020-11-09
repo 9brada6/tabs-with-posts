@@ -12,7 +12,9 @@ use TWRP\Query_Generator\Query_Setting\Post_Types;
  */
 class Post_Types_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 20;
+	public static function get_class_order_among_siblings() {
+		return 20;
+	}
 
 	protected function get_setting_class() {
 		return new Post_Types();

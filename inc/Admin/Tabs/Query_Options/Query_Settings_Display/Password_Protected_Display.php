@@ -12,7 +12,9 @@ use TWRP\Query_Generator\Query_Setting\Password_Protected;
  */
 class Password_Protected_Display extends Query_Setting_Display {
 
-	const CLASS_ORDER = 120;
+	public static function get_class_order_among_siblings() {
+		return 120;
+	}
 
 	protected function get_setting_class() {
 		return new Password_Protected();

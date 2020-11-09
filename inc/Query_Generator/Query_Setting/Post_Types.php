@@ -10,7 +10,9 @@ namespace TWRP\Query_Generator\Query_Setting;
  */
 class Post_Types extends Query_Setting {
 
-	const CLASS_ORDER = 20;
+	public static function get_class_order_among_siblings() {
+		return 20;
+	}
 
 	const SELECTED_TYPES__SETTING_NAME = 'selected_post_types';
 
