@@ -50,6 +50,8 @@ This documentation is split between packages.
 
 ### Query Settings
 
+- Manually verify each setting: Post Type.
+
 - Finish Advanced Arguments.
 - Meta Value: Maybe do not add meta_value if the comparator is Exist or not exist. Maybe try to
 detect if an int is present in intval, and add as a comparator to int. Maybe add a note that

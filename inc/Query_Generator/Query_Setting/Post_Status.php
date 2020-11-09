@@ -1,8 +1,6 @@
 <?php
 /**
  * Contains the class that will filter articles via the post status property.
- *
- * @todo: Add a note that post statuses can reveal things do not wanted.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

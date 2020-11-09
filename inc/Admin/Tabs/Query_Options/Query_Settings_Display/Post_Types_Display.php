@@ -8,7 +8,7 @@ namespace TWRP\Admin\Tabs\Query_Options;
 use TWRP\Query_Generator\Query_Setting\Post_Types;
 
 /**
- * Used to display the search query setting control.
+ * Used to display the post types query setting control.
  */
 class Post_Types_Display extends Query_Setting_Display {
 
