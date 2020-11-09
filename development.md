@@ -75,9 +75,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Change all "twrp" css/classes backend prefix with "twrpb"
 - Custom date format, make it disabled(not to hide).
 
-- Find in typescript files if "show" or "hide" jquery function are used by default only hideUp or showUp functions should
-be used.
-
 - In Gulp, when a SCSS file fail to compile, no error is displayed. Try to fix it. For example, if we add an import
 that does not exist, the gulp won't show an error, it just will not compile.
 

@@ -219,13 +219,7 @@ function hideOrShowCategorySettings(): void {
 		hideUp( mainCategorySettings );
 		hideUp( categoryRelationWrapper );
 	} else if ( 'IN' === selectVal ) {
-		if ( categoryRelationWrapper.is( ':hidden' ) ) {
-			categoryRelationWrapper.show();
-			showUp( mainCategorySettings );
-			categoryRelationWrapper.hide();
-		} else {
-			showUp( mainCategorySettings );
-		}
+		showUp( mainCategorySettings );
 		showUp( categoryRelationWrapper );
 	} else {
 		showUp( mainCategorySettings );
