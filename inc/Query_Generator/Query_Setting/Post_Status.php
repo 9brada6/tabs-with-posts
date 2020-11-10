@@ -29,11 +29,7 @@ class Post_Status extends Query_Setting {
 	 */
 	public static function get_post_statuses() {
 		$args = array(
-			'public'                    => true,
-			'publicly_queryable'        => true,
-			'show_in_admin_all_list'    => true,
-			'show_in_admin_status_list' => true,
-			'internal'                  => false,
+			'public' => true,
 		);
 		return get_post_stati( $args, 'objects', 'or' );
 	}

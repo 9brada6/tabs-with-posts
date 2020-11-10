@@ -40,8 +40,6 @@ class Remember_Note {
 
 	const NOTE__POST_STATUS_INFO = 'post_status_info';
 
-	const NOTE__POST_STATUS_INFO2 = 'post_status_info2';
-
 	const NOTE__SAME_AUTHOR_SETTING_NOTE = 'same_author_setting_note';
 
 	const NOTE__ORDERING_BY_POST_ID_WARNING = 'ordering_by_post_id_warning';
@@ -145,19 +143,15 @@ class Remember_Note {
 			),
 
 			static::NOTE__POST_STATUS_INFO               => array(
-				'text' => _x( 'Default value is "Published" alongside with all other "public" custom post statuses. If the user is logged in, "private" is also added.', 'backend', 'twrp' ),
-			),
-
-			static::NOTE__POST_STATUS_INFO2              => array(
-				'text' => _x( 'Modifying this setting will get only posts that the current user has permission to read. For example if a post is "private", it will not show on normal users, only on logged in users(if they have permission to read).', 'backend', 'twrp' ),
+				'text' => _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in documentation how to do it.', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__ORDERING_BY_POST_ID_WARNING    => array(
 				'text' => _x( 'Ordering by post ID is not usually a good choice. If you don\'t know what a post ID is, then you maybe want to order by date, which is more efficient.', 'backend', 'twrp' ),
 			),
 
-			static::NOTE__ORDERING_INFO    => array(
-				'text' => _x( 'This is the only option that doesn\'t filter the posts(adding or removing posts).', 'backend', 'twrp' ),
+			static::NOTE__ORDERING_INFO                  => array(
+				'text' => _x( 'This is the only option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
 			),
 
 		);

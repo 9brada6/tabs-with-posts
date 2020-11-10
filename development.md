@@ -50,7 +50,13 @@ This documentation is split between packages.
 
 ### Query Settings
 
-- Manually verify each setting: Post Type, Post Statuses, Post Order.
+- Add something in query_generator like pre applied args to query args, where the
+pre applied args will ne no_found_rows, and post_status => published.
+
+- Manually verify each setting: Name, Post Type, Post Statuses, Post Order.
+
+Post Settings: add a note that says that posts added here can be filtered out by
+other settings.
 
 - Finish Advanced Arguments.
 - Meta Value: Maybe do not add meta_value if the comparator is Exist or not exist. Maybe try to

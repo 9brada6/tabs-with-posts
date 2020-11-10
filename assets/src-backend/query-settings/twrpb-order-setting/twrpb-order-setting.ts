@@ -11,7 +11,6 @@ const orderByClassName = 'twrpb-order-setting__js-orderby';
 const orderGroups = [ firstOrderGroup, secondOrderGroup, thirdOrderGroup ];
 
 $( hideOrShowUnnecessarySelectors );
-
 $( document ).on( 'change', `.${ orderByClassName }`, hideOrShowUnnecessarySelectors );
 
 /**
@@ -37,6 +36,7 @@ function hideOrShowUnnecessarySelectors() {
 	}
 }
 
+$( hideOrShowSelectedValues );
 $( document ).on( 'change', `.${ orderByClassName }`, hideOrShowSelectedValues );
 
 function hideOrShowSelectedValues() {

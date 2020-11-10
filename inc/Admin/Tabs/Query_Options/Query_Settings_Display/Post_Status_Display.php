@@ -77,8 +77,6 @@ class Post_Status_Display extends Query_Setting_Display {
 			?>
 		</div>
 		<?php
-		$remember_note = new Remember_Note( Remember_Note::NOTE__POST_STATUS_INFO2 );
-		$remember_note->display_note( $this->get_query_setting_paragraph_class() . $additional_hide_class );
 	}
 
 	protected function get_bem_base_class() {

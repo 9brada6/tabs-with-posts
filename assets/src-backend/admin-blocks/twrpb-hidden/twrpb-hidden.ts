@@ -3,7 +3,51 @@ import 'jqueryui';
 
 // Todo... Remove all paragraphs with hide.
 
+// #region -- Run hideLeft/ showLeft only one at time.
+
+let horizontalAnimationRunning = false;
+
+const horizontalAnimationQueue = [];
+
+function addQueueAnimation( functionName, args ) {
+	horizontalAnimationRunning = true;
+	const queueItem = { name: functionName, parameters: args };
+	horizontalAnimationQueue.push( queueItem );
+}
+
+function nextQueueAnimation() {
+	if ( horizontalAnimationQueue.length ) {
+		const horizontalQueueItem = horizontalAnimationQueue.pop();
+
+		if ( horizontalAnimationQueue.length === 0 ) {
+			horizontalAnimationRunning = false;
+		} else {
+			horizontalAnimationRunning = true;
+		}
+
+		const functionName = horizontalQueueItem.name;
+		functionName.apply( null, horizontalQueueItem.parameters );
+	}
+
+	if ( horizontalAnimationQueue.length === 0 ) {
+		horizontalAnimationRunning = false;
+	} else {
+		horizontalAnimationRunning = true;
+	}
+}
+
+function horizontalAnimationIsRunning() {
+	return horizontalAnimationRunning;
+}
+
+function makeHorizontalRunning() {
+	horizontalAnimationRunning = true;
+}
+
+// #endregion -- Run hideLeft/ showLeft only one at time.
+
 const effectDuration = 500;
+const effectDurationHorizontal = 300;
 
 function toggleDisplay( element: JQuery ): void {
 	if ( element.hasClass( 'twrpb-hidden' ) ) {
@@ -44,18 +88,27 @@ function showUp( element: JQuery ): void {
  * @param {'remove'} remove Add 'remove' to remove the element from the DOM.
  */
 function hideLeft( element: JQuery, remove: string = '' ): void {
+	// If something is being hidden/revealed, then wait for it to finish.
+	if ( horizontalAnimationIsRunning() ) {
+		addQueueAnimation( hideLeft, [ element, remove ] );
+		return;
+	}
+	makeHorizontalRunning();
+
 	let completeFunction = function() {
 		addHideClass( element );
+		nextQueueAnimation();
 	};
 	if ( remove === 'remove' ) {
 		completeFunction = function() {
 			removeElement( element );
+			nextQueueAnimation();
 		};
 	}
 
 	$( element ).hide( {
 		effect: 'blind',
-		duration: effectDuration,
+		duration: effectDurationHorizontal,
 		direction: 'left',
 		complete: completeFunction,
 	} );
@@ -69,16 +122,24 @@ function hideLeft( element: JQuery, remove: string = '' ): void {
  * element already exists.
  */
 function showLeft( element: JQuery, hideFirst: string = '' ): void {
+	// If something is being hidden/revealed, then wait for it to finish.
+	if ( horizontalAnimationIsRunning() ) {
+		addQueueAnimation( showLeft, [ element, hideFirst ] );
+		return;
+	}
+	makeHorizontalRunning();
+
 	if ( hideFirst === 'hide_first' ) {
 		element.addClass( 'twrpb-hidden' );
 	}
 
 	$( element ).show( {
 		effect: 'blind',
-		duration: effectDuration,
+		duration: effectDurationHorizontal,
 		direction: 'left',
 		complete() {
 			removeHideClass( element );
+			nextQueueAnimation();
 		},
 	} );
 }

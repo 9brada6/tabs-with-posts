@@ -7,6 +7,7 @@ namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Post_Settings;
 use TWRP\Utils\Simple_Utils;
+use WP_Query;
 
 /**
  * Used to display the post settings query setting control.
@@ -33,7 +34,6 @@ class Post_Settings_Display extends Query_Setting_Display {
 			<?php $this->display_select_posts_inclusion_type( $current_setting ); ?>
 			<?php $this->display_selected_posts_list( $current_setting ); ?>
 			<?php $this->display_search_and_add_posts_to_list( $current_setting ); ?>
-			<?php $this->display_posts_ids_hidden_input( $current_setting ); ?>
 		</div>
 		<?php
 	}
@@ -83,16 +83,23 @@ class Post_Settings_Display extends Query_Setting_Display {
 	protected function display_selected_posts_list( $current_setting ) {
 		$ids   = array();
 		$posts = array();
+		// We make the hidden input be the same as the displayed posts. This is
+		// better in preventing posts that cannot be retrieve to be hidden int
+		// the input.
+		$hidden_input_value = array();
 
 		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) ) {
-			$ids = $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ];
-			$ids = explode( ';', $ids );
-			$ids = Simple_Utils::get_valid_wp_ids( $ids );
+			$ids      = $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ];
+			$ids      = explode( ';', $ids );
+			$ids      = Simple_Utils::get_valid_wp_ids( $ids );
+			$wp_query = new WP_Query();
 			if ( ! empty( $ids ) ) {
-				$posts = get_posts(
+				$posts = $wp_query->query(
 					array(
-						'post__in' => $ids,
-						'orderby'  => 'post__in',
+						'post_type'     => 'any',
+						'post__in'      => $ids,
+						'orderby'       => 'post__in',
+						'no_found_rows' => true,
 					)
 				);
 			}
@@ -126,6 +133,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 			<?php foreach ( $posts as $post ) : ?>
 				<?php
 				$title = get_the_title( $post );
+				array_push( $hidden_input_value, $post->ID );
 
 				if ( empty( $title ) ) {
 					$title = _x( 'Post with no title', 'backend', 'twrp' );
@@ -143,6 +151,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 			<?php endforeach; ?>
 		</div>
 		<?php
+		$this->display_posts_ids_hidden_input( $hidden_input_value );
 	}
 
 	/**
@@ -179,16 +188,13 @@ class Post_Settings_Display extends Query_Setting_Display {
 	 * Display a hidden input that will remember what posts the administrator
 	 * has chosen.
 	 *
-	 * @param array $current_setting
+	 * @param array $post_ids
 	 * @return void
 	 */
-	protected function display_posts_ids_hidden_input( $current_setting ) {
+	protected function display_posts_ids_hidden_input( $post_ids ) {
 		$input_name = Post_Settings::get_setting_name() . '[' . Post_Settings::POSTS_INPUT__SETTING_NAME . ']';
 
-		$value = '';
-		if ( isset( $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ] ) ) {
-			$value = $current_setting[ Post_Settings::POSTS_INPUT__SETTING_NAME ];
-		}
+		$value = implode( ';', $post_ids );
 
 		?>
 		<input id="<?php $this->bem_class( 'js-posts-ids' ); ?>"

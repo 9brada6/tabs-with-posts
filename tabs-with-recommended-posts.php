@@ -201,17 +201,29 @@ function twrp_enqueue_scripts_debug() {
 	\Debug\dump_bench( 'test_sanitize' );
 	try {
 		\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
-		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 1 ), 'Query 1 settings:' );
+
+		$wp_query_args = Query_Generator::get_wp_query_arguments( 1 );
+		\Debug\console_dump( $wp_query_args, 'Query 1 Arguments:' );
+
+		$wp_query = new WP_Query();
+		\Debug\console_dump( $wp_query->query( $wp_query_args ), 'Query 1 Posts:' );
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
 	}
 
 	$args = array(
-		'suppress_filters' => true,
-		'post_status'      => 'future',
-		'perm'             => 'readable',
+		'post_type'              => 'any',
+		'no_found_rows'          => true,
+		'nopaging'               => true,
+		'update_post_term_cache' => false,
+		// 'suppress_filters' => true,
+		// 'post_status'      => 'future',
+		// 'perm'             => 'readable',
+		// 'post__in'         => array( 25 ),
 	);
-	\Debug\console_dump( get_posts( $args ), 'Custom get posts' );
+	$wp_query = new WP_Query();
+	$queries  = $wp_query->query( $args );
+	\Debug\console_dump( $queries, 'Custom get posts' );
 
 	return null;
 }
