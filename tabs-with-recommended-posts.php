@@ -191,61 +191,6 @@ add_action( 'wp_enqueue_scripts', 'twrp_enqueue_scripts' );
 #region -- Testing
 
 /**
- * Used for testing.
- *
- * @todo: delete.
- *
- * @return void
- */
-function twrp_dump_query_settings() {
-
-	// var_dump( \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( 25 ) );
-
-	$ids_array = array( 25, 27, 29 );
-	// var_dump( \TWRP\Plugins\DFactory_Post_Views_Counter_Plugin::get_multiple_posts_views( $ids_array ) );
-
-	// var_dump( pvc_get_post_views( $ids_array ) );
-
-	try {
-		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 3 ), 'Query ID 3 Arguments' );
-		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 4 ), 'Query ID 4 Arguments' );
-	} catch ( \RuntimeException $e ) {
-		\Debug\console_dump( 'Query with Id 4 does not exist' );
-		// Do nothing
-	}
-
-	\Debug\console_dump(
-		get_posts(
-			array(
-				'cat' => '2AND3',
-			)
-		)
-	);
-
-	$args = array(
-		'orderby'  => array(
-			'comment_count'  => 'DESC',
-			'meta_value_num' => 'DESC',
-			'date'           => 'ASC',
-		),
-		'meta_key' => 'views', // phpcs:ignore -- Query is slow.
-	);
-	\Debug\console_dump( get_posts( $args ) );
-	\Debug\console_dump( get_post_meta( 25, 'views', true ), '25:' );
-	\Debug\console_dump( get_post_meta( 27, 'views', true ), '27:' );
-
-	\Debug\console_dump( TWRP\Plugins\YASR_Rating_Plugin::get_average_rating( 25 ), '25 overall rating:' );
-	\Debug\console_dump( TWRP\Plugins\YASR_Rating_Plugin::get_number_of_votes( 25 ), '25 nr votes:' );
-
-	\Debug\console_dump( get_post_meta( 27, '_glsr_count', true ), '27 nr votes:' );
-
-	\Debug\console_dump( class_exists( 'TWRP\Article_Block\Simple_Article_Block' ) );
-
-}
-
-add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_settings' );
-
-/**
  * Used for debugging in the scripts.
  *
  * @todo: remove.
@@ -254,11 +199,9 @@ add_action( 'twrp_after_displaying_existing_queries_table', 'twrp_dump_query_set
  */
 function twrp_enqueue_scripts_debug() {
 	\Debug\dump_bench( 'test_sanitize' );
-	\Debug\console_dump( get_taxonomies() );
 	try {
 		\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
 		\Debug\console_dump( Query_Generator::get_wp_query_arguments( 1 ), 'Query 1 settings:' );
-
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
 	}

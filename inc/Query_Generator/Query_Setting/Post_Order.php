@@ -4,8 +4,6 @@
  * displayed.
  *
  * @todo: Add more order by options.
- * @todo: If an option is choose, then remove the option from the next one/two
- * select possibilities.
  * @todo: Add notes.
  */
 
@@ -50,30 +48,6 @@ class Post_Order extends Query_Setting {
 	 * The name of the third select to set the ascending or descending order.
 	 */
 	const THIRD_ORDER_TYPE_SELECT_NAME = 'third_order_type';
-
-	/**
-	 * Orderby key that will be replaced with a custom order implemented by a
-	 * plugin.
-	 */
-	const PLUGIN_DFACTORY_ORDERBY_VALUE = 'post_views_dfactory';
-
-	/**
-	 * Orderby key that will be replaced with a custom order implemented by a
-	 * plugin.
-	 */
-	const PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE = 'post_views_gamerz';
-
-	/**
-	 * Orderby key that will be replaced with a custom order implemented by a
-	 * plugin.
-	 */
-	const PLUGIN_BLAZK_ORDERBY_VALUE = 'post_views_gamerz';
-
-	/**
-	 * Orderby key that will be replaced with a custom order implemented by a
-	 * plugin.
-	 */
-	const PLUGIN_GAMERZ_RATING_ORDERBY_VALUE = 'post_rating_gamerz';
 
 	public static function get_setting_name() {
 		return 'post_order';

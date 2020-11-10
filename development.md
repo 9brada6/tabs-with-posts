@@ -50,7 +50,7 @@ This documentation is split between packages.
 
 ### Query Settings
 
-- Manually verify each setting: Post Type.
+- Manually verify each setting: Post Type, Post Statuses, Post Order.
 
 - Finish Advanced Arguments.
 - Meta Value: Maybe do not add meta_value if the comparator is Exist or not exist. Maybe try to

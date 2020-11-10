@@ -5,6 +5,7 @@
 
 namespace TWRP\Admin\Tabs\Query_Options;
 
+use TWRP\Admin\Helpers\Remember_Note;
 use TWRP\Query_Generator\Query_Setting\Post_Order;
 
 /**
@@ -92,6 +93,18 @@ class Post_Order_Display extends Query_Setting_Display {
 					<?php $this->display_order_type_select_options( $third_order_type_setting ); ?>
 				</select>
 			</p>
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_INFO );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+
+			$note_is_hidden_class = ' twrpb-hidden';
+			if ( 'ID' === $first_orderby_setting || 'ID' === $second_orderby_setting || 'ID' === $third_orderby_setting ) {
+				$note_is_hidden_class = '';
+			}
+
+			$warning_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_POST_ID_WARNING, 'warning' );
+			$warning_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
+			?>
 		</div>
 		<?php
 	}

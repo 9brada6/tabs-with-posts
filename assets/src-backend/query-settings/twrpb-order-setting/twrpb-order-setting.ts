@@ -61,3 +61,30 @@ function hideOrShowSelectedValues() {
 		}
 	}
 }
+
+// #region -- Hide/Show Post ID warning notice if selected.
+
+const postIdOrderWarning = $( '#twrpb-setting-note__ordering_by_post_id_warning' );
+
+$( hideOrShowWarning );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowWarning );
+
+function hideOrShowWarning() : void {
+	let showWarning = false;
+
+	for ( let i = 0; i < orderGroups.length; i++ ) {
+		const orderByVal = String( $( orderGroups[ i ] ).find( `.${ orderByClassName }` ).val() );
+
+		if ( orderByVal === 'ID' ) {
+			showWarning = true;
+		}
+	}
+
+	if ( showWarning ) {
+		showUp( postIdOrderWarning );
+	} else {
+		hideUp( postIdOrderWarning );
+	}
+}
+
+// #endregion -- Hide/Show Post ID warning notice if selected.
