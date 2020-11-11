@@ -37,8 +37,9 @@ it with twrpb or something like that.
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).
-- 📬 Add filters for all things.
-- 🔀 Add a way to invert category icons?
+- ➕ Add filters for all things.
+- ➕ Add a way to invert category icons?
+- ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.
 
 ## Read Before Development
 
@@ -53,10 +54,7 @@ This documentation is split between packages.
 - Add something in query_generator like pre applied args to query args, where the
 pre applied args will ne no_found_rows, and post_status => published.
 
-- Manually verify each setting: Name, Post Type, Post Statuses, Post Order.
-
-Post Settings: add a note that says that posts added here can be filtered out by
-other settings.
+- Manually verified each setting: Name, Post Type, Post Statuses, Post Order, Posts Settings.
 
 - Finish Advanced Arguments.
 - Meta Value: Maybe do not add meta_value if the comparator is Exist or not exist. Maybe try to

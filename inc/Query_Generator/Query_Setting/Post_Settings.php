@@ -44,15 +44,16 @@ class Post_Settings extends Query_Setting {
 		$filter_type = $setting[ self::FILTER_TYPE__SETTING_NAME ];
 		$posts_ids   = $setting[ self::POSTS_INPUT__SETTING_NAME ];
 
-		$possible_filters = array( 'NA', 'IP', 'EP', 'IPP', 'EPP' );
+		$possible_filters = array( 'NA', 'IP', 'EP' );
 
 		if ( ( ! in_array( $filter_type, $possible_filters, true ) ) || 'NA' === $filter_type ) {
 			return self::get_default_setting();
 		}
 
 		$sanitized_settings = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
-		$posts_ids          = explode( ';', $posts_ids );
-		$posts_ids          = Simple_Utils::get_valid_wp_ids( $posts_ids );
+
+		$posts_ids = explode( ';', $posts_ids );
+		$posts_ids = Simple_Utils::get_valid_wp_ids( $posts_ids );
 
 		foreach ( $posts_ids as $key => $id ) {
 			$post = get_post( (int) $id );
@@ -98,10 +99,6 @@ class Post_Settings extends Query_Setting {
 			$posts_query_attr = 'post__in';
 		} elseif ( 'EP' === $filter_type ) {
 			$posts_query_attr = 'post__not_in';
-		} elseif ( 'IPP' === $filter_type ) {
-			$posts_query_attr = 'post_parent__in ';
-		} elseif ( 'EPP' === $filter_type ) {
-			$posts_query_attr = 'post_parent__not_in ';
 		} else {
 			return $previous_query_args;
 		}

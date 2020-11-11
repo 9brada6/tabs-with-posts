@@ -7,10 +7,9 @@ declare const wpApiSettings: any;
 // #region -- Show/Hide Posts List.
 
 const postTypeSelect = $( '#twrpb-posts-settings__js-filter-type' );
-
 const postVisualList = $( '#twrpb-posts-settings__js-posts-list' );
-
 const searchingWrapper = $( '#twrpb-posts-settings__js-posts-search-wrap' );
+const includeNote = $( '#twrpb-setting-note__post_settings_note' );
 
 $( hideOrShowVisualList );
 $( document ).on( 'change', '#twrpb-posts-settings__js-filter-type', hideOrShowVisualList );
@@ -19,14 +18,20 @@ $( document ).on( 'change', '#twrpb-posts-settings__js-filter-type', hideOrShowV
  * Hide or show the visual list and the form input to search for users.
  */
 function hideOrShowVisualList() {
-	const authorTypeVal = postTypeSelect.val();
+	const postsTypeVal = postTypeSelect.val();
 
-	if ( 'NA' === authorTypeVal ) {
+	if ( 'NA' === postsTypeVal ) {
 		hideUp( searchingWrapper );
 		hideUp( postVisualList );
 	} else {
 		showUp( searchingWrapper );
 		showUp( postVisualList );
+	}
+
+	if ( 'IP' === postsTypeVal ) {
+		showUp( includeNote );
+	} else {
+		hideUp( includeNote );
 	}
 }
 

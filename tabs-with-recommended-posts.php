@@ -205,8 +205,10 @@ function twrp_enqueue_scripts_debug() {
 		$wp_query_args = Query_Generator::get_wp_query_arguments( 1 );
 		\Debug\console_dump( $wp_query_args, 'Query 1 Arguments:' );
 
-		$wp_query = new WP_Query();
-		\Debug\console_dump( $wp_query->query( $wp_query_args ), 'Query 1 Posts:' );
+		$wp_query                  = new WP_Query();
+		$wp_query_args['nopaging'] = true;
+
+		\Debug\console_dump( $wp_query->query( $wp_query_args ), 'Query 1 Posts (with no paging added):' );
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
 	}

@@ -46,6 +46,8 @@ class Remember_Note {
 
 	const NOTE__ORDERING_INFO = 'ordering_info';
 
+	const NOTE__POST_SETTINGS_NOTE = 'post_settings_note';
+
 	/**
 	 * The name of the note to be displayed.
 	 *
@@ -154,6 +156,10 @@ class Remember_Note {
 				'text' => _x( 'This is the only option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
 			),
 
+			static::NOTE__POST_SETTINGS_NOTE             => array(
+				'text' => _x( 'This setting is a filter, and the posts added here can be filtered by other options. For example if a post(of type "Post") is added here, and in the Post Types Setting only "Pages" setting is selected, then the post will not be shown because it is filtered out by other setting.', 'backend', 'twrp' ),
+			),
+
 		);
 
 		return apply_filters( 'twrpb_all_notes_array', $all_notes );
@@ -171,7 +177,7 @@ class Remember_Note {
 		}
 
 		?>
-		<p id="<?php $this->bem_class( $this->name ); ?>" class="<?php $this->bem_class(); ?> <?php $this->additional_note_modifier_class(); ?><?= esc_attr( $note_additional_class ); ?>">
+		<p id="<?php $this->bem_class( $this->name ); ?>" class="<?php $this->bem_class(); ?><?php $this->additional_note_modifier_class(); ?><?= esc_attr( $note_additional_class ); ?>">
 			<span class="<?php $this->bem_class( 'label' ); ?>">
 				<?= esc_html( $this->label ); ?>
 			</span>
@@ -190,7 +196,11 @@ class Remember_Note {
 	 */
 	protected function additional_note_modifier_class() {
 		if ( $this->is_warning ) {
-			$this->bem_class( '', 'warning' );
+			$class = $this->get_bem_class( '', 'warning' );
+		}
+
+		if ( ! empty( $class ) ) {
+			echo esc_attr( ' ' . $class );
 		}
 	}
 

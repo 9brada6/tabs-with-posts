@@ -5,6 +5,7 @@
 
 namespace TWRP\Admin\Tabs\Query_Options;
 
+use TWRP\Admin\Helpers\Remember_Note;
 use TWRP\Query_Generator\Query_Setting\Post_Settings;
 use TWRP\Utils\Simple_Utils;
 use WP_Query;
@@ -23,7 +24,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Include/Exclude posts by ID or parent ID.', 'backend', 'twrp' );
+		return _x( 'Only Include/Exclude specific posts', 'backend', 'twrp' );
 	}
 
 	#region -- Display settings
@@ -31,9 +32,11 @@ class Post_Settings_Display extends Query_Setting_Display {
 	public function display_setting( $current_setting ) {
 		?>
 		<div class="<?php $this->bem_class(); ?>">
-			<?php $this->display_select_posts_inclusion_type( $current_setting ); ?>
-			<?php $this->display_selected_posts_list( $current_setting ); ?>
-			<?php $this->display_search_and_add_posts_to_list( $current_setting ); ?>
+			<?php
+			$this->display_select_posts_inclusion_type( $current_setting );
+			$this->display_selected_posts_list( $current_setting );
+			$this->display_search_and_add_posts_to_list( $current_setting );
+			?>
 		</div>
 		<?php
 	}
@@ -45,7 +48,8 @@ class Post_Settings_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_select_posts_inclusion_type( $current_setting ) {
-		$select_name     = Post_Settings::get_setting_name() . '[' . Post_Settings::FILTER_TYPE__SETTING_NAME . ']';
+		$select_name = Post_Settings::get_setting_name() . '[' . Post_Settings::FILTER_TYPE__SETTING_NAME . ']';
+
 		$option_selected = '';
 		if ( isset( $current_setting[ Post_Settings::FILTER_TYPE__SETTING_NAME ] ) ) {
 			$option_selected = $current_setting[ Post_Settings::FILTER_TYPE__SETTING_NAME ];
@@ -58,20 +62,21 @@ class Post_Settings_Display extends Query_Setting_Display {
 					<?= _x( 'Not Applied', 'backend', 'twrp' ); ?>
 				</option>
 				<option value="IP" <?php selected( 'IP', $option_selected ); ?>>
-					<?= _x( 'Include Posts', 'backend', 'twrp' ); ?>
+					<?= _x( 'Only these posts', 'backend', 'twrp' ); ?>
 				</option>
 				<option value="EP" <?php selected( 'EP', $option_selected ); ?>>
-					<?= _x( 'Exclude Posts', 'backend', 'twrp' ); ?>
-				</option>
-				<option value="IPP" <?php selected( 'IPP', $option_selected ); ?>>
-					<?= _x( 'Include Posts by Parent Id', 'backend', 'twrp' ); ?>
-				</option>
-				<option value="EPP" <?php selected( 'EPP', $option_selected ); ?>>
-					<?= _x( 'Exclude Posts by Parent Id', 'backend', 'twrp' ); ?>
+					<?= _x( 'Exclude these posts', 'backend', 'twrp' ); ?>
 				</option>
 			</select>
 		</div>
 		<?php
+		$addition_note_hide_class = ' twrpb-hidden';
+		if ( 'IP' === $option_selected ) {
+			$addition_note_hide_class = '';
+		}
+
+		$remember_note = new Remember_Note( Remember_Note::NOTE__POST_SETTINGS_NOTE );
+		$remember_note->display_note( $this->get_query_setting_paragraph_class() . $addition_note_hide_class );
 	}
 
 	/**
