@@ -9,7 +9,7 @@ use TWRP\Query_Generator\Query_Setting\Suppress_Filters;
 use TWRP\Admin\Helpers\Remember_Note;
 
 /**
- * Used to display the advanced arguments query setting control.
+ * Used to display the suppress filter query setting control.
  */
 class Suppress_Filters_Display extends Query_Setting_Display {
 

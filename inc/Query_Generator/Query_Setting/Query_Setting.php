@@ -5,7 +5,6 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
-use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
 /**
@@ -15,6 +14,11 @@ use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
  *
  * Each one of this setting will be displayed with a title taken from
  * get_title() function, and display below the HTML in display_setting() function.
+ *
+ * How to add an option to a specific setting:
+ * 1. Each individual setting must have a const in that setting class.
+ * 2. Each individual setting must have a default value, else array key undefined notices might be throw.
+ * 3. Each setting usually must be sanitized, and also maybe displayed or have a control.
  */
 abstract class Query_Setting {
 

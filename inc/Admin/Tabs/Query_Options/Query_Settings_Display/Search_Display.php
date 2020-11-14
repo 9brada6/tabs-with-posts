@@ -52,13 +52,10 @@ class Search_Display extends Query_Setting_Display {
 					placeholder="<?= esc_attr_x( 'Search keywords...', 'backend', 'twrp' ) ?>"
 				/>
 			</div>
-
-			<div id="<?php $this->bem_class( 'js-words-warning' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?><?php esc_attr( $warning_hidden_class ); ?>">
-				<?php
-				$remember_note = new Remember_Note( Remember_Note::NOTE__SEARCH_QUERY_TOO_SHORT_WARNING, 'warning' );
-				$remember_note->display_note();
-				?>
-			</div>
+			<?php
+			$remember_note = new Remember_Note( Remember_Note::NOTE__SEARCH_QUERY_TOO_SHORT_WARNING, 'warning' );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $warning_hidden_class );
+			?>
 		</div>
 		<?php
 	}

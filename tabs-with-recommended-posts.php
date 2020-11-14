@@ -214,10 +214,12 @@ function twrp_enqueue_scripts_debug() {
 	}
 
 	$args = array(
-		'post_type'              => 'any',
 		'no_found_rows'          => true,
 		'nopaging'               => true,
+		'post__in'               => array( 75 ),
+		'cat'                    => 1,
 		'update_post_term_cache' => false,
+		'ignore_sticky_posts'    => false,
 		// 'suppress_filters' => true,
 		// 'post_status'      => 'future',
 		// 'perm'             => 'readable',

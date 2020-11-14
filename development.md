@@ -40,6 +40,8 @@ it with twrpb or something like that.
 - ➕ Add filters for all things.
 - ➕ Add a way to invert category icons?
 - ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.
+- ➕ Add a preview query posts in the backend. If we add a query preview in the
+backend, add a warning that will say that sticky posts are not included here.
 
 ## Read Before Development
 
@@ -54,20 +56,20 @@ This documentation is split between packages.
 - Add something in query_generator like pre applied args to query args, where the
 pre applied args will ne no_found_rows, and post_status => published.
 
-- Manually verified each setting: Name, Post Type, Post Statuses, Post Order, Posts Settings.
+- Add interaction between settings warning: post__in and ignore_sticky_posts
+will interact if they are both set. This warning should be shown only if they are both set.
+
+- Add a lot of notices in order by setting. Some ideas: if orderby comments is
+set in asc order. If only order by comments is set, then suggest to add orderby date.
+
+- Manually verified each setting: Name, Post Type, Post Statuses, Post Order, Posts Settings,
+Sticky Posts, Posts Comments, Search, Password Protected, Meta, Suppress Filters.
 
 - Finish Advanced Arguments.
-- Meta Value: Maybe do not add meta_value if the comparator is Exist or not exist. Maybe try to
-detect if an int is present in intval, and add as a comparator to int. Maybe add a note that
-say leave empty to not apply, or add a checkbox that must be checked to apply the setting.
 
 - Create a nice query tab, including the message when no queries are present. Maybe move the actions button to the right?
 
-- Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last
-- checkbox(last days to first checkbox). Change the first note to a good explication(hard).
-- Meta Settings verify if add_query_args is good, hasn't been verified before.
-
-- Add a way when selected views/rating/popular posts plugin, to select only the first installed, the rest should be disabled.
+- Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last checkbox(last days to first checkbox). Change the first note to a good explication(hard).
 
 - Order: maybe add more orders, like post__in?.
 

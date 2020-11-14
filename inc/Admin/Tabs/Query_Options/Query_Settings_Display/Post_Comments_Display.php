@@ -33,10 +33,6 @@ class Post_Comments_Display extends Query_Setting_Display {
 		?>
 			<div class="<?php $this->bem_class(); ?>">
 				<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'wrapper' ); ?>">
-					<span>
-						<?= _x( 'Filter articles by number of comments: ', 'backend', 'twrp' ); ?>
-					</span>
-
 					<select
 						id="<?php $this->bem_class( 'js-comparator' ); ?>"
 						class="<?php $this->bem_class( 'comparator' ); ?>"

@@ -153,7 +153,7 @@ class Remember_Note {
 			),
 
 			static::NOTE__ORDERING_INFO                  => array(
-				'text' => _x( 'This is the only option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
+				'text' => _x( 'This is an option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__POST_SETTINGS_NOTE             => array(

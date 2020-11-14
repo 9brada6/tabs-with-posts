@@ -4,6 +4,7 @@ namespace TWRP\Query_Generator;
 
 use TWRP\Database\Query_Options;
 use TWRP\Utils\Class_Retriever_Utils;
+use WP_Query;
 
 class Query_Generator {
 
@@ -22,8 +23,8 @@ class Query_Generator {
 		} catch ( \RuntimeException $exception ) {
 			throw $exception;
 		}
-
-		$posts = get_posts( $query_args );
+		$wp_query = new WP_Query();
+		$posts    = $wp_query->query( $query_args );
 
 		return $posts;
 	}
@@ -62,7 +63,12 @@ class Query_Generator {
 	 * @return array
 	 */
 	protected static function get_starting_query_args() {
-		return array();
+		return array(
+			// Like in get_posts(), we set to get only published posts. By
+			// default WP adds private posts if user is logged in.
+			'post_status'   => 'publish',
+			'no_found_rows' => true,
+		);
 	}
 
 	// todo: Make a global variable that will hold the original post when global

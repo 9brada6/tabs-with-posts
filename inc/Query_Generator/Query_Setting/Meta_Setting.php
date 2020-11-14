@@ -14,6 +14,8 @@ class Meta_Setting extends Query_Setting {
 		return 33;
 	}
 
+	const META_IS_APPLIED__SETTING_NAME = 'meta_applied';
+
 	const META_KEY_NAME__SETTING_NAME       = 'meta_name';
 	const META_KEY_VALUE__SETTING_NAME      = 'meta_value';
 	const META_KEY_COMPARATOR__SETTING_NAME = 'meta_comparator';
@@ -43,6 +45,7 @@ class Meta_Setting extends Query_Setting {
 
 	public static function get_default_setting() {
 		return array(
+			self::META_IS_APPLIED__SETTING_NAME     => 'NA',
 			self::META_KEY_NAME__SETTING_NAME       => '',
 			self::META_KEY_VALUE__SETTING_NAME      => '',
 			self::META_KEY_COMPARATOR__SETTING_NAME => '',
@@ -50,7 +53,7 @@ class Meta_Setting extends Query_Setting {
 	}
 
 	public static function sanitize_setting( $settings ) {
-		if ( empty( $settings[ self::META_KEY_NAME__SETTING_NAME ] ) ) {
+		if ( empty( $settings[ self::META_KEY_NAME__SETTING_NAME ] ) || empty( $settings[ self::META_IS_APPLIED__SETTING_NAME ] ) || 'NA' === $settings[ self::META_IS_APPLIED__SETTING_NAME ] ) {
 			return self::get_default_setting();
 		}
 
@@ -59,7 +62,8 @@ class Meta_Setting extends Query_Setting {
 		if ( $is_empty_string ) {
 			return self::get_default_setting();
 		}
-		$sanitize_settings = array( self::META_KEY_NAME__SETTING_NAME => $key_name );
+		$sanitize_settings                                        = array( self::META_KEY_NAME__SETTING_NAME => $key_name );
+		$sanitize_settings[ self::META_IS_APPLIED__SETTING_NAME ] = $settings[ self::META_IS_APPLIED__SETTING_NAME ];
 
 		// Comparator verification.
 		if ( empty( $settings[ self::META_KEY_COMPARATOR__SETTING_NAME ] ) ) {
@@ -71,7 +75,7 @@ class Meta_Setting extends Query_Setting {
 		}
 		$sanitize_settings[ self::META_KEY_COMPARATOR__SETTING_NAME ] = $settings[ self::META_KEY_COMPARATOR__SETTING_NAME ];
 
-		// Meta value verification
+		// Meta value verification.
 		$meta_comparator = $sanitize_settings[ self::META_KEY_COMPARATOR__SETTING_NAME ];
 		if ( empty( $settings[ self::META_KEY_VALUE__SETTING_NAME ] )
 		|| ( 'EXISTS' === $meta_comparator )
@@ -92,10 +96,16 @@ class Meta_Setting extends Query_Setting {
 
 		$meta_settings = $query_settings[ self::get_setting_name() ];
 
+		if ( empty( $meta_settings[ self::META_IS_APPLIED__SETTING_NAME ] ) || 'NA' === $meta_settings[ self::META_IS_APPLIED__SETTING_NAME ] ) {
+			return $previous_query_args;
+		}
+
 		// phpcs:ignore -- Slow query.
 		$previous_query_args['meta_key'] = $meta_settings[ self::META_KEY_NAME__SETTING_NAME ];
 
-		if ( 'EXISTS' === $meta_settings[ self::META_KEY_COMPARATOR__SETTING_NAME ] ) {
+		if ( 'EXISTS' === $meta_settings[ self::META_KEY_COMPARATOR__SETTING_NAME ] ||
+		'NOT EXISTS' === $meta_settings[ self::META_KEY_COMPARATOR__SETTING_NAME ] ) {
+			$previous_query_args['meta_compare'] = $meta_settings[ self::META_KEY_COMPARATOR__SETTING_NAME ];
 			return $previous_query_args;
 		}
 

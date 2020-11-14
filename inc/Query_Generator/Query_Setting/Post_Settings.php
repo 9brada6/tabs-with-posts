@@ -1,11 +1,6 @@
 <?php
 /**
  * Contains the class that will filter articles via post ids.
- *
- * @todo: When fetching posts, try to also apply other rules, like posts subtypes
- * and status.
- * @todo: Check to see if posts fetching work in IE 11.
- * @todo post__in (array) – use post ids. Specify posts to retrieve. ATTENTION If you use sticky posts, they will be included (prepended!) in the posts you retrieve whether you want it or not. To suppress this behaviour use ignore_sticky_posts.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;
@@ -13,8 +8,8 @@ namespace TWRP\Query_Generator\Query_Setting;
 use TWRP\Utils\Simple_Utils;
 
 /**
- * Class that will filter the articles via selected post ids. Can include/exclude
- * for posts Ids and posts parents.
+ * Class that will filter the articles via selected post ids.
+ * Can include/exclude for posts Ids.
  */
 class Post_Settings extends Query_Setting {
 
