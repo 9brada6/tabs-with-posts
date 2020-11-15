@@ -9,7 +9,7 @@ import './documentation-page/twrpb-documentation-page';
 import './general-settings/twrpb-general-settings';
 
 // Query Settings
-import './query-settings/twrpb-advanced-args/twrpb-advanced-args';
+import './query-settings/twrpb-advanced-settings/twrpb-advanced-settings';
 import './query-settings/twrpb-author-settings/twrpb-author-settings';
 import './query-settings/twrpb-cat-settings/twrpb-cat-settings';
 import './query-settings/twrpb-comments-settings/twrpb-comments-settings';

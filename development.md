@@ -63,9 +63,9 @@ will interact if they are both set. This warning should be shown only if they ar
 set in asc order. If only order by comments is set, then suggest to add orderby date.
 
 - Manually verified each setting: Name, Post Type, Post Statuses, Post Order, Posts Settings,
-Sticky Posts, Posts Comments, Search, Password Protected, Meta, Suppress Filters.
+Sticky Posts, Posts Comments, Search, Password Protected, Meta, Suppress Filters, Advanced Arguments.
 
-- Finish Advanced Arguments.
+- Add in documentation examples on how to use advanced arguments and what query filters to use.
 
 - Create a nice query tab, including the message when no queries are present. Maybe move the actions button to the right?
 

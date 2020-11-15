@@ -48,6 +48,10 @@ class Remember_Note {
 
 	const NOTE__POST_SETTINGS_NOTE = 'post_settings_note';
 
+	const NOTE__INVALID_JSON_WARNING = 'invalid_json_warning';
+
+	const NOTE__ADVANCED_ARGS_NOTE = 'advanced_args_note';
+
 	/**
 	 * The name of the note to be displayed.
 	 *
@@ -160,6 +164,14 @@ class Remember_Note {
 				'text' => _x( 'This setting is a filter, and the posts added here can be filtered by other options. For example if a post(of type "Post") is added here, and in the Post Types Setting only "Pages" setting is selected, then the post will not be shown because it is filtered out by other setting.', 'backend', 'twrp' ),
 			),
 
+			static::NOTE__ADVANCED_ARGS_NOTE             => array(
+				'text' => _x( 'This is a JSON setting, will overwrite any other settings, used for more advanced settings that are not usually worth making a graphical settings for them. You can read in documentation some examples. If you want to use PHP, then use the filters to overwrite a specific query(examples in documentation).', 'backend', 'twrp' ),
+			),
+
+			static::NOTE__INVALID_JSON_WARNING           => array(
+				/* translators: The tags %1$s and %2$s will be replaced with a HTML link tag. */
+				'text' => sprintf( _x( 'The JSON you entered is invalid and will not be applied. If you can\'t detect where the error might be, you can copy the text into an %1$s online checker%2$s for more details.', 'backend', 'twrp' ), '<a href="' . esc_url( 'https://jsonformatter.curiousconcept.com/' ) . '">', '</a>' ),
+			),
 		);
 
 		return apply_filters( 'twrpb_all_notes_array', $all_notes );
@@ -175,7 +187,15 @@ class Remember_Note {
 		if ( ! empty( $note_additional_class ) ) {
 			$note_additional_class = ' ' . $note_additional_class;
 		}
-
+		$allowed_html = array(
+			'a'      => array(
+				'href'  => array(),
+				'title' => array(),
+			),
+			'br'     => array(),
+			'em'     => array(),
+			'strong' => array(),
+		);
 		?>
 		<p id="<?php $this->bem_class( $this->name ); ?>" class="<?php $this->bem_class(); ?><?php $this->additional_note_modifier_class(); ?><?= esc_attr( $note_additional_class ); ?>">
 			<span class="<?php $this->bem_class( 'label' ); ?>">
@@ -183,7 +203,7 @@ class Remember_Note {
 			</span>
 
 			<span class="<?php $this->bem_class( 'text' ); ?>">
-				<?= esc_html( $this->text ); ?>
+				<?= wp_kses( $this->text, wp_kses_allowed_html() ); ?>
 			</span>
 		</p>
 		<?php
@@ -239,6 +259,11 @@ class Remember_Note {
 		return false;
 	}
 
+	/**
+	 * See the trait for more info.
+	 *
+	 * @return string
+	 */
 	protected function get_bem_base_class() {
 		return 'twrpb-setting-note';
 	}

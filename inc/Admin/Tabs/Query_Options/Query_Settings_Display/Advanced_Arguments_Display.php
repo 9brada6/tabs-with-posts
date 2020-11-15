@@ -5,6 +5,7 @@
 
 namespace TWRP\Admin\Tabs\Query_Options;
 
+use TWRP\Admin\Helpers\Remember_Note;
 use TWRP\Query_Generator\Query_Setting\Advanced_Arguments;
 
 /**
@@ -31,10 +32,14 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 		$advanced_args  = $current_setting[ Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME ];
 		$selector_value = $current_setting[ Advanced_Arguments::IS_APPLIED__SETTING_NAME ];
 
+		$additional_setting_hidden_class = ' twrpb-hidden';
+		if ( 'not_apply' !== $selector_value ) {
+			$additional_setting_hidden_class = '';
+		}
+
 		?>
 		<div class="<?php $this->bem_class(); ?>">
-
-			<p class="<?php $this->query_setting_paragraph_class(); ?>">
+			<div class="<?php $this->query_setting_paragraph_class(); ?>">
 				<select
 					id="<?php $this->bem_class( 'is-applied-selector' ); ?>"
 					class="<?php $this->bem_class( 'is-applied-selector' ); ?>"
@@ -48,19 +53,29 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 						<?= _x( 'Apply settings', 'backend', 'twrp' ); ?>
 					</option>
 				</select>
-			</p>
+			</div>
 
-			<textarea
-				id="<?php $this->bem_class( 'textarea' ); ?>"
-				class="<?php $this->bem_class( 'textarea' ); ?>"
-				name="<?= esc_attr( $textarea_name ); ?>"  rows="10"
-			><?= esc_html( $advanced_args ); ?></textarea>
+			<div id="<?php $this->bem_class( 'textarea-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_setting_hidden_class ); ?>">
+				<?php
+				$remember_note = new Remember_Note( Remember_Note::NOTE__ADVANCED_ARGS_NOTE );
+				$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+				?>
+				<textarea
+					id="<?php $this->bem_class( 'textarea' ); ?>"
+					class="<?php $this->bem_class( 'textarea' ); ?>"
+					name="<?= esc_attr( $textarea_name ); ?>"  rows="10"
+				><?= esc_html( $advanced_args ); ?></textarea>
+				<?php
+				$warning_json_invalid = new Remember_Note( Remember_Note::NOTE__INVALID_JSON_WARNING, 'warning' );
+				$warning_json_invalid->display_note( $this->get_query_setting_paragraph_class() );
+				?>
+			</div>
 		</div>
 		<?php
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrpb-advanced-args';
+		return 'twrpb-advanced-settings';
 	}
 
 }
