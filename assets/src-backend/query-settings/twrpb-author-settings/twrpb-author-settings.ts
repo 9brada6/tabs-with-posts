@@ -31,29 +31,6 @@ function hideOrShowVisualList() {
 
 // #endregion -- Hide/Show Author List and Add Button based on option selected.
 
-// #region -- Hide/Show Same author notice.
-
-const sameAuthorNotice = $( '#twrpb-author-settings__js-same-author-notice' );
-
-$( handleSameAuthorNotice );
-$( document ).on( 'change', '#twrpb-author-settings__select_type', handleSameAuthorNotice );
-
-/**
- * Hide or show a notice that says that when the author is set to the same as
- * the post, the query will not be displayed on non-singular pages.
- */
-function handleSameAuthorNotice() {
-	const authorTypeVal = authorTypeSelector.val();
-
-	if ( 'SAME' === authorTypeVal ) {
-		showUp( sameAuthorNotice );
-	} else {
-		hideUp( sameAuthorNotice );
-	}
-}
-
-// #endregion -- Hide/Show Same author notice.
-
 // #region -- Manage Author Search
 
 $( initializeAutoComplete );

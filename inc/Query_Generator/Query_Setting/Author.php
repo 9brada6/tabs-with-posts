@@ -1,16 +1,15 @@
 <?php
 /**
  * File containing the class with the same name.
- *
- * @todo File and class comment.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;
 
-use TWRP\Query_Generator\Query_Generator;
 use TWRP\Utils\Simple_Utils;
-use RuntimeException;
 
+/**
+ * Class that manages the author filter for the query.
+ */
 class Author extends Query_Setting {
 
 	public static function get_class_order_among_siblings() {
@@ -43,11 +42,6 @@ class Author extends Query_Setting {
 	 */
 	const AUTHORS_TYPE__EXCLUDE = 'OUT';
 
-	/**
-	 * Filter by same author as the post.
-	 */
-	const AUTHORS_TYPE__SAME = 'SAME';
-
 	public static function get_setting_name() {
 		return 'author_settings';
 	}
@@ -65,7 +59,7 @@ class Author extends Query_Setting {
 		}
 
 		$authors_type    = $settings[ self::AUTHORS_TYPE__SETTING_NAME ];
-		$available_types = array( self::AUTHORS_TYPE__DISABLED, self::AUTHORS_TYPE__INCLUDE, self::AUTHORS_TYPE__EXCLUDE, self::AUTHORS_TYPE__SAME );
+		$available_types = array( self::AUTHORS_TYPE__DISABLED, self::AUTHORS_TYPE__INCLUDE, self::AUTHORS_TYPE__EXCLUDE );
 		if ( ! in_array( $authors_type, $available_types, true ) ) {
 			return self::get_default_setting();
 		}
@@ -78,9 +72,6 @@ class Author extends Query_Setting {
 			self::AUTHORS_TYPE__SETTING_NAME => $settings[ self::AUTHORS_TYPE__SETTING_NAME ],
 			self::AUTHORS_IDS__SETTING_NAME  => '',
 		);
-		if ( self::AUTHORS_TYPE__SAME === $authors_type ) {
-			return $sanitized_setting;
-		}
 
 		$authors_ids = explode( ';', $settings[ self::AUTHORS_IDS__SETTING_NAME ] );
 		$authors_ids = Simple_Utils::get_valid_wp_ids( $authors_ids );
@@ -94,6 +85,10 @@ class Author extends Query_Setting {
 		}
 		$sanitized_authors_ids = implode( ';', $sanitized_authors_ids );
 
+		if ( empty( $sanitized_authors_ids ) ) {
+			return self::get_default_setting();
+		}
+
 		$sanitized_setting[ self::AUTHORS_IDS__SETTING_NAME ] = $sanitized_authors_ids;
 
 		return $sanitized_setting;
@@ -106,8 +101,6 @@ class Author extends Query_Setting {
 	 * the new settings, and will return the new query arguments to be passed
 	 * into WP_Query class.
 	 *
-	 * @throws \RuntimeException If a setting cannot implement something.
-	 *
 	 * @param array $previous_query_args The query arguments before being modified.
 	 * @param array $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
@@ -117,17 +110,6 @@ class Author extends Query_Setting {
 		$authors_type = $settings[ self::AUTHORS_TYPE__SETTING_NAME ];
 
 		if ( self::AUTHORS_TYPE__DISABLED === $authors_type ) {
-			return $previous_query_args;
-		}
-
-		if ( self::AUTHORS_TYPE__SAME === $authors_type ) {
-			$global_post = Query_Generator::get_global_post();
-			if ( ( ! $global_post ) || ( ! is_singular() ) ) {
-				throw new RuntimeException( 'Author cannot be retrieved in a non single page.' );
-			}
-			$author_id = get_the_author_meta( 'ID', $global_post->post_author );
-
-			$previous_query_args['author__in'] = array( $author_id );
 			return $previous_query_args;
 		}
 

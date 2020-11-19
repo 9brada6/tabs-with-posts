@@ -7,7 +7,6 @@ namespace TWRP\Admin\Tabs\Query_Options;
 
 use TWRP\Query_Generator\Query_Setting\Author;
 use TWRP\Utils\Simple_Utils;
-use TWRP\Admin\Helpers\Remember_Note;
 
 /**
  * Used to display the author query setting control.
@@ -27,17 +26,12 @@ class Author_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$authors_type             = $current_setting[ Author::AUTHORS_TYPE__SETTING_NAME ];
-		$is_showing               = false;
-		$same_author_note_showing = false;
+		$authors_type = $current_setting[ Author::AUTHORS_TYPE__SETTING_NAME ];
+		$is_showing   = false;
 
 		if ( Author::AUTHORS_TYPE__INCLUDE === $authors_type
 		|| Author::AUTHORS_TYPE__EXCLUDE === $authors_type ) {
 			$is_showing = true;
-		}
-
-		if ( Author::AUTHORS_TYPE__SAME === $authors_type ) {
-			$same_author_note_showing = true;
 		}
 
 		?>
@@ -46,7 +40,6 @@ class Author_Display extends Query_Setting_Display {
 			$this->display_authors_select_type( $current_setting );
 			$this->display_selected_authors_list( $current_setting, $is_showing );
 			$this->display_add_authors_to_list( $current_setting, $is_showing );
-			$this->display_note( $same_author_note_showing );
 			?>
 		</div>
 		<?php
@@ -70,14 +63,11 @@ class Author_Display extends Query_Setting_Display {
 				<option value="<?= esc_attr( Author::AUTHORS_TYPE__DISABLED ) ?>" <?php selected( Author::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
 					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
 				</option>
-				<option value="<?= esc_attr( Author::AUTHORS_TYPE__SAME ) ?>" <?php selected( Author::AUTHORS_TYPE__SAME, $selected_option ); ?>>
-					<?= _x( 'Same author as the post', 'backend', 'twrp' ); ?>
-				</option>
 				<option value="<?= esc_attr( Author::AUTHORS_TYPE__INCLUDE ) ?>" <?php selected( Author::AUTHORS_TYPE__INCLUDE, $selected_option ); ?>>
-					<?= _x( 'Include selected authors', 'backend', 'twrp' ); ?>
+					<?= _x( 'Include only posts with selected authors', 'backend', 'twrp' ); ?>
 				</option>
 				<option value="<?= esc_attr( Author::AUTHORS_TYPE__EXCLUDE ) ?>" <?php selected( Author::AUTHORS_TYPE__EXCLUDE, $selected_option ); ?>>
-					<?= _x( 'Exclude selected authors', 'backend', 'twrp' ); ?>
+					<?= _x( 'Exclude posts with selected authors', 'backend', 'twrp' ); ?>
 				</option>
 			</select>
 		</div>
@@ -191,31 +181,7 @@ class Author_Display extends Query_Setting_Display {
 		<?php
 	}
 
-	/**
-	 * Display a note about same author query.
-	 *
-	 * @param bool $is_showing
-	 * @return void
-	 */
-	protected function display_note( $is_showing ) {
-		$additional_note_class = '';
-		if ( ! $is_showing ) {
-			$additional_note_class = ' twrpb-hidden';
-		}
-
-		?>
-		<div id="<?php $this->bem_class( 'js-same-author-notice' ); ?>" class="<?php $this->bem_class( 'same-author-note' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_note_class ); ?>">
-			<?php
-			$remember_note = new Remember_Note( Remember_Note::NOTE__SAME_AUTHOR_SETTING_NOTE );
-			$remember_note->display_note();
-			?>
-		</div>
-		<?php
-	}
-
-	// todo.
 	protected function get_bem_base_class() {
 		return 'twrpb-author-settings';
 	}
-
 }

@@ -30,6 +30,7 @@ class Plugin_Bootstrap {
 		'Utils/Date_Utils',
 		'Utils/Directory_Utils',
 		'Utils/Filesystem_Utils',
+		'Utils/Widget_Utils',
 
 		// Admin.
 		'Admin/Helpers/Remember_Note',
@@ -175,6 +176,10 @@ class Plugin_Bootstrap {
 		'Widget_Control/Number_Control',
 		'Widget_Control/Select_Control',
 		'Widget_Control/Color_Control',
+
+		// Tabs_Creator
+		'Tabs_Creator/Tabs_Creator',
+
 	);
 
 	/**

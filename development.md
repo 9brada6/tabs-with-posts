@@ -40,8 +40,11 @@ it with twrpb or something like that.
 - ➕ Add filters for all things.
 - ➕ Add a way to invert category icons?
 - ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.
-- ➕ Add a preview query posts in the backend. If we add a query preview in the
-backend, add a warning that will say that sticky posts are not included here.
+- ➕ Add a preview query posts in the backend. If we add a query preview in the backend, add a warning that will say that sticky posts are not included here.
+- ➕ Add in Date Query settings, a way to select posts from this week and this month, 3-7 days(easy).
+- ➕ Move all TypeScript display items(Query Settings) into a single one implementation.
+- ➕ When drag & drop a display item in query setting, add a replace item with the same dimension as the original item that is being dragged.
+
 
 ## Read Before Development
 
@@ -51,10 +54,10 @@ This documentation is split between packages.
 
 ## ✅ Todo
 
-### Query Settings
+- Make article block to not depend on widget id, only on widget settings and query id. Optionally, make
+to depend on nothing.
 
-- Add something in query_generator like pre applied args to query args, where the
-pre applied args will ne no_found_rows, and post_status => published.
+### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts
 will interact if they are both set. This warning should be shown only if they are both set.
@@ -62,15 +65,9 @@ will interact if they are both set. This warning should be shown only if they ar
 - Add a lot of notices in order by setting. Some ideas: if orderby comments is
 set in asc order. If only order by comments is set, then suggest to add orderby date.
 
-- Manually verified each setting: Name, Post Type, Post Statuses, Post Order, Posts Settings,
-Sticky Posts, Posts Comments, Search, Password Protected, Meta, Suppress Filters, Advanced Arguments.
+- Add a nice "Settings successfully saved" or "deleted" message.
 
 - Add in documentation examples on how to use advanced arguments and what query filters to use.
-
-- Create a nice query tab, including the message when no queries are present. Maybe move the actions button to the right?
-
-- Date Filter: Hide note 2 when not necessary. Change name of note 2. Bring last checkbox(last days to first checkbox). Change the first note to a good explication(hard).
-
 - Order: maybe add more orders, like post__in?.
 
 ### Plugins

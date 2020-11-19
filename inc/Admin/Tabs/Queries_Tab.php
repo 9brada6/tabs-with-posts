@@ -132,10 +132,12 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	 * @return void
 	 */
 	public function display_existing_queries_page() {
-		$existing_queries_table = new Query_Existing_Table();
+		$delete_query_confirmation_message = _x( 'Are you sure that do you want to delete this query?', 'backend', 'twrp' );
+		$existing_queries_table            = new Query_Existing_Table();
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
+			<div id="<?php $this->bem_class( 'before-deleting-confirmation' ); ?>" style="display:none" data-twrpb-query-delete-confirm="<?= esc_attr( $delete_query_confirmation_message ) ?>"></div>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
 			$existing_queries_table->display();
@@ -192,7 +194,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	protected function display_existing_queries_add_new_btn() {
 		$add_btn_icon = '<span class="' . $this->get_bem_class( 'add-query-btn-icon' ) . ' dashicons dashicons-plus"></span>';
 		?>
-		<a class="<?php $this->bem_class( 'add-query-btn' ); ?> button button-primary button-large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
+		<a class="<?php $this->bem_class( 'add-query-btn' ); ?> twrpb-button twrpb-button--save twrpb-button--large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
 			<?php
 				/* translators: %s: plus dashicon html. */
 				echo sprintf( _x( '%s Add New Query', 'backend', 'twrp' ), $add_btn_icon ); // phpcs:ignore -- No XSS.
@@ -279,7 +281,15 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php $query_settings_display->display(); ?>
 				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
-				<button name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>" type="submit"><?= _x( 'Submit', 'backend', 'twrp' ); ?></button>
+
+				<button
+					class="<?php $this->bem_class( 'save-query-btn' ); ?> twrpb-button twrpb-button--save twrpb-button--large"
+					name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>"
+					value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>"
+					type="submit"
+				>
+					<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
+				</button>
 			</form>
 		</div>
 		<?php
@@ -294,7 +304,7 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		$link        = Settings_Menu::get_tab_url( $this );
 		$button_text = _x( '< Back to the Queries Overview', 'backend', 'twrp' );
 		?>
-		<a href="<?= esc_url( $link ); ?>" class="<?php $this->bem_class( 'back-btn' ); ?> twrpb-button">
+		<a href="<?= esc_url( $link ); ?>" class="<?php $this->bem_class( 'back-btn' ); ?> twrpb-button twrpb-button--large">
 			<?= esc_html( $button_text ); ?>
 		</a>
 		<?php

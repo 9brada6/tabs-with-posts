@@ -22,10 +22,10 @@ class Query_Existing_Table {
 		<table class="<?php $this->bem_class(); ?>">
 			<thead>
 				<tr>
+					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
 					<th class="<?php $this->bem_class( 'edit-head' ); ?>">
 						<?= _x( 'Actions', 'backend', 'twrp' ) ?>
 					</th>
-					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,7 +36,7 @@ class Query_Existing_Table {
 				<?php else : ?>
 					<tr>
 						<td class="<?php $this->bem_class( 'no-queries-col' ); ?>" colspan="2">
-						<?= _x( 'No queries added', 'backend', 'twrp' ); ?>
+						<?= _x( 'No queries yet', 'backend', 'twrp' ); ?>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -66,13 +66,13 @@ class Query_Existing_Table {
 
 		?>
 		<tr>
-			<td class="<?php $this->bem_class( 'edit-col' ); ?>">
-				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
-				<span class="<?php $this->bem_class( 'edit-delete-separator' ); ?>">|</span>
-				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
-			</td>
 			<td class="<?php $this->bem_class( 'title-col' ); ?>">
 				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
+			</td>
+			<td class="<?php $this->bem_class( 'edit-col' ); ?>">
+				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
+				<span class="<?php $this->bem_class( 'edit-delete-separator' ); ?>">|</span>
+				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
 			</td>
 		</tr>
 		<?php

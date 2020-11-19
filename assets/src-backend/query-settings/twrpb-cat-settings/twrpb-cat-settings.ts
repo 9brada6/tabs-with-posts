@@ -70,8 +70,8 @@ function addCatToVisual( categoryId: string|number, name: string ): void {
 		toAppend.attr( categoryIdAttrName, categoryId );
 
 		categoriesItemsWrapper.append( toAppend );
-		hideOrShowEmptyMessage();
 		showLeft( toAppend, 'hide_first' );
+		hideOrShowEmptyMessage();
 	}
 }
 
@@ -219,8 +219,14 @@ function hideOrShowCategorySettings(): void {
 		hideUp( mainCategorySettings );
 		hideUp( categoryRelationWrapper );
 	} else if ( 'IN' === selectVal ) {
+		categoryRelationWrapper.removeClass( 'twrpb-hidden' );
+		// force redraw.
+		$( mainCategorySettings ).css( 'opacity', .99 );
+		setTimeout( function() {
+			$( mainCategorySettings ).css( 'opacity', 1 );
+		}, 20 );
 		showUp( mainCategorySettings );
-		showUp( categoryRelationWrapper );
+	 	showUp( categoryRelationWrapper );
 	} else {
 		showUp( mainCategorySettings );
 		hideUp( categoryRelationWrapper );

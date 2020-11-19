@@ -93,8 +93,8 @@ class Categories extends Query_Setting {
 		$available_categories     = get_categories(
 			array(
 				'include'    => $categories,
-				// Changing hide_empty here will also need be to
 				'hide_empty' => self::CATEGORIES_HIDE_EMPTY,
+				'orderby'    => 'include',
 			)
 		);
 		$available_categories_ids = wp_list_pluck( $available_categories, 'term_id' );
@@ -141,7 +141,7 @@ class Categories extends Query_Setting {
 					$previous_query_args['category__and'] = $cat_ids;
 				}
 			} else { // OUT.
-				$previous_query_args['category__out'] = $cat_ids;
+				$previous_query_args['category__not_in'] = $cat_ids;
 			}
 		} else {
 			// cat (int) – use category id.
@@ -150,7 +150,13 @@ class Categories extends Query_Setting {
 					$cat_ids                    = implode( ',', $cat_ids );
 					$previous_query_args['cat'] = $cat_ids;
 				} else {
-					$categories = get_categories( array( 'include' => $cat_ids ) );
+					$categories = get_categories(
+						array(
+							'include'    => $cat_ids,
+							'hide_empty' => self::CATEGORIES_HIDE_EMPTY,
+							'orderby'    => 'include',
+						)
+					);
 					$cat_slugs  = array();
 					foreach ( $categories as $category ) {
 						array_push( $cat_slugs, $category->slug );

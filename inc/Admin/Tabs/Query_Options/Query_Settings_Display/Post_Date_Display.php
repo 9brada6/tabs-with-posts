@@ -97,7 +97,7 @@ class Post_Date_Display extends Query_Setting_Display {
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
 
 			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_REMEMBER );
-			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . ' twrpb-hidden' );
 			?>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
@@ -106,7 +106,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'LW', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-week' ); ?>">
-					<?= _x( 'This and last week', 'backend', 'twrp' ); ?>
+					<?= _x( 'This and last week (7-14 days)', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 
@@ -116,7 +116,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'LM', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-month' ); ?>">
-					<?= _x( 'This and last month', 'backend', 'twrp' ); ?>
+					<?= _x( 'This and last month (30-60 days)', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 
@@ -140,6 +140,7 @@ class Post_Date_Display extends Query_Setting_Display {
 				</label>
 
 				<input
+					id="<?php $this->bem_class( 'js-last-days-input' ); ?>"
 					class="<?php $this->bem_class( 'last-days-input' ); ?>"
 					min="0" step="1" type="number"
 					name="<?= esc_attr( $last_days_name ); ?>"

@@ -18,7 +18,7 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\Query_Generator\Query_Generator;
-
+use TWRP\Utils\Widget_Utils;
 
 /**
  * For Development only.
@@ -50,7 +50,11 @@ class TWRP_Main {
 
 	const VERSION = '1.0.0';
 
-		/**
+	const TWRP_WIDGET__BASE_ID = 'twrp_tabs_with_recommended_posts';
+
+
+
+	/**
 	 * The folder name of this plugin.
 	 */
 	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';
@@ -200,15 +204,15 @@ add_action( 'wp_enqueue_scripts', 'twrp_enqueue_scripts' );
 function twrp_enqueue_scripts_debug() {
 	\Debug\dump_bench( 'test_sanitize' );
 	try {
-		\Debug\console_dump( Query_Options::get_all_query_settings( 1 ), 'Query 1 settings:' );
+		\Debug\console_dump( Query_Options::get_all_query_settings( 10 ), 'Query 10 settings:' );
 
-		$wp_query_args = Query_Generator::get_wp_query_arguments( 1 );
-		\Debug\console_dump( $wp_query_args, 'Query 1 Arguments:' );
+		$wp_query_args = Query_Generator::get_wp_query_arguments( 10 );
+		\Debug\console_dump( $wp_query_args, 'Query 10 Arguments:' );
 
 		$wp_query                  = new WP_Query();
 		$wp_query_args['nopaging'] = true;
 
-		\Debug\console_dump( $wp_query->query( $wp_query_args ), 'Query 1 Posts (with no paging added):' );
+		\Debug\console_dump( $wp_query->query( $wp_query_args ), 'Query 10 Posts (with no paging added):' );
 	} catch ( \RuntimeException $e ) {
 		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
 	}
@@ -228,6 +232,8 @@ function twrp_enqueue_scripts_debug() {
 	$wp_query = new WP_Query();
 	$queries  = $wp_query->query( $args );
 	\Debug\console_dump( $queries, 'Custom get posts' );
+
+	// Widget_Utils::get_widget_instance_by_id( 2 );
 
 	return null;
 }

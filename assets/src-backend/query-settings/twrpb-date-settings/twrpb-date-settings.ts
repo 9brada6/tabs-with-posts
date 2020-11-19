@@ -75,3 +75,25 @@ function hideOrShowBetweenTimeSettings() {
 }
 
 // #endregion -- Hide/Show Date
+
+// #region -- Number of days not selected.
+
+const numberOfDaysInputSelector = '#twrpb-date-settings__js-last-days-input';
+const numberOfDaysRadioSelector = '#twrpb-date-settings__js-custom';
+const numberOfDaysNoteSelector = '#twrpb-setting-note__post_date_setting_remember';
+
+$( hideOrShowUncheckedRadioNote );
+$( document ).on( 'keyup mouseup change click', '#twrpb-date-settings__js-last-period-wrapper', hideOrShowUncheckedRadioNote );
+
+function hideOrShowUncheckedRadioNote() {
+	const inputVal = $( numberOfDaysInputSelector ).val();
+	const radioIsSelected = $( numberOfDaysRadioSelector ).is( ':checked' );
+
+	if ( radioIsSelected || ! inputVal ) {
+		hideUp( $( numberOfDaysNoteSelector ) );
+	} else {
+		showUp( $( numberOfDaysNoteSelector ) );
+	}
+}
+
+// #endregion -- Number of days not selected.

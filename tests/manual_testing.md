@@ -1,5 +1,10 @@
 # Manual Testing
 
+## Query Settings Manual Testing
+
+- Test each setting, and each javascript thing that might be pop-out/hide when a setting change.
+- Add here a list of more explicit things to test.
+
 ## Icons Manual Testing
 
 - Checked to see if they align in the middle:

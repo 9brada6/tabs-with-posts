@@ -5,6 +5,7 @@
 
 namespace TWRP\TWRP_Widget;
 
+use RuntimeException;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Create_Tabs;
 use TWRP\Query_Generator\Query_Generator;
@@ -17,7 +18,9 @@ use WP_Widget;
 class Widget extends WP_Widget {
 
 	const TWRP_BASE_ID             = 'twrp_tabs_with_recommended_posts';
+
 	const ARTBLOCK_SELECTOR__NAME  = 'article_block';
+
 	const QUERY_BUTTON_TITLE__NAME = 'display_title';
 
 	const DEFAULT_SELECTED_ARTBLOCK_ID = 'simple_style';

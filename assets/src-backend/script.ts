@@ -17,6 +17,7 @@ import './query-settings/twrpb-date-settings/twrpb-date-settings';
 import './query-settings/twrpb-meta-setting/twrpb-meta-setting';
 import './query-settings/twrpb-order-setting/twrpb-order-setting';
 import './query-settings/twrpb-posts-settings/twrpb-posts-settings';
+import './query-settings/twrpb-query-settings/twrpb-query-settings';
 import './query-settings/twrpb-search-setting/twrpb-search-setting';
 import './query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 

@@ -40,8 +40,6 @@ class Remember_Note {
 
 	const NOTE__POST_STATUS_INFO = 'post_status_info';
 
-	const NOTE__SAME_AUTHOR_SETTING_NOTE = 'same_author_setting_note';
-
 	const NOTE__ORDERING_BY_POST_ID_WARNING = 'ordering_by_post_id_warning';
 
 	const NOTE__ORDERING_INFO = 'ordering_info';
@@ -116,12 +114,8 @@ class Remember_Note {
 	protected function get_all_notes() {
 		$all_notes = array(
 
-			static::NOTE__SAME_AUTHOR_SETTING_NOTE       => array(
-				'text' => _x( 'This query(tab) will be displayed only on singular pages(post, page, attachments, custom post types), but not on blogroll pages, categories pages, ..etc, because these pages do not display an article from where the author can be retrieved.', 'backend', 'twrp' ),
-			),
-
 			static::NOTE__POST_DATE_SETTING_INFO         => array(
-				'text' => _x( 'You can either put a number of days manually(7 for week, 30 for a month, ..etc), or calculate the first day of last week/month and include everything after.', 'backend', 'twrp' ),
+				'text' => _x( 'You can either put a number of days manually(7 for week, 30 for a month, ..etc) in the last option, or let the plugin calculate first day of week/month.', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__POST_DATE_SETTING_REMEMBER     => array(

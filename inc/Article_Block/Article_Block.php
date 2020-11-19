@@ -27,13 +27,6 @@ abstract class Article_Block {
 	use Class_Children_Order_Trait;
 
 	/**
-	 * Holds the widget id of these article blocks.
-	 *
-	 * @var int
-	 */
-	protected $widget_id;
-
-	/**
 	 * Holds the query id of these article blocks.
 	 *
 	 * @var int
@@ -74,15 +67,6 @@ abstract class Article_Block {
 	abstract protected static function get_file_name();
 
 	/**
-	 * Get the widget Id this artblock is build for.
-	 *
-	 * @return int
-	 */
-	public function get_widget_id() {
-		return $this->widget_id;
-	}
-
-	/**
 	 * Get the query Id this artblock is build for.
 	 *
 	 * @return int
@@ -103,14 +87,12 @@ abstract class Article_Block {
 	/**
 	 * Construct the object instance.
 	 *
-	 * @param int $widget_id
 	 * @param int $query_id
 	 * @param array $settings
 	 */
-	final public function __construct( $widget_id, $query_id, $settings ) {
-		$this->widget_id = $widget_id;
-		$this->query_id  = $query_id;
-		$this->settings  = $settings;
+	final public function __construct( $query_id, $settings ) {
+		$this->query_id = $query_id;
+		$this->settings = $settings;
 	}
 
 	/**
@@ -216,7 +198,7 @@ abstract class Article_Block {
 		if ( ! class_exists( $founded_artblock_name ) ) {
 			throw new \RuntimeException( 'Could not find class ' . $founded_artblock_name );
 		} else {
-			return new $founded_artblock_name( $widget_id, $query_id, $settings );
+			return new $founded_artblock_name( $query_id, $settings );
 		}
 
 	}

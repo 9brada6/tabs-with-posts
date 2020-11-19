@@ -4,8 +4,8 @@
 	font-size: 1rem;
 	color: black;
 	border-spacing: 0;
+	border-collapse: collapse;
 	background-color: #fff;
-	border: 1px solid #ccc;
 	border-radius: 6px;
 	box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
 
@@ -22,11 +22,13 @@
 
 	&__edit-col,
 	&__edit-head {
-		width: 1%;
+		width: 20%;
 		white-space: nowrap;
+		border-left: 1px solid #ddd;
 	}
 
 	&__edit-col {
+		padding-left: 14px;
 		font-size: 0.9rem;
 	}
 

@@ -6,10 +6,6 @@
 		margin-right: 0.2rem;
 	}
 
-	&__select-relation-wrap {
-		margin: 0;
-	}
-
 	&__section-title {
 		margin: 0.5rem 0;
 	}
@@ -34,5 +30,9 @@
 
 	&__include-children-wrap {
 		margin-top: 0 !important;
+	}
+
+	&__select-relation-wrap {
+		margin: 0 !important;
 	}
 }

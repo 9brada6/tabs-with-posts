@@ -3,64 +3,28 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP;
+namespace Tabs_Creator;
 
 use TWRP\TWRP_Widget\Widget;
 use RuntimeException;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
-use TWRP\Utils\Widget_Utils;
 
-/**
- * Construct the tabs widget.
- *
- * The only way to set the settings for the tabs are through the WordPress widget.
- * We can pass a set of custom settings to this constructor, or pass the ones
- * defined in widget.
- */
-class Create_Tabs {
+class Tabs_Creator {
 
 	/**
-	 * Holds the widget instance settings.
-	 *
-	 * @var array
+	 * @var int
 	 */
-	protected $instance_settings = array();
+	protected $widget_id = 0;
 
 	/**
-	 * Construct the object based on some widget settings.
-	 *
-	 * By default WordPress Widget classes are not intuitively very reasonable,
-	 * we cannot pass a widget object, because the settings are stored in
-	 * database and not in the object itself.
-	 *
-	 * @throws RuntimeException If widget id does not exist, or the instance
-	 *                          settings might not be correct.
-	 *
-	 * @param int|array $widget_id_or_instance_settings The widget id by number,
-	 * or the instance settings of a TWRP widget.
-	 *
-	 * @psalm-suppress DocblockTypeContradiction
+	 * @var int
 	 */
-	public function __construct( $widget_id_or_instance_settings ) {
-		if ( is_int( $widget_id_or_instance_settings ) ) {
-			$widget_id         = $widget_id_or_instance_settings;
-			$instance_settings = Widget_Utils::get_instance_settings( $widget_id );
-		} else {
-			$instance_settings = $widget_id_or_instance_settings;
-		}
+	protected $widget_instance = null;
 
-		if ( empty( $instance_settings ) || ! is_array( $instance_settings ) ) {
-			throw new RuntimeException();
-		}
-
-		$this->instance_settings = $instance_settings;
-	}
+	protected $query_ids = array();
 
 	public function display_tabs() {
-		if ( 0 === $this->widget_id ) {
-			return;
-		}
 		?>
 		<style><?= $this->get_widget_css() ?></style>
 		<div>
@@ -126,10 +90,10 @@ class Create_Tabs {
 	 * @return Article_Block
 	 */
 	protected function get_artblock( $query_id ) {
-		$artblock_id = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
-
 		try {
-			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $this->instance_settings );
+			// $artblock_id = Widget::get_selected_artblock_id( $this->widget_id, $query_id );
+			$settings = Widget::get_query_instance_settings( $this->widget_id, $query_id );
+			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $settings );
 			$settings = $artblock->sanitize_widget_settings();
 		} catch ( RuntimeException $e ) {
 			throw new RuntimeException();
