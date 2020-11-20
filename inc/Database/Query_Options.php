@@ -25,7 +25,7 @@ class Query_Options {
 	/**
 	 * Returns all registered article queries. The settings are sanitized.
 	 *
-	 * @return array
+	 * @return array The key is the query id, the value is an array of settings.
 	 */
 	public static function get_all_queries() {
 		$all_queries = get_option( self::QUERIES_OPTION_KEY, array() );

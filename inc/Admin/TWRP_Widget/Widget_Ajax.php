@@ -13,8 +13,8 @@ class Widget_Ajax {
 	use After_Setup_Theme_Init_Trait;
 
 	public static function after_setup_theme_init() {
-		add_action( 'wp_ajax_twrp_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
-		add_action( 'wp_ajax_twrp_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
+		// add_action( 'wp_ajax_twrp_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
+		// add_action( 'wp_ajax_twrp_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
 	}
 
 	public static function ajax_create_query_selected_item() {

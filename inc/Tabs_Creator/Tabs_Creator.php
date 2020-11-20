@@ -3,100 +3,217 @@
  * File that contains the class with the same name.
  */
 
-namespace Tabs_Creator;
+namespace TWRP\Tabs_Creator;
 
 use TWRP\TWRP_Widget\Widget;
 use RuntimeException;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
+use TWRP\Utils\Widget_Utils;
+use TWRP\Tabs_Styles\Tab_Style;
 
+/**
+ * Construct the tabs widget.
+ *
+ * The only way to set the settings for the tabs are through the WordPress widget.
+ * We can pass a set of custom settings to this constructor, or pass the ones
+ * defined in widget.
+ */
 class Tabs_Creator {
 
 	/**
+	 * Holds the widget id of which the tabs must be generated for.
+	 *
 	 * @var int
 	 */
 	protected $widget_id = 0;
 
 	/**
-	 * @var int
+	 * Holds the widget instance settings.
+	 *
+	 * @var array
 	 */
-	protected $widget_instance = null;
+	protected $instance_settings = array();
 
+	/**
+	 * Holds the Tab_Style object.
+	 *
+	 * @var Tab_Style
+	 */
+	protected $tab_style;
+
+	/**
+	 * Holds all the query ids of the widget
+	 *
+	 * @var array
+	 */
 	protected $query_ids = array();
 
-	public function display_tabs() {
-		?>
-		<style><?= $this->get_widget_css() ?></style>
-		<div>
-			<div>
-				<?php foreach ( $this->query_ids as $query_id ) : ?>
-					<button>
-						<?= Widget::get_query_tab_button_title( $this->widget_id, $query_id ); // phpcs:ignore -- No escape, this is a feature. ?>
-					</button>
-				<?php endforeach; ?>
-			</div>
-			<div>
-				<?php
-				foreach ( $this->query_ids as $query_id ) {
-					$this->display_query( $query_id );
-				}
-				?>
-			</div>
-		</div>
-		<?php
+	/**
+	 * For each query id holds the artblock that needs to generate the posts.
+	 *
+	 * @var array
+	 */
+	protected $query_artblocks = array();
+
+	/**
+	 * For each query id holds the posts to be displayed.
+	 *
+	 * @var array
+	 */
+	protected $query_array_of_posts = array();
+
+	/**
+	 * Construct the object based on some widget settings.
+	 *
+	 * By default WordPress Widget classes are not intuitively very reasonable,
+	 * we cannot pass a widget object, because the settings are stored in
+	 * database and not in the object itself.
+	 *
+	 * @throws RuntimeException If widget id does not exist, or the instance
+	 * settings might not be correct. Or there are no tabs that can be correctly
+	 * displayed.
+	 *
+	 * @param int $widget_id
+	 * @param array $widget_instance_settings Optionally. Will get the default
+	 * settings by widget_id.
+	 *
+	 * @psalm-suppress DocblockTypeContradiction
+	 * @psalm-suppress PropertyTypeCoercion
+	 */
+	public function __construct( $widget_id, $widget_instance_settings = array() ) {
+		if ( ! is_int( $widget_id ) ) {
+			throw new RuntimeException();
+		}
+
+		if ( empty( $widget_instance_settings ) || ! is_array( $widget_instance_settings ) ) {
+			$widget_instance_settings = Widget_Utils::get_instance_settings( $widget_id );
+		}
+
+		if ( empty( $widget_instance_settings ) ) {
+			throw new RuntimeException();
+		}
+
+		$tab_style_class_name = Widget_Utils::pluck_tab_style_class_name_by_id( $this->instance_settings );
+		$tab_variant          = Widget_Utils::pluck_tab_style_variant( $this->instance_settings );
+
+		if ( '' === $tab_style_class_name ) {
+			throw new RuntimeException();
+		}
+
+		$this->widget_id         = $widget_id;
+		$this->instance_settings = $widget_instance_settings;
+
+		$this->tab_style = new $tab_style_class_name( $this->widget_id, $tab_variant );
+
+		// todo: delete: Overwrite tab_style to implement the simple tab style.
+		$this->tab_style = new \TWRP\Tabs_Styles\Simple_Tabs( $this->widget_id, $tab_variant );
+
+		$this->query_ids = Widget_Utils::pluck_valid_query_ids( $this->instance_settings );
+
+		foreach ( $this->query_ids as $key => $query_id ) {
+			$artblock = $this->get_artblock( $query_id );
+			if ( null === $artblock ) {
+				unset( $this->query_ids[ $key ] );
+			} else {
+				$this->query_artblocks[ $query_id ] = $artblock;
+			}
+		}
+
+		foreach ( $this->query_ids as $key => $query_id ) {
+			try {
+				$query_posts                             = Query_Generator::get_posts_by_query_id( $query_id );
+				$this->query_array_of_posts[ $query_id ] = $query_posts;
+			} catch ( RuntimeException $e ) {
+				unset( $this->query_ids[ $key ] );
+			}
+		}
+
+		if ( empty( $this->query_ids ) ) {
+			throw new RuntimeException();
+		}
 	}
 
-	protected function get_widget_css() {
+	/**
+	 * Create and display the tabs for the widget.
+	 *
+	 * @return void
+	 */
+	public function display_tabs() {
+		$this->widget_inline_css();
+		$tab_style = $this->tab_style;
+
+		// phpcs:disable Generic.WhiteSpace.ScopeIndent.IncorrectExact -- Visualize the HTML format created by the functions.
+		$tab_style->start_tabs_wrapper();
+			$tab_style->start_tab_buttons_wrapper();
+				foreach ( $this->query_ids as $query_id ) :
+					$button_text = Widget_Utils::pluck_tab_button_title( $this->instance_settings, $query_id );
+					$tab_style->tab_button( $button_text, $query_id );
+				endforeach;
+			$tab_style->end_tab_buttons_wrapper();
+
+			$tab_style->start_all_tabs_wrapper();
+				foreach ( $this->query_ids as $query_id ) :
+					$tab_style->start_tab_content_wrapper( $query_id );
+						$this->display_query_posts( $query_id );
+					$tab_style->end_tab_content_wrapper( $query_id );
+				endforeach;
+			$tab_style->end_all_tabs_wrapper();
+		$tab_style->end_tabs_wrapper();
+		// phpcs:enable Generic.WhiteSpace.ScopeIndent.IncorrectExact
+	}
+
+	/**
+	 * Display all the posts from a query id.
+	 *
+	 * @param int $query_id
+	 * @return void
+	 */
+	protected function display_query_posts( $query_id ) {
+		$artblock    = $this->query_artblocks[ $query_id ];
+		$query_posts = $this->query_array_of_posts[ $query_id ];
+
+		$artblock->display_blocks( $query_posts );
+	}
+
+	/**
+	 * Echo the inline css for the whole tabs.
+	 *
+	 * @return void
+	 */
+	protected function widget_inline_css() {
 		$css = '';
 		foreach ( $this->query_ids as $query_id ) {
-			try {
-				$artblock = $this->get_artblock( $query_id );
-			} catch ( \RuntimeException $e ) {
+			$artblock = $this->get_artblock( $query_id );
+			if ( null === $artblock ) {
 				continue;
 			}
 
 			$css .= $artblock->get_css();
 		}
 
-		return $css;
-	}
-
-	protected function display_query( $query_id ) {
-		global $post;
-
-		try {
-			$query_posts = Query_Generator::get_posts_by_query_id( $query_id );
-			$artblock    = $this->get_artblock( $query_id );
-			$artblock->sanitize_widget_settings();
-		} catch ( \RuntimeException $e ) {
-			return;
+		if ( ! empty( $css ) ) {
+			// phpcs:ignore -- No XSS.
+			echo '<style>' . $css . '</style>';
 		}
-
-		foreach ( $query_posts as $query_post ) {
-			$post = $query_post; // phpcs:ignore -- We reset it.
-			setup_postdata( $query_post );
-			$artblock->include_template();
-		}
-		wp_reset_postdata();
 	}
 
 	/**
 	 * Get the article block class for a query in the widget.
 	 *
-	 * @throws RuntimeException In case the needed Article_Block class does not
-	 *                          exist.
-	 *
 	 * @param int $query_id
-	 * @return Article_Block
+	 * @return Article_Block|null
 	 */
 	protected function get_artblock( $query_id ) {
+		$artblock_id = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
+		if ( empty( $artblock_id ) ) {
+			return null;
+		}
+
 		try {
-			// $artblock_id = Widget::get_selected_artblock_id( $this->widget_id, $query_id );
-			$settings = Widget::get_query_instance_settings( $this->widget_id, $query_id );
-			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $settings );
-			$settings = $artblock->sanitize_widget_settings();
+			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $this->instance_settings );
 		} catch ( RuntimeException $e ) {
-			throw new RuntimeException();
+			return null;
 		}
 
 		return $artblock;

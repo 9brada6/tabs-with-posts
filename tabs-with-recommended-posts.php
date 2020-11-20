@@ -25,8 +25,6 @@ use TWRP\Utils\Widget_Utils;
  */
 require_once __DIR__ . '/debug-and-development.php';
 
-// Require all files. An autoloader is not used, because other plugins can use
-// an autoloader that is slow, making this plugin slow as well.
 require_once __DIR__ . '/inc/Plugin_Bootstrap.php';
 Plugin_Bootstrap::include_all_files();
 add_action( 'after_setup_theme', array( 'TWRP\\Plugin_Bootstrap', 'initialize_after_setup_theme_hooks' ) );
@@ -242,5 +240,28 @@ add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 
 // phpcs:disable - For testings purposes.
+
+class Widget_Form {
+
+	/**
+	 * @var array<string|int,mixed>
+	 */
+	protected $an_array;
+
+	protected function a() {
+		if ( isset( $this->an_array['string'] ) ) {
+			return;
+		}
+	}
+
+	/**
+	 * @param int $query_id
+	 * @return void
+	 */
+	public function b( $query_id ) {
+		echo $this->an_array[ $query_id ];
+	}
+
+}
 
 #endregion -- Testing

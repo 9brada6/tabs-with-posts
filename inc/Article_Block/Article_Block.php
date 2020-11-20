@@ -9,6 +9,7 @@ use TWRP\Artblock_Component\Widget_Component_Settings;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use WP_Post;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -19,12 +20,23 @@ use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
  * also have some metadata like the author or the date), or it can be displayed
  * maybe as a title and alongside a thumbnail, like YouTube do. Or maybe we want
  * to display a custom WooCommerce product. The possibilities are very large.
+ *
+ * If you want to sanitize the widgets settings(usually you don't need because
+ * they are sanitized before adding in database), call
+ * sanitize_widget_settings() function externally.
  */
 abstract class Article_Block {
 
 	use Display_Post_Meta_Trait;
 
 	use Class_Children_Order_Trait;
+
+	/**
+	 * Holds the widget id of these article blocks.
+	 *
+	 * @var int
+	 */
+	protected $widget_id;
 
 	/**
 	 * Holds the query id of these article blocks.
@@ -67,6 +79,15 @@ abstract class Article_Block {
 	abstract protected static function get_file_name();
 
 	/**
+	 * Get the widget Id this artblock is build for.
+	 *
+	 * @return int
+	 */
+	public function get_widget_id() {
+		return $this->widget_id;
+	}
+
+	/**
 	 * Get the query Id this artblock is build for.
 	 *
 	 * @return int
@@ -87,12 +108,14 @@ abstract class Article_Block {
 	/**
 	 * Construct the object instance.
 	 *
+	 * @param int $widget_id
 	 * @param int $query_id
 	 * @param array $settings
 	 */
-	final public function __construct( $query_id, $settings ) {
-		$this->query_id = $query_id;
-		$this->settings = $settings;
+	final public function __construct( $widget_id, $query_id, $settings ) {
+		$this->widget_id = $widget_id;
+		$this->query_id  = $query_id;
+		$this->settings  = $settings;
 	}
 
 	/**
@@ -113,6 +136,22 @@ abstract class Article_Block {
 	 */
 	public function get_block_class() {
 		return 'twrp-block--' . $this->widget_id . '-' . $this->query_id;
+	}
+
+	/**
+	 * Create the block for each post inside of the array.
+	 *
+	 * @param array<WP_Post> $query_posts
+	 * @return void
+	 */
+	public function display_blocks( $query_posts ) {
+		global $post;
+
+		foreach ( $query_posts as $query_post ) {
+			$post = $query_post; // phpcs:ignore -- We reset it.
+			setup_postdata( $query_post );
+			$this->include_template();
+		}
 	}
 
 	/**
@@ -188,8 +227,8 @@ abstract class Article_Block {
 				break;
 			}
 
-			// find the class by class name.
-			if ( strpos( $artblock_name, $name_or_id ) !== false ) {
+			// Find the class by class name. Verify if not empty first because otherwise PHP throw warning.
+			if ( ! empty( $name_or_id ) && strpos( $artblock_name, $name_or_id ) !== false ) {
 				$founded_artblock_name = $artblock_name;
 				break;
 			}
@@ -198,7 +237,7 @@ abstract class Article_Block {
 		if ( ! class_exists( $founded_artblock_name ) ) {
 			throw new \RuntimeException( 'Could not find class ' . $founded_artblock_name );
 		} else {
-			return new $founded_artblock_name( $query_id, $settings );
+			return new $founded_artblock_name( $widget_id, $query_id, $settings );
 		}
 
 	}

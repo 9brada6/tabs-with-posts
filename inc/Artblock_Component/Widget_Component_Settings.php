@@ -2,7 +2,7 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\TWRP_Widget\Widget_Utilities;
+use TWRP\Utils\Widget_Utils;
 use TWRP\Artblock_Component\Component_Setting;
 use TWRP\Utils\Simple_Utils;
 
@@ -104,11 +104,11 @@ class Widget_Component_Settings {
 	}
 
 	protected function get_component_prefix_name() {
-		return Widget_Utilities::get_twrp_widget_name( $this->widget_id, $this->query_id, $this->name );
+		return Widget_Utils::get_field_name( $this->widget_id, $this->query_id, $this->name );
 	}
 
 	protected function get_component_prefix_id() {
-		return Widget_Utilities::get_twrp_widget_id( $this->widget_id, $this->query_id, $this->name );
+		return Widget_Utils::get_field_id( $this->widget_id, $this->query_id, $this->name );
 	}
 
 	#region -- Sanitization

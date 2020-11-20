@@ -5,10 +5,14 @@
 
 namespace TWRP;
 
-use TWRP\Icons\Create_And_Enqueue_Icons;
-use TWRP\TWRP_Widget\Widget_Ajax;
 use TWRP\Utils\Class_Retriever_Utils;
 
+/**
+ * Class used to require all files needed by this plugin.
+ *
+ * An autoloader is not used, because other plugins can use an autoloader that
+ * is slow, making this plugin slow as well.
+ */
 class Plugin_Bootstrap {
 
 	/**
@@ -17,14 +21,12 @@ class Plugin_Bootstrap {
 	 * @var array<string>
 	 */
 	protected static $required_files = array(
-		// Inc Folder.
-		'Create_Tabs',
-
 		// Utils.
 		// These traits should be included first.
 		'Utils/Helper_Trait/BEM_Class_Naming_Trait',
 		'Utils/Helper_Trait/After_Setup_Theme_Init_Trait',
 		'Utils/Helper_Trait/Class_Children_Order_Trait',
+
 		'Utils/Simple_Utils',
 		'Utils/Class_Retriever_Utils',
 		'Utils/Date_Utils',
@@ -70,6 +72,10 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/Documentation_Tab',
 		'Admin/Tabs/General_Settings_Tab',
 		'Admin/Tabs/Queries_Tab',
+
+		'Admin/TWRP_Widget/Widget_Form',
+		'Admin/TWRP_Widget//Widget_Ajax',
+
 
 		// Artblock Component Settings.
 		'Artblock_Component/Widget_Component_Settings',
@@ -165,10 +171,7 @@ class Plugin_Bootstrap {
 		'Query_Generator/Query_Setting/Suppress_Filters',
 
 		// TWRP_Widget.
-		'TWRP_Widget/Widget_Utilities',
 		'TWRP_Widget/Widget',
-		'TWRP_Widget/Widget_Ajax',
-		'TWRP_Widget/Widget_Form',
 
 		// Widget Control.
 		'Widget_Control/Widget_Control',
@@ -177,8 +180,12 @@ class Plugin_Bootstrap {
 		'Widget_Control/Select_Control',
 		'Widget_Control/Color_Control',
 
-		// Tabs_Creator
+		// Tabs_Creator.
 		'Tabs_Creator/Tabs_Creator',
+
+		// Tabs_Styles.
+		'Tabs_Styles/Tab_Style',
+		'Tabs_Styles/Styles/Simple_Tabs',
 
 	);
 

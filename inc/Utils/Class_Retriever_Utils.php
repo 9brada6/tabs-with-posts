@@ -19,10 +19,36 @@ use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 class Class_Retriever_Utils {
 
 	/**
+	 * Get a class that implements a Tab_Style by the Id of the class.
+	 *
+	 * @param string $id The id of the tab style.
+	 * @return callable|null
+	 *
+	 * @psalm-return null|class-string<\TWRP\Tabs_Styles\Tab_Style>
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @psalm-suppress LessSpecificReturnStatement
+	 */
+	public static function get_tab_style_class_name_by_id( $id ) {
+		$class_names        = static::get_all_child_classes( 'TWRP\\Tabs_Styles\\Tab_Style' );
+		$founded_class_name = null;
+
+		foreach ( $class_names as $class_name ) {
+			if ( defined( $class_name . '::TAB_ID' ) && $class_name::TAB_ID === $id ) {
+				$founded_class_name = $class_name;
+				break;
+			}
+		}
+
+		return $founded_class_name;
+	}
+
+	/**
 	 * Get all the Article_Block objects.
 	 *
 	 * @return array<string,string>
-	 * @psalm-return array<string,class-string<Article_Block>>
+	 * @psalm-return array<string,class-string<\TWRP\Article_Block\Article_Block>>
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @psalm-suppress LessSpecificReturnStatement
 	 */
 	public static function get_all_article_block_names() {
 		$class_names = static::get_all_child_classes( 'TWRP\\Article_Block\\Article_Block' );

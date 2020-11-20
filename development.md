@@ -54,9 +54,6 @@ This documentation is split between packages.
 
 ## ✅ Todo
 
-- Make article block to not depend on widget id, only on widget settings and query id. Optionally, make
-to depend on nothing.
-
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts
