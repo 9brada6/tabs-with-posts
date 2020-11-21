@@ -176,8 +176,6 @@ class Widget_Utils {
 	 * @param int|string $widget_id
 	 * @param int|string ...$other_name_keys
 	 * @return string
-	 *
-	 * @psalm-param numeric $widget_id
 	 */
 	public static function get_field_id( $widget_id, ...$other_name_keys ) {
 		$suffix = '-' . $widget_id;
@@ -198,7 +196,6 @@ class Widget_Utils {
 	 * @param int|string ...$other_name_keys
 	 * @return string
 	 *
-	 * @psalm-param numeric $widget_id
 	 * @psalm-param array-key ...$other_name_keys
 	 */
 	public static function get_field_name( $widget_id, ...$other_name_keys ) {

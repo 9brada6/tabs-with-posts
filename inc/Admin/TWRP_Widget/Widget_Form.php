@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @todo: remove get_field_name, and get_field_id, use those from Widget_Utils.
  */
 
 namespace TWRP\Admin\TWRP_Widget;
@@ -137,9 +135,8 @@ class Widget_Form {
 		}
 		$selected_queries_ids = Widget_Utils::pluck_valid_query_ids( $this->instance_settings );
 
-		$queries_field_id   = $this->get_field_id( 'queries' );
-		$queries_field_name = $this->get_field_name( 'queries' );
-
+		$queries_field_id   = Widget_Utils::get_field_id( $this->widget_id, 'queries' );
+		$queries_field_name = Widget_Utils::get_field_name( $this->widget_id, 'queries' );
 		?>
 		<ul class="<?php $this->bem_class( 'selected-queries-list' ); ?>">
 			<?php
@@ -207,7 +204,7 @@ class Widget_Form {
 		$query_id         = (string) $query_id;
 		$setting_key_name = Widget::QUERY_BUTTON_TITLE__NAME;
 
-		$name = $this->get_field_name( $query_id . '[' . $setting_key_name . ']' );
+		$name = Widget_Utils::get_field_name( $this->widget_id, $query_id, $setting_key_name );
 
 		$value = '';
 		if ( isset( $this->instance_settings[ $query_id ][ $setting_key_name ] ) ) {
@@ -243,7 +240,7 @@ class Widget_Form {
 			$selected_value = Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
 		}
 
-		$select_name = $this->get_field_name( $query_id . '[' . Widget::ARTBLOCK_SELECTOR__NAME . ']' );
+		$select_name = Widget_Utils::get_field_name( $this->widget_id, $query_id, Widget::ARTBLOCK_SELECTOR__NAME );
 		?>
 		<p class="<?php $this->bem_class( 'article-block-selector-wrapper' ); ?>">
 			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
@@ -301,38 +298,6 @@ class Widget_Form {
 	#endregion -- Functions to display the artblock settings.
 
 	#endregion -- Display the settings per each tab.
-
-	#region -- Helper functions.
-
-	/**
-	 * Constructs id attributes for use in WP_Widget::form() fields. This is
-	 * meant to replace the WP widget get_field_id().
-	 *
-	 * @param string $field_name The name of the setting to create the name.
-	 * @return string The attribute name for that field, corresponding to the widget.
-	 */
-	protected function get_field_id( $field_name ) {
-		return 'widget-' . Widget::TWRP_BASE_ID . '-' . $this->widget_id . '-' .
-		trim( str_replace( array( '[]', '[', ']' ), array( '', '-', '' ), $field_name ), '-' );
-	}
-
-	/**
-	 * Constructs name attributes for use in WP_Widget::form() fields. This is
-	 * meant to replace the WP widget get_field_name().
-	 *
-	 * @param string $field_name The name of the setting to create the name.
-	 * @return string The attribute name for that field, corresponding to the widget.
-	 */
-	protected function get_field_name( $field_name ) {
-		$pos = strpos( $field_name, '[' );
-		if ( false === $pos ) {
-			return 'widget-' . Widget::TWRP_BASE_ID . '[' . $this->widget_id . '][' . $field_name . ']';
-		} else {
-			return 'widget-' . Widget::TWRP_BASE_ID . '[' . $this->widget_id . '][' . substr_replace( $field_name, '][', $pos, strlen( '[' ) );
-		}
-	}
-
-	#endregion -- Helper functions.
 
 	#region -- Bem CSS classes.
 
