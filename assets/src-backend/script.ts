@@ -24,7 +24,8 @@ import './query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 // Widget Blocks
 // import './widget-blocks/twrp-color-picker';
 // import './widget-blocks/twrp-icon-select-preview';
-// import './widget-blocks/twrp-widget-form';
-// import './widget-blocks/twrp-widget-components';
+
+import './widget-blocks/twrp-widget-form';
+import './widget-blocks/twrp-widget-components';
 
 export default {};

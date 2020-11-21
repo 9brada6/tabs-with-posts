@@ -1,6 +1,9 @@
 <?php
 /**
  * File that contains the class with the same name.
+ *
+ * @todo: add nonce, and if something is not correct, make sure that javascript
+ * ajax function return to the "fail" function, even though the server responded(but with an error).
  */
 
 namespace TWRP\Admin\TWRP_Widget;
@@ -166,7 +169,7 @@ class Widget_Form {
 	 * @param int $query_id
 	 * @return void
 	 */
-	protected function display_query_settings( $query_id ) {
+	public function display_query_settings( $query_id ) {
 		?>
 		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrp-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="<?php $this->bem_class( 'selected-query-title' ); ?>">
@@ -262,13 +265,19 @@ class Widget_Form {
 	#region -- Functions to display the artblock settings.
 
 	/**
-	 * Display the artblock settings for a specific widget and query.
+	 * Display the artblock settings for a specific widget and query. Can
+	 * optionally display another artblock settings.
 	 *
 	 * @param int $query_id
+	 * @param string $artblock_id Optionally, pass another artblock id here to
+	 * display the settings for another artblock. This is used in AJAX requests
+	 * to display dynamic settings.
 	 * @return void
 	 */
-	public function display_artblock_settings( $query_id ) {
-		$artblock_id = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
+	public function display_artblock_settings( $query_id, $artblock_id = '' ) {
+		if ( empty( $artblock_id ) ) {
+			$artblock_id = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
+		}
 
 		$artblock_settings = array();
 		if ( isset( $this->instance_settings[ $query_id ] ) ) {
@@ -281,7 +290,8 @@ class Widget_Form {
 			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $artblock_settings );
 		} catch ( \RuntimeException $e ) {
 			try {
-				$artblock = Article_Block::construct_class_by_name_or_id( Widget::DEFAULT_SELECTED_ARTBLOCK_ID, $this->widget_id, $query_id, $artblock_settings );
+				$artblock_id = Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
+				$artblock    = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $artblock_settings );
 			} catch ( \RuntimeException $e ) {
 				return;
 			}
@@ -301,6 +311,11 @@ class Widget_Form {
 
 	#region -- Bem CSS classes.
 
+	/**
+	 * Get the block element CSS class name. See the trait for more info.
+	 *
+	 * @return string
+	 */
 	protected function get_bem_base_class() {
 		return 'twrp-widget-form';
 	}

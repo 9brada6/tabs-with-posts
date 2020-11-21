@@ -5,8 +5,11 @@ declare const ajaxurl: string;
 
 /**
  * Todo: Do not save widget if the query tabs are not displayed.
- * Todo: Block the select option while the article block is loading and waited to be appended.
+ * Todo: Block the select option while the article block is loading and waited
+ * to be appended and display a nice animation.
  */
+
+// #region -- Declaring all constants.
 
 const dataWidgetId = 'data-twrp-widget-id';
 const dataQueryId = 'data-twrp-query-id';
@@ -21,10 +24,14 @@ const queryRemoveSelector = '.twrp-widget-form__remove-selected-query';
 const queriesInputSelector = '.twrp-widget-form__selected-queries';
 
 const selectArticleBlockSelector = '.twrp-widget-form__article-block-selector';
-const artblockSettingsWrapperSelector = '.twrp-widget-form__article-block-settings';
+
+const articleBlockSettingsContainerSelector = '.twrp-widget-form__article-block-settings-container';
+
+// #endregion -- Declaring all constants.
+
+// #region -- Add Queries.
 
 $( document ).on( 'click', queryAddSelector, handleAddQueryButton );
-$( document ).on( 'click', queryRemoveSelector, handleRemoveQuery );
 
 /**
  * Handles the click when a user wants to add a query(tab) to be displayed and
@@ -35,16 +42,61 @@ function handleAddQueryButton(): void {
 	const widgetId = widgetWrapper.attr( dataWidgetId );
 	const queryId = String( widgetWrapper.find( '.twrp-widget-form__select-query-to-add' ).val() );
 
-	const queriesInputValue = getQueriesInputValues( widgetWrapper );
-
-	if ( queriesInputValue.indexOf( queryId ) === -1 ) {
-		queriesInputValue.push( queryId );
-		setQueriesInputValues( widgetId, queriesInputValue );
-		if ( ! queryExistInList( widgetId, queryId ) ) {
-			appendQueryToList( widgetId, queryId );
-		}
-	}
+	addQueryToListIfDoNotExist( widgetId, queryId );
 }
+
+/**
+ * Appends a query tab to the widget list of queries. This function also updates
+ * the queries input after a display query have been added.
+ *
+ */
+async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|number ) {
+	// If query already exist in the list, then return. This check is here for
+	// only to prevent a useless request to the server.
+	if ( queryExistInList( widgetId, queryId ) ) {
+		return;
+	}
+
+	const ajaxNonce = String( $( '#twrpb-plugin-widget-ajax-nonce' ).attr( 'data-twrpb-plugin-widget-ajax-nonce' ) );
+
+	$.ajax( {
+		url: ajaxurl,
+		method: 'POST',
+		data: {
+			action: 'twrp_widget_create_query_setting',
+			widget_id: widgetId,
+			query_id: queryId,
+			nonce: ajaxNonce,
+		},
+	} )
+		.done(
+			function( data ) {
+				// We need another check here because this function can be
+				// called and executed multiple times, because it can be called
+				// from multiple events.
+				if ( data.length >= 25 && ! queryExistInList( widgetId, queryId ) ) {
+					const widget = getWidgetWrapperById( widgetId );
+					const queriesList = widget.find( '.twrp-widget-form__selected-queries-list' );
+					queriesList.append( data );
+					updateQueriesInput( widgetId );
+					makeAllQueriesCollapsible();
+				}
+			}
+		)
+		.fail(
+			// eslint-disable-next-line no-unused-vars
+			function( data ) {
+				// eslint-disable-next-line no-console
+				console.error( 'Something went wrong with the ajax callback in addQueryToListIfDoNotExist() function,' );
+			}
+		);
+}
+
+// #endregion -- Add Queries.
+
+// #region -- Remove Queries.
+
+$( document ).on( 'click', queryRemoveSelector, handleRemoveQuery );
 
 /**
  * Removes the query from Display List and Input List.
@@ -57,104 +109,6 @@ function handleRemoveQuery() {
 	updateQueriesInput( widgetId );
 }
 
-// =============================================================================
-// Widgets
-
-let widgets: JQuery<HTMLElement> = $();
-
-$( updateWidgetsList );
-
-$( document ).on( 'click', updateWidgetsList );
-
-/**
- * Update the file global variable "widgets" to contain all the instance widgets
- * on the page.
- */
-function updateWidgetsList(): void {
-	widgets = $( document ).find( `[${ dataWidgetId }]` );
-}
-
-// =============================================================================
-// Widget List Display Functions
-
-$( updateAllWidgetsListOnLoad );
-$( document ).on( 'click', updateAllWidgetsListOnLoad );
-
-function updateAllWidgetsListOnLoad(): void {
-	widgets.each( function() {
-		const widgetId = $( this ).attr( dataWidgetId );
-		updateQueriesDisplayListFromInput( widgetId );
-	} );
-}
-
-/**
- * Update the queries list from the queries input.
- */
-function updateQueriesDisplayListFromInput( widgetId: string ) {
-	const widget = getWidgetWrapperById( widgetId );
-	const queries = getQueriesInputValues( widget );
-
-	for ( let i = 0; i < queries.length; i++ ) {
-		if ( ! queryExistInList( widgetId, queries[ i ] ) ) {
-			appendQueryToList( widgetId, queries[ i ] );
-		}
-	}
-
-	// Todo: remove all widgets that are not in the input.
-	const queriesItems = widget.find( `[${ dataQueryId }]` );
-	queriesItems.each( function() {
-		const queryId = $( this ).attr( dataQueryId );
-		if ( queries.indexOf( queryId ) === -1 ) {
-			$( this ).remove();
-		}
-	} );
-}
-
-/**
- * Updates the queries input, from the queries display list.
- */
-function updateQueriesInput( widgetId: string ): void {
-	const widget = getWidgetWrapperById( widgetId );
-	const queriesItems = widget.find( queriesListSelector ).find( queriesItemSelector );
-
-	const queries = [];
-	queriesItems.each( function() {
-		const queryId = $( this ).attr( dataQueryId );
-		if ( queryId ) {
-			queries.push( queryId );
-		}
-	} );
-	setQueriesInputValues( widgetId, queries );
-}
-
-/**
- * Appends a query tab to the widget list of queries.
- */
-async function appendQueryToList( widgetId: string, queryId: string|number ) {
-	const queryHTML = await getQueryHTMLForList( widgetId, queryId );
-	const widget = getWidgetWrapperById( widgetId );
-	if ( ! queryExistInList( widgetId, queryId ) ) {
-		const queriesList = widget.find( '.twrp-widget-form__selected-queries-list' );
-		queriesList.append( queryHTML );
-		queriesList.trigger( 'twrp-query-list-added', [ widgetId, queryId ] );
-	}
-}
-
-/**
- * Get the HTML for a query tab to be displayed in the widget setting.
- */
-function getQueryHTMLForList( widgetId: string, queryId: string|number ) {
-	return $.ajax( {
-		url: ajaxurl,
-		method: 'POST',
-		data: {
-			action: 'twrp_widget_create_query_setting',
-			widget_id: widgetId,
-			query_id: queryId,
-		},
-	} );
-}
-
 /**
  * Remove a Query From the Display List.
  */
@@ -162,6 +116,54 @@ function removeQueryFromList( widgetId: string, queryId: string|number ) {
 	const queryItem = getQueryItemById( widgetId, queryId );
 	queryItem.remove();
 }
+
+// #endregion -- Remove Queries.
+
+// #region -- Update Queries
+
+$( updateAllWidgetsListOnLoad );
+$( document ).on( 'widget-updated widget-added', updateAllWidgetsListOnLoad );
+
+function updateAllWidgetsListOnLoad(): void {
+	const widgets = getAllWidgets();
+	widgets.each( function() {
+		const widget = $( this );
+		const widgetId = widget.attr( dataWidgetId );
+		const queries = getQueriesInputValues( widget );
+
+		for ( let i = 0; i < queries.length; i++ ) {
+			addQueryToListIfDoNotExist( widgetId, queries[ i ] );
+		}
+
+		updateQueriesInput( widgetId );
+	} );
+}
+
+// #endregion -- Update Queries
+
+// #region -- Make Queries Sortable.
+
+$( initializeAllQueriesSorting );
+$( document ).on( 'widget-updated widget-added', initializeAllQueriesSorting );
+
+function initializeAllQueriesSorting(): void {
+	const widgets = getAllWidgets();
+	widgets.each( function() {
+		const queriesList = $( this ).find( queriesListSelector );
+		queriesList.sortable( {
+			update: handleSortingChange,
+		} );
+
+		function handleSortingChange(): void {
+			const widgetId = getClosestWidgetId( this );
+			updateQueriesInput( widgetId );
+		}
+	} );
+}
+
+// #endregion -- Make Queries Sortable.
+
+// #region -- Add/Remove/Update Queries Functions.
 
 /**
  * Check if a query settings are displayed in the widget.
@@ -175,31 +177,76 @@ function queryExistInList( widgetId: string, queryId: string|number ): boolean {
 	return false;
 }
 
-$( document ).on( 'twrp-query-list-added', handleReorderQueries );
+/**
+ * Updates the queries input, from the queries display list.
+ *
+ * This is the primary function that is used to update the queries input, based
+ * on what is displayed.
+ */
+function updateQueriesInput( widgetId: string ): void {
+	const widget = getWidgetWrapperById( widgetId );
+	const queriesItems = widget.find( queriesListSelector ).find( queriesItemSelector );
 
-function handleReorderQueries( event, widgetId ) {
-	reorderQueriesDisplayList( widgetId );
+	const queries = [];
+	queriesItems.each( function() {
+		const queryId = $( this ).attr( dataQueryId );
+		if ( queryId ) {
+			queries.push( queryId );
+		}
+	} );
+
+	const input = widget.find( queriesInputSelector );
+	const value = queries.join( ';' );
+	input.val( value );
 }
 
-function reorderQueriesDisplayList( widgetId: string ): void {
-	const widget = getWidgetWrapperById( widgetId );
-	const queryList = widget.find( queriesListSelector );
-	const queryItems = widget.find( `[${ dataQueryId }]` );
-	const queriesIds = getQueriesInputValues( widget );
+/**
+ * Get an array of all query ids used in a widget.
+ */
+function getQueriesInputValues( widget: JQuery<HTMLElement> ): Array<string> {
+	const queryInput = widget.find( queriesInputSelector );
+	let queries = String( queryInput.val() ).split( ';' );
+	queries = queries.filter( isNonEmptyString );
 
-	queryItems.detach();
+	return queries;
 
-	for ( let i = 0; i < queriesIds.length; i++ ) {
-		for ( let j = 0; j < queryItems.length; j++ ) {
-			if ( queriesIds[ i ] === queryItems.eq( j ).attr( dataQueryId ) ) {
-				queryList.append( queryItems.eq( j ) );
-			}
-		}
+	function isNonEmptyString( elem: string ): boolean {
+		return Boolean( elem );
 	}
 }
 
-// =============================================================================
-// Utility functions.
+// #endregion -- Add/Remove/Update Queries Functions.
+
+// #region -- Make Queries Tab Collapsible.
+
+$( makeAllQueriesCollapsible );
+$( document ).on( 'widget-updated widget-added', makeAllQueriesCollapsible );
+
+function makeAllQueriesCollapsible() {
+	const widgets = getAllWidgets();
+	widgets.each( function() {
+		const queryItems = $( this ).find( `[${ dataQueryId }]` );
+
+		queryItems.each( function() {
+			const query = $( this );
+			const accordionInstance = query.accordion( 'instance' );
+
+			if ( accordionInstance ) {
+				query.accordion( 'refresh' );
+			} else {
+				query.accordion( {
+					collapsible: true,
+					active: false,
+					heightStyle: 'content',
+				} );
+			}
+		} );
+	} );
+}
+
+// #endregion -- Make Queries Tab Collapsible.
+
+// #region -- Helper Functions.
 
 function getClosestWidgetId( element: any ): string {
 	return $( element ).closest( `[${ dataWidgetId }]` ).attr( dataWidgetId );
@@ -218,92 +265,20 @@ function getQueryItemById( widgetId: string, queryId: string|number ): JQuery<HT
 	return $( widget ).find( `[${ dataQueryId }="${ queryId }"]` );
 }
 
-function getQueriesInputValues( widget: JQuery<HTMLElement> ): Array<string> {
-	const queryInput = widget.find( queriesInputSelector );
-	let queries = String( queryInput.val() ).split( ';' );
-	queries = queries.filter( isNonEmptyString );
-
-	return queries;
-
-	function isNonEmptyString( elem: string ): boolean {
-		return Boolean( elem );
-	}
+/**
+ * Get all TWRP widgets.
+ *
+ * todo: remove the widget with the Id __i__.
+ */
+function getAllWidgets(): JQuery {
+	return $( document ).find( `[${ dataWidgetId }]` );
 }
 
-function setQueriesInputValues( widgetId: string, queries: Array<string> ): void {
-	const widget = getWidgetWrapperById( widgetId );
-	const input = widget.find( queriesInputSelector );
-	const value = queries.join( ';' );
-	input.val( value );
-}
+// #endregion -- Helper Functions.
 
-// =============================================================================
-// jQuery sorting and collapsing.
+// #region -- Manages The Changes Of Article Block Settings.
 
-$( document ).on( 'click', initializeAllQueriesSorting );
-
-function initializeAllQueriesSorting(): void {
-	widgets.each( function() {
-		initializeWidgetSorting( $( this ) );
-	} );
-}
-
-function initializeWidgetSorting( widget: JQuery<HTMLElement> ) {
-	const queriesList = widget.find( queriesListSelector );
-	queriesList.sortable( {
-		update: handleSortingChange,
-	} );
-}
-
-function handleSortingChange(): void {
-	const widgetId = getClosestWidgetId( this );
-	updateQueriesInput( widgetId );
-}
-
-// =============================================================================
-// jQuery collapsing.
-
-// todo: add a cache for collapsed to be as before when they update.
-
-$( makeAllQueriesCollapsible );
-$( document ).on( 'twrp-query-list-added widget-updated widget-added', handleQueryModifiedMakeCollapsible );
-
-function handleQueryModifiedMakeCollapsible( event, widgetId: string, queryId: string ) {
-	if ( event.type === 'twrp-query-list-added' ) {
-		makeQueryCollapsible( widgetId, queryId );
-	} else {
-		makeAllQueriesCollapsible();
-	}
-}
-
-function makeAllQueriesCollapsible() {
-	updateWidgetsList();
-	widgets.each( function() {
-		const widgetId = $( this ).attr( dataWidgetId );
-		const queryItems = $( this ).find( `[${ dataQueryId }]` );
-		queryItems.each( function() {
-			const queryId = $( this ).attr( dataQueryId );
-			makeQueryCollapsible( widgetId, queryId );
-		} );
-	} );
-}
-
-function makeQueryCollapsible( widgetId: string, queryId: string ): void {
-	const query = getQueryItemById( widgetId, queryId );
-	const accordionInstance = query.accordion( 'instance' );
-	if ( accordionInstance ) {
-		query.accordion( 'refresh' );
-	} else {
-		query.accordion( {
-			collapsible: true,
-			active: false,
-			heightStyle: 'content',
-		} );
-	}
-}
-
-// =============================================================================
-// Load article blocks settings on the fly.
+// #region -- Insert The Article Block Settings.
 
 $( document ).on( 'change', selectArticleBlockSelector, handleArticleBlockChanged );
 
@@ -311,14 +286,23 @@ async function handleArticleBlockChanged() {
 	const widgetId = getClosestWidgetId( $( this ) );
 	const queryId = getClosestQueryId( $( this ) );
 	const artblockId = String( $( this ).val() );
-	const artblockSettingsHTML = await getArticleBlockSettings( widgetId, queryId, artblockId );
+
+	// add previous container to cache:
+	addArticleBlockToCache( widgetId, queryId );
+
+	let artblockSettingsHTML;
+	if ( hasArticleBlockInCache( widgetId, queryId, artblockId ) ) {
+		artblockSettingsHTML = getArticleBlockFromCache( widgetId, queryId, artblockId );
+	} else {
+		artblockSettingsHTML = await getArticleBlockSettings( widgetId, queryId, artblockId );
+	}
+
 	insertArticleBlock( widgetId, queryId, artblockSettingsHTML );
 }
 
+// todo: move the 2 bellow functions into one.
 function getArticleBlockSettings( widgetId: string, queryId: string|number, artblockId: string|number ) {
-	if ( hasArticleBlockInCache( widgetId, queryId, artblockId ) ) {
-		return getArticleBlockFromCache( widgetId, queryId, artblockId );
-	}
+	const ajaxNonce = String( $( '#twrpb-plugin-widget-ajax-nonce' ).attr( 'data-twrpb-plugin-widget-ajax-nonce' ) );
 
 	return $.ajax( {
 		url: ajaxurl,
@@ -328,21 +312,25 @@ function getArticleBlockSettings( widgetId: string, queryId: string|number, artb
 			artblock_id: artblockId,
 			widget_id: widgetId,
 			query_id: queryId,
+			nonce: ajaxNonce,
 		},
 	} );
 }
 
-function insertArticleBlock( widgetId: string, queryId: string|number, html: string ) {
+function insertArticleBlock( widgetId: string, queryId: string|number, html: string|JQuery ) {
+	if ( ( ( typeof html ) === 'string' ) && html.length < 25 ) {
+		return;
+	}
+
 	const queryItem = getQueryItemById( widgetId, queryId );
-	const artblockSettingsWrapper = queryItem.find( artblockSettingsWrapperSelector );
-	const artblockContainer = queryItem.find( '.twrp-widget-form__article-block-settings-container' );
-	artblockSettingsWrapper.detach();
-	addArticleBlockToCache( widgetId, queryId, artblockSettingsWrapper );
+	const artblockContainer = queryItem.find( articleBlockSettingsContainerSelector );
+	artblockContainer.empty();
 	artblockContainer.append( html );
 }
 
-// ==========================
-// Cache Article Blocks
+// #endregion -- Insert The Article Block Settings.
+
+// #region -- Cache Article Block Settings.
 
 /**
  * An array that contains all the article blocks retrieved and detached.
@@ -355,10 +343,8 @@ const articleBlocksCache = Array();
 /**
  * Add the article block to the cache array.
  */
-function addArticleBlockToCache( widgetId: string, queryId: string|number, artblockWrapper: JQuery<HTMLElement> ): void {
-	const artblockId = artblockWrapper.attr( dataArtblockId );
-
-	if ( ( ! widgetId ) || ( ! queryId ) || ( ! artblockId ) ) {
+function addArticleBlockToCache( widgetId: string, queryId: string|number ): void {
+	if ( ( ! widgetId ) || ( ! queryId ) ) {
 		return;
 	}
 
@@ -367,6 +353,14 @@ function addArticleBlockToCache( widgetId: string, queryId: string|number, artbl
 	}
 	if ( ! articleBlocksCache[ widgetId ][ queryId ] ) {
 		articleBlocksCache[ widgetId ][ queryId ] = [];
+	}
+
+	const query = getQueryItemById( widgetId, queryId );
+	const artblockWrapper = query.find( '[' + dataArtblockId + ']' ).clone();
+	const artblockId = artblockWrapper.attr( dataArtblockId );
+
+	if ( ! artblockId ) {
+		return;
 	}
 
 	articleBlocksCache[ widgetId ][ queryId ][ artblockId ] = artblockWrapper;
@@ -386,23 +380,11 @@ function getArticleBlockFromCache( widgetId: string, queryId: string|number, $ar
  * Whether or not an article block was already fetched and put in cache.
  */
 function hasArticleBlockInCache( widgetId: string, queryId: string|number, $artblockId: string|number ): boolean {
-	if ( ! articleBlocksCache[ widgetId ] ) {
-		return false;
-	}
-
-	if ( ! articleBlocksCache[ widgetId ][ queryId ] ) {
-		return false;
-	}
-
-	if ( ! articleBlocksCache[ widgetId ][ queryId ][ $artblockId ] ) {
-		return false;
-	}
-
-	const storedArtblockId = articleBlocksCache[ widgetId ][ queryId ][ $artblockId ].attr( dataArtblockId );
-
-	if ( ! ( storedArtblockId === $artblockId ) ) {
+	if ( ! articleBlocksCache[ widgetId ] || ! articleBlocksCache[ widgetId ][ queryId ] || ! articleBlocksCache[ widgetId ][ queryId ][ $artblockId ] ) {
 		return false;
 	}
 
 	return true;
 }
+
+// #endregion -- Cache Article Block Settings.
