@@ -3,6 +3,7 @@ import $ from 'jquery';
 declare const Pickr: any;
 
 $( createPicker );
+$( document ).on( 'twrpb-artblock-added twrpb-query-added', createPicker );
 
 function createPicker() {
 	const colorPickers = $( '.twrp-color-picker' );

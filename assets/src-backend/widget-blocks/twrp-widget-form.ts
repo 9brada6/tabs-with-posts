@@ -80,6 +80,7 @@ async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|num
 					queriesList.append( data );
 					updateQueriesInput( widgetId );
 					makeAllQueriesCollapsible();
+					queriesList.trigger( 'twrpb-query-added' );
 				}
 			}
 		)
@@ -325,7 +326,9 @@ function insertArticleBlock( widgetId: string, queryId: string|number, html: str
 	const queryItem = getQueryItemById( widgetId, queryId );
 	const artblockContainer = queryItem.find( articleBlockSettingsContainerSelector );
 	artblockContainer.empty();
+	artblockContainer.find( '[' + dataArtblockId + ']' ).detach();
 	artblockContainer.append( html );
+	artblockContainer.trigger( 'twrpb-artblock-added' );
 }
 
 // #endregion -- Insert The Article Block Settings.
@@ -356,7 +359,7 @@ function addArticleBlockToCache( widgetId: string, queryId: string|number ): voi
 	}
 
 	const query = getQueryItemById( widgetId, queryId );
-	const artblockWrapper = query.find( '[' + dataArtblockId + ']' ).clone();
+	const artblockWrapper = query.find( '[' + dataArtblockId + ']' );
 	const artblockId = artblockWrapper.attr( dataArtblockId );
 
 	if ( ! artblockId ) {
