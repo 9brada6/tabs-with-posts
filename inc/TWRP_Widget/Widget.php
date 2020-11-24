@@ -18,9 +18,7 @@ class Widget extends WP_Widget {
 
 	const TWRP_BASE_ID = 'twrp_tabs_with_recommended_posts';
 
-	const TAB_STYLE__NAME = 'tab_style';
-
-	const TAB_STYLE_VARIANT__NAME = 'tab_style_variant';
+	const TAB_STYLE_AND_VARIANT__NAME = 'tab_style_and_variant';
 
 	const ARTBLOCK_SELECTOR__NAME = 'article_block';
 

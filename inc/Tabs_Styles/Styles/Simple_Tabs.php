@@ -10,6 +10,16 @@ namespace TWRP\Tabs_Styles;
  */
 class Simple_Tabs extends Tab_Style {
 
+	const TAB_ID = 'simple_tabs';
+
+	public static function get_tab_style_name() {
+		return _x( 'Simple Style', 'backend', 'twrp' );
+	}
+
+	public static function get_all_variants() {
+		return array( 'inverse_colors' => _x( 'Inverse Accent Colors', 'backend', 'twrp' ) );
+	}
+
 	public function start_tabs_wrapper() {
 		?>
 		<div>

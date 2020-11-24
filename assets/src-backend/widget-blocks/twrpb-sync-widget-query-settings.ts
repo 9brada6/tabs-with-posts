@@ -8,25 +8,47 @@ import $ from 'jquery';
 
 const widgetFormSelector = '.twrp-widget-form';
 const queryTabSettingsSelector = '.twrp-widget-form__selected-query';
+const dataWidgetIdHolder = 'data-twrp-widget-id';
 
 addDocumentEvents();
 function addDocumentEvents() {
-	$( document ).on( 'change', widgetFormSelector + ' ' + queryTabSettingsSelector, syncAllSettings );
+	$( document ).on( 'change', widgetFormSelector + ' ' + queryTabSettingsSelector, syncTheSetting );
 }
 
 function removeDocumentEvents() {
-	$( document ).off( 'change', widgetFormSelector + ' ' + queryTabSettingsSelector, syncAllSettings );
+	$( document ).off( 'change', widgetFormSelector + ' ' + queryTabSettingsSelector, syncTheSetting );
 }
 
-function syncAllSettings( event ) {
+function syncTheSetting( event ) {
 	const elementChanged = $( event.target );
+	syncElement( elementChanged );
+}
+
+// #region -- Sync all settings for a widget
+
+$( document ).on( 'twrpb-query-added', widgetFormSelector, handleQueryAdded );
+
+function handleQueryAdded() {
+	const widgetId = $( this ).attr( dataWidgetIdHolder );
+	syncAllWidgetSettings( widgetId );
+}
+
+function syncAllWidgetSettings( widgetId ) {
+	const widget = $( '[' + dataWidgetIdHolder + '="' + widgetId + '"]' );
+	const firstQuery = widget.find( queryTabSettingsSelector ).eq( 0 );
+
+	const toSyncElements = firstQuery.find( 'input, select' );
+
+	const start2 = new Date();
+	toSyncElements.each( function() {
+		syncElement( $( this ) );
+	} );
+}
+
+// #endregion -- Sync all settings for a widget
+
+function syncElement( elementChanged ) {
 	const elementName = elementChanged.attr( 'name' );
-
-	// Only named elements can be synchronized.
-	if ( ! elementName ) {
-		return;
-	}
-
 	const allWidgetQueriesTabs = elementChanged.closest( widgetFormSelector ).find( queryTabSettingsSelector );
 
 	const nameSuffixToSearch = elementName.replace( /widget-twrp_tabs_with_recommended_posts\[\d+\]\[\d+\]/, '' );
@@ -35,7 +57,8 @@ function syncAllSettings( event ) {
 	allSimilarQuerySettings = filterSimilarQuerySettings( elementChanged, allSimilarQuerySettings );
 
 	changeAllSettings( elementChanged, allSimilarQuerySettings );
-	triggerChanges( elementChanged, allSimilarQuerySettings );
+	// We don't need yet to trigger a change.
+	// triggerChanges( elementChanged, allSimilarQuerySettings );
 }
 
 function filterSimilarQuerySettings( elementName: JQuery, allSimilarQuerySettings : JQuery ): JQuery {

@@ -25,15 +25,26 @@
 		background-size: 400% 400%;
 	}
 
+	&--delete {
+		background: #bd0000;
+		background: linear-gradient(-45deg, #eb0101, #910000, #eb0101, #910000);
+		background-size: 400% 400%;
+		opacity: 0.75;
+	}
+
+	&--small {
+		padding: 0.1rem 0.5rem;
+		font-size: 0.8rem;
+		line-height: 1.4;
+	}
+
 	&--large {
 		padding-top: 0.2rem;
 		padding-bottom: 0.2rem;
 	}
 
 	&:hover,
-	&--save:hover,
-	&:focus,
-	&--save:focus {
+	&:focus {
 		color: white;
 		outline: 0;
 		box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
@@ -48,6 +59,10 @@
 
 	&--save:focus {
 		box-shadow: 0 0 0 1px #fff, 0 0 0 3px #008510;
+	}
+
+	&--delete:focus {
+		box-shadow: 0 0 0 1px #fff, 0 0 0 3px #c70000;
 	}
 }
 

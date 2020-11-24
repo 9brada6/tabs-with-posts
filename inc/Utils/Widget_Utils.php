@@ -64,31 +64,31 @@ class Widget_Utils {
 	} */
 
 	/**
-	 * Try to get the tab style id that should be used for a specific query_id.
+	 * Try to get the tab style id and the variant id used for a specific query
+	 * id.
 	 *
 	 * @param array $widget_instance_settings
-	 * @return string
+	 * @return array{tab_style_id:string,tab_variant_id:string}
 	 */
-	public static function pluck_tab_style_class_name_by_id( $widget_instance_settings ) {
-		if ( isset( $widget_instance_settings[ Widget::TAB_STYLE__NAME ] ) ) {
-			return $widget_instance_settings[ Widget::TAB_STYLE__NAME ];
+	public static function pluck_tab_style_and_variant_id( $widget_instance_settings ) {
+		$tab_style_and_variant = array(
+			'tab_style_id'   => '',
+			'tab_variant_id' => '',
+		);
+
+		if ( isset( $widget_instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
+			$setting = $widget_instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ];
+			$setting = explode( '___', $setting );
+			if ( isset( $setting[0] ) ) {
+				$tab_style_and_variant['tab_style_id'] = $setting[0];
+			}
+
+			if ( isset( $setting[1] ) ) {
+				$tab_style_and_variant['tab_variant_id'] = $setting[1];
+			}
 		}
 
-		return '';
-	}
-
-	/**
-	 * Try to get the tab style variant that should be used for a specific query_id.
-	 *
-	 * @param array $widget_instance_settings
-	 * @return string
-	 */
-	public static function pluck_tab_style_variant( $widget_instance_settings ) {
-		if ( isset( $widget_instance_settings[ Widget::TAB_STYLE_VARIANT__NAME ] ) ) {
-			return $widget_instance_settings[ Widget::TAB_STYLE_VARIANT__NAME ];
-		}
-
-		return '';
+		return $tab_style_and_variant;
 	}
 
 	/**

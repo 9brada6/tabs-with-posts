@@ -50,9 +50,17 @@ abstract class Tab_Style {
 	 *
 	 * @return array<string,string>
 	 */
-	public function get_all_variants() {
+	public static function get_all_variants() {
 		return array();
 	}
+
+	/**
+	 * Get the name of the Tab Style. Usually used in the options when to select
+	 * a style.
+	 *
+	 * @return string
+	 */
+	abstract public static function get_tab_style_name();
 
 	/**
 	 * Template function that is called first.

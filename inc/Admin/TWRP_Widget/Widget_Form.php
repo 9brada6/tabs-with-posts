@@ -3,7 +3,8 @@
  * File that contains the class with the same name.
  *
  * @todo: add nonce, and if something is not correct, make sure that javascript
- * ajax function return to the "fail" function, even though the server responded(but with an error).
+ * ajax function return to the "fail" function, even though the server responded
+ * (but with an error).
  */
 
 namespace TWRP\Admin\TWRP_Widget;
@@ -64,6 +65,7 @@ class Widget_Form {
 			if ( empty( $queries ) ) {
 				$this->display_no_queries_exist();
 			} else {
+				$this->display_tab_style_options();
 				$this->display_select_query_options();
 				$this->display_queries_settings();
 			}
@@ -127,6 +129,49 @@ class Widget_Form {
 	}
 
 	/**
+	 * Display the options for selecting the tab style and the variant.
+	 *
+	 * @return void
+	 */
+	protected function display_tab_style_options() {
+		$select_name           = Widget_Utils::get_field_name( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
+		$all_style_class_names = Class_Retriever_Utils::get_all_tab_style_class_names();
+		$options               = array();
+
+		foreach ( $all_style_class_names as $tab_style_class_name ) {
+			$tab_style_id   = $tab_style_class_name::TAB_ID;
+			$style_variants = $tab_style_class_name::get_all_variants();
+
+			$options[ $tab_style_id ] = $tab_style_class_name::get_tab_style_name();
+
+			foreach ( $style_variants as $style_variant => $style_variant_name ) {
+				$options[ $tab_style_id . '___' . $style_variant ] = $tab_style_class_name::get_tab_style_name() . ' - ' . $style_variant_name;
+			}
+		}
+
+		$current_option_value = '';
+		if ( isset( $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
+			$current_option_value = $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ];
+		}
+
+		?>
+		<p class="<?php $this->bem_class( 'select-tab-style-wrapper' ); ?>">
+			<span class="<?php $this->bem_class( 'select-tab-style-text' ); ?>">
+				<?= _x( 'Select the style of the tab buttons:', 'backend', 'twrp' ); ?>
+			</span>
+
+			<select class="<?php $this->bem_class( 'select-tab-style' ); ?>" name="<?= esc_attr( $select_name ); ?>">
+				<?php foreach ( $options as $option_value => $option_name ) : ?>
+					<option value="<?= esc_attr( (string) $option_value ); ?>" <?php selected( $option_value, $current_option_value ); ?>>
+						<?= esc_html( $option_name ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+		<?php
+	}
+
+	/**
 	 * Display all settings for each query separated into each tab.
 	 *
 	 * @return void
@@ -170,11 +215,14 @@ class Widget_Form {
 	 * @return void
 	 */
 	public function display_query_settings( $query_id ) {
+		$delete_button_text       = _x( 'Delete', 'backend', 'twrp' );
+		$delete_button_aria_label = _x( 'Delete this tab', 'backend', 'twrp' );
 		?>
 		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrp-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="<?php $this->bem_class( 'selected-query-title' ); ?>">
-				<button class="<?php $this->bem_class( 'remove-selected-query' ); ?>" type="button" >X</button>
+				<span class="<?php $this->bem_class( 'accordion-indicator' ); ?>"></span>
 				<?= esc_attr( Query_Options::get_query_display_name( $query_id ) ); ?>
+				<button class="<?php $this->bem_class( 'remove-selected-query' ); ?> twrpb-button twrpb-button--small twrpb-button--delete" type="button" aria-label="<?= esc_attr( $delete_button_aria_label ); ?>"><?= esc_html( $delete_button_text ) ?></button>
 			</h4>
 
 			<div class="<?php $this->bem_class( 'selected-query-settings' ); ?>">
@@ -185,8 +233,9 @@ class Widget_Form {
 				<?php $this->display_tab_query_select_artblock( $query_id ); ?>
 
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
-					<?= _x( 'Style Settings:', 'backend', 'twrp' ); ?>
+					<?= _x( 'Style Settings and Custom CSS Variables:', 'backend', 'twrp' ); ?>
 				</h5>
+				<hr class="<?php $this->bem_class( 'style-separator' ); ?>">
 				<div class="<?php $this->bem_class( 'article-block-settings-container' ); ?>">
 					<?php $this->display_artblock_settings( $query_id ); ?>
 				</div>

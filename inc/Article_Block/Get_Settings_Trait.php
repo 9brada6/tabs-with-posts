@@ -33,27 +33,12 @@ trait Get_Settings_Trait {
 	 * to use the default WP date format.
 	 */
 	public function get_date_format() {
-		if ( 'true' === General_Options::get_option( General_Options::PER_WIDGET_DATE_FORMAT ) ) {
-			if ( 'true' === General_Options::get_option( General_Options::HUMAN_READABLE_DATE ) ) {
-				return 'HUMAN_READABLE';
-
-			} else {
-				return General_Options::get_option( General_Options::DATE_FORMAT );
-			}
-		}
-
-		if ( isset( $this->settings['human_readable_date'] ) && $this->settings['human_readable_date'] ) {
+		if ( 'true' === General_Options::get_option( General_Options::HUMAN_READABLE_DATE ) ) {
 			return 'HUMAN_READABLE';
-		}
 
-		if ( isset( $this->settings['date_format'] ) ) {
-			$setting = $this->settings['date_format'];
-			if ( is_string( $setting ) ) {
-				return $setting;
-			}
+		} else {
+			return General_Options::get_option( General_Options::DATE_FORMAT );
 		}
-
-		return '';
 	}
 
 	#region -- Icons

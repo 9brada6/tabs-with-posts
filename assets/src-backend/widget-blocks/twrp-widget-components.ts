@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'jqueryui';
 
 $( createWidgetTabs );
-$( document ).on( 'twrpb-artblock-added twrpb-query-added', createWidgetTabs );
+$( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', createWidgetTabs );
 
 function createWidgetTabs() {
 	$( '.twrp-widget-components' ).tabs( {

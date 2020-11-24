@@ -11,6 +11,7 @@ use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
 use TWRP\Utils\Widget_Utils;
 use TWRP\Tabs_Styles\Tab_Style;
+use TWRP\Utils\Class_Retriever_Utils;
 
 /**
  * Construct the tabs widget.
@@ -94,15 +95,18 @@ class Tabs_Creator {
 			throw new RuntimeException();
 		}
 
-		$tab_style_class_name = Widget_Utils::pluck_tab_style_class_name_by_id( $this->instance_settings );
-		$tab_variant          = Widget_Utils::pluck_tab_style_variant( $this->instance_settings );
-
-		if ( '' === $tab_style_class_name ) {
-			throw new RuntimeException();
-		}
-
 		$this->widget_id         = $widget_id;
 		$this->instance_settings = $widget_instance_settings;
+
+		$tab_and_variant = Widget_Utils::pluck_tab_style_and_variant_id( $this->instance_settings );
+
+		$tab_style_id         = $tab_and_variant['tab_style_id'];
+		$tab_style_class_name = Class_Retriever_Utils::get_tab_style_class_name_by_id( $tab_style_id );
+		$tab_variant          = $tab_and_variant['tab_variant_id'];
+
+		if ( empty( $tab_style_class_name ) ) {
+			throw new RuntimeException();
+		}
 
 		$this->tab_style = new $tab_style_class_name( $this->widget_id, $tab_variant );
 
@@ -147,16 +151,16 @@ class Tabs_Creator {
 		$tab_style->start_tabs_wrapper();
 			$tab_style->start_tab_buttons_wrapper();
 				foreach ( $this->query_ids as $query_id ) :
-					$button_text = Widget_Utils::pluck_tab_button_title( $this->instance_settings, $query_id );
-					$tab_style->tab_button( $button_text, $query_id );
+			$button_text = Widget_Utils::pluck_tab_button_title( $this->instance_settings, $query_id );
+			$tab_style->tab_button( $button_text, $query_id );
 				endforeach;
 			$tab_style->end_tab_buttons_wrapper();
 
 			$tab_style->start_all_tabs_wrapper();
 				foreach ( $this->query_ids as $query_id ) :
-					$tab_style->start_tab_content_wrapper( $query_id );
-						$this->display_query_posts( $query_id );
-					$tab_style->end_tab_content_wrapper( $query_id );
+			$tab_style->start_tab_content_wrapper( $query_id );
+			$this->display_query_posts( $query_id );
+			$tab_style->end_tab_content_wrapper( $query_id );
 				endforeach;
 			$tab_style->end_all_tabs_wrapper();
 		$tab_style->end_tabs_wrapper();

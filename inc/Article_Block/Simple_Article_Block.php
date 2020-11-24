@@ -92,12 +92,6 @@ class Simple_Article_Block extends Article_Block {
 		$current_setting = ( isset( $this->settings['display_date'] ) && is_string( $this->settings['display_date'] ) ) ? $this->settings['display_date'] : null;
 		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_display_date_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
 
-		// Display Date in readable format Setting
-		$id              = Widget_Utils::get_field_id( $this->widget_id, $this->query_id, 'human_readable_date' );
-		$name            = Widget_Utils::get_field_name( $this->widget_id, $this->query_id, 'human_readable_date' );
-		$current_setting = ( isset( $this->settings['human_readable_date'] ) && is_string( $this->settings['human_readable_date'] ) ) ? $this->settings['human_readable_date'] : null;
-		Checkbox_Control::display_setting( $id, $name, $current_setting, $this->get_human_readable_setting_args() ); // @phan-suppress-current-line PhanPartialTypeMismatchArgument
-
 		// Display Comments
 		$id              = Widget_Utils::get_field_id( $this->widget_id, $this->query_id, 'display_comments' );
 		$name            = Widget_Utils::get_field_name( $this->widget_id, $this->query_id, 'display_comments' );
@@ -130,9 +124,6 @@ class Simple_Article_Block extends Article_Block {
 		$author_setting_to_sanitize         = isset( $settings['display_date'] ) ? $settings['display_date'] : null;
 		$sanitized_settings['display_date'] = Checkbox_Control::sanitize_setting( $author_setting_to_sanitize, $this->get_display_date_setting_args() );
 
-		$author_setting_to_sanitize                = isset( $settings['human_readable_date'] ) ? $settings['human_readable_date'] : null;
-		$sanitized_settings['human_readable_date'] = Checkbox_Control::sanitize_setting( $author_setting_to_sanitize, $this->get_human_readable_setting_args() );
-
 		$comments_setting_to_sanitize           = isset( $settings['display_comments'] ) ? $settings['display_comments'] : null;
 		$sanitized_settings['display_comments'] = Checkbox_Control::sanitize_setting( $comments_setting_to_sanitize, $this->get_comments_setting_args() );
 
@@ -158,14 +149,6 @@ class Simple_Article_Block extends Article_Block {
 			'default' => '1',
 			'value'   => '1',
 			'before'  => _x( 'Display the date', 'backend', 'twrp' ),
-		);
-	}
-
-	public function get_human_readable_setting_args() {
-		return array(
-			'default' => '1',
-			'value'   => '1',
-			'before'  => _x( 'Date in relative format(Ex: 3 days ago)', 'backend', 'twrp' ),
 		);
 	}
 

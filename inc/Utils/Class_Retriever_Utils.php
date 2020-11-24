@@ -22,14 +22,14 @@ class Class_Retriever_Utils {
 	 * Get a class that implements a Tab_Style by the Id of the class.
 	 *
 	 * @param string $id The id of the tab style.
-	 * @return callable|null
+	 * @return string|null
 	 *
 	 * @psalm-return null|class-string<\TWRP\Tabs_Styles\Tab_Style>
 	 * @psalm-suppress MoreSpecificReturnType
 	 * @psalm-suppress LessSpecificReturnStatement
 	 */
 	public static function get_tab_style_class_name_by_id( $id ) {
-		$class_names        = static::get_all_child_classes( 'TWRP\\Tabs_Styles\\Tab_Style' );
+		$class_names        = static::get_all_tab_style_class_names();
 		$founded_class_name = null;
 
 		foreach ( $class_names as $class_name ) {
@@ -40,6 +40,20 @@ class Class_Retriever_Utils {
 		}
 
 		return $founded_class_name;
+	}
+
+	/**
+	 * Get all classes that extends/implements the Tab_Style class.
+	 *
+	 * @return array
+	 *
+	 * @psalm-return array<class-string<\TWRP\Tabs_Styles\Tab_Style>>
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @psalm-suppress LessSpecificReturnStatement
+	 */
+	public static function get_all_tab_style_class_names() {
+		$class_names = static::get_all_child_classes( 'TWRP\\Tabs_Styles\\Tab_Style' );
+		return $class_names;
 	}
 
 	/**
