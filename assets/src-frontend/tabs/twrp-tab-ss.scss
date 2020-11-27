@@ -1,0 +1,29 @@
+// Use 2 classes to increase specify.
+.twrp-tab .twrp-tab-ss {
+	@include twrp-tab;
+
+	&__btns-wrapper {
+		padding: 0.5rem 5px 0 0;
+		margin: 0 0 0.5rem;
+		border-bottom: 1px solid;
+	}
+
+	&__btn-item {
+		margin-bottom: -1px;
+		margin-left: 5px;
+		background-color: white;
+	}
+
+	&__btn {
+		padding: 0.4rem 0.7rem 0.3rem;
+		border: 1px solid;
+		border-bottom: 1px solid transparent;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+	}
+
+	&__btn[aria-selected="false"],
+	&__btn-item:not([role]):not(:first-child) {
+		border-bottom: 1px solid;
+	}
+}

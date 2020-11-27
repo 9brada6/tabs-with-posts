@@ -83,6 +83,17 @@
 	}
 }
 
+.twrp-widget-form--js-sync-settings {
+	.twrp-widget-form__selected-query ~ .twrp-widget-form__selected-query {
+		.twrp-widget-form__article-block-selector-wrapper,
+		.twrp-widget-form__query-description-title:not(:first-child),
+		.twrp-widget-form__style-separator,
+		.twrp-widget-form__article-block-settings-container {
+			display: none;
+		}
+	}
+}
+
 /**
  * Using default jQuery ui classes.
  */

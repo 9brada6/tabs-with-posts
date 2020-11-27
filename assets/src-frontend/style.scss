@@ -1,6 +1,10 @@
 @import 'common-blocks/twrp-articles/twrp-articles';
 @import '../src-common/style';
 
+// Import the tab styles.
+@import 'tabs/twrp-tab.scss';
+@import 'tabs/twrp-tab-ss.scss';
+
 .twrp-link-expand {
 	&::after {
 		position: absolute;

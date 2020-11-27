@@ -149,6 +149,11 @@ function twrp_enqueue_admin() {
 
 add_action( 'admin_enqueue_scripts', 'twrp_enqueue_admin', 100 );
 
+function twrp_enqueue() {
+	wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), '1.0.0', true );
+}
+add_action( 'wp_enqueue_scripts', 'twrp_enqueue', 100 );
+
 /**
  * @todo: Move and comment.
  *

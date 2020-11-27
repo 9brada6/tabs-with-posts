@@ -1,45 +1,82 @@
 /**
  * Works on: "type"="checkbox", type="number", type="hidden", pickr color, select.
- *
- * Todo: Do not sync the tab name(it does not sync for now, but make an exception in the code).
  */
 
 import $ from 'jquery';
 
 const widgetFormSelector = '.twrp-widget-form';
 const queryTabSettingsSelector = '.twrp-widget-form__selected-query';
-const dataWidgetIdHolder = 'data-twrp-widget-id';
 
-addDocumentEvents();
-function addDocumentEvents() {
-	$( document ).on( 'change', widgetFormSelector + ' ' + queryTabSettingsSelector, syncTheSetting );
+// #region -- Update what widgets to sync.
+// The widgets that are marked to sync have twrp-widget-form--js-sync-settings class name.
+
+$( updateAllWidgetSyncClasses );
+$( document ).on( 'widget-updated widget-added', updateAllWidgetSyncClasses );
+$( document ).on( 'change', '[type="checkbox"][name$="sync_query_settings]"]', updateAllWidgetSyncClasses );
+
+function updateAllWidgetSyncClasses() {
+	const syncSetting = $( document ).find( '[type="checkbox"][name$="sync_query_settings]"]' );
+	syncSetting.each( function() {
+		const syncSettingValue = $( this ).prop( 'checked' );
+		const widget = $( this ).closest( widgetFormSelector );
+		if ( syncSettingValue ) {
+			addSyncClassToWidget( widget );
+		} else {
+			removeSyncClassFromWidget( widget );
+		}
+	} );
 }
 
-function removeDocumentEvents() {
-	$( document ).off( 'change', widgetFormSelector + ' ' + queryTabSettingsSelector, syncTheSetting );
+function addSyncClassToWidget( widget ) {
+	widget.addClass( 'twrp-widget-form--js-sync-settings' );
 }
 
-function syncTheSetting( event ) {
-	const elementChanged = $( event.target );
-	syncElement( elementChanged );
+function removeSyncClassFromWidget( widget ) {
+	widget.removeClass( 'twrp-widget-form--js-sync-settings' );
 }
+
+// #endregion -- Update what widgets to sync.
+
+// #region -- Sync the widget settings when the sync button is clicked.
+
+$( document ).on( 'change', '[type="checkbox"][name$="sync_query_settings]"]', handleSyncButtonEnabled );
+
+function handleSyncButtonEnabled() {
+	const settingEnabled = $( this ).prop( 'checked' );
+
+	if ( settingEnabled ) {
+		syncAllWidgetSettings( $( this ).closest( widgetFormSelector ) );
+	}
+}
+
+// #endregion -- Sync the widget settings when the sync button is clicked.
 
 // #region -- Sync all settings for a widget
 
-$( document ).on( 'twrpb-query-added', widgetFormSelector, handleQueryAdded );
+$( document ).on( 'twrpb-query-added twrpb-artblock-added', '.twrp-widget-form--js-sync-settings', handleQueryOrArtblockAdded );
 
-function handleQueryAdded() {
-	const widgetId = $( this ).attr( dataWidgetIdHolder );
-	syncAllWidgetSettings( widgetId );
+function handleQueryOrArtblockAdded() {
+	const widget = $( this );
+	syncAllWidgetSettings( widget );
+
+	// Sometimes the pickr color won't sync because it gets update at the same time, so we force it.
+	setTimeout( function() {
+		syncAllWidgetSettings( widget );
+	}, 100 );
+
+	setTimeout( function() {
+		syncAllWidgetSettings( widget );
+	}, 1000 );
 }
 
-function syncAllWidgetSettings( widgetId ) {
-	const widget = $( '[' + dataWidgetIdHolder + '="' + widgetId + '"]' );
+/**
+ * Sync all query settings of the widget with the first query setting.
+ */
+function syncAllWidgetSettings( widget: JQuery ): void {
 	const firstQuery = widget.find( queryTabSettingsSelector ).eq( 0 );
 
 	const toSyncElements = firstQuery.find( 'input, select' );
 
-	const start2 = new Date();
 	toSyncElements.each( function() {
 		syncElement( $( this ) );
 	} );
@@ -47,22 +84,67 @@ function syncAllWidgetSettings( widgetId ) {
 
 // #endregion -- Sync all settings for a widget
 
-function syncElement( elementChanged ) {
-	const elementName = elementChanged.attr( 'name' );
-	const allWidgetQueriesTabs = elementChanged.closest( widgetFormSelector ).find( queryTabSettingsSelector );
+// #region -- Sync all equivalent query settings, if a setting change.
 
+addDocumentEvents();
+function addDocumentEvents() {
+	$( document ).on( 'change', '.twrp-widget-form--js-sync-settings' + ' ' + queryTabSettingsSelector, syncTheSetting );
+}
+
+function removeDocumentEvents() {
+	$( document ).off( 'change', '.twrp-widget-form--js-sync-settings' + ' ' + queryTabSettingsSelector, syncTheSetting );
+}
+
+function syncTheSetting( event ) {
+	const elementChanged = $( event.target );
+	syncElement( elementChanged );
+}
+
+// #endregion -- Sync all equivalent query settings, if a setting change.
+
+/**
+ * For a setting control passed, sync the other similar query settings with
+ * same value.
+ */
+function syncElement( elementChanged: JQuery ) {
+	const elementName = elementChanged.attr( 'name' );
+
+	const shouldBeSynched = settingShouldBeSynched( elementChanged );
+	if ( ! shouldBeSynched ) {
+		return;
+	}
+
+	const allWidgetQueriesTabs = elementChanged.closest( widgetFormSelector ).find( queryTabSettingsSelector );
 	const nameSuffixToSearch = elementName.replace( /widget-twrp_tabs_with_recommended_posts\[\d+\]\[\d+\]/, '' );
 
 	let allSimilarQuerySettings = allWidgetQueriesTabs.find( '[name$="' + nameSuffixToSearch + '"]' );
 	allSimilarQuerySettings = filterSimilarQuerySettings( elementChanged, allSimilarQuerySettings );
 
-	changeAllSettings( elementChanged, allSimilarQuerySettings );
-	// We don't need yet to trigger a change.
-	// triggerChanges( elementChanged, allSimilarQuerySettings );
+	const settingsChanged = changeAllSettings( elementChanged, allSimilarQuerySettings );
+
+	triggerNecessaryChanges( settingsChanged );
+	// We don't need yet to trigger all changes.
+	// triggerAllChanges( elementChanged, allSimilarQuerySettings );
 }
 
-function filterSimilarQuerySettings( elementName: JQuery, allSimilarQuerySettings : JQuery ): JQuery {
-	const elementType = getElementChangedType( elementName );
+/**
+ * Whether or not it should sync this setting control.
+ */
+function settingShouldBeSynched( settingControl ): boolean {
+	if ( settingControl.is( '[name$="[display_title]"]' ) ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Filter the similar settings found.
+ *
+ * Usually used on settings that have custom controllers.
+ */
+function filterSimilarQuerySettings( settingElement: JQuery, allSimilarQuerySettings : JQuery ): JQuery {
+	const elementType = getElementChangedType( settingElement );
 
 	if ( elementType === 'checkbox' ) {
 		allSimilarQuerySettings = allSimilarQuerySettings.not( '[type="hidden"]' );
@@ -71,32 +153,78 @@ function filterSimilarQuerySettings( elementName: JQuery, allSimilarQuerySetting
 	return allSimilarQuerySettings;
 }
 
-function changeAllSettings( elementName: JQuery, allSimilarQuerySettings : JQuery ): void {
+/**
+ * Based on a setting control, change all other settings controls passed. This
+ * function will return a list with all the controls that were changed(value
+ * different than the based setting control).
+ */
+function changeAllSettings( elementName: JQuery, allSimilarQuerySettings : JQuery ): JQuery {
 	const elementType = getElementChangedType( elementName );
 	const valueToChange = elementName.val();
+	let elementsChanged = $();
 
 	allSimilarQuerySettings.each( function() {
+		const currentElement = $( this );
+
 		if ( elementType === 'checkbox' ) {
 			const propValue = elementName.prop( 'checked' );
-			$( this ).prop( 'checked', propValue );
-		} else if ( elementType === 'select' ) {
-			$( this ).val( valueToChange );
-		} else if ( elementType === 'number' ) {
-			$( this ).val( valueToChange );
-		} else if ( elementType === 'hidden' ) {
-			$( this ).val( valueToChange );
+			const currentSetting = currentElement.prop( 'checked' );
+			if ( propValue !== currentSetting ) {
+				elementsChanged = elementsChanged.add( currentElement );
+				currentElement.prop( 'checked', propValue );
+			}
+		} else if ( elementType === 'select' || elementType === 'number' || elementType === 'hidden' ) {
+			const currentValue = currentElement.val();
+			if ( valueToChange !== currentValue ) {
+				elementsChanged = elementsChanged.add( currentElement );
+				currentElement.val( valueToChange );
+			}
 		} else if ( elementType === 'color' ) {
-			$( this ).val( valueToChange );
+			const currentValue = currentElement.val();
+			if ( valueToChange !== currentValue ) {
+				elementsChanged = elementsChanged.add( currentElement );
+				currentElement.val( valueToChange );
+			}
+
+			// This is left outside, because we can refresh the button display
+			// in case the pickr initialize slower.
 			if ( valueToChange && ( typeof valueToChange === 'string' ) ) {
-				$( this ).next( '.pickr' ).find( 'button' ).css( 'color', valueToChange );
+				currentElement.next( '.pickr' ).children( 'button' ).css( 'color', valueToChange );
 			} else {
-				$( this ).next( '.pickr' ).find( 'button' ).css( 'color', 'rgba(0, 0, 0, 0.15)' );
+				currentElement.next( '.pickr' ).children( 'button' ).css( 'color', 'rgba(0, 0, 0, 0.15)' );
 			}
 		}
 	} );
+
+	return elementsChanged;
 }
 
-function triggerChanges( elementName: JQuery, allSimilarQuerySettings : JQuery ): void {
+/**
+ * Trigger the changes only to elements that have other javascript calls to them.
+ */
+function triggerNecessaryChanges( settingControlsToTriggerChanges:JQuery ): void {
+	let triggerChanges = false;
+	const firstControl = settingControlsToTriggerChanges.eq( 0 );
+
+	// See whether or not we should trigger changes.
+	const elementName = String( firstControl.attr( 'name' ) );
+	if ( elementName.includes( '[article_block]' ) ) {
+		triggerChanges = true;
+	}
+
+	if ( triggerChanges ) {
+		removeDocumentEvents();
+		settingControlsToTriggerChanges.each( function() {
+			$( this ).trigger( 'change' );
+		} );
+		addDocumentEvents();
+	}
+}
+
+/**
+ * Trigger all the changes done to all elements.
+ */
+function triggerAllChanges( elementName: JQuery, allSimilarQuerySettings : JQuery ): void {
 	removeDocumentEvents();
 	const elementType = getElementChangedType( elementName );
 	allSimilarQuerySettings.each( function() {
@@ -115,16 +243,22 @@ function triggerChanges( elementName: JQuery, allSimilarQuerySettings : JQuery )
 	addDocumentEvents();
 }
 
-function getElementChangedType( elementName ) {
-	if ( elementName.attr( 'type' ) === 'hidden' && elementName.next( '.pickr' ).length ) {
+/**
+ * Get the input type that is changed.
+ *
+ * The additional check on hidden type is because the checkboxes can have a
+ * hidden input before, to submit something to the server.
+ */
+function getElementChangedType( settingElement ): string {
+	if ( settingElement.attr( 'type' ) === 'hidden' && settingElement.next( '.pickr, .twrp-color-picker' ).length ) {
 		return 'color';
-	} else if ( elementName.attr( 'type' ) === 'hidden' ) {
+	} else if ( settingElement.attr( 'type' ) === 'hidden' && settingElement.next( '[type="checkbox"]' ).length === 0 ) {
 		return 'hidden';
-	} else if ( elementName.attr( 'type' ) === 'checkbox' ) {
+	} else if ( settingElement.attr( 'type' ) === 'checkbox' ) {
 		return 'checkbox';
-	} else if ( elementName.is( 'select' ) ) {
+	} else if ( settingElement.is( 'select' ) ) {
 		return 'select';
-	} else if ( elementName.attr( 'type' ) === 'number' ) {
+	} else if ( settingElement.attr( 'type' ) === 'number' ) {
 		return 'number';
 	}
 }

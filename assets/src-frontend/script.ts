@@ -1,7 +1,3 @@
-function cacattododss() {
-	console.error( 'mergeWebpack' );
-}
-
-cacattododss();
+import './tabs/twrp-tab.ts';
 
 export default {};

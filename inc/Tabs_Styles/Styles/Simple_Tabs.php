@@ -22,7 +22,7 @@ class Simple_Tabs extends Tab_Style {
 
 	public function start_tabs_wrapper() {
 		?>
-		<div>
+		<div class="<?php $this->tab_class(); ?>">
 		<?php
 	}
 
@@ -34,26 +34,29 @@ class Simple_Tabs extends Tab_Style {
 
 	public function start_tab_buttons_wrapper() {
 		?>
-		<div>
+		<ul class="<?php $this->tab_btns_class(); ?>" <?php $this->tabby_btns_data_attr(); ?>>
 		<?php
 	}
 
 	public function end_tab_buttons_wrapper() {
 		?>
-		</div>
+		</ul>
 		<?php
 	}
 
-	public function tab_button( $button_text, $query_id = '' ) {
+	public function tab_button( $button_text, $query_id = '', $default_tab = false ) {
+		$default_tab_attr = '';
+		if ( $default_tab ) {
+			$default_tab_attr = ' ' . $this->get_tabby_default_tab_data_attr();
+		}
 		?>
-		<button><?= esc_html( $button_text ); ?></button>
+		<li class="<?php $this->tab_btn_item_class(); ?>"><a class="<?php $this->tab_btn_class(); ?>" href="#<?php $this->tab_id( $query_id ); ?>"<?= esc_attr( $default_tab_attr ); ?>><?= esc_html( $button_text ); ?></a></li>
 		<?php
 	}
-
 
 	public function start_all_tabs_wrapper() {
 		?>
-		<div>
+		<div class="<?php $this->tab_contents_wrapper_class(); ?>">
 		<?php
 	}
 
@@ -65,7 +68,7 @@ class Simple_Tabs extends Tab_Style {
 
 	public function start_tab_content_wrapper( $query_id = '' ) {
 		?>
-		<div>
+		<div id="<?php $this->tab_id( $query_id ); ?>" class="<?php $this->tab_content_class(); ?>">
 		<?php
 	}
 
@@ -73,6 +76,10 @@ class Simple_Tabs extends Tab_Style {
 		?>
 		</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrp-tab-ss';
 	}
 
 }

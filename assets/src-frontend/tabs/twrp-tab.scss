@@ -1,0 +1,42 @@
+// Mixin class that all tabs should implement.
+
+@mixin twrp-tab {
+	&__btns-wrapper {
+		display: flex;
+		padding: 0;
+		margin: 0;
+		list-style-type: none;
+	}
+
+	&__btn-item {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__btn {
+		display: block;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__contents-wrapper {
+		padding: 0;
+		margin: 0;
+	}
+
+	&__content {
+		padding: 0;
+		margin: 0;
+	}
+
+	// Prevent flash of content, by displaying only the first tab.
+	&__content:not([role]) ~ &__content {
+		display: none;
+	}
+
+	// polyfill
+	[hidden="hidden"] {
+		display: none;
+	}
+}

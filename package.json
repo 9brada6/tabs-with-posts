@@ -51,7 +51,8 @@
 	"dependencies": {},
 	"browserify-shim": {
 		"jquery": "global:jQuery",
-		"jqueryui": "global:jQuery"
+		"jqueryui": "global:jQuery",
+		"tabby": "global:Tabby"
 	},
 	"browserify": {
 		"transform": [

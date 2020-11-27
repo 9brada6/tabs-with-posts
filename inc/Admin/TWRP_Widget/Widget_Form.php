@@ -15,6 +15,7 @@ use TWRP\TWRP_Widget\Widget;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 use TWRP\Utils\Widget_Utils;
+use TWRP\Widget_Control\Checkbox_Control;
 
 /**
  * Class that manages the form to modify the settings for the widget, displayed
@@ -66,6 +67,7 @@ class Widget_Form {
 				$this->display_no_queries_exist();
 			} else {
 				$this->display_tab_style_options();
+				$this->display_artblock_sync_settings();
 				$this->display_select_query_options();
 				$this->display_queries_settings();
 			}
@@ -126,6 +128,21 @@ class Widget_Form {
 			</button>
 		</p>
 		<?php
+	}
+
+	/**
+	 * Display if the query settings should be synced, or simplified.
+	 *
+	 * @return void
+	 */
+	protected function display_artblock_sync_settings() {
+		$option_name  = Widget_Utils::get_field_name( $this->widget_id, Widget::SYNC_QUERY_SETTINGS__NAME );
+		$option_value = '1';
+		if ( array_key_exists( Widget::SYNC_QUERY_SETTINGS__NAME, $this->instance_settings ) && '1' !== $this->instance_settings[ Widget::SYNC_QUERY_SETTINGS__NAME ] ) {
+			$option_value = '';
+		}
+
+		Checkbox_Control::display_setting( $this->get_bem_class( 'js-sync-query' ), $option_name, $option_value, self::get_query_sync_control_args() );
 	}
 
 	/**
@@ -357,6 +374,14 @@ class Widget_Form {
 	#endregion -- Functions to display the artblock settings.
 
 	#endregion -- Display the settings per each tab.
+
+	public static function get_query_sync_control_args() {
+		return array(
+			'before'  => _x( 'Make all the tabs look the same', 'backend', 'twrp' ),
+			'value'   => '1',
+			'default' => '1',
+		);
+	}
 
 	#region -- Bem CSS classes.
 

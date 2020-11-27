@@ -67,6 +67,8 @@ function createPicker() {
 			pickr.hide();
 		} );
 
+		input.data( 'pickr', pickr );
+
 		pickr.setColorRepresentation( 'RGBA' );
 	} );
 }
