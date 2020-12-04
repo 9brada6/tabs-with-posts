@@ -3,7 +3,7 @@
  * File that holds the interface with the same name.
  */
 
-namespace TWRP\Widget_Control;
+namespace TWRP\Admin\Widget_Control;
 
 /**
  * Class that implements the control to display the widget setting for a

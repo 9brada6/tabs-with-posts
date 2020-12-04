@@ -68,7 +68,6 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/Query_Options/Query_Settings_Display/Sticky_Posts_Display',
 		'Admin/Tabs/Query_Options/Query_Settings_Display/Suppress_Filters_Display',
 
-
 		'Admin/Settings_Menu',
 		'Admin/Tabs/Interface_Admin_Menu_Tab',
 		'Admin/Tabs/Documentation_Tab',
@@ -77,6 +76,12 @@ class Plugin_Bootstrap {
 
 		'Admin/TWRP_Widget/Widget_Form',
 		'Admin/TWRP_Widget//Widget_Ajax',
+
+		'Admin/Widget_Control/Widget_Control',
+		'Admin/Widget_Control/Checkbox_Control',
+		'Admin/Widget_Control/Number_Control',
+		'Admin/Widget_Control/Select_Control',
+		'Admin/Widget_Control/Color_Control',
 
 
 		// Artblock Component Settings.
@@ -183,13 +188,6 @@ class Plugin_Bootstrap {
 
 		// TWRP_Widget.
 		'TWRP_Widget/Widget',
-
-		// Widget Control.
-		'Widget_Control/Widget_Control',
-		'Widget_Control/Checkbox_Control',
-		'Widget_Control/Number_Control',
-		'Widget_Control/Select_Control',
-		'Widget_Control/Color_Control',
 
 		// Tabs_Creator.
 		'Tabs_Creator/Tabs_Creator',

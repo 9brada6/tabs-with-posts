@@ -5,7 +5,7 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Widget_Control\Select_Control;
+use TWRP\Admin\Widget_Control\Select_Control;
 
 /**
  * Font weight component setting.

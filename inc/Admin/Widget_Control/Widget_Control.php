@@ -3,7 +3,7 @@
  * File that holds the interface with the same name.
  */
 
-namespace TWRP\Widget_Control;
+namespace TWRP\Admin\Widget_Control;
 
 /**
  * Interface that each control implemented should extend.

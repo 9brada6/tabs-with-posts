@@ -3,7 +3,7 @@
  * File that holds the class with the same name.
  */
 
-namespace TWRP\Widget_Control;
+namespace TWRP\Admin\Widget_Control;
 
 /**
  * Class that implements the control to display the setting for a number.

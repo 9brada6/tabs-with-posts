@@ -15,7 +15,7 @@ use TWRP\TWRP_Widget\Widget;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 use TWRP\Utils\Widget_Utils;
-use TWRP\Widget_Control\Checkbox_Control;
+use TWRP\Admin\Widget_Control\Checkbox_Control;
 
 /**
  * Class that manages the form to modify the settings for the widget, displayed

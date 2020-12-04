@@ -5,7 +5,7 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Widget_Control\Number_Control;
+use TWRP\Admin\Widget_Control\Number_Control;
 
 /**
  * Font size component setting.

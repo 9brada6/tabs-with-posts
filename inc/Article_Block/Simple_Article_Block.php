@@ -9,7 +9,7 @@ namespace TWRP\Article_Block;
 
 use TWRP\Artblock_Component\Widget_Component_Settings;
 use TWRP\Utils\Widget_Utils;
-use TWRP\Widget_Control\Checkbox_Control;
+use TWRP\Admin\Widget_Control\Checkbox_Control;
 
 class Simple_Article_Block extends Article_Block {
 

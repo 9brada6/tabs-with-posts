@@ -5,7 +5,7 @@
 
 namespace TWRP\Artblock_Component;
 
-use TWRP\Widget_Control\Color_Control;
+use TWRP\Admin\Widget_Control\Color_Control;
 
 /**
  * Font size component setting.
