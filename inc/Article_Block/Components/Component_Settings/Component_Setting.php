@@ -3,7 +3,7 @@
  * File that holds the interface with the same name.
  */
 
-namespace TWRP\Artblock_Component;
+namespace TWRP\Article_Block\Component;
 
 /**
  * Each component setting should implement this interface.

@@ -1,9 +1,9 @@
 <?php
 
-namespace TWRP\Artblock_Component;
+namespace TWRP\Article_Block\Component;
 
 use TWRP\Utils\Widget_Utils;
-use TWRP\Artblock_Component\Component_Setting;
+use TWRP\Article_Block\Component\Component_Setting;
 use TWRP\Utils\Simple_Utils;
 
 /**
@@ -11,7 +11,7 @@ use TWRP\Utils\Simple_Utils;
  */
 class Widget_Component_Settings {
 
-	const COMPONENTS_NAMESPACE_PREFIX = 'TWRP\\Artblock_Component\\';
+	const COMPONENTS_NAMESPACE_PREFIX = 'TWRP\\Article_Block\\Component\\';
 
 	const FONT_SIZE_SETTING   = 'Font_Size_Setting';
 	const LINE_HEIGHT_SETTING = 'Line_Height_Setting';

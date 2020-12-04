@@ -3,7 +3,7 @@
  * File that holds the interface with the same name.
  */
 
-namespace TWRP\Artblock_Component;
+namespace TWRP\Article_Block\Component;
 
 use TWRP\Admin\Widget_Control\Select_Control;
 use TWRP\Icons\Icon_Factory;

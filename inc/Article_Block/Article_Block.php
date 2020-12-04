@@ -5,7 +5,7 @@
 
 namespace TWRP\Article_Block;
 
-use TWRP\Artblock_Component\Widget_Component_Settings;
+use TWRP\Article_Block\Component\Widget_Component_Settings;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
