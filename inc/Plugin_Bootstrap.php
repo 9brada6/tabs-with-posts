@@ -84,21 +84,20 @@ class Plugin_Bootstrap {
 		'Admin/Widget_Control/Color_Control',
 
 
-		// Artblock Component Settings.
-		'Artblock_Component/Widget_Component_Settings',
-
-		'Artblock_Component/Widget_Component_Setting/Component_Setting',
-
-		'Artblock_Component/Widget_Component_Setting/Font_Size_Setting',
-		'Artblock_Component/Widget_Component_Setting/Line_Height_Setting',
-		'Artblock_Component/Widget_Component_Setting/Font_Weight_Setting',
-		'Artblock_Component/Widget_Component_Setting/Color_Setting',
-		'Artblock_Component/Widget_Component_Setting/Hover_Color_Setting',
-		'Artblock_Component/Widget_Component_Setting/Author_Icon_Setting',
-		'Artblock_Component/Widget_Component_Setting/Category_Icon_Setting',
-		'Artblock_Component/Widget_Component_Setting/Date_Icon_Setting',
-
 		// Article Blocks.
+		'Article_Block/Components/Widget_Component_Settings',
+
+		'Article_Block/Components/Component_Settings/Component_Setting',
+
+		'Article_Block/Components/Component_Settings/Font_Size_Setting',
+		'Article_Block/Components/Component_Settings/Line_Height_Setting',
+		'Article_Block/Components/Component_Settings/Font_Weight_Setting',
+		'Article_Block/Components/Component_Settings/Color_Setting',
+		'Article_Block/Components/Component_Settings/Hover_Color_Setting',
+		'Article_Block/Components/Component_Settings/Author_Icon_Setting',
+		'Article_Block/Components/Component_Settings/Category_Icon_Setting',
+		'Article_Block/Components/Component_Settings/Date_Icon_Setting',
+
 		'Article_Block/Get_Widget_Settings_Trait',
 		'Article_Block/Get_Settings_Trait',
 		'Article_Block/Display_Post_Meta_Trait',
