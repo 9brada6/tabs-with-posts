@@ -3,9 +3,10 @@
 	@include twrp-tab;
 
 	&__btns-wrapper {
+		align-items: flex-end;
 		padding: 0.5rem 5px 0 0;
 		margin: 0 0 0.5rem;
-		border-bottom: 1px solid;
+		border-bottom: 1px solid var(--twrp-accent-color);
 	}
 
 	&__btn-item {
@@ -16,14 +17,32 @@
 
 	&__btn {
 		padding: 0.4rem 0.7rem 0.3rem;
-		border: 1px solid;
+		color: var(--twrp-accent-color);
+		background-color: var(--twrp-background-color);
+		border: 1px solid var(--twrp-accent-color);
 		border-bottom: 1px solid transparent;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
 	}
 
 	&__btn[aria-selected="false"],
-	&__btn-item:not([role]):not(:first-child) {
-		border-bottom: 1px solid;
+	&__btn-item:not([role]):not(:first-child) .twrp-tab-ss__btn {
+		padding-bottom: 0;
+		color: var(--twrp-text-color);
+		background-color: var(--twrp-secondary-background-color);
+		border-color: var(--twrp-text-color);
+		border-bottom: 1px solid var(--twrp-accent-color);
+	}
+
+	/* stylelint-disable no-descending-specificity */
+	&__btn:hover,
+	&__btn:focus {
+		padding-bottom: 0.3rem;
+		outline: none;
+	}
+	/* stylelint-enable no-descending-specificity */
+
+	&__contents-wrapper {
+		background-color: var(--twrp-background-color);
 	}
 }

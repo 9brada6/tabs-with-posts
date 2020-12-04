@@ -29,6 +29,7 @@ class Plugin_Bootstrap {
 
 		'Utils/Simple_Utils',
 		'Utils/Class_Retriever_Utils',
+		'Utils/Color_Utils',
 		'Utils/Date_Utils',
 		'Utils/Directory_Utils',
 		'Utils/Filesystem_Utils',
@@ -44,6 +45,7 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Select_Setting',
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Radio_Setting',
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Text_Setting',
+		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Color_Setting',
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Select_With_Switch_Setting',
 		'Admin/Tabs/General_Settings/General_Settings_Factory',
 
@@ -99,8 +101,17 @@ class Plugin_Bootstrap {
 		'Article_Block/Simple_Article_Block',
 		'Article_Block/Modern_Article_Block',
 
+		// CSS.
+		'CSS/Generate_CSS',
+
 		// Database.
 		'Database\General_Options_Settings\General_Option_Setting',
+		'Database\General_Options_Settings\Accent_Color',
+		'Database\General_Options_Settings\Secondary_Accent_Color',
+		'Database\General_Options_Settings\Text_Color',
+		'Database\General_Options_Settings\Secondary_Text_Color',
+		'Database\General_Options_Settings\Background_Color',
+		'Database\General_Options_Settings\Secondary_Background_Color',
 		'Database\General_Options_Settings\Per_Widget_Date_Format',
 		'Database\General_Options_Settings\Human_Readable_Date',
 		'Database\General_Options_Settings\Date_Format',

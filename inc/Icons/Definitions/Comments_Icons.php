@@ -32,6 +32,7 @@ class Comments_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fa-ol'      => array(
@@ -39,6 +40,7 @@ class Comments_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fa-2-f'     => array(
@@ -62,6 +64,7 @@ class Comments_Icons implements Icon_Definitions {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dots-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fa-dots-ol' => array(
@@ -69,6 +72,7 @@ class Comments_Icons implements Icon_Definitions {
 				'description' => _x( 'Dots', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'dots-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-com-fa-comm-f'  => array(
@@ -90,6 +94,7 @@ class Comments_Icons implements Icon_Definitions {
 				'description' => _x( 'Comments Dollar', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'dollar-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- FontAwesome Icons

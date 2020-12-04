@@ -87,7 +87,7 @@ class Create_And_Enqueue_Icons {
 	 */
 	protected static function ajax_include_svg_file( $file_path ) {
 		?>
-		<script>
+		<script type="text/javascript">
 		(function() { const ajax = new XMLHttpRequest(); ajax.open('GET', '<?= esc_url( $file_path ) ?>', true); ajax.send();
 			ajax.onload = function( e ) { var div = document.createElement( 'div' ); div.innerHTML = ajax.responseText; insertIntoDocument(div); };
 			function insertIntoDocument(elem) { if( document.body ) { document.body.insertBefore(elem, document.body.childNodes[ 0 ]); } else { setTimeout( insertIntoDocument, 100 ); } }
@@ -101,8 +101,15 @@ class Create_And_Enqueue_Icons {
 	#region -- Create needed icons, inline and in a file
 
 	public static function write_needed_icons_on_settings_submitted( $updated_settings ) {
-		foreach ( General_Options::ICON_KEYS as $icon_setting ) {
-			if ( isset( $updated_settings[ $icon_setting ] ) && General_Options::get_option( $icon_setting ) !== $updated_settings[ $icon_setting ] ) {
+		foreach ( General_Options::ICON_KEYS as $icon_class_name ) {
+			$icon_setting  = General_Options::get_option( $icon_class_name );
+			$setting_class = General_Options::get_option_object( $icon_class_name );
+			if ( null === $setting_class ) {
+				continue;
+			}
+			$setting_key_name = $setting_class->get_key_name();
+
+			if ( isset( $updated_settings[ $setting_key_name ] ) && $icon_setting !== $updated_settings[ $setting_key_name ] ) {
 				add_action(
 					'twrp_general_after_settings_submitted',
 					function() {

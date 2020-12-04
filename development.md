@@ -1,5 +1,9 @@
 # Tabs With Recommended Posts - Development Notes
 
+## Article Blocks
+
+- The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.
+
 ## Plugins Used
 
 ### Rating Plugins
@@ -44,7 +48,6 @@ it with twrpb or something like that.
 - ➕ Add in Date Query settings, a way to select posts from this week and this month, 3-7 days(easy).
 - ➕ Move all TypeScript display items(Query Settings) into a single one implementation.
 - ➕ When drag & drop a display item in query setting, add a replace item with the same dimension as the original item that is being dragged.
-
 
 ## Read Before Development
 
@@ -91,6 +94,13 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
 - Change all "twrp" css/classes backend prefix with "twrpb"
 - Custom date format, make it disabled(not to hide).
+- Remove per widget date format.
+- Make General_Setting_Creator and all of his subclass implement BEM... interface.
+- Change .pickr class.
+- The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make
+them work only on the specific widget selected.
+- Remove !important from block components css, and make sure that they work.
+- Remove the additional CSS that is added to each component, if no custom css is present.
 
 - In Gulp, when a SCSS file fail to compile, no error is displayed. Try to fix it. For example, if we add an import
 that does not exist, the gulp won't show an error, it just will not compile.
@@ -99,3 +109,4 @@ that does not exist, the gulp won't show an error, it just will not compile.
 
 - Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
 - In tests, add coverage for each method.
+- Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.

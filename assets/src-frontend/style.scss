@@ -1,3 +1,55 @@
+// Variables:
+:root {
+	--twrp-block-margin-top: 0.5rem;
+	--twrp-block-margin-bottom: 1.5rem;
+	--twrp-title-font-size: 1.4rem;
+	--twrp-title-line-height: 1.2;
+	--twrp-title-line-clamp: 3;
+	--twrp-default-component-transition: color 250ms ease, background-color 250ms ease, font-size 250ms ease, margin 250ms ease, padding 250ms ease, width 250ms ease, height 250ms ease;
+}
+
+.twrp-link-expand {
+	&::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		// In case that there is another absolute element, make this display first.
+		z-index: 1;
+		width: 100%;
+		height: 100%;
+		content: "";
+	}
+}
+
+// Use twrp-tab to have a big specificity.
+.twrp-tab {
+	.twrp-thumbnail-wrapper {
+		position: relative;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+		overflow: hidden;
+
+		&::before {
+			display: block;
+			padding-top: 56.25%;
+			content: "";
+		}
+	}
+
+	.twrp-thumbnail {
+		position: absolute;
+		left: 0;
+		width: 100%;
+		height: auto;
+		padding: 0;
+		margin: 0;
+		border: 0;
+	}
+}
+
 @import 'common-blocks/twrp-articles/twrp-articles';
 @import '../src-common/style';
 
@@ -5,31 +57,10 @@
 @import 'tabs/twrp-tab.scss';
 @import 'tabs/twrp-tab-ss.scss';
 
-.twrp-link-expand {
-	&::after {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		content: "";
-	}
-}
+// Article Blocks Styles
+@import 'article-blocks/twrp-ss';
 
 // Simple Style
-
-[class^="twrp-ss"] {
-	transition: all 250ms ease;
-}
-
-.twrp-ss {
-	position: relative;
-}
-
-.twrp-ss__date {
-	margin-left: 6px;
-}
-
 .twrp-ss__author {
 	&::before {
 		display: inline-block;

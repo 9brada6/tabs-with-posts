@@ -27,12 +27,24 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 					self::settings_submitted_message();
 					self::save_settings_submitted();
 				} else {
-					// todo:
+					// todo.
 				}
 			}
 			?>
 
 			<form class="twrpb-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
+				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= _x( 'Color Settings', 'backend', 'twrp' ); ?></legend>
+					<?php
+					General_Settings_Factory::display_setting( General_Options::BACKGROUND_COLOR );
+					General_Settings_Factory::display_setting( General_Options::SECONDARY_BACKGROUND_COLOR );
+					General_Settings_Factory::display_setting( General_Options::TEXT_COLOR );
+					General_Settings_Factory::display_setting( General_Options::SECONDARY_TEXT_COLOR );
+					General_Settings_Factory::display_setting( General_Options::ACCENT_COLOR );
+					General_Settings_Factory::display_setting( General_Options::SECONDARY_ACCENT_COLOR );
+					?>
+				</fieldset>
+
 				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
 					<?php

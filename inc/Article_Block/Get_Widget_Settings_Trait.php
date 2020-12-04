@@ -21,6 +21,18 @@ trait Get_Widget_Settings_Trait {
 	#region -- Verify if meta information is displayed
 
 	/**
+	 * Whether or not the thumbnail exist and must be displayed in the article.
+	 *
+	 * @return bool
+	 */
+	public function thumbnail_exist_and_displayed() {
+		$display_thumbnail = isset( $this->settings['display_post_thumbnail'] ) && $this->settings['display_post_thumbnail'];
+		$thumbnail_exist   = has_post_thumbnail();
+
+		return $display_thumbnail && $thumbnail_exist;
+	}
+
+	/**
 	 * Whether or not the author must be shown in the article.
 	 *
 	 * @return bool

@@ -18,6 +18,7 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\Query_Generator\Query_Generator;
+use TWRP\Utils\Color_Utils;
 use TWRP\Utils\Widget_Utils;
 
 /**
@@ -236,6 +237,32 @@ function twrp_enqueue_scripts_debug() {
 	$queries  = $wp_query->query( $args );
 	\Debug\console_dump( $queries, 'Custom get posts' );
 
+	$color = Color_Utils::is_rgba_color( 'rgba(255, 0, 0, 1)' );
+	if ( ! $color ) {
+		$color = 'false';
+	}
+	\Debug\console_dump( $color, 'Color' );
+
+	$color = 'rgba(255, 0, 0, 1)';
+	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
+	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
+
+	$color = 'rgba(0, 0, 0, 1)';
+	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
+	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
+
+	$color = 'rgba(255, 255, 255, 1)';
+	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
+	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
+
+	$color = 'rgba(54, 43, 23, 0.234)';
+	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
+	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
+
+	$color = 'rgba(240, 240, 240, 0.4)';
+	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
+	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
+
 	// Widget_Utils::get_widget_instance_by_id( 2 );
 
 	return null;
@@ -245,28 +272,5 @@ add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
 
 // phpcs:disable - For testings purposes.
-
-class Widget_Form {
-
-	/**
-	 * @var array<string|int,mixed>
-	 */
-	protected $an_array;
-
-	protected function a() {
-		if ( isset( $this->an_array['string'] ) ) {
-			return;
-		}
-	}
-
-	/**
-	 * @param int $query_id
-	 * @return void
-	 */
-	public function b( $query_id ) {
-		echo $this->an_array[ $query_id ];
-	}
-
-}
 
 #endregion -- Testing

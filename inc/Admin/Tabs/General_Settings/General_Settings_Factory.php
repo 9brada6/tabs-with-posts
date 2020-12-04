@@ -34,6 +34,8 @@ class General_Settings_Factory {
 
 	const TEXT_SETTING_CLASS = 'General_Text_Setting';
 
+	const COLOR_SETTING_CLASS = 'General_Color_Setting';
+
 	const SELECT_SETTING_WITH_SWITCH_CLASS = 'General_Select_With_Switch_Setting';
 
 	/**
@@ -122,17 +124,23 @@ class General_Settings_Factory {
 	 */
 	protected static function get_setting_classes_correlated() {
 		$correlated_classes = array(
-			General_Options::PER_WIDGET_DATE_FORMAT => self::RADIO_SETTING_CLASS,
-			General_Options::HUMAN_READABLE_DATE    => self::RADIO_SETTING_CLASS,
-			General_Options::DATE_FORMAT            => self::TEXT_SETTING_CLASS,
-			General_Options::AUTHOR_ICON            => self::SELECT_SETTING_CLASS,
-			General_Options::DATE_ICON              => self::SELECT_SETTING_CLASS,
-			General_Options::CATEGORY_ICON          => self::SELECT_SETTING_CLASS,
-			General_Options::COMMENTS_ICON          => self::SELECT_SETTING_CLASS,
-			General_Options::COMMENTS_DISABLED_ICON => self::SELECT_SETTING_WITH_SWITCH_CLASS,
-			General_Options::VIEWS_ICON             => self::SELECT_SETTING_CLASS,
-			General_Options::RATING_ICON_PACK       => self::SELECT_SETTING_CLASS,
-			General_Options::SVG_INCLUDE_INLINE     => self::RADIO_SETTING_CLASS,
+			General_Options::TEXT_COLOR                 => self::COLOR_SETTING_CLASS,
+			General_Options::SECONDARY_TEXT_COLOR       => self::COLOR_SETTING_CLASS,
+			General_Options::BACKGROUND_COLOR           => self::COLOR_SETTING_CLASS,
+			General_Options::SECONDARY_BACKGROUND_COLOR => self::COLOR_SETTING_CLASS,
+			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
+			General_Options::SECONDARY_ACCENT_COLOR     => self::COLOR_SETTING_CLASS,
+			General_Options::PER_WIDGET_DATE_FORMAT     => self::RADIO_SETTING_CLASS,
+			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
+			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
+			General_Options::AUTHOR_ICON                => self::SELECT_SETTING_CLASS,
+			General_Options::DATE_ICON                  => self::SELECT_SETTING_CLASS,
+			General_Options::CATEGORY_ICON              => self::SELECT_SETTING_CLASS,
+			General_Options::COMMENTS_ICON              => self::SELECT_SETTING_CLASS,
+			General_Options::COMMENTS_DISABLED_ICON     => self::SELECT_SETTING_WITH_SWITCH_CLASS,
+			General_Options::VIEWS_ICON                 => self::SELECT_SETTING_CLASS,
+			General_Options::RATING_ICON_PACK           => self::SELECT_SETTING_CLASS,
+			General_Options::SVG_INCLUDE_INLINE         => self::RADIO_SETTING_CLASS,
 		);
 
 		return $correlated_classes;
@@ -147,17 +155,23 @@ class General_Settings_Factory {
 	 */
 	protected static function get_argument_functions_correlated() {
 		$correlated_functions = array(
-			General_Options::PER_WIDGET_DATE_FORMAT => 'get_per_widget_date_format_setting_args',
-			General_Options::HUMAN_READABLE_DATE    => 'get_human_readable_setting_args',
-			General_Options::DATE_FORMAT            => 'get_date_format_setting_args',
-			General_Options::AUTHOR_ICON            => 'get_author_icon_setting_args',
-			General_Options::DATE_ICON              => 'get_date_icon_setting_args',
-			General_Options::CATEGORY_ICON          => 'get_category_icon_setting_args',
-			General_Options::COMMENTS_ICON          => 'get_comments_icon_setting_args',
-			General_Options::COMMENTS_DISABLED_ICON => 'get_comments_disabled_icon_setting_args',
-			General_Options::VIEWS_ICON             => 'get_views_icon_setting_args',
-			General_Options::RATING_ICON_PACK       => 'get_rating_pack_setting_args',
-			General_Options::SVG_INCLUDE_INLINE     => 'get_svg_include_inline_args',
+			General_Options::ACCENT_COLOR               => 'get_accent_color_setting_args',
+			General_Options::SECONDARY_ACCENT_COLOR     => 'get_secondary_accent_color_setting_args',
+			General_Options::TEXT_COLOR                 => 'get_text_color_setting_args',
+			General_Options::SECONDARY_TEXT_COLOR       => 'get_secondary_text_color_setting_args',
+			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
+			General_Options::SECONDARY_BACKGROUND_COLOR => 'get_secondary_background_color_setting_args',
+			General_Options::PER_WIDGET_DATE_FORMAT     => 'get_per_widget_date_format_setting_args',
+			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
+			General_Options::DATE_FORMAT                => 'get_date_format_setting_args',
+			General_Options::AUTHOR_ICON                => 'get_author_icon_setting_args',
+			General_Options::DATE_ICON                  => 'get_date_icon_setting_args',
+			General_Options::CATEGORY_ICON              => 'get_category_icon_setting_args',
+			General_Options::COMMENTS_ICON              => 'get_comments_icon_setting_args',
+			General_Options::COMMENTS_DISABLED_ICON     => 'get_comments_disabled_icon_setting_args',
+			General_Options::VIEWS_ICON                 => 'get_views_icon_setting_args',
+			General_Options::RATING_ICON_PACK           => 'get_rating_pack_setting_args',
+			General_Options::SVG_INCLUDE_INLINE         => 'get_svg_include_inline_args',
 		);
 
 		return $correlated_functions;
@@ -358,6 +372,78 @@ class General_Settings_Factory {
 				'true'  => __( 'Yes', 'twrp' ),
 				'false' => __( 'No', 'twrp' ),
 			),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the text color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_text_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the text color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the secondary text color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_secondary_text_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the secondary text color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the background color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_background_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the background color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the secondary background color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_secondary_background_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the secondary background color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the accent color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_accent_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the accent color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the secondary accent color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_secondary_accent_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the secondary accent color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
 		);
 	}
 

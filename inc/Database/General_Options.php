@@ -12,14 +12,29 @@ use TWRP\Database\Settings\General_Option_Setting;
  *
  * For every setting that is added we must:
  *   1. Have a const key.
- *   2. Have a default value in get_default_settings() function.
- *   3. Have a sanitized way in the function sanitize_setting() function.
- *   4. Have a function that return the arguments.
- *   5. Create the HTML to modify the setting, in the general settings tab.
+ *   2. Add a class with the name as the const key, that extends the
+ *   General_Option_Setting class.
+ *   3. Add the value in get_default_settings() function.
  */
 class General_Options {
 
 	const TABLE_OPTION_KEY = 'twrp__general_options';
+
+	#region -- Color Keys
+
+	const ACCENT_COLOR = 'Accent_Color';
+
+	const SECONDARY_ACCENT_COLOR = 'Secondary_Accent_Color';
+
+	const TEXT_COLOR = 'Text_Color';
+
+	const SECONDARY_TEXT_COLOR = 'Secondary_Text_Color';
+
+	const BACKGROUND_COLOR = 'Background_Color';
+
+	const SECONDARY_BACKGROUND_COLOR = 'Secondary_Background_Color';
+
+	#endregion -- Color Keys
 
 	#region -- Date Keys
 
@@ -74,10 +89,18 @@ class General_Options {
 	 *
 	 * Guarantees that all array indexes are set.
 	 *
+	 * @todo: Get all classes dynamically.
+	 *
 	 * @return array
 	 */
 	public static function get_default_settings() {
 		$settings_class_names = array(
+			self::ACCENT_COLOR,
+			self::SECONDARY_ACCENT_COLOR,
+			self::TEXT_COLOR,
+			self::SECONDARY_TEXT_COLOR,
+			self::BACKGROUND_COLOR,
+			self::SECONDARY_BACKGROUND_COLOR,
 			self::PER_WIDGET_DATE_FORMAT,
 			self::HUMAN_READABLE_DATE,
 			self::DATE_FORMAT,
@@ -218,7 +241,7 @@ class General_Options {
 	 * @param mixed $value The value to sanitize.
 	 * @return string|array|null Null if setting doesn't have a sanitization method.
 	 *
-	 * @psalm-param class-string<General_Option_Setting>|General_Option_Setting
+	 * @psalm-param class-string<General_Option_Setting>|General_Option_Setting $name
 	 */
 	public static function sanitize_setting( $name, $value ) {
 		$object = self::get_option_object( $name );
@@ -237,17 +260,25 @@ class General_Options {
 	 *
 	 * @param string|General_Option_Setting $class_name
 	 * @return null|General_Option_Setting
+	 *
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @psalm-suppress LessSpecificReturnStatement
 	 */
 	public static function get_option_object( $class_name ) {
+		// @phan-suppress-next-line PhanPluginSuspiciousParamPositionInternal
 		if ( is_object( $class_name ) && is_subclass_of( $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
 			return $class_name;
 		}
 
+		if ( is_object( $class_name ) ) {
+			return null;
+		}
+
 		$class_name = str_replace( '_', ' ', $class_name );
-		ucwords( $class_name );
+		$class_name = ucwords( $class_name );
 		$class_name = str_replace( ' ', '_', $class_name );
 
-		if ( is_string( $class_name ) && is_subclass_of( 'TWRP\\Database\\Settings\\' . $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
+		if ( is_subclass_of( 'TWRP\\Database\\Settings\\' . $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
 			$object_name = 'TWRP\\Database\\Settings\\' . $class_name;
 			return new $object_name();
 		}

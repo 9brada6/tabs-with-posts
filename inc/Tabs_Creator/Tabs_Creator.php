@@ -212,12 +212,12 @@ class Tabs_Creator {
 	 */
 	protected function get_artblock( $query_id ) {
 		$artblock_id = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
-		if ( empty( $artblock_id ) ) {
+		if ( empty( $artblock_id ) || ! is_array( $this->instance_settings[ $query_id ] ) ) {
 			return null;
 		}
 
 		try {
-			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $this->instance_settings );
+			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $this->instance_settings[ $query_id ] );
 		} catch ( RuntimeException $e ) {
 			return null;
 		}

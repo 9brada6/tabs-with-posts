@@ -1,0 +1,46 @@
+// We use additional class to increase specificity, because some theme authors
+// use too general css selectors, Eg: .widget li>a.
+.twrp-block.twrp-ss {
+	position: relative;
+	margin-top: var(--twrp-block-margin-top);
+	margin-bottom: var(--twrp-block-margin-bottom);
+}
+
+.twrp-block .twrp-ss {
+	&__title {
+		position: relative;
+		display: block;
+		display: -webkit-box;
+		max-height: calc(calc(var(--twrp-title-font-size) * var(--twrp-title-line-clamp)) * var(--twrp-title-line-height));
+		margin-bottom: 0.4rem;
+		overflow: hidden;
+		font-size: var(--twrp-title-font-size);
+		line-height: var(--twrp-title-line-height);
+		color: var(--twrp-text-color);
+		text-overflow: ellipsis;
+		transition: var(--twrp-default-component-transition);
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: var(--twrp-title-line-clamp);
+	}
+
+	&__meta {
+		margin-right: 0.4rem;
+		// This will make the numbers appear normal on fonts that by default
+		// do not have numbers vertically aligned.
+		font-variant-numeric: lining-nums;
+	}
+
+	&__thumbnail-wrapper {
+		margin-bottom: 0.4rem;
+	}
+
+	// Hover, Focus state
+	&__link-expanded {
+		&:hover,
+		&:focus {
+			.twrp-ss__title {
+				color: var(--twrp-accent-color);
+			}
+		}
+	}
+}

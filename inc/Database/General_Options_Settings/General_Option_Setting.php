@@ -17,7 +17,8 @@ abstract class General_Option_Setting {
 	 * Sanitize the setting.
 	 *
 	 * By default, the setting will be sanitized to have an option retrieved
-	 * from get_possible_options() function.
+	 * from get_possible_options() function. Else you need to implement this
+	 * method in a child class.
 	 *
 	 * @param mixed $value
 	 * @return string
