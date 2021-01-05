@@ -85,7 +85,7 @@ class Plugin_Bootstrap {
 
 
 		// Article Blocks.
-		'Article_Block/Components/Widget_Component_Settings',
+		'Article_Block/Components/Artblock_Component',
 
 		'Article_Block/Components/Component_Settings/Component_Setting',
 
@@ -97,6 +97,12 @@ class Plugin_Bootstrap {
 		'Article_Block/Components/Component_Settings/Author_Icon_Setting',
 		'Article_Block/Components/Component_Settings/Category_Icon_Setting',
 		'Article_Block/Components/Component_Settings/Date_Icon_Setting',
+
+		'Article_Block/Settings/Artblock_Setting',
+		'Article_Block/Settings/Display_Author_Setting',
+		'Article_Block/Settings/Display_Date_Setting',
+		'Article_Block/Settings/Display_Comments_Setting',
+		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
 
 		'Article_Block/Get_Widget_Settings_Trait',
 		'Article_Block/Get_Settings_Trait',

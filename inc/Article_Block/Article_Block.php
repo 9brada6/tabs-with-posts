@@ -5,10 +5,11 @@
 
 namespace TWRP\Article_Block;
 
-use TWRP\Article_Block\Component\Widget_Component_Settings;
+use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Article_Block\Setting\Artblock_Setting;
 use WP_Post;
 
 /**
@@ -168,9 +169,16 @@ abstract class Article_Block {
 	/**
 	 * Get the components that can be edited for this artblock.
 	 *
-	 * @return array<Widget_Component_Settings>
+	 * @return array<Artblock_Component>
 	 */
 	abstract public function get_components();
+
+	/**
+	 * Get an array of artblock class settings names.
+	 *
+	 * @return array<Artblock_Setting>
+	 */
+	abstract public function get_artblock_settings();
 
 	/**
 	 * Display the article block settings in the Widgets::form().

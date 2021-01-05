@@ -40,4 +40,8 @@ class Modern_Article_Block extends Article_Block {
 		return '';
 	}
 
+	public function get_artblock_settings() {
+		return array();
+	}
+
 }

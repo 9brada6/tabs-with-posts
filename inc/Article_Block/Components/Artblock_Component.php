@@ -1,4 +1,7 @@
 <?php
+/**
+ * File that contains the class with the same name.
+ */
 
 namespace TWRP\Article_Block\Component;
 
@@ -7,9 +10,15 @@ use TWRP\Article_Block\Component\Component_Setting;
 use TWRP\Utils\Simple_Utils;
 
 /**
- * Class that represents an artblock component and its settings.
+ * Class that represents an artblock component and its settings. A component is
+ * an abstract thing that is used to style a part of an artblock independently
+ * from other parts.
+ *
+ * For example we can have a "Title" component, which will style just the title
+ * (font-color, font-size).. etc. and other components for meta like "Author",
+ * "Views", "Post Thumbnail"... etc.
  */
-class Widget_Component_Settings {
+class Artblock_Component {
 
 	const COMPONENTS_NAMESPACE_PREFIX = 'TWRP\\Article_Block\\Component\\';
 
@@ -33,27 +42,68 @@ class Widget_Component_Settings {
 
 	const CATEGORY_ICON_SETTING = 'Category_Icon_Setting';
 
+	/**
+	 * The name of the component. It should be as something unique, will appear
+	 * when creating the names in HTML attribute.
+	 *
+	 * @var string
+	 */
 	protected $name;
 
+	/**
+	 * The title of the component. Will appear as a tab title in the widget
+	 * settings.
+	 *
+	 * @var string
+	 */
 	protected $component_title;
 
-	protected $css_selector;
-
+	/**
+	 * The widget id this component belongs.
+	 *
+	 * @var int
+	 */
 	protected $widget_id;
 
+	/**
+	 * The query id this component belongs.
+	 *
+	 * @var int
+	 */
 	protected $query_id;
 
+	/**
+	 * The current settings of the component.
+	 *
+	 * @var array
+	 */
 	protected $settings;
 
+	/**
+	 * A selector as the array key, and a component setting as the value. The
+	 * value will apply to the selector.
+	 *
+	 * @var array
+	 */
 	protected $css_settings;
 
 	/**
-	 * Variable that holds the component settings classes needed.
+	 * Variable that holds all the component settings classes needed.
 	 *
-	 * @var array|null
+	 * @var array
 	 */
-	protected $setting_classes = null;
+	protected $setting_classes;
 
+	/**
+	 * Creates the class.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param string $name The name must be unique between other components.
+	 * @param string $component_title
+	 * @param array $settings
+	 * @param array $css_settings
+	 */
 	public function __construct( $widget_id, $query_id, $name, $component_title, $settings, $css_settings ) {
 		$this->name            = $name;
 		$this->component_title = $component_title;
@@ -61,34 +111,35 @@ class Widget_Component_Settings {
 		$this->query_id        = $query_id;
 		$this->settings        = $settings;
 		$this->css_settings    = $css_settings;
+
+		$this->setting_classes = $this->get_component_classes( $this->css_settings );
 	}
 
 	/**
-	 * Get the widget component setting classes used in this component.
+	 * Get the component name.
 	 *
-	 * @return array<Component_Setting>
+	 * @return string
 	 */
-	protected function get_classes() {
-		if ( is_array( $this->setting_classes ) ) {
-			return $this->setting_classes;
-		}
-
-		$setting_classes = self::get_component_classes( $this->css_settings );
-
-		$this->setting_classes = $setting_classes;
-		return $setting_classes;
-	}
-
 	public function get_component_name() {
 		return $this->name;
 	}
 
+	/**
+	 * Get the component title.
+	 *
+	 * @return string
+	 */
 	public function get_component_title() {
 		return $this->component_title;
 	}
 
+	/**
+	 * Display the component setting controls, in the widget settings manager.
+	 *
+	 * @return void
+	 */
 	public function display_component_settings() {
-		$component_setting_classes = $this->get_classes();
+		$component_setting_classes = $this->setting_classes;
 
 		$prefix_name = $this->get_component_prefix_name();
 		$prefix_id   = $this->get_component_prefix_id();
@@ -103,10 +154,20 @@ class Widget_Component_Settings {
 		}
 	}
 
+	/**
+	 * Get the component prefix name for a setting.
+	 *
+	 * @return string
+	 */
 	protected function get_component_prefix_name() {
 		return Widget_Utils::get_field_name( $this->widget_id, $this->query_id, $this->name );
 	}
 
+	/**
+	 * Get the component prefix id of a setting.
+	 *
+	 * @return string
+	 */
 	protected function get_component_prefix_id() {
 		return Widget_Utils::get_field_id( $this->widget_id, $this->query_id, $this->name );
 	}
@@ -114,12 +175,12 @@ class Widget_Component_Settings {
 	#region -- Sanitization
 
 	/**
-	 * Sanitize the internal settings, and returns them.
+	 * Sanitize the internal state settings, and returns them.
 	 *
 	 * @return array
 	 */
 	public function sanitize_settings() {
-		$component_setting_classes = $this->get_classes();
+		$component_setting_classes = $this->setting_classes;
 		$settings                  = $this->settings;
 
 		$sanitized_settings = array();
@@ -139,7 +200,13 @@ class Widget_Component_Settings {
 
 	#endregion -- Sanitization
 
-	public static function get_component_classes( $component_setting_classes ) {
+	/**
+	 * Returns an array with all the setting classes objects.
+	 *
+	 * @param array $component_setting_classes Can be a multidimensional array.
+	 * @return array<Component_Setting>
+	 */
+	public function get_component_classes( $component_setting_classes ) {
 		$classes_names   = Simple_Utils::flatten_array( $component_setting_classes );
 		$setting_classes = array();
 
@@ -160,6 +227,12 @@ class Widget_Component_Settings {
 		return $setting_classes;
 	}
 
+	/**
+	 * Display the components settings in the widget.
+	 *
+	 * @param array<Artblock_Component> $components
+	 * @return void
+	 */
 	public static function display_components( $components ) {
 		?>
 		<div class="twrp-widget-components">

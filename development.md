@@ -110,3 +110,9 @@ that does not exist, the gulp won't show an error, it just will not compile.
 - Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
 - In tests, add coverage for each method.
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
+
+### Tab Style
+
+- Make sure that all the styles for tabs exist.
+- Make sure that the style is tested(how?)
+- Make sure that all tabs are commented.
