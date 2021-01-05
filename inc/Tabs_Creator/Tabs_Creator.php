@@ -110,9 +110,6 @@ class Tabs_Creator {
 
 		$this->tab_style = new $tab_style_class_name( $this->widget_id, $tab_variant );
 
-		// todo: delete: Overwrite tab_style to implement the simple tab style.
-		$this->tab_style = new \TWRP\Tabs_Styles\Simple_Tabs( $this->widget_id, $tab_variant );
-
 		$this->query_ids = Widget_Utils::pluck_valid_query_ids( $this->instance_settings );
 
 		foreach ( $this->query_ids as $key => $query_id ) {

@@ -194,6 +194,7 @@ class Plugin_Bootstrap {
 		// Tabs_Styles.
 		'Tabs_Styles/Tab_Style',
 		'Tabs_Styles/Styles/Simple_Tabs',
+		'Tabs_Styles/Styles/Button_Tabs',
 
 	);
 
