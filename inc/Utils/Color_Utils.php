@@ -66,7 +66,7 @@ class Color_Utils {
 		preg_match_all( '/(\d+\.*\d*)/', $rgba, $color_values );
 
 		if ( ! isset( $color_values[1] ) ) {
-			return;
+			return null;
 		}
 		$color_values = $color_values[1];
 
@@ -80,5 +80,32 @@ class Color_Utils {
 		}
 
 		return 'rgba(' . $color_values[0] . ', ' . $color_values[1] . ', ' . $color_values[2] . ', ' . $color_values[3] . ')';
+	}
+
+	/**
+	 * Set the opacity of a rgba color.
+	 *
+	 * @param string $rgba Color in rgba format.
+	 * @param int|float $opacity
+	 * @return string|null
+	 */
+	public static function set_opacity( $rgba, $opacity ) {
+		if ( $opacity < 0 || $opacity > 1 ) {
+			return null;
+		}
+
+		$color_values = array();
+		preg_match_all( '/(\d+\.*\d*)/', $rgba, $color_values );
+
+		if ( ! isset( $color_values[1] ) ) {
+			return null;
+		}
+		$color_values = $color_values[1];
+
+		if ( count( $color_values ) < 4 ) {
+			return null;
+		}
+
+		return 'rgba(' . $color_values[0] . ', ' . $color_values[1] . ', ' . $color_values[2] . ', ' . $opacity . ')';
 	}
 }

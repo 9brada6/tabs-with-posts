@@ -16,7 +16,7 @@
 	}
 
 	&__btn {
-		padding: 0.4rem 0.7rem 0.3rem;
+		padding: 0.2rem 0.35rem 0.2rem;
 		color: var(--twrp-accent-color);
 		background-color: var(--twrp-background-color);
 		border: 1px solid var(--twrp-accent-color);
@@ -37,7 +37,7 @@
 	/* stylelint-disable no-descending-specificity */
 	&__btn:hover,
 	&__btn:focus {
-		padding-bottom: 0.3rem;
+		padding-bottom: 0.2rem;
 		outline: none;
 	}
 	/* stylelint-enable no-descending-specificity */

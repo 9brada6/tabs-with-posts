@@ -1,9 +1,9 @@
 // Variables:
 :root {
-	--twrp-block-margin-top: 0.5rem;
-	--twrp-block-margin-bottom: 1.5rem;
-	--twrp-title-font-size: 1.4rem;
-	--twrp-title-line-height: 1.2;
+	--twrp-block-margin-top: 0.4rem;
+	--twrp-block-margin-bottom: 1rem;
+	--twrp-title-font-size: 1.15rem;
+	--twrp-title-line-height: 1.3;
 	--twrp-title-line-clamp: 3;
 	--twrp-default-component-transition: color 250ms ease, background-color 250ms ease, font-size 250ms ease, margin 250ms ease, padding 250ms ease, width 250ms ease, height 250ms ease;
 }
@@ -56,6 +56,7 @@
 // Import the tab styles.
 @import 'tabs/twrp-tab.scss';
 @import 'tabs/twrp-tab-ss.scss';
+@import 'tabs/twrp-tab-bs.scss';
 
 // Article Blocks Styles
 @import 'article-blocks/twrp-ss';

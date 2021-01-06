@@ -21,8 +21,14 @@ class Button_Tabs extends Tab_Style {
 	}
 
 	public function start_tabs_wrapper() {
+
+		$additional_tab_class = '';
+		if ( 'inverse_colors' === $this->variant ) {
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'inverse-colors' );
+		}
+
 		?>
-		<div class="<?php $this->tab_class(); ?>">
+		<div class="<?php $this->tab_class(); ?><?= esc_attr( $additional_tab_class ); ?>">
 		<?php
 	}
 

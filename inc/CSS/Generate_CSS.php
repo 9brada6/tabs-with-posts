@@ -61,13 +61,26 @@ class Generate_CSS {
 			$secondary_accent_color = 'inherit';
 		}
 
+		$outline_accent_color = Color_Utils::set_opacity( $accent_color, 0.5 );
+		if ( ! is_string( $outline_accent_color ) ) {
+			$outline_accent_color = $accent_color;
+		}
+
 		echo '<style type="text/css">:root{' .
 			'--twrp-background-color: ' . esc_html( $background_color ) . ';' .
 			'--twrp-secondary-background-color: ' . esc_html( $secondary_background_color ) . ';' .
+
 			'--twrp-text-color: ' . esc_html( $text_color ) . ';' .
 			'--twrp-secondary-text-color: ' . esc_html( $secondary_text_color ) . ';' .
+
 			'--twrp-accent-color: ' . esc_html( $accent_color ) . ';' .
-			'--twrp-secondary=accent-color: ' . esc_html( $secondary_accent_color ) . ';' .
+			'--twrp-secondary-accent-color: ' . esc_html( $secondary_accent_color ) . ';' .
+
+			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
+
+			// todo: calculate the best color based on contrast.
+			'--twrp-accent-best-text-color: white;' .
+			'--twrp-secondary-accent-best-text-color: white;' .
 		'}</style>';
 	}
 }

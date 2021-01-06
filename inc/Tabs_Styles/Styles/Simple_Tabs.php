@@ -17,7 +17,7 @@ class Simple_Tabs extends Tab_Style {
 	}
 
 	public static function get_all_variants() {
-		return array( 'inverse_colors' => _x( 'Inverse Accent Colors', 'backend', 'twrp' ) );
+		return array();
 	}
 
 	public function start_tabs_wrapper() {

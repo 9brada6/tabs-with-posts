@@ -115,4 +115,3 @@ that does not exist, the gulp won't show an error, it just will not compile.
 
 - Make sure that all the styles for tabs exist.
 - Make sure that the style is tested(how?)
-- Make sure that all tabs are commented.

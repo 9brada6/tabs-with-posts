@@ -181,34 +181,44 @@ abstract class Tab_Style {
 
 	#region -- Tabby JavaScript attributes
 
+	/**
+	 * Echo the data for tabby btns wrapper.
+	 *
+	 * @return void
+	 */
 	protected function tabby_btns_data_attr() {
 		echo 'data-twrp-tabs-btns';
 	}
 
+	/**
+	 * Get the data for tabby default tab.
+	 *
+	 * @return string
+	 */
 	protected function get_tabby_default_tab_data_attr() {
 		return 'data-twrp-default-tab';
-	}
-
-	protected function tabby_btn_data_attr() {
-		echo 'data-twrp-tabs-btn';
-	}
-
-	protected function tabby_tabs_content_data_attr() {
-		echo 'data-twrp-tabs-content';
-	}
-
-	protected function tabby_tab_content_data_attr() {
-		echo 'data-twrp-tab-content';
 	}
 
 	#endregion -- Tabby JavaScript attributes
 
 	#region -- Tab Attribute Id Functions
 
+	/**
+	 * Echo the unique tab id.
+	 *
+	 * @param int|string $query_id
+	 * @return void
+	 */
 	protected function tab_id( $query_id ) {
 		echo esc_attr( $this->get_tab_id( $query_id ) );
 	}
 
+	/**
+	 * Get an unique tab id.
+	 *
+	 * @param int|string $query_id
+	 * @return string
+	 */
 	protected function get_tab_id( $query_id ) {
 		if ( $this->additional_instance > 1 ) {
 			return "twrp-tab-{$this->widget_id}-{$query_id}-{$this->additional_instance}";
@@ -221,31 +231,67 @@ abstract class Tab_Style {
 
 	#region -- Tab Attribute Class Functions
 
+	/**
+	 * Echo the must have classes for the tab.
+	 *
+	 * @return void
+	 */
 	public function tab_class() {
 		echo 'twrp-tab ';
 		$this->bem_class();
 	}
 
+	/**
+	 * Echo the class wrapper of the buttons.
+	 *
+	 * @return void
+	 */
 	public function tab_btns_class() {
 		$this->bem_class( 'btns-wrapper' );
 	}
 
+	/**
+	 * Echo the class of the button item.
+	 *
+	 * @return void
+	 */
 	public function tab_btn_item_class() {
 		$this->bem_class( 'btn-item' );
 	}
 
+	/**
+	 * Echo the class of the button.
+	 *
+	 * @return void
+	 */
 	public function tab_btn_class() {
 		$this->bem_class( 'btn' );
 	}
 
+	/**
+	 * Echo the class wrapper of the tabs.
+	 *
+	 * @return void
+	 */
 	public function tab_contents_wrapper_class() {
 		$this->bem_class( 'contents-wrapper' );
 	}
 
+	/**
+	 * Echo the class for a tab.
+	 *
+	 * @return void
+	 */
 	public function tab_content_class() {
 		$this->bem_class( 'content' );
 	}
 
+	/**
+	 * Get the BEM base class of the tab. See BEM_Class_Naming_Trait for more
+	 * info.
+	 *
+	 * @return string
+	 */
 	protected function get_bem_base_class() {
 		return 'twrp-tab';
 	}
