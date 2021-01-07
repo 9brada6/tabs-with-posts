@@ -48,12 +48,7 @@ it with twrpb or something like that.
 - ➕ Add in Date Query settings, a way to select posts from this week and this month, 3-7 days(easy).
 - ➕ Move all TypeScript display items(Query Settings) into a single one implementation.
 - ➕ When drag & drop a display item in query setting, add a replace item with the same dimension as the original item that is being dragged.
-
-## Read Before Development
-
-This documentation is split between packages.
-
-### TWRP\Admin\ Package
+- ➕ Backend typescript is compiled with strict: false option. Try to compile it with strict enable and remove any error.
 
 ## ✅ Todo
 
@@ -111,7 +106,12 @@ that does not exist, the gulp won't show an error, it just will not compile.
 - In tests, add coverage for each method.
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
 
-### Tab Style
+### Testing
 
-- Make sure that all the styles for tabs exist.
-- Make sure that the style is tested(how?)
+- Everything needs to be tested.
+
+## 📖 Development Documentation
+
+This documentation is split between packages.
+
+### TWRP\Admin\ Package

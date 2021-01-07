@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const gulp = require( 'gulp' );
 const sass = require( 'gulp-sass' );
 const watchify = require( 'watchify' );
@@ -16,6 +17,7 @@ const fs = require( 'fs' );
 const parser = require( 'fast-xml-parser' );
 const replace = require( 'gulp-replace' );
 const terser = require( 'gulp-terser' );
+/* eslint-enable no-undef */
 
 // const sourceMap = ! production;
 
@@ -46,6 +48,7 @@ const tsVars = {
 		watchifyOptions: {
 			ignoreWatch: [ '**/node_modules/**', '**/assets/src-frontend/**' ],
 		},
+		tsStrict: false,
 	},
 
 	frontend: {
@@ -56,6 +59,7 @@ const tsVars = {
 		watchifyOptions: {
 			ignoreWatch: [ '**/node_modules/**', '**/assets/src-backend/**' ],
 		},
+		tsStrict: true,
 	},
 };
 
@@ -122,7 +126,7 @@ function getBrowserify( type ) {
 	} ).transform( {
 		global: true,
 	}, 'browserify-shim' )
-		.plugin( tsify, { target: 'es5', esModuleInterop: true, lib: [ 'es2015', 'dom' ], strict: true } );
+		.plugin( tsify, { target: 'es5', esModuleInterop: true, lib: [ 'es2015', 'dom' ], strict: type.tsStrict } );
 }
 
 function bundleBrowserify( toBundle, type ) {
@@ -200,6 +204,7 @@ function validateXmlFiles() {
 
 // #endregion -- Create all icons file
 
+/* eslint-disable-next-line no-undef */
 exports.default = function() {
 	gulp.parallel( startScssWatch.bind( null, sassVars.backend ), startScssWatch.bind( null, sassVars.frontend ) )();
 	gulp.parallel( watchBrowserify.bind( null, tsVars.backend ), watchBrowserify.bind( null, tsVars.frontend ) )();
