@@ -91,14 +91,10 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - Custom date format, make it disabled(not to hide).
 - Remove per widget date format.
 - Make General_Setting_Creator and all of his subclass implement BEM... interface.
-- Change .pickr class.
 - The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make
 them work only on the specific widget selected.
 - Remove !important from block components css, and make sure that they work.
 - Remove the additional CSS that is added to each component, if no custom css is present.
-
-- In Gulp, when a SCSS file fail to compile, no error is displayed. Try to fix it. For example, if we add an import
-that does not exist, the gulp won't show an error, it just will not compile.
 
 ### Icons
 
