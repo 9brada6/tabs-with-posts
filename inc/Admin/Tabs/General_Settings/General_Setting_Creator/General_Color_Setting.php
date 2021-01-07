@@ -19,7 +19,7 @@ class General_Color_Setting extends General_Setting_Creator {
 			<?php if ( isset( $this->all_args['before'] ) ) : ?>
 				<span class="<?php $this->echo_bem_class( 'before-color' ); ?>"><?= esc_html( (string) $this->all_args['before'] ); ?></span>
 			<?php endif; ?>
-			<span class="twrp-color-picker"></span>
+			<span class="twrpb-color-picker"></span>
 		</div>
 		<?php
 	}

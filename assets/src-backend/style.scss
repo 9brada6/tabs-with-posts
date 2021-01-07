@@ -2,8 +2,8 @@
 @import '../src-common/style';
 
 // Documentation tab
-@import 'documentation-page/twrp-plugins-support';
-@import 'documentation-page/twrp-documentation-page';
+@import 'documentation-page/twrpb-plugins-support';
+@import 'documentation-page/twrpb-documentation-page';
 @import 'documentation-page/twrpb-licenses';
 @import 'documentation-page/twrpb-icons-spoiler';
 
@@ -28,9 +28,8 @@
 @import 'query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 
 // Widget blocks
-@import 'widget-blocks/twrp-widget-components';
-@import 'widget-blocks/twrp-widget-form';
-@import 'widget-blocks/twrp-widget-icon-preview';
+@import 'widget-blocks/twrpb-widget-components';
+@import 'widget-blocks/twrpb-widget-form';
 
 // Admin Blocks -- Needs to have higher precedence.
 @import 'admin-blocks/twrpb-admin/twrpb-admin';

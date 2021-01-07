@@ -32,15 +32,15 @@ class Number_Control implements Widget_Control {
 
 		$value = isset( $value ) && is_numeric( $value ) ? $value : $args['default'];
 		?>
-		<div class="twrp-widget-form__paragraph twrp-widget-form__paragraph-number-control">
+		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-number-control">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrp-widget-form__number-label-before" for="<?= esc_attr( $id ) ?>">
+				<span class="twrpb-widget-form__number-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 
 			<input id="<?= esc_attr( $id ) ?>"
-				class="twrp-widget-form__number-control"
+				class="twrpb-widget-form__number-control"
 				name="<?= esc_attr( $name ) ?>"
 				type="number"
 				step="<?= esc_attr( $args['step'] ) ?>"
@@ -50,7 +50,7 @@ class Number_Control implements Widget_Control {
 			/>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrp-widget-form__number-label-after" for="<?= esc_attr( $id ) ?>">
+				<span class="twrpb-widget-form__number-label-after" for="<?= esc_attr( $id ) ?>">
 					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>

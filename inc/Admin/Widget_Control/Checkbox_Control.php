@@ -31,9 +31,9 @@ class Checkbox_Control implements Widget_Control {
 
 		$current_value = isset( $current_value ) && is_string( $current_value ) ? $current_value : $args['default'];
 		?>
-		<div class="twrp-widget-form__paragraph twrp-widget-form__paragraph-checkbox-control">
+		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-checkbox-control">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrp-widget-form__checkbox-label-before" for="<?= esc_attr( $id ) ?>">
+				<span class="twrpb-widget-form__checkbox-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
@@ -48,7 +48,7 @@ class Checkbox_Control implements Widget_Control {
 			>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrp-widget-form__checkbox-label-after" for="<?= esc_attr( $id ) ?>">
+				<span class="twrpb-widget-form__checkbox-label-after" for="<?= esc_attr( $id ) ?>">
 					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>

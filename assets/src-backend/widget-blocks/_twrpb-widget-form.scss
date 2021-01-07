@@ -1,4 +1,4 @@
-.twrp-widget-form {
+.twrpb-widget-form {
 
 	// Select Query.
 	&__select-query-wrapper {
@@ -87,12 +87,16 @@
 	}
 }
 
-.twrp-widget-form--js-sync-settings {
-	.twrp-widget-form__selected-query ~ .twrp-widget-form__selected-query {
-		.twrp-widget-form__article-block-selector-wrapper,
-		.twrp-widget-form__query-description-title:not(:first-child),
-		.twrp-widget-form__style-separator,
-		.twrp-widget-form__article-block-settings-container {
+/**
+ * When widget queries settings are synced, we must hide all the settings except
+ * the ones from the first query.
+ */
+.twrpb-widget-form--js-sync-settings {
+	.twrpb-widget-form__selected-query ~ .twrpb-widget-form__selected-query {
+		.twrpb-widget-form__article-block-selector-wrapper,
+		.twrpb-widget-form__query-description-title:not(:first-child),
+		.twrpb-widget-form__style-separator,
+		.twrpb-widget-form__article-block-settings-container {
 			display: none;
 		}
 	}
@@ -101,6 +105,6 @@
 /**
  * Using default jQuery ui classes.
  */
-.ui-accordion-header-active .twrp-widget-form__accordion-indicator {
+.ui-accordion-header-active .twrpb-widget-form__accordion-indicator {
 	transform: rotate(90deg);
 }

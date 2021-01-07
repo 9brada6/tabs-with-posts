@@ -5,7 +5,7 @@ $( createWidgetTabs );
 $( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', createWidgetTabs );
 
 function createWidgetTabs() {
-	$( '.twrp-widget-components' ).tabs( {
+	$( '.twrpb-widget-components' ).tabs( {
 		active: 0,
 	} );
 }

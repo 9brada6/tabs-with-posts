@@ -10,7 +10,7 @@ use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 class Documentation_Tab implements Interface_Admin_Menu_Tab {
 	public function display_tab() {
 		?>
-		<div class="twrp-documentation-page">
+		<div class="twrpb-documentation-page">
 			<?php $this->display_views_plugin_support(); ?>
 			<?php
 			$icons_documentation = new Icons_Documentation();
@@ -38,14 +38,14 @@ class Documentation_Tab implements Interface_Admin_Menu_Tab {
 		$plugin_classes = Post_Views::get_plugin_classes();
 		$plugin_in_use  = Post_Views::get_plugin_to_use();
 		?>
-		<div class="twrp-plugins-support twrp-documentation-page__plugins-support twrp-plugins-support--views-plugin">
-			<div class="twrp-plugins-support__plugins-list-title-wrap">
-				<h2 class="twrp-plugins-support__plugins-list-title">
+		<div class="twrpb-plugins-support twrpb-documentation-page__plugins-support twrpb-plugins-support--views-plugin">
+			<div class="twrpb-plugins-support__plugins-list-title-wrap">
+				<h2 class="twrpb-plugins-support__plugins-list-title">
 					<?= _x( 'Views plugin support', 'backend', 'twrp' ); ?>
 				</h2>
 			</div>
 
-			<div class="twrp-plugins-support__plugins-list">
+			<div class="twrpb-plugins-support__plugins-list">
 				<?php
 				foreach ( $plugin_classes as $plugin ) {
 					$this->display_plugin_info( $plugin, $plugin_in_use );
@@ -65,35 +65,35 @@ class Documentation_Tab implements Interface_Admin_Menu_Tab {
 	 */
 	protected function display_plugin_info( $plugin, $plugin_in_use ) {
 		?>
-		<div class="twrp-plugins-support__plugin">
-			<div class="twrp-plugins-support__avatar-wrapper">
+		<div class="twrpb-plugins-support__plugin">
+			<div class="twrpb-plugins-support__avatar-wrapper">
 				<img src="<?= esc_url( $plugin::get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend image alt', 'twrp' ) ); ?>"/>
 			</div>
 
-			<div class="twrp-plugins-support__meta-wrapper">
-				<h3 class="twrp-plugins-support__plugin-title"><?= esc_html( $plugin::get_plugin_title() ); ?></h3>
+			<div class="twrpb-plugins-support__meta-wrapper">
+				<h3 class="twrpb-plugins-support__plugin-title"><?= esc_html( $plugin::get_plugin_title() ); ?></h3>
 
-				<p class="twrp-plugins-support__plugin-author-wrap">
+				<p class="twrpb-plugins-support__plugin-author-wrap">
 					<?= _x( 'Author:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin::get_plugin_author() ); ?>
 				</p>
 
-				<p class="twrp-plugins-support__plugin-version-wrap">
+				<p class="twrpb-plugins-support__plugin-version-wrap">
 					<?php
 					echo _x( 'Installed Version:', 'backend', 'twrp' ) . ' ';
 					$plugin_version = $plugin::get_plugin_version();
 					if ( false === $plugin_version ) {
-						echo '<span class="twrp-plugins-support__not-installed-text">';
+						echo '<span class="twrpb-plugins-support__not-installed-text">';
 						echo _x( 'Not Installed', 'backend', 'twrp' );
 						echo '</span>';
 					} else {
 						echo esc_html( $plugin_version );
 
 						if ( false === $plugin::is_installed_and_can_be_used() ) {
-							echo '<span class="twrp-plugins-support__not-active-text">';
+							echo '<span class="twrpb-plugins-support__not-active-text">';
 							echo ' (' . _x( 'Not Active', 'backend', 'twrp' ) . ')';
 							echo '</span>';
 						} elseif ( ( false !== $plugin_in_use ) && ( get_class( $plugin_in_use ) === get_class( $plugin ) ) ) {
-							echo '<span class="twrp-plugins-support__used-text">';
+							echo '<span class="twrpb-plugins-support__used-text">';
 							echo ' (' . _x( 'Used', 'backend', 'twrp' ) . ')';
 							echo '</span>';
 						}
@@ -101,7 +101,7 @@ class Documentation_Tab implements Interface_Admin_Menu_Tab {
 					?>
 				</p>
 
-				<p class="twrp-plugins-support__plugin-tested-version-wrap">
+				<p class="twrpb-plugins-support__plugin-tested-version-wrap">
 					<?= _x( 'Last tested version:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin::get_last_tested_plugin_version() ); ?>
 				</p>
 			</div>

@@ -6,7 +6,7 @@ $( createPicker );
 $( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', createPicker );
 
 function createPicker() {
-	const colorPickers = $( '.twrp-color-picker' );
+	const colorPickers = $( '.twrpb-color-picker' );
 
 	colorPickers.each( function() {
 		const element: any = this;
@@ -22,7 +22,7 @@ function createPicker() {
 			theme: 'classic',
 			container: 'body',
 			default: inputVal,
-			appClass: 'twrp-pickr',
+			appClass: 'twrpb-pickr',
 
 			swatches: [
 				'rgba(244, 67, 54, 1)',

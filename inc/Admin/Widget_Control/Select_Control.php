@@ -30,16 +30,16 @@ class Select_Control implements Widget_Control {
 
 		$selected_value = isset( $selected_value ) && is_string( $selected_value ) ? $selected_value : $args['default'];
 		?>
-		<div class="twrp-widget-form__paragraph twrp-widget-form__paragraph-select-control">
+		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-select-control">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrp-widget-form__select-label-before" for="<?= esc_attr( $id ) ?>">
+				<span class="twrpb-widget-form__select-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 
 			<select
 				id="<?= esc_attr( $id ) ?>"
-				class="twrp-widget-form__select-control"
+				class="twrpb-widget-form__select-control"
 				name="<?= esc_attr( $name ) ?>"
 			>
 				<?php foreach ( $args['options'] as $option_value => $display_value ) : ?>
@@ -50,7 +50,7 @@ class Select_Control implements Widget_Control {
 			</select>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrp-widget-form__select-label-after" for="<?= esc_attr( $id ) ?>">
+				<span class="twrpb-widget-form__select-label-after" for="<?= esc_attr( $id ) ?>">
 					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>

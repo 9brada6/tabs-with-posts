@@ -11,21 +11,21 @@ declare const ajaxurl: string;
 
 // #region -- Declaring all constants.
 
-const dataWidgetId = 'data-twrp-widget-id';
-const dataQueryId = 'data-twrp-query-id';
-const dataArtblockId = 'data-twrp-selected-artblock';
+const dataWidgetId = 'data-twrpb-widget-id';
+const dataQueryId = 'data-twrpb-query-id';
+const dataArtblockId = 'data-twrpb-selected-artblock';
 
-const queriesListSelector = '.twrp-widget-form__selected-queries-list';
-const queriesItemSelector = '.twrp-widget-form__selected-query';
+const queriesListSelector = '.twrpb-widget-form__selected-queries-list';
+const queriesItemSelector = '.twrpb-widget-form__selected-query';
 
-const queryAddSelector = '.twrp-widget-form__select-query-to-add-btn';
-const queryRemoveSelector = '.twrp-widget-form__remove-selected-query';
+const queryAddSelector = '.twrpb-widget-form__select-query-to-add-btn';
+const queryRemoveSelector = '.twrpb-widget-form__remove-selected-query';
 
-const queriesInputSelector = '.twrp-widget-form__selected-queries';
+const queriesInputSelector = '.twrpb-widget-form__selected-queries';
 
-const selectArticleBlockSelector = '.twrp-widget-form__article-block-selector';
+const selectArticleBlockSelector = '.twrpb-widget-form__article-block-selector';
 
-const articleBlockSettingsContainerSelector = '.twrp-widget-form__article-block-settings-container';
+const articleBlockSettingsContainerSelector = '.twrpb-widget-form__article-block-settings-container';
 
 // #endregion -- Declaring all constants.
 
@@ -38,9 +38,9 @@ $( document ).on( 'click', queryAddSelector, handleAddQueryButton );
  * modify its settings.
  */
 function handleAddQueryButton(): void {
-	const widgetWrapper = $( this ).closest( '.twrp-widget-form' );
+	const widgetWrapper = $( this ).closest( '.twrpb-widget-form' );
 	const widgetId = widgetWrapper.attr( dataWidgetId );
-	const queryId = String( widgetWrapper.find( '.twrp-widget-form__select-query-to-add' ).val() );
+	const queryId = String( widgetWrapper.find( '.twrpb-widget-form__select-query-to-add' ).val() );
 
 	addQueryToListIfDoNotExist( widgetId, queryId );
 }
@@ -63,7 +63,7 @@ async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|num
 		url: ajaxurl,
 		method: 'POST',
 		data: {
-			action: 'twrp_widget_create_query_setting',
+			action: 'twrpb_widget_create_query_setting',
 			widget_id: widgetId,
 			query_id: queryId,
 			nonce: ajaxNonce,
@@ -76,7 +76,7 @@ async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|num
 				// from multiple events.
 				if ( data.length >= 25 && ! queryExistInList( widgetId, queryId ) ) {
 					const widget = getWidgetWrapperById( widgetId );
-					const queriesList = widget.find( '.twrp-widget-form__selected-queries-list' );
+					const queriesList = widget.find( '.twrpb-widget-form__selected-queries-list' );
 					queriesList.append( data );
 					updateQueriesInput( widgetId );
 					makeAllQueriesCollapsible();
@@ -309,7 +309,7 @@ function getArticleBlockSettings( widgetId: string, queryId: string|number, artb
 		url: ajaxurl,
 		method: 'POST',
 		data: {
-			action: 'twrp_widget_create_artblock_settings',
+			action: 'twrpb_widget_create_artblock_settings',
 			artblock_id: artblockId,
 			widget_id: widgetId,
 			query_id: queryId,

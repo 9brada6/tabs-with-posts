@@ -24,8 +24,8 @@ class Widget_Ajax {
 	 * @return void
 	 */
 	public static function after_setup_theme_init() {
-		add_action( 'wp_ajax_twrp_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
-		add_action( 'wp_ajax_twrp_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
+		add_action( 'wp_ajax_twrpb_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
+		add_action( 'wp_ajax_twrpb_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
 
 		add_action( 'admin_footer', self::class . '::enqueue_nonce' );
 	}

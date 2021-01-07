@@ -22,9 +22,9 @@ import './query-settings/twrpb-search-setting/twrpb-search-setting';
 import './query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 
 // Widget Blocks
-import './widget-blocks/twrp-widget-form';
-import './widget-blocks/twrp-widget-components';
+import './widget-blocks/twrpb-widget-form';
+import './widget-blocks/twrpb-widget-components';
 import './widget-blocks/twrpb-sync-widget-query-settings';
-import './widget-blocks/twrp-color-picker';
+import './widget-blocks/twrpb-color-picker';
 
 export default {};

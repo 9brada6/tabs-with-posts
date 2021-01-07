@@ -4,11 +4,11 @@
 
 import $ from 'jquery';
 
-const widgetFormSelector = '.twrp-widget-form';
-const queryTabSettingsSelector = '.twrp-widget-form__selected-query';
+const widgetFormSelector = '.twrpb-widget-form';
+const queryTabSettingsSelector = '.twrpb-widget-form__selected-query';
 
 // #region -- Update what widgets to sync.
-// The widgets that are marked to sync have twrp-widget-form--js-sync-settings class name.
+// The widgets that are marked to sync have twrpb-widget-form--js-sync-settings class name.
 
 $( updateAllWidgetSyncClasses );
 $( document ).on( 'widget-updated widget-added', updateAllWidgetSyncClasses );
@@ -28,11 +28,11 @@ function updateAllWidgetSyncClasses() {
 }
 
 function addSyncClassToWidget( widget ) {
-	widget.addClass( 'twrp-widget-form--js-sync-settings' );
+	widget.addClass( 'twrpb-widget-form--js-sync-settings' );
 }
 
 function removeSyncClassFromWidget( widget ) {
-	widget.removeClass( 'twrp-widget-form--js-sync-settings' );
+	widget.removeClass( 'twrpb-widget-form--js-sync-settings' );
 }
 
 // #endregion -- Update what widgets to sync.
@@ -53,7 +53,7 @@ function handleSyncButtonEnabled() {
 
 // #region -- Sync all settings for a widget
 
-$( document ).on( 'twrpb-query-added twrpb-artblock-added', '.twrp-widget-form--js-sync-settings', handleQueryOrArtblockAdded );
+$( document ).on( 'twrpb-query-added twrpb-artblock-added', '.twrpb-widget-form--js-sync-settings', handleQueryOrArtblockAdded );
 
 function handleQueryOrArtblockAdded() {
 	const widget = $( this );
@@ -88,11 +88,11 @@ function syncAllWidgetSettings( widget: JQuery ): void {
 
 addDocumentEvents();
 function addDocumentEvents() {
-	$( document ).on( 'change', '.twrp-widget-form--js-sync-settings' + ' ' + queryTabSettingsSelector, syncTheSetting );
+	$( document ).on( 'change', '.twrpb-widget-form--js-sync-settings' + ' ' + queryTabSettingsSelector, syncTheSetting );
 }
 
 function removeDocumentEvents() {
-	$( document ).off( 'change', '.twrp-widget-form--js-sync-settings' + ' ' + queryTabSettingsSelector, syncTheSetting );
+	$( document ).off( 'change', '.twrpb-widget-form--js-sync-settings' + ' ' + queryTabSettingsSelector, syncTheSetting );
 }
 
 function syncTheSetting( event ) {
@@ -250,7 +250,7 @@ function triggerAllChanges( elementName: JQuery, allSimilarQuerySettings : JQuer
  * hidden input before, to submit something to the server.
  */
 function getElementChangedType( settingElement ): string {
-	if ( settingElement.attr( 'type' ) === 'hidden' && settingElement.next( '.pickr, .twrp-color-picker' ).length ) {
+	if ( settingElement.attr( 'type' ) === 'hidden' && settingElement.next( '.pickr, .twrpb-color-picker' ).length ) {
 		return 'color';
 	} else if ( settingElement.attr( 'type' ) === 'hidden' && settingElement.next( '[type="checkbox"]' ).length === 0 ) {
 		return 'hidden';

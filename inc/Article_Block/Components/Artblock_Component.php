@@ -235,19 +235,19 @@ class Artblock_Component {
 	 */
 	public static function display_components( $components ) {
 		?>
-		<div class="twrp-widget-components">
-			<ul class="twrp-widget-components__tab-buttons">
+		<div class="twrpb-widget-components">
+			<ul class="twrpb-widget-components__tab-buttons">
 				<?php foreach ( $components as $component ) : ?>
-					<li class="twrp-widget-components__btn-wrapper">
-						<a class="twrp-widget-components__btn" href="<?= esc_attr( '#' . $component->get_html_id_attr() ); ?>">
+					<li class="twrpb-widget-components__btn-wrapper">
+						<a class="twrpb-widget-components__btn" href="<?= esc_attr( '#' . $component->get_html_id_attr() ); ?>">
 						<?= esc_html( $component->get_component_title() ); ?>
 						</a>
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<div class="twrp-widget-components__components">
+			<div class="twrpb-widget-components__components">
 				<?php foreach ( $components as $component ) : ?>
-					<div id="<?= esc_attr( $component->get_html_id_attr() ); ?>" class="twrp-widget-components__component-wrapper">
+					<div id="<?= esc_attr( $component->get_html_id_attr() ); ?>" class="twrpb-widget-components__component-wrapper">
 						<?php $component->display_component_settings(); ?>
 					</div>
 				<?php endforeach; ?>
@@ -262,7 +262,7 @@ class Artblock_Component {
 	 * @return string
 	 */
 	public function get_html_id_attr() {
-		return 'twrp-widget-components__' . $this->widget_id . '-' . $this->query_id . '-' . $this->name;
+		return 'twrpb-widget-components__' . $this->widget_id . '-' . $this->query_id . '-' . $this->name;
 	}
 
 	/**

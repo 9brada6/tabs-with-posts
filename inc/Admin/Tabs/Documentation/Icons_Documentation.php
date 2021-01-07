@@ -41,7 +41,7 @@ class Icons_Documentation {
 		$title_and_icons = $this->get_title_and_icons();
 
 		?>
-		<div id="twrp-documentation-page__all-icons-reference" class="twrpb-icons-spoiler twrp-documentation-page__icons-spoiler-wrapper">
+		<div id="twrpb-documentation-page__all-icons-reference" class="twrpb-icons-spoiler twrpb-documentation-page__icons-spoiler-wrapper">
 			<h3><?= _x( 'All icons reference', 'backend', 'twrp' ); ?></h3>
 			<?php foreach ( $title_and_icons as $category => $title_and_icon ) : ?>
 			<div class="twrpb-icons-spoiler__category">

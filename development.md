@@ -49,6 +49,7 @@ it with twrpb or something like that.
 - ➕ Move all TypeScript display items(Query Settings) into a single one implementation.
 - ➕ When drag & drop a display item in query setting, add a replace item with the same dimension as the original item that is being dragged.
 - ➕ Backend typescript is compiled with strict: false option. Try to compile it with strict enable and remove any error.
+- ➕ Try to change the .pickr class of the color selection. Other plugins might use .pickr and change our CSS.
 
 ## ✅ Todo
 
@@ -87,7 +88,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 - There should be a function for human diff in Utilities.
 - Remove twrp_get_name and id from widget utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
-- Change all "twrp" css/classes backend prefix with "twrpb"
 - Custom date format, make it disabled(not to hide).
 - Remove per widget date format.
 - Make General_Setting_Creator and all of his subclass implement BEM... interface.

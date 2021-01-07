@@ -61,7 +61,7 @@ class Widget_Form {
 	public function display_form() {
 		$queries = Query_Options::get_all_queries();
 		?>
-		<div class="<?php $this->bem_class(); ?>" data-twrp-widget-id=<?= esc_attr( (string) $this->widget_id ); ?> >
+		<div class="<?php $this->bem_class(); ?>" data-twrpb-widget-id=<?= esc_attr( (string) $this->widget_id ); ?> >
 			<?php
 			if ( empty( $queries ) ) {
 				$this->display_no_queries_exist();
@@ -235,7 +235,7 @@ class Widget_Form {
 		$delete_button_text       = _x( 'Delete', 'backend', 'twrp' );
 		$delete_button_aria_label = _x( 'Delete this tab', 'backend', 'twrp' );
 		?>
-		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrp-query-id="<?= esc_attr( (string) $query_id ); ?>">
+		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrpb-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="<?php $this->bem_class( 'selected-query-title' ); ?>">
 				<span class="<?php $this->bem_class( 'accordion-indicator' ); ?>"></span>
 				<?= esc_attr( Query_Options::get_query_display_name( $query_id ) ); ?>
@@ -365,7 +365,7 @@ class Widget_Form {
 		$artblock->sanitize_widget_settings();
 
 		?>
-		<div class="twrp-widget-form__article-block-settings" data-twrp-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
+		<div class="twrpb-widget-form__article-block-settings" data-twrpb-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
 			<?php $artblock->display_form_settings(); ?>
 		</div>
 		<?php
@@ -391,7 +391,7 @@ class Widget_Form {
 	 * @return string
 	 */
 	protected function get_bem_base_class() {
-		return 'twrp-widget-form';
+		return 'twrpb-widget-form';
 	}
 
 	#endregion -- Bem CSS classes.
