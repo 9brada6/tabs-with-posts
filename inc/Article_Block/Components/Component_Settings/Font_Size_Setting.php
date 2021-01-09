@@ -70,7 +70,7 @@ class Font_Size_Setting implements Component_Setting {
 	 */
 	public static function get_css( $value ) {
 		if ( is_numeric( $value ) ) {
-			return "font-size:${value}rem !important;";
+			return "font-size:${value}rem;";
 		}
 
 		return '';

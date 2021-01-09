@@ -46,7 +46,7 @@ class Simple_Article_Block extends Article_Block {
 		$title_component_settings = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
 		$title_css_components     = array(
 			$block_class . ' .twrp-ss__title' => Artblock_Component::TEXT_SETTINGS,
-			$block_class . ' .twrp-ss__link:hover .twrp-ss__title' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$block_class . ' .twrp-ss__link-expanded:hover .twrp-ss__title' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
 		$title_component          = new Artblock_Component( $this->widget_id, $this->query_id, 'title', _x( 'Title', 'backend', 'twrp' ), $title_component_settings, $title_css_components );
 		$components ['title']     = $title_component;
@@ -59,7 +59,7 @@ class Simple_Article_Block extends Article_Block {
 
 		$date_css_components = array(
 			$block_class . ' .twrp-ss__date' => Artblock_Component::TEXT_SETTINGS,
-			$block_class . ' .twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$block_class . ' .twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
 
 		$date_component      = new Artblock_Component( $this->widget_id, $this->query_id, 'date', _x( 'Date', 'backend', 'twrp' ), $date_component_current_settings, $date_css_components );
@@ -71,7 +71,7 @@ class Simple_Article_Block extends Article_Block {
 
 		$author_css_components = array(
 			$block_class . ' .twrp-ss__author' => Artblock_Component::TEXT_SETTINGS,
-			$block_class . ' .twrp-ss__link:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$block_class . ' .twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
 
 		$author_component_current_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();

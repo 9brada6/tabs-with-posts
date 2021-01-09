@@ -90,7 +90,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 - Make General_Setting_Creator and all of his subclass implement BEM... interface.
 - The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make them work only on the specific widget selected.
-- Remove !important from block components css, and make sure that they work.
 - Remove the additional CSS that is added to each component, if no custom css is present.
 
 ### Icons
