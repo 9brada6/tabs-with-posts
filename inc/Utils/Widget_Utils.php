@@ -13,57 +13,6 @@ use TWRP\Database\Query_Options;
 class Widget_Utils {
 
 	/**
-	 * For a widget id, return the widget instance.
-	 *
-	 * @throws RuntimeException If the widget id does not exist or is not valid.
-	 *
-	 * @param int $widget_id
-	 * @return Widget|null
-	 */
-	/*
-	  public static function get_widget_instance_by_id( $widget_id ) {
-		if ( ! ( $widget_id > 0 ) ) {
-			throw new RuntimeException();
-		}
-
-		$settings = self::get_instance_settings( $widget_id );
-
-		if ( empty( $settings ) ) {
-			return null;
-		}
-
-		global $wp_widget_factory;
-
-		if ( ! isset( $wp_widget_factory->widgets['TWRP\\TWRP_Widget\\Widget'] ) ) {
-			return null;
-		}
-
-		// TODO:
-		// $widget_obj = $wp_widget_factory->widgets[ $widget ];
-		// if ( ! ( $widget_obj instanceof WP_Widget ) ) {
-		// return;
-		// }
-
-		// $default_args              = array(
-		// 'before_widget' => '<div class="widget %s">',
-		// 'after_widget'  => '</div>',
-		// 'before_title'  => '<h2 class="widgettitle">',
-		// 'after_title'   => '</h2>',
-		// );
-		// $settings                  = wp_parse_args( $settings, $default_args );
-		// $settings['before_widget'] = sprintf( $settings['before_widget'], $widget_obj->widget_options['classname'] );
-
-		// $instance = wp_parse_args( $instance );
-
-		// if ( false === $instance ) {
-		// return;
-		// }
-
-		// $widget_obj->_set( -1 );
-		return $widget_instance;
-	} */
-
-	/**
 	 * Try to get the tab style id and the variant id used for a specific query
 	 * id.
 	 *

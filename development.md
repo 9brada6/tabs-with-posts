@@ -50,6 +50,7 @@ it with twrpb or something like that.
 - ➕ When drag & drop a display item in query setting, add a replace item with the same dimension as the original item that is being dragged.
 - ➕ Backend typescript is compiled with strict: false option. Try to compile it with strict enable and remove any error.
 - ➕ Try to change the .pickr class of the color selection. Other plugins might use .pickr and change our CSS.
+- ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
 
 ## ✅ Todo
 
@@ -78,7 +79,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Widget
 
-- Add regions is typescript files
 - Add margin between before/after text and control.
 - Add label and for attribute for checkbox control.
 - Test a SVG color icon to see if the "fill" property will change it.
@@ -86,13 +86,10 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### General
 
 - There should be a function for human diff in Utilities.
-- Remove twrp_get_name and id from widget utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
-- Custom date format, make it disabled(not to hide).
-- Remove per widget date format.
+
 - Make General_Setting_Creator and all of his subclass implement BEM... interface.
-- The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make
-them work only on the specific widget selected.
+- The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make them work only on the specific widget selected.
 - Remove !important from block components css, and make sure that they work.
 - Remove the additional CSS that is added to each component, if no custom css is present.
 

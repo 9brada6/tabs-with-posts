@@ -130,7 +130,6 @@ class General_Settings_Factory {
 			General_Options::SECONDARY_BACKGROUND_COLOR => self::COLOR_SETTING_CLASS,
 			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
 			General_Options::SECONDARY_ACCENT_COLOR     => self::COLOR_SETTING_CLASS,
-			General_Options::PER_WIDGET_DATE_FORMAT     => self::RADIO_SETTING_CLASS,
 			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
 			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
 			General_Options::AUTHOR_ICON                => self::SELECT_SETTING_CLASS,
@@ -161,7 +160,6 @@ class General_Settings_Factory {
 			General_Options::SECONDARY_TEXT_COLOR       => 'get_secondary_text_color_setting_args',
 			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
 			General_Options::SECONDARY_BACKGROUND_COLOR => 'get_secondary_background_color_setting_args',
-			General_Options::PER_WIDGET_DATE_FORMAT     => 'get_per_widget_date_format_setting_args',
 			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
 			General_Options::DATE_FORMAT                => 'get_date_format_setting_args',
 			General_Options::AUTHOR_ICON                => 'get_author_icon_setting_args',
@@ -180,22 +178,6 @@ class General_Settings_Factory {
 	#endregion -- Get an array with each setting name correlated to a class name or argument retrieved method.
 
 	#region -- Methods to get setting arguments for each of the setting available.
-
-	/**
-	 * Return the arguments of the setting to enable date format selection per widget.
-	 *
-	 * @return array
-	 */
-	protected static function get_per_widget_date_format_setting_args() {
-		return array(
-			'title'   => _x( 'Get an additional option for each widget tab to select date format individually?', 'backend', 'twrp' ),
-			'options' => array(
-				'true'  => __( 'Yes', 'twrp' ),
-				'false' => __( 'No', 'twrp' ),
-			),
-			'default' => General_Options::get_default_setting( General_Options::PER_WIDGET_DATE_FORMAT ),
-		);
-	}
 
 	/**
 	 * Return the arguments of the setting to enable/disable human readable date format.

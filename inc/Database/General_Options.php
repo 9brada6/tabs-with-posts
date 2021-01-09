@@ -38,8 +38,6 @@ class General_Options {
 
 	#region -- Date Keys
 
-	const PER_WIDGET_DATE_FORMAT = 'Per_Widget_Date_Format';
-
 	const HUMAN_READABLE_DATE = 'Human_Readable_Date';
 
 	const DATE_FORMAT = 'Date_Format';
@@ -101,7 +99,6 @@ class General_Options {
 			self::SECONDARY_TEXT_COLOR,
 			self::BACKGROUND_COLOR,
 			self::SECONDARY_BACKGROUND_COLOR,
-			self::PER_WIDGET_DATE_FORMAT,
 			self::HUMAN_READABLE_DATE,
 			self::DATE_FORMAT,
 			self::AUTHOR_ICON,

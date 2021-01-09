@@ -48,7 +48,6 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
-					General_Settings_Factory::display_setting( General_Options::PER_WIDGET_DATE_FORMAT );
 					General_Settings_Factory::display_setting( General_Options::HUMAN_READABLE_DATE );
 					General_Settings_Factory::display_setting( General_Options::DATE_FORMAT );
 					?>

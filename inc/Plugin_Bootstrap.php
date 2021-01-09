@@ -122,7 +122,6 @@ class Plugin_Bootstrap {
 		'Database\General_Options_Settings\Secondary_Text_Color',
 		'Database\General_Options_Settings\Background_Color',
 		'Database\General_Options_Settings\Secondary_Background_Color',
-		'Database\General_Options_Settings\Per_Widget_Date_Format',
 		'Database\General_Options_Settings\Human_Readable_Date',
 		'Database\General_Options_Settings\Date_Format',
 		'Database\General_Options_Settings\Author_Icon',
