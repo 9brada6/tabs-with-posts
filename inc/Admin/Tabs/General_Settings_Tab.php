@@ -24,10 +24,10 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 			<?php
 			if ( self::are_settings_submitted() ) {
 				if ( self::is_nonce_correct() ) {
-					self::settings_submitted_message();
+					self::settings_submitted_success_message();
 					self::save_settings_submitted();
 				} else {
-					// todo.
+					wp_nonce_ays( 'twrp_general_submit_nonce' );
 				}
 			}
 			?>
@@ -92,10 +92,10 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 	 *
 	 * @return void
 	 */
-	protected static function settings_submitted_message() {
+	protected static function settings_submitted_success_message() {
 		?>
-		<div class="twrpb-general-settings__success-submitted-wrapper">
-			<?= _x( 'Settings successfully saved.', 'backend', 'twrp' ); ?>
+		<div class="twrpb-general-settings__success-submitted-wrapper twrpb-notification twrpb-notification--success">
+			<?= _x( 'Settings saved successfully.', 'backend', 'twrp' ); ?>
 		</div>
 		<?php
 	}
@@ -131,7 +131,7 @@ class General_Settings_Tab implements Interface_Admin_Menu_Tab {
 		?>
 		<div class="twrpb-general-settings__submit-btn-wrapper">
 			<?php wp_nonce_field( 'twrp_general_submit_nonce', 'twrp_general_nonce', true, true ); ?>
-			<button id="twrpb-general-settings__submit-btn" class="twrpb-general-settings__submit-btn" type="submit" name="submit" value="submit">
+			<button id="twrpb-general-settings__submit-btn" class="twrpb-general-settings__submit-btn twrpb-button twrpb-button--save twrpb-button--large" type="submit" name="submit" value="submit">
 				<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
 			</button>
 		</div>

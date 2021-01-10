@@ -51,6 +51,7 @@ it with twrpb or something like that.
 - ➕ Backend typescript is compiled with strict: false option. Try to compile it with strict enable and remove any error.
 - ➕ Try to change the .pickr class of the color selection. Other plugins might use .pickr and change our CSS.
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
+- ➕ When a query is saved or deleted, in the save or delete notification, also add the name, if possible.
 
 ## ✅ Todo
 
@@ -61,9 +62,6 @@ will interact if they are both set. This warning should be shown only if they ar
 
 - Add a lot of notices in order by setting. Some ideas: if orderby comments is
 set in asc order. If only order by comments is set, then suggest to add orderby date.
-
-- Add a nice "Settings successfully saved" or "deleted" message.
-
 - Add in documentation examples on how to use advanced arguments and what query filters to use.
 - Order: maybe add more orders, like post__in?.
 

@@ -98,11 +98,8 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 			if ( $this->edit_nonce_is_valid() ) {
 				$modify_query_settings = new Modify_Query_Settings();
 				$modify_query_settings->update_form_submitted_settings();
-				/**
-				 * @todo
-				 */
-				echo _x( 'Settings saved', 'backend', 'twrp' );
-				$this->display_existing_queries_page();
+
+				$this->display_existing_queries_page( 'add-query-saved-notification' );
 				return;
 			} else {
 				wp_nonce_ays( self::NONCE_EDIT_ACTION );
@@ -110,11 +107,14 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 		}
 
 		if ( $this->delete_button_clicked() ) {
-			/**
-			 * @todo
-			 */
-			echo _x( 'Deleted Setting', 'backend', 'twrp' );
-			$this->execute_delete_query_action();
+			if ( $this->verify_delete_nonce() ) {
+				$this->execute_delete_query_action();
+
+				$this->display_existing_queries_page( 'add-query-deleted-notification' );
+				return;
+			} else {
+				wp_nonce_ays( self::NONCE_DELETE_ACTION );
+			}
 		}
 
 		if ( $this->edit_query_screen_is_displayed() ) {
@@ -129,13 +129,23 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 	/**
 	 * Creates a table that display the existing queries.
 	 *
+	 * @param 'add-query-saved-notification'|'add-query-deleted-notification'|'' $additional_notification
+	 * An additional notification box to add before displaying the table.
 	 * @return void
 	 */
-	public function display_existing_queries_page() {
+	public function display_existing_queries_page( $additional_notification = '' ) {
 		$delete_query_confirmation_message = _x( 'Are you sure that do you want to delete this query?', 'backend', 'twrp' );
 		$existing_queries_table            = new Query_Existing_Table();
 		?>
 		<div class="<?php $this->bem_class(); ?>">
+			<?php
+			if ( 'add-query-saved-notification' === $additional_notification ) {
+				$this->display_successfully_query_saved_message();
+			} elseif ( 'add-query-deleted-notification' === $additional_notification ) {
+				$this->display_successfully_query_deleted_message();
+			}
+			?>
+
 			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
 			<div id="<?php $this->bem_class( 'before-deleting-confirmation' ); ?>" style="display:none" data-twrpb-query-delete-confirm="<?= esc_attr( $delete_query_confirmation_message ) ?>"></div>
 			<?php
@@ -262,6 +272,22 @@ class Queries_Tab implements Interface_Admin_Menu_Tab {
 				Query_Options::delete_query( $key );
 			}
 		}
+	}
+
+	protected function display_successfully_query_saved_message() {
+		?>
+		<div class="<?php $this->bem_class( 'notification' ); ?> twrpb-notification twrpb-notification--success">
+			<?= _x( 'Settings saved successfully.', 'backend', 'twrp' ); ?>
+		</div>
+		<?php
+	}
+
+	protected function display_successfully_query_deleted_message() {
+		?>
+		<div class="<?php $this->bem_class( 'notification' ); ?> twrpb-notification twrpb-notification--success">
+			<?= _x( 'Query deleted successfully.', 'backend', 'twrp' ); ?>
+		</div>
+		<?php
 	}
 
 	#endregion -- Existing Queries Table Methods
