@@ -121,6 +121,7 @@ function twrp_enqueue_admin() {
 
 	$script_url = plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' );
 	wp_enqueue_script( 'twrp-backend', $script_url, array( 'jquery', 'wp-api' ), '1.0.0', true );
+	wp_localize_script( 'twrp-backend', 'TwrpPickrTranslations', get_pickr_translations() );
 
 	wp_enqueue_style( 'twrp-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
 	wp_enqueue_style( 'twrp-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/material-darker.css' ), array(), '1.0.0', 'all' );
@@ -154,6 +155,34 @@ function twrp_enqueue() {
 	wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), '1.0.0', true );
 }
 add_action( 'wp_enqueue_scripts', 'twrp_enqueue', 100 );
+
+/**
+ * Get an array with translations that is needed to be used in the pickr color
+ * picker.
+ *
+ * @return array
+ */
+function get_pickr_translations() {
+	return array(
+		// Strings visible in the UI.
+		'ui:dialog'       => _x( 'color picker dialog', 'backend', 'twrp' ),
+		'btn:toggle'      => _x( 'toggle color picker dialog', 'backend', 'twrp' ),
+		'btn:swatch'      => _x( 'color swatch', 'backend', 'twrp' ),
+		'btn:last-color'  => _x( 'use previous color', 'backend', 'twrp' ),
+		'btn:save'        => _x( 'Save', 'backend', 'twrp' ),
+		'btn:cancel'      => _x( 'Cancel', 'backend', 'twrp' ),
+		'btn:clear'       => _x( 'Clear', 'backend', 'twrp' ),
+
+		// Strings used for aria-labels.
+		'aria:btn:save'   => _x( 'save and close', 'backend, screen reader text', 'twrp' ),
+		'aria:btn:cancel' => _x( 'cancel and close', 'backend, screen reader text', 'twrp' ),
+		'aria:btn:clear'  => _x( 'clear and close', 'backend, screen reader text', 'twrp' ),
+		'aria:input'      => _x( 'color input field', 'backend, screen reader text', 'twrp' ),
+		'aria:palette'    => _x( 'color selection area', 'backend, screen reader text', 'twrp' ),
+		'aria:hue'        => _x( 'hue selection slider', 'backend, screen reader text', 'twrp' ),
+		'aria:opacity'    => _x( 'selection slider', 'backend, screen reader text', 'twrp' ),
+	);
+}
 
 /**
  * @todo: Move and comment.
@@ -236,32 +265,6 @@ function twrp_enqueue_scripts_debug() {
 	$wp_query = new WP_Query();
 	$queries  = $wp_query->query( $args );
 	\Debug\console_dump( $queries, 'Custom get posts' );
-
-	$color = Color_Utils::is_rgba_color( 'rgba(255, 0, 0, 1)' );
-	if ( ! $color ) {
-		$color = 'false';
-	}
-	\Debug\console_dump( $color, 'Color' );
-
-	$color = 'rgba(255, 0, 0, 1)';
-	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
-	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
-
-	$color = 'rgba(0, 0, 0, 1)';
-	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
-	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
-
-	$color = 'rgba(255, 255, 255, 1)';
-	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
-	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
-
-	$color = 'rgba(54, 43, 23, 0.234)';
-	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
-	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
-
-	$color = 'rgba(240, 240, 240, 0.4)';
-	\Debug\console_dump( $color . ' -15', Color_Utils::adjust_brightness( $color, -15 ) );
-	\Debug\console_dump( $color . ' +15', Color_Utils::adjust_brightness( $color, 15 ) );
 
 	// Widget_Utils::get_widget_instance_by_id( 2 );
 

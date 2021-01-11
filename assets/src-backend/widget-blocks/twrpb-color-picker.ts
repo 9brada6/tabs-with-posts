@@ -1,12 +1,18 @@
 import $ from 'jquery';
 
 declare const Pickr: any;
+declare const TwrpPickrTranslations: any;
 
 $( createPicker );
 $( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', createPicker );
 
 function createPicker() {
 	const colorPickers = $( '.twrpb-color-picker' );
+
+	let translations = [];
+	if ( typeof TwrpPickrTranslations === 'object' ) {
+		translations = TwrpPickrTranslations;
+	}
 
 	colorPickers.each( function() {
 		const element: any = this;
@@ -23,6 +29,7 @@ function createPicker() {
 			container: 'body',
 			default: inputVal,
 			appClass: 'twrpb-pickr',
+			i18n: translations,
 
 			swatches: [
 				'rgba(244, 67, 54, 1)',
