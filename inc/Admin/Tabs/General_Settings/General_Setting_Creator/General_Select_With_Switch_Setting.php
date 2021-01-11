@@ -44,8 +44,8 @@ class General_Select_With_Switch_Setting extends General_Select_Setting {
 		$disabled_aria_label = _x( 'No', 'backend', 'twrp' );
 
 		?>
-		<div class="<?php $this->echo_bem_class( 'switch-wrapper' ); ?>">
-			<div class="twrpb-switch <?php $this->echo_bem_class( 'switch' ); ?>">
+		<div class="<?php $this->bem_class( 'switch-wrapper' ); ?>">
+			<div class="twrpb-switch <?php $this->bem_class( 'switch' ); ?>">
 				<input
 					id="<?= esc_attr( $this->get_settings_attr_id( 'false' ) ); ?>"
 					class="twrpb-switch__input" type="radio"
@@ -67,7 +67,7 @@ class General_Select_With_Switch_Setting extends General_Select_Setting {
 					<label for="<?= esc_attr( $this->get_settings_attr_id( 'true' ) ); ?>" class="twrpb-switch__slider-label-enabled" aria-label="<?= esc_attr( $enabled_aria_label ); ?>"></label>
 				</span>
 			</div>
-			<div class="<?php $this->echo_bem_class( 'switch-title' ); ?>">
+			<div class="<?php $this->bem_class( 'switch-title' ); ?>">
 				<?= esc_html( $switch_title ); ?>
 			</div>
 		</div>

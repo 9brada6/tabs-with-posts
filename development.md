@@ -84,8 +84,6 @@ to make another get_plugin_file_relative_path for MU plugins?.
 ### General
 
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
-- Make General_Setting_Creator and all of his subclass implement BEM... interface.
-- The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make them work only on the specific widget selected.
 - Remove the additional CSS that is added to each component, if no custom css is present.
 
 ### Icons

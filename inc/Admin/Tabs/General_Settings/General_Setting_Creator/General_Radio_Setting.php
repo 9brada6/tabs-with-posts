@@ -16,13 +16,13 @@ class General_Radio_Setting extends General_Setting_Creator {
 
 	protected function display_internal_setting() {
 		?>
-		<div class="<?php $this->echo_bem_class( 'checkboxes' ); ?>">
+		<div class="<?php $this->bem_class( 'checkboxes' ); ?>">
 			<?php foreach ( $this->options as $option_value => $text ) : ?>
 				<?php
 					$radio_id = $this->get_settings_attr_id( $option_value );
 					$checked  = ( $option_value === $this->value ? ' checked' : '' );
 				?>
-				<span class="<?php $this->echo_bem_class( 'selection' ); ?>">
+				<span class="<?php $this->bem_class( 'selection' ); ?>">
 					<input
 						id="<?= esc_attr( $radio_id ); ?>"
 						type="radio"

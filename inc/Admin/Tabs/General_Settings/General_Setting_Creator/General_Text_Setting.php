@@ -16,7 +16,7 @@ class General_Text_Setting extends General_Setting_Creator {
 
 	protected function display_internal_setting() {
 		?>
-		<div class="<?php $this->echo_bem_class( 'wrapper' ); ?>">
+		<div class="<?php $this->bem_class( 'wrapper' ); ?>">
 			<input
 				id="<?= esc_attr( $this->get_settings_attr_id() ); ?>"
 				type="text"

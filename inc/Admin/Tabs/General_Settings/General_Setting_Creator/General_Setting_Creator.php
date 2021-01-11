@@ -5,6 +5,8 @@
 
 namespace TWRP\Admin\Tabs\General_Settings;
 
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+
 /**
  * Abstract class used to create the settings in "General Settings" tab.
  *
@@ -13,6 +15,8 @@ namespace TWRP\Admin\Tabs\General_Settings;
  * to what is to be expected), where a user could change the main settings.
  */
 abstract class General_Setting_Creator {
+
+	use BEM_Class_Naming_Trait;
 
 	/**
 	 * HTML class name for all settings.
@@ -149,7 +153,7 @@ abstract class General_Setting_Creator {
 			<?= $this->additional_attr // phpcs:ignore -- Pre-escaped. ?>
 		>
 
-			<div class="<?php $this->echo_bem_class( 'title' ); ?>">
+			<div class="<?php $this->bem_class( 'title' ); ?>">
 				<?= $this->title; // phpcs:ignore -- No XSS ?>
 			</div>
 			<?php $this->display_internal_setting(); ?>
@@ -187,53 +191,6 @@ abstract class General_Setting_Creator {
 
 		return $class_name;
 	}
-
-	/**
-	 * Echo the HTML class name for an element. The class is a bem class, with
-	 * no parameters given will return the BEM block element. Add additional
-	 * element/modifier class.
-	 *
-	 * For more info about BEM, search BEM on a search engine.
-	 *
-	 * @param string $bem_element The element part of the class. Optional.
-	 * @param string $bem_modifier The modifier part of the class. Optional.
-	 * @return void
-	 */
-	protected function echo_bem_class( $bem_element = '', $bem_modifier = '' ) {
-		echo esc_attr( $this->get_bem_class( $bem_element, $bem_modifier ) );
-	}
-
-	/**
-	 * Get a HTML class name for an element. The class is a bem class, with no
-	 * parameters given will return the BEM block element. Add additional
-	 * element/modifier class.
-	 *
-	 * For more info about BEM, search BEM on a search engine.
-	 *
-	 * @param string $bem_element The element part of the class. Optional.
-	 * @param string $bem_modifier The modifier part of the class. Optional.
-	 * @return string The HTML element class, unescaped.
-	 */
-	protected function get_bem_class( $bem_element = '', $bem_modifier = '' ) {
-		$class = $this->get_bem_base_class();
-
-		if ( ! empty( $bem_element ) ) {
-			$class = $class . '__' . $bem_element;
-		}
-
-		if ( ! empty( $bem_modifier ) ) {
-			$class = $class . '--' . $bem_modifier;
-		}
-
-		return $class;
-	}
-
-	/**
-	 * Get an additional HTML element class, for this specific setting.
-	 *
-	 * @return string
-	 */
-	abstract protected function get_bem_base_class();
 
 	/**
 	 * Display the HTML input attributes. It will have a space before if
