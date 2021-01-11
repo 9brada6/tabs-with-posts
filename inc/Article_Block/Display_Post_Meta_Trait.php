@@ -64,7 +64,8 @@ trait Display_Post_Meta_Trait {
 			if ( false === $from || 0 === $to ) {
 				$date_text = false;
 			} else {
-				$date_text = sprintf( '%s ago', human_time_diff( $from, $to ) );
+				/* translators: %s: a date representation, in the website language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc */
+				$date_text = sprintf( __( '%s ago', 'twrp' ), human_time_diff( $from, $to ) );
 			}
 		} else {
 			$date_text = get_the_time( $date_format, $post );

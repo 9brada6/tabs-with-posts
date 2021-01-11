@@ -51,7 +51,7 @@ it with twrpb or something like that.
 - ➕ Backend typescript is compiled with strict: false option. Try to compile it with strict enable and remove any error.
 - ➕ Try to change the .pickr class of the color selection. Other plugins might use .pickr and change our CSS.
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
-- ➕ When a query is saved or deleted, in the save or delete notification, also add the name, if possible.
+- ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 
 ## ✅ Todo
 
@@ -83,9 +83,7 @@ to make another get_plugin_file_relative_path for MU plugins?.
 
 ### General
 
-- There should be a function for human diff in Utilities.
 - When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
-
 - Make General_Setting_Creator and all of his subclass implement BEM... interface.
 - The widget component settings are added multiple times(for example the color)(but that should be the default behavior since we have one per each query), and work between widgets, need to make them work only on the specific widget selected.
 - Remove the additional CSS that is added to each component, if no custom css is present.
