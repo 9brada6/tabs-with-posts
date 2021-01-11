@@ -142,7 +142,9 @@ class Widget_Form {
 			$option_value = '';
 		}
 
-		Checkbox_Control::display_setting( $this->get_bem_class( 'js-sync-query' ), $option_name, $option_value, self::get_query_sync_control_args() );
+		$id = Widget_Utils::get_field_id( $this->widget_id, 'js-sync-query' );
+
+		Checkbox_Control::display_setting( $id, $option_name, $option_value, self::get_query_sync_control_args() );
 	}
 
 	/**
