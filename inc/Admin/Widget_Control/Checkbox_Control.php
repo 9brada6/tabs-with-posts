@@ -33,9 +33,9 @@ class Checkbox_Control implements Widget_Control {
 		?>
 		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-checkbox-control">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrpb-widget-form__checkbox-label-before" for="<?= esc_attr( $id ) ?>">
+				<label class="twrpb-widget-form__checkbox-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
-				</span>
+				</label>
 			<?php endif; ?>
 
 			<input type='hidden' value='' name="<?= esc_attr( $name ); ?>">
@@ -48,9 +48,9 @@ class Checkbox_Control implements Widget_Control {
 			>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrpb-widget-form__checkbox-label-after" for="<?= esc_attr( $id ) ?>">
+				<label class="twrpb-widget-form__checkbox-label-after" for="<?= esc_attr( $id ) ?>">
 					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
-				</span>
+				</label>
 			<?php endif; ?>
 		</div>
 		<?php

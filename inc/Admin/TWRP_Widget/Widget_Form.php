@@ -379,7 +379,7 @@ class Widget_Form {
 
 	public static function get_query_sync_control_args() {
 		return array(
-			'before'  => _x( 'Make all the tabs look the same', 'backend', 'twrp' ),
+			'after'   => _x( 'Make all the tabs look the same.', 'backend', 'twrp' ),
 			'value'   => '1',
 			'default' => '1',
 		);

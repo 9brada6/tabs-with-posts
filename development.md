@@ -72,19 +72,16 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
 - Don't know how to count site reviews ratings, maybe email for support?
 - Add each plugin, move orderby plugin indicators to classes.
-- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need
-to make another get_plugin_file_relative_path for MU plugins?.
+- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 ### Widget
 
-- Add margin between before/after text and control.
-- Add label and for attribute for checkbox control.
 - Test a SVG color icon to see if the "fill" property will change it.
+- Font-weight CSS for component does not get added in custom styles.
 
 ### General
 
-- When displaying the widget page there is an exception, most likely from first widget with id 0. Fix it.
-- Remove the additional CSS that is added to each component, if no custom css is present.
+- Remove the additional CSS that is added to each component, if no custom css is present. Can't find if this bug is fixed.
 
 ### Icons
 

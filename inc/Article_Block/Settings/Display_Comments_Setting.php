@@ -45,7 +45,7 @@ class Display_Comments_Setting extends Artblock_Setting {
 		return array(
 			'default' => $this->get_default_value(),
 			'value'   => '1',
-			'before'  => _x( 'Display the number of comments?', 'backend', 'twrp' ),
+			'after'   => _x( 'Display the number of comments.', 'backend', 'twrp' ),
 		);
 	}
 

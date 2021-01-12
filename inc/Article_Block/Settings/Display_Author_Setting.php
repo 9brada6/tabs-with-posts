@@ -45,7 +45,7 @@ class Display_Author_Setting extends Artblock_Setting {
 		return array(
 			'default' => $this->get_default_value(),
 			'value'   => '1',
-			'before'  => _x( 'Display the author', 'backend', 'twrp' ),
+			'after'   => _x( 'Display the author.', 'backend', 'twrp' ),
 		);
 	}
 

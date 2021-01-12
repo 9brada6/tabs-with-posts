@@ -45,7 +45,7 @@ class Display_Post_Thumbnail_Setting extends Artblock_Setting {
 		return array(
 			'default' => $this->get_default_value(),
 			'value'   => '1',
-			'before'  => _x( 'Display the post thumbnail', 'backend', 'twrp' ),
+			'after'   => _x( 'Display the post thumbnail.', 'backend', 'twrp' ),
 		);
 	}
 
