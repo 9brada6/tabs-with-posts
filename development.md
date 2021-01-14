@@ -55,6 +55,10 @@ it with twrpb or something like that.
 
 ## ✅ Todo
 
+- Delete comments in all subclasses of all functions inherited from Component_Setting class.
+- Delete icon component controls and icon control.
+- Move tab styles folder into tabs creator.
+
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts
@@ -73,15 +77,6 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 - Don't know how to count site reviews ratings, maybe email for support?
 - Add each plugin, move orderby plugin indicators to classes.
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
-
-### Widget
-
-- Test a SVG color icon to see if the "fill" property will change it.
-- Font-weight CSS for component does not get added in custom styles.
-
-### General
-
-- Remove the additional CSS that is added to each component, if no custom css is present. Can't find if this bug is fixed.
 
 ### Icons
 

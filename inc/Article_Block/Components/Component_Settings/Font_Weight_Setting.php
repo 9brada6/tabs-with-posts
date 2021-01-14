@@ -79,7 +79,12 @@ class Font_Weight_Setting implements Component_Setting {
 	 * @return string The CSS.
 	 */
 	public static function get_css( $font_weight ) {
-		$possible_values = self::get_control_setting_args();
+		$control_settings = self::get_control_setting_args();
+		if ( isset( $control_settings['options'] ) && is_array( $control_settings['options'] ) ) {
+			$possible_values = $control_settings['options'];
+		} else {
+			$possible_values = array();
+		}
 
 		if ( empty( $font_weight ) ) {
 			return '';

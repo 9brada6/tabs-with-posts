@@ -8,7 +8,7 @@ namespace TWRP\Article_Block\Component;
 use TWRP\Admin\Widget_Control\Color_Control;
 
 /**
- * Font size component setting.
+ * Font color component setting.
  */
 class Color_Setting implements Component_Setting {
 

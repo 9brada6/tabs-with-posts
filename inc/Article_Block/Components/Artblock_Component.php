@@ -282,7 +282,7 @@ class Artblock_Component {
 
 			$component_css = '';
 			foreach ( $components as $component ) {
-				if ( isset( $this->settings[ $component::get_key_name() ] ) ) {
+				if ( isset( $this->settings[ $component::get_key_name() ] ) && ( ! empty( $this->settings[ $component::get_key_name() ] ) ) ) {
 					$value          = $this->settings[ $component::get_key_name() ];
 					$component_css .= $component->get_css( $value );
 				}
