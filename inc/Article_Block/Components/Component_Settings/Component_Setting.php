@@ -8,14 +8,14 @@ namespace TWRP\Article_Block\Component;
 /**
  * Each component setting should implement this interface.
  */
-interface Component_Setting {
+abstract class Component_Setting {
 
 	/**
 	 * The name of the setting. Will be used as an array key for storage.
 	 *
 	 * @return string
 	 */
-	public static function get_key_name();
+	abstract public static function get_key_name();
 
 	/**
 	 * Display the component setting.
@@ -27,7 +27,14 @@ interface Component_Setting {
 	 * @param mixed $value The value of the control.
 	 * @return void
 	 */
-	public static function display_setting( $prefix_id, $prefix_name, $value );
+	abstract public static function display_setting( $prefix_id, $prefix_name, $value );
+
+	/**
+	 * Get the arguments for the control.
+	 *
+	 * @return array
+	 */
+	abstract protected static function get_control_setting_args();
 
 	/**
 	 * Sanitize the setting.
@@ -35,7 +42,7 @@ interface Component_Setting {
 	 * @param mixed $value
 	 * @return mixed
 	 */
-	public static function sanitize_setting( $value );
+	abstract public static function sanitize_setting( $value );
 
 	/**
 	 * Create the CSS for a given value.
@@ -43,6 +50,6 @@ interface Component_Setting {
 	 * @param string|int|float $value
 	 * @return string The CSS.
 	 */
-	public static function get_css( $value );
+	abstract public static function get_css( $value );
 
 }

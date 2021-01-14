@@ -94,9 +94,6 @@ class Plugin_Bootstrap {
 		'Article_Block/Components/Component_Settings/Font_Weight_Setting',
 		'Article_Block/Components/Component_Settings/Color_Setting',
 		'Article_Block/Components/Component_Settings/Hover_Color_Setting',
-		'Article_Block/Components/Component_Settings/Author_Icon_Setting',
-		'Article_Block/Components/Component_Settings/Category_Icon_Setting',
-		'Article_Block/Components/Component_Settings/Date_Icon_Setting',
 
 		'Article_Block/Settings/Artblock_Setting',
 		'Article_Block/Settings/Display_Author_Setting',
@@ -197,9 +194,9 @@ class Plugin_Bootstrap {
 		'Tabs_Creator/Tabs_Creator',
 
 		// Tabs_Styles.
-		'Tabs_Styles/Tab_Style',
-		'Tabs_Styles/Styles/Simple_Tabs',
-		'Tabs_Styles/Styles/Button_Tabs',
+		'Tabs_Creator/Tabs_Styles/Tab_Style',
+		'Tabs_Creator/Tabs_Styles/Styles/Simple_Tabs',
+		'Tabs_Creator/Tabs_Styles/Styles/Button_Tabs',
 
 	);
 

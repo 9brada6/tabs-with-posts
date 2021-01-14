@@ -24,7 +24,7 @@ class Class_Retriever_Utils {
 	 * @param string $id The id of the tab style.
 	 * @return string|null
 	 *
-	 * @psalm-return null|class-string<\TWRP\Tabs_Styles\Tab_Style>
+	 * @psalm-return null|class-string<\TWRP\Tabs_Creator\Tabs_Styles\Tab_Style>
 	 * @psalm-suppress MoreSpecificReturnType
 	 * @psalm-suppress LessSpecificReturnStatement
 	 */
@@ -47,12 +47,12 @@ class Class_Retriever_Utils {
 	 *
 	 * @return array
 	 *
-	 * @psalm-return array<class-string<\TWRP\Tabs_Styles\Tab_Style>>
+	 * @psalm-return array<class-string<\TWRP\Tabs_Creator\Tabs_Styles\Tab_Style>>
 	 * @psalm-suppress MoreSpecificReturnType
 	 * @psalm-suppress LessSpecificReturnStatement
 	 */
 	public static function get_all_tab_style_class_names() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Tabs_Styles\\Tab_Style' );
+		$class_names = static::get_all_child_classes( 'TWRP\\Tabs_Creator\\Tabs_Styles\\Tab_Style' );
 		return $class_names;
 	}
 

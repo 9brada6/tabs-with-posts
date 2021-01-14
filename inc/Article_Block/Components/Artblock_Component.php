@@ -36,12 +36,6 @@ class Artblock_Component {
 
 	const HOVER_COLOR_SETTING = 'Hover_Color_Setting';
 
-	const AUTHOR_ICON_SETTING = 'Author_Icon_Setting';
-
-	const DATE_ICON_SETTING = 'Date_Icon_Setting';
-
-	const CATEGORY_ICON_SETTING = 'Category_Icon_Setting';
-
 	/**
 	 * The name of the component. It should be as something unique, will appear
 	 * when creating the names in HTML attribute.

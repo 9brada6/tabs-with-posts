@@ -3,26 +3,32 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Tabs_Styles;
+namespace TWRP\Tabs_Creator\Tabs_Styles;
 
 /**
- * Used to display the tabs a normal tabs style.
+ * Used to display the tabs as a list of buttons
  */
-class Simple_Tabs extends Tab_Style {
+class Button_Tabs extends Tab_Style {
 
-	const TAB_ID = 'simple_tabs';
+	const TAB_ID = 'buttons_tabs';
 
 	public static function get_tab_style_name() {
-		return _x( 'Simple Style', 'backend', 'twrp' );
+		return _x( 'Buttons Style', 'backend', 'twrp' );
 	}
 
 	public static function get_all_variants() {
-		return array();
+		return array( 'inverse_colors' => _x( 'Inverse Accent Colors', 'backend', 'twrp' ) );
 	}
 
 	public function start_tabs_wrapper() {
+
+		$additional_tab_class = '';
+		if ( 'inverse_colors' === $this->variant ) {
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'inverse-colors' );
+		}
+
 		?>
-		<div class="<?php $this->tab_class(); ?>">
+		<div class="<?php $this->tab_class(); ?><?= esc_attr( $additional_tab_class ); ?>">
 		<?php
 	}
 
@@ -79,7 +85,7 @@ class Simple_Tabs extends Tab_Style {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-tab-ss';
+		return 'twrp-tab-bs';
 	}
 
 }

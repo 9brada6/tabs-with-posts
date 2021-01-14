@@ -55,10 +55,6 @@ it with twrpb or something like that.
 
 ## ✅ Todo
 
-- Delete comments in all subclasses of all functions inherited from Component_Setting class.
-- Delete icon component controls and icon control.
-- Move tab styles folder into tabs creator.
-
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts

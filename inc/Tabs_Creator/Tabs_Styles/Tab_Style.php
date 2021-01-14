@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Tabs_Styles;
+namespace TWRP\Tabs_Creator\Tabs_Styles;
 
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 

@@ -10,7 +10,7 @@ use RuntimeException;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
 use TWRP\Utils\Widget_Utils;
-use TWRP\Tabs_Styles\Tab_Style;
+use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 use TWRP\Utils\Class_Retriever_Utils;
 
 /**

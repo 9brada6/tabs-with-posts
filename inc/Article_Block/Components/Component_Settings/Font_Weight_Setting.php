@@ -8,27 +8,14 @@ namespace TWRP\Article_Block\Component;
 use TWRP\Admin\Widget_Control\Select_Control;
 
 /**
- * Font weight component setting.
+ * Class used to change the font weight of the specific component.
  */
-class Font_Weight_Setting implements Component_Setting {
+class Font_Weight_Setting extends Component_Setting {
 
-	/**
-	 * The name of the setting. Will be used as an array key for storage.
-	 *
-	 * @return string
-	 */
 	public static function get_key_name() {
 		return 'font_weight';
 	}
 
-	/**
-	 * Display the component setting.
-	 *
-	 * @param string $prefix_id To this id will be appended the key name.
-	 * @param string $prefix_name To this id will be added the key name.
-	 * @param mixed $value The current value of the setting.
-	 * @return void
-	 */
 	public static function display_setting( $prefix_id, $prefix_name, $value ) {
 		$id   = $prefix_id . '-' . self::get_key_name();
 		$name = $prefix_name . '[' . self::get_key_name() . ']';
@@ -36,21 +23,10 @@ class Font_Weight_Setting implements Component_Setting {
 		Select_Control::display_setting( $id, $name, $value, self::get_control_setting_args() );
 	}
 
-	/**
-	 * Sanitize the setting.
-	 *
-	 * @param mixed $value
-	 * @return string
-	 */
 	public static function sanitize_setting( $value ) {
 		return Select_Control::sanitize_setting( $value, self::get_control_setting_args() );
 	}
 
-	/**
-	 * Get the arguments for the control.
-	 *
-	 * @return array
-	 */
 	protected static function get_control_setting_args() {
 		return array(
 			'default' => '',
@@ -72,12 +48,6 @@ class Font_Weight_Setting implements Component_Setting {
 		);
 	}
 
-	/**
-	 * Create the CSS for a given value.
-	 *
-	 * @param string|int|float $font_weight
-	 * @return string The CSS.
-	 */
 	public static function get_css( $font_weight ) {
 		$control_settings = self::get_control_setting_args();
 		if ( isset( $control_settings['options'] ) && is_array( $control_settings['options'] ) ) {
