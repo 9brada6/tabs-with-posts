@@ -1,0 +1,16 @@
+@startuml "Tabs_Creator"
+
+!include ./colors.iuml
+
+namespace TWRP\\Tabs_Creator {
+	class Tabs_Creator <<public class>> {}
+
+	namespace TWRP\\Tabs_Creator\\Tabs_Styles {
+		abstract Tab_Style <<private class>> <<abstract>> {}
+
+		class Button_Tabs <<private class>> implements Tab_Style {}
+		class Simple_Tabs <<private class>> implements Tab_Style {}
+	}
+
+	Tabs_Creator --> TWRP\\Tabs_Creator\\Tabs_Styles\\Tab_Style
+}

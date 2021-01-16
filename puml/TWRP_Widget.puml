@@ -1,0 +1,7 @@
+@startuml "TWRP_Widget"
+
+!include ./colors.iuml
+
+namespace TWRP\\TWRP_Widget {
+	class TWRP_Widget <<public class>> <<extends WP Widget>> {}
+}

@@ -1,0 +1,22 @@
+@startuml "Utils"
+
+!include ./colors.iuml
+
+namespace TWRP\\Utils {
+	class Class_Retriever_Utils <<public class>> <<static collection>> {}
+	class Color_Utils <<public class>> <<static collection>> {}
+	class Date_Utils <<public class>> <<static collection>> {}
+	class Directory_Utils <<public class>> <<static collection>> {}
+	class Filesystem_Utils <<public class>> <<static collection>> {}
+	class Simple_Utils <<public class>> <<static collection>> {}
+	class Widget_Utils <<public class>> <<static collection>> {}
+
+	namespace Helper_Trait {
+		abstract After_Setup_Theme_Init_Trait <<public class>> <<abstract>> {}
+		abstract BEM_Class_Naming_Trait <<public class>> <<abstract>> {}
+		abstract Class_Children_Order_Trait <<public class>> <<abstract>> {}
+	}
+}
+
+note "All other packages can reference these utils at any time." as NoteUtils
+TWRP\\Utils <.up. NoteUtils

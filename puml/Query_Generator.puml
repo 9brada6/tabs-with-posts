@@ -1,0 +1,20 @@
+@startuml "Query_Generator"
+
+!include ./colors.iuml
+
+namespace TWRP\\Query_Generator {
+	class Query_Generator <<public class>> {}
+	namespace Query_Setting {
+		abstract Query_Setting <<protected class>> {}
+
+		class Query_Name <<protected class>> implements Query_Setting {}
+		class Post_Order <<protected class>> implements Query_Setting {}
+		class Post_Date <<protected class>> implements Query_Setting {}
+		class Other_Similar_Classes <<protected class>> implements Query_Setting {}
+	}
+
+	note "These classes can be known only by\nTWRP\\Admin\\Tabs\\Query_Options\\Query_Settings_Display,\nwhere for each class exists a class that is used to\ndisplay the setting in the admin area." as NoteQuerySettings
+	NoteQuerySettings --> TWRP\\Query_Generator\\Query_Setting
+
+	Query_Generator --> TWRP\\Query_Generator\\Query_Setting\\Query_Setting
+}

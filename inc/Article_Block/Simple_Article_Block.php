@@ -101,18 +101,6 @@ class Simple_Article_Block extends Article_Block {
 		return $query_settings;
 	}
 
-	public function display_form_settings() {
-		$settings = $this->get_artblock_settings();
-
-		foreach ( $settings as $query_artblock_setting ) {
-			$query_artblock_setting->display_setting();
-		}
-
-		// Display the components settings.
-		$components = $this->get_components();
-		Artblock_Component::display_components( $components );
-	}
-
 	public function sanitize_widget_settings( $set_internal = true ) {
 		$components         = $this->get_components();
 		$sanitized_settings = array();

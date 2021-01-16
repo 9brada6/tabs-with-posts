@@ -1,4 +1,7 @@
 @startuml
+
+    set namespaceSeparator \\
+
     skinparam {
         padding 2
         backgroundColor #222
@@ -12,7 +15,7 @@
         ClassAttributeFontSize 13
         ClassAttributeIconSize 15
 
-        PackageBackgroundColor #444
+        PackageBackgroundColor #2c2c2c
         PackageBorderColor #111
         PackageFontColor #eee
 
@@ -28,11 +31,15 @@
 
 
     skinparam <<public class>> {
-        classBackgroundColor #004b00
+        classBackgroundColor #004b00/#003b00
         classFontSize 16
     }
 
     skinparam <<private class>> {
-        classBackgroundColor #5d0000
+        classBackgroundColor #5d0000/#4d0000
+    }
+
+    skinparam <<protected class>> {
+        classBackgroundColor #d16300/#c15300
     }
 @enduml

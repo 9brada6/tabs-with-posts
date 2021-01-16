@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="383px" preserveAspectRatio="none" style="width:798px;height:383px;background:#222222;" version="1.1" viewBox="0 0 798 383" width="798px" zoomAndPan="magnify"><defs><linearGradient id="g1x6w4hn5zw4ca0" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#004B00"/><stop offset="100%" stop-color="#003B00"/></linearGradient><linearGradient id="g1x6w4hn5zw4ca1" x1="0%" x2="100%" y1="0%" y2="100%"><stop offset="0%" stop-color="#D16300"/><stop offset="100%" stop-color="#C15300"/></linearGradient></defs><g><!--MD5=[1af112bba1ee5b5fadb30a42fcfd4309]
+cluster TWRP\\Query_Generator--><polygon fill="#2C2C2C" points="16,6,212,6,219,32.2969,781,32.2969,781,376,16,376,16,6" style="stroke: #111111; stroke-width: 1.5;"/><line style="stroke: #111111; stroke-width: 1.5;" x1="16" x2="219" y1="32.2969" y2="32.2969"/><text fill="#EEEEEE" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="186" x="22" y="22.9951">TWRP\Query_Generator</text><!--MD5=[262cad39a9065d1580a8652604ed4777]
+cluster TWRP\\Query_Generator\\Query_Setting--><polygon fill="#2C2C2C" points="24,141,145,141,152,167.2969,773,167.2969,773,368,24,368,24,141" style="stroke: #111111; stroke-width: 1.5;"/><line style="stroke: #111111; stroke-width: 1.5;" x1="24" x2="152" y1="167.2969" y2="167.2969"/><text fill="#EEEEEE" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacingAndGlyphs" textLength="111" x="30" y="157.9951">Query_Setting</text><!--MD5=[c0412d7897d8670324314061118630de]
+class TWRP\\Query_Generator\\Query_Generator--><rect codeLine="46" fill="url(#g1x6w4hn5zw4ca0)" height="66.5938" id="TWRP\\Query_Generator\\Query_Generator" style="stroke: #111111; stroke-width: 1.5;" width="173" x="454.5" y="41"/><ellipse cx="470.5" cy="66.2969" fill="#ADD1B2" rx="12" ry="12" style="stroke: #111111; stroke-width: 1.0;"/><path d="M473.4375,72.3281 Q472.75,72.6875 472.0313,72.8594 Q471.3281,73.0469 470.5313,73.0469 Q468.0156,73.0469 466.6094,71.2656 Q465.2188,69.4844 465.2188,66.25 Q465.2188,63.0313 466.625,61.2344 Q468.0313,59.4375 470.5313,59.4375 Q471.3281,59.4375 472.0313,59.625 Q472.75,59.7969 473.4375,60.1563 L473.4375,61.9844 Q472.7813,61.4375 472.0313,61.1563 Q471.2813,60.875 470.5313,60.875 Q468.7969,60.875 467.9375,62.2188 Q467.0781,63.5469 467.0781,66.25 Q467.0781,68.9375 467.9375,70.2813 Q468.7969,71.6094 470.5313,71.6094 Q471.2969,71.6094 472.0469,71.3281 Q472.7969,71.0469 473.4375,70.5156 L473.4375,72.3281 Z "/><text fill="#EEEEEE" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="87" x="511.5" y="59.1387">«public class»</text><text fill="#EEEEEE" font-family="sans-serif" font-size="16" lengthAdjust="spacingAndGlyphs" textLength="135" x="487.5" y="80.8203">Query_Generator</text><line style="stroke: #111111; stroke-width: 1.5;" x1="455.5" x2="626.5" y1="91.5938" y2="91.5938"/><line style="stroke: #111111; stroke-width: 1.5;" x1="455.5" x2="626.5" y1="99.5938" y2="99.5938"/><path d="M24.5,37 L24.5,111.5313 L419.5,111.5313 L419.5,47 L409.5,37 L24.5,37 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><path d="M409.5,37 L409.5,47 L419.5,47 L409.5,37 " fill="#FBFB77" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="229" x="32.5" y="56.0669">These classes can be known only by</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="370" x="32.5" y="71.1997">TWRP\Admin\Tabs\Query_Options\Query_Settings_Display,</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="315" x="32.5" y="86.3325">where for each class exists a class that is used to</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="238" x="32.5" y="101.4653">display the setting in the admin area.</text><!--MD5=[6e4d54913f860a388212ab4e36e85c98]
+class TWRP\\Query_Generator\\Query_Setting\\Query_Setting--><rect codeLine="48" fill="url(#g1x6w4hn5zw4ca1)" height="64.2656" id="TWRP\\Query_Generator\\Query_Setting\\Query_Setting" style="stroke: #111111; stroke-width: 1.5;" width="146" x="394" y="172"/><ellipse cx="410" cy="196.1328" fill="#A9DCDF" rx="12" ry="12" style="stroke: #111111; stroke-width: 1.0;"/><path d="M409.9219,190.5703 L408.0469,197.2891 L411.7813,197.2891 L409.9219,190.5703 Z M408.8438,189.0078 L411,189.0078 L415.0156,202.1328 L413.1719,202.1328 L412.2031,198.7109 L407.6094,198.7109 L406.6563,202.1328 L404.8281,202.1328 L408.8438,189.0078 Z "/><text fill="#EEEEEE" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="112" x="425" y="190.1387">«protected class»</text><text fill="#EEEEEE" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="97" x="432.5" y="209.9639">Query_Setting</text><line style="stroke: #111111; stroke-width: 1.5;" x1="395" x2="539" y1="220.2656" y2="220.2656"/><line style="stroke: #111111; stroke-width: 1.5;" x1="395" x2="539" y1="228.2656" y2="228.2656"/><!--MD5=[3d645e514e42de9202f15205d3e69e2f]
+class TWRP\\Query_Generator\\Query_Setting\\Query_Name--><rect codeLine="50" fill="url(#g1x6w4hn5zw4ca1)" height="64.2656" id="TWRP\\Query_Generator\\Query_Setting\\Query_Name" style="stroke: #111111; stroke-width: 1.5;" width="146" x="32" y="296"/><ellipse cx="48" cy="320.1328" fill="#ADD1B2" rx="12" ry="12" style="stroke: #111111; stroke-width: 1.0;"/><path d="M50.9375,326.1641 Q50.25,326.5234 49.5313,326.6953 Q48.8281,326.8828 48.0313,326.8828 Q45.5156,326.8828 44.1094,325.1016 Q42.7188,323.3203 42.7188,320.0859 Q42.7188,316.8672 44.125,315.0703 Q45.5313,313.2734 48.0313,313.2734 Q48.8281,313.2734 49.5313,313.4609 Q50.25,313.6328 50.9375,313.9922 L50.9375,315.8203 Q50.2813,315.2734 49.5313,314.9922 Q48.7813,314.7109 48.0313,314.7109 Q46.2969,314.7109 45.4375,316.0547 Q44.5781,317.3828 44.5781,320.0859 Q44.5781,322.7734 45.4375,324.1172 Q46.2969,325.4453 48.0313,325.4453 Q48.7969,325.4453 49.5469,325.1641 Q50.2969,324.8828 50.9375,324.3516 L50.9375,326.1641 Z "/><text fill="#EEEEEE" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="112" x="63" y="314.1387">«protected class»</text><text fill="#EEEEEE" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="88" x="75" y="333.9639">Query_Name</text><line style="stroke: #111111; stroke-width: 1.5;" x1="33" x2="177" y1="344.2656" y2="344.2656"/><line style="stroke: #111111; stroke-width: 1.5;" x1="33" x2="177" y1="352.2656" y2="352.2656"/><!--MD5=[10f01bdef1f0f40439cfc1853321fd9a]
+class TWRP\\Query_Generator\\Query_Setting\\Post_Order--><rect codeLine="51" fill="url(#g1x6w4hn5zw4ca1)" height="64.2656" id="TWRP\\Query_Generator\\Query_Setting\\Post_Order" style="stroke: #111111; stroke-width: 1.5;" width="146" x="213" y="296"/><ellipse cx="229" cy="320.1328" fill="#ADD1B2" rx="12" ry="12" style="stroke: #111111; stroke-width: 1.0;"/><path d="M231.9375,326.1641 Q231.25,326.5234 230.5313,326.6953 Q229.8281,326.8828 229.0313,326.8828 Q226.5156,326.8828 225.1094,325.1016 Q223.7188,323.3203 223.7188,320.0859 Q223.7188,316.8672 225.125,315.0703 Q226.5313,313.2734 229.0313,313.2734 Q229.8281,313.2734 230.5313,313.4609 Q231.25,313.6328 231.9375,313.9922 L231.9375,315.8203 Q231.2813,315.2734 230.5313,314.9922 Q229.7813,314.7109 229.0313,314.7109 Q227.2969,314.7109 226.4375,316.0547 Q225.5781,317.3828 225.5781,320.0859 Q225.5781,322.7734 226.4375,324.1172 Q227.2969,325.4453 229.0313,325.4453 Q229.7969,325.4453 230.5469,325.1641 Q231.2969,324.8828 231.9375,324.3516 L231.9375,326.1641 Z "/><text fill="#EEEEEE" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="112" x="244" y="314.1387">«protected class»</text><text fill="#EEEEEE" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="77" x="261.5" y="333.9639">Post_Order</text><line style="stroke: #111111; stroke-width: 1.5;" x1="214" x2="358" y1="344.2656" y2="344.2656"/><line style="stroke: #111111; stroke-width: 1.5;" x1="214" x2="358" y1="352.2656" y2="352.2656"/><!--MD5=[3816bab1eaf9d01d54adc6bcfbe2fa26]
+class TWRP\\Query_Generator\\Query_Setting\\Post_Date--><rect codeLine="52" fill="url(#g1x6w4hn5zw4ca1)" height="64.2656" id="TWRP\\Query_Generator\\Query_Setting\\Post_Date" style="stroke: #111111; stroke-width: 1.5;" width="146" x="394" y="296"/><ellipse cx="410" cy="320.1328" fill="#ADD1B2" rx="12" ry="12" style="stroke: #111111; stroke-width: 1.0;"/><path d="M412.9375,326.1641 Q412.25,326.5234 411.5313,326.6953 Q410.8281,326.8828 410.0313,326.8828 Q407.5156,326.8828 406.1094,325.1016 Q404.7188,323.3203 404.7188,320.0859 Q404.7188,316.8672 406.125,315.0703 Q407.5313,313.2734 410.0313,313.2734 Q410.8281,313.2734 411.5313,313.4609 Q412.25,313.6328 412.9375,313.9922 L412.9375,315.8203 Q412.2813,315.2734 411.5313,314.9922 Q410.7813,314.7109 410.0313,314.7109 Q408.2969,314.7109 407.4375,316.0547 Q406.5781,317.3828 406.5781,320.0859 Q406.5781,322.7734 407.4375,324.1172 Q408.2969,325.4453 410.0313,325.4453 Q410.7969,325.4453 411.5469,325.1641 Q412.2969,324.8828 412.9375,324.3516 L412.9375,326.1641 Z "/><text fill="#EEEEEE" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="112" x="425" y="314.1387">«protected class»</text><text fill="#EEEEEE" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="71" x="445.5" y="333.9639">Post_Date</text><line style="stroke: #111111; stroke-width: 1.5;" x1="395" x2="539" y1="344.2656" y2="344.2656"/><line style="stroke: #111111; stroke-width: 1.5;" x1="395" x2="539" y1="352.2656" y2="352.2656"/><!--MD5=[1ad11960be4c58ff493986fa1536a9df]
+class TWRP\\Query_Generator\\Query_Setting\\Other_Similar_Classes--><rect codeLine="53" fill="url(#g1x6w4hn5zw4ca1)" height="64.2656" id="TWRP\\Query_Generator\\Query_Setting\\Other_Similar_Classes" style="stroke: #111111; stroke-width: 1.5;" width="189" x="575.5" y="296"/><ellipse cx="591.5" cy="320.1328" fill="#ADD1B2" rx="12" ry="12" style="stroke: #111111; stroke-width: 1.0;"/><path d="M594.4375,326.1641 Q593.75,326.5234 593.0313,326.6953 Q592.3281,326.8828 591.5313,326.8828 Q589.0156,326.8828 587.6094,325.1016 Q586.2188,323.3203 586.2188,320.0859 Q586.2188,316.8672 587.625,315.0703 Q589.0313,313.2734 591.5313,313.2734 Q592.3281,313.2734 593.0313,313.4609 Q593.75,313.6328 594.4375,313.9922 L594.4375,315.8203 Q593.7813,315.2734 593.0313,314.9922 Q592.2813,314.7109 591.5313,314.7109 Q589.7969,314.7109 588.9375,316.0547 Q588.0781,317.3828 588.0781,320.0859 Q588.0781,322.7734 588.9375,324.1172 Q589.7969,325.4453 591.5313,325.4453 Q592.2969,325.4453 593.0469,325.1641 Q593.7969,324.8828 594.4375,324.3516 L594.4375,326.1641 Z "/><text fill="#EEEEEE" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="112" x="628" y="314.1387">«protected class»</text><text fill="#EEEEEE" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="151" x="608.5" y="333.9639">Other_Similar_Classes</text><line style="stroke: #111111; stroke-width: 1.5;" x1="576.5" x2="763.5" y1="344.2656" y2="344.2656"/><line style="stroke: #111111; stroke-width: 1.5;" x1="576.5" x2="763.5" y1="352.2656" y2="352.2656"/><!--MD5=[83aa3f1103c2d9db99cf150354ec67e9]
+reverse link TWRP\\Query_Generator\\Query_Setting\\Query_Setting to TWRP\\Query_Generator\\Query_Setting\\Query_Name--><path d="M374.8918,234.9926 C322.4169,252.7187 255.4696,275.45 196,296 C190.3017,297.9691 184.4065,300.0171 178.4825,302.0831 " fill="none" id="TWRP\\Query_Generator\\Query_Setting\\Query_Setting-backto-TWRP\\Query_Generator\\Query_Setting\\Query_Name" style="stroke: #FFFF00; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="372.7003,228.3444,393.8886,228.5805,377.1776,241.6091,372.7003,228.3444" style="stroke: #FFFF00; stroke-width: 1.0;"/><!--MD5=[937d3ecedb508183f1418bd02c716cc8]
+reverse link TWRP\\Query_Generator\\Query_Setting\\Query_Setting to TWRP\\Query_Generator\\Query_Setting\\Post_Order--><path d="M403.2031,247.7062 C380.0288,263.5825 354.2887,281.2166 332.8474,295.9057 " fill="none" id="TWRP\\Query_Generator\\Query_Setting\\Query_Setting-backto-TWRP\\Query_Generator\\Query_Setting\\Post_Order" style="stroke: #FFFF00; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="399.4612,241.7846,419.9169,236.2558,407.3737,253.3342,399.4612,241.7846" style="stroke: #FFFF00; stroke-width: 1.0;"/><!--MD5=[375e5f1255ec5c3b536ca639a5c7a226]
+reverse link TWRP\\Query_Generator\\Query_Setting\\Query_Setting to TWRP\\Query_Generator\\Query_Setting\\Post_Date--><path d="M467,256.4467 C467,269.852 467,283.8678 467,295.9057 " fill="none" id="TWRP\\Query_Generator\\Query_Setting\\Query_Setting-backto-TWRP\\Query_Generator\\Query_Setting\\Post_Date" style="stroke: #FFFF00; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="460.0001,256.2559,467,236.2558,474.0001,256.2558,460.0001,256.2559" style="stroke: #FFFF00; stroke-width: 1.0;"/><!--MD5=[1c3875c8a606418b26d2b07a756ec26c]
+reverse link TWRP\\Query_Generator\\Query_Setting\\Query_Setting to TWRP\\Query_Generator\\Query_Setting\\Other_Similar_Classes--><path d="M536.7751,246.6212 C563.1738,262.7466 592.7557,280.8163 617.3263,295.8249 " fill="none" id="TWRP\\Query_Generator\\Query_Setting\\Query_Setting-backto-TWRP\\Query_Generator\\Query_Setting\\Other_Similar_Classes" style="stroke: #FFFF00; stroke-width: 1.0; stroke-dasharray: 7.0,7.0;"/><polygon fill="none" points="532.9603,252.4937,519.5415,236.0943,540.2582,240.5463,532.9603,252.4937" style="stroke: #FFFF00; stroke-width: 1.0;"/><!--MD5=[85eb388810eae637775dc3db3d4ce481]
+link TWRP\\Query_Generator\\NoteQuerySettings to TWRP\\Query_Generator\\Query_Setting--><path codeLine="57" d="M222,112.3049 C222,121.2636 222,131.0598 222,140.8089 " fill="none" id="TWRP\\Query_Generator\\NoteQuerySettings-to-TWRP\\Query_Generator\\Query_Setting" style="stroke: #FFFF00; stroke-width: 1.0;"/><polygon fill="#FFFF00" points="222,140.8089,226,131.8089,222,135.8089,218,131.8089,222,140.8089" style="stroke: #FFFF00; stroke-width: 1.0;"/><!--MD5=[41bc136a0f8519c43cbaedc37a84bf89]
+link TWRP\\Query_Generator\\Query_Generator to TWRP\\Query_Generator\\Query_Setting\\Query_Setting--><path codeLine="59" d="M521.7505,108.1865 C511.4072,126.2874 498.6385,148.6326 488.0345,167.1897 " fill="none" id="TWRP\\Query_Generator\\Query_Generator-to-TWRP\\Query_Generator\\Query_Setting\\Query_Setting" style="stroke: #FFFF00; stroke-width: 1.0;"/><polygon fill="#FFFF00" points="485.388,171.8211,493.3263,165.9916,487.8687,167.4799,486.3804,162.0224,485.388,171.8211" style="stroke: #FFFF00; stroke-width: 1.0;"/><!--MD5=[ca57acd60cf3efcfbd1e4fd1e80f4c3b]
+@startuml
+set namespaceSeparator \\
+
+    skinparam {
+        padding 2
+        backgroundColor #222
+        shadowing false
+
+        classFontColor #eee
+        classStereotypeFontColor #eee
+        classBorderColor #111
+        classFontSize 14
+        ClassAttributeFontColor #eee
+        ClassAttributeFontSize 13
+        ClassAttributeIconSize 15
+
+        PackageBackgroundColor #2c2c2c
+        PackageBorderColor #111
+        PackageFontColor #eee
+
+        ArrowColor yellow
+    }
+
+    skinparam circled {
+        CharacterFontColor black
+        CharacterFontSize 18
+        CharacterFontStyle plain
+        CharacterRadius 12
+    }
+
+
+    skinparam <<public class>> {
+        classBackgroundColor #004b00/#003b00
+        classFontSize 16
+    }
+
+    skinparam <<private class>> {
+        classBackgroundColor #5d0000/#4d0000
+    }
+
+    skinparam <<protected class>> {
+        classBackgroundColor #d16300/#c15300
+    }
+
+
+namespace TWRP\\Query_Generator {
+	class Query_Generator <<public class>> {}
+	namespace Query_Setting {
+		abstract Query_Setting <<protected class>> {}
+
+		class Query_Name <<protected class>> implements Query_Setting {}
+		class Post_Order <<protected class>> implements Query_Setting {}
+		class Post_Date <<protected class>> implements Query_Setting {}
+		class Other_Similar_Classes <<protected class>> implements Query_Setting {}
+	}
+
+	note "These classes can be known only by\nTWRP\\Admin\\Tabs\\Query_Options\\Query_Settings_Display,\nwhere for each class exists a class that is used to\ndisplay the setting in the admin area." as NoteQuerySettings
+	NoteQuerySettings - -> TWRP\\Query_Generator\\Query_Setting
+
+	Query_Generator - -> TWRP\\Query_Generator\\Query_Setting\\Query_Setting
+}
+@enduml
+
+PlantUML version 1.2020.19(Mon Oct 12 15:10:01 UTC 2020)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

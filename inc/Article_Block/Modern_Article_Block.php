@@ -24,14 +24,6 @@ class Modern_Article_Block extends Article_Block {
 		return 'modern-style';
 	}
 
-	public function display_form_settings() {
-		?>
-		<p>
-			Modern settings
-		</p>
-		<?php
-	}
-
 	public function sanitize_widget_settings() {
 		return $this->settings;
 	}

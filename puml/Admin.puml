@@ -1,4 +1,4 @@
-@startuml
+@startuml "Admin"
 
 !include ./colors.iuml
 
@@ -62,5 +62,3 @@ package "TWRP\Admin -- The backend of the website" {
 	Interface_Admin_Menu_Tab <|.. General_Settings_Tab
 	Interface_Admin_Menu_Tab <|.. Queries_Tab
 }
-
-@enduml

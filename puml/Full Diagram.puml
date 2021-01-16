@@ -1,0 +1,10 @@
+@startuml "Full Diagram"
+
+!include ./colors.iuml
+
+!include ./TWRP_Widget.puml
+!include ./Admin.puml
+!include ./Icons.puml
+!include ./Tabs_Creator.puml
+!include ./Utils.puml
+!include ./Query_Generator.puml

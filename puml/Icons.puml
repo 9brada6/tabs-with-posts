@@ -1,4 +1,4 @@
-@startuml
+@startuml "Icons"
 
 !include ./colors.iuml
 
@@ -33,5 +33,3 @@ package "TWRP\Icons" {
 	Icon_Definitions <|.. Rating_Icons
 
 }
-
-@enduml

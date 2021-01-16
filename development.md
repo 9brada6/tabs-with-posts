@@ -55,6 +55,8 @@ it with twrpb or something like that.
 
 ## ✅ Todo
 
+- Move custom article blocs into a new folder.
+
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts

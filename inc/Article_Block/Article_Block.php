@@ -185,7 +185,16 @@ abstract class Article_Block {
 	 *
 	 * @return void
 	 */
-	abstract public function display_form_settings();
+	public function display_form_settings() {
+		$settings = $this->get_artblock_settings();
+		foreach ( $settings as $query_artblock_setting ) {
+			$query_artblock_setting->display_setting();
+		}
+
+		// Display the components settings.
+		$components = $this->get_components();
+		Artblock_Component::display_components( $components );
+	}
 
 	/**
 	 * Sanitize the widget settings of this specific article block.
