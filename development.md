@@ -55,7 +55,7 @@ it with twrpb or something like that.
 
 ## ✅ Todo
 
-- Move custom article blocs into a new folder.
+- Maybe move Create_And_Enqueue_Icons to generate CSS folder?
 
 ### Query Settings
 

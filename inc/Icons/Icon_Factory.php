@@ -6,6 +6,7 @@
 namespace TWRP\Icons;
 
 use RuntimeException;
+
 use TWRP\Icons\Date_Icons;
 use TWRP\Icons\User_Icons;
 use TWRP\Icons\Category_Icons;

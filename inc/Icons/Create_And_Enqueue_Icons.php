@@ -6,13 +6,15 @@
 namespace TWRP\Icons;
 
 use TWRP_Main;
-use TWRP\Utils\Directory_Utils;
-use TWRP\Utils\Filesystem_Utils;
-use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Database\Inline_Icons_Option;
 use TWRP\Database\Aside_Options;
+
+use TWRP\Utils\Directory_Utils;
+use TWRP\Utils\Filesystem_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
+
+use RuntimeException;
 
 class Create_And_Enqueue_Icons {
 

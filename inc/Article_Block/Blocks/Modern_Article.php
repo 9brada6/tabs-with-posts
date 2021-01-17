@@ -1,8 +1,10 @@
 <?php
 
-namespace TWRP\Article_Block;
+namespace TWRP\Article_Block\Blocks;
 
-class Modern_Article_Block extends Article_Block {
+use TWRP\Article_Block\Article_Block;
+
+class Modern_Article extends Article_Block {
 
 	public static function get_class_order_among_siblings() {
 		return 100;

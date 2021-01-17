@@ -1,8 +1,8 @@
 <?php
 
-use TWRP\Article_Block\Simple_Article_Block;
+use TWRP\Article_Block\Blocks\Simple_Article;
 
-if ( ! isset( $artblock ) && ! ( $artblock instanceof Simple_Article_Block ) ) {
+if ( ! isset( $artblock ) && ! ( $artblock instanceof Simple_Article ) ) {
 	return;
 }
 

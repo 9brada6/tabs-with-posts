@@ -277,8 +277,8 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_comments_disabled_icon_setting_args() {
-		$options           = Icon::get_description_options_by_brands( Icon_Factory::get_comment_disabled_icons() );
-		$rating_packs_data = Icon_Factory::get_compatibles_disabled_comments_attr();
+		$options                      = Icon::get_description_options_by_brands( Icon_Factory::get_comment_disabled_icons() );
+		$disabled_comments_packs_data = Icon_Factory::get_compatibles_disabled_comments_attr();
 
 		$switch_value = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON_AUTO_SELECT );
 
@@ -286,7 +286,7 @@ class General_Settings_Factory {
 			'title'           => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
 			'options'         => $options,
 			'additional_attr' => array(
-				'data-twrpb-related-comment-icons' => wp_json_encode( $rating_packs_data ),
+				'data-twrpb-related-comment-icons' => wp_json_encode( $disabled_comments_packs_data ),
 			),
 			'switch'          => array(
 				'title' => _x( 'Auto-select this icon(best-looking) based on the comment icon.', 'backend', 'twrp' ),

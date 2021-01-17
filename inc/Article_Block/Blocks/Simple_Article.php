@@ -5,7 +5,9 @@
  * @todo: add constant for setting names.
  */
 
-namespace TWRP\Article_Block;
+namespace TWRP\Article_Block\Blocks;
+
+use TWRP\Article_Block\Article_Block;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 
@@ -14,7 +16,7 @@ use TWRP\Article_Block\Setting\Display_Comments_Setting;
 use TWRP\Article_Block\Setting\Display_Date_Setting;
 use TWRP\Article_Block\Setting\Display_Post_Thumbnail_Setting;
 
-class Simple_Article_Block extends Article_Block {
+class Simple_Article extends Article_Block {
 
 	public static function get_class_order_among_siblings() {
 		return 50;

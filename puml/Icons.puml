@@ -3,10 +3,45 @@
 !include ./colors.iuml
 
 package "TWRP\Icons" {
-	class Icon_Factory <<public class>> {}
-	class Icon <<public class>> {}
-	class Rating_Icon_Pack <<public class>> {}
-	class Create_And_Enqueue_Icons {}
+	class Icon_Factory <<public class>> <<static collection>> {
+		+ Icon get_icon( $icon_id )
+		+ Rating_Icon_Pack get_rating_pack( $rating_pack_id )
+		--
+		+ array<string,Icon> get_user_icons()
+		+ array<string,Icon> get_category_icons()
+		+ array<string,Icon> get_comment_icons()
+		.. Other category retriever Icons ..
+		--
+		+ get_compatible_disabled_comment_icon( $icon )
+		.. Other unimportant functions ..
+	}
+
+	class Icon <<public class>> <<get via factory>> {
+		+ __construct( $icon_id, $icon_args )
+		+ void display( $additional_class )
+		+ string get_html( $additional_class )
+		--
+		+ get_icon_svg_definition()
+		+ get_id()
+		+ get_brand()
+		+ get_description()
+		+ get_icon_file_path()
+		.. Other unimportant functions ..
+	}
+
+	class Rating_Icon_Pack <<public class>> <<get via factory>> {
+		+ __construct( $rating_pack_id, $pack_attr )
+		+ Icon get_empty_icon()
+		+ Icon get_half_filled_icon()
+		+ Icon get_filled_icon()
+		--
+		+ get_id()
+		+ get_brand()
+		+ get_description()
+		.. Other unimportant functions ..
+	}
+
+	class Create_And_Enqueue_Icons <<private class>> {}
 
 	class Icon_Categories <<private class>> {}
 
@@ -26,7 +61,7 @@ package "TWRP\Icons" {
 	Icon --> Icon_Categories
 
 	Icon_Factory --> Definitions : Know everything
-	Icon_Categories --> Definitions : Know everything
+	Icon --> Definitions : Know everything
 	Icon_Definitions <|.. User_Icons
 	Icon_Definitions <|.. Date_Icons
 	Icon_Definitions <|.. Other_Category_With_Icons

@@ -7,6 +7,7 @@ namespace TWRP\Tabs_Creator;
 
 use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
+
 use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 
 use TWRP\Utils\Widget_Utils;

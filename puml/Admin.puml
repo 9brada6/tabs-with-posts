@@ -9,6 +9,14 @@ package "TWRP\Admin -- The backend of the website" {
 		class Remember_Note <<private class>> {}
 	}
 
+	package "TWRP\Admin\Widget_Control" {
+		abstract Widget_Control <<public class>> {}
+		class Select_Control <<public class>> implements Widget_Control {}
+		class Number_Control <<public class>> implements Widget_Control {}
+		class Color_Control <<public class>> implements Widget_Control {}
+		class Other_Similar_Classes <<public class>> implements Widget_Control {}
+	}
+
 	package "TWRP\Admin\Tabs" {
 		interface Interface_Admin_Menu_Tab <<private class>> {}
 		class Documentation_Tab <<private class>> {}

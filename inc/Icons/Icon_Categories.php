@@ -72,10 +72,6 @@ class Icon_Categories {
 		self::DISABLED_COMMENT_ICON => 'twrp-i--disabled-comment',
 	);
 
-	public static function get_icon_class_based_on_category( $category_id ) {
-
-	}
-
 	/**
 	 * Get an array, where the key is the icon category index, and the value
 	 * is the aria label for these type of icons.
