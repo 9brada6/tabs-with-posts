@@ -3,7 +3,7 @@
  * File that contains the abstract class with the same name.
  */
 
-namespace TWRP\Article_Block\Setting;
+namespace TWRP\Article_Block\Settings;
 
 abstract class Artblock_Setting {
 

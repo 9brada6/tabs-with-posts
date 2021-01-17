@@ -3,7 +3,7 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Article_Block\Setting;
+namespace TWRP\Article_Block\Settings;
 
 use TWRP\Admin\Widget_Control\Checkbox_Control;
 use TWRP\Utils\Widget_Utils;

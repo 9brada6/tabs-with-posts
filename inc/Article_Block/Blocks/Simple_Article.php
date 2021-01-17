@@ -11,10 +11,10 @@ use TWRP\Article_Block\Article_Block;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 
-use TWRP\Article_Block\Setting\Display_Author_Setting;
-use TWRP\Article_Block\Setting\Display_Comments_Setting;
-use TWRP\Article_Block\Setting\Display_Date_Setting;
-use TWRP\Article_Block\Setting\Display_Post_Thumbnail_Setting;
+use TWRP\Article_Block\Settings\Display_Author_Setting;
+use TWRP\Article_Block\Settings\Display_Comments_Setting;
+use TWRP\Article_Block\Settings\Display_Date_Setting;
+use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
 
 class Simple_Article extends Article_Block {
 

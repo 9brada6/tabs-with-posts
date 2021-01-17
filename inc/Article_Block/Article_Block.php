@@ -15,7 +15,7 @@ use TWRP\Utils\Date_Utils;
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
 use TWRP\Article_Block\Component\Artblock_Component;
-use TWRP\Article_Block\Setting\Artblock_Setting;
+use TWRP\Article_Block\Settings\Artblock_Setting;
 
 use WP_Post;
 use RuntimeException;

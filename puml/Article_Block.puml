@@ -1,0 +1,20 @@
+@startuml "Article_Block"
+
+!include ./colors.iuml
+
+namespace TWRP\\Article_Block {
+	abstract Article_Block <<public class>> {}
+
+	namespace Blocks {
+		class Simple_Article <<private class>> implements TWRP\\Article_Block\\Article_Block {}
+		class Modern_Article <<private class>> implements TWRP\\Article_Block\\Article_Block {}
+		class Other_Similar_Classes <<private class>> implements TWRP\\Article_Block\\Article_Block {}
+	}
+
+	namespace Settings {
+		class Artblock_Setting <<private class>> {}
+		class Display_Author_Setting <<private class>> implements Artblock_Setting {}
+		class Display_Date_Setting <<private class>> implements Artblock_Setting {}
+		class Other_Similar_Classes <<private class>> implements Artblock_Setting {}
+	}
+}
