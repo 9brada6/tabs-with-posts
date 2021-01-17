@@ -55,8 +55,6 @@ it with twrpb or something like that.
 
 ## ✅ Todo
 
-- Maybe move Create_And_Enqueue_Icons to generate CSS folder?
-
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts

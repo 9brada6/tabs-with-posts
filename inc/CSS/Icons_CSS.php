@@ -3,9 +3,11 @@
  * File that contains the class with the same name.
  */
 
-namespace TWRP\Icons;
+namespace TWRP\CSS;
 
 use TWRP_Main;
+
+use TWRP\Icons\Icon_Factory;
 use TWRP\Database\General_Options;
 use TWRP\Database\Inline_Icons_Option;
 use TWRP\Database\Aside_Options;
@@ -16,7 +18,7 @@ use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 use RuntimeException;
 
-class Create_And_Enqueue_Icons {
+class Icons_CSS {
 
 	use After_Setup_Theme_Init_Trait;
 
@@ -31,7 +33,7 @@ class Create_And_Enqueue_Icons {
 			add_action( 'wp_head', array( __CLASS__, 'include_needed_icons_file' ) );
 		} else {
 			// todo:
-			// Include inline icons before the tabs are getting displayed
+			// Include inline icons before the tabs are getting displayed.
 		}
 
 		// In admin, include all icons file.

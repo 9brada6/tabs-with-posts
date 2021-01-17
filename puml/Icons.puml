@@ -41,8 +41,6 @@ package "TWRP\Icons" {
 		.. Other unimportant functions ..
 	}
 
-	class Create_And_Enqueue_Icons <<private class>> {}
-
 	class Icon_Categories <<private class>> {}
 
 	package "Definitions" {

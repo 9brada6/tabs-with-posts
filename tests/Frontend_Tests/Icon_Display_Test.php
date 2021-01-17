@@ -7,7 +7,7 @@ namespace TWRP\Development_Tests;
 
 use TWRP\Icons\Icon;
 use TWRP\Icons\Icon_Factory;
-use TWRP\Icons\Create_And_Enqueue_Icons;
+use TWRP\CSS\Icons_CSS;
 
 /**
  * Implement some static methods to display all icons for testing purpose, as
@@ -25,7 +25,7 @@ class Icon_Display_Test {
 	 */
 	public static function test_icons() {
 		$icons = Icon_Factory::get_all_icons();
-		Create_And_Enqueue_Icons::include_all_icons_file();
+		Icons_CSS::include_all_icons_file();
 		$icon_nr = 0;
 
 		?>

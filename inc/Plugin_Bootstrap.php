@@ -111,6 +111,7 @@ class Plugin_Bootstrap {
 
 		// CSS.
 		'CSS/Generate_CSS',
+		'CSS/Icons_CSS',
 
 		// Database.
 		'Database\General_Options_Settings\General_Option_Setting',
@@ -141,7 +142,6 @@ class Plugin_Bootstrap {
 		'Icons/Rating_Icon_Pack',
 		'Icons/Icon_Factory',
 		'Icons/Icon_Categories',
-		'Icons/Create_And_Enqueue_Icons',
 
 		'Icons/Definitions/Icon_Definitions',
 		'Icons/Definitions/User_Icons',
