@@ -55,6 +55,8 @@ it with twrpb or something like that.
 
 ## ✅ Todo
 
+- Make Article_Block implementation(Simple Style) not know about Settings implementations(Display Author, Display Comments... etc).
+
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts

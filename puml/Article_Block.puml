@@ -3,7 +3,7 @@
 !include ./colors.iuml
 
 namespace TWRP\\Article_Block {
-	abstract Article_Block <<public class>> {}
+	abstract Article_Block <<public class>> <<abstract class>> {}
 
 	namespace Blocks {
 		class Simple_Article <<private class>> implements TWRP\\Article_Block\\Article_Block {}
@@ -12,9 +12,27 @@ namespace TWRP\\Article_Block {
 	}
 
 	namespace Settings {
-		class Artblock_Setting <<private class>> {}
+		class Artblock_Setting <<private class>> <<abstract class>> {}
 		class Display_Author_Setting <<private class>> implements Artblock_Setting {}
 		class Display_Date_Setting <<private class>> implements Artblock_Setting {}
 		class Other_Similar_Classes <<private class>> implements Artblock_Setting {}
 	}
+
+	namespace Component {
+		class Artblock_Component <<private class>> {}
+
+		abstract Component_Setting <<private class>> <<abstract class>> {}
+		class Font_Size_Setting <<private class>> implements Component_Setting{}
+		class Color_Setting <<private class>> implements Component_Setting{}
+		class Other_Similar_Classes <<private class>> implements Component_Setting{}
+
+		Artblock_Component --> Component_Setting
+	}
+
+	Article_Block --> TWRP\\Article_Block\\Settings\\Artblock_Setting
+	Article_Block --> TWRP\\Article_Block\\Component\\Artblock_Component
+
+	'alignment pupose:
+	TWRP\\Article_Block\\Blocks -[hidden]-> TWRP\\Article_Block\\Settings
+	TWRP\\Article_Block\\Blocks -[hidden]-> TWRP\\Article_Block\\Component
 }

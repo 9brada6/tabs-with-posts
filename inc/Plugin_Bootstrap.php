@@ -85,15 +85,15 @@ class Plugin_Bootstrap {
 
 
 		// Article Blocks.
-		'Article_Block/Components/Artblock_Component',
+		'Article_Block/Component/Artblock_Component',
 
-		'Article_Block/Components/Component_Settings/Component_Setting',
+		'Article_Block/Component/Component_Settings/Component_Setting',
 
-		'Article_Block/Components/Component_Settings/Font_Size_Setting',
-		'Article_Block/Components/Component_Settings/Line_Height_Setting',
-		'Article_Block/Components/Component_Settings/Font_Weight_Setting',
-		'Article_Block/Components/Component_Settings/Color_Setting',
-		'Article_Block/Components/Component_Settings/Hover_Color_Setting',
+		'Article_Block/Component/Component_Settings/Font_Size_Setting',
+		'Article_Block/Component/Component_Settings/Line_Height_Setting',
+		'Article_Block/Component/Component_Settings/Font_Weight_Setting',
+		'Article_Block/Component/Component_Settings/Color_Setting',
+		'Article_Block/Component/Component_Settings/Hover_Color_Setting',
 
 		'Article_Block/Settings/Artblock_Setting',
 		'Article_Block/Settings/Display_Author_Setting',

@@ -20,26 +20,20 @@
         PackageFontColor #eee
 
         ArrowColor yellow
+
+        circledCharacterFontColor black
+        circledCharacterFontSize 16
+        circledCharacterFontStyle plain
+        circledCharacterRadius 10
+
+        <<public class>>classBackgroundColor #004b00/#003b00
+        <<public class>>classFontSize 16
+
+        <<private class>>classBackgroundColor #5d0000/#4d0000
+
+        <<protected class>>classBackgroundColor #d16300/#c15300
+
+        <<abstract class>>classBorderColor #755800
     }
 
-    skinparam circled {
-        CharacterFontColor black
-        CharacterFontSize 18
-        CharacterFontStyle plain
-        CharacterRadius 12
-    }
-
-
-    skinparam <<public class>> {
-        classBackgroundColor #004b00/#003b00
-        classFontSize 16
-    }
-
-    skinparam <<private class>> {
-        classBackgroundColor #5d0000/#4d0000
-    }
-
-    skinparam <<protected class>> {
-        classBackgroundColor #d16300/#c15300
-    }
 @enduml
