@@ -1,0 +1,8 @@
+@startuml "CSS"
+
+!include ./colors.iuml
+
+namespace TWRP\\CSS {
+	class Generate_CSS <<private class>> {}
+	class Icons_CSS <<private class>> {}
+}

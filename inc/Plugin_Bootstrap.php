@@ -101,9 +101,6 @@ class Plugin_Bootstrap {
 		'Article_Block/Settings/Display_Comments_Setting',
 		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
 
-		'Article_Block/Get_Widget_Settings_Trait',
-		'Article_Block/Get_Settings_Trait',
-		'Article_Block/Display_Post_Meta_Trait',
 		'Article_Block/Article_Block',
 
 		'Article_Block/Blocks/Simple_Article',

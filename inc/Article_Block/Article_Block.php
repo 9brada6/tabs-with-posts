@@ -5,12 +5,20 @@
 
 namespace TWRP\Article_Block;
 
-use TWRP\Article_Block\Component\Artblock_Component;
+use TWRP\Database\General_Options;
+use TWRP\Plugins\Post_Views;
+use TWRP\Icons\Icon_Factory;
+
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
+use TWRP\Utils\Date_Utils;
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+
+use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Article_Block\Setting\Artblock_Setting;
+
 use WP_Post;
+use RuntimeException;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -27,8 +35,6 @@ use WP_Post;
  * sanitize_widget_settings() function externally.
  */
 abstract class Article_Block {
-
-	use Display_Post_Meta_Trait;
 
 	use Class_Children_Order_Trait;
 
@@ -47,13 +53,11 @@ abstract class Article_Block {
 	protected $query_id;
 
 	/**
-	 * Holds the query settings. This property is commented because is
-	 * implemented in Get_Widget_Settings_Trait, but is also put here to know
-	 * the properties of this object.
+	 * Holds the query settings.
 	 *
 	 * @var array
 	 */
-	// protected $settings;
+	protected $settings;
 
 	/**
 	 * Get the Id of the article block.
@@ -219,7 +223,427 @@ abstract class Article_Block {
 		return $css;
 	}
 
+	#region -- Verify if meta post information is displayed
+
+	/**
+	 * Whether or not the thumbnail exist and must be displayed in the article.
+	 *
+	 * @return bool
+	 */
+	public function thumbnail_exist_and_displayed() {
+		$display_thumbnail = isset( $this->settings['display_post_thumbnail'] ) && $this->settings['display_post_thumbnail'];
+		$thumbnail_exist   = has_post_thumbnail();
+
+		return $display_thumbnail && $thumbnail_exist;
+	}
+
+	/**
+	 * Whether or not the author must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function is_author_displayed() {
+		return isset( $this->settings['display_author'] ) && $this->settings['display_author'];
+	}
+
+	/**
+	 * Whether or not the date must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function is_date_displayed() {
+		return isset( $this->settings['display_date'] ) && $this->settings['display_date'];
+	}
+
+	/**
+	 * Whether or not the categories must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function are_categories_displayed() {
+		return isset( $this->settings['display_categories'] ) && $this->settings['display_categories'];
+	}
+
+	/**
+	 * Whether or not the views must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function are_views_displayed() {
+		return isset( $this->settings['display_views'] ) && $this->settings['display_views'];
+	}
+
+	/**
+	 * Whether or not the rating must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function is_rating_displayed() {
+		return isset( $this->settings['display_rating'] ) && $this->settings['display_rating'];
+	}
+
+	/**
+	 * Whether or not the comments must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function are_comments_displayed() {
+		return isset( $this->settings['display_comments'] ) && $this->settings['display_comments'];
+	}
+
+	#endregion -- Verify if meta post information is displayed
+
+	#region -- Display Post Meta
+
+	/**
+	 * Display the author of the current post.
+	 *
+	 * @return void
+	 */
+	public function display_the_author() {
+		$author = $this->get_the_author();
+		if ( is_string( $author ) ) {
+			echo esc_html( $author );
+		}
+	}
+
+	/**
+	 * Get the author of the current $post.
+	 *
+	 * @return string|null
+	 */
+	public function get_the_author() {
+		$author = get_the_author();
+		return $author;
+	}
+
+
+	/**
+	 * Display the date of the current post.
+	 *
+	 * @param WP_Post|int|null $post The post, defaults to global post.
+	 * @return void
+	 */
+	public function display_the_date( $post = null ) {
+		$date = $this->get_the_date( $post );
+		if ( is_string( $date ) ) {
+			echo esc_html( $date );
+		}
+	}
+
+	/**
+	 * Get the date of the current post. The date retrieved will be formatted
+	 * how it should be.
+	 *
+	 * @param WP_Post|int|null $post The post, defaults to global post.
+	 * @return string|false False in case something was wrong.
+	 */
+	public function get_the_date( $post = null ) {
+		$date_format = $this->get_date_format();
+		if ( 'HUMAN_READABLE' === $date_format ) {
+			$from = Date_Utils::get_post_timestamp( $post );
+			$to   = date_timestamp_get( Date_Utils::current_datetime() );
+
+			if ( false === $from || 0 === $to ) {
+				$date_text = false;
+			} else {
+				/* translators: %s: a date representation, in the website language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc */
+				$date_text = sprintf( __( '%s ago', 'twrp' ), human_time_diff( $from, $to ) );
+			}
+		} else {
+			$date_text = get_the_time( $date_format, $post );
+		}
+
+		if ( is_int( $date_text ) ) {
+			$date_text = (string) $date_text;
+		}
+
+		return $date_text;
+	}
+
+
+	/**
+	 * Display the comments number. Will not display if comments are not open
+	 * and there are no comments.
+	 *
+	 * @param WP_Post|int|null $post The post, defaults to global post.
+	 * @return void
+	 */
+	public function display_comments_number( $post = null ) {
+		$post = get_post( $post );
+
+		if ( is_array( $post ) || is_null( $post ) ) { // Needed for static analysis checks.
+			return;
+		}
+
+		if ( ( ! comments_open( $post ) ) && ( ! $this->get_the_comments_number() ) ) {
+			return;
+		}
+
+		echo $this->get_the_comments_number(); // phpcs:ignore -- No XSS.
+	}
+
+	/**
+	 * Get the comments number for a post.
+	 *
+	 * @param WP_Post|int|null $post The post, defaults to global post.
+	 * @return int|string A numeric string representing the number of posts, or 0.
+	 */
+	public function get_the_comments_number( $post = null ) {
+		$post = get_post( $post );
+
+		if ( is_array( $post ) || is_null( $post ) ) { // Needed for static analysis checks.
+			return 0;
+		}
+
+		return get_comments_number( $post );
+	}
+
+
+	/**
+	 * Display the views of the post.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return void
+	 */
+	public function display_the_views( $post = null ) {
+		$author = $this->get_the_views( $post );
+		if ( is_int( $author ) ) {
+			echo esc_html( (string) $author );
+		} else {
+			echo '0';
+		}
+	}
+
+	/**
+	 * Get the views of the post.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return int|false False if something went wrong and the views are not available.
+	 */
+	public function get_the_views( $post = null ) {
+		return Post_Views::get_views( $post );
+	}
+
+	#endregion -- Display Post Meta
+
+	#region -- Display Icons Functions
+
+	/**
+	 * Include the HTML svg for the author icon.
+	 *
+	 * @return void
+	 */
+	public function display_author_icon() {
+		echo $this->get_author_icon_html(); // phpcs:ignore -- No XSS.
+	}
+
+	/**
+	 * Return the svg for the author icon.
+	 *
+	 * @return string The HTML is safe for output.
+	 */
+	public function get_author_icon_html() {
+		try {
+			$icon = Icon_Factory::get_icon( $this->get_selected_author_icon() );
+			return $icon->get_html();
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+	}
+
+	/**
+	 * Get the Id of the selected author icon. Empty if nothing is set(usually
+	 * should not be encounter).
+	 *
+	 * @return string
+	 */
+	protected function get_selected_author_icon() {
+		$option = General_Options::get_option( General_Options::AUTHOR_ICON );
+
+		if ( ! is_string( $option ) ) {
+			return '';
+		}
+
+		return $option;
+	}
+
+	/**
+	 * Include the HTML svg for the date icon.
+	 *
+	 * @return void
+	 */
+	public function display_date_icon() {
+		echo $this->get_date_icon_html(); // phpcs:ignore -- No XSS.
+	}
+
+	/**
+	 * Return the svg for the date icon.
+	 *
+	 * @return string The HTML is safe for output.
+	 */
+	public function get_date_icon_html() {
+		try {
+			$icon = Icon_Factory::get_icon( $this->get_selected_date_icon() );
+			return $icon->get_html();
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+	}
+
+	/**
+	 * Get the Id of the selected date icon. Empty if nothing is set(usually
+	 * should not be encounter).
+	 *
+	 * @return string
+	 */
+	protected function get_selected_date_icon() {
+		$option = General_Options::get_option( General_Options::DATE_ICON );
+
+		if ( ! is_string( $option ) ) {
+			return '';
+		}
+		return $option;
+	}
+
+	/**
+	 * Include the HTML svg for the views icon.
+	 *
+	 * @return void
+	 */
+	public function display_views_icon() {
+		echo $this->get_views_icon_html(); // phpcs:ignore -- No XSS.
+	}
+
+	/**
+	 * Return the svg for the views icon.
+	 *
+	 * @return string The HTML is safe for output.
+	 */
+	public function get_views_icon_html() {
+		try {
+			$icon = Icon_Factory::get_icon( $this->get_selected_date_icon() );
+			return $icon->get_html();
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+	}
+
+	/**
+	 * Get the Id of the selected views icon. Empty if nothing is set(usually
+	 * should not be encounter).
+	 *
+	 * @return string
+	 */
+	protected function get_selected_views_icon() {
+		$option = General_Options::get_option( General_Options::VIEWS_ICON );
+
+		if ( ! is_string( $option ) ) {
+			return '';
+		}
+		return $option;
+	}
+
+	/**
+	 * Display the HTML svg icon
+	 *
+	 * If comments are disabled and the post has no comments, then the comments
+	 * disable icon will be used. If the post has at least one comment or
+	 * comments are open, the normal comments icon will be given.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return void
+	 */
+	public function display_comments_icon( $post = null ) {
+		echo $this->get_comments_icon_html( $post ); // phpcs:ignore -- No XSS.
+	}
+
+	/**
+	 * Get the HTML to display the svg icon
+	 *
+	 * If comments are disabled and the post has no comments, then the comments
+	 * disable icon will be used. If the post has at least one comment or
+	 * comments are open, the normal comments icon will be given.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return string
+	 */
+	public function get_comments_icon_html( $post = null ) {
+		$post = get_post( $post );
+
+		if ( null === $post || is_array( $post ) ) { // This is for static type checkers.
+			return '';
+		}
+
+		$number_of_comments = (int) get_comments_number( $post );
+		$comments_open      = comments_open( $post );
+		$comments_icon      = '';
+
+		if ( 0 === $number_of_comments && ( ! $comments_open ) ) {
+			$comments_icon = $this->get_selected_disabled_comments_icon();
+		} else {
+			$comments_icon = $this->get_selected_comments_icon();
+		}
+
+		try {
+			$icon = Icon_Factory::get_icon( $comments_icon );
+			return $icon->get_html();
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+	}
+
+	/**
+	 * Get the Id of the selected comments icon. Empty if nothing is
+	 * set(usually should not be encounter).
+	 *
+	 * @return string
+	 */
+	protected function get_selected_comments_icon() {
+		$option = General_Options::get_option( General_Options::COMMENTS_ICON );
+
+		if ( ! is_string( $option ) ) {
+			return '';
+		}
+		return $option;
+	}
+
+	/**
+	 * Get the Id of the selected comments disabled icon. Empty if nothing is
+	 * set(usually should not be encounter).
+	 *
+	 * @return string
+	 */
+	protected function get_selected_disabled_comments_icon() {
+		$option = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON );
+
+		if ( ! is_string( $option ) ) {
+			return '';
+		}
+		return $option;
+	}
+
+	// Todo: need to add more functions.
+
+	#endregion -- Icons
+
 	#region -- Helper methods
+
+	/**
+	 * Get the date format to display, or to display in the human readable form.
+	 *
+	 * @return string Either the date format, or HUMAN_READABLE to signal that
+	 * the relative human readable string should be used. An empty string means
+	 * to use the default WP date format.
+	 */
+	public function get_date_format() {
+		if ( 'true' === General_Options::get_option( General_Options::HUMAN_READABLE_DATE ) ) {
+			return 'HUMAN_READABLE';
+
+		} else {
+			return General_Options::get_option( General_Options::DATE_FORMAT );
+		}
+	}
 
 	/**
 	 * Factory function to construct if a name exist.
