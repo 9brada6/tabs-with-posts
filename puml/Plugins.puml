@@ -1,0 +1,7 @@
+@startuml "Admin"
+
+!include ./colors.iuml
+
+namespace TWRP\\Plugins {
+	// Todo.
+}

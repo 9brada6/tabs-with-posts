@@ -150,21 +150,21 @@ class Plugin_Bootstrap {
 		'Icons/Definitions/Rating_Icons',
 
 		// Plugins.
-		'Plugins/Plugin_Info',
 		'Plugins/Post_Rating',
 		'Plugins/Post_Views',
 
-		'Plugins/Post_Views_Plugins/Post_Views_Plugin',
-		'Plugins/Post_Views_Plugins/A3REV_Views_Plugin',
-		'Plugins/Post_Views_Plugins/DFactory_Views_Plugin',
-		'Plugins/Post_Views_Plugins/GamerZ_Views_Plugin',
+		'Plugins/Known_Plugins/Plugin_Info',
+		'Plugins/Known_Plugins/Post_Views_Plugins/Post_Views_Plugin',
+		'Plugins/Known_Plugins/Post_Views_Plugins/A3REV_Views_Plugin',
+		'Plugins/Known_Plugins/Post_Views_Plugins/DFactory_Views_Plugin',
+		'Plugins/Known_Plugins/Post_Views_Plugins/GamerZ_Views_Plugin',
 
-		'Plugins/Rating_Plugins/Post_Rating_Plugin',
-		'Plugins/Rating_Plugins/BlazK_Rating_Plugin',
-		'Plugins/Rating_Plugins/GamerZ_Rating_Plugin',
-		'Plugins/Rating_Plugins/KK_Rating_Plugin',
-		'Plugins/Rating_Plugins/PaulR_Rating_Plugin',
-		'Plugins/Rating_Plugins/YASR_Rating_Plugin',
+		'Plugins/Known_Plugins/Rating_Plugins/Post_Rating_Plugin',
+		'Plugins/Known_Plugins/Rating_Plugins/BlazK_Rating_Plugin',
+		'Plugins/Known_Plugins/Rating_Plugins/GamerZ_Rating_Plugin',
+		'Plugins/Known_Plugins/Rating_Plugins/KK_Rating_Plugin',
+		'Plugins/Known_Plugins/Rating_Plugins/PaulR_Rating_Plugin',
+		'Plugins/Known_Plugins/Rating_Plugins/YASR_Rating_Plugin',
 
 		// Query_Setting.
 		'Query_Generator/Query_Generator',

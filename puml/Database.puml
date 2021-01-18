@@ -1,0 +1,19 @@
+@startuml "Database"
+
+!include ./colors.iuml
+
+namespace TWRP\\Database {
+	class Query_Options <<public class>> {}
+	class Inline_Icons_Option <<public class>> {}
+	class General_Options <<public class>> {}
+	class Aside_Options <<public class>> {}
+
+	namespace Settings {
+		abstract General_Option_Setting <<private class>> <<abstract class>> {}
+		class Accent_Color <<private class>> implements General_Option_Setting {}
+		class Author_Icon <<private class>> implements General_Option_Setting {}
+		class Other_Similar_Settings <<private class>> implements General_Option_Setting {}
+	}
+
+	General_Options --> TWRP\\Database\\Settings\\General_Option_Setting
+}

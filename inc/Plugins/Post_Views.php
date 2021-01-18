@@ -116,8 +116,8 @@ class Post_Views {
 	}
 
 	/**
-	 * Get the views for a post. Return false if the views cannot be retrieved, like
-	 * the plugin is not installed, or another error.
+	 * Get the views for a post. Return false if the views cannot be retrieved,
+	 * like the plugin is not installed, or another error.
 	 *
 	 * @param WP_Post|int|null $post The post to use. Defaults to global $post.
 	 * @return int|false
