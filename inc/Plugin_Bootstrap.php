@@ -107,7 +107,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Blocks/Modern_Article',
 
 		// CSS.
-		'CSS/Generate_CSS',
+		'CSS/General_CSS',
 		'CSS/Icons_CSS',
 
 		// Database.

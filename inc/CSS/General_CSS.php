@@ -67,6 +67,16 @@ class Generate_CSS {
 			$outline_accent_color = $accent_color;
 		}
 
+		$best_accent_text_color = 'rgba(256, 256, 256, 1)';
+		if ( 0 === Color_Utils::white_or_black_text( $accent_color ) ) {
+			$best_accent_text_color = 'rgba(0, 0, 0, 1)';
+		}
+
+		$best_secondary_accent_text_color = 'rgba(256, 256, 256, 1)';
+		if ( 0 === Color_Utils::white_or_black_text( $secondary_accent_color ) ) {
+			$best_secondary_accent_text_color = 'rgba(0, 0, 0, 1)';
+		}
+
 		echo '<style type="text/css">:root{' .
 			'--twrp-background-color: ' . esc_html( $background_color ) . ';' .
 			'--twrp-secondary-background-color: ' . esc_html( $secondary_background_color ) . ';' .
@@ -79,9 +89,8 @@ class Generate_CSS {
 
 			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
 
-			// todo: calculate the best color based on contrast.
-			'--twrp-accent-best-text-color: white;' .
-			'--twrp-secondary-accent-best-text-color: white;' .
+			'--twrp-accent-best-text-color: ' . esc_html( $best_accent_text_color ) . ';' .
+			'--twrp-secondary-accent-best-text-color: ' . esc_html( $best_secondary_accent_text_color ) . ';' .
 		'}</style>';
 	}
 }
