@@ -1,7 +1,20 @@
-@startuml "Admin"
+@startuml "Plugins"
 
 !include ./colors.iuml
 
 namespace TWRP\\Plugins {
-	// Todo.
+	class Post_Views <<public class>> {}
+
+	namespace Known_Plugins {
+		class Known_Plugin <<public class>> {}
+
+
+			abstract Post_Views_Plugin <<private class>> implements Known_Plugin {}
+
+			class DFactory_Views_Plugin <<private class>> implements Post_Views_Plugin {}
+			class GamerZ_Views_Plugin <<private class>> implements Post_Views_Plugin {}
+			class Other_Similar_Classes <<private class>> implements Post_Views_Plugin {}
+	}
+
+	Post_Views --> TWRP\\Plugins\\Known_Plugins\\Post_Views_Plugin
 }

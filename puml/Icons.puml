@@ -2,7 +2,7 @@
 
 !include ./colors.iuml
 
-package "TWRP\Icons" {
+namespace TWRP\\Icons {
 	class Icon_Factory <<public class>> <<static collection>> {
 		+ Icon get_icon( $icon_id )
 		+ Rating_Icon_Pack get_rating_pack( $rating_pack_id )
@@ -43,12 +43,17 @@ package "TWRP\Icons" {
 
 	class Icon_Categories <<private class>> {}
 
-	package "Definitions" {
+	namespace Definitions {
 		interface Icon_Definitions <<private class>> {}
 		class User_Icons <<private class>> {}
 		class Date_Icons <<private class>> {}
 		class Other_Category_With_Icons <<more identical siblings classes>> <<private class>> {}
 		class Rating_Icons <<private class>> {}
+
+		Icon_Definitions <|.. User_Icons
+		Icon_Definitions <|.. Date_Icons
+		Icon_Definitions <|.. Other_Category_With_Icons
+		Icon_Definitions <|.. Rating_Icons
 	}
 
 	Icon_Factory ..> Icon : Create Icon by Id.
@@ -58,11 +63,6 @@ package "TWRP\Icons" {
 
 	Icon --> Icon_Categories
 
-	Icon_Factory --> Definitions : Know everything
-	Icon --> Definitions : Know everything
-	Icon_Definitions <|.. User_Icons
-	Icon_Definitions <|.. Date_Icons
-	Icon_Definitions <|.. Other_Category_With_Icons
-	Icon_Definitions <|.. Rating_Icons
-
+	Icon_Factory --> TWRP\\Icons\\Definitions : Know everything
+	Icon --> TWRP\\Icons\\Definitions : Know everything
 }

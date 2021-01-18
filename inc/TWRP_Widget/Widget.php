@@ -5,13 +5,15 @@
 
 namespace TWRP\TWRP_Widget;
 
-use RuntimeException;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Tabs_Creator\Tabs_Creator;
 use TWRP\Database\Query_Options;
 use TWRP\Admin\TWRP_Widget\Widget_Form;
+
 use TWRP\Utils\Simple_Utils;
 use TWRP\Utils\Widget_Utils;
+
+use RuntimeException;
 use WP_Widget;
 
 class Widget extends WP_Widget {

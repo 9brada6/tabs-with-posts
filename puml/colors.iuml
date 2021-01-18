@@ -26,6 +26,8 @@
         circledCharacterFontStyle plain
         circledCharacterRadius 10
 
+        packageStyle rectangle
+
         <<public class>>classBackgroundColor #004b00/#003b00
         <<public class>>classFontSize 16
 

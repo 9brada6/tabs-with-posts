@@ -19,4 +19,4 @@ namespace TWRP\\Utils {
 }
 
 note "All other packages can reference these utils at any time." as NoteUtils
-TWRP\\Utils <.up. NoteUtils
+TWRP\\Utils <.down. NoteUtils

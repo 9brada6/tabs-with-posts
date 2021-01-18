@@ -2,11 +2,38 @@
 
 !include ./colors.iuml
 
-!include ./TWRP_Widget.puml
-!include ./Admin.puml
-!include ./CSS.puml
-!include ./Icons.puml
-!include ./Query_Generator.puml
-!include ./Tabs_Creator.puml
 !include ./Utils.puml
+!include ./Database.puml
+
+!include ./TWRP_Widget.puml
+!include ./Article_Block.puml
+!include ./Tabs_Creator.puml
 !include ./Query_Generator.puml
+!include ./Icons.puml
+!include ./Admin.puml
+
+!include ./CSS.puml
+!include ./Plugins.puml
+
+'Alignment purpose:
+'TWRP\\Utils\\Class_Retriever_Utils -[hidden]-> TWRP\\Utils\\Widget_Utils
+'TWRP\\Utils\\Widget_Utils -down[hidden]--- TWRP\\TWRP_Widget\\Widget
+'End Alignment purpose.
+
+' TWRP_Widget uses:
+TWRP\\TWRP_Widget\\Widget ---> TWRP\\Tabs_Creator\\Tabs_Creator
+TWRP\\TWRP_Widget\\Widget ---> TWRP\\Article_Block\\Article_Block
+' Also Widget Uses Admin\\Widget_Form
+
+'Tabs_Creator uses:
+TWRP\\Tabs_Creator\\Tabs_Creator -> TWRP\\Article_Block\\Article_Block
+TWRP\\Tabs_Creator\\Tabs_Creator ----> TWRP\\Query_Generator\\Query_Generator
+
+'Query_Generator uses:
+
+'CSS uses:
+TWRP\\CSS\\Icons_CSS ---------> TWRP\\Icons\\Icon_Factory
+
+'Article_Block uses:
+TWRP\\Article_Block\\Article_Block -------> TWRP\\Icons\\Icon_Factory
+TWRP\\Article_Block\\Article_Block -------> TWRP\\Plugins
