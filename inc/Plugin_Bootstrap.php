@@ -153,7 +153,7 @@ class Plugin_Bootstrap {
 		'Plugins/Post_Rating',
 		'Plugins/Post_Views',
 
-		'Plugins/Known_Plugins/Plugin_Info',
+		'Plugins/Known_Plugins/Known_Plugin',
 		'Plugins/Known_Plugins/Post_Views_Plugins/Post_Views_Plugin',
 		'Plugins/Known_Plugins/Post_Views_Plugins/A3REV_Views_Plugin',
 		'Plugins/Known_Plugins/Post_Views_Plugins/DFactory_Views_Plugin',

@@ -7,6 +7,7 @@ namespace TWRP\Utils;
 
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
+use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
 
 /**
  * Class that is a collection of static methods, that can be used everywhere
@@ -108,6 +109,21 @@ class Class_Retriever_Utils {
 	public static function get_all_classes_that_uses_after_init_theme_trait() {
 		$trait_classes = self::get_all_trait_classes( 'TWRP\\Utils\\Helper_Trait\\After_Setup_Theme_Init_Trait' );
 		return $trait_classes;
+	}
+
+	/**
+	 * Get all the Post_Views_Plugin objects.
+	 *
+	 * @return array<Post_Views_Plugin>
+	 */
+	public static function get_all_post_views_plugins_objects() {
+		$class_names = static::get_all_child_classes( 'TWRP\\Plugins\\Known_Plugins\\Post_Views_Plugin' );
+
+		foreach ( $class_names as $key => $class_name ) {
+			$class_names[ $key ] = new $class_name();
+		}
+
+		return $class_names;
 	}
 
 	/**

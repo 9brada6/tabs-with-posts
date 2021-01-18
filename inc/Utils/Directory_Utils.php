@@ -2,7 +2,7 @@
 /**
  * File that contains the class with the same name.
  *
- * @todo: add a method to be used instead of creating in get_plugin_avatar_src() Plugin_Info method.
+ * @todo: add a method to be used instead of creating in get_plugin_avatar_src() Known_Plugin method.
  * @todo: Use these methods in wp_enqueue_scripts.
  */
 

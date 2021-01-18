@@ -3,13 +3,17 @@
  * File that holds the class with the same name.
  */
 
-namespace TWRP\Plugins;
+namespace TWRP\Plugins\Known_Plugins;
 
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by A3REV.
  */
 class A3REV_Views_Plugin extends Post_Views_Plugin {
+
+	public static function get_class_order_among_siblings() {
+		return 30;
+	}
 
 	#region -- Plugin Meta
 

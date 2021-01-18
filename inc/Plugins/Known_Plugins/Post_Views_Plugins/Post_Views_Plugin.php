@@ -3,13 +3,17 @@
  * File that holds the interface with the same name.
  */
 
-namespace TWRP\Plugins;
+namespace TWRP\Plugins\Known_Plugins;
+
+use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
 /**
  * Interface that will tell what methods the plugin wrapper classes should
  * implement.
  */
-abstract class Post_Views_Plugin extends Plugin_Info {
+abstract class Post_Views_Plugin extends Known_Plugin {
+
+	use Class_Children_Order_Trait;
 
 	/**
 	 * Whether the plugin support getting the views for a post.

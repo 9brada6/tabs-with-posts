@@ -3,13 +3,17 @@
  * File that holds the class with the same name.
  */
 
-namespace TWRP\Plugins;
+namespace TWRP\Plugins\Known_Plugins;
 
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by GaMerZ.
  */
 class GamerZ_Views_Plugin extends Post_Views_Plugin {
+
+	public static function get_class_order_among_siblings() {
+		return 20;
+	}
 
 	#region -- Plugin Meta
 

@@ -3,12 +3,12 @@
  * File that holds the interface with the same name.
  */
 
-namespace TWRP\Plugins;
+namespace TWRP\Plugins\Known_Plugins;
 
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
-abstract class Plugin_Info {
+abstract class Known_Plugin {
 
 	use After_Setup_Theme_Init_Trait;
 

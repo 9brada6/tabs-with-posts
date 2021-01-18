@@ -2,6 +2,8 @@
 
 namespace TWRP\Plugins;
 
+use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
+use TWRP\Utils\Class_Retriever_Utils;
 use WP_Post;
 
 // todo:
@@ -10,19 +12,6 @@ use WP_Post;
 			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
 			 */
 class Post_Views {
-
-	/**
-	 * Array that holds all the classes that calls for each plugin API. The
-	 * order of the plugin class names means the preference order to use one of
-	 * them.
-	 *
-	 * @var array
-	 */
-	protected static $all_plugin_class_names = array(
-		'DFactory' => 'DFactory_Views_Plugin',
-		'GamerZ'   => 'GamerZ_Views_Plugin',
-		'A3REV'    => 'A3REV_Views_Plugin',
-	);
 
 	/**
 	 * Holds an array with an instance of each plugin class. The key is the
@@ -41,13 +30,6 @@ class Post_Views {
 	protected static $used_plugin_class = false;
 
 	/**
-	 * The plugins class namespace prefix.
-	 *
-	 * @var string
-	 */
-	protected static $plugin_namespace = '\\TWRP\\Plugins\\';
-
-	/**
 	 * Returns an array with each plugin classes, in the usage preference order.
 	 *
 	 * @return array<string,Post_Views_Plugin>
@@ -57,18 +39,28 @@ class Post_Views {
 			return self::$plugin_classes;
 		}
 
-		self::$plugin_classes = array();
+		self::$plugin_classes = Class_Retriever_Utils::get_all_post_views_plugins_objects();
+		return self::$plugin_classes;
+	}
 
-		foreach ( self::$all_plugin_class_names as $acronym => $plugin_class_name ) {
-			$fully_qualified_class_name = self::$plugin_namespace . $plugin_class_name;
-			$plugin_class               = new $fully_qualified_class_name();
+	/**
+	 * Get the class of the plugin to use.
+	 *
+	 * @return false|Post_Views_Plugin False if no views plugin is installed, so
+	 * no class can be used, or the corresponding class to use.
+	 */
+	public static function get_plugin_to_use() {
+		$plugins = self::get_plugin_classes();
 
-			if ( $plugin_class instanceof Post_Views_Plugin ) {
-				self::$plugin_classes[ $acronym ] = $plugin_class;
+		foreach ( $plugins as $plugin_class ) {
+			if ( is_callable( array( $plugin_class, 'is_installed_and_can_be_used' ) ) && $plugin_class::is_installed_and_can_be_used() === true ) {
+				self::$used_plugin_class = $plugin_class;
+				return self::$used_plugin_class;
 			}
 		}
 
-		return self::$plugin_classes;
+		self::$used_plugin_class = false;
+		return false;
 	}
 
 	/**
@@ -90,30 +82,6 @@ class Post_Views {
 	}
 
 	#region -- Todo
-
-	/**
-	 * Get the class of the plugin to use.
-	 *
-	 * @return false|Post_Views_Plugin False if no views plugin is installed, so
-	 * no class can be used, or the corresponding class to use.
-	 */
-	public static function get_plugin_to_use() {
-		foreach ( self::$all_plugin_class_names as $plugin_name_class ) {
-			$fully_qualified_class_name = self::$plugin_namespace . $plugin_name_class;
-
-			if ( is_callable( array( $fully_qualified_class_name, 'is_installed_and_can_be_used' ) ) && true === call_user_func( array( $fully_qualified_class_name, 'is_installed_and_can_be_used' ) ) ) {
-				$plugin_class = new $fully_qualified_class_name();
-
-				if ( $plugin_class instanceof Post_Views_Plugin ) {
-					self::$used_plugin_class = $plugin_class;
-					return self::$used_plugin_class;
-				}
-			}
-		}
-
-		self::$used_plugin_class = false;
-		return false;
-	}
 
 	/**
 	 * Get the views for a post. Return false if the views cannot be retrieved,

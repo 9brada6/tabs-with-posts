@@ -3,7 +3,7 @@
 namespace TWRP\Admin\Tabs;
 
 use TWRP\Plugins\Post_Views;
-use TWRP\Plugins\Plugin_Info;
+use TWRP\Plugins\Known_Plugins\Known_Plugin;
 use TWRP\Admin\Tabs\Documentation\License_Display;
 use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 
@@ -59,8 +59,8 @@ class Documentation_Tab implements Interface_Admin_Menu_Tab {
 	/**
 	 * Display the support for a plugin.
 	 *
-	 * @param Plugin_Info $plugin
-	 * @param Plugin_Info|false $plugin_in_use The plugin what is currently used.
+	 * @param Known_Plugin $plugin
+	 * @param Known_Plugin|false $plugin_in_use The plugin what is currently used.
 	 * @return void
 	 */
 	protected function display_plugin_info( $plugin, $plugin_in_use ) {
