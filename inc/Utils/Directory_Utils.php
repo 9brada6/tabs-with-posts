@@ -32,6 +32,14 @@ class Directory_Utils {
 	const HOW_MANY_FOLDERS_THIS_FILE_IS_NESTED = 2;
 
 	/**
+	 * The current version of this plugin.
+	 *
+	 * Mainly used in CSS/JS version to prevent caching when something has
+	 * changed.
+	 */
+	const PLUGIN_VERSION = '1.0.0';
+
+	/**
 	 * The folder name of this plugin.
 	 */
 	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';

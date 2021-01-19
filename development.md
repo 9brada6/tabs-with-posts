@@ -51,12 +51,14 @@ It's best to keep them updated.
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 
-### Today
+### Various
 
 - Split all Query_Settings classes in half, and move them inside admin menu.
 - Add a way to order query settings.
 
 - Make Article_Block implementation(Simple Style) not know about Settings implementations(Display Author, Display Comments... etc).
+
+- Make sure that Jquery UI JSS that we enqueue don't interfere with other jquery ui.
 
 ### Query Settings
 

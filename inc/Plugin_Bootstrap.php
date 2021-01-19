@@ -204,6 +204,9 @@ class Plugin_Bootstrap {
 	}
 
 	/**
+	 * Searches for all classes that have the After_Setup_Theme_Init_Trait
+	 * trait, and call the trait functions.
+	 *
 	 * This method should be called immediately after include_all_files()
 	 * method.
 	 *

@@ -5,8 +5,6 @@
 
 namespace TWRP\CSS;
 
-use TWRP_Main;
-
 use TWRP\Icons\Icon_Factory;
 use TWRP\Database\General_Options;
 use TWRP\Database\Inline_Icons_Option;
@@ -74,7 +72,7 @@ class Icons_CSS {
 	 */
 	public static function include_all_icons_file() {
 		$file_path = Directory_Utils::get_all_icons_url();
-		self::ajax_include_svg_file( $file_path . '?version="' . TWRP_MAIN::VERSION . '"' );
+		self::ajax_include_svg_file( $file_path . '?version="' . Directory_Utils::PLUGIN_VERSION . '"' );
 	}
 
 	/**

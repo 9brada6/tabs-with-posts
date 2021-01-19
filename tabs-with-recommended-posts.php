@@ -14,145 +14,33 @@
  */
 
 use TWRP\Plugin_Bootstrap;
-use TWRP\Admin\Settings_Menu;
-use TWRP\Database\Query_Options;
-use TWRP\TWRP_Widget\Widget;
-use TWRP\Query_Generator\Query_Generator;
 
 /**
- * For Development only.
+ * Include all the files of this plugin.
  */
-require_once __DIR__ . '/debug-and-development.php';
-
 require_once __DIR__ . '/inc/Plugin_Bootstrap.php';
 Plugin_Bootstrap::include_all_files();
 
+/**
+ * Initialize all the WordPress Hooks and Actions that needs to be called.
+ *
+ * The function called search for all classes that implements a specific trait,
+ * that suggest the class wants to use some event-driven WP hooks/actions.
+ *
+ * All hooks and actions used should be after the 'after_setup_theme' action.
+ * If a hook or action that is earlier needs to be called, then it should be
+ * added in the classic way. 'after_setup_theme' action is used because a class
+ * that is not yet included might not get called.
+ */
 add_action( 'after_setup_theme', array( 'TWRP\\Plugin_Bootstrap', 'initialize_after_setup_theme_hooks' ) );
 
-#region -- Initializing
-
-
-#endregion -- Initializing
-
 /**
- * Main class.
+ * For Development and Tests.
  */
-class TWRP_Main {
-
-	/**
-	 * Whether or not the pro plugin is installed.
-	 *
-	 * @var bool
-	 */
-	protected static $is_pro = false;
-
-	const VERSION = '1.0.0';
-
-	const TWRP_WIDGET__BASE_ID = 'twrp_tabs_with_recommended_posts';
-
-
-
-	/**
-	 * The folder name of this plugin.
-	 */
-	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';
-
-	/**
-	 * The folder where article blocks templates are to be found.
-	 */
-	const TEMPLATES_FOLDER = 'templates/';
-
-	const ASSETS_FOLDER = 'assets/';
-
-	const SVG_FOLDER = 'assets/svgs/';
-
-	const ALL_ICONS_FILE = 'assets/svgs/all-icons.svg';
-
-	const NEEDED_ICONS_FILE = 'assets/svgs/needed-icons.svg';
+if ( file_exists( __DIR__ . '/tests/debug-and-development.php' ) ) {
+	require_once __DIR__ . '/tests/debug-and-development.php';
 }
 
-/**
- * @todo: Move and comment.
- *
- * @return void
- */
-function twrp_register_widgets() {
-	register_widget( 'TWRP\\TWRP_Widget\\Widget' );
+if ( file_exists( __DIR__ . '/tests/random_things_testing.php' ) ) {
+	require_once __DIR__ . '/tests/random_things_testing.php';
 }
-
-add_action( 'widgets_init', 'twrp_register_widgets' );
-
-
-/**
- * @todo: Move and comment.
- *
- * @return void
- */
-function twrp_enqueue_artblock_styles() {
-	global $wp_registered_widgets;
-
-	foreach ( $wp_registered_widgets as $widget_full_id => $widget ) {
-		if ( ! isset( $widget['callback'][0] ) ) {
-			continue;
-		}
-		$widget_class = $widget['callback'][0];
-
-		if ( ( $widget_class instanceof Widget ) && is_active_widget( false, $widget_full_id, $widget_class->id_base ) ) {
-			$widget_class::enqueue_scripts( $widget_full_id );
-		}
-	}
-}
-// add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
-
-#region -- Testing
-
-// phpcs:disable - For testings purposes.
-
-/**
- * Used for debugging in the scripts.
- *
- * @todo: remove.
- *
- * @return null
- */
-function twrp_enqueue_scripts_debug() {
-	\Debug\dump_bench( 'test_sanitize' );
-	try {
-		\Debug\console_dump( Query_Options::get_all_query_settings( 10 ), 'Query 10 settings:' );
-
-		$wp_query_args = Query_Generator::get_wp_query_arguments( 10 );
-		\Debug\console_dump( $wp_query_args, 'Query 10 Arguments:' );
-
-		$wp_query                  = new WP_Query();
-		$wp_query_args['nopaging'] = true;
-
-		\Debug\console_dump( $wp_query->query( $wp_query_args ), 'Query 10 Posts (with no paging added):' );
-	} catch ( \RuntimeException $e ) {
-		\Debug\console_dump( 'Not working, error', 'Query 1 settings:' );
-	}
-
-	$args = array(
-		'no_found_rows'          => true,
-		'nopaging'               => true,
-		'post__in'               => array( 75 ),
-		'cat'                    => 1,
-		'update_post_term_cache' => false,
-		'ignore_sticky_posts'    => false,
-		// 'suppress_filters' => true,
-		// 'post_status'      => 'future',
-		// 'perm'             => 'readable',
-		// 'post__in'         => array( 25 ),
-	);
-	$wp_query = new WP_Query();
-	$queries  = $wp_query->query( $args );
-	\Debug\console_dump( $queries, 'Custom get posts' );
-
-	// Widget_Utils::get_widget_instance_by_id( 2 );
-
-	return null;
-}
-
-add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
-add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
-
-#endregion -- Testing

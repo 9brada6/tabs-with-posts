@@ -2,7 +2,8 @@
 /**
  * File that contains the class with the same name.
  *
- * @todo: make sure that all versions are getted from a static variable?
+ * @todo: make sure that all versions are got from a static variable?
+ * @todo: make sure that all url are got from the utils class?
  */
 
 namespace TWRP\CSS;
@@ -10,6 +11,7 @@ namespace TWRP\CSS;
 use TWRP\Database\General_Options;
 
 use TWRP\Utils\Color_Utils;
+use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 /**
@@ -42,7 +44,8 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_frontend_styles() {
-		wp_enqueue_style( 'twrp-style', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
+		$version = Directory_Utils::PLUGIN_VERSION;
+		wp_enqueue_style( 'twrp-style', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), $version, 'all' );
 	}
 
 	/**
@@ -51,7 +54,8 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_frontend_scripts() {
-		wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), '1.0.0', true );
+		$version = Directory_Utils::PLUGIN_VERSION;
+		wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), $version, true );
 	}
 
 	/**
@@ -60,14 +64,16 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_backend_styles() {
-		wp_enqueue_style( 'twrpb-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), '1.0.0', 'all' );
+		$version = Directory_Utils::PLUGIN_VERSION;
+
+		wp_enqueue_style( 'twrpb-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), $version, 'all' );
 
 		// CodeMirror.
-		wp_enqueue_style( 'twrpb-codemirror-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
-		wp_enqueue_style( 'twrpb-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/material-darker.css' ), array( 'twrpb-codemirror-style' ), '1.0.0', 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.css' ), array(), $version, 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/material-darker.css' ), array( 'twrpb-codemirror-style' ), $version, 'all' );
 
 		// Pickr.
-		wp_enqueue_style( 'twrpb-pickr-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.css' ), array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'twrpb-pickr-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.css' ), array(), $version, 'all' );
 	}
 
 	/**
@@ -76,21 +82,23 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_backend_scripts() {
-		wp_enqueue_script( 'twrpb-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' ), array( 'jquery', 'wp-api' ), '1.0.0', true );
+		$version = Directory_Utils::PLUGIN_VERSION;
+
+		wp_enqueue_script( 'twrpb-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' ), array( 'jquery', 'wp-api' ), $version, true );
 
 		// CodeMirror.
-		wp_enqueue_script( 'twrpb-codemirror-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.js' ), array(), '1.0.0', true );
-		wp_enqueue_script( 'twrpb-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/css.js' ), array( 'twrpb-codemirror-script' ), '1.0.0', true );
-		wp_enqueue_script( 'twrpb-codemirror-javascript', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/javascript.js' ), array( 'twrpb-codemirror-script' ), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.js' ), array(), $version, true );
+		wp_enqueue_script( 'twrpb-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/css.js' ), array( 'twrpb-codemirror-script' ), $version, true );
+		wp_enqueue_script( 'twrpb-codemirror-javascript', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/javascript.js' ), array( 'twrpb-codemirror-script' ), $version, true );
 		// Need to refresh the editor when is hidden.
-		wp_enqueue_script( 'twrpb-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/autorefresh.js' ), array( 'twrpb-codemirror-script' ), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/autorefresh.js' ), array( 'twrpb-codemirror-script' ), $version, true );
 
 		// Pickr.
-		wp_enqueue_script( 'twrpb-pickr', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.js' ), array(), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-pickr', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.js' ), array(), $version, true );
 		wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
 
 		// Jquery UI.
-		wp_enqueue_script( 'twrpb-jquery-ui', plugins_url( 'tabs-with-recommended-posts/assets/backend/jquery-ui.min.js' ), array(), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-jquery-ui', plugins_url( 'tabs-with-recommended-posts/assets/backend/jquery-ui.min.js' ), array(), $version, true );
 	}
 
 	/**

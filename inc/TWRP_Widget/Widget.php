@@ -14,6 +14,7 @@ use TWRP\Utils\Simple_Utils;
 use TWRP\Utils\Widget_Utils;
 
 use RuntimeException;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use WP_Widget;
 
 class Widget extends WP_Widget {
@@ -32,6 +33,8 @@ class Widget extends WP_Widget {
 
 	const DEFAULT_SELECTED_ARTBLOCK_ID = 'simple_style';
 
+	use After_Setup_Theme_Init_Trait;
+
 	public function __construct() {
 
 		$description = _x( 'Tabs with recommended posts. The settings are available at Settings->Tabs With Recommended Posts', 'backend', 'twrp' );
@@ -45,6 +48,22 @@ class Widget extends WP_Widget {
 			self::TWRP_BASE_ID,
 			_x( 'Tabs with Recommended posts', 'backend', 'twrp' ),
 			$widget_ops
+		);
+	}
+
+	/**
+	 * Initialize this plugin.
+	 *
+	 * For more info about this method see After_Setup_Theme_Init_Trait trait.
+	 *
+	 * @return void
+	 */
+	public static function after_setup_theme_init() {
+		add_action(
+			'widgets_init',
+			function() {
+				register_widget( 'TWRP\\TWRP_Widget\\Widget' );
+			}
 		);
 	}
 
@@ -91,7 +110,7 @@ class Widget extends WP_Widget {
 	 * @return void
 	 */
 	public static function enqueue_scripts( $widget_id ) {
-		// todo:
+		// todo, not called yet:
 		try {
 			$widget_id = Widget_Utils::get_widget_id_number( $widget_id );
 		} catch ( \RuntimeException $exception ) {

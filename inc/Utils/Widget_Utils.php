@@ -6,11 +6,12 @@
 namespace TWRP\Utils;
 
 use TWRP\TWRP_Widget\Widget;
-use TWRP_Main;
 use RuntimeException;
 use TWRP\Database\Query_Options;
 
 class Widget_Utils {
+
+	const TWRP_WIDGET__BASE_ID = 'twrp_tabs_with_recommended_posts';
 
 	/**
 	 * Try to get the tab style id and the variant id used for a specific query
@@ -174,7 +175,7 @@ class Widget_Utils {
 			return array();
 		}
 
-		$instance_options = get_option( 'widget_' . TWRP_Main::TWRP_WIDGET__BASE_ID );
+		$instance_options = get_option( 'widget_' . self::TWRP_WIDGET__BASE_ID );
 		if ( isset( $instance_options[ $widget_id ] ) ) {
 			return $instance_options[ $widget_id ];
 		}
@@ -195,7 +196,7 @@ class Widget_Utils {
 			return (int) $widget_id;
 		}
 
-		$widget_id_num = ltrim( str_replace( TWRP_Main::TWRP_WIDGET__BASE_ID, '', $widget_id ), '-' );
+		$widget_id_num = ltrim( str_replace( self::TWRP_WIDGET__BASE_ID, '', $widget_id ), '-' );
 
 		if ( is_numeric( $widget_id_num ) ) {
 			return (int) $widget_id_num;
