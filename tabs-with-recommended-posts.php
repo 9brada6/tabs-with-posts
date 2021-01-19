@@ -18,8 +18,6 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\TWRP_Widget\Widget;
 use TWRP\Query_Generator\Query_Generator;
-use TWRP\Utils\Color_Utils;
-use TWRP\Utils\Widget_Utils;
 
 /**
  * For Development only.
@@ -28,6 +26,7 @@ require_once __DIR__ . '/debug-and-development.php';
 
 require_once __DIR__ . '/inc/Plugin_Bootstrap.php';
 Plugin_Bootstrap::include_all_files();
+
 add_action( 'after_setup_theme', array( 'TWRP\\Plugin_Bootstrap', 'initialize_after_setup_theme_hooks' ) );
 
 #region -- Initializing
@@ -72,34 +71,6 @@ class TWRP_Main {
 	const NEEDED_ICONS_FILE = 'assets/svgs/needed-icons.svg';
 }
 
-
-/**
- * Unclassified
- *
- * @todo: Move
- *
- * @return void
- */
-function twrp_admin_add_setting_submenu() {
-	$page_title = _x( 'Tabs with Recommended Posts - Settings', 'backend', 'twrp' );
-	$menu_title = _x( 'Recommended Posts Tabs', 'backend', 'twrp' );
-	$capability = 'manage_options';
-	$slug       = 'tabs_with_recommended_posts';
-
-	add_options_page(
-		$page_title,
-		$menu_title,
-		$capability,
-		$slug,
-		array( 'TWRP\Admin\Settings_Menu', 'display_admin_page_hook' )
-	);
-
-	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
-	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
-	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
-}
-add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
-
 /**
  * @todo: Move and comment.
  *
@@ -131,12 +102,7 @@ function twrp_enqueue_artblock_styles() {
 		}
 	}
 }
-
 // add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
-
-
-
-
 
 #region -- Testing
 

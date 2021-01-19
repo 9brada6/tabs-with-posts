@@ -63,8 +63,8 @@ class Generate_CSS {
 		wp_enqueue_style( 'twrpb-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), '1.0.0', 'all' );
 
 		// CodeMirror.
-		wp_enqueue_style( 'twrpb-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
-		wp_enqueue_style( 'twrpb-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/material-darker.css' ), array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/material-darker.css' ), array( 'twrpb-codemirror-style' ), '1.0.0', 'all' );
 
 		// Pickr.
 		wp_enqueue_style( 'twrpb-pickr-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.css' ), array(), '1.0.0', 'all' );
@@ -79,11 +79,11 @@ class Generate_CSS {
 		wp_enqueue_script( 'twrpb-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' ), array( 'jquery', 'wp-api' ), '1.0.0', true );
 
 		// CodeMirror.
-		wp_enqueue_script( 'twrpb-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.js' ), array(), '1.0.0', true );
-		wp_enqueue_script( 'twrpb-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/css.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-		wp_enqueue_script( 'twrpb-codemirror-javascript', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/javascript.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.js' ), array(), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/css.js' ), array( 'twrpb-codemirror-script' ), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-javascript', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/javascript.js' ), array( 'twrpb-codemirror-script' ), '1.0.0', true );
 		// Need to refresh the editor when is hidden.
-		wp_enqueue_script( 'twrpb-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/autorefresh.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/autorefresh.js' ), array( 'twrpb-codemirror-script' ), '1.0.0', true );
 
 		// Pickr.
 		wp_enqueue_script( 'twrpb-pickr', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.js' ), array(), '1.0.0', true );

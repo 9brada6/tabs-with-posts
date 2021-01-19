@@ -3,6 +3,14 @@
 !include ./colors.iuml
 
 namespace TWRP\\CSS {
-	class General_CSS <<private class>> {}
+	class General_CSS <<private class>> {
+		+ void after_setup_theme_init()
+		+ void include_the_frontend_styles()
+		+ void include_the_frontend_scripts()
+		+ void include_the_backend_styles()
+		+ void include_the_backend_scripts()
+		+ void generate_color_variables_inline_style()
+		- void get_pickr_translations()
+	}
 	class Icons_CSS <<private class>> {}
 }

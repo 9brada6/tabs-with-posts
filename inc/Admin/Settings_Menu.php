@@ -9,6 +9,7 @@
 namespace TWRP\Admin;
 
 use TWRP\Admin\Tabs\Interface_Admin_Menu_Tab;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 /**
  * Class for creating the Plugin Settings.
@@ -21,6 +22,8 @@ use TWRP\Admin\Tabs\Interface_Admin_Menu_Tab;
  * \TWRP\Admin\Tabs\Interface_Admin_Menu_Tab interface.
  */
 class Settings_Menu {
+
+	use After_Setup_Theme_Init_Trait;
 
 	/**
 	 * Holds the ID of the WordPress submenu. The submenu is added to
@@ -72,6 +75,35 @@ class Settings_Menu {
 		}
 
 		return false;
+	}
+
+	/**
+	 * See the trait After_Setup_Theme_Init_Trait for more info.
+	 *
+	 * @return void
+	 */
+	public static function after_setup_theme_init() {
+		add_action( 'admin_menu', array( self::class, 'initialize_admin_menu' ) );
+	}
+
+	/**
+	 * Initialize the admin menu.
+	 *
+	 * Called at 'admin_menu' action, in after_setup_theme_init() function.
+	 *
+	 * @return void
+	 */
+	public static function initialize_admin_menu() {
+		$page_title = _x( 'Tabs with Recommended Posts - Settings', 'backend', 'twrp' );
+		$menu_title = _x( 'Tabs with Recommended Posts', 'backend', 'twrp' );
+		$capability = 'manage_options';
+		$slug       = 'tabs_with_recommended_posts';
+
+		add_options_page( $page_title, $menu_title, $capability, $slug, array( 'TWRP\Admin\Settings_Menu', 'display_admin_page_hook' ) );
+
+		self::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
+		self::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
+		self::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 	}
 
 	/**
