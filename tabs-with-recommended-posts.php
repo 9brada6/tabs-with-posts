@@ -93,96 +93,12 @@ function twrp_admin_add_setting_submenu() {
 		$slug,
 		array( 'TWRP\Admin\Settings_Menu', 'display_admin_page_hook' )
 	);
-}
 
-add_action( 'admin_menu', 'twrp_add_default_tabs' );
-
-add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
-
-/**
- * @todo: Move and comment.
- *
- * @return void
- */
-function twrp_add_default_tabs() {
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
 	Settings_Menu::add_tab( 'TWRP\Admin\Tabs\Queries_Tab' );
 }
-
-/**
- * @todo: Move and comment.
- *
- * @return void
- */
-function twrp_enqueue_admin() {
-	wp_enqueue_style( 'twrp-frontend', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
-	wp_enqueue_style( 'twrp-backend', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), '1.0.0', 'all' );
-
-	$script_url = plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' );
-	wp_enqueue_script( 'twrp-backend', $script_url, array( 'jquery', 'wp-api' ), '1.0.0', true );
-	wp_localize_script( 'twrp-backend', 'TwrpPickrTranslations', get_pickr_translations() );
-
-	wp_enqueue_style( 'twrp-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
-	wp_enqueue_style( 'twrp-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/material-darker.css' ), array(), '1.0.0', 'all' );
-	wp_enqueue_style( 'twrp-pickr-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.css' ), array(), '1.0.0', 'all' );
-
-	wp_enqueue_script( 'twrp-jquery-ui', plugins_url( 'tabs-with-recommended-posts/assets/backend/jquery-ui.min.js' ), array(), '1.0.0', true );
-	// wp_enqueue_script( 'jquery-ui-tabs' );
-	// wp_enqueue_script( 'jquery-ui-accordion' );
-	// wp_enqueue_script( 'jquery-ui-sortable' );
-	// wp_enqueue_script( 'jquery-ui-datepicker' );
-	// wp_enqueue_script( 'jquery-ui-autocomplete' );
-	// wp_enqueue_script( 'jquery-effects-blind' );
-
-	wp_enqueue_script( 'twrp-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/codemirror.js' ), array(), '1.0.0', true );
-	wp_enqueue_script( 'twrp-codemirror-xml', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/xml.js' ), array(), '1.0.0', true );
-	wp_enqueue_script( 'twrp-codemirror-js', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/javascript.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-	wp_enqueue_script( 'twrp-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/css.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-	wp_enqueue_script( 'twrp-codemirror-html', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/htmlmixed.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-	wp_enqueue_script( 'twrp-codemirror-clike', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/clike.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-	wp_enqueue_script( 'twrp-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/autorefresh.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-
-	wp_enqueue_script( 'twrp-pickr', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
-
-	$php_mode_deps = array( 'twrp-codemirror', 'twrp-codemirror-xml', 'twrp-codemirror-js', 'twrp-codemirror-css', 'twrp-codemirror-html', 'twrp-codemirror-clike' );
-	wp_enqueue_script( 'twrp-codemirror-php', plugins_url( 'tabs-with-recommended-posts/assets/codemirror/php.js' ), $php_mode_deps, '1.0.0', true );
-}
-
-add_action( 'admin_enqueue_scripts', 'twrp_enqueue_admin', 100 );
-
-function twrp_enqueue() {
-	wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), '1.0.0', true );
-}
-add_action( 'wp_enqueue_scripts', 'twrp_enqueue', 100 );
-
-/**
- * Get an array with translations that is needed to be used in the pickr color
- * picker.
- *
- * @return array
- */
-function get_pickr_translations() {
-	return array(
-		// Strings visible in the UI.
-		'ui:dialog'       => _x( 'color picker dialog', 'backend', 'twrp' ),
-		'btn:toggle'      => _x( 'toggle color picker dialog', 'backend', 'twrp' ),
-		'btn:swatch'      => _x( 'color swatch', 'backend', 'twrp' ),
-		'btn:last-color'  => _x( 'use previous color', 'backend', 'twrp' ),
-		'btn:save'        => _x( 'Save', 'backend', 'twrp' ),
-		'btn:cancel'      => _x( 'Cancel', 'backend', 'twrp' ),
-		'btn:clear'       => _x( 'Clear', 'backend', 'twrp' ),
-
-		// Strings used for aria-labels.
-		'aria:btn:save'   => _x( 'save and close', 'backend, screen reader text', 'twrp' ),
-		'aria:btn:cancel' => _x( 'cancel and close', 'backend, screen reader text', 'twrp' ),
-		'aria:btn:clear'  => _x( 'clear and close', 'backend, screen reader text', 'twrp' ),
-		'aria:input'      => _x( 'color input field', 'backend, screen reader text', 'twrp' ),
-		'aria:palette'    => _x( 'color selection area', 'backend, screen reader text', 'twrp' ),
-		'aria:hue'        => _x( 'hue selection slider', 'backend, screen reader text', 'twrp' ),
-		'aria:opacity'    => _x( 'selection slider', 'backend, screen reader text', 'twrp' ),
-	);
-}
+add_action( 'admin_menu', 'twrp_admin_add_setting_submenu' );
 
 /**
  * @todo: Move and comment.
@@ -218,14 +134,13 @@ function twrp_enqueue_artblock_styles() {
 
 // add_action( 'wp_enqueue_scripts', 'twrp_enqueue_artblock_styles' );
 
-function twrp_enqueue_scripts() {
-	wp_enqueue_style( 'twrp-frontend', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
-}
-add_action( 'wp_enqueue_scripts', 'twrp_enqueue_scripts' );
+
 
 
 
 #region -- Testing
+
+// phpcs:disable - For testings purposes.
 
 /**
  * Used for debugging in the scripts.
@@ -273,7 +188,5 @@ function twrp_enqueue_scripts_debug() {
 
 add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
-
-// phpcs:disable - For testings purposes.
 
 #endregion -- Testing

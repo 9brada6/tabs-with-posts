@@ -1,5 +1,12 @@
 # Tabs With Recommended Posts - Development Notes
 
+## External programs used
+
+It's best to keep them updated.
+
+- Codemirror
+- Pickr
+
 ## Article Blocks
 
 - The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.
@@ -22,21 +29,12 @@
 
 #### General Settings
 
-- Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
-- Add a diagram, and explain everything, how this package works.
-- Change by default to include icons inline?
-- Add a help button, and with a pop-out to document something, also the document
-might be exactly as in documentation.
+        - Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
+        - Add a diagram, and explain everything, how this package works.
+        - Change by default to include icons inline?
+        - Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
 
-### JS/SCSS
-
-- Need to do something with jquery-ui-datepicker. Best thing to do is to prefix
-it with twrpb or something like that.
-
-### Today
-
-- Split all Query_Settings classes in half, and move them inside admin menu.
-- Add a way to order query settings.
+## ✅ Todo
 
 ### After first release
 
@@ -53,7 +51,10 @@ it with twrpb or something like that.
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 
-## ✅ Todo
+### Today
+
+- Split all Query_Settings classes in half, and move them inside admin menu.
+- Add a way to order query settings.
 
 - Make Article_Block implementation(Simple Style) not know about Settings implementations(Display Author, Display Comments... etc).
 

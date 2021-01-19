@@ -1,6 +1,8 @@
 <?php
 /**
  * File that contains the class with the same name.
+ *
+ * @todo: make sure that all versions are getted from a static variable?
  */
 
 namespace TWRP\CSS;
@@ -24,6 +26,71 @@ class Generate_CSS {
 	 */
 	public static function after_setup_theme_init() {
 		add_action( 'wp_head', array( __CLASS__, 'generate_color_variables_inline_style' ) );
+
+		// Frontend.
+		add_action( 'wp_enqueue_scripts', array( static::class, 'include_the_frontend_styles' ), 11 );
+		add_action( 'wp_enqueue_scripts', array( static::class, 'include_the_frontend_scripts' ), 11 );
+
+		// Admin.
+		add_action( 'admin_enqueue_scripts', array( static::class, 'include_the_backend_styles' ), 11 );
+		add_action( 'admin_enqueue_scripts', array( static::class, 'include_the_backend_scripts' ), 11 );
+	}
+
+	/**
+	 * Include the frontend styles necessary for this plugin to work.
+	 *
+	 * @return void
+	 */
+	public static function include_the_frontend_styles() {
+		wp_enqueue_style( 'twrp-style', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), '1.0.0', 'all' );
+	}
+
+	/**
+	 * Include the frontend scripts necessary for this plugin to work.
+	 *
+	 * @return void
+	 */
+	public static function include_the_frontend_scripts() {
+		wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), '1.0.0', true );
+	}
+
+	/**
+	 * Include the backend styles necessary for this plugin to work.
+	 *
+	 * @return void
+	 */
+	public static function include_the_backend_styles() {
+		wp_enqueue_style( 'twrpb-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), '1.0.0', 'all' );
+
+		// CodeMirror.
+		wp_enqueue_style( 'twrpb-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.css' ), array(), '1.0.0', 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/material-darker.css' ), array(), '1.0.0', 'all' );
+
+		// Pickr.
+		wp_enqueue_style( 'twrpb-pickr-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.css' ), array(), '1.0.0', 'all' );
+	}
+
+	/**
+	 * Include the backend scripts necessary for this plugin to work.
+	 *
+	 * @return void
+	 */
+	public static function include_the_backend_scripts() {
+		wp_enqueue_script( 'twrpb-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' ), array( 'jquery', 'wp-api' ), '1.0.0', true );
+
+		// CodeMirror.
+		wp_enqueue_script( 'twrpb-codemirror', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.js' ), array(), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/css.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
+		wp_enqueue_script( 'twrpb-codemirror-javascript', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/javascript.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
+		// Need to refresh the editor when is hidden.
+		wp_enqueue_script( 'twrpb-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/autorefresh.js' ), array( 'twrp-codemirror' ), '1.0.0', true );
+
+		// Pickr.
+		wp_enqueue_script( 'twrpb-pickr', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.js' ), array(), '1.0.0', true );
+		wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
+
+		// Jquery UI.
+		wp_enqueue_script( 'twrpb-jquery-ui', plugins_url( 'tabs-with-recommended-posts/assets/backend/jquery-ui.min.js' ), array(), '1.0.0', true );
 	}
 
 	/**
@@ -93,4 +160,33 @@ class Generate_CSS {
 			'--twrp-secondary-accent-best-text-color: ' . esc_html( $best_secondary_accent_text_color ) . ';' .
 		'}</style>';
 	}
+
+	/**
+	 * Get an array with translations that is needed to be used in the pickr color
+	 * picker.
+	 *
+	 * @return array
+	 */
+	private static function get_pickr_translations() {
+		return array(
+			// Strings visible in the UI.
+			'ui:dialog'       => _x( 'color picker dialog', 'backend', 'twrp' ),
+			'btn:toggle'      => _x( 'toggle color picker dialog', 'backend', 'twrp' ),
+			'btn:swatch'      => _x( 'color swatch', 'backend', 'twrp' ),
+			'btn:last-color'  => _x( 'use previous color', 'backend', 'twrp' ),
+			'btn:save'        => _x( 'Save', 'backend', 'twrp' ),
+			'btn:cancel'      => _x( 'Cancel', 'backend', 'twrp' ),
+			'btn:clear'       => _x( 'Clear', 'backend', 'twrp' ),
+
+			// Strings used for aria-labels.
+			'aria:btn:save'   => _x( 'save and close', 'backend, screen reader text', 'twrp' ),
+			'aria:btn:cancel' => _x( 'cancel and close', 'backend, screen reader text', 'twrp' ),
+			'aria:btn:clear'  => _x( 'clear and close', 'backend, screen reader text', 'twrp' ),
+			'aria:input'      => _x( 'color input field', 'backend, screen reader text', 'twrp' ),
+			'aria:palette'    => _x( 'color selection area', 'backend, screen reader text', 'twrp' ),
+			'aria:hue'        => _x( 'hue selection slider', 'backend, screen reader text', 'twrp' ),
+			'aria:opacity'    => _x( 'selection slider', 'backend, screen reader text', 'twrp' ),
+		);
+	}
+
 }
