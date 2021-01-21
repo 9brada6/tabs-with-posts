@@ -3,7 +3,6 @@
  * File that contains the class with the same name.
  *
  * @todo: add a method to be used instead of creating in get_plugin_avatar_src() Known_Plugin method.
- * @todo: Use these methods in wp_enqueue_scripts.
  */
 
 namespace TWRP\Utils;
@@ -54,6 +53,16 @@ class Directory_Utils {
 	 * others) are to be found.
 	 */
 	const ASSETS_FOLDER = 'assets/';
+
+	/**
+	 * The folder where frontend CSS/JS are to be found.
+	 */
+	const FRONTEND_FOLDER = 'assets/frontend/';
+
+	/**
+	 * The folder where backend CSS/JS are to be found.
+	 */
+	const BACKEND_FOLDER = 'assets/backend/';
 
 	/**
 	 * The folder where all svg assets are to be found.
@@ -136,6 +145,46 @@ class Directory_Utils {
 	 */
 	public static function get_assets_directory_url() {
 		$assets_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::ASSETS_FOLDER, '/' );
+		return trailingslashit( $assets_url );
+	}
+
+	/**
+	 * Get plugin assets frontend directory path.
+	 *
+	 * @return string Path has a trailing slash.
+	 */
+	public static function get_frontend_directory_path() {
+		$assets_dir = trailingslashit( self::get_plugin_directory_path() ) . ltrim( self::FRONTEND_FOLDER, '/' );
+		return trailingslashit( $assets_dir );
+	}
+
+	/**
+	 * Get plugin assets frontend URL.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_frontend_directory_url() {
+		$assets_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::FRONTEND_FOLDER, '/' );
+		return trailingslashit( $assets_url );
+	}
+
+	/**
+	 * Get plugin assets backend directory path.
+	 *
+	 * @return string Path has a trailing slash.
+	 */
+	public static function get_backend_directory_path() {
+		$assets_dir = trailingslashit( self::get_plugin_directory_path() ) . ltrim( self::BACKEND_FOLDER, '/' );
+		return trailingslashit( $assets_dir );
+	}
+
+	/**
+	 * Get plugin assets backend URL.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_backend_directory_url() {
+		$assets_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::BACKEND_FOLDER, '/' );
 		return trailingslashit( $assets_url );
 	}
 

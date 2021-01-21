@@ -16,6 +16,25 @@ use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 use RuntimeException;
 
+/**
+ * Class used to generate the methods to include the Icons SVG. The icons are
+ * enqueue in General_CSS file.
+ *
+ * The method in which the icons SVG are included is that in the HTML head, we
+ * put a script tag, where we prepend a div with all the SVG in the <body>
+ * (similar of how Facebook includes it's comment scripts).
+ *
+ * There are two methods to include the icons: inline and via a file.
+ *
+ * There are 2 types of icons that can be included:
+ * 1. All icons(included in the admin area, via a file).
+ * 2. Needed icons(included in frontend area, either inline or via a file).
+ *
+ * The needed icons are written in file and in database every time the general
+ * settings are updated, and the icons settings are changed. There exist a
+ * special timestamp that is generate every time the file is written, to add at
+ * the end of the file link, to prevent use of the old file by browser caching.
+ */
 class Icons_CSS {
 
 	use After_Setup_Theme_Init_Trait;
@@ -26,17 +45,6 @@ class Icons_CSS {
 	 * @return void
 	 */
 	public static function after_setup_theme_init() {
-		$include_inline = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
-		if ( 'true' === $include_inline ) {
-			add_action( 'wp_head', array( __CLASS__, 'include_needed_icons_file' ) );
-		} else {
-			// todo:
-			// Include inline icons before the tabs are getting displayed.
-		}
-
-		// In admin, include all icons file.
-		add_action( 'admin_head', array( __CLASS__, 'include_all_icons_file' ) );
-
 		// When settings get updated, generate the needed icons file and inline svg.
 		add_action( 'twrp_general_before_settings_submitted', array( __CLASS__, 'write_needed_icons_on_settings_submitted' ) );
 	}
@@ -44,17 +52,32 @@ class Icons_CSS {
 	#region -- Enqueue icons
 
 	/**
-	 * Echo the HTML to include all icons as inline svg defs.
+	 * Include the icon definitions inline.
+	 *
+	 * This method should be called at wp_head action, because it creates an
+	 * element at the opening of the body with the svgs.
 	 *
 	 * @return void
 	 */
-	public static function include_defs_inline_needed_icons() {
-		echo Inline_Icons_Option::get_inline_icons(); // phpcs:ignore -- No XSS.
+	public static function include_needed_icons_inline() {
+		$icon_definitions = wp_json_encode( Inline_Icons_Option::get_inline_icons() );
+
+		if ( false === $icon_definitions ) {
+			return;
+		}
+
+		?>
+		<script type="text/javascript">
+		(function(){var div=document.createElement( 'div' );div.innerHTML=<?= $icon_definitions; // phpcs:ignore ?>;insertIntoDocument(div);
+		function insertIntoDocument(elem){if(document.body && document.body.firstElementChild){document.body.insertBefore(elem,document.body.firstElementChild);}else{setTimeout(insertIntoDocument.bind(null,elem),200);}}})();
+		</script>
+		<?php
 	}
 
 	/**
-	 * Enqueue all needed icons file. This function needs to be called at the
-	 * correct action, usually "wp_enqueue_scripts".
+	 * Enqueue all needed icons file.
+	 *
+	 * This function needs to be called at 'wp_head' or 'admin_head' action.
 	 *
 	 * @return void
 	 */
@@ -65,8 +88,9 @@ class Icons_CSS {
 	}
 
 	/**
-	 * Enqueue all needed icons file. This function needs to be called at
-	 * 'wp_head' or 'admin_head' action.
+	 * Enqueue a file with all icons.
+	 *
+	 * This function needs to be called at 'admin_head' action.
 	 *
 	 * @return void
 	 */
@@ -90,10 +114,9 @@ class Icons_CSS {
 	protected static function ajax_include_svg_file( $file_path ) {
 		?>
 		<script type="text/javascript">
-		(function() { const ajax = new XMLHttpRequest(); ajax.open('GET', '<?= esc_url( $file_path ) ?>', true); ajax.send();
-			ajax.onload = function( e ) { var div = document.createElement( 'div' ); div.innerHTML = ajax.responseText; insertIntoDocument(div); };
-			function insertIntoDocument(elem) { if( document.body ) { document.body.insertBefore(elem, document.body.childNodes[ 0 ]); } else { setTimeout( insertIntoDocument, 100 ); } }
-		})();
+		(function(){const ajax=new XMLHttpRequest();ajax.open('GET','<?= esc_url( $file_path ) ?>',true);ajax.send();
+		ajax.onload=function(e){var div=document.createElement('div');div.innerHTML=ajax.responseText;insertIntoDocument(div);};
+		function insertIntoDocument(elem){if(document.body && document.body.firstElementChild){document.body.insertBefore(elem,document.body.firstElementChild);}else{setTimeout(insertIntoDocument.bind(null,elem),200);}}})();
 		</script>
 		<?php
 	}
@@ -102,6 +125,16 @@ class Icons_CSS {
 
 	#region -- Create needed icons, inline and in a file
 
+	/**
+	 * Write the needed icons to a file nd to database if the settings were
+	 * submitted, and the icons were updated.
+	 *
+	 * This function should be called at 'twrp_general_before_settings_submitted' action.
+	 *
+	 * @param array $updated_settings All the new settings that were updated.
+	 *
+	 * @return void
+	 */
 	public static function write_needed_icons_on_settings_submitted( $updated_settings ) {
 		foreach ( General_Options::ICON_KEYS as $icon_class_name ) {
 			$icon_setting  = General_Options::get_option( $icon_class_name );
@@ -111,6 +144,7 @@ class Icons_CSS {
 			}
 			$setting_key_name = $setting_class->get_key_name();
 
+			// Will only update if the icons are changed.
 			if ( isset( $updated_settings[ $setting_key_name ] ) && $icon_setting !== $updated_settings[ $setting_key_name ] ) {
 				add_action(
 					'twrp_general_after_settings_submitted',
@@ -148,7 +182,7 @@ class Icons_CSS {
 	}
 
 	/**
-	 * Get the HTML to include all icons as a file of svg defs.
+	 * Get the HTML for a file of all needed icons.
 	 *
 	 * @return string
 	 */
@@ -181,7 +215,7 @@ class Icons_CSS {
 	}
 
 	/**
-	 * Get the HTML to include all icons as inline svg defs.
+	 * Get the inline HTML of all needed icons.
 	 *
 	 * @return string
 	 */

@@ -3,14 +3,31 @@
 !include ./colors.iuml
 
 namespace TWRP\\CSS {
-	class General_CSS <<private class>> {
+	class General_CSS <<private class>> <<static collection>> <<auto-init>> {
 		+ void after_setup_theme_init()
+		..
 		+ void include_the_frontend_styles()
 		+ void include_the_frontend_scripts()
 		+ void include_the_backend_styles()
 		+ void include_the_backend_scripts()
 		+ void generate_color_variables_inline_style()
+		..
 		- void get_pickr_translations()
 	}
-	class Icons_CSS <<private class>> {}
+
+	class Icons_CSS <<private class>> <<static collection>> <<auto-init>> {
+		+ void after_setup_theme_init()
+		..
+		+ void include_needed_icons_inline()
+		+ void include_needed_icons_file()
+		+ void include_all_icons_file()
+		..
+		+ write_needed_icons_on_settings_submitted()
+		- write_needed_icons_to_file()
+		- write_needed_icons_to_option_in_database()
+		..
+		+ array get_all_used_icons()
+	}
+
+	General_CSS -> Icons_CSS
 }

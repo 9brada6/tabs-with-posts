@@ -36,6 +36,8 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- In Class_Retriever_Utils, remove the FQN class names, and include them via "use", and use the ::class syntax to get the FQN.
+
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).

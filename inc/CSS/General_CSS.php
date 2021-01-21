@@ -1,9 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @todo: make sure that all versions are got from a static variable?
- * @todo: make sure that all url are got from the utils class?
  */
 
 namespace TWRP\CSS;
@@ -14,8 +11,14 @@ use TWRP\Utils\Color_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
+use TWRP\CSS\Icons_CSS;
+
 /**
- * Class used to enqueue and generate the inline CSS.
+ * Class used to enqueue the CSS/JS files, and to generate some CSS.
+ *
+ * Some css/js files are included via 'wp_enqueue_scripts' action, and some
+ * added in the head via 'wp_head' action. The icons svgs are a special way of
+ * including, see Icons_CSS class.
  */
 class Generate_CSS {
 
@@ -27,15 +30,24 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function after_setup_theme_init() {
-		add_action( 'wp_head', array( __CLASS__, 'generate_color_variables_inline_style' ) );
-
 		// Frontend.
 		add_action( 'wp_enqueue_scripts', array( static::class, 'include_the_frontend_styles' ), 11 );
 		add_action( 'wp_enqueue_scripts', array( static::class, 'include_the_frontend_scripts' ), 11 );
+		add_action( 'wp_head', array( __CLASS__, 'generate_color_variables_inline_style' ) );
+
+		// Include the needed icons.
+		$include_inline = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
+		if ( 'true' === $include_inline ) {
+			add_action( 'wp_head', array( Icons_CSS::class, 'include_needed_icons_inline' ) );
+		} else {
+			add_action( 'wp_head', array( Icons_CSS::class, 'include_needed_icons_file' ) );
+		}
 
 		// Admin.
 		add_action( 'admin_enqueue_scripts', array( static::class, 'include_the_backend_styles' ), 11 );
 		add_action( 'admin_enqueue_scripts', array( static::class, 'include_the_backend_scripts' ), 11 );
+		// In admin, include all icons file.
+		add_action( 'admin_head', array( Icons_CSS::class, 'include_all_icons_file' ) );
 	}
 
 	/**
@@ -45,7 +57,7 @@ class Generate_CSS {
 	 */
 	public static function include_the_frontend_styles() {
 		$version = Directory_Utils::PLUGIN_VERSION;
-		wp_enqueue_style( 'twrp-style', plugins_url( 'tabs-with-recommended-posts/assets/frontend/style.css' ), array(), $version, 'all' );
+		wp_enqueue_style( 'twrp-style', Directory_Utils::get_frontend_directory_url() . 'style.css', array(), $version, 'all' );
 	}
 
 	/**
@@ -55,7 +67,7 @@ class Generate_CSS {
 	 */
 	public static function include_the_frontend_scripts() {
 		$version = Directory_Utils::PLUGIN_VERSION;
-		wp_enqueue_script( 'twrp-script', plugins_url( 'tabs-with-recommended-posts/assets/frontend/script.js' ), array(), $version, true );
+		wp_enqueue_script( 'twrp-script', Directory_Utils::get_frontend_directory_url() . 'script.js', array(), $version, true );
 	}
 
 	/**
@@ -64,16 +76,17 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_backend_styles() {
-		$version = Directory_Utils::PLUGIN_VERSION;
+		$version     = Directory_Utils::PLUGIN_VERSION;
+		$backend_url = Directory_Utils::get_backend_directory_url();
 
-		wp_enqueue_style( 'twrpb-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/style.css' ), array(), $version, 'all' );
+		wp_enqueue_style( 'twrpb-style', $backend_url . 'style.css', array(), $version, 'all' );
 
 		// CodeMirror.
-		wp_enqueue_style( 'twrpb-codemirror-style', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.css' ), array(), $version, 'all' );
-		wp_enqueue_style( 'twrpb-codemirror-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/material-darker.css' ), array( 'twrpb-codemirror-style' ), $version, 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-style', $backend_url . 'codemirror/codemirror.css', array(), $version, 'all' );
+		wp_enqueue_style( 'twrpb-codemirror-theme', $backend_url . 'codemirror/material-darker.css', array(), $version, 'all' );
 
 		// Pickr.
-		wp_enqueue_style( 'twrpb-pickr-theme', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.css' ), array(), $version, 'all' );
+		wp_enqueue_style( 'twrpb-pickr-theme', $backend_url . 'pickr.min.css', array(), $version, 'all' );
 	}
 
 	/**
@@ -82,23 +95,24 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_backend_scripts() {
-		$version = Directory_Utils::PLUGIN_VERSION;
+		$version     = Directory_Utils::PLUGIN_VERSION;
+		$backend_url = Directory_Utils::get_backend_directory_url();
 
-		wp_enqueue_script( 'twrpb-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/script.js' ), array( 'jquery', 'wp-api' ), $version, true );
+		wp_enqueue_script( 'twrpb-script', $backend_url . 'script.js', array( 'jquery', 'wp-api' ), $version, true );
 
 		// CodeMirror.
-		wp_enqueue_script( 'twrpb-codemirror-script', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/codemirror.js' ), array(), $version, true );
-		wp_enqueue_script( 'twrpb-codemirror-css', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/css.js' ), array( 'twrpb-codemirror-script' ), $version, true );
-		wp_enqueue_script( 'twrpb-codemirror-javascript', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/javascript.js' ), array( 'twrpb-codemirror-script' ), $version, true );
+		wp_enqueue_script( 'twrpb-codemirror-script', $backend_url . 'codemirror/codemirror.js', array(), $version, true );
+		wp_enqueue_script( 'twrpb-codemirror-css', $backend_url . 'codemirror/css.js', array(), $version, true );
+		wp_enqueue_script( 'twrpb-codemirror-javascript', $backend_url . 'codemirror/javascript.js', array(), $version, true );
 		// Need to refresh the editor when is hidden.
-		wp_enqueue_script( 'twrpb-codemirror-autorefresh', plugins_url( 'tabs-with-recommended-posts/assets/backend/codemirror/autorefresh.js' ), array( 'twrpb-codemirror-script' ), $version, true );
+		wp_enqueue_script( 'twrpb-codemirror-autorefresh', $backend_url . 'codemirror/autorefresh.js', array(), $version, true );
 
 		// Pickr.
-		wp_enqueue_script( 'twrpb-pickr', plugins_url( 'tabs-with-recommended-posts/assets/backend/pickr.min.js' ), array(), $version, true );
+		wp_enqueue_script( 'twrpb-pickr', $backend_url . 'pickr.min.js', array(), $version, true );
 		wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
 
 		// Jquery UI.
-		wp_enqueue_script( 'twrpb-jquery-ui', plugins_url( 'tabs-with-recommended-posts/assets/backend/jquery-ui.min.js' ), array(), $version, true );
+		wp_enqueue_script( 'twrpb-jquery-ui', $backend_url . 'jquery-ui.min.js', array(), $version, true );
 	}
 
 	/**
