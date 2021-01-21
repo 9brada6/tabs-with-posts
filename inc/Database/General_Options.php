@@ -18,6 +18,8 @@ use TWRP\Database\Settings\General_Option_Setting;
  */
 class General_Options {
 
+	const SETTINGS_NAMESPACE = 'TWRP\\Database\\Settings\\';
+
 	const TABLE_OPTION_KEY = 'twrp__general_options';
 
 	#region -- Color Keys
@@ -184,6 +186,8 @@ class General_Options {
 	 * @param string|General_Option_Setting $key The Key of the option, or the class name, or the object.
 	 * @param mixed $value
 	 * @return void
+	 *
+	 * @psalm-param class-string<General_Option_Setting>|General_Option_Setting $key
 	 */
 	public static function set_option( $key, $value ) {
 		$value         = self::sanitize_setting( $key, $value );
@@ -262,8 +266,7 @@ class General_Options {
 	 * @psalm-suppress LessSpecificReturnStatement
 	 */
 	public static function get_option_object( $class_name ) {
-		// @phan-suppress-next-line PhanPluginSuspiciousParamPositionInternal
-		if ( is_object( $class_name ) && is_subclass_of( $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
+		if ( is_object( $class_name ) && is_subclass_of( $class_name, General_Option_Setting::class ) ) {
 			return $class_name;
 		}
 
@@ -275,8 +278,8 @@ class General_Options {
 		$class_name = ucwords( $class_name );
 		$class_name = str_replace( ' ', '_', $class_name );
 
-		if ( is_subclass_of( 'TWRP\\Database\\Settings\\' . $class_name, 'TWRP\\Database\\Settings\\General_Option_Setting' ) ) {
-			$object_name = 'TWRP\\Database\\Settings\\' . $class_name;
+		if ( is_subclass_of( self::SETTINGS_NAMESPACE . $class_name, General_Option_Setting::class ) ) {
+			$object_name = self::SETTINGS_NAMESPACE . $class_name;
 			return new $object_name();
 		}
 

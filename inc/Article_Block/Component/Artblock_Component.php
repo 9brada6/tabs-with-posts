@@ -20,7 +20,7 @@ use TWRP\Utils\Simple_Utils;
  */
 class Artblock_Component {
 
-	const COMPONENTS_NAMESPACE_PREFIX = 'TWRP\\Article_Block\\Component\\';
+	const COMPONENTS_NAMESPACE_PREFIX = __NAMESPACE__;
 
 	const FONT_SIZE_SETTING   = 'Font_Size_Setting';
 	const LINE_HEIGHT_SETTING = 'Line_Height_Setting';
@@ -205,7 +205,7 @@ class Artblock_Component {
 		$setting_classes = array();
 
 		foreach ( $classes_names as $component_setting_class_name ) {
-			$component_setting_class_name = self::COMPONENTS_NAMESPACE_PREFIX . $component_setting_class_name;
+			$component_setting_class_name = self::COMPONENTS_NAMESPACE_PREFIX . '\\' . $component_setting_class_name;
 
 			if ( ! class_exists( $component_setting_class_name ) ) {
 				continue;

@@ -62,7 +62,7 @@ class Widget extends WP_Widget {
 		add_action(
 			'widgets_init',
 			function() {
-				register_widget( 'TWRP\\TWRP_Widget\\Widget' );
+				register_widget( self::class );
 			}
 		);
 	}

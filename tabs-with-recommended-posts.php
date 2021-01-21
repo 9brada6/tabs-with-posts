@@ -32,7 +32,7 @@ Plugin_Bootstrap::include_all_files();
  * added in the classic way. 'after_setup_theme' action is used because a class
  * that is not yet included might not get called.
  */
-add_action( 'after_setup_theme', array( 'TWRP\\Plugin_Bootstrap', 'initialize_after_setup_theme_hooks' ) );
+add_action( 'after_setup_theme', array( Plugin_Bootstrap::class, 'initialize_after_setup_theme_hooks' ) );
 
 /**
  * For Development and Tests.

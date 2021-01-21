@@ -5,6 +5,8 @@
 
 namespace TWRP\Plugins\Known_Plugins;
 
+use TWRP\Utils\Simple_Utils;
+
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by A3REV.
@@ -40,19 +42,7 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public static function is_installed_and_can_be_used() {
-		if ( ! class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
-			return false;
-		}
-
-		if ( ! method_exists( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' ) ) {
-			return false;
-		}
-
-		if ( ! is_callable( array( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' ) ) ) {
-			return false;
-		}
-
-		return true;
+		return Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
 	}
 
 	public static function get_views( $post_id ) {
@@ -65,7 +55,7 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 			return 0;
 		}
 
-		/** @psalm-suppress UndefinedClass */
+		/* @psalm-suppress UndefinedClass */
 		$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id ); // @phan-suppress-current-line PhanUndeclaredClassMethod
 
 		if ( is_numeric( $post_views ) && $post_views >= 0 ) {

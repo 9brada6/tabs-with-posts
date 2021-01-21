@@ -24,7 +24,7 @@ use TWRP\Icons\Rating_Icon_Pack;
  */
 class General_Settings_Factory {
 
-	const SETTING_CLASSES_NAMESPACE = 'TWRP\\Admin\\Tabs\\General_Settings\\';
+	const SETTING_CLASSES_NAMESPACE = __NAMESPACE__;
 
 	const SETTING_CLASS_CREATOR = 'General_Setting_Creator';
 
@@ -58,12 +58,12 @@ class General_Settings_Factory {
 	public static function display_setting( $setting_name ) {
 		$current_value      = General_Options::get_option( $setting_name );
 		$setting_arguments  = static::get_setting_args( $setting_name );
-		$setting_class_name = static::SETTING_CLASSES_NAMESPACE . static::get_setting_class_name( $setting_name );
+		$setting_class_name = static::SETTING_CLASSES_NAMESPACE . '\\' . static::get_setting_class_name( $setting_name );
 
 		if ( empty( $setting_arguments ) ) {
 			return;
 		}
-		if ( ! is_subclass_of( $setting_class_name, static::SETTING_CLASSES_NAMESPACE . static::SETTING_CLASS_CREATOR ) ) {
+		if ( ! is_subclass_of( $setting_class_name, static::SETTING_CLASSES_NAMESPACE . '\\' . static::SETTING_CLASS_CREATOR ) ) {
 			return;
 		}
 

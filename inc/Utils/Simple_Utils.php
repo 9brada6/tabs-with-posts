@@ -2,6 +2,11 @@
 
 namespace TWRP\Utils;
 
+use ReflectionMethod;
+use ReflectionException;
+use RecursiveIteratorIterator;
+use RecursiveArrayIterator;
+
 /**
  * Class that contain a list of static methods, that can be used everywhere.
  * The methods here are simple methods that cannot be categorized in one of the
@@ -63,9 +68,26 @@ class Simple_Utils {
 	 */
 	public static function flatten_array( array $array ) {
 		$ret_array = array();
-		foreach ( new \RecursiveIteratorIterator( new \RecursiveArrayIterator( $array ) ) as $value ) {
+		foreach ( new RecursiveIteratorIterator( new RecursiveArrayIterator( $array ) ) as $value ) {
 			$ret_array[] = $value;
 		}
 		return $ret_array;
+	}
+
+	/**
+	 * Check if the object contains a method that is public
+	 *
+	 * @param string $class_name
+	 * @param string $method_name
+	 * @return bool
+	 */
+	public static function method_exist_and_is_public( $class_name, $method_name ) {
+		try {
+			$reflection_method = new ReflectionMethod( $class_name, $method_name );
+		} catch ( ReflectionException $e ) {
+			return false;
+		}
+
+		return $reflection_method->isPublic();
 	}
 }
