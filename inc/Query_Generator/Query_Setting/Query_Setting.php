@@ -19,6 +19,8 @@ use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
  * 1. Each individual setting must have a const in that setting class.
  * 2. Each individual setting must have a default value, else array key undefined notices might be throw.
  * 3. Each setting usually must be sanitized, and also maybe displayed or have a control.
+ *
+ * @psalm-consistent-constructor The constructor should not have any parameter.
  */
 abstract class Query_Setting {
 

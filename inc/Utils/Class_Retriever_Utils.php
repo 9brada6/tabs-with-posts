@@ -8,6 +8,11 @@ namespace TWRP\Utils;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
+use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
+use TWRP\Article_Block\Article_Block;
+
+use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 /**
  * Class that is a collection of static methods, that can be used everywhere
@@ -25,9 +30,7 @@ class Class_Retriever_Utils {
 	 * @param string $id The id of the tab style.
 	 * @return string|null
 	 *
-	 * @psalm-return null|class-string<\TWRP\Tabs_Creator\Tabs_Styles\Tab_Style>
-	 * @psalm-suppress MoreSpecificReturnType
-	 * @psalm-suppress LessSpecificReturnStatement
+	 * @psalm-return null|class-string<Tab_Style>
 	 */
 	public static function get_tab_style_class_name_by_id( $id ) {
 		$class_names        = static::get_all_tab_style_class_names();
@@ -47,26 +50,21 @@ class Class_Retriever_Utils {
 	 * Get all classes that extends/implements the Tab_Style class.
 	 *
 	 * @return array
-	 *
-	 * @psalm-return array<class-string<\TWRP\Tabs_Creator\Tabs_Styles\Tab_Style>>
-	 * @psalm-suppress MoreSpecificReturnType
-	 * @psalm-suppress LessSpecificReturnStatement
+	 * @psalm-return array<class-string<Tab_Style>>
 	 */
 	public static function get_all_tab_style_class_names() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Tabs_Creator\\Tabs_Styles\\Tab_Style' );
+		$class_names = static::get_all_child_classes( Tab_Style::class );
 		return $class_names;
 	}
 
 	/**
 	 * Get all the Article_Block objects.
 	 *
-	 * @return array<string,string>
-	 * @psalm-return array<string,class-string<\TWRP\Article_Block\Article_Block>>
-	 * @psalm-suppress MoreSpecificReturnType
-	 * @psalm-suppress LessSpecificReturnStatement
+	 * @return array<string,Article_Block>
+	 * @psalm-return array<string,class-string<Article_Block>>
 	 */
 	public static function get_all_article_block_names() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Article_Block\\Article_Block' );
+		$class_names = static::get_all_child_classes( Article_Block::class );
 
 		return $class_names;
 	}
@@ -77,13 +75,14 @@ class Class_Retriever_Utils {
 	 * @return array<Query_Setting>
 	 */
 	public static function get_all_query_settings_objects() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Query_Generator\\Query_Setting\\Query_Setting' );
+		$class_names = static::get_all_child_classes( Query_Setting::class );
+		$classes     = array();
 
 		foreach ( $class_names as $key => $class_name ) {
-			$class_names[ $key ] = new $class_name();
+			$classes[ $key ] = new $class_name();
 		}
 
-		return $class_names;
+		return $classes;
 	}
 
 	/**
@@ -92,13 +91,14 @@ class Class_Retriever_Utils {
 	 * @return array<Query_Setting_Display>
 	 */
 	public static function get_all_display_query_settings_objects() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Admin\\Tabs\\Query_Options\\Query_Setting_Display' );
+		$class_names = static::get_all_child_classes( Query_Setting_Display::class );
+		$classes     = array();
 
 		foreach ( $class_names as $key => $class_name ) {
-			$class_names[ $key ] = new $class_name();
+			$classes[ $key ] = new $class_name();
 		}
 
-		return $class_names;
+		return $classes;
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Class_Retriever_Utils {
 	 * @return array<string>
 	 */
 	public static function get_all_classes_that_uses_after_init_theme_trait() {
-		$trait_classes = self::get_all_trait_classes( 'TWRP\\Utils\\Helper_Trait\\After_Setup_Theme_Init_Trait' );
+		$trait_classes = self::get_all_trait_classes( After_Setup_Theme_Init_Trait::class );
 		return $trait_classes;
 	}
 
@@ -117,13 +117,14 @@ class Class_Retriever_Utils {
 	 * @return array<Post_Views_Plugin>
 	 */
 	public static function get_all_post_views_plugins_objects() {
-		$class_names = static::get_all_child_classes( 'TWRP\\Plugins\\Known_Plugins\\Post_Views_Plugin' );
+		$class_names = static::get_all_child_classes( Post_Views_Plugin::class );
+		$classes     = array();
 
 		foreach ( $class_names as $key => $class_name ) {
-			$class_names[ $key ] = new $class_name();
+			$classes[ $key ] = new $class_name();
 		}
 
-		return $class_names;
+		return $classes;
 	}
 
 	/**
@@ -135,7 +136,9 @@ class Class_Retriever_Utils {
 	 * @param string $parent_class
 	 * @return array
 	 *
-	 * @psalm-return array<class-string>
+	 * @psalm-template T
+	 * @psalm-param class-string<T> $parent_class
+	 * @psalm-return array<class-string<T>>
 	 */
 	protected static function get_all_child_classes( $parent_class ) {
 		$children_classes = array();
@@ -147,7 +150,7 @@ class Class_Retriever_Utils {
 			}
 		}
 
-		if ( self::class_use_trait( $parent_class, 'TWRP\\Utils\\Helper_Trait\\Class_Children_Order_Trait' ) ) {
+		if ( self::class_use_trait( $parent_class, Class_Children_Order_Trait::class ) ) {
 			$children_classes = self::order_class_name( $children_classes );
 		}
 
@@ -160,7 +163,12 @@ class Class_Retriever_Utils {
 	 * @param string $trait_name
 	 * @return array
 	 *
-	 * @psalm-return array<class-string>
+	 * @psalm-template T
+	 * @psalm-param class-string<T> $trait_name
+	 * @psalm-return array<class-string<T>>
+	 *
+	 * @psalm-suppress MoreSpecificReturnType
+	 * @psalm-suppress LessSpecificReturnStatement
 	 */
 	protected static function get_all_trait_classes( $trait_name ) {
 		$trait_classes    = array();
@@ -181,6 +189,9 @@ class Class_Retriever_Utils {
 	 * @param string $class_name
 	 * @param string $trait_name
 	 * @return bool
+	 *
+	 * @psalm-param class-string $class_name
+	 * @psalm-param class-string $trait_name
 	 */
 	protected static function class_use_trait( $class_name, $trait_name ) {
 		while ( true ) {

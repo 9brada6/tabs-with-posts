@@ -10,6 +10,8 @@ use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 /**
  * Interface that will tell what methods the plugin wrapper classes should
  * implement.
+ *
+ * @psalm-consistent-constructor The constructor should not have any parameter.
  */
 abstract class Post_Views_Plugin extends Known_Plugin {
 
