@@ -10,6 +10,8 @@ use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
 
+use TWRP\Utils\Simple_Utils;
+
 /**
  * Simple factory pattern, to use the needed General Settings class, with the
  * needed arguments to generate a setting.
@@ -99,7 +101,7 @@ class General_Settings_Factory {
 	protected static function get_setting_args( $setting_name ) {
 		$correlated_functions = static::get_argument_functions_correlated();
 
-		if ( isset( $correlated_functions[ $setting_name ] ) && is_callable( array( get_called_class(), $correlated_functions[ $setting_name ] ) ) ) {
+		if ( isset( $correlated_functions[ $setting_name ] ) && Simple_Utils::method_exist_and_is_public( get_called_class(), $correlated_functions[ $setting_name ] ) ) {
 			$class_name  = get_called_class();
 			$method_name = $correlated_functions[ $setting_name ];
 

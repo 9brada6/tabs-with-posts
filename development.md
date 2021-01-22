@@ -36,8 +36,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- In PHP 8: The ability to call non-static methods statically has been removed. Thus is_callable() will fail when checking for a non-static method with a classname (must check with an object instance).
-
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).

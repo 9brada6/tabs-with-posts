@@ -13,6 +13,7 @@ use TWRP\Article_Block\Article_Block;
 
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Class that is a collection of static methods, that can be used everywhere
@@ -232,12 +233,12 @@ class Class_Retriever_Utils {
 	 */
 	private static function sort_classes_algorithm( $first_class_name, $second_class_name ) {
 		$first_class_order = 0;
-		if ( is_callable( array( $first_class_name, 'get_class_order_among_siblings' ) ) ) {
+		if ( Simple_Utils::method_exist_and_is_public( $first_class_name, 'get_class_order_among_siblings' ) ) {
 			$first_class_order = $first_class_name::get_class_order_among_siblings();
 		}
 
 		$second_class_order = 0;
-		if ( is_callable( array( $second_class_name, 'get_class_order_among_siblings' ) ) ) {
+		if ( Simple_Utils::method_exist_and_is_public( $second_class_name, 'get_class_order_among_siblings' ) ) {
 			$second_class_order = $second_class_name::get_class_order_among_siblings();
 		}
 

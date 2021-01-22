@@ -5,6 +5,7 @@
 
 namespace TWRP\Plugins\Known_Plugins;
 
+use TWRP\Utils\Simple_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
@@ -34,7 +35,7 @@ abstract class Known_Plugin {
 	public static function get_plugin_version() {
 		$plugins = get_plugins();
 
-		if ( ! is_callable( array( get_called_class(), 'get_plugin_file_relative_path' ) ) ) {
+		if ( ! Simple_Utils::method_exist_and_is_public( get_called_class(), 'get_plugin_file_relative_path' ) ) {
 			return false;
 		}
 

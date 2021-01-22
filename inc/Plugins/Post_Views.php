@@ -3,7 +3,10 @@
 namespace TWRP\Plugins;
 
 use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
+
 use TWRP\Utils\Class_Retriever_Utils;
+use TWRP\Utils\Simple_Utils;
+
 use WP_Post;
 
 // todo:
@@ -53,7 +56,7 @@ class Post_Views {
 		$plugins = self::get_plugin_classes();
 
 		foreach ( $plugins as $plugin_class ) {
-			if ( is_callable( array( $plugin_class, 'is_installed_and_can_be_used' ) ) && $plugin_class::is_installed_and_can_be_used() === true ) {
+			if ( Simple_Utils::method_exist_and_is_public( $plugin_class, 'is_installed_and_can_be_used' ) && $plugin_class::is_installed_and_can_be_used() === true ) {
 				self::$used_plugin_class = $plugin_class;
 				return self::$used_plugin_class;
 			}

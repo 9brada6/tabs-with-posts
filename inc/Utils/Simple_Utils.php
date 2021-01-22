@@ -77,9 +77,11 @@ class Simple_Utils {
 	/**
 	 * Check if the object contains a method that is public
 	 *
-	 * @param string $class_name
+	 * @param string|object $class_name
 	 * @param string $method_name
 	 * @return bool
+	 *
+	 * @psalm-suppress ArgumentTypeCoercion ReflectionMethod takes class-string.
 	 */
 	public static function method_exist_and_is_public( $class_name, $method_name ) {
 		try {
