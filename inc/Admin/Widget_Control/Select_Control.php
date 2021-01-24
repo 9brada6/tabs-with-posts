@@ -76,7 +76,7 @@ class Select_Control implements Widget_Control {
 			return $default_args['default'];
 		}
 
-		if ( ! in_array( $setting, $args['options'], true ) ) {
+		if ( ! in_array( $setting, array_keys( $args['options'] ), true ) ) {
 			return $default_args['default'];
 		}
 

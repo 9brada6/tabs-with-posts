@@ -203,9 +203,37 @@ abstract class Article_Block {
 	/**
 	 * Sanitize the widget settings of this specific article block.
 	 *
+	 * @param bool $set_internal Whether or not to set the object settings to
+	 * the one sanitized. Default to true.
 	 * @return array The new array of settings.
 	 */
-	abstract public function sanitize_widget_settings();
+	public function sanitize_widget_settings( $set_internal = true ) {
+		$components         = $this->get_components();
+		$sanitized_settings = array();
+
+		foreach ( $components as $component ) {
+			$component_name = $component->get_component_name();
+			// todo.
+			if ( isset( $this->settings[ $component_name ] ) ) {
+				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
+			} else {
+				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
+			}
+		}
+
+		$query_settings = $this->get_artblock_settings();
+
+		foreach ( $query_settings as $query_artblock_setting ) {
+			$sanitized_settings[ $query_artblock_setting->get_setting_name() ] = $query_artblock_setting->sanitize_setting();
+		}
+
+		if ( $set_internal ) {
+			$this->settings = $sanitized_settings;
+		}
+
+		return $sanitized_settings;
+	}
+
 
 	/**
 	 * Create and return the css of the component.

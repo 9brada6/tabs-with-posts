@@ -102,30 +102,4 @@ class Simple_Article extends Article_Block {
 
 		return $query_settings;
 	}
-
-	public function sanitize_widget_settings( $set_internal = true ) {
-		$components         = $this->get_components();
-		$sanitized_settings = array();
-
-		foreach ( $components as $component ) {
-			$component_name = $component->get_component_name();
-			if ( isset( $this->settings[ $component_name ] ) ) {
-				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
-			} else {
-				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
-			}
-		}
-
-		$query_settings = $this->get_artblock_settings();
-
-		foreach ( $query_settings as $query_artblock_setting ) {
-			$sanitized_settings[ $query_artblock_setting->get_setting_name() ] = $query_artblock_setting->sanitize_setting();
-		}
-
-		if ( $set_internal ) {
-			$this->settings = $sanitized_settings;
-		}
-
-		return $sanitized_settings;
-	}
 }

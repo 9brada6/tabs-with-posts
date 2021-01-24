@@ -1,8 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @todo: add a method to be used instead of creating in get_plugin_avatar_src() Known_Plugin method.
  */
 
 namespace TWRP\Utils;
@@ -65,6 +63,11 @@ class Directory_Utils {
 	const BACKEND_FOLDER = 'assets/backend/';
 
 	/**
+	 * The folder where the plugin avatars are keep.
+	 */
+	const PLUGIN_AVATARS_FOLDER = 'assets/plugin-avatars/';
+
+	/**
 	 * The folder where all svg assets are to be found.
 	 */
 	const SVG_FOLDER = 'assets/svgs/';
@@ -106,6 +109,41 @@ class Directory_Utils {
 		}
 
 		return trailingslashit( plugin_dir_url( $file ) );
+	}
+
+	/**
+	 * Get the plugin avatar src.
+	 *
+	 * @param string $fully_class_name The fully class name of the plugin.
+	 * @return string
+	 */
+	public static function get_plugin_avatar_src( $fully_class_name ) {
+		$plugin_avatars_url = self::get_plugin_avatars_directory_url();
+		$class_name         = substr( $fully_class_name, (int) strrpos( $fully_class_name, '\\' ) + 1 );
+
+		$image_file = trailingslashit( $plugin_avatars_url ) . $class_name . '.png';
+
+		return $image_file;
+	}
+
+	/**
+	 * Get plugin avatars folder path.
+	 *
+	 * @return string The path is has an ending slash.
+	 */
+	public static function get_plugin_avatars_directory_path() {
+		$directory = trailingslashit( self::get_plugin_directory_path() ) . ltrim( self::PLUGIN_AVATARS_FOLDER, '/' );
+		return trailingslashit( $directory );
+	}
+
+	/**
+	 * Get plugin avatars folder URL.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_plugin_avatars_directory_url() {
+		$plugins_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::PLUGIN_AVATARS_FOLDER, '/' );
+		return trailingslashit( $plugins_url );
 	}
 
 	/**

@@ -32,13 +32,11 @@ class Icon_Factory {
 	 */
 	public static function get_icon( $icon_id ) {
 		// Search only in specific category.
-		$icons = self::get_all_icons_attr();
+		$icon_attr = self::get_icon_attr( $icon_id );
 
-		if ( ! isset( $icons[ $icon_id ] ) ) {
+		if ( false === $icon_attr ) {
 			throw new RuntimeException();
 		}
-
-		$icon_attr = $icons[ $icon_id ];
 
 		$icon = new Icon( $icon_id, $icon_attr );
 
@@ -317,5 +315,37 @@ class Icon_Factory {
 	}
 
 	#endregion -- Get compatible disabled comment icon
+
+	#region -- Get an icon attr fast
+
+	/**
+	 * Get the icon attributes array, or false if do not exist.
+	 *
+	 * This function is speeded by searching only in the needed category.
+	 *
+	 * @param string $icon_id
+	 * @return array|false
+	 */
+	public static function get_icon_attr( $icon_id ) {
+		try {
+			$icon_category = Icon_Categories::get_icon_category( $icon_id );
+		} catch ( RuntimeException $e ) {
+			return false;
+		}
+
+		$definitions_class = Icon_Categories::get_definitions_class_by_category( $icon_category );
+		if ( false === $definitions_class ) {
+			return false;
+		}
+		$icons_attr = $definitions_class::get_definitions();
+
+		if ( isset( $icons_attr[ $icon_id ] ) ) {
+			return $icons_attr[ $icon_id ];
+		}
+
+		return false; // @codeCoverageIgnore
+	}
+
+	#endregion -- Get an icon attr fast
 
 }

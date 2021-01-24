@@ -60,14 +60,7 @@ abstract class Known_Plugin {
 	 * @return string
 	 */
 	public static function get_plugin_avatar_src() {
-		$assets_dir = Directory_Utils::get_assets_directory_url();
-
-		$fully_class_name = get_called_class();
-		$class_name       = substr( $fully_class_name, (int) strrpos( $fully_class_name, '\\' ) + 1 );
-
-		$image_file = trailingslashit( $assets_dir ) . 'plugin-avatars/' . $class_name . '.png';
-
-		return $image_file;
+		return Directory_Utils::get_plugin_avatar_src( get_called_class() );
 	}
 
 	/**

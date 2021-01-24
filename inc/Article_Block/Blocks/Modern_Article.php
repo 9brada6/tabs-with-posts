@@ -26,10 +26,6 @@ class Modern_Article extends Article_Block {
 		return 'modern-style';
 	}
 
-	public function sanitize_widget_settings() {
-		return $this->settings;
-	}
-
 	public function get_components() {
 		return '';
 	}

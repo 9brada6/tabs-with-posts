@@ -19,6 +19,8 @@ use TWRP\CSS\Icons_CSS;
  * Some css/js files are included via 'wp_enqueue_scripts' action, and some
  * added in the head via 'wp_head' action. The icons svgs are a special way of
  * including, see Icons_CSS class.
+ *
+ * The inline CSS is added in a Tabs_Creator method.
  */
 class Generate_CSS {
 

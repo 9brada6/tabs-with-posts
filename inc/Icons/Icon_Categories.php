@@ -132,54 +132,42 @@ class Icon_Categories {
 
 		throw new RuntimeException();
 	}
-}
 
-// Todo: Speed up Icon creation, retrieved only the attributes based on icon category.
 	/**
-	 * Get the icon attributes array, or false if do not exist.
+	 * For a category id, get the definition class attached to it.
 	 *
-	 * @param string $icon_id
-	 * @return array|false
+	 * @param int $category_id
+	 * @return Icon_Definitions|false
 	 */
-/*
-  public static function get_icon_attr( $icon_id ) {
-		try {
-			$icon_category = self::get_icon_category( $icon_id );
-		} catch ( RuntimeException $e ) {
-			return false;
+	public static function get_definitions_class_by_category( $category_id ) {
+		if ( self::USER_ICON === $category_id ) {
+			return new User_Icons();
 		}
 
-		if ( self::USER_ICON === $icon_category ) {
-			$icons_attr = User_Icons::get_user_icons();
+		if ( self::DATE_ICON === $category_id ) {
+			return new Date_Icons();
 		}
 
-		if ( self::DATE_ICON === $icon_category ) {
-			$icons_attr = Date_Icons::get_date_icons();
+		if ( self::CATEGORY_ICON === $category_id ) {
+			return new Category_Icons();
 		}
 
-		if ( self::CATEGORY_ICON === $icon_category ) {
-			$icons_attr = Category_Icons::get_category_icons();
+		if ( self::COMMENT_ICON === $category_id ) {
+			return new Comments_Icons();
 		}
 
-		if ( self::COMMENT_ICON === $icon_category ) {
-			$icons_attr = Comments_Icons::get_comment_icons();
+		if ( self::DISABLED_COMMENT_ICON === $category_id ) {
+			return new Comments_Disabled_Icons();
 		}
 
-		if ( self::DISABLED_COMMENT_ICON === $icon_category ) {
-			$icons_attr = Comments_Disabled_Icons::get_disabled_comment_icons();
+		if ( self::VIEWS_ICON === $category_id ) {
+			return new Views_Icons();
 		}
 
-		if ( self::VIEWS_ICON === $icon_category ) {
-			$icons_attr = Views_Icons::get_views_icons();
+		if ( self::RATING_ICON === $category_id ) {
+			return new Rating_Icons();
 		}
 
-		if ( self::RATING_ICON === $icon_category ) {
-			$icons_attr = Rating_Icons::get_rating_icons();
-		}
-
-		if ( isset( $icons_attr[ $icon_id ] ) ) {
-			return $icons_attr[ $icon_id ];
-		}
-
-		return false; // @codeCoverageIgnore
-	} */
+		return false;
+	}
+}

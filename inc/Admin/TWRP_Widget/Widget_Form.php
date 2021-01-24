@@ -16,6 +16,7 @@ use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 use TWRP\Utils\Widget_Utils;
 use TWRP\Admin\Widget_Control\Checkbox_Control;
+use TWRP\Admin\Widget_Control\Select_Control;
 
 /**
  * Class that manages the form to modify the settings for the widget, displayed
@@ -153,25 +154,18 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected function display_tab_style_options() {
-		$select_name           = Widget_Utils::get_field_name( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
-		$all_style_class_names = Class_Retriever_Utils::get_all_tab_style_class_names();
-		$options               = array();
-
-		foreach ( $all_style_class_names as $tab_style_class_name ) {
-			$tab_style_id   = $tab_style_class_name::TAB_ID;
-			$style_variants = $tab_style_class_name::get_all_variants();
-
-			$options[ $tab_style_id ] = $tab_style_class_name::get_tab_style_name();
-
-			foreach ( $style_variants as $style_variant => $style_variant_name ) {
-				$options[ $tab_style_id . '___' . $style_variant ] = $tab_style_class_name::get_tab_style_name() . ' - ' . $style_variant_name;
-			}
-		}
+		$id          = Widget_Utils::get_field_id( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
+		$select_name = Widget_Utils::get_field_name( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
+		$options     = self::get_all_tab_styles_options();
 
 		$current_option_value = '';
 		if ( isset( $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
 			$current_option_value = $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ];
 		}
+
+		Select_Control::display_setting( $id, $select_name, $current_option_value, self::get_tab_style_control_args() );
+
+		return;
 
 		?>
 		<p class="<?php $this->bem_class( 'select-tab-style-wrapper' ); ?>">
@@ -330,6 +324,8 @@ class Widget_Form {
 		<?php
 	}
 
+	#endregion -- Display the settings per each tab.
+
 	#region -- Functions to display the artblock settings.
 
 	/**
@@ -383,6 +379,41 @@ class Widget_Form {
 			'value'   => '1',
 			'default' => '1',
 		);
+	}
+
+	public static function get_tab_style_control_args() {
+		$options = self::get_all_tab_styles_options();
+
+		// Get the first key.
+		reset( $options );
+		$first_key = key( $options );
+		if ( null === $first_key ) {
+			$first_key = '';
+		}
+
+		return array(
+			'options' => self::get_all_tab_styles_options(),
+			'before'  => _x( 'Select the style of the tab buttons:', 'backend', 'twrp' ),
+			'default' => $first_key,
+		);
+	}
+
+	public static function get_all_tab_styles_options() {
+		$all_style_class_names = Class_Retriever_Utils::get_all_tab_style_class_names();
+		$options               = array();
+
+		foreach ( $all_style_class_names as $tab_style_class_name ) {
+			$tab_style_id   = $tab_style_class_name::TAB_ID;
+			$style_variants = $tab_style_class_name::get_all_variants();
+
+			$options[ $tab_style_id ] = $tab_style_class_name::get_tab_style_name();
+
+			foreach ( $style_variants as $style_variant => $style_variant_name ) {
+				$options[ $tab_style_id . '___' . $style_variant ] = $tab_style_class_name::get_tab_style_name() . ' - ' . $style_variant_name;
+			}
+		}
+
+		return $options;
 	}
 
 	#region -- Bem CSS classes.
