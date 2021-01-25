@@ -64024,6 +64024,7 @@ function get_admin_page_parent($parent = '')
  * @global string $pagenow
  * @global string $plugin_page
  * @global string $typenow
+ * @return string The title of the current admin page.
  */
 function get_admin_page_title()
 {

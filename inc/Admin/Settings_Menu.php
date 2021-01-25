@@ -1,15 +1,13 @@
 <?php
 /**
  * Define the class Settings_Menu. See the class doc for more info.
- *
- * @todo: Remove query arg from url for the default tab.
- * @todo: Check if users have capability to see the post.
  */
 
 namespace TWRP\Admin;
 
 use TWRP\Admin\Tabs\Interface_Admin_Menu_Tab;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
  * Class for creating the Plugin Settings.
@@ -23,6 +21,7 @@ use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
  */
 class Settings_Menu {
 
+	use BEM_Class_Naming_Trait;
 	use After_Setup_Theme_Init_Trait;
 
 	/**
@@ -35,19 +34,6 @@ class Settings_Menu {
 	 * Key of the URL parameter that holds each tab value.
 	 */
 	const TAB__URL_PARAMETER_KEY = 'tab';
-
-	/**
-	 * Holds all the HTML attribute classes to display the HTML.
-	 *
-	 * ID => HTML classes.
-	 */
-	const CLASSES = array(
-		'page'                => 'twrpb-admin wrap',
-		'tab-btns-wrapper'    => 'twrpb-admin__tabs nav-tab-wrapper',
-		'tab-btn'             => 'twrpb-admin__tab-btn nav-tab',
-		'tab-btn-active'      => 'twrpb-admin__tab-btn--active nav-tab-active',
-		'tab-content-wrapper' => 'twrpb-admin__tab-content',
-	);
 
 	/**
 	 * Holds all tabs.
@@ -99,7 +85,7 @@ class Settings_Menu {
 		$capability = 'manage_options';
 		$slug       = 'tabs_with_recommended_posts';
 
-		add_options_page( $page_title, $menu_title, $capability, $slug, array( 'TWRP\Admin\Settings_Menu', 'display_admin_page_hook' ) );
+		add_options_page( $page_title, $menu_title, $capability, $slug, array( self::class, 'display_admin_page_hook' ) );
 
 		self::add_tab( 'TWRP\Admin\Tabs\Documentation_Tab' );
 		self::add_tab( 'TWRP\Admin\Tabs\General_Settings_Tab' );
@@ -125,7 +111,7 @@ class Settings_Menu {
 	 */
 	public function display_admin_page() {
 		?>
-		<div class="<?= esc_attr( self::CLASSES['page'] ) ?>">
+		<div class="<?php $this->bem_class(); ?> wrap">
 			<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 			<?php $this->display_tab_buttons(); ?>
 			<?php $this->display_active_tab(); ?>
@@ -140,7 +126,7 @@ class Settings_Menu {
 	 */
 	protected function display_tab_buttons() {
 		?>
-			<div class="<?= esc_attr( self::CLASSES['tab-btns-wrapper'] ) ?>">
+			<div class="<?php $this->bem_class( 'tabs' ); ?> nav-tab-wrapper">
 				<?php foreach ( self::$tabs as $tab ) : ?>
 					<a href="<?= esc_url( self::get_tab_url( $tab ) ) ?>" class="<?= esc_attr( $this->get_tab_class_attribute( $tab ) ) ?>">
 						<?= $this->get_tab_title( $tab ); // phpcs:ignore -- "Feature" to add icons. ?>
@@ -158,7 +144,7 @@ class Settings_Menu {
 	protected function display_active_tab() {
 		$active_tab = $this->get_active_tab();
 		?>
-		<div class="<?= esc_attr( self::CLASSES['tab-content-wrapper'] ) ?>">
+		<div class="<?php $this->bem_class( 'tab-content' ); ?>">
 			<?php $active_tab->display_tab(); ?>
 		</div>
 		<?php
@@ -173,9 +159,15 @@ class Settings_Menu {
 	 * @return string The URL, not sanitized.
 	 */
 	public static function get_tab_url( $tab_class ) {
-		$url_arg     = $tab_class::get_tab_url_arg();
 		$submenu_url = menu_page_url( self::MENU_SLUG, false );
 
+		// Do not att the query argument in url on the first tab, to make the
+		// URL look nice.
+		if ( get_class( $tab_class ) === get_class( self::$tabs[0] ) ) {
+			return $submenu_url;
+		}
+
+		$url_arg = $tab_class::get_tab_url_arg();
 		return add_query_arg( self::TAB__URL_PARAMETER_KEY, $url_arg, $submenu_url );
 	}
 
@@ -187,10 +179,10 @@ class Settings_Menu {
 	 * @return string
 	 */
 	protected function get_tab_class_attribute( $tab_class ) {
-		$default_class = self::CLASSES['tab-btn'];
+		$default_class = $this->get_bem_class( 'tab-btn' ) . ' nav-tab';
 
 		if ( self::is_tab_active( $tab_class ) ) {
-			$default_class .= ' ' . self::CLASSES['tab-btn-active'];
+			$default_class .= ' ' . $this->get_bem_class( 'tab-btn', 'active' ) . ' nav-tab-active';
 		}
 
 		return $default_class;
@@ -273,6 +265,15 @@ class Settings_Menu {
 		}
 
 		return false;
+	}
+
+	/**
+	 * The base CSS class. See trait BEM_Class_Naming_Trait for more.
+	 *
+	 * @return string
+	 */
+	protected function get_bem_base_class() {
+		return 'twrpb-admin';
 	}
 
 }

@@ -38,6 +38,7 @@ It's best to keep them updated.
 
 - Make the CSS better in widget form when selecting the tabs style.
 - See if old CSS of tab style was for any usage in CSS/JS files.
+- Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait.
 
 ### After first release
 
