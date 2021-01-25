@@ -1,8 +1,6 @@
 import $ from 'jquery';
 import 'jqueryui';
 
-// Todo... Remove all paragraphs with hide.
-
 // #region -- Run hideLeft/ showLeft only one at time.
 
 let horizontalAnimationRunning = false;

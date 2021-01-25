@@ -208,8 +208,7 @@ const categoryTypeSelect = $( '#twrpb-cat-settings__type' );
 const categoryRelationWrapper = $( '#twrpb-cat-settings__js-select-relation-wrap' );
 const mainCategorySettings = $( '#twrpb-cat-settings__js-settings-wrapper' );
 
-// todo: uncomment document.ready.
-// $( hideOrShowCategorySettings );
+$( hideOrShowCategorySettings );
 $( document ).on( 'change', '#twrpb-cat-settings__type', hideOrShowCategorySettings );
 
 function hideOrShowCategorySettings(): void {

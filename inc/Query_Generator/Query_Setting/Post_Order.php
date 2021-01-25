@@ -3,8 +3,6 @@
  * Contains the class that will select the order in which the posts are
  * displayed.
  *
- * @todo: Add more order by options.
- * @todo: Add notes.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

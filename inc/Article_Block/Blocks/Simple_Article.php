@@ -1,9 +1,4 @@
 <?php
-/**
- *
- * @todo: add a constant for all settings with default values.
- * @todo: add constant for setting names.
- */
 
 namespace TWRP\Article_Block\Blocks;
 
@@ -18,14 +13,16 @@ use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
 
 class Simple_Article extends Article_Block {
 
+	/**
+	 * Redeclare to make Phan not trigger an error.
+	 *
+	 * @var array
+	 */
+	protected $settings;
+
 	public static function get_class_order_among_siblings() {
 		return 50;
 	}
-
-	const AUTHOR_ATTR           = 'author';
-	const DATE_ATTR             = 'date';
-	const TITLE_FONT_SIZE_ATTR  = 'font-size';
-	const AUTHOR_FONT_SIZE_ATTR = 'author-font-size';
 
 	public static function get_id() {
 		return 'simple_style';

@@ -84,8 +84,6 @@ class Post_Views {
 		return $query_args;
 	}
 
-	#region -- Todo
-
 	/**
 	 * Get the views for a post. Return false if the views cannot be retrieved,
 	 * like the plugin is not installed, or another error.
@@ -135,5 +133,4 @@ class Post_Views {
 	// return $posts_views;
 	// }
 
-	#endregion -- Todo
 }

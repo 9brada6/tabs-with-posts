@@ -268,11 +268,9 @@ function getQueryItemById( widgetId: string, queryId: string|number ): JQuery<HT
 
 /**
  * Get all TWRP widgets.
- *
- * todo: remove the widget with the Id __i__.
  */
 function getAllWidgets(): JQuery {
-	return $( document ).find( `[${ dataWidgetId }]` );
+	return $( document ).find( `[${ dataWidgetId }]` ).not( '[id*="__i__"]' );
 }
 
 // #endregion -- Helper Functions.
@@ -301,7 +299,6 @@ async function handleArticleBlockChanged() {
 	insertArticleBlock( widgetId, queryId, artblockSettingsHTML );
 }
 
-// todo: move the 2 bellow functions into one.
 function getArticleBlockSettings( widgetId: string, queryId: string|number, artblockId: string|number ) {
 	const ajaxNonce = String( $( '#twrpb-plugin-widget-ajax-nonce' ).attr( 'data-twrpb-plugin-widget-ajax-nonce' ) );
 

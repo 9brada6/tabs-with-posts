@@ -1,11 +1,14 @@
-// todo: add tabby polyfill of closest.
+import '../external/tabby/tabby_polyfill';
 import Tabby from '../external/tabby/tabby';
 import { isElement } from '../common-blocks/_twrp-utils';
 
 let tabs;
 
-// todo: document.onload
-initializeAllTabs();
+if ( document.readyState === 'loading' ) {
+	window.addEventListener( 'DOMContentLoaded', initializeAllTabs );
+} else {
+	initializeAllTabs();
+}
 
 function initializeAllTabs() {
 	// @ts-ignore -- No Tabby type declared yet.
@@ -20,10 +23,10 @@ function initializeAllTabs() {
 const tabBtnItemActiveClass = 'twrp-tab__btn-item-active';
 const tabBtnItemInactiveClass = 'twrp-tab__btn-item-inactive';
 
-if ( document.readyState === 'interactive' || document.readyState === 'complete' ) {
-	handleAllAdditionalClasses();
-} else {
+if ( document.readyState === 'loading' ) {
 	window.addEventListener( 'DOMContentLoaded', handleAllAdditionalClasses );
+} else {
+	handleAllAdditionalClasses();
 }
 
 document.addEventListener( 'tabby', handleAdditionalActiveClassesToTabs );

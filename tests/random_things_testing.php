@@ -50,3 +50,20 @@ function twrp_enqueue_scripts_debug() {
 
 add_action( 'wp_footer', 'twrp_enqueue_scripts_debug' );
 add_action( 'admin_footer', 'twrp_enqueue_scripts_debug' );
+
+
+class a_class {
+	/**
+	 * @var array
+	 */
+	protected $an_array = array();
+
+	/**
+	 * @return int
+	 */
+	public function a_funct() {
+		$this->settings['da'] = 'ok';
+		$a                    = ( isset( $this->an_array['key'] ) && is_array( $this->an_array['key'] ) ) ? $this->an_array['key'] : array();
+		return count( $a );
+	}
+}

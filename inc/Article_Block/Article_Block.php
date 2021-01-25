@@ -212,13 +212,7 @@ abstract class Article_Block {
 		$sanitized_settings = array();
 
 		foreach ( $components as $component ) {
-			$component_name = $component->get_component_name();
-			// todo.
-			if ( isset( $this->settings[ $component_name ] ) ) {
-				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
-			} else {
-				$sanitized_settings[ $component_name ] = $component->sanitize_settings();
-			}
+			$sanitized_settings[ $component->get_component_name() ] = $component->sanitize_settings();
 		}
 
 		$query_settings = $this->get_artblock_settings();
