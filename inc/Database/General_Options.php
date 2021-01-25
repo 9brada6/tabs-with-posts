@@ -89,8 +89,6 @@ class General_Options {
 	 *
 	 * Guarantees that all array indexes are set.
 	 *
-	 * @todo: Get all classes dynamically.
-	 *
 	 * @return array
 	 */
 	public static function get_default_settings() {

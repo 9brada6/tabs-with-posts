@@ -101,7 +101,7 @@ class General_Settings_Factory {
 	protected static function get_setting_args( $setting_name ) {
 		$correlated_functions = static::get_argument_functions_correlated();
 
-		if ( isset( $correlated_functions[ $setting_name ] ) && Simple_Utils::method_exist_and_is_public( get_called_class(), $correlated_functions[ $setting_name ] ) ) {
+		if ( isset( $correlated_functions[ $setting_name ] ) && Simple_Utils::method_exist_in_class( get_called_class(), $correlated_functions[ $setting_name ] ) ) {
 			$class_name  = get_called_class();
 			$method_name = $correlated_functions[ $setting_name ];
 

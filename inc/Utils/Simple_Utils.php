@@ -75,7 +75,7 @@ class Simple_Utils {
 	}
 
 	/**
-	 * Check if the object contains a method that is public
+	 * Check if the object contains a method that is public.
 	 *
 	 * @param string|object $class_name
 	 * @param string $method_name
@@ -91,5 +91,26 @@ class Simple_Utils {
 		}
 
 		return $reflection_method->isPublic();
+	}
+
+	/**
+	 * Check if the object contains a method.
+	 *
+	 * The method can be of any type, any visibility, static or non-static.
+	 *
+	 * @param string|object $class_name
+	 * @param string $method_name
+	 * @return bool
+	 *
+	 * @psalm-suppress ArgumentTypeCoercion ReflectionMethod takes class-string.
+	 */
+	public static function method_exist_in_class( $class_name, $method_name ) {
+		try {
+			$reflection_method = new ReflectionMethod( $class_name, $method_name );
+		} catch ( ReflectionException $e ) {
+			return false;
+		}
+
+		return true;
 	}
 }

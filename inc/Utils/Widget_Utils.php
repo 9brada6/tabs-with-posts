@@ -171,7 +171,7 @@ class Widget_Utils {
 	public static function get_instance_settings( $widget_id ) {
 		try {
 			$widget_id = self::get_widget_id_number( $widget_id );
-		} catch ( \RuntimeException $e ) {
+		} catch ( RuntimeException $e ) {
 			return array();
 		}
 
@@ -186,7 +186,7 @@ class Widget_Utils {
 	/**
 	 * Get only the widget Id number for this type of widget.
 	 *
-	 * @throws \RuntimeException If the widget Id cannot be retrieved.
+	 * @throws RuntimeException If the widget Id cannot be retrieved.
 	 *
 	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @return int
@@ -201,8 +201,35 @@ class Widget_Utils {
 		if ( is_numeric( $widget_id_num ) ) {
 			return (int) $widget_id_num;
 		} else {
-			throw new \RuntimeException( 'Cannot retrieve a number corresponding to a widget Id.' );
+			throw new RuntimeException( 'Cannot retrieve a number corresponding to a widget Id.' );
 		}
+	}
+
+	/**
+	 * Get a widget Id by passing the instance settings of a widget.
+	 *
+	 * This function will search in database for the same settings, and get the
+	 * id of those who match.
+	 *
+	 * @param array $instance_settings
+	 * @return int
+	 */
+	public static function get_widget_id_by_instance_settings( $instance_settings ) {
+		$all_widgets_settings = get_option( 'widget_' . self::TWRP_WIDGET__BASE_ID );
+
+		foreach ( $all_widgets_settings as $key => $widget_setting ) {
+			// Try to speed up by removing those who don't have the same number
+			// of keys or same keys.
+			if ( count( $widget_setting ) === count( $instance_settings ) && array() === array_diff_key( $widget_setting, $instance_settings ) ) {
+				$sorted_widget_settings   = array_multisort( $widget_setting );
+				$sorted_instance_settings = array_multisort( $instance_settings );
+				if ( $sorted_widget_settings === $sorted_instance_settings ) {
+					return (int) $key;
+				}
+			}
+		}
+
+		return 0;
 	}
 
 }

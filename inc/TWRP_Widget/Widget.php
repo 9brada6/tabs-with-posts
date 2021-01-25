@@ -1,7 +1,4 @@
 <?php
-/**
- * @todo: Verify if we have privilege to retrieve the ajax settings.
- */
 
 namespace TWRP\TWRP_Widget;
 
@@ -16,6 +13,7 @@ use RuntimeException;
 use TWRP\Admin\Widget_Control\Checkbox_Control;
 use TWRP\Admin\Widget_Control\Select_Control;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
+use TWRP\Utils\Widget_Utils;
 use WP_Widget;
 
 class Widget extends WP_Widget {
@@ -111,8 +109,9 @@ class Widget extends WP_Widget {
 	#region -- Update
 
 	public function update( $new_instance, $old_instance ) {
-		$sanitized_non_query_settings = self::sanitize_all_non_queries_widget_settings( $new_instance );
-		$sanitized_query_settings     = self::sanitize_all_queries_settings( $new_instance );
+		$sanitized_non_query_settings = $this->sanitize_all_non_queries_widget_settings( $new_instance );
+		$widget_id                    = Widget_Utils::get_widget_id_by_instance_settings( $old_instance );
+		$sanitized_query_settings     = $this->sanitize_all_queries_settings( $widget_id, $new_instance );
 
 		return $sanitized_non_query_settings + $sanitized_query_settings;
 	}
@@ -123,7 +122,7 @@ class Widget extends WP_Widget {
 	 * @param array $settings Instance of the widget settings.
 	 * @return array
 	 */
-	protected static function sanitize_all_non_queries_widget_settings( $settings ) {
+	protected function sanitize_all_non_queries_widget_settings( $settings ) {
 		$sanitized_settings = array();
 
 		// Sanitize sync all queries option.
@@ -147,10 +146,11 @@ class Widget extends WP_Widget {
 	 * Sanitize all the widgets settings that belong to queries, including the
 	 * setting that holds all the queries.
 	 *
+	 * @param int $widget_id
 	 * @param array $settings Instance of the widget settings.
 	 * @return array
 	 */
-	public static function sanitize_all_queries_settings( $settings ) {
+	public function sanitize_all_queries_settings( $widget_id, $settings ) {
 		if ( ! isset( $settings['queries'] ) ) {
 			$settings['queries'] = '';
 		}
@@ -167,7 +167,7 @@ class Widget extends WP_Widget {
 				}
 
 				// @phan-suppress-next-line PhanPartialTypeMismatchArgument
-				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $query_id, $settings[ $query_id ] );
+				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $widget_id, $query_id, $settings[ $query_id ] );
 				array_push( $valid_queries_ids, $query_id );
 			}
 		}
@@ -181,13 +181,14 @@ class Widget extends WP_Widget {
 	 * Sanitize all the widgets settings that belong to queries, including the
 	 * setting that holds all the queries.
 	 *
+	 * @param int $widget_id
 	 * @param int $query_id
 	 * @param array $query_settings Only the query settings to sanitize.
 	 * @return array
 	 *
 	 * @psalm-suppress DocblockTypeContradiction
 	 */
-	protected static function sanitize_query_settings( $query_id, $query_settings ) {
+	protected static function sanitize_query_settings( $widget_id, $query_id, $query_settings ) {
 		$sanitized_settings = array();
 
 		if ( ! is_array( $query_settings ) ) {
@@ -211,8 +212,7 @@ class Widget extends WP_Widget {
 		}
 
 		try {
-			// todo: instead of 0 should be an widget id.
-			$artblock = Article_Block::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], 0, $query_id, $query_settings );
+			$artblock = Article_Block::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], $widget_id, $query_id, $query_settings );
 		} catch ( \RuntimeException $e ) {
 			return $sanitized_settings;
 		}

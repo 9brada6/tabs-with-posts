@@ -1,10 +1,6 @@
 <?php
 /**
  * File that contains the class with the same name.
- *
- * @todo: add nonce, and if something is not correct, make sure that javascript
- * ajax function return to the "fail" function, even though the server responded
- * (but with an error).
  */
 
 namespace TWRP\Admin\TWRP_Widget;

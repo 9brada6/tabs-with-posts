@@ -1,8 +1,6 @@
 <?php
 /**
  * File containing the class with the same name.
- *
- * @todo: Remove the margin-bottom of categories classes and move to setting section classes.
  */
 
 namespace TWRP\Query_Generator\Query_Setting;

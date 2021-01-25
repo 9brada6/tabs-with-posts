@@ -36,6 +36,9 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- Make the CSS better in widget form when selecting the tabs style.
+- See if old CSS of tab style was for any usage in CSS/JS files.
+
 ### After first release
 
 - 🥇 Add taxonomy options(with post formats).
