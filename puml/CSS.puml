@@ -28,6 +28,5 @@ namespace TWRP\\CSS {
 		..
 		+ array get_all_used_icons()
 	}
-
 	General_CSS -> Icons_CSS
 }
