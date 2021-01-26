@@ -17,13 +17,14 @@
 			// PHP Debug
 			"felixfbecker.php-debug",
 
-			// PHP Sniffer - Linter and Formatter,
-			// we use the WordPress standard.
+			// PHP Sniffer - Linter and Formatter, we use the WordPress standard.
 			"wongjn.php-sniffer",
 
 			// PHP Phan - Static analyzer to detect bugs in
-			// PHP dynamic type and other things.
 			"tysonandre.php-phan",
+
+			// Psalm - Static analyzer
+			"getpsalm.psalm-vscode-plugin",
 
 			// Stylelint - Modern CSS/SCSS/Less linter.
 			"stylelint.vscode-stylelint",
@@ -98,17 +99,13 @@
 		"intelephense.format.enable": false,
 		"intelephense.diagnostics.run": "onType",
 		"intelephense.completion.maxItems": 100,
-
-
 		// =====================================================================
-
 
 
 		// =====================================================================
 		// PHP Debug Settings:
 		// no settings.
 		// =====================================================================
-
 
 
 		// =====================================================================
@@ -154,14 +151,11 @@
 		"phan.analyzeOnlyOnSave": true,
 
 		// "phan.enableDebugLog": true,
-
 		// =====================================================================
 
 		// =====================================================================
 		// Psalm - Static analyzer:
-
 		"psalm.connectToServerWithTcp":true,
-
 		// =====================================================================
 
 

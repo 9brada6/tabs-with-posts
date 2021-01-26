@@ -15,7 +15,7 @@
 
     <projectFiles>
         <directory name="inc"/>
-        <directory name="tests"/>
+        <!-- <directory name="tests"/> -->
         <file name="tabs-with-recommended-posts.php"/>
         <ignoreFiles>
             <directory name=".git"/>
@@ -64,4 +64,5 @@
             </errorLevel>
         </MissingThrowsDocblock>
     </issueHandlers>
-<plugins><pluginClass class="Psalm\PhpUnitPlugin\Plugin"/></plugins></psalm>
+<plugins><pluginClass class="Psalm\PhpUnitPlugin\Plugin"/></plugins>
+</psalm>

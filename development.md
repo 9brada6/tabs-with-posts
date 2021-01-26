@@ -97,6 +97,15 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 
 ## 📖 Development Documentation
 
+### Tools used
+
+#### Phan
+
+- Phan can be run via docker(see the script in the composer). In VSCode it comes pre-installed with the extension. It is not installed in vendor via composer.
+- You need to change the Phan path in vscode workspace options when you change the PC.
+
+### Packages
+
 This documentation is split between packages.
 
 ### TWRP\Admin\ Package

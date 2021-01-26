@@ -5,7 +5,7 @@ return array(
 	'analyzed_file_extensions' => array( 'php' ),
 	'directory_list' => array( './' ),
 	'exclude_analysis_directory_list' => array( './.stubs' ),
-	'exclude_file_regex' => '@.*(\.git|\.svn|node_modules|vendor).*@',
+	'exclude_file_regex' => '@.*(\.git|\.svn|node_modules|vendor|tests).*@',
 
 
 	// Issue Filtering
