@@ -1,7 +1,0 @@
-mode: 'usage'
-source: './inc'
-filePattern: '*.php'
-ignore: 'tests'
-formatter: 'PhpDA\Writer\Strategy\Json'
-target: './phpda.json'
-groupLength: 1

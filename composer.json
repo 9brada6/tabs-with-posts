@@ -9,12 +9,9 @@
 		"phpcompatibility/phpcompatibility-wp": "*",
 		"slevomat/coding-standard": "~6.0",
 		"dealerdirect/phpcodesniffer-composer-installer": "*",
-		"vimeo/psalm": "3.15",
+		"vimeo/psalm": "*",
 		"psalm/plugin-phpunit": "^0.12.2",
-		"phpunit/phpunit": "^7",
-		"masterminds/html5": "^2.7",
-		"php-stubs/wordpress-stubs": "4.9.11",
-        "phpmetrics/phpmetrics": "^2.7"
+		"php-stubs/wordpress-stubs": "4.9.11"
 	},
 	"scripts": {
 		"phan": "docker run -v ${PWD}:/mnt/src --rm phanphp/phan:latest",

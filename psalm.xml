@@ -19,7 +19,6 @@
         <file name="tabs-with-recommended-posts.php"/>
         <ignoreFiles>
             <directory name=".git"/>
-            <directory name=".svn"/>
             <directory name=".stubs"/>
             <directory name=".svg-icons-src"/>
             <directory name=".vscode"/>
@@ -29,7 +28,14 @@
     </projectFiles>
 
     <stubs>
-        <file name=".stubs/wordpress-stubs.php"/>
+        <file name=".stubs/wp-stubs-1.php"/>
+        <file name=".stubs/wp-stubs-2.php"/>
+        <file name=".stubs/wp-stubs-3.php"/>
+        <file name=".stubs/wp-stubs-4.php"/>
+        <file name=".stubs/wp-stubs-5.php"/>
+        <file name=".stubs/wp-stubs-6.php"/>
+        <file name=".stubs/wp-stubs-7.php"/>
+        <file name=".stubs/wp-stubs-8.php"/>
         <file name=".stubs/wp-phpunit.php"/>
         <file name=".stubs/wp-phpunit-fix.php"/>
         <file name=".stubs/phpunit-7.php"/>
