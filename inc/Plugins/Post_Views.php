@@ -9,11 +9,15 @@ use TWRP\Utils\Simple_Utils;
 
 use WP_Post;
 
-// todo:
-/*
-			self::PLUGIN_DFACTORY_ORDERBY_VALUE     => _x( '(Plugin DFactory) Order by post views', 'backend', 'twrp' ),
-			self::PLUGIN_GAMERZ_VIEWS_ORDERBY_VALUE => _x( '(Plugin GamerZ) Order by post views', 'backend', 'twrp' ),
-			 */
+/**
+ * Class that is used to get the number of views of a post.
+ *
+ * This class can recognize if a known plugin that display views is installed,
+ * and use that plugin to get the views.
+ *
+ * The plugin used will be the first encountered installed plugin, in a specific
+ * order of importance or preference.
+ */
 class Post_Views {
 
 	/**
@@ -107,30 +111,5 @@ class Post_Views {
 		$post_views = $plugin_class::get_views( $post_id );
 		return $post_views;
 	}
-
-	/**
-	 * Get the views for all the posts in the array. This function will fail
-	 * silently.
-	 *
-	 * @param array $posts_ids
-	 * @return array<int,int> The key of the array represents the Post ID, and
-	 *                        the value the post views number.
-	 */
-	// todo:
-	// public static function get_multiple_posts_views( $posts_ids ) {
-	// $plugin_class = self::get_plugin_to_use();
-
-	// if ( ! $plugin_class ) {
-	// $return_zeroes = array();
-	// foreach ( $posts_ids as $id ) {
-	// $return_zeroes[ $id ] = 0;
-	// }
-	// return $return_zeroes;
-	// }
-
-	// $posts_views = $plugin_class::get_multiple_posts_views( $posts_ids );
-
-	// return $posts_views;
-	// }
 
 }

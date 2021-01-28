@@ -64,7 +64,6 @@ class Post_Status extends Query_Setting {
 			}
 		}
 
-		/** @psalm-suppress RedundantCondition -- There is no redundant condition. */
 		if ( empty( $sanitized_post_statuses[ self::POST_STATUSES__SETTING_NAME ] ) ) {
 			return self::get_default_setting();
 		}

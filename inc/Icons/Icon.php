@@ -6,6 +6,12 @@ use RuntimeException;
 use TWRP\Utils\Filesystem_Utils;
 use TWRP\Utils\Directory_Utils;
 
+/**
+ * Represents a icon. Contains methods for displaying, and retrieving other
+ * information.
+ *
+ * An Icon class needs to be retrieved through the Icon_Factory class.
+ */
 class Icon {
 
 	/**

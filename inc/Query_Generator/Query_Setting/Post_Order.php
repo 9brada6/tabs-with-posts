@@ -5,6 +5,9 @@ namespace TWRP\Query_Generator\Query_Setting;
 /**
  * Creates the possibility to select the order in which the posts will be
  * displayed.
+ *
+ * Plugins can implement their order using 'twrp_post_orderby_select_options'
+ * and 'twrp_post_order_after_add_query_args' filter.
  */
 class Post_Order extends Query_Setting {
 

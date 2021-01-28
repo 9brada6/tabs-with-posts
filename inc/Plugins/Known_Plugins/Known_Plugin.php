@@ -6,6 +6,11 @@ use TWRP\Utils\Simple_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
+/**
+ * Every plugin known to this plugin should extend this class. It contains
+ * methods to know the title, author, if plugin is installed, versions tested,
+ * plugin avatar... etc.
+ */
 abstract class Known_Plugin {
 
 	use After_Setup_Theme_Init_Trait;

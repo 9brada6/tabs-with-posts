@@ -4,6 +4,10 @@ namespace TWRP\Icons;
 
 use RuntimeException;
 
+/**
+ * Class used to hold/retrieve values that needs to be different between each
+ * category of icons, and to get the category of an icon by looking at the id.
+ */
 class Icon_Categories {
 
 	/**

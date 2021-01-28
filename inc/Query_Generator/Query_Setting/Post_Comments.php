@@ -74,7 +74,7 @@ class Post_Comments extends Query_Setting {
 		}
 
 		$comment_count = array(
-			'compare' => self::get_comparator_from_name( $settings[ self::COMMENTS_COMPARATOR_NAME ] ),
+			'compare' => self::get_comparator_from_name( (string) $settings[ self::COMMENTS_COMPARATOR_NAME ] ),
 			'value'   => $settings[ self::COMMENTS_VALUE_NAME ],
 		);
 

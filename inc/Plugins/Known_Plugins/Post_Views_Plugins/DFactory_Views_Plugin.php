@@ -68,7 +68,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 		}
 
 		if ( function_exists( 'pvc_get_post_views' ) ) {
-			$post_views = pvc_get_post_views( $post_id ); // @phan-suppress-current-line PhanUndeclaredFunction
+			$post_views = pvc_get_post_views( $post_id );
 		} else {
 			return false;
 		}
@@ -90,12 +90,12 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	 * @return array
 	 */
 	public static function modify_query_arg_if_necessary( $query_args ) {
-		$orderby_value = \TWRP\Query_Generator\Query_Setting\Post_Order::PLUGIN_DFACTORY_ORDERBY_VALUE;
-		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
+		// todo.
+		if ( ! isset( $query_args['orderby']['todo'] ) ) {
 			return $query_args;
 		}
 
-		$query_args['order']            = $query_args['orderby'][ $orderby_value ];
+		$query_args['order']            = $query_args['orderby']['todo'];
 		$query_args['orderby']          = 'post_views';
 		$query_args['suppress_filters'] = false;
 

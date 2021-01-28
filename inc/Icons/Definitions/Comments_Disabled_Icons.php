@@ -260,7 +260,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 	public static function get_comment_disabled_compatibles() {
 		$comment_disable_compatibles = array(
 
-			// FontAwesome
+			// FontAwesome.
 			'twrp-com-fa-f'       => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-fa-ol'      => 'twrp-dcom-twrp-c2-ol',
 			'twrp-com-fa-2-f'     => 'twrp-dcom-twrp-c-f',
@@ -271,7 +271,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 			'twrp-com-fa-comm-ol' => 'twrp-dcom-twrp-c2-ol',
 			'twrp-com-fa-do-f'    => 'twrp-dcom-twrp-c2-f',
 
-			// Google
+			// Google.
 			'twrp-com-goo-f'      => 'twrp-dcom-twrp-c-f',
 			'twrp-com-goo-ol'     => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-goo-dt'     => 'twrp-dcom-twrp-c-dt',
@@ -289,17 +289,17 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 			'twrp-com-goo-b-dt'   => 'twrp-dcom-twrp-c-dt',
 			'twrp-com-goo-b-sh'   => 'twrp-dcom-twrp-c-sh',
 
-			// Dashicons
+			// Dashicons.
 			'twrp-com-di-f'       => 'twrp-dcom-di-f',
 			'twrp-com-di-c-f'     => 'twrp-dcom-di-f',
 			'twrp-com-di-d-f'     => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-di-l-f'     => 'twrp-dcom-di-f',
 
-			// Foundation
+			// Foundation.
 			'twrp-com-fi-f'       => 'twrp-dcom-twrp-c-f',
 			'twrp-com-fi-2-f'     => 'twrp-dcom-twrp-c-f',
 
-			// Ionicons
+			// Ionicons.
 			'twrp-com-ii-f'       => 'twrp-dcom-twrp-c-f',
 			'twrp-com-ii-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-ii-sh'      => 'twrp-dcom-twrp-c-sh',
@@ -317,7 +317,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 			'twrp-com-ii-ioc-f'   => 'twrp-dcom-twrp-c-sh',
 			'twrp-com-ii-ioc-ol'  => 'twrp-dcom-twrp-c-t',
 
-			// IconMonstr
+			// IconMonstr.
 			'twrp-com-im-f'       => 'twrp-dcom-twrp-c-sh',
 			'twrp-com-im-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-im-2-f'     => 'twrp-dcom-twrp-c2-f',
@@ -343,18 +343,18 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 			'twrp-com-im-c7-hf'   => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-im-c8-hf'   => 'twrp-dcom-twrp-c2-ol',
 
-			// Captain Icons
+			// Captain Icons.
 			'twrp-com-ci-f'       => 'twrp-dcom-twrp-c-f',
 			'twrp-com-ci-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-ci-2-f'     => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-ci-3-f'     => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-ci-4-f'     => 'twrp-dcom-twrp-c2-f',
 
-			// Feather Icons
+			// Feather Icons.
 			'twrp-com-fe-sq-ol'   => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-fe-ci-ol'   => 'twrp-dcom-twrp-c2-ol',
 
-			// Jam Icons
+			// Jam Icons.
 			'twrp-com-ji-f'       => 'twrp-dcom-twrp-c-f',
 			'twrp-com-ji-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-ji-2-f'     => 'twrp-dcom-twrp-c2-f',
@@ -368,7 +368,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 			'twrp-com-ji-t2-f'    => 'twrp-dcom-twrp-c2-f',
 			'twrp-com-ji-t2-ol'   => 'twrp-dcom-twrp-c2-ol',
 
-			// Linea Icons
+			// Linea Icons.
 			'twrp-com-li-ol'      => 'twrp-dcom-li-ol',
 			'twrp-com-li-c-ol'    => 'twrp-dcom-li-ol',
 			'twrp-com-li-l-ol'    => 'twrp-dcom-li-ol',
@@ -376,13 +376,13 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 			'twrp-com-li-he-ol'   => 'twrp-dcom-li-ol',
 			'twrp-com-li-ha-ol'   => 'twrp-dcom-li-ol',
 
-			// Octicons
+			// Octicons.
 			'twrp-com-oi-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-oi-t'       => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-oi-c-ol'    => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-oi-c-t'     => 'twrp-dcom-twrp-c-ol',
 
-			// Typicons
+			// Typicons.
 			'twrp-com-ti-ol'      => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-ti-d-ol'    => 'twrp-dcom-twrp-c-ol',
 			'twrp-com-ti-c-ol'    => 'twrp-dcom-twrp-c-ol',

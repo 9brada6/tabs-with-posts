@@ -58,6 +58,7 @@ It's best to keep them updated.
 - ➕ Try to change the .pickr class of the color selection. Other plugins might use .pickr and change our CSS.
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
+- ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
 
 ### Various
 

@@ -10,6 +10,10 @@ use WP_Query;
 use WP_Post;
 use RuntimeException;
 
+/**
+ * Collection of static methods that are used to retrieve posts by a query id,
+ * or to construct WP_Query arguments for a query_id.
+ */
 class Query_Generator {
 
 	/**

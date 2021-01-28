@@ -52,8 +52,11 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 			return 0;
 		}
 
-		/* @psalm-suppress UndefinedClass */
-		$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id ); // @phan-suppress-current-line PhanUndeclaredClassMethod
+		if ( class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
+			$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id );
+		} else {
+			return 0;
+		}
 
 		if ( is_numeric( $post_views ) && $post_views >= 0 ) {
 			return (int) $post_views;

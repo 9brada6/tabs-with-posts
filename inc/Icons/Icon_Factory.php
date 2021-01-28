@@ -14,6 +14,9 @@ use TWRP\Icons\Rating_Icons;
 
 
 /**
+ * Create Icons or Rating_Icon_Packs. Can also get icons from specific
+ * categories.
+ *
  * By convention, to make the working more easily, every Id should be composed
  * as: twrp-{icon-meaning}-{brand/author}-[additional-icon-meaning]-{icon-type}.
  */

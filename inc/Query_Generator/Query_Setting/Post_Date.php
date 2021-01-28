@@ -7,7 +7,7 @@ use DateInterval;
 use DateTime;
 
 /**
- * Creates the possibility to filter a query based on post dates.
+ * Creates the possibility to filter(but not order) a query based on post dates.
  */
 class Post_Date extends Query_Setting {
 
