@@ -1,7 +1,4 @@
 <?php
-/**
- * File that contains the class with the same name.
- */
 
 namespace TWRP\Utils;
 
@@ -9,6 +6,12 @@ use TWRP\TWRP_Widget\Widget;
 use RuntimeException;
 use TWRP\Database\Query_Options;
 
+/**
+ * Class that contain a list of static methods, that can be used everywhere.
+ *
+ * The methods implemented here are methods usually used in widget form or other
+ * widget settings.
+ */
 class Widget_Utils {
 
 	const TWRP_WIDGET__BASE_ID = 'twrp_tabs_with_recommended_posts';

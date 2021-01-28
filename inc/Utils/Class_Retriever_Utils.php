@@ -1,7 +1,4 @@
 <?php
-/**
- * File that contains the class with the same name.
- */
 
 namespace TWRP\Utils;
 
@@ -228,8 +225,6 @@ class Class_Retriever_Utils {
 	 * @param string $first_class_name
 	 * @param string $second_class_name
 	 * @return int
-	 *
-	 * @phan-suppress PhanSuspiciousValueComparison
 	 */
 	private static function sort_classes_algorithm( $first_class_name, $second_class_name ) {
 		$first_class_order = 0;

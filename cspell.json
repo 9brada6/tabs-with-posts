@@ -1,7 +1,14 @@
 {
     "version": "0.1",
     "language": "en",
-    "dictionaries": ["php", "html", "css", "node", "fonts", "npm"],
+    "dictionaries": [
+        "php",
+        "html",
+        "css",
+        "node",
+        "fonts",
+        "npm"
+    ],
     "minWordLength": 2,
     "ignorePaths": [
         "node_modules/**",
@@ -15,9 +22,6 @@
         "*.code-workspace"
     ],
     "words": [
-        "Captain Icons",
-        "Intelephense",
-        "Squiz",
         "abcdefghijklmnopqrstuvwxyz",
         "abspath",
         "ajaxurl",
@@ -26,11 +30,13 @@
         "autoload",
         "autoloader",
         "autorefresh",
+        "bem",
         "blazk",
         "blogroll",
         "brada",
         "browserslist",
         "btns",
+        "Captain Icons",
         "classname",
         "clike",
         "codemirror",
@@ -48,6 +54,7 @@
         "gamerz",
         "htmlmixed",
         "iconmonstr",
+        "Intelephense",
         "ionicons",
         "jamicons",
         "jquery",
@@ -72,6 +79,7 @@
         "readonly",
         "rescan",
         "sizereport",
+        "Squiz",
         "stati",
         "stylelint",
         "stylelintrc",

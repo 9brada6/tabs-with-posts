@@ -58,10 +58,12 @@
 		implemented in PHPCS. -->
 		<exclude name="Squiz.Commenting.FunctionComment.Missing" />
 
-		<!-- The rules below are excluded during development: -->
-
-		<!--
+		<!-- We usually dont need to comment each file, since each file have a
+		class, and each class is commented. -->
 		<exclude name="Squiz.Commenting.FileComment.Missing" />
+
+		<!-- The rules below can be excluded during development: -->
+		<!--
 		<exclude name="Squiz.Commenting.ClassComment.Missing" />
 		<exclude name="Squiz.Commenting.VariableComment.Missing" />
 		<exclude name="Squiz.Commenting.VariableComment.WrongStyle" />

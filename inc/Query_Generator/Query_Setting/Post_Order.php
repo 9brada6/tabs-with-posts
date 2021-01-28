@@ -2,7 +2,6 @@
 /**
  * Contains the class that will select the order in which the posts are
  * displayed.
- *
  */
 
 namespace TWRP\Query_Generator\Query_Setting;
