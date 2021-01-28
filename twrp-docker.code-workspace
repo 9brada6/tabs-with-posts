@@ -197,12 +197,12 @@
 		// =====================================================================
 		// PlantUML -- For creating UML diagrams.
 		//"plantuml.server": "http://www.plantuml.com/plantuml",
-		"plantuml.server": "http://127.0.0.1:81",
+		"plantuml.server": "http://host.docker.internal:82",
 		"plantuml.render": "PlantUMLServer",
 		"plantuml.diagramsRoot": "puml",
-		"plantuml.exportOutDir":"puml",
+		"plantuml.exportOutDir": "puml",
 		"plantuml.exportSubFolder": false,
-		"plantuml.exportFormat":"svg",
+		"plantuml.exportFormat": "svg",
 		// =====================================================================
 
 
