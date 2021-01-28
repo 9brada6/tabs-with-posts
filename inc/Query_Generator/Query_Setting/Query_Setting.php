@@ -4,6 +4,8 @@ namespace TWRP\Query_Generator\Query_Setting;
 
 use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
 
+use RuntimeException;
+
 /**
  * Implements the functions needed to be calling in displaying the settings in
  * the backend, and to create a query setting in general. As the name says, this
@@ -52,7 +54,7 @@ abstract class Query_Setting {
 	 * the new settings, and will return the new query arguments to be passed
 	 * into WP_Query class.
 	 *
-	 * @throws \RuntimeException If a setting cannot implement something.
+	 * @throws RuntimeException If a setting cannot implement something.
 	 *
 	 * @param array $previous_query_args The query arguments before being modified.
 	 * @param array $query_settings All query settings, these settings are sanitized.

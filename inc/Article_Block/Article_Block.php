@@ -667,7 +667,7 @@ abstract class Article_Block {
 	/**
 	 * Factory function to construct if a name exist.
 	 *
-	 * @throws \RuntimeException If class is not found.
+	 * @throws RuntimeException If class is not found.
 	 *
 	 * @param string $name_or_id For the name of the class, can be either just
 	 *                           the class name, or fully qualified name.
@@ -695,7 +695,7 @@ abstract class Article_Block {
 		}
 
 		if ( ! class_exists( $founded_artblock_name ) ) {
-			throw new \RuntimeException( 'Could not find class ' . $founded_artblock_name );
+			throw new RuntimeException( 'Could not find class ' . $founded_artblock_name );
 		} else {
 			return new $founded_artblock_name( $widget_id, $query_id, $settings );
 		}

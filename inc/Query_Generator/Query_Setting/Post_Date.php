@@ -105,7 +105,7 @@ class Post_Date extends Query_Setting {
 	 */
 	protected static function sanitize_date( $date ) {
 		$format = 'Y-m-d';
-		$time   = \DateTime::createFromFormat( $format, $date );
+		$time   = DateTime::createFromFormat( $format, $date );
 
 		if ( $time && $time->format( $format ) === $date ) {
 			return $date;

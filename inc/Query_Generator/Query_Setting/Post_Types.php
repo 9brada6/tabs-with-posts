@@ -2,6 +2,8 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
+use WP_Post_Type;
+
 /**
  * Class that will filter the articles via selected posts types.
  */
@@ -57,7 +59,7 @@ class Post_Types extends Query_Setting {
 	 *
 	 * @param string $return_type Can be 'objects', or names, @see get_post_types().
 	 *
-	 * @return \WP_Post_Type[]|string[] Depends on return type parameter.
+	 * @return WP_Post_Type[]|string[] Depends on return type parameter.
 	 */
 	public static function get_available_types( $return_type = 'objects' ) {
 		$args = array(

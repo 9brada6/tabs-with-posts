@@ -3,6 +3,8 @@
 namespace TWRP\Utils;
 
 use DateTimeZone;
+use DateTimeImmutable;
+use WP_Post;
 
 /**
  * Class that is a collection of static methods, that can be used everywhere
@@ -58,7 +60,7 @@ class Date_Utils {
 	 * will either use the native WP function with the same name(WP 5.3), or
 	 * will fallback to the polyfill version.
 	 *
-	 * @param \WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
+	 * @param WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
 	 * @param string $field Published or modified time to use from database. Accepts 'date' or 'modified'.
 	 * @return int|false Unix timestamp on success, false on failure.
 	 */
@@ -73,7 +75,7 @@ class Date_Utils {
 	/**
 	 * Polyfill version of the get_post_timestamp() function introduced in WP 5.3.
 	 *
-	 * @param \WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
+	 * @param WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
 	 * @param string $field Published or modified time to use from database. Accepts 'date' or 'modified'.
 	 * @return int|false Unix timestamp on success, false on failure.
 	 */
@@ -99,10 +101,10 @@ class Date_Utils {
 	 * typically because of timezone setting changes. The parameter ensures the
 	 * ability to reproduce backwards compatible behaviors in such cases.
 	 *
-	 * @param \WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
+	 * @param WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
 	 * @param string $field Published or modified time to use from database. Accepts 'date' or 'modified'.
 	 * @param string $source Local or UTC time to use from database. Accepts 'local' or 'gmt'.
-	 * @return \DateTimeImmutable|false Time object on success, false on failure.
+	 * @return DateTimeImmutable|false Time object on success, false on failure.
 	 */
 	public static function get_post_datetime( $post = null, $field = 'date', $source = 'local' ) {
 		if ( function_exists( 'get_post_datetime' ) ) {
@@ -122,10 +124,10 @@ class Date_Utils {
 	 * typically because of timezone setting changes. The parameter ensures the
 	 * ability to reproduce backwards compatible behaviors in such cases.
 	 *
-	 * @param \WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
+	 * @param WP_Post|int|null $post WP_Post object or ID. Default is global $post object.
 	 * @param string $field Published or modified time to use from database. Accepts 'date' or 'modified'.
 	 * @param string $source Local or UTC time to use from database. Accepts 'local' or 'gmt'.
-	 * @return \DateTimeImmutable|false Time object on success, false on failure.
+	 * @return DateTimeImmutable|false Time object on success, false on failure.
 	 */
 	protected static function get_post_datetime_polyfill( $post = null, $field = 'date', $source = 'local' ) {
 		$post = get_post( $post );
@@ -163,7 +165,7 @@ class Date_Utils {
 	 * This function will either call the WP function current_datetime() if
 	 * available(> WP 5.3) or fallback to a polyfill.
 	 *
-	 * @return \DateTimeImmutable Date and time object.
+	 * @return DateTimeImmutable Date and time object.
 	 */
 	public static function current_datetime() {
 		if ( function_exists( 'current_datetime' ) ) {
@@ -177,10 +179,10 @@ class Date_Utils {
 	 * Retrieves the current time as an object with the timezone from settings.
 	 * This function is a polyfill for the WP function introduced in WP 5.3.
 	 *
-	 * @return \DateTimeImmutable Date and time object.
+	 * @return DateTimeImmutable Date and time object.
 	 */
 	protected static function current_datetime_polyfill() {
-		return new \DateTimeImmutable( 'now', self::wp_timezone() );
+		return new DateTimeImmutable( 'now', self::wp_timezone() );
 	}
 
 }

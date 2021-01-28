@@ -3,6 +3,7 @@
 namespace TWRP\Query_Generator\Query_Setting;
 
 use TWRP\Utils\Simple_Utils;
+use WP_Post;
 
 /**
  * Class that will filter the articles via selected post ids.
@@ -49,7 +50,7 @@ class Post_Settings extends Query_Setting {
 
 		foreach ( $posts_ids as $key => $id ) {
 			$post = get_post( (int) $id );
-			if ( ! ( $post instanceof \WP_Post ) ) {
+			if ( ! ( $post instanceof WP_Post ) ) {
 				unset( $posts_ids[ $key ] );
 			}
 		}

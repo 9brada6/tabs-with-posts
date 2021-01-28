@@ -11,6 +11,8 @@ use TWRP\Utils\Widget_Utils;
 use TWRP\Admin\Widget_Control\Checkbox_Control;
 use TWRP\Admin\Widget_Control\Select_Control;
 
+use RuntimeException;
+
 /**
  * Class that manages the form to modify the settings for the widget, displayed
  * in the admin area of the website.
@@ -345,11 +347,11 @@ class Widget_Form {
 		// used only initially when generating the first widget settings.
 		try {
 			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $artblock_settings );
-		} catch ( \RuntimeException $e ) {
+		} catch ( RuntimeException $e ) {
 			try {
 				$artblock_id = Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
 				$artblock    = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $artblock_settings );
-			} catch ( \RuntimeException $e ) {
+			} catch ( RuntimeException $e ) {
 				return;
 			}
 		}

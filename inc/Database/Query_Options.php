@@ -4,6 +4,7 @@ namespace TWRP\Database;
 
 use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Utils\Class_Retriever_Utils;
+use RuntimeException;
 
 /**
  * Class that contains functions to manage the settings stored in WordPress
@@ -42,7 +43,7 @@ class Query_Options {
 		foreach ( $all_queries_keys as $query_id ) {
 			try {
 				$all_queries[ $query_id ] = self::get_all_query_settings( $query_id );
-			} catch ( \RuntimeException $e ) {
+			} catch ( RuntimeException $e ) {
 				unset( $all_queries[ $query_id ] );
 			}
 		}
@@ -53,7 +54,7 @@ class Query_Options {
 	/**
 	 * Get all the settings for a specific query ID. The settings are sanitized.
 	 *
-	 * @throws \RuntimeException In case of query ID not existing.
+	 * @throws RuntimeException In case of query ID not existing.
 	 *
 	 * @param int|string $query_id The query ID.
 	 *
@@ -67,7 +68,7 @@ class Query_Options {
 		}
 
 		if ( ! self::query_exists( $query_id ) ) {
-			throw new \RuntimeException( 'Query ID doesn\'t exists.' );
+			throw new RuntimeException( 'Query ID doesn\'t exists.' );
 		}
 
 		if ( isset( self::$query_settings_cache[ $query_id ] ) ) {
@@ -92,7 +93,7 @@ class Query_Options {
 	public static function get_query_display_name( $query_id ) {
 		try {
 			$settings = self::get_all_query_settings( $query_id );
-		} catch ( \RuntimeException $e ) {
+		} catch ( RuntimeException $e ) {
 			$settings = array();
 		}
 

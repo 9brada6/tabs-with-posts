@@ -217,7 +217,7 @@ class Widget extends WP_Widget {
 
 		try {
 			$artblock = Article_Block::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], $widget_id, $query_id, $query_settings );
-		} catch ( \RuntimeException $e ) {
+		} catch ( RuntimeException $e ) {
 			return $sanitized_settings;
 		}
 

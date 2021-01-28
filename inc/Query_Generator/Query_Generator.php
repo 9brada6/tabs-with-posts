@@ -7,22 +7,24 @@ use TWRP\Database\Query_Options;
 use TWRP\Utils\Class_Retriever_Utils;
 
 use WP_Query;
+use WP_Post;
+use RuntimeException;
 
 class Query_Generator {
 
 	/**
 	 * Get the WordPress posts for a specific defined query.
 	 *
-	 * @throws \RuntimeException If the Query ID does not exist.
+	 * @throws RuntimeException If the Query ID does not exist.
 	 *
 	 * @param int|string $query_id The Query ID to get posts from.
 	 *
-	 * @return \WP_Post[] The WordPress Posts.
+	 * @return WP_Post[] The WordPress Posts.
 	 */
 	public static function get_posts_by_query_id( $query_id ) {
 		try {
 			$query_args = self::get_wp_query_arguments( $query_id );
-		} catch ( \RuntimeException $exception ) {
+		} catch ( RuntimeException $exception ) {
 			throw $exception;
 		}
 		$wp_query = new WP_Query();
@@ -36,7 +38,7 @@ class Query_Generator {
 	 * setting classes registered.
 	 *
 	 * @see \TWRP\Query_Settings_Manager On how to add a setting class.
-	 * @throws \RuntimeException If the Query ID does not exist, or something went wrong.
+	 * @throws RuntimeException If the Query ID does not exist, or something went wrong.
 	 *
 	 * @param int|string $query_id The Id to construct query for.
 	 *
@@ -48,7 +50,7 @@ class Query_Generator {
 
 		try {
 			$query_options = Query_Options::get_all_query_settings( $query_id );
-		} catch ( \RuntimeException $exception ) {
+		} catch ( RuntimeException $exception ) {
 			throw $exception;
 		}
 
