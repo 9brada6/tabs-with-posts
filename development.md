@@ -36,6 +36,8 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- Move WIdget into a new namespace and get out of folder.
+- Move Widget_Sanitization into a new class and put it in Admin Folder.
 - Make the CSS better in widget form when selecting the tabs style.
 - See if old CSS of tab style was for any usage in CSS/JS files.
 - Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait.
@@ -64,7 +66,7 @@ It's best to keep them updated.
 
 - Make Article_Block implementation(Simple Style) not know about Settings implementations(Display Author, Display Comments... etc).
 
-- Make sure that Jquery UI JSS that we enqueue don't interfere with other jquery ui.
+- Make sure that Jquery UI JS that we enqueue don't interfere with other jquery ui.
 
 ### Query Settings
 

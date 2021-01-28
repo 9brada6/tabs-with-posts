@@ -1,7 +1,4 @@
 <?php
-/**
- * Implements the class that will manage all the WP database options.
- */
 
 namespace TWRP\Database;
 

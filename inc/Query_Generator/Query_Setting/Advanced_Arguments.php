@@ -1,8 +1,4 @@
 <?php
-/**
- * Contains the class that will let administrators custom modifying the WP_Query
- * arguments via a JSON object.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

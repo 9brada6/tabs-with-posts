@@ -1,7 +1,4 @@
 <?php
-/**
- * File containing the class with the same.
- */
 
 namespace TWRP\Admin\Tabs\Documentation;
 

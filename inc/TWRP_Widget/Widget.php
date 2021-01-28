@@ -16,6 +16,9 @@ use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Widget_Utils;
 use WP_Widget;
 
+/**
+ * The main widget of this plugin, named "Tabs with recommended posts".
+ */
 class Widget extends WP_Widget {
 
 	const TWRP_BASE_ID = 'twrp_tabs_with_recommended_posts';
@@ -104,14 +107,15 @@ class Widget extends WP_Widget {
 		return ''; // Because of AJAX.
 	}
 
-	// =========================================================================
-
 	#region -- Update
 
 	public function update( $new_instance, $old_instance ) {
 		$sanitized_non_query_settings = $this->sanitize_all_non_queries_widget_settings( $new_instance );
-		$widget_id                    = Widget_Utils::get_widget_id_by_instance_settings( $old_instance );
-		$sanitized_query_settings     = $this->sanitize_all_queries_settings( $widget_id, $new_instance );
+		$widget_id                    = $this->number;
+		if ( ! is_int( $widget_id ) ) {
+			$widget_id = Widget_Utils::get_widget_id_by_instance_settings( $old_instance );
+		}
+		$sanitized_query_settings = $this->sanitize_all_queries_settings( $widget_id, $new_instance );
 
 		return $sanitized_non_query_settings + $sanitized_query_settings;
 	}

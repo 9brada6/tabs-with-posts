@@ -1,7 +1,4 @@
 <?php
-/**
- * Contains the class that will include or not sticky posts.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

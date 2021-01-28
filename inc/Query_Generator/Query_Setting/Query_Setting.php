@@ -1,7 +1,4 @@
 <?php
-/**
- * Contains the interface needed for all the query settings to exist.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

@@ -1,7 +1,4 @@
 <?php
-/**
- * Contains the interface that each tab that needs to be displayed should implement.
- */
 
 namespace TWRP\Admin\Tabs;
 

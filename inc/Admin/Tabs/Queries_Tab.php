@@ -1,7 +1,4 @@
 <?php
-/**
- * Implements the Query_Tab class. See class DocBlock for more.
- */
 
 namespace TWRP\Admin\Tabs;
 

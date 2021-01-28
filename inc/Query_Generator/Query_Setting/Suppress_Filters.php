@@ -1,8 +1,4 @@
 <?php
-/**
- * Contains the class that will select whether or not to apply filters when
- * querying for posts.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

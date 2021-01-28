@@ -1,7 +1,4 @@
 <?php
-/**
- * File that contains the same class as the file name.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

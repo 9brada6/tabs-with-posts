@@ -1,7 +1,4 @@
 <?php
-/**
- * Contains the class that will filter articles by search keywords.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

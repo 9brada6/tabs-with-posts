@@ -1,7 +1,4 @@
 <?php
-/**
- * File that contains the abstract class of the article blocks.
- */
 
 namespace TWRP\Article_Block;
 

@@ -18,6 +18,7 @@ class Filesystem_Utils {
 	 * get contents, to write anything.
 	 *
 	 * @psalm-suppress UnresolvableInclude
+	 * @phan-suppress PhanTypeMismatchArgumentNullable
 	 *
 	 * @return null|WP_Filesystem_Direct
 	 */

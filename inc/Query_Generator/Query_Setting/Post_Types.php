@@ -1,7 +1,4 @@
 <?php
-/**
- * Contains the class that will filter articles via the post types.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

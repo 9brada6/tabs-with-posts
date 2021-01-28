@@ -1,7 +1,4 @@
 <?php
-/**
- * File that contains the interface with the same name.
- */
 
 namespace TWRP\Icons;
 

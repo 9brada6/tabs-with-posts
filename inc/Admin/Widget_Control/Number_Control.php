@@ -1,7 +1,4 @@
 <?php
-/**
- * File that holds the class with the same name.
- */
 
 namespace TWRP\Admin\Widget_Control;
 

@@ -1,7 +1,4 @@
 <?php
-/**
- * File that holds the interface with the same name.
- */
 
 namespace TWRP\Article_Block\Component;
 

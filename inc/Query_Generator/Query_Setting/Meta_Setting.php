@@ -1,7 +1,4 @@
 <?php
-/**
- * Contains the class with the same name.
- */
 
 namespace TWRP\Query_Generator\Query_Setting;
 

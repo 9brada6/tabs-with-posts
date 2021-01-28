@@ -1,7 +1,4 @@
 <?php
-/**
- * Define the class Settings_Menu. See the class doc for more info.
- */
 
 namespace TWRP\Admin;
 
