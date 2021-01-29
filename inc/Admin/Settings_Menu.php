@@ -50,8 +50,7 @@ class Settings_Menu {
 	 */
 	public static function add_tab( $tab_class ) {
 		if ( class_exists( $tab_class ) ) {
-			$tab_class = new $tab_class();
-			if ( $tab_class instanceof Interface_Admin_Menu_Tab ) {
+			if ( is_subclass_of( $tab_class, Interface_Admin_Menu_Tab::class ) ) {
 				array_push( self::$tabs, new $tab_class() );
 				return true;
 			}

@@ -12,11 +12,11 @@ class Select_Control implements Widget_Control {
 	 *
 	 * @param string $id
 	 * @param string $name
-	 * @param string|null $selected_value
+	 * @param string|null $value
 	 * @param array{default?:string,options:array,before?:string,after?:string} $args
 	 * @return void
 	 */
-	public static function display_setting( $id, $name, $selected_value, $args ) {
+	public static function display_setting( $id, $name, $value, $args ) {
 		$default_args = array(
 			'default' => '',
 			'options' => array(),
@@ -25,7 +25,7 @@ class Select_Control implements Widget_Control {
 		);
 		$args         = wp_parse_args( $args, $default_args );
 
-		$selected_value = isset( $selected_value ) && is_string( $selected_value ) ? $selected_value : $args['default'];
+		$value = isset( $value ) && is_string( $value ) ? $value : $args['default'];
 		?>
 		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-select-control">
 			<?php if ( $args['before'] ) : ?>
@@ -40,7 +40,7 @@ class Select_Control implements Widget_Control {
 				name="<?= esc_attr( $name ) ?>"
 			>
 				<?php foreach ( $args['options'] as $option_value => $display_value ) : ?>
-					<option value="<?= esc_attr( $option_value ); ?>" <?php selected( $option_value, $selected_value ); ?>>
+					<option value="<?= esc_attr( $option_value ); ?>" <?php selected( $option_value, $value ); ?>>
 						<?= esc_html( $display_value ); ?>
 					</option>
 				<?php endforeach; ?>

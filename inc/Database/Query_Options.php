@@ -9,6 +9,8 @@ use RuntimeException;
 /**
  * Class that contains functions to manage the settings stored in WordPress
  * database "Options" table.
+ *
+ * This class store the settings of the queries.
  */
 class Query_Options {
 	const QUERIES_OPTION_KEY = 'twrp__post_queries';
@@ -104,8 +106,9 @@ class Query_Options {
 	 * Adds a new query to the options.
 	 *
 	 * @param array $new_query_settings The settings for the query. Must be sanitized.
-	 *
 	 * @return void
+	 *
+	 * @psalm-suppress DocblockTypeContradiction
 	 */
 	public static function add_new_query( $new_query_settings ) {
 		if ( ! is_array( $new_query_settings ) ) {

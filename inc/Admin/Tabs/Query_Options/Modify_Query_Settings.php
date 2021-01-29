@@ -8,10 +8,19 @@ use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Database\Query_Options;
 
+/**
+ * Class that displays the query settings, where an administrator can add/edit
+ * a query setting.
+ */
 class Modify_Query_Settings {
 
 	const NAME__QUERY_ID_HIDDEN_INPUT = 'query_id_being_modified';
 
+	/**
+	 * Display all the query settings.
+	 *
+	 * @return void
+	 */
 	public function display() {
 		$settings_classes = Class_Retriever_Utils::get_all_display_query_settings_objects();
 		$queries_tab      = new Queries_Tab();

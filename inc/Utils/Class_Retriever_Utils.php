@@ -56,9 +56,9 @@ class Class_Retriever_Utils {
 	}
 
 	/**
-	 * Get all the Article_Block objects.
+	 * Get all the Article_Block class names.
 	 *
-	 * @return array<string,Article_Block>
+	 * @return array<string,string>
 	 * @psalm-return array<string,class-string<Article_Block>>
 	 */
 	public static function get_all_article_block_names() {

@@ -660,8 +660,13 @@ abstract class Article_Block {
 			return 'HUMAN_READABLE';
 
 		} else {
-			return General_Options::get_option( General_Options::DATE_FORMAT );
+			$option = General_Options::get_option( General_Options::DATE_FORMAT );
+			if ( ! is_string( $option ) ) {
+				return '';
+			}
 		}
+
+		return $option;
 	}
 
 	/**

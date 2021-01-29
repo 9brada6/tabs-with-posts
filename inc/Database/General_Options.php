@@ -254,27 +254,27 @@ class General_Options {
 	 * Get the Setting option class by the class name(or option key), if is not available, then
 	 * will return null.
 	 *
-	 * @param string|General_Option_Setting $class_name
+	 * @param string|General_Option_Setting $object_class_name
 	 * @return null|General_Option_Setting
 	 *
 	 * @psalm-suppress MoreSpecificReturnType
 	 * @psalm-suppress LessSpecificReturnStatement
 	 */
-	public static function get_option_object( $class_name ) {
-		if ( is_object( $class_name ) && is_subclass_of( $class_name, General_Option_Setting::class ) ) {
-			return $class_name;
+	public static function get_option_object( $object_class_name ) {
+		if ( is_object( $object_class_name ) && is_subclass_of( $object_class_name, General_Option_Setting::class ) ) {
+			return $object_class_name;
 		}
 
-		if ( is_object( $class_name ) ) {
+		if ( is_object( $object_class_name ) ) {
 			return null;
 		}
 
-		$class_name = str_replace( '_', ' ', $class_name );
-		$class_name = ucwords( $class_name );
-		$class_name = str_replace( ' ', '_', $class_name );
+		$object_class_name = str_replace( '_', ' ', $object_class_name );
+		$object_class_name = ucwords( $object_class_name );
+		$object_class_name = str_replace( ' ', '_', $object_class_name );
 
-		if ( is_subclass_of( self::SETTINGS_NAMESPACE . $class_name, General_Option_Setting::class ) ) {
-			$object_name = self::SETTINGS_NAMESPACE . $class_name;
+		if ( is_subclass_of( self::SETTINGS_NAMESPACE . $object_class_name, General_Option_Setting::class ) ) {
+			$object_name = self::SETTINGS_NAMESPACE . $object_class_name;
 			return new $object_name();
 		}
 

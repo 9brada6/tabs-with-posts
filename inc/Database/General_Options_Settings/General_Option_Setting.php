@@ -31,14 +31,14 @@ abstract class General_Option_Setting {
 	 * @return string
 	 */
 	final public function get_key_name() {
-		$fqn_class          = get_class( $this );
-		$separator_position = strrpos( $fqn_class, '\\' );
+		$full_class_name    = get_class( $this );
+		$separator_position = strrpos( $full_class_name, '\\' );
 		if ( false !== $separator_position ) {
 			// @phan-suppress-next-line PhanPossiblyFalseTypeArgumentInternal
-			return strtolower( substr( $fqn_class, $separator_position + 1 ) );
+			return strtolower( substr( $full_class_name, $separator_position + 1 ) );
 		}
 
-		return strtolower( $fqn_class );
+		return strtolower( $full_class_name );
 	}
 
 	/**

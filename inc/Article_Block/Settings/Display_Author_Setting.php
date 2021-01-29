@@ -6,8 +6,7 @@ use TWRP\Admin\Widget_Control\Checkbox_Control;
 use TWRP\Utils\Widget_Utils;
 
 /**
- * Class used to create a setting that will manage to display the author on an
- * artblock.
+ * Setting that will manage whether or not to display the author on an artblock.
  */
 class Display_Author_Setting extends Artblock_Setting {
 

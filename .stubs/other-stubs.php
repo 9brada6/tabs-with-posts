@@ -8,5 +8,17 @@ namespace A3Rev\PageViewsCount {
 }
 
 namespace {
-	function pvc_get_post_views( $post_id ) {}
+	/**
+	 * Stub.
+	 *
+	 * @param int $post_id
+	 * @return int|string
+	 */
+	function pvc_get_post_views( $post_id ) {
+		if ( $post_id > 0 ) {
+			return '';
+		}
+
+		return 0;
+	}
 }

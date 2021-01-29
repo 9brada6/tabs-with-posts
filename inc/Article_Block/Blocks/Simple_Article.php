@@ -11,6 +11,12 @@ use TWRP\Article_Block\Settings\Display_Comments_Setting;
 use TWRP\Article_Block\Settings\Display_Date_Setting;
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
 
+/**
+ * The class that display a post in a style, that is named "Simple", because
+ * nothing here is complicated.
+ *
+ * Consists of a title, a thumbnail, and the meta of the post displayed in order.
+ */
 class Simple_Article extends Article_Block {
 
 	/**

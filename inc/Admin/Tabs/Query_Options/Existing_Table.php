@@ -7,6 +7,9 @@ use TWRP\Database\Query_Options;
 use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
+/**
+ * Display a table with the existing queries under "Queries Tab".
+ */
 class Query_Existing_Table {
 
 	use BEM_Class_Naming_Trait;

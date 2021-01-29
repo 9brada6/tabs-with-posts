@@ -151,7 +151,6 @@ class Widget_Form {
 	protected function display_tab_style_options() {
 		$id          = Widget_Utils::get_field_id( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
 		$select_name = Widget_Utils::get_field_name( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
-		$options     = self::get_all_tab_styles_options();
 
 		$current_option_value = '';
 		if ( isset( $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
@@ -159,24 +158,6 @@ class Widget_Form {
 		}
 
 		Select_Control::display_setting( $id, $select_name, $current_option_value, self::get_tab_style_control_args() );
-
-		return;
-
-		?>
-		<p class="<?php $this->bem_class( 'select-tab-style-wrapper' ); ?>">
-			<span class="<?php $this->bem_class( 'select-tab-style-text' ); ?>">
-				<?= _x( 'Select the style of the tab buttons:', 'backend', 'twrp' ); ?>
-			</span>
-
-			<select class="<?php $this->bem_class( 'select-tab-style' ); ?>" name="<?= esc_attr( $select_name ); ?>">
-				<?php foreach ( $options as $option_value => $option_name ) : ?>
-					<option value="<?= esc_attr( (string) $option_value ); ?>" <?php selected( $option_value, $current_option_value ); ?>>
-						<?= esc_html( $option_name ); ?>
-					</option>
-				<?php endforeach; ?>
-			</select>
-		</p>
-		<?php
 	}
 
 	/**
@@ -368,6 +349,11 @@ class Widget_Form {
 
 	#endregion -- Display the settings per each tab.
 
+	/**
+	 * Get the arguments to display the query sync option.
+	 *
+	 * @return array
+	 */
 	public static function get_query_sync_control_args() {
 		return array(
 			'after'   => _x( 'Make all the tabs look the same.', 'backend', 'twrp' ),
@@ -376,6 +362,11 @@ class Widget_Form {
 		);
 	}
 
+	/**
+	 * Get the arguments to display the option to select the tab style.
+	 *
+	 * @return array
+	 */
 	public static function get_tab_style_control_args() {
 		$options = self::get_all_tab_styles_options();
 
@@ -393,6 +384,13 @@ class Widget_Form {
 		);
 	}
 
+	/**
+	 * Get an array with all the tab styles and variants, where the array key is
+	 * the tab variant id, and the array value is the description of the style
+	 * and the variant.
+	 *
+	 * @return array<string,string>
+	 */
 	public static function get_all_tab_styles_options() {
 		$all_style_class_names = Class_Retriever_Utils::get_all_tab_style_class_names();
 		$options               = array();

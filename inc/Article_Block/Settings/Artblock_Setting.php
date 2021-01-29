@@ -2,6 +2,16 @@
 
 namespace TWRP\Article_Block\Settings;
 
+/**
+ * Each Article Block setting must extend this class.
+ *
+ * An article block setting is a simple setting that can be more common or
+ * unique. Various article blocks can include same settings.
+ *
+ * Example of settings:
+ * - Display or not display the post thumbnail.
+ * - Display or not display the post comments.
+ */
 abstract class Artblock_Setting {
 
 	/**
@@ -25,6 +35,13 @@ abstract class Artblock_Setting {
 	 */
 	protected $current_setting;
 
+	/**
+	 * Construct the settings class.
+	 *
+	 * @param int $widget_id
+	 * @param int $query_id
+	 * @param array $settings
+	 */
 	final public function __construct( $widget_id, $query_id, $settings ) {
 		$this->widget_id = $widget_id;
 		$this->query_id  = $query_id;

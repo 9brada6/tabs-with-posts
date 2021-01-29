@@ -7,15 +7,17 @@ namespace TWRP\Admin\Tabs;
  * this, for the main setting page to know how to interact with the class.
  *
  * See TWRP\Admin\Settings_Menu for how to add a class to be displayed.
+ *
+ * @psalm-consistent-constructor
  */
-interface Interface_Admin_Menu_Tab {
+abstract class Interface_Admin_Menu_Tab {
 
 	/**
 	 * Display the main content of the tab.
 	 *
 	 * @return void
 	 */
-	public function display_tab();
+	abstract public function display_tab();
 
 	/**
 	 * Get the url parameter value that represents the tab.
@@ -27,12 +29,12 @@ interface Interface_Admin_Menu_Tab {
 	 *
 	 * @return string
 	 */
-	public static function get_tab_url_arg();
+	abstract public static function get_tab_url_arg();
 
 	/**
 	 * The tab title, it will be displayed on the tab button.
 	 *
 	 * @return string
 	 */
-	public static function get_tab_title();
+	abstract public static function get_tab_title();
 }

@@ -13,11 +13,11 @@ class Checkbox_Control implements Widget_Control {
 	 *
 	 * @param string $id
 	 * @param string $name
-	 * @param string|null $current_value
+	 * @param string|null $value
 	 * @param array{default?:string,value?:string,before?:string,after?:string} $args
 	 * @return void
 	 */
-	public static function display_setting( $id, $name, $current_value, $args ) {
+	public static function display_setting( $id, $name, $value, $args ) {
 		$default_args = array(
 			'default' => '',
 			'value'   => '1',
@@ -26,7 +26,7 @@ class Checkbox_Control implements Widget_Control {
 		);
 		$args         = wp_parse_args( $args, $default_args );
 
-		$current_value = isset( $current_value ) && is_string( $current_value ) ? $current_value : $args['default'];
+		$value = ( isset( $value ) && is_string( $value ) ) ? $value : $args['default'];
 		?>
 		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-checkbox-control">
 			<?php if ( $args['before'] ) : ?>
@@ -41,7 +41,7 @@ class Checkbox_Control implements Widget_Control {
 				type="checkbox"
 				name="<?= esc_attr( $name ); ?>"
 				value="<?= esc_attr( $args['value'] ); ?>"
-				<?php checked( $current_value, $args['value'] ); ?>
+				<?php checked( $value, $args['value'] ); ?>
 			>
 
 			<?php if ( $args['after'] ) : ?>

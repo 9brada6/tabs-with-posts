@@ -7,7 +7,10 @@ use TWRP\Plugins\Known_Plugins\Known_Plugin;
 use TWRP\Admin\Tabs\Documentation\License_Display;
 use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 
-class Documentation_Tab implements Interface_Admin_Menu_Tab {
+/**
+ * Display the documentation tab in the admin area.
+ */
+class Documentation_Tab extends Interface_Admin_Menu_Tab {
 	public function display_tab() {
 		?>
 		<div class="twrpb-documentation-page">
