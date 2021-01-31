@@ -2,7 +2,7 @@
 
 namespace TWRP\Plugins\Known_Plugins;
 
-use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 /**
  * Interface that will tell what methods the plugin wrapper classes should
@@ -10,9 +10,7 @@ use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
  *
  * @psalm-consistent-constructor The constructor should not have any parameter.
  */
-abstract class Post_Views_Plugin extends Known_Plugin {
-
-	use Class_Children_Order_Trait;
+abstract class Post_Views_Plugin extends Known_Plugin implements Class_Children_Order {
 
 	/**
 	 * Whether the plugin support getting the views for a post.

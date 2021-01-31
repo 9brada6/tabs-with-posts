@@ -5,16 +5,14 @@ namespace TWRP\Admin\Tabs\Query_Options;
 use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
-use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 /**
  * Used to display a control for a query setting.
  */
-abstract class Query_Setting_Display {
+abstract class Query_Setting_Display implements Class_Children_Order {
 
 	use BEM_Class_Naming_Trait;
-
-	use Class_Children_Order_Trait;
 
 	/**
 	 * Initialize the class. The constructor must not take any parameter.

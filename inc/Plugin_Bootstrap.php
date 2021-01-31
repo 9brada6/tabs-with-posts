@@ -25,7 +25,7 @@ class Plugin_Bootstrap {
 		// These traits should be included first.
 		'Utils/Helper_Trait/BEM_Class_Naming_Trait',
 		'Utils/Helper_Trait/After_Setup_Theme_Init_Trait',
-		'Utils/Helper_Trait/Class_Children_Order_Trait',
+		'Utils/Helper_Interfaces/Class_Children_Order',
 
 		'Utils/Simple_Utils',
 		'Utils/Class_Retriever_Utils',

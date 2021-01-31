@@ -2,7 +2,7 @@
 
 namespace TWRP\Query_Generator\Query_Setting;
 
-use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 use RuntimeException;
 
@@ -21,9 +21,7 @@ use RuntimeException;
  *
  * @psalm-consistent-constructor The constructor should not have any parameter.
  */
-abstract class Query_Setting {
-
-	use Class_Children_Order_Trait;
+abstract class Query_Setting implements Class_Children_Order {
 
 	/**
 	 * The name of the HTML form input and of the array key that stores the option of the query.

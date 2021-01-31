@@ -9,7 +9,7 @@ use TWRP\Icons\Icon_Factory;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Date_Utils;
-use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Article_Block\Settings\Artblock_Setting;
@@ -31,9 +31,7 @@ use RuntimeException;
  * they are sanitized before adding in database), call
  * sanitize_widget_settings() function externally.
  */
-abstract class Article_Block {
-
-	use Class_Children_Order_Trait;
+abstract class Article_Block implements Class_Children_Order {
 
 	/**
 	 * Holds the widget id of these article blocks.

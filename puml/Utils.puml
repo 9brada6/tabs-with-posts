@@ -14,7 +14,10 @@ namespace TWRP\\Utils {
 	namespace Helper_Trait {
 		abstract After_Setup_Theme_Init_Trait <<public class>> <<abstract>> {}
 		abstract BEM_Class_Naming_Trait <<public class>> <<abstract>> {}
-		abstract Class_Children_Order_Trait <<public class>> <<abstract>> {}
+	}
+
+	namespace Helper_Interfaces {
+		abstract Class_Children_Order <<public class>> <<interface>> {}
 	}
 }
 

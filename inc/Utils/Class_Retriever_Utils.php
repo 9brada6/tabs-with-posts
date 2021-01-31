@@ -8,7 +8,7 @@ use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
 use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 use TWRP\Article_Block\Article_Block;
 
-use TWRP\Utils\Helper_Trait\Class_Children_Order_Trait;
+use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Simple_Utils;
 
@@ -17,8 +17,8 @@ use TWRP\Utils\Simple_Utils;
  * to retrieve a list of classes of a specific type. Like classes that extends
  * another class, or all the classes that implements a certain interface.
  *
- * If the class order is important, the class parents that use the trait
- * Class_Children_Order_Trait will be retrieved in order of what int they return.
+ * If the class order is important, the class parents that implements
+ * Class_Children_Order will be retrieved in order of what int they return.
  */
 class Class_Retriever_Utils {
 
@@ -128,7 +128,7 @@ class Class_Retriever_Utils {
 	/**
 	 * Get all classes that implements/extends a certain interface/class.
 	 *
-	 * If the parent class uses the trait Class_Children_Order_Trait, then the
+	 * If the parent class uses implements Class_Children_Order, then the
 	 * classes will be ordered by the int they return.
 	 *
 	 * @param string $parent_class
@@ -148,7 +148,7 @@ class Class_Retriever_Utils {
 			}
 		}
 
-		if ( self::class_use_trait( $parent_class, Class_Children_Order_Trait::class ) ) {
+		if ( self::class_implements_interface( $parent_class, Class_Children_Order::class ) ) {
 			$children_classes = self::order_class_name( $children_classes );
 		}
 
@@ -208,7 +208,33 @@ class Class_Retriever_Utils {
 	}
 
 	/**
-	 * Order class name by a method in the trait Class_Children_Order_Trait.
+	 * Check if a class implements a specific interface.
+	 *
+	 * The names must be full qualified names.
+	 *
+	 * @param string $class_name Full class name to verify.
+	 * @param string $interface_name The interface name to verify.
+	 * @return bool
+	 *
+	 * @psalm-param class-string $class_name
+	 * @psalm-param class-string $interface_name
+	 */
+	protected static function class_implements_interface( $class_name, $interface_name ) {
+		$interfaces_implemented = class_implements( $class_name );
+
+		if ( ! is_array( $interfaces_implemented ) ) {
+			return false;
+		}
+
+		if ( in_array( $interface_name, $interfaces_implemented, true ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Order class names by a method in the interface Class_Children_Order.
 	 *
 	 * @param array<string> $class_names
 	 * @return array
@@ -220,7 +246,7 @@ class Class_Retriever_Utils {
 
 	/**
 	 * Function to be passed as an algorithm to usort function, to order class
-	 * by a method in the trait Class_Children_Order_Trait that returns an int.
+	 * by a method in the interface Class_Children_Order that returns an int.
 	 *
 	 * @param string $first_class_name
 	 * @param string $second_class_name
