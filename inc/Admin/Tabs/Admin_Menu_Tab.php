@@ -10,7 +10,7 @@ namespace TWRP\Admin\Tabs;
  *
  * @psalm-consistent-constructor
  */
-abstract class Interface_Admin_Menu_Tab {
+abstract class Admin_Menu_Tab {
 
 	/**
 	 * Display the main content of the tab.

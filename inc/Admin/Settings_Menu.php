@@ -2,7 +2,7 @@
 
 namespace TWRP\Admin;
 
-use TWRP\Admin\Tabs\Interface_Admin_Menu_Tab;
+use TWRP\Admin\Tabs\Admin_Menu_Tab;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
@@ -14,7 +14,7 @@ use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
  * This Page will have multiple tabs, to add a tab use the static function
  * TWRP\Admin\Settings_Menu::add_tab( 'tab_name' ), usually at "admin_menu"
  * action. The class that implements a tab must have the
- * \TWRP\Admin\Tabs\Interface_Admin_Menu_Tab interface.
+ * \TWRP\Admin\Tabs\Admin_Menu_Tab interface.
  */
 class Settings_Menu {
 
@@ -37,20 +37,21 @@ class Settings_Menu {
 	 *
 	 * The tabs can be added via 'admin_menu' hook. The default plugin tabs are initialized at 5,6,7 priority.
 	 *
-	 * @var array<Interface_Admin_Menu_Tab>
+	 * @var array<Admin_Menu_Tab>
 	 */
 	protected static $tabs = array();
 
 	/**
 	 * Add a new tab to be displayed in the settings.
 	 *
-	 * @param string $tab_class The name of a class that implements Interface_Admin_Menu_Tab interface.
-	 *
+	 * @param string $tab_class The name of a class that implements Admin_Menu_Tab interface.
 	 * @return bool Whether or not the tab has been successfully added.
+	 *
+	 * @psalm_param class-string<Admin_Menu_Tab>
 	 */
 	public static function add_tab( $tab_class ) {
 		if ( class_exists( $tab_class ) ) {
-			if ( is_subclass_of( $tab_class, Interface_Admin_Menu_Tab::class ) ) {
+			if ( is_subclass_of( $tab_class, Admin_Menu_Tab::class ) ) {
 				array_push( self::$tabs, new $tab_class() );
 				return true;
 			}
@@ -150,7 +151,7 @@ class Settings_Menu {
 	/**
 	 * Return the URL to the specific tab. The url is not sanitized.
 	 *
-	 * @param Interface_Admin_Menu_Tab $tab_class The tab to create the URL.
+	 * @param Admin_Menu_Tab $tab_class The tab to create the URL.
 	 *
 	 * @return string The URL, not sanitized.
 	 */
@@ -170,7 +171,7 @@ class Settings_Menu {
 	/**
 	 * Get the HTML class attribute of a specific tab button.
 	 *
-	 * @param Interface_Admin_Menu_Tab $tab_class The tab to create the attribute.
+	 * @param Admin_Menu_Tab $tab_class The tab to create the attribute.
 	 *
 	 * @return string
 	 */
@@ -187,7 +188,7 @@ class Settings_Menu {
 	/**
 	 * Return the tab title.
 	 *
-	 * @param Interface_Admin_Menu_Tab $tab_class The tab to retrieve the title.
+	 * @param Admin_Menu_Tab $tab_class The tab to retrieve the title.
 	 *
 	 * @return string
 	 */
@@ -199,7 +200,7 @@ class Settings_Menu {
 	/**
 	 * Whether or not the tab is currently displayed.
 	 *
-	 * @param Interface_Admin_Menu_Tab $tab_class The tab to verify.
+	 * @param Admin_Menu_Tab $tab_class The tab to verify.
 	 *
 	 * @return bool
 	 */
@@ -227,7 +228,7 @@ class Settings_Menu {
 	 * Usually you might need to call is_active_screen() first, to check if the
 	 * admin submenu is selected.
 	 *
-	 * @return Interface_Admin_Menu_Tab The active tab class.
+	 * @return Admin_Menu_Tab The active tab class.
 	 */
 	public static function get_active_tab() {
 		if ( ! self::is_active_screen() ) {

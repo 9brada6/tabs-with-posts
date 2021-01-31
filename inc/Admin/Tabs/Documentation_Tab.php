@@ -10,7 +10,7 @@ use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 /**
  * Display the documentation tab in the admin area.
  */
-class Documentation_Tab extends Interface_Admin_Menu_Tab {
+class Documentation_Tab extends Admin_Menu_Tab {
 	public function display_tab() {
 		?>
 		<div class="twrpb-documentation-page">

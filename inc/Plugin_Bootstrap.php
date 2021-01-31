@@ -69,7 +69,7 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/Query_Options/Query_Settings_Display/Suppress_Filters_Display',
 
 		'Admin/Settings_Menu',
-		'Admin/Tabs/Interface_Admin_Menu_Tab',
+		'Admin/Tabs/Admin_Menu_Tab',
 		'Admin/Tabs/Documentation_Tab',
 		'Admin/Tabs/General_Settings_Tab',
 		'Admin/Tabs/Queries_Tab',

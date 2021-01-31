@@ -18,7 +18,7 @@ package "TWRP\Admin -- The backend of the website" {
 	}
 
 	package "TWRP\Admin\Tabs" {
-		interface Interface_Admin_Menu_Tab <<private class>> {}
+		interface Admin_Menu_Tab <<private class>> {}
 		class Documentation_Tab <<private class>> {}
 		class General_Settings_Tab <<private class>> {}
 		class Queries_Tab <<private class>> {}
@@ -65,8 +65,8 @@ package "TWRP\Admin -- The backend of the website" {
 			Queries_Tab <--> TWRP\Admin\Tabs\Query_Options
 	}
 
-	Settings_Menu ..> Interface_Admin_Menu_Tab
-	Interface_Admin_Menu_Tab <|.. Documentation_Tab
-	Interface_Admin_Menu_Tab <|.. General_Settings_Tab
-	Interface_Admin_Menu_Tab <|.. Queries_Tab
+	Settings_Menu ..> Admin_Menu_Tab
+	Admin_Menu_Tab <|.. Documentation_Tab
+	Admin_Menu_Tab <|.. General_Settings_Tab
+	Admin_Menu_Tab <|.. Queries_Tab
 }

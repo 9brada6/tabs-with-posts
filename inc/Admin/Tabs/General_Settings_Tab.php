@@ -10,7 +10,7 @@ use TWRP\Admin\Tabs\General_Settings\General_Settings_Factory;
  * Display the general settings tab in the admin area. From this tab, the
  * administrator can change the settings of the plugin.
  */
-class General_Settings_Tab extends Interface_Admin_Menu_Tab {
+class General_Settings_Tab extends Admin_Menu_Tab {
 
 	public static function get_tab_url_arg() {
 		return 'general_settings';

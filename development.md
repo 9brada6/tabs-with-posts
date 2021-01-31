@@ -36,7 +36,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Change name of Interface_Admin_Menu_Tab to Admin_Menu_Tab and the comments of the class and all classes that extends.
 - Move Widget_Sanitization into a new class and put it in Admin Folder.
 
 - Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait(make interface?).

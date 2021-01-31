@@ -17,7 +17,7 @@ use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
  * For a given query, this class shows an UI with each filter implemented. Each
  * filter has it's own class, and implement Query_Setting interface.
  */
-class Queries_Tab extends Interface_Admin_Menu_Tab {
+class Queries_Tab extends Admin_Menu_Tab {
 
 	use BEM_Class_Naming_Trait;
 
