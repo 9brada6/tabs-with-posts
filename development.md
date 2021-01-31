@@ -36,8 +36,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Move Widget_Sanitization into a new class and put it in Admin Folder.
-
 - Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait(make interface?).
 
 - Add more order by options in query_settings "order posts by" collapsible.

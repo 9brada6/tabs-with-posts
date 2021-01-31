@@ -75,7 +75,8 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/Queries_Tab',
 
 		'Admin/TWRP_Widget/Widget_Form',
-		'Admin/TWRP_Widget//Widget_Ajax',
+		'Admin/TWRP_Widget/Widget_Sanitization',
+		'Admin/TWRP_Widget/Widget_Ajax',
 
 		'Admin/Widget_Control/Widget_Control',
 		'Admin/Widget_Control/Checkbox_Control',

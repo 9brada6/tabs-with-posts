@@ -2,18 +2,14 @@
 
 namespace TWRP;
 
-use TWRP\Article_Block\Article_Block;
 use TWRP\Tabs_Creator\Tabs_Creator;
-use TWRP\Database\Query_Options;
 use TWRP\Admin\TWRP_Widget\Widget_Form;
+use TWRP\Admin\TWRP_Widget\Widget_Sanitization;
 
-use TWRP\Utils\Simple_Utils;
-
-use RuntimeException;
-use TWRP\Admin\Widget_Control\Checkbox_Control;
-use TWRP\Admin\Widget_Control\Select_Control;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Widget_Utils;
+
+use RuntimeException;
 use WP_Widget;
 
 /**
@@ -107,125 +103,14 @@ class TWRP_Widget extends WP_Widget {
 		return ''; // Because of AJAX.
 	}
 
-	#region -- Update
-
 	public function update( $new_instance, $old_instance ) {
-		$sanitized_non_query_settings = $this->sanitize_all_non_queries_widget_settings( $new_instance );
-		$widget_id                    = $this->number;
+		$widget_id = $this->number;
 		if ( ! is_int( $widget_id ) ) {
 			$widget_id = Widget_Utils::get_widget_id_by_instance_settings( $old_instance );
 		}
-		$sanitized_query_settings = $this->sanitize_all_queries_settings( $widget_id, $new_instance );
 
-		return $sanitized_non_query_settings + $sanitized_query_settings;
+		$widget_sanitization = new Widget_Sanitization( $widget_id, $new_instance, $old_instance );
+		return $widget_sanitization->get_the_sanitized_settings();
 	}
-
-	/**
-	 * Sanitize all the widgets settings that do not belong to queries.
-	 *
-	 * @param array $settings Instance of the widget settings.
-	 * @return array
-	 */
-	protected function sanitize_all_non_queries_widget_settings( $settings ) {
-		$sanitized_settings = array();
-
-		// Sanitize sync all queries option.
-		$current_setting = null;
-		if ( isset( $settings [ self::SYNC_QUERY_SETTINGS__NAME ] ) ) {
-			$current_setting = $settings [ self::SYNC_QUERY_SETTINGS__NAME ];
-		}
-		$sanitized_settings[ self::SYNC_QUERY_SETTINGS__NAME ] = Checkbox_Control::sanitize_setting( $current_setting, Widget_Form::get_query_sync_control_args() );
-
-		// Sanitize tab style.
-		$current_setting = null;
-		if ( isset( $settings [ self::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
-			$current_setting = $settings [ self::TAB_STYLE_AND_VARIANT__NAME ];
-		}
-		$sanitized_settings[ self::TAB_STYLE_AND_VARIANT__NAME ] = Select_Control::sanitize_setting( $current_setting, Widget_Form::get_tab_style_control_args() );
-
-		return $sanitized_settings;
-	}
-
-	/**
-	 * Sanitize all the widgets settings that belong to queries, including the
-	 * setting that holds all the queries.
-	 *
-	 * @param int $widget_id
-	 * @param array $settings Instance of the widget settings.
-	 * @return array
-	 */
-	public function sanitize_all_queries_settings( $widget_id, $settings ) {
-		if ( ! isset( $settings['queries'] ) ) {
-			$settings['queries'] = '';
-		}
-		$queries = explode( ';', $settings['queries'] );
-		$queries = Simple_Utils::get_valid_wp_ids( $queries );
-
-		$valid_queries_ids  = array();
-		$sanitized_settings = array();
-
-		foreach ( $queries as $query_id ) {
-			if ( Query_Options::query_exists( $query_id ) ) {
-				if ( ! isset( $settings[ $query_id ] ) || ! is_array( $settings[ $query_id ] ) ) {
-					$settings[ $query_id ] = array();
-				}
-
-				// @phan-suppress-next-line PhanPartialTypeMismatchArgument
-				$sanitized_settings[ $query_id ] = self::sanitize_query_settings( $widget_id, $query_id, $settings[ $query_id ] );
-				array_push( $valid_queries_ids, $query_id );
-			}
-		}
-
-		$sanitized_settings['queries'] = implode( ';', $valid_queries_ids );
-
-		return $sanitized_settings;
-	}
-
-	/**
-	 * Sanitize all the widgets settings that belong to queries, including the
-	 * setting that holds all the queries.
-	 *
-	 * @param int $widget_id
-	 * @param int $query_id
-	 * @param array $query_settings Only the query settings to sanitize.
-	 * @return array
-	 *
-	 * @psalm-suppress DocblockTypeContradiction
-	 */
-	protected static function sanitize_query_settings( $widget_id, $query_id, $query_settings ) {
-		$sanitized_settings = array();
-
-		if ( ! is_array( $query_settings ) ) {
-			$query_settings = array();
-		}
-
-		if ( isset( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
-			if ( Article_Block::article_block_id_exist( $query_settings[ self::ARTBLOCK_SELECTOR__NAME ] ) ) {
-				$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = $query_settings[ self::ARTBLOCK_SELECTOR__NAME ];
-			} else {
-				$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
-			}
-		} else {
-			$sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ] = self::DEFAULT_SELECTED_ARTBLOCK_ID;
-		}
-
-		if ( ! isset( $query_settings[ self::QUERY_BUTTON_TITLE__NAME ] ) ) {
-			$sanitized_settings[ self::QUERY_BUTTON_TITLE__NAME ] = '';
-		} else {
-			$sanitized_settings[ self::QUERY_BUTTON_TITLE__NAME ] = $query_settings[ self::QUERY_BUTTON_TITLE__NAME ];
-		}
-
-		try {
-			$artblock = Article_Block::construct_class_by_name_or_id( $sanitized_settings[ self::ARTBLOCK_SELECTOR__NAME ], $widget_id, $query_id, $query_settings );
-		} catch ( RuntimeException $e ) {
-			return $sanitized_settings;
-		}
-
-		$sanitized_article_block_setting = $artblock->sanitize_widget_settings();
-
-		return $sanitized_settings + $sanitized_article_block_setting;
-	}
-
-	#endregion -- Update
 
 }
