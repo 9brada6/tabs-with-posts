@@ -2,7 +2,7 @@
 
 namespace TWRP\Utils;
 
-use TWRP\TWRP_Widget\Widget;
+use TWRP\TWRP_Widget;
 use RuntimeException;
 use TWRP\Database\Query_Options;
 
@@ -29,8 +29,8 @@ class Widget_Utils {
 			'tab_variant_id' => '',
 		);
 
-		if ( isset( $widget_instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
-			$setting = $widget_instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ];
+		if ( isset( $widget_instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
+			$setting = $widget_instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ];
 			$setting = explode( '___', $setting );
 			if ( isset( $setting[0] ) ) {
 				$tab_style_and_variant['tab_style_id'] = $setting[0];
@@ -52,8 +52,8 @@ class Widget_Utils {
 	 * @return string|'' The title or empty string if not set.
 	 */
 	public static function pluck_tab_button_title( $widget_instance_settings, $query_id ) {
-		if ( ! empty( $widget_instance_settings[ $query_id ][ Widget::QUERY_BUTTON_TITLE__NAME ] ) ) {
-			return $widget_instance_settings[ $query_id ][ Widget::QUERY_BUTTON_TITLE__NAME ];
+		if ( ! empty( $widget_instance_settings[ $query_id ][ TWRP_Widget::QUERY_BUTTON_TITLE__NAME ] ) ) {
+			return $widget_instance_settings[ $query_id ][ TWRP_Widget::QUERY_BUTTON_TITLE__NAME ];
 		}
 
 		return '';
@@ -108,10 +108,10 @@ class Widget_Utils {
 	 * @return string|'' Empty string if no id is selected or not isset.
 	 */
 	public static function pluck_artblock_id( $widget_instance_settings, $query_id ) {
-		if ( ! isset( $widget_instance_settings[ $query_id ][ Widget::ARTBLOCK_SELECTOR__NAME ] ) ) {
+		if ( ! isset( $widget_instance_settings[ $query_id ][ TWRP_Widget::ARTBLOCK_SELECTOR__NAME ] ) ) {
 			return '';
 		}
-		$artblock_id = $widget_instance_settings[ $query_id ][ Widget::ARTBLOCK_SELECTOR__NAME ];
+		$artblock_id = $widget_instance_settings[ $query_id ][ TWRP_Widget::ARTBLOCK_SELECTOR__NAME ];
 
 		if ( ! is_string( $artblock_id ) ) {
 			return '';
@@ -136,7 +136,7 @@ class Widget_Utils {
 			$suffix .= '-' . $name_key;
 		}
 
-		return 'widget-' . Widget::TWRP_BASE_ID . $suffix;
+		return 'widget-' . TWRP_Widget::TWRP_BASE_ID . $suffix;
 	}
 
 	/**
@@ -162,7 +162,7 @@ class Widget_Utils {
 			$suffix .= '[' . $name_key . ']';
 		}
 
-		return 'widget-' . Widget::TWRP_BASE_ID . $suffix;
+		return 'widget-' . TWRP_Widget::TWRP_BASE_ID . $suffix;
 	}
 
 	/**

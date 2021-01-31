@@ -8,8 +8,15 @@
 
     <exclude-pattern>vendor/**</exclude-pattern>
     <exclude-pattern>node_modules/**</exclude-pattern>
+	<exclude-pattern>.stubs/**</exclude-pattern>
+    <exclude-pattern>.git/**</exclude-pattern>
+    <exclude-pattern>.phan/**</exclude-pattern>
+    <exclude-pattern>bin/**</exclude-pattern>
+    <exclude-pattern>.vscode/**</exclude-pattern>
+    <exclude-pattern>**/**.js</exclude-pattern>
+    <exclude-pattern>.devcontainer/**</exclude-pattern>
+    <exclude-pattern>assets/**</exclude-pattern>
 	<exclude-pattern>/plugins/!(tabs-with-recommended-posts)/**</exclude-pattern>
-
 
     <rule ref="WordPress">
 		<properties>
@@ -93,7 +100,7 @@
 
 	<rule ref="Squiz.Commenting.FunctionComment.MissingReturn"/>
 
-	<!--
+    <!--
 		Slevomat Rules. Those come as addition to WPCS. Removing these should make
 		no difference(eg: no additional errors.)
 	 -->

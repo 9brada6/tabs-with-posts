@@ -1,6 +1,6 @@
 <?php
 
-namespace TWRP\TWRP_Widget;
+namespace TWRP;
 
 use TWRP\Article_Block\Article_Block;
 use TWRP\Tabs_Creator\Tabs_Creator;
@@ -19,7 +19,7 @@ use WP_Widget;
 /**
  * The main widget of this plugin, named "Tabs with recommended posts".
  */
-class Widget extends WP_Widget {
+class TWRP_Widget extends WP_Widget {
 
 	const TWRP_BASE_ID = 'twrp_tabs_with_recommended_posts';
 

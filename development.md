@@ -37,12 +37,9 @@ It's best to keep them updated.
 ## ✅ Todo
 
 - Change name of Interface_Admin_Menu_Tab to Admin_Menu_Tab and the comments of the class and all classes that extends.
-- Move WIdget into a new namespace and get out of folder.
 - Move Widget_Sanitization into a new class and put it in Admin Folder.
 
-- Make the CSS better in widget form when selecting the tabs style.
-
-- Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait.
+- Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait(make interface?).
 
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.

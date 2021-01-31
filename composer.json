@@ -7,7 +7,7 @@
 		"squizlabs/php_codesniffer": "*",
 		"wp-coding-standards/wpcs": "*",
 		"phpcompatibility/phpcompatibility-wp": "*",
-		"slevomat/coding-standard": "~6.0",
+		"slevomat/coding-standard": "*",
 		"dealerdirect/phpcodesniffer-composer-installer": "*",
 		"vimeo/psalm": "*",
 		"psalm/plugin-phpunit": "^0.12.2",

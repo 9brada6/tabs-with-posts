@@ -223,6 +223,9 @@
 		// To-do Tree:
 		// ===========================
 		"todo-tree.regex.regexCaseSensitive": false,
+		"todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+		"todo-tree.general.rootFolder": "/wordpress/wp-content/plugins/tabs-with-recommended-posts/",
+		"todo-tree.filtering.excludeGlobs": ["**/backend/**", "**/frontened/**"],
 		// Make todo work in docblocks and with @ in front.
 		"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*@*($TAGS)",
 

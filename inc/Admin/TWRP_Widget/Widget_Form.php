@@ -2,12 +2,14 @@
 
 namespace TWRP\Admin\TWRP_Widget;
 
+use TWRP\TWRP_Widget;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Database\Query_Options;
-use TWRP\TWRP_Widget\Widget;
+
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 use TWRP\Utils\Widget_Utils;
+
 use TWRP\Admin\Widget_Control\Checkbox_Control;
 use TWRP\Admin\Widget_Control\Select_Control;
 
@@ -132,9 +134,9 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected function display_artblock_sync_settings() {
-		$option_name  = Widget_Utils::get_field_name( $this->widget_id, Widget::SYNC_QUERY_SETTINGS__NAME );
+		$option_name  = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::SYNC_QUERY_SETTINGS__NAME );
 		$option_value = '1';
-		if ( array_key_exists( Widget::SYNC_QUERY_SETTINGS__NAME, $this->instance_settings ) && '1' !== $this->instance_settings[ Widget::SYNC_QUERY_SETTINGS__NAME ] ) {
+		if ( array_key_exists( TWRP_Widget::SYNC_QUERY_SETTINGS__NAME, $this->instance_settings ) && '1' !== $this->instance_settings[ TWRP_Widget::SYNC_QUERY_SETTINGS__NAME ] ) {
 			$option_value = '';
 		}
 
@@ -149,12 +151,12 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected function display_tab_style_options() {
-		$id          = Widget_Utils::get_field_id( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
-		$select_name = Widget_Utils::get_field_name( $this->widget_id, Widget::TAB_STYLE_AND_VARIANT__NAME );
+		$id          = Widget_Utils::get_field_id( $this->widget_id, TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME );
+		$select_name = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME );
 
 		$current_option_value = '';
-		if ( isset( $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
-			$current_option_value = $this->instance_settings[ Widget::TAB_STYLE_AND_VARIANT__NAME ];
+		if ( isset( $this->instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
+			$current_option_value = $this->instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ];
 		}
 
 		Select_Control::display_setting( $id, $select_name, $current_option_value, self::get_tab_style_control_args() );
@@ -243,7 +245,7 @@ class Widget_Form {
 	protected function display_tab_button_text_setting( $query_id ) {
 		// Phan will complain about being an int.
 		$query_id         = (string) $query_id;
-		$setting_key_name = Widget::QUERY_BUTTON_TITLE__NAME;
+		$setting_key_name = TWRP_Widget::QUERY_BUTTON_TITLE__NAME;
 
 		$name = Widget_Utils::get_field_name( $this->widget_id, $query_id, $setting_key_name );
 
@@ -278,10 +280,10 @@ class Widget_Form {
 
 		$selected_value = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
 		if ( empty( $selected_value ) ) {
-			$selected_value = Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
+			$selected_value = TWRP_Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
 		}
 
-		$select_name = Widget_Utils::get_field_name( $this->widget_id, $query_id, Widget::ARTBLOCK_SELECTOR__NAME );
+		$select_name = Widget_Utils::get_field_name( $this->widget_id, $query_id, TWRP_Widget::ARTBLOCK_SELECTOR__NAME );
 		?>
 		<p class="<?php $this->bem_class( 'article-block-selector-wrapper' ); ?>">
 			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
@@ -330,7 +332,7 @@ class Widget_Form {
 			$artblock = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $artblock_settings );
 		} catch ( RuntimeException $e ) {
 			try {
-				$artblock_id = Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
+				$artblock_id = TWRP_Widget::DEFAULT_SELECTED_ARTBLOCK_ID;
 				$artblock    = Article_Block::construct_class_by_name_or_id( $artblock_id, $this->widget_id, $query_id, $artblock_settings );
 			} catch ( RuntimeException $e ) {
 				return;

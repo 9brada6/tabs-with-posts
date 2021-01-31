@@ -71,6 +71,26 @@
 	}
 
 	// Controls:
+
+	&__paragraph-select-control {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+	}
+
+	&__select-label-before,
+	&__select-label-after {
+		margin: 0.3rem 0.2rem;
+	}
+
+	&__select-label-before {
+		margin-left: 0;
+	}
+
+	&__select-label-after {
+		margin-right: 0;
+	}
+
 	&__paragraph-color-control {
 		> * {
 			vertical-align: middle;

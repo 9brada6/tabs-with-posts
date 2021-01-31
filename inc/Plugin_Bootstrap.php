@@ -177,9 +177,6 @@ class Plugin_Bootstrap {
 		'Query_Generator/Query_Setting/Sticky_Posts',
 		'Query_Generator/Query_Setting/Suppress_Filters',
 
-		// TWRP_Widget.
-		'TWRP_Widget/Widget',
-
 		// Tabs_Creator.
 		'Tabs_Creator/Tabs_Creator',
 
@@ -188,6 +185,8 @@ class Plugin_Bootstrap {
 		'Tabs_Creator/Tabs_Styles/Styles/Simple_Tabs',
 		'Tabs_Creator/Tabs_Styles/Styles/Button_Tabs',
 
+		// TWRP_Widget.
+		'TWRP_Widget',
 	);
 
 	/**

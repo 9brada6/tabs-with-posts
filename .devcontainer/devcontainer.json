@@ -1,0 +1,33 @@
+{
+	"dockerComposeFile": "../../../../docker-compose.yml",
+	"service": "alpine",
+	"workspaceFolder": "/wordpress/wp-content/plugins/tabs-with-recommended-posts",
+	"shutdownAction": "none",
+	"name": "TWRP Dev",
+	"extensions": [
+		"waderyan.gitblame",
+		"raymondcamden.htmlescape-vscode-extension",
+		"dbaeumer.vscode-eslint",
+		"donjayamanne.githistory",
+		"compulim.compulim-vscode-closetag",
+		"streetsidesoftware.code-spell-checker",
+		"mhutchie.git-graph",
+		"davidanson.vscode-markdownlint",
+		"felixfbecker.php-debug",
+		"bmewburn.vscode-intelephense-client",
+		"tysonandre.php-phan",
+		"wongjn.php-sniffer",
+		"jebbs.plantuml",
+		"getpsalm.psalm-vscode-plugin",
+		"stylelint.vscode-stylelint",
+		"cssho.vscode-svgviewer",
+		"gruntfuggly.todo-tree",
+		"eamodio.toggle-excluded-files",
+		"johnbillion.vscode-wordpress-hooks",
+		"fabiospampinato.vscode-diff",
+		"philfontaine.autolaunch"
+	],
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+}

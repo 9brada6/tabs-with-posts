@@ -17,12 +17,12 @@
 
 'Alignment purpose:
 'TWRP\\Utils\\Class_Retriever_Utils -[hidden]-> TWRP\\Utils\\Widget_Utils
-'TWRP\\Utils\\Widget_Utils -down[hidden]--- TWRP\\TWRP_Widget\\Widget
+'TWRP\\Utils\\Widget_Utils -down[hidden]--- TWRP\\TWRP_Widget
 'End Alignment purpose.
 
 ' TWRP_Widget uses:
-TWRP\\TWRP_Widget\\Widget ---> TWRP\\Tabs_Creator\\Tabs_Creator
-TWRP\\TWRP_Widget\\Widget ---> TWRP\\Article_Block\\Article_Block
+TWRP\\TWRP_Widget ---> TWRP\\Tabs_Creator\\Tabs_Creator
+TWRP\\TWRP_Widget ---> TWRP\\Article_Block\\Article_Block
 ' Also Widget Uses Admin\\Widget_Form
 
 'Tabs_Creator uses:
