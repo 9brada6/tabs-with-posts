@@ -45,7 +45,8 @@ class Post_Settings_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_select_posts_inclusion_type( $current_setting ) {
-		$select_name = Post_Settings::get_setting_name() . '[' . Post_Settings::FILTER_TYPE__SETTING_NAME . ']';
+		$setting_class = $this->get_setting_class();
+		$select_name   = $setting_class->get_setting_name() . '[' . Post_Settings::FILTER_TYPE__SETTING_NAME . ']';
 
 		$option_selected = '';
 		if ( isset( $current_setting[ Post_Settings::FILTER_TYPE__SETTING_NAME ] ) ) {
@@ -194,7 +195,8 @@ class Post_Settings_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_posts_ids_hidden_input( $post_ids ) {
-		$input_name = Post_Settings::get_setting_name() . '[' . Post_Settings::POSTS_INPUT__SETTING_NAME . ']';
+		$setting_class = $this->get_setting_class();
+		$input_name    = $setting_class->get_setting_name() . '[' . Post_Settings::POSTS_INPUT__SETTING_NAME . ']';
 
 		$value = implode( ';', $post_ids );
 

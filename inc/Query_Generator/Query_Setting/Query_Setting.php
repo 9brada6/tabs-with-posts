@@ -28,14 +28,14 @@ abstract class Query_Setting implements Class_Children_Order {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_setting_name();
+	abstract public function get_setting_name();
 
 	/**
 	 * The default setting to be retrieved, if user didn't set anything.
 	 *
 	 * @return array
 	 */
-	abstract public static function get_default_setting();
+	abstract public function get_default_setting();
 
 	/**
 	 * Sanitize a variable, to be safe for processing.
@@ -43,7 +43,7 @@ abstract class Query_Setting implements Class_Children_Order {
 	 * @param mixed $setting
 	 * @return array The sanitized variable.
 	 */
-	abstract public static function sanitize_setting( $setting );
+	abstract public function sanitize_setting( $setting );
 
 	/**
 	 * Create and insert the new arguments for the WP_Query.
@@ -58,5 +58,5 @@ abstract class Query_Setting implements Class_Children_Order {
 	 * @param array $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
 	 */
-	abstract public static function add_query_arg( $previous_query_args, $query_settings );
+	abstract public function add_query_arg( $previous_query_args, $query_settings );
 }

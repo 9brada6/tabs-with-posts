@@ -15,7 +15,7 @@ class Post_Status extends Query_Setting {
 
 	const POST_STATUSES__SETTING_NAME = 'selected_statuses';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'post_status';
 	}
 
@@ -31,24 +31,24 @@ class Post_Status extends Query_Setting {
 		return get_post_stati( $args, 'objects', 'or' );
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::APPLY_STATUSES__SETTING_NAME => 'not_applied',
 			self::POST_STATUSES__SETTING_NAME  => array(),
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! is_array( $setting ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( ! isset( $setting[ self::APPLY_STATUSES__SETTING_NAME ] ) || 'apply' !== $setting[ self::APPLY_STATUSES__SETTING_NAME ] ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( ! isset( $setting[ self::POST_STATUSES__SETTING_NAME ] ) || ! is_array( $setting[ self::POST_STATUSES__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$post_statuses       = self::get_post_statuses();
@@ -65,23 +65,23 @@ class Post_Status extends Query_Setting {
 		}
 
 		if ( empty( $sanitized_post_statuses[ self::POST_STATUSES__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		return $sanitized_post_statuses;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ][ self::APPLY_STATUSES__SETTING_NAME ] )
-			|| 'apply' !== $query_settings[ self::get_setting_name() ][ self::APPLY_STATUSES__SETTING_NAME ] ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ $this->get_setting_name() ][ self::APPLY_STATUSES__SETTING_NAME ] )
+			|| 'apply' !== $query_settings[ $this->get_setting_name() ][ self::APPLY_STATUSES__SETTING_NAME ] ) {
 				return $previous_query_args;
 		}
 
-		if ( empty( $query_settings[ self::get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ] ) ) {
+		if ( empty( $query_settings[ $this->get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ] ) ) {
 			return $previous_query_args;
 		}
 
-		$previous_query_args['post_status'] = $query_settings[ self::get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ];
+		$previous_query_args['post_status'] = $query_settings[ $this->get_setting_name() ][ self::POST_STATUSES__SETTING_NAME ];
 		$previous_query_args['perm']        = 'readable';
 
 		return $previous_query_args;

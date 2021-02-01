@@ -42,9 +42,10 @@ class Post_Date_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_date_filter_type( $date_type ) {
+		$setting_class = $this->get_setting_class();
 		?>
 		<div class="<?php $this->bem_class( 'type-selector-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
-			<select id="<?php $this->bem_class( 'js-date-type' ); ?>" name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ) ?>">
+			<select id="<?php $this->bem_class( 'js-date-type' ); ?>" name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ) ?>">
 				<option value="NA" <?php selected( 'NA', $date_type ); ?>>
 					<?= _x( 'Not Applied', 'backend', 'twrp' ) ?>
 				</option>
@@ -69,8 +70,9 @@ class Post_Date_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_last_period_of_time_settings( $current_setting ) {
-		$name           = Post_Date::get_setting_name() . '[' . Post_Date::DATE_LAST_PERIOD_NAME . ']';
-		$last_days_name = Post_Date::get_setting_name() . '[' . Post_Date::DATE_LAST_DAYS_NAME . ']';
+		$setting_class  = $this->get_setting_class();
+		$name           = $setting_class->get_setting_name() . '[' . Post_Date::DATE_LAST_PERIOD_NAME . ']';
+		$last_days_name = $setting_class->get_setting_name() . '[' . Post_Date::DATE_LAST_DAYS_NAME . ']';
 
 		$last_period = '';
 		if ( isset( $current_setting[ Post_Date::DATE_LAST_PERIOD_NAME ] ) ) {
@@ -175,6 +177,7 @@ class Post_Date_Display extends Query_Setting_Display {
 		?>
 		<div id="<?php $this->bem_class( 'js-between-wrapper' ); ?>" class="<?php $this->bem_class( 'between-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $is_hidden_class ); ?>">
 			<?php
+			$setting_class = $this->get_setting_class();
 			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_AFTER_BEFORE_SETTING_EXAMPLE );
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
 			?>
@@ -185,7 +188,7 @@ class Post_Date_Display extends Query_Setting_Display {
 				</label>
 				<br />
 				<input id="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after' ); ?>" type="date" autocomplete="off"
-					name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::AFTER_DATE_NAME . ']' ); ?>"
+					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::AFTER_DATE_NAME . ']' ); ?>"
 					value="<?= esc_attr( $after_value ); ?>"
 				/>
 			</span>
@@ -198,7 +201,7 @@ class Post_Date_Display extends Query_Setting_Display {
 				</label>
 				<br />
 				<input id="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before' ); ?>" type="date" autocomplete="off"
-					name="<?= esc_attr( Post_Date::get_setting_name() . '[' . Post_Date::BEFORE_DATE_NAME . ']' ); ?>"
+					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::BEFORE_DATE_NAME . ']' ); ?>"
 					value="<?= esc_attr( $before_value ); ?>"
 				/>
 			</span>

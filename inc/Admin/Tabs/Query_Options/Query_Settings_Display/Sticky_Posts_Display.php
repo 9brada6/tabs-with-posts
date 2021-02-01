@@ -22,7 +22,8 @@ class Sticky_Posts_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$name            = Sticky_Posts::get_setting_name() . '[' . Sticky_Posts::INCLUSION__SETTING_NAME . ']';
+		$setting_class   = $this->get_setting_class();
+		$name            = $setting_class->get_setting_name() . '[' . Sticky_Posts::INCLUSION__SETTING_NAME . ']';
 		$selected_option = $current_setting[ Sticky_Posts::INCLUSION__SETTING_NAME ];
 		?>
 		<div class="<?php $this->bem_class(); ?>">

@@ -25,11 +25,11 @@ class Categories extends Query_Setting {
 	 */
 	const CATEGORIES_IDS__SETTING_KEY = 'cat_ids';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'cat_settings';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::CATEGORIES_TYPE__SETTING_KEY  => 'NA',
 			self::INCLUDE_CHILDREN__SETTING_KEY => '1',
@@ -38,20 +38,20 @@ class Categories extends Query_Setting {
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		$sanitized_setting = array();
 		if ( ! is_array( $setting ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( isset( $setting[ self::CATEGORIES_TYPE__SETTING_KEY ] ) ) {
 			$possible_cat_types = array( 'OUT', 'IN' );
 			$has_valid_setting  = in_array( $setting[ self::CATEGORIES_TYPE__SETTING_KEY ], $possible_cat_types, true );
 			if ( ! $has_valid_setting ) {
-				return self::get_default_setting();
+				return $this->get_default_setting();
 			}
 		} else {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 		$sanitized_setting[ self::CATEGORIES_TYPE__SETTING_KEY ] = $setting[ self::CATEGORIES_TYPE__SETTING_KEY ];
 
@@ -72,7 +72,7 @@ class Categories extends Query_Setting {
 
 		// Checking to see if the categories are a string.
 		if ( ! is_string( $setting[ self::CATEGORIES_IDS__SETTING_KEY ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		// Explode the categories into an array of ids and verify them.
@@ -82,7 +82,7 @@ class Categories extends Query_Setting {
 
 		// Checking to see if the array exist.
 		if ( empty( $categories ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$available_categories     = get_categories(
@@ -102,7 +102,7 @@ class Categories extends Query_Setting {
 
 		// Checking to see if the array exist.
 		if ( empty( $categories ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 		$categories = array_values( $categories );
 
@@ -112,8 +112,8 @@ class Categories extends Query_Setting {
 		return $sanitized_setting;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		$settings = $query_settings[ self::get_setting_name() ];
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		$settings = $query_settings[ $this->get_setting_name() ];
 
 		if ( 'NA' === $settings[ self::CATEGORIES_TYPE__SETTING_KEY ] ) {
 			return $previous_query_args;

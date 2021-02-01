@@ -23,29 +23,29 @@ class Advanced_Arguments extends Query_Setting {
 	 */
 	const CUSTOM_ARGS__SETTING_NAME = 'custom_args_json';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'advanced_args';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::IS_APPLIED__SETTING_NAME  => 'not_apply',
 			self::CUSTOM_ARGS__SETTING_NAME => '',
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! isset( $setting[ self::CUSTOM_ARGS__SETTING_NAME ], $setting[ self::IS_APPLIED__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$is_applied_possible_values = array( 'not_apply', 'apply' );
 		if ( ! in_array( $setting[ self::IS_APPLIED__SETTING_NAME ], $is_applied_possible_values, true ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( empty( trim( $setting[ self::CUSTOM_ARGS__SETTING_NAME ] ) ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$sanitized_setting = array(
@@ -57,11 +57,11 @@ class Advanced_Arguments extends Query_Setting {
 		return $sanitized_setting;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ][ self::IS_APPLIED__SETTING_NAME ] ) ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ $this->get_setting_name() ][ self::IS_APPLIED__SETTING_NAME ] ) ) {
 			return $previous_query_args;
 		}
-		$settings = $query_settings[ self::get_setting_name() ];
+		$settings = $query_settings[ $this->get_setting_name() ];
 
 		if ( 'apply' !== $settings[ self::IS_APPLIED__SETTING_NAME ] ) {
 			return $previous_query_args;

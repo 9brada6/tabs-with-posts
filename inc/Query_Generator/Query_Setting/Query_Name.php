@@ -20,23 +20,23 @@ class Query_Name extends Query_Setting {
 	 */
 	const QUERY_NAME__SETTING_NAME = 'name';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'query_name';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::QUERY_NAME__SETTING_NAME => '',
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! isset( $setting[ self::QUERY_NAME__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( ! is_string( $setting[ self::QUERY_NAME__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$sanitized_setting                                   = array();
@@ -45,7 +45,7 @@ class Query_Name extends Query_Setting {
 		return $sanitized_setting;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
 		return $previous_query_args;
 	}
 
@@ -57,8 +57,9 @@ class Query_Name extends Query_Setting {
 	 * @return string Will return "Query-$query_id_to_replace" if a name doesn't exist.
 	 */
 	public static function get_query_display_name( $query_settings, $query_id_to_replace ) {
-		if ( isset( $query_settings[ self::get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ] ) ) {
-			$name = $query_settings[ self::get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ];
+		$query_name_class = new Query_Name();
+		if ( isset( $query_settings[ $query_name_class->get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ] ) ) {
+			$name = $query_settings[ $query_name_class->get_setting_name() ][ self::QUERY_NAME__SETTING_NAME ];
 		} elseif ( isset( $query_settings[ self::QUERY_NAME__SETTING_NAME ] ) ) {
 			$name = $query_settings[ self::QUERY_NAME__SETTING_NAME ];
 		} else {

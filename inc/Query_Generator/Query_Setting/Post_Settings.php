@@ -19,20 +19,20 @@ class Post_Settings extends Query_Setting {
 
 	const POSTS_INPUT__SETTING_NAME = 'posts_ids';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'post_settings';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::FILTER_TYPE__SETTING_NAME => 'NA',
 			self::POSTS_INPUT__SETTING_NAME => '',
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! isset( $setting[ self::FILTER_TYPE__SETTING_NAME ], $setting[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 		$filter_type = $setting[ self::FILTER_TYPE__SETTING_NAME ];
 		$posts_ids   = $setting[ self::POSTS_INPUT__SETTING_NAME ];
@@ -40,7 +40,7 @@ class Post_Settings extends Query_Setting {
 		$possible_filters = array( 'NA', 'IP', 'EP' );
 
 		if ( ( ! in_array( $filter_type, $possible_filters, true ) ) || 'NA' === $filter_type ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$sanitized_settings = array( self::FILTER_TYPE__SETTING_NAME => $setting[ self::FILTER_TYPE__SETTING_NAME ] );
@@ -59,17 +59,17 @@ class Post_Settings extends Query_Setting {
 		$sanitized_settings[ self::POSTS_INPUT__SETTING_NAME ] = implode( ';', $posts_ids );
 
 		if ( empty( $sanitized_settings[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		return $sanitized_settings;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ $this->get_setting_name() ] ) ) {
 			return $previous_query_args;
 		}
-		$settings = $query_settings[ self::get_setting_name() ];
+		$settings = $query_settings[ $this->get_setting_name() ];
 
 		if ( ! isset( $settings[ self::FILTER_TYPE__SETTING_NAME ], $settings[ self::POSTS_INPUT__SETTING_NAME ] ) ) {
 			return $previous_query_args;

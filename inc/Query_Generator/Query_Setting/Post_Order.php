@@ -45,7 +45,7 @@ class Post_Order extends Query_Setting {
 	 */
 	const THIRD_ORDER_TYPE_SELECT_NAME = 'third_order_type';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'post_order';
 	}
 
@@ -99,7 +99,7 @@ class Post_Order extends Query_Setting {
 		return $select_options;
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::FIRST_ORDERBY_SELECT_NAME     => 'not_applied',
 			self::SECOND_ORDERBY_SELECT_NAME    => 'not_applied',
@@ -111,9 +111,9 @@ class Post_Order extends Query_Setting {
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
-		$sanitized_setting = self::get_default_setting();
-		$setting           = wp_parse_args( $setting, self::get_default_setting() );
+	public function sanitize_setting( $setting ) {
+		$sanitized_setting = $this->get_default_setting();
+		$setting           = wp_parse_args( $setting, $this->get_default_setting() );
 
 		$orderby_options       = array_keys( self::get_orderby_select_options() );
 		$first_orderby_options = array_keys( self::get_orderby_single_select_options() );
@@ -168,9 +168,9 @@ class Post_Order extends Query_Setting {
 		return $sanitized_setting;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
 		$orderby  = array();
-		$settings = $query_settings[ self::get_setting_name() ];
+		$settings = $query_settings[ $this->get_setting_name() ];
 
 		$setting_names = array(
 			self::FIRST_ORDERBY_SELECT_NAME  => self::FIRST_ORDER_TYPE_SELECT_NAME,

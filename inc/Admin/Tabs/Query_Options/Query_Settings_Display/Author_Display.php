@@ -50,12 +50,14 @@ class Author_Display extends Query_Setting_Display {
 	 */
 	protected function display_authors_select_type( $current_setting ) {
 		$selected_option = $current_setting[ Author::AUTHORS_TYPE__SETTING_NAME ];
+		$author_class    = $this->get_setting_class();
+
 		?>
 		<div class="<?php $this->query_setting_paragraph_class(); ?>">
 			<select
 				id="<?php $this->bem_class( 'select_type' ); ?>"
 				class="<?php $this->bem_class( 'select_type' ); ?>"
-				name="<?= esc_attr( Author::get_setting_name() . '[' . Author::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
+				name="<?= esc_attr( $author_class->get_setting_name() . '[' . Author::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
 			>
 				<option value="<?= esc_attr( Author::AUTHORS_TYPE__DISABLED ) ?>" <?php selected( Author::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
 					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
@@ -153,6 +155,7 @@ class Author_Display extends Query_Setting_Display {
 		if ( ! $is_showing ) {
 			$additional_class = ' twrpb-hidden';
 		}
+		$author_class = $this->get_setting_class();
 
 		?>
 		<div id="<?php $this->bem_class( 'author-search-wrap' ); ?>" class="<?php $this->bem_class( 'author-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_class ); ?>">
@@ -171,7 +174,7 @@ class Author_Display extends Query_Setting_Display {
 
 			<input
 				id="<?php $this->bem_class( 'js-author-ids' ); ?>" type="hidden"
-				name="<?= esc_attr( Author::get_setting_name() . '[' . Author::AUTHORS_IDS__SETTING_NAME . ']' ) ?>"
+				name="<?= esc_attr( $author_class->get_setting_name() . '[' . Author::AUTHORS_IDS__SETTING_NAME . ']' ) ?>"
 				value="<?= esc_attr( $current_setting[ Author::AUTHORS_IDS__SETTING_NAME ] ) ?>"
 			/>
 		</div>

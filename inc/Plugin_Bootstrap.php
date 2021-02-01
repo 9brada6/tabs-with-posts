@@ -86,8 +86,10 @@ class Plugin_Bootstrap {
 
 
 		// Article Blocks.
-		'Article_Block/Component/Artblock_Component',
+		'Article_Block/Article_Block_Info',
+		'Article_Block/Article_Block',
 
+		'Article_Block/Component/Artblock_Component',
 		'Article_Block/Component/Component_Settings/Component_Setting',
 
 		'Article_Block/Component/Component_Settings/Font_Size_Setting',
@@ -101,8 +103,6 @@ class Plugin_Bootstrap {
 		'Article_Block/Settings/Display_Date_Setting',
 		'Article_Block/Settings/Display_Comments_Setting',
 		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
-
-		'Article_Block/Article_Block',
 
 		'Article_Block/Blocks/Simple_Article',
 		'Article_Block/Blocks/Modern_Article',

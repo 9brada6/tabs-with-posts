@@ -23,7 +23,8 @@ class Post_Status_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$apply_statuses_name    = Post_Status::get_setting_name() . '[' . Post_Status::APPLY_STATUSES__SETTING_NAME . ']';
+		$setting_class          = $this->get_setting_class();
+		$apply_statuses_name    = $setting_class->get_setting_name() . '[' . Post_Status::APPLY_STATUSES__SETTING_NAME . ']';
 		$current_apply_statuses = $current_setting[ Post_Status::APPLY_STATUSES__SETTING_NAME ];
 
 		$additional_hide_class = 'not_applied' === $current_apply_statuses ? ' twrpb-hidden' : '';
@@ -59,7 +60,7 @@ class Post_Status_Display extends Query_Setting_Display {
 						<input
 							id="<?= esc_attr( $id ); ?>"
 							class="<?php $this->bem_class( 'input' ); ?>"
-							name="<?= esc_attr( Post_Status::get_setting_name() . '[' . Post_Status::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
+							name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Status::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
 							type="checkbox"
 							value="<?= esc_attr( $status->name ); ?>"
 							<?= esc_attr( $checked ); ?>

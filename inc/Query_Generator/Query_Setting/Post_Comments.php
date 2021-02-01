@@ -22,32 +22,32 @@ class Post_Comments extends Query_Setting {
 	 */
 	const COMMENTS_COMPARATOR_NAME = 'comparator';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'post_comments';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::COMMENTS_COMPARATOR_NAME => 'NA',
 			self::COMMENTS_VALUE_NAME      => '',
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! is_array( $setting ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( ! isset( $setting[ self::COMMENTS_VALUE_NAME ], $setting[ self::COMMENTS_COMPARATOR_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( ! in_array( $setting[ self::COMMENTS_COMPARATOR_NAME ], array( 'BE', 'LE', 'E', 'NE' ), true ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( ! is_numeric( $setting[ self::COMMENTS_VALUE_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$sanitized_setting = array(
@@ -58,12 +58,12 @@ class Post_Comments extends Query_Setting {
 		return $sanitized_setting;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ] ) ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ $this->get_setting_name() ] ) ) {
 			return $previous_query_args;
 		}
 
-		$settings = $query_settings[ self::get_setting_name() ];
+		$settings = $query_settings[ $this->get_setting_name() ];
 
 		if ( ! is_numeric( $settings[ self::COMMENTS_VALUE_NAME ] ) ) {
 			return $previous_query_args;
@@ -74,7 +74,7 @@ class Post_Comments extends Query_Setting {
 		}
 
 		$comment_count = array(
-			'compare' => self::get_comparator_from_name( (string) $settings[ self::COMMENTS_COMPARATOR_NAME ] ),
+			'compare' => $this->get_comparator_from_name( (string) $settings[ self::COMMENTS_COMPARATOR_NAME ] ),
 			'value'   => $settings[ self::COMMENTS_VALUE_NAME ],
 		);
 
@@ -88,7 +88,7 @@ class Post_Comments extends Query_Setting {
 	 * @param string $name
 	 * @return string The comparator;
 	 */
-	public static function get_comparator_from_name( $name ) {
+	public function get_comparator_from_name( $name ) {
 		switch ( $name ) {
 			case 'BE':
 				return '>=';

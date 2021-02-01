@@ -16,35 +16,35 @@ class Search extends Query_Setting {
 	 */
 	const SEARCH_KEYWORDS__SETTING_NAME = 'search_keywords';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'search';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::SEARCH_KEYWORDS__SETTING_NAME => '',
 		);
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! isset( $setting[ self::SEARCH_KEYWORDS__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 		$search_keywords = $setting[ self::SEARCH_KEYWORDS__SETTING_NAME ];
 
 		if ( ! is_string( $search_keywords ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		return $setting;
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! isset( $query_settings[ self::get_setting_name() ][ self::SEARCH_KEYWORDS__SETTING_NAME ] ) ) {
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! isset( $query_settings[ $this->get_setting_name() ][ self::SEARCH_KEYWORDS__SETTING_NAME ] ) ) {
 			return $previous_query_args;
 		}
 
-		$search_keywords = $query_settings[ self::get_setting_name() ][ self::SEARCH_KEYWORDS__SETTING_NAME ];
+		$search_keywords = $query_settings[ $this->get_setting_name() ][ self::SEARCH_KEYWORDS__SETTING_NAME ];
 
 		if ( empty( $search_keywords ) ) {
 			return $previous_query_args;

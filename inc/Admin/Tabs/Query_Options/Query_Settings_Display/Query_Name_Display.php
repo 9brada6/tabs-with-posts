@@ -27,9 +27,10 @@ class Query_Name_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$name        = Query_Name::get_setting_name() . '[' . Query_Name::QUERY_NAME__SETTING_NAME . ']';
-		$value       = $current_setting[ Query_Name::QUERY_NAME__SETTING_NAME ];
-		$placeholder = _x( 'Ex: Related Posts', 'backend', 'twrp' );
+		$setting_class = $this->get_setting_class();
+		$name          = $setting_class->get_setting_name() . '[' . Query_Name::QUERY_NAME__SETTING_NAME . ']';
+		$value         = $current_setting[ Query_Name::QUERY_NAME__SETTING_NAME ];
+		$placeholder   = _x( 'Ex: Related Posts', 'backend', 'twrp' );
 
 		?>
 		<div class="<?php $this->bem_class(); ?>">

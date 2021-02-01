@@ -23,13 +23,15 @@ class Post_Order_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$first_select_orderby_name  = Post_Order::get_setting_name() . '[' . Post_Order::FIRST_ORDERBY_SELECT_NAME . ']';
-		$second_select_orderby_name = Post_Order::get_setting_name() . '[' . Post_Order::SECOND_ORDERBY_SELECT_NAME . ']';
-		$third_select_orderby_name  = Post_Order::get_setting_name() . '[' . Post_Order::THIRD_ORDERBY_SELECT_NAME . ']';
+		$setting_class = $this->get_setting_class();
 
-		$first_select_order_type_name  = Post_Order::get_setting_name() . '[' . Post_Order::FIRST_ORDER_TYPE_SELECT_NAME . ']';
-		$second_select_order_type_name = Post_Order::get_setting_name() . '[' . Post_Order::SECOND_ORDER_TYPE_SELECT_NAME . ']';
-		$third_select_order_type_name  = Post_Order::get_setting_name() . '[' . Post_Order::THIRD_ORDER_TYPE_SELECT_NAME . ']';
+		$first_select_orderby_name  = $setting_class->get_setting_name() . '[' . Post_Order::FIRST_ORDERBY_SELECT_NAME . ']';
+		$second_select_orderby_name = $setting_class->get_setting_name() . '[' . Post_Order::SECOND_ORDERBY_SELECT_NAME . ']';
+		$third_select_orderby_name  = $setting_class->get_setting_name() . '[' . Post_Order::THIRD_ORDERBY_SELECT_NAME . ']';
+
+		$first_select_order_type_name  = $setting_class->get_setting_name() . '[' . Post_Order::FIRST_ORDER_TYPE_SELECT_NAME . ']';
+		$second_select_order_type_name = $setting_class->get_setting_name() . '[' . Post_Order::SECOND_ORDER_TYPE_SELECT_NAME . ']';
+		$third_select_order_type_name  = $setting_class->get_setting_name() . '[' . Post_Order::THIRD_ORDER_TYPE_SELECT_NAME . ']';
 
 		$first_orderby_setting  = isset( $current_setting[ Post_Order::FIRST_ORDERBY_SELECT_NAME ] ) ? $current_setting[ Post_Order::FIRST_ORDERBY_SELECT_NAME ] : null;
 		$second_orderby_setting = isset( $current_setting[ Post_Order::SECOND_ORDERBY_SELECT_NAME ] ) ? $current_setting[ Post_Order::SECOND_ORDERBY_SELECT_NAME ] : null;

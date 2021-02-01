@@ -64,12 +64,13 @@ class Categories_Display extends Query_Setting_Display {
 	 */
 	protected function display_category_select_type( $current_setting ) {
 		$cat_type_setting = $current_setting[ Categories::CATEGORIES_TYPE__SETTING_KEY ];
+		$categories_class = $this->get_setting_class();
 		?>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'select-type-wrap' ); ?>">
 			<select
 				id="<?php $this->bem_class( 'type' ); ?>"
 				class="<?php $this->bem_class( 'type' ); ?>"
-				name="<?= esc_attr( Categories::get_setting_name() . '[' . Categories::CATEGORIES_TYPE__SETTING_KEY . ']' ) ?>"
+				name="<?= esc_attr( $categories_class->get_setting_name() . '[' . Categories::CATEGORIES_TYPE__SETTING_KEY . ']' ) ?>"
 			>
 				<option value="NA" <?php selected( $cat_type_setting, 'NA' ); ?>>
 					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
@@ -95,13 +96,14 @@ class Categories_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_category_include_children( $current_setting ) {
+		$categories_class = $this->get_setting_class();
 		?>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'include-children-wrap' ); ?>">
 			<input
 				id="<?php $this->bem_class( 'include-children' ); ?>"
 				type="checkbox"
 				value="1"
-				name="<?= esc_attr( Categories::get_setting_name() . '[' . Categories::INCLUDE_CHILDREN__SETTING_KEY . ']' ) ?>"
+				name="<?= esc_attr( $categories_class->get_setting_name() . '[' . Categories::INCLUDE_CHILDREN__SETTING_KEY . ']' ) ?>"
 				<?php checked( '1', $current_setting[ Categories::INCLUDE_CHILDREN__SETTING_KEY ] ); ?>
 			/>
 			<label for="<?php $this->bem_class( 'include-children' ); ?>" class="<?php $this->bem_class( 'include-children-label' ); ?>">
@@ -118,8 +120,9 @@ class Categories_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_categories_relation_setting( $current_setting ) {
-		$select_name  = Categories::get_setting_name() . '[' . Categories::RELATION__SETTING_KEY . ']';
-		$cat_relation = $current_setting[ Categories::RELATION__SETTING_KEY ];
+		$categories_class = $this->get_setting_class();
+		$select_name      = $categories_class->get_setting_name() . '[' . Categories::RELATION__SETTING_KEY . ']';
+		$cat_relation     = $current_setting[ Categories::RELATION__SETTING_KEY ];
 
 		$additional_class = '';
 		if ( 'IN' !== $current_setting[ Categories::CATEGORIES_TYPE__SETTING_KEY ] ) {
@@ -255,12 +258,13 @@ class Categories_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_hidden_input_with_cat_ids( $current_setting ) {
+		$categories_class = $this->get_setting_class();
 		?>
 			<input
 				id="<?php $this->bem_class( 'cat-ids' ); ?>"
 				class="<?php $this->bem_class( 'cat-ids' ); ?>"
 				type="hidden"
-				name="<?= esc_attr( Categories::get_setting_name() . '[' . Categories::CATEGORIES_IDS__SETTING_KEY . ']' ) ?>"
+				name="<?= esc_attr( $categories_class->get_setting_name() . '[' . Categories::CATEGORIES_IDS__SETTING_KEY . ']' ) ?>"
 				value="<?= esc_attr( $current_setting[ Categories::CATEGORIES_IDS__SETTING_KEY ] ) ?>"
 			/>
 		<?php

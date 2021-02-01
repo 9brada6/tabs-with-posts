@@ -23,8 +23,9 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
+		$setting_class        = $this->get_setting_class();
 		$suppress_the_filters = $current_setting[ Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME ];
-		$name                 = Suppress_Filters::get_setting_name() . '[' . Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME . ']';
+		$name                 = $setting_class->get_setting_name() . '[' . Suppress_Filters::SUPPRESS_FILTERS__SETTING_NAME . ']';
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<?php

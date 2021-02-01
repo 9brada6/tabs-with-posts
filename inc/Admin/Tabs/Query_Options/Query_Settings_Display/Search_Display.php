@@ -35,6 +35,7 @@ class Search_Display extends Query_Setting_Display {
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<?php
+			$setting_class = $this->get_setting_class();
 			$remember_note = new Remember_Note( Remember_Note::NOTE__SEARCH_QUERY_INFO );
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
 			?>
@@ -44,7 +45,7 @@ class Search_Display extends Query_Setting_Display {
 					id="<?php $this->bem_class( 'js-search-input' ); ?>"
 					class="<?php $this->bem_class( 'input' ); ?>"
 					type="text"
-					name="<?= esc_attr( Search::get_setting_name() . '[' . Search::SEARCH_KEYWORDS__SETTING_NAME . ']' ); ?>"
+					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Search::SEARCH_KEYWORDS__SETTING_NAME . ']' ); ?>"
 					value="<?= esc_attr( $search_keywords ) ?>"
 					placeholder="<?= esc_attr_x( 'Search keywords...', 'backend', 'twrp' ) ?>"
 				/>

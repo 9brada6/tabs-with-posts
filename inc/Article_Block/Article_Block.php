@@ -31,7 +31,7 @@ use RuntimeException;
  * they are sanitized before adding in database), call
  * sanitize_widget_settings() function externally.
  */
-abstract class Article_Block implements Class_Children_Order {
+abstract class Article_Block implements Class_Children_Order, Article_Block_Info {
 
 	/**
 	 * Holds the widget id of these article blocks.
@@ -53,30 +53,6 @@ abstract class Article_Block implements Class_Children_Order {
 	 * @var array
 	 */
 	protected $settings;
-
-	/**
-	 * Get the Id of the article block.
-	 *
-	 * This should be unique across all article blocks.
-	 *
-	 * @return string
-	 */
-	abstract public static function get_id();
-
-	/**
-	 * Get the name of the Article Block. The name should have spaces instead
-	 * of "_" and should be something representative.
-	 *
-	 * @return string
-	 */
-	abstract public static function get_name();
-
-	/**
-	 * Get the file name. The name must have appended ".php" suffix.
-	 *
-	 * @return string
-	 */
-	abstract protected static function get_file_name();
 
 	/**
 	 * Get the widget Id this artblock is build for.

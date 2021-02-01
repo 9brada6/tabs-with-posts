@@ -25,30 +25,30 @@ class Post_Date extends Query_Setting {
 
 	const AFTER_DATE_NAME = 'after';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'post_date';
 	}
 
 	#region -- Sanitization
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		$sanitized_settings = array();
 		if ( ! is_array( $setting ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		// Make sure that date type is set.
 		if ( ! isset( $setting[ self::DATE_TYPE_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$date_type_possibilities = array( 'NA', 'LT', 'FT' );
 		if ( ! in_array( $setting[ self::DATE_TYPE_NAME ], $date_type_possibilities, true ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( 'NA' === $setting[ self::DATE_TYPE_NAME ] ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		// Make sure that last period of time is set correctly.
@@ -59,7 +59,7 @@ class Post_Date extends Query_Setting {
 			if ( ( ! isset( $setting[ self::DATE_LAST_PERIOD_NAME ] ) ) ||
 				( ! in_array( $setting[ self::DATE_LAST_PERIOD_NAME ], $last_period_possibilities, true ) )
 			) {
-				return self::get_default_setting();
+				return $this->get_default_setting();
 			}
 			$sanitized_settings[ self::DATE_LAST_PERIOD_NAME ] = $setting[ self::DATE_LAST_PERIOD_NAME ];
 
@@ -68,7 +68,7 @@ class Post_Date extends Query_Setting {
 			}
 
 			if ( ( ! isset( $setting[ self::DATE_LAST_DAYS_NAME ] ) ) || ( ! is_numeric( $setting[ self::DATE_LAST_DAYS_NAME ] ) ) || ( $setting[ self::DATE_LAST_DAYS_NAME ] < 0 ) ) {
-				return self::get_default_setting();
+				return $this->get_default_setting();
 			}
 			$sanitized_settings[ self::DATE_LAST_DAYS_NAME ] = $setting[ self::DATE_LAST_DAYS_NAME ];
 
@@ -80,21 +80,21 @@ class Post_Date extends Query_Setting {
 			$sanitized_settings[ self::DATE_TYPE_NAME ] = $setting[ self::DATE_TYPE_NAME ];
 
 			if ( isset( $setting[ self::AFTER_DATE_NAME ] ) ) {
-				$sanitized_settings[ self::AFTER_DATE_NAME ] = self::sanitize_date( $setting[ self::AFTER_DATE_NAME ] );
+				$sanitized_settings[ self::AFTER_DATE_NAME ] = $this->sanitize_date( $setting[ self::AFTER_DATE_NAME ] );
 			}
 
 			if ( isset( $setting[ self::BEFORE_DATE_NAME ] ) ) {
-				$sanitized_settings[ self::BEFORE_DATE_NAME ] = self::sanitize_date( $setting[ self::BEFORE_DATE_NAME ] );
+				$sanitized_settings[ self::BEFORE_DATE_NAME ] = $this->sanitize_date( $setting[ self::BEFORE_DATE_NAME ] );
 			}
 
 			if ( empty( $sanitized_settings[ self::AFTER_DATE_NAME ] ) && empty( $sanitized_settings[ self::BEFORE_DATE_NAME ] ) ) {
-				return self::get_default_setting();
+				return $this->get_default_setting();
 			}
 
 			return $sanitized_settings;
 		}
 
-		return self::get_default_setting();
+		return $this->get_default_setting();
 	}
 
 	/**
@@ -103,7 +103,7 @@ class Post_Date extends Query_Setting {
 	 * @param string $date
 	 * @return string Empty string if not correct, or the correct date.
 	 */
-	protected static function sanitize_date( $date ) {
+	protected function sanitize_date( $date ) {
 		$format = 'Y-m-d';
 		$time   = DateTime::createFromFormat( $format, $date );
 
@@ -116,7 +116,7 @@ class Post_Date extends Query_Setting {
 
 	#endregion -- Sanitization
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::DATE_TYPE_NAME => 'NA',
 		);
@@ -124,22 +124,22 @@ class Post_Date extends Query_Setting {
 
 	#region -- Create WP Query args
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		$date_settings = $query_settings[ self::get_setting_name() ];
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		$date_settings = $query_settings[ $this->get_setting_name() ];
 
 		if ( 'NA' === $date_settings[ self::DATE_TYPE_NAME ] ) {
 			return $previous_query_args;
 		}
 
 		if ( 'LT' === $date_settings[ self::DATE_TYPE_NAME ] ) {
-			$date_query_settings = self::get_last_period_args( $date_settings );
+			$date_query_settings = $this->get_last_period_args( $date_settings );
 			if ( null !== $date_query_settings ) {
 				$previous_query_args['date_query'] = $date_query_settings;
 			}
 		}
 
 		if ( 'FT' === $date_settings[ self::DATE_TYPE_NAME ] ) {
-			$date_query_settings = self::get_between_fixed_period_args( $date_settings );
+			$date_query_settings = $this->get_between_fixed_period_args( $date_settings );
 			if ( null !== $date_query_settings ) {
 				$previous_query_args['date_query'] = $date_query_settings;
 			}
@@ -154,7 +154,7 @@ class Post_Date extends Query_Setting {
 	 * @param array $date_settings
 	 * @return array|null Null if cannot be created
 	 */
-	protected static function get_last_period_args( $date_settings ) {
+	protected function get_last_period_args( $date_settings ) {
 		if ( 'LW' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
 			$time->setTimezone( Date_Utils::wp_timezone() );
@@ -197,7 +197,7 @@ class Post_Date extends Query_Setting {
 			return null;
 		}
 
-		return array( 'after' => self::get_wp_time_args( $time ) );
+		return array( 'after' => $this->get_wp_time_args( $time ) );
 	}
 
 	/**
@@ -206,7 +206,7 @@ class Post_Date extends Query_Setting {
 	 * @param array $date_settings
 	 * @return array|null Null if cannot be created
 	 */
-	protected static function get_between_fixed_period_args( $date_settings ) {
+	protected function get_between_fixed_period_args( $date_settings ) {
 		$between_args   = array();
 		$after_setting  = $date_settings[ self::AFTER_DATE_NAME ];
 		$before_setting = $date_settings[ self::BEFORE_DATE_NAME ];
@@ -217,7 +217,7 @@ class Post_Date extends Query_Setting {
 				return null;
 			}
 
-			$between_args['before'] = self::get_wp_time_args( $time );
+			$between_args['before'] = $this->get_wp_time_args( $time );
 		}
 
 		if ( isset( $after_setting ) && ( ! empty( $after_setting ) ) ) {
@@ -226,7 +226,7 @@ class Post_Date extends Query_Setting {
 				return null;
 			}
 
-			$between_args['after'] = self::get_wp_time_args( $time );
+			$between_args['after'] = $this->get_wp_time_args( $time );
 		}
 
 		if ( empty( $between_args ) ) {
@@ -247,17 +247,13 @@ class Post_Date extends Query_Setting {
 	 * @param DateTime $time
 	 * @return array
 	 */
-	protected static function get_wp_time_args( $time ) {
+	protected function get_wp_time_args( $time ) {
 		return array(
 			'year'  => $time->format( 'Y' ),
 			'month' => $time->format( 'm' ),
 			'day'   => $time->format( 'd' ),
 		);
 	}
-
-
-
-
 
 	#endregion -- Class Helpers
 }

@@ -36,6 +36,7 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- Post_Types_Display use get_name from the query_setting.
 - Change all php 5.6 incompatible abstract static methods.
 
 - Add more order by options in query_settings "order posts by" collapsible.

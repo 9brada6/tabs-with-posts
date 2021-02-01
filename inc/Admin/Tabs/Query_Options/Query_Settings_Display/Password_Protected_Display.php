@@ -22,7 +22,8 @@ class Password_Protected_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$select_name     = Password_Protected::get_setting_name() . '[' . Password_Protected::PASSWORD_PROTECTED__SETTING_NAME . ']';
+		$setting_class   = $this->get_setting_class();
+		$select_name     = $setting_class->get_setting_name() . '[' . Password_Protected::PASSWORD_PROTECTED__SETTING_NAME . ']';
 		$current_setting = $current_setting[ Password_Protected::PASSWORD_PROTECTED__SETTING_NAME ];
 
 		$not_applied_text  = _x( 'Not Applied (Posts with and without password)', 'backend', 'twrp' );

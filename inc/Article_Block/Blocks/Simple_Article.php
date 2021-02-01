@@ -38,7 +38,7 @@ class Simple_Article extends Article_Block {
 		return 'Simple Style';
 	}
 
-	protected static function get_file_name() {
+	public static function get_file_name() {
 		return 'simple-style.php';
 	}
 

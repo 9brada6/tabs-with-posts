@@ -13,6 +13,11 @@ class Meta_Display extends Query_Setting_Display {
 		return 130;
 	}
 
+	/**
+	 * Get the main setting class.
+	 *
+	 * @return Meta_Setting
+	 */
 	protected function get_setting_class() {
 		return new Meta_Setting();
 	}
@@ -22,9 +27,10 @@ class Meta_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$comparators          = Meta_Setting::get_meta_key_comparators();
-		$meta_key_name        = Meta_Setting::get_setting_name() . '[' . Meta_Setting::META_KEY_NAME__SETTING_NAME . ']';
-		$meta_is_applied_name = Meta_Setting::get_setting_name() . '[' . Meta_Setting::META_IS_APPLIED__SETTING_NAME . ']';
+		$meta_class           = $this->get_setting_class();
+		$comparators          = $meta_class->get_meta_key_comparators();
+		$meta_key_name        = $meta_class->get_setting_name() . '[' . Meta_Setting::META_KEY_NAME__SETTING_NAME . ']';
+		$meta_is_applied_name = $meta_class->get_setting_name() . '[' . Meta_Setting::META_IS_APPLIED__SETTING_NAME . ']';
 
 		$meta_apply_value             = $current_setting[ Meta_Setting::META_IS_APPLIED__SETTING_NAME ];
 		$additional_meta_hidden_class = ' twrpb-hidden';
@@ -34,10 +40,10 @@ class Meta_Display extends Query_Setting_Display {
 
 		$meta_key_value = $current_setting[ Meta_Setting::META_KEY_NAME__SETTING_NAME ];
 
-		$meta_compare_name  = Meta_Setting::get_setting_name() . '[' . Meta_Setting::META_KEY_COMPARATOR__SETTING_NAME . ']';
+		$meta_compare_name  = $meta_class->get_setting_name() . '[' . Meta_Setting::META_KEY_COMPARATOR__SETTING_NAME . ']';
 		$meta_compare_value = $current_setting[ Meta_Setting::META_KEY_COMPARATOR__SETTING_NAME ];
 
-		$meta_value_name  = Meta_Setting::get_setting_name() . '[' . Meta_Setting::META_KEY_VALUE__SETTING_NAME . ']';
+		$meta_value_name  = $meta_class->get_setting_name() . '[' . Meta_Setting::META_KEY_VALUE__SETTING_NAME . ']';
 		$meta_value_value = $current_setting[ Meta_Setting::META_KEY_VALUE__SETTING_NAME ];
 
 		$additional_value_hidden_class = '';

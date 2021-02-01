@@ -39,30 +39,30 @@ class Author extends Query_Setting {
 	 */
 	const AUTHORS_TYPE__EXCLUDE = 'OUT';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'author_settings';
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		return array(
 			self::AUTHORS_TYPE__SETTING_NAME => self::AUTHORS_TYPE__DISABLED,
 			self::AUTHORS_IDS__SETTING_NAME  => '',
 		);
 	}
 
-	public static function sanitize_setting( $settings ) {
+	public function sanitize_setting( $settings ) {
 		if ( ! isset( $settings[ self::AUTHORS_TYPE__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$authors_type    = $settings[ self::AUTHORS_TYPE__SETTING_NAME ];
 		$available_types = array( self::AUTHORS_TYPE__DISABLED, self::AUTHORS_TYPE__INCLUDE, self::AUTHORS_TYPE__EXCLUDE );
 		if ( ! in_array( $authors_type, $available_types, true ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		if ( self::AUTHORS_TYPE__DISABLED === $authors_type ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$sanitized_setting = array(
@@ -83,7 +83,7 @@ class Author extends Query_Setting {
 		$sanitized_authors_ids = implode( ';', $sanitized_authors_ids );
 
 		if ( empty( $sanitized_authors_ids ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$sanitized_setting[ self::AUTHORS_IDS__SETTING_NAME ] = $sanitized_authors_ids;
@@ -102,8 +102,8 @@ class Author extends Query_Setting {
 	 * @param array $query_settings All query settings, these settings are sanitized.
 	 * @return array The new arguments modified.
 	 */
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		$settings     = $query_settings[ self::get_setting_name() ];
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		$settings     = $query_settings[ $this->get_setting_name() ];
 		$authors_type = $settings[ self::AUTHORS_TYPE__SETTING_NAME ];
 
 		if ( self::AUTHORS_TYPE__DISABLED === $authors_type ) {

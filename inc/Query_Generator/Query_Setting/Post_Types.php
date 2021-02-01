@@ -15,18 +15,18 @@ class Post_Types extends Query_Setting {
 
 	const SELECTED_TYPES__SETTING_NAME = 'selected_post_types';
 
-	public static function get_setting_name() {
+	public function get_setting_name() {
 		return 'post_types';
 	}
 
-	public static function sanitize_setting( $setting ) {
+	public function sanitize_setting( $setting ) {
 		if ( ! isset( $setting[ self::SELECTED_TYPES__SETTING_NAME ] ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 		$selected_types = $setting[ self::SELECTED_TYPES__SETTING_NAME ];
 
 		if ( ! is_array( $selected_types ) ) {
-			return self::get_default_setting();
+			return $this->get_default_setting();
 		}
 
 		$available_post_types = self::get_available_types( 'names' );
@@ -41,7 +41,7 @@ class Post_Types extends Query_Setting {
 		return array( self::SELECTED_TYPES__SETTING_NAME => $sanitized_post_types );
 	}
 
-	public static function get_default_setting() {
+	public function get_default_setting() {
 		if ( post_type_exists( 'post' ) ) {
 			return array(
 				self::SELECTED_TYPES__SETTING_NAME => array( 'post' ),
@@ -73,9 +73,9 @@ class Post_Types extends Query_Setting {
 		return get_post_types( $args, 'objects' );
 	}
 
-	public static function add_query_arg( $previous_query_args, $query_settings ) {
-		if ( ! empty( $query_settings[ self::get_setting_name() ][ self::SELECTED_TYPES__SETTING_NAME ] ) ) {
-			$post_types = $query_settings[ self::get_setting_name() ][ self::SELECTED_TYPES__SETTING_NAME ];
+	public function add_query_arg( $previous_query_args, $query_settings ) {
+		if ( ! empty( $query_settings[ $this->get_setting_name() ][ self::SELECTED_TYPES__SETTING_NAME ] ) ) {
+			$post_types = $query_settings[ $this->get_setting_name() ][ self::SELECTED_TYPES__SETTING_NAME ];
 		} else {
 			return $previous_query_args;
 		}

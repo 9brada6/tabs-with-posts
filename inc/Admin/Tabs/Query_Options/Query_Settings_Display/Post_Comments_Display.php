@@ -22,7 +22,8 @@ class Post_Comments_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$hidden_class = '';
+		$comments_class = $this->get_setting_class();
+		$hidden_class   = '';
 		if ( 'NA' === $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ) {
 			$hidden_class = ' twrpb-hidden';
 		}
@@ -33,7 +34,7 @@ class Post_Comments_Display extends Query_Setting_Display {
 					<select
 						id="<?php $this->bem_class( 'js-comparator' ); ?>"
 						class="<?php $this->bem_class( 'comparator' ); ?>"
-						name="<?= esc_attr( Post_Comments::get_setting_name() . '[' . Post_Comments::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
+						name="<?= esc_attr( $comments_class->get_setting_name() . '[' . Post_Comments::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
 					>
 						<option value="NA" <?php selected( 'NA', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
 							<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
@@ -57,7 +58,7 @@ class Post_Comments_Display extends Query_Setting_Display {
 						class="<?php $this->bem_class( 'num_comments' ); ?><?= esc_attr( $hidden_class ); ?>"
 						type="number" min="0" step="1"
 						placeholder="<?= _x( 'Number of comments', 'backend', 'twrp' ); ?>"
-						name="<?= esc_attr( Post_Comments::get_setting_name() . '[' . Post_Comments::COMMENTS_VALUE_NAME . ']' ); ?>"
+						name="<?= esc_attr( $comments_class->get_setting_name() . '[' . Post_Comments::COMMENTS_VALUE_NAME . ']' ); ?>"
 						value="<?= esc_attr( $current_setting[ Post_Comments::COMMENTS_VALUE_NAME ] ); ?>"
 					/>
 				</div>

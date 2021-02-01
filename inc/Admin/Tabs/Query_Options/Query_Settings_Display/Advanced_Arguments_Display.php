@@ -23,8 +23,9 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 	}
 
 	public function display_setting( $current_setting ) {
-		$selector_name = Advanced_Arguments::get_setting_name() . '[' . Advanced_Arguments::IS_APPLIED__SETTING_NAME . ']';
-		$textarea_name = Advanced_Arguments::get_setting_name() . '[' . Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME . ']';
+		$arguments_settings_class = $this->get_setting_class();
+		$selector_name = $arguments_settings_class->get_setting_name() . '[' . Advanced_Arguments::IS_APPLIED__SETTING_NAME . ']';
+		$textarea_name = $arguments_settings_class->get_setting_name() . '[' . Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME . ']';
 
 		$advanced_args  = $current_setting[ Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME ];
 		$selector_value = $current_setting[ Advanced_Arguments::IS_APPLIED__SETTING_NAME ];
