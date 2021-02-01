@@ -91,7 +91,9 @@ abstract class Tab_Style {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_tab_style_name();
+	public static function get_tab_style_name() {
+		return _x( 'Not set', 'backend', 'twrp' );
+	}
 
 	/**
 	 * Template function that is called first.

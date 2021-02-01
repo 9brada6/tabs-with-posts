@@ -60,7 +60,7 @@ class Post_Views {
 		$plugins = self::get_plugin_classes();
 
 		foreach ( $plugins as $plugin_class ) {
-			if ( Simple_Utils::method_exist_and_is_public( $plugin_class, 'is_installed_and_can_be_used' ) && $plugin_class::is_installed_and_can_be_used() === true ) {
+			if ( Simple_Utils::method_exist_and_is_public( $plugin_class, 'is_installed_and_can_be_used' ) && $plugin_class->is_installed_and_can_be_used() === true ) {
 				self::$used_plugin_class = $plugin_class;
 				return self::$used_plugin_class;
 			}
@@ -82,7 +82,7 @@ class Post_Views {
 		$plugin_classes = self::get_plugin_classes();
 
 		foreach ( $plugin_classes as $plugin_class ) {
-			$query_args = $plugin_class::modify_query_arg_if_necessary( $query_args );
+			$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
 		}
 
 		return $query_args;
@@ -108,7 +108,7 @@ class Post_Views {
 			return false;
 		}
 
-		$post_views = $plugin_class::get_views( $post_id );
+		$post_views = $plugin_class->get_views( $post_id );
 		return $post_views;
 	}
 

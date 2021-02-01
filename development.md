@@ -36,7 +36,7 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Class_Children_Order_Trait in PHP 5.6 we cannot have static and abstract in a trait(make interface?).
+- Change all php 5.6 incompatible abstract static methods.
 
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.

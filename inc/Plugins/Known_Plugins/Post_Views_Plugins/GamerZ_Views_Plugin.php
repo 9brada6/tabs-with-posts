@@ -14,33 +14,33 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
 	#region -- Plugin Meta
 
-	public static function get_plugin_title() {
+	public function get_plugin_title() {
 		return 'WP-PostViews';
 	}
 
-	public static function get_plugin_author() {
+	public function get_plugin_author() {
 		return "Lester 'GaMerZ' Chan";
 	}
 
-	public static function get_last_tested_plugin_version() {
+	public function get_last_tested_plugin_version() {
 		return '1.76.1';
 	}
 
-	public static function get_plugin_file_relative_path() {
+	public function get_plugin_file_relative_path() {
 		return 'wp-postviews/wp-postviews.php';
 	}
 
 	#endregion -- Plugin Meta
 
-	public static function support_get_views() {
+	public function support_get_views() {
 		return true;
 	}
 
-	public static function support_order_posts() {
+	public function support_order_posts() {
 		return true;
 	}
 
-	public static function is_installed_and_can_be_used() {
+	public function is_installed_and_can_be_used() {
 		if ( ! function_exists( 'the_views' ) ) {
 			return false;
 		}
@@ -52,13 +52,13 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 		return true;
 	}
 
-	public static function get_views( $post_id ) {
+	public function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
 			return false;
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! self::is_installed_and_can_be_used() ) {
+		if ( ! $this->is_installed_and_can_be_used() ) {
 			return false;
 		}
 
@@ -71,7 +71,7 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 		return 0;
 	}
 
-	public static function modify_query_arg_if_necessary( $query_args ) {
+	public function modify_query_arg_if_necessary( $query_args ) {
 
 		// todo.
 		$orderby_value = 'todo';

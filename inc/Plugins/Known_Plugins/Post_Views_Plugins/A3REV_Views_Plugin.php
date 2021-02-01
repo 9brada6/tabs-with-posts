@@ -16,39 +16,39 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 
 	#region -- Plugin Meta
 
-	public static function get_plugin_title() {
+	public function get_plugin_title() {
 		return 'Page View Count';
 	}
 
-	public static function get_plugin_author() {
+	public function get_plugin_author() {
 		return 'a3rev Software';
 	}
 
-	public static function get_last_tested_plugin_version() {
+	public function get_last_tested_plugin_version() {
 		return '2.4.3';
 	}
 
 	#endregion -- Plugin Meta
 
-	public static function support_get_views() {
+	public function support_get_views() {
 		return true;
 	}
 
-	public static function support_order_posts() {
+	public function support_order_posts() {
 		return false;
 	}
 
-	public static function is_installed_and_can_be_used() {
+	public function is_installed_and_can_be_used() {
 		return Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
 	}
 
-	public static function get_views( $post_id ) {
+	public function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
 			return 0;
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! self::is_installed_and_can_be_used() ) {
+		if ( ! $this->is_installed_and_can_be_used() ) {
 			return 0;
 		}
 
@@ -65,11 +65,11 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		return 0;
 	}
 
-	public static function modify_query_arg_if_necessary( $query_args ) {
+	public function modify_query_arg_if_necessary( $query_args ) {
 		return $query_args;
 	}
 
-	public static function get_plugin_file_relative_path() {
+	public function get_plugin_file_relative_path() {
 		return 'page-views-count/page-views-count.php';
 	}
 

@@ -16,19 +16,19 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 
 	#region -- Plugin Meta
 
-	public static function get_plugin_title() {
+	public function get_plugin_title() {
 		return 'Post Views Counter';
 	}
 
-	public static function get_plugin_author() {
+	public function get_plugin_author() {
 		return 'Digital Factory';
 	}
 
-	public static function get_last_tested_plugin_version() {
+	public function get_last_tested_plugin_version() {
 		return '1.3.2';
 	}
 
-	public static function get_plugin_file_relative_path() {
+	public function get_plugin_file_relative_path() {
 		return 'post-views-counter/post-views-counter.php';
 	}
 
@@ -40,7 +40,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	 *
 	 * @return bool
 	 */
-	public static function support_get_views() {
+	public function support_get_views() {
 		return true;
 	}
 
@@ -49,21 +49,21 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	 *
 	 * @return bool
 	 */
-	public static function support_order_posts() {
+	public function support_order_posts() {
 		return true;
 	}
 
-	public static function is_installed_and_can_be_used() {
+	public function is_installed_and_can_be_used() {
 		return function_exists( 'pvc_get_post_views' );
 	}
 
-	public static function get_views( $post_id ) {
+	public function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
 			return false;
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! self::is_installed_and_can_be_used() ) {
+		if ( ! $this->is_installed_and_can_be_used() ) {
 			return false;
 		}
 
@@ -89,7 +89,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	 * will appear as a key in 'orderby' parameter.
 	 * @return array
 	 */
-	public static function modify_query_arg_if_necessary( $query_args ) {
+	public function modify_query_arg_if_necessary( $query_args ) {
 		// todo.
 		if ( ! isset( $query_args['orderby']['todo'] ) ) {
 			return $query_args;

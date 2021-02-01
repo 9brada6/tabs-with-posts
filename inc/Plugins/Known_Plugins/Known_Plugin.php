@@ -20,28 +20,28 @@ abstract class Known_Plugin {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_plugin_title();
+	abstract public function get_plugin_title();
 
 	/**
 	 * Get the author of the plugin.
 	 *
 	 * @return string
 	 */
-	abstract public static function get_plugin_author();
+	abstract public function get_plugin_author();
 
 	/**
 	 * Get the current version of the plugin.
 	 *
 	 * @return string|false False in case the plugin is not installed.
 	 */
-	public static function get_plugin_version() {
+	public function get_plugin_version() {
 		$plugins = get_plugins();
 
 		if ( ! Simple_Utils::method_exist_and_is_public( get_called_class(), 'get_plugin_file_relative_path' ) ) {
 			return false;
 		}
 
-		$plugin_file = static::get_plugin_file_relative_path(); // @phan-suppress-current-line PhanAbstractStaticMethodCallInStatic
+		$plugin_file = $this->get_plugin_file_relative_path();
 		if ( ! isset( $plugins[ $plugin_file ]['Version'] ) ) {
 			return false;
 		}
@@ -54,14 +54,14 @@ abstract class Known_Plugin {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_last_tested_plugin_version();
+	abstract public function get_last_tested_plugin_version();
 
 	/**
 	 * Get the plugin avatar src.
 	 *
 	 * @return string
 	 */
-	public static function get_plugin_avatar_src() {
+	public function get_plugin_avatar_src() {
 		return Directory_Utils::get_plugin_avatar_src( get_called_class() );
 	}
 
@@ -70,13 +70,13 @@ abstract class Known_Plugin {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_plugin_file_relative_path();
+	abstract public function get_plugin_file_relative_path();
 
 	/**
 	 * Whether or not the plugin is installed.
 	 *
 	 * @return bool
 	 */
-	abstract public static function is_installed_and_can_be_used();
+	abstract public function is_installed_and_can_be_used();
 
 }

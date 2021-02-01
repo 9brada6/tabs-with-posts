@@ -70,20 +70,20 @@ class Documentation_Tab extends Admin_Menu_Tab {
 		?>
 		<div class="twrpb-plugins-support__plugin">
 			<div class="twrpb-plugins-support__avatar-wrapper">
-				<img src="<?= esc_url( $plugin::get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend image alt', 'twrp' ) ); ?>"/>
+				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend image alt', 'twrp' ) ); ?>"/>
 			</div>
 
 			<div class="twrpb-plugins-support__meta-wrapper">
-				<h3 class="twrpb-plugins-support__plugin-title"><?= esc_html( $plugin::get_plugin_title() ); ?></h3>
+				<h3 class="twrpb-plugins-support__plugin-title"><?= esc_html( $plugin->get_plugin_title() ); ?></h3>
 
 				<p class="twrpb-plugins-support__plugin-author-wrap">
-					<?= _x( 'Author:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin::get_plugin_author() ); ?>
+					<?= _x( 'Author:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin->get_plugin_author() ); ?>
 				</p>
 
 				<p class="twrpb-plugins-support__plugin-version-wrap">
 					<?php
 					echo _x( 'Installed Version:', 'backend', 'twrp' ) . ' ';
-					$plugin_version = $plugin::get_plugin_version();
+					$plugin_version = $plugin->get_plugin_version();
 					if ( false === $plugin_version ) {
 						echo '<span class="twrpb-plugins-support__not-installed-text">';
 						echo _x( 'Not Installed', 'backend', 'twrp' );
@@ -91,7 +91,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 					} else {
 						echo esc_html( $plugin_version );
 
-						if ( false === $plugin::is_installed_and_can_be_used() ) {
+						if ( false === $plugin->is_installed_and_can_be_used() ) {
 							echo '<span class="twrpb-plugins-support__not-active-text">';
 							echo ' (' . _x( 'Not Active', 'backend', 'twrp' ) . ')';
 							echo '</span>';
@@ -105,7 +105,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 				</p>
 
 				<p class="twrpb-plugins-support__plugin-tested-version-wrap">
-					<?= _x( 'Last tested version:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin::get_last_tested_plugin_version() ); ?>
+					<?= _x( 'Last tested version:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin->get_last_tested_plugin_version() ); ?>
 				</p>
 			</div>
 		</div>
