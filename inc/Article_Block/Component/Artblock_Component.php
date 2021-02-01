@@ -81,7 +81,7 @@ class Artblock_Component {
 	/**
 	 * Variable that holds all the component settings classes needed.
 	 *
-	 * @var array
+	 * @var array<Component_Setting>
 	 */
 	protected $setting_classes;
 
@@ -137,11 +137,11 @@ class Artblock_Component {
 
 		foreach ( $component_setting_classes as $component_class ) {
 			$value = null;
-			if ( isset( $this->settings[ $component_class::get_key_name() ] ) ) {
-				$value = $this->settings[ $component_class::get_key_name() ];
+			if ( isset( $this->settings[ $component_class->get_key_name() ] ) ) {
+				$value = $this->settings[ $component_class->get_key_name() ];
 			}
 
-			$component_class::display_setting( $prefix_id, $prefix_name, $value );
+			$component_class->display_setting( $prefix_id, $prefix_name, $value );
 		}
 	}
 
@@ -176,12 +176,12 @@ class Artblock_Component {
 
 		$sanitized_settings = array();
 		foreach ( $component_setting_classes as $setting_class ) {
-			$setting_key = $setting_class::get_key_name();
+			$setting_key = $setting_class->get_key_name();
 
 			if ( isset( $settings[ $setting_key ] ) ) {
-				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( $settings[ $setting_key ] );
+				$sanitized_settings[ $setting_key ] = $setting_class->sanitize_setting( $settings[ $setting_key ] );
 			} else {
-				$sanitized_settings[ $setting_key ] = $setting_class::sanitize_setting( null );
+				$sanitized_settings[ $setting_key ] = $setting_class->sanitize_setting( null );
 			}
 		}
 
@@ -273,8 +273,8 @@ class Artblock_Component {
 
 			$component_css = '';
 			foreach ( $components as $component ) {
-				if ( isset( $this->settings[ $component::get_key_name() ] ) && ( ! empty( $this->settings[ $component::get_key_name() ] ) ) ) {
-					$value          = $this->settings[ $component::get_key_name() ];
+				if ( isset( $this->settings[ $component->get_key_name() ] ) && ( ! empty( $this->settings[ $component->get_key_name() ] ) ) ) {
+					$value          = $this->settings[ $component->get_key_name() ];
 					$component_css .= $component->get_css( $value );
 				}
 			}

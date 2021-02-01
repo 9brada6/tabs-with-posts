@@ -9,22 +9,22 @@ use TWRP\Admin\Widget_Control\Select_Control;
  */
 class Font_Weight_Setting extends Component_Setting {
 
-	public static function get_key_name() {
+	public function get_key_name() {
 		return 'font_weight';
 	}
 
-	public static function display_setting( $prefix_id, $prefix_name, $value ) {
-		$id   = $prefix_id . '-' . self::get_key_name();
-		$name = $prefix_name . '[' . self::get_key_name() . ']';
+	public function display_setting( $prefix_id, $prefix_name, $value ) {
+		$id   = $prefix_id . '-' . $this->get_key_name();
+		$name = $prefix_name . '[' . $this->get_key_name() . ']';
 
-		Select_Control::display_setting( $id, $name, $value, self::get_control_setting_args() );
+		Select_Control::display_setting( $id, $name, $value, $this->get_control_setting_args() );
 	}
 
-	public static function sanitize_setting( $value ) {
-		return Select_Control::sanitize_setting( $value, self::get_control_setting_args() );
+	public function sanitize_setting( $value ) {
+		return Select_Control::sanitize_setting( $value, $this->get_control_setting_args() );
 	}
 
-	protected static function get_control_setting_args() {
+	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
 			'before'  => _x( 'Font weight:', 'backend; CSS unit', 'twrp' ),
@@ -45,8 +45,8 @@ class Font_Weight_Setting extends Component_Setting {
 		);
 	}
 
-	public static function get_css( $font_weight ) {
-		$control_settings = self::get_control_setting_args();
+	public function get_css( $font_weight ) {
+		$control_settings = $this->get_control_setting_args();
 		if ( isset( $control_settings['options'] ) && is_array( $control_settings['options'] ) ) {
 			$possible_values = $control_settings['options'];
 		} else {

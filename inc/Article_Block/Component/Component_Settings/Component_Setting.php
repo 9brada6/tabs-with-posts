@@ -12,7 +12,7 @@ abstract class Component_Setting {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_key_name();
+	abstract public function get_key_name();
 
 	/**
 	 * Display the component setting.
@@ -24,14 +24,14 @@ abstract class Component_Setting {
 	 * @param mixed $value The value of the control.
 	 * @return void
 	 */
-	abstract public static function display_setting( $prefix_id, $prefix_name, $value );
+	abstract public function display_setting( $prefix_id, $prefix_name, $value );
 
 	/**
 	 * Get the arguments for the control.
 	 *
 	 * @return array
 	 */
-	abstract protected static function get_control_setting_args();
+	abstract protected function get_control_setting_args();
 
 	/**
 	 * Sanitize the setting.
@@ -39,7 +39,7 @@ abstract class Component_Setting {
 	 * @param mixed $value
 	 * @return mixed
 	 */
-	abstract public static function sanitize_setting( $value );
+	abstract public function sanitize_setting( $value );
 
 	/**
 	 * Create the CSS for a given value.
@@ -47,6 +47,6 @@ abstract class Component_Setting {
 	 * @param string|int|float $value
 	 * @return string The CSS.
 	 */
-	abstract public static function get_css( $value );
+	abstract public function get_css( $value );
 
 }
