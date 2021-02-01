@@ -164,7 +164,7 @@ class Settings_Menu {
 			return $submenu_url;
 		}
 
-		$url_arg = $tab_class::get_tab_url_arg();
+		$url_arg = $tab_class->get_tab_url_arg();
 		return add_query_arg( self::TAB__URL_PARAMETER_KEY, $url_arg, $submenu_url );
 	}
 

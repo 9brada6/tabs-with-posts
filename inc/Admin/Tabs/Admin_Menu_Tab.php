@@ -29,12 +29,12 @@ abstract class Admin_Menu_Tab {
 	 *
 	 * @return string
 	 */
-	abstract public static function get_tab_url_arg();
+	abstract public function get_tab_url_arg();
 
 	/**
 	 * The tab title, it will be displayed on the tab button.
 	 *
 	 * @return string
 	 */
-	abstract public static function get_tab_title();
+	abstract public function get_tab_title();
 }

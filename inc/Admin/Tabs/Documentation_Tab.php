@@ -24,11 +24,11 @@ class Documentation_Tab extends Admin_Menu_Tab {
 		<?php
 	}
 
-	public static function get_tab_url_arg() {
+	public function get_tab_url_arg() {
 		return 'documentation';
 	}
 
-	public static function get_tab_title() {
+	public function get_tab_title() {
 		return _x( 'Documentation', 'backend', 'twrp' );
 	}
 

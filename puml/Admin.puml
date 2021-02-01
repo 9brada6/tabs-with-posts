@@ -18,7 +18,7 @@ package "TWRP\Admin -- The backend of the website" {
 	}
 
 	package "TWRP\Admin\Tabs" {
-		interface Admin_Menu_Tab <<private class>> {}
+		abstract Admin_Menu_Tab <<private class>> {}
 		class Documentation_Tab <<private class>> {}
 		class General_Settings_Tab <<private class>> {}
 		class Queries_Tab <<private class>> {}

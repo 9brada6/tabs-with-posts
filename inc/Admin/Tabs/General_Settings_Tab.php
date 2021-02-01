@@ -12,11 +12,11 @@ use TWRP\Admin\Tabs\General_Settings\General_Settings_Factory;
  */
 class General_Settings_Tab extends Admin_Menu_Tab {
 
-	public static function get_tab_url_arg() {
+	public function get_tab_url_arg() {
 		return 'general_settings';
 	}
 
-	public static function get_tab_title() {
+	public function get_tab_title() {
 		return _x( 'General Settings', 'backend', 'twrp' );
 	}
 

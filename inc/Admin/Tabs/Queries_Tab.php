@@ -72,7 +72,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	 *
 	 * @return string
 	 */
-	public static function get_tab_url_arg() {
+	public function get_tab_url_arg() {
 		return self::TAB_URL_ARG;
 	}
 
@@ -81,7 +81,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	 *
 	 * @return string
 	 */
-	public static function get_tab_title() {
+	public function get_tab_title() {
 		return _x( 'Query Posts', 'backend', 'twrp' );
 	}
 
