@@ -5,17 +5,18 @@
 	&__btns-wrapper {
 		align-items: flex-end;
 		padding: 0.5rem 5px 0 0;
-		margin: 0 0 0.5rem;
 		border-bottom: 1px solid var(--twrp-accent-color);
 	}
 
 	&__btn-item {
 		margin-bottom: -1px;
 		margin-left: 5px;
-		background-color: white;
 	}
 
-	&__btn {
+	// Increase specificity by appending:link and :visited.
+	&__btn:link,
+	&__btn:visited,
+	&__btn:active {
 		padding: 0.2rem 0.35rem 0.2rem;
 		color: var(--twrp-accent-color);
 		background-color: var(--twrp-background-color);
@@ -23,6 +24,12 @@
 		border-bottom: 1px solid transparent;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
+
+		&:hover,
+		&:focus {
+			padding-bottom: 0.2rem;
+			outline: none;
+		}
 	}
 
 	&__btn[aria-selected="false"],
@@ -33,14 +40,6 @@
 		border-color: var(--twrp-text-color);
 		border-bottom: 1px solid var(--twrp-accent-color);
 	}
-
-	/* stylelint-disable no-descending-specificity */
-	&__btn:hover,
-	&__btn:focus {
-		padding-bottom: 0.2rem;
-		outline: none;
-	}
-	/* stylelint-enable no-descending-specificity */
 
 	&__contents-wrapper {
 		background-color: var(--twrp-background-color);

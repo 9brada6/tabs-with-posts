@@ -49,9 +49,10 @@ class Post_Types_Display extends Query_Setting_Display {
 	 * @return void
 	 */
 	protected function display_post_type_setting_checkbox( $name, $label, $is_checked ) {
+		$setting_class = $this->get_setting_class();
 		$checked_attr  = $is_checked ? 'checked="checked"' : '';
 		$checkbox_id   = $this->get_bem_class( 'checkbox-' . $name );
-		$checkbox_name = 'post_types[' . Post_Types::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
+		$checkbox_name = $setting_class->get_setting_name() . '[' . Post_Types::SELECTED_TYPES__SETTING_NAME . '][' . $name . ']';
 
 		?>
 		<div class="<?php $this->bem_class( 'checkbox' ); ?> <?php $this->query_setting_checkbox_line_class(); ?>">

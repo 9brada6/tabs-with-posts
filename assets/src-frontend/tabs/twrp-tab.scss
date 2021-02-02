@@ -14,16 +14,20 @@
 		margin: 0;
 	}
 
-	&__btn {
+	// Increase specificity by appending:link and :visited.
+	&__btn:link,
+	&__btn:visited,
+	&__btn:active {
 		display: block;
 		padding: 0;
 		margin: 0;
 		font-size: 0.9rem;
 		line-height: 1.5;
+		text-decoration: none;
 	}
 
 	&__contents-wrapper {
-		padding: 0;
+		padding: 1px 0;
 		margin: 0;
 	}
 
@@ -40,5 +44,9 @@
 	// polyfill
 	[hidden="hidden"] {
 		display: none;
+	}
+
+	&.twrp-block:last-child {
+		margin-bottom: 0;
 	}
 }

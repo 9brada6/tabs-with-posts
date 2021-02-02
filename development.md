@@ -29,16 +29,14 @@ It's best to keep them updated.
 
 #### General Settings
 
-        - Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
-        - Add a diagram, and explain everything, how this package works.
-        - Change by default to include icons inline?
-        - Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
+- Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
+- Add a diagram, and explain everything, how this package works.
+- Change by default to include icons inline?
+- Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
 
 ## ✅ Todo
 
-- Post_Types_Display use get_name from the query_setting.
-- Change all php 5.6 incompatible abstract static methods.
-
+- In css, add a normal mode, and a mode that increase specificity.
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.
 
@@ -59,11 +57,6 @@ It's best to keep them updated.
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
 
 ### Various
-
-- Split all Query_Settings classes in half, and move them inside admin menu.
-- Add a way to order query settings.
-
-- Make Article_Block implementation(Simple Style) not know about Settings implementations(Display Author, Display Comments... etc).
 
 - Make sure that Jquery UI JS that we enqueue don't interfere with other jquery ui.
 

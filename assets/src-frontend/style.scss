@@ -54,9 +54,11 @@
 @import '../src-common/style';
 
 // Import the tab styles.
-@import 'tabs/twrp-tab.scss';
-@import 'tabs/twrp-tab-ss.scss';
-@import 'tabs/twrp-tab-bs.scss';
+body {
+	@import 'tabs/twrp-tab.scss';
+	@import 'tabs/twrp-tab-ss.scss';
+	@import 'tabs/twrp-tab-bs.scss';
+}
 
 // Article Blocks Styles
 @import 'article-blocks/twrp-ss';

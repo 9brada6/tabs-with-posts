@@ -4,6 +4,10 @@
 	position: relative;
 	margin-top: var(--twrp-block-margin-top);
 	margin-bottom: var(--twrp-block-margin-bottom);
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
 }
 
 .twrp-block .twrp-ss {
