@@ -236,7 +236,7 @@ abstract class Tab_Style {
 	 * @return void
 	 */
 	public function tab_class() {
-		echo 'twrp-tab ';
+		echo 'twrp-main ';
 		$this->bem_class();
 	}
 
@@ -246,6 +246,7 @@ abstract class Tab_Style {
 	 * @return void
 	 */
 	public function tab_btns_class() {
+		echo 'twrp-main__btns-wrapper ';
 		$this->bem_class( 'btns-wrapper' );
 	}
 
@@ -273,6 +274,7 @@ abstract class Tab_Style {
 	 * @return void
 	 */
 	public function tab_contents_wrapper_class() {
+		echo 'twrp-main__contents-wrapper ';
 		$this->bem_class( 'contents-wrapper' );
 	}
 
@@ -292,7 +294,7 @@ abstract class Tab_Style {
 	 * @return string
 	 */
 	protected function get_bem_base_class() {
-		return 'twrp-tab';
+		return 'twrp-main';
 	}
 
 	#endregion -- Tab Attribute Class Functions

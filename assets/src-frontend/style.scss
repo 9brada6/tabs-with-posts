@@ -10,7 +10,9 @@
 
 body:not(#twrpS) {
 	@import '../src-common/style';
+	@import 'main-framework/twrp-main';
 	@import 'main-framework/twrp-link-expand';
+	@import 'main-framework/twrp-thumbnail';
 
 	// Import the tab styles.
 	@import 'tabs/mixin-twrp-tab-clean-style.scss';
@@ -19,33 +21,4 @@ body:not(#twrpS) {
 
 	// Article Blocks Styles
 	@import 'article-blocks/twrp-ss';
-}
-
-// Use twrp-tab to have a big specificity.
-.twrp-tab {
-	.twrp-thumbnail-wrapper {
-		position: relative;
-		display: flex;
-		align-items: center;
-		width: 100%;
-		padding: 0;
-		margin: 0;
-		overflow: hidden;
-
-		&::before {
-			display: block;
-			padding-top: 56.25%;
-			content: "";
-		}
-	}
-
-	.twrp-thumbnail {
-		position: absolute;
-		left: 0;
-		width: 100%;
-		height: auto;
-		padding: 0;
-		margin: 0;
-		border: 0;
-	}
 }

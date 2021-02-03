@@ -7,10 +7,10 @@ namespace TWRP\Tabs_Creator\Tabs_Styles;
  */
 class Simple_Tabs extends Tab_Style {
 
-	const TAB_ID = 'simple_tabs';
+	const TAB_ID = 'tabs_style';
 
 	public static function get_tab_style_name() {
-		return _x( 'Simple Style', 'backend', 'twrp' );
+		return _x( 'Tabs Style', 'backend', 'twrp' );
 	}
 
 	public static function get_all_variants() {
@@ -76,7 +76,7 @@ class Simple_Tabs extends Tab_Style {
 	}
 
 	protected function get_bem_base_class() {
-		return 'twrp-tab-ss';
+		return 'twrp-tab-ts';
 	}
 
 }

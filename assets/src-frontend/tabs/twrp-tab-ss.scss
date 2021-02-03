@@ -1,4 +1,4 @@
-.twrp-tab-ss {
+.twrp-tab-ts {
 	@include twrp-tab-clean-style;
 
 	&__btns-wrapper {
@@ -29,7 +29,7 @@
 	}
 
 	&__btn[aria-selected="false"],
-	&__btn-item:not([role]):not(:first-child) .twrp-tab-ss__btn {
+	&__btn-item:not([role]):not(:first-child) .twrp-tab-ts__btn {
 		padding-bottom: 0;
 		color: var(--twrp-text-color);
 		background-color: var(--twrp-secondary-background-color);

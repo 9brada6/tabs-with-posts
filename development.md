@@ -36,8 +36,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Change css class name of twrp-tab to twrp-main
-- Change css class name of twrp-tab-ss to twrp-tab-ts(tab-style)
 - In css, add a normal mode, and a mode that increase specificity.
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.

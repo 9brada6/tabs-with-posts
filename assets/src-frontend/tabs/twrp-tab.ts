@@ -19,8 +19,8 @@ function initializeAllTabs() {
 
 // #region -- Add Active/Inactive Classes to Tab Items.
 
-const tabBtnItemActiveClass = 'twrp-tab__btn-item-active';
-const tabBtnItemInactiveClass = 'twrp-tab__btn-item-inactive';
+const tabBtnItemActiveClass = 'twrp-main__btn-item--active';
+const tabBtnItemInactiveClass = 'twrp-main__btn-item--inactive';
 
 if ( document.readyState === 'loading' ) {
 	window.addEventListener( 'DOMContentLoaded', handleAllAdditionalClasses );
