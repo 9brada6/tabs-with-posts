@@ -1,16 +1,8 @@
-// We use additional class to increase specificity, because some theme authors
-// use too general css selectors, Eg: .widget li>a.
-.twrp-block.twrp-ss {
+.twrp-ss {
 	position: relative;
 	margin-top: var(--twrp-block-margin-top);
 	margin-bottom: var(--twrp-block-margin-bottom);
 
-	&:last-of-type {
-		margin-bottom: 0;
-	}
-}
-
-.twrp-block .twrp-ss {
 	&__title {
 		position: relative;
 		display: block;
@@ -46,5 +38,9 @@
 				color: var(--twrp-accent-color);
 			}
 		}
+	}
+
+	&:last-child {
+		margin-bottom: 0;
 	}
 }

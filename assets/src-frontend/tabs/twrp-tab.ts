@@ -1,6 +1,5 @@
 import '../external/tabby/tabby_polyfill';
 import Tabby from '../external/tabby/tabby';
-import { isElement } from '../common-blocks/_twrp-utils';
 
 let tabs;
 
@@ -79,3 +78,20 @@ function updateAdditionalTabClasses( tabList: Element ) {
 }
 
 // #endregion -- Add Active/Inactive Classes to Tab Items.
+
+// #region -- Helpers.
+
+function isElement( element: unknown ): boolean {
+	return element instanceof Element || element instanceof HTMLDocument;
+}
+
+function isNodeList( nodes: any ): boolean {
+	const stringRepresentation = Object.prototype.toString.call( nodes );
+
+	return typeof nodes === 'object' &&
+        /^\[object (HTMLCollection|NodeList|Object)\]$/.test( stringRepresentation ) &&
+        nodes.hasOwnProperty( 'length' ) &&
+        ( nodes.length === 0 || ( typeof nodes[ 0 ] === 'object' && nodes[ 0 ].nodeType > 0 ) );
+}
+
+// #endregion -- Helpers.

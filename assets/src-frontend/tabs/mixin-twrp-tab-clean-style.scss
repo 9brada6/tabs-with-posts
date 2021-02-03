@@ -1,6 +1,6 @@
 // Mixin class that all tabs should implement.
 
-@mixin twrp-tab {
+@mixin twrp-tab-clean-style {
 	&__btns-wrapper {
 		display: flex;
 		padding: 0;
@@ -14,10 +14,7 @@
 		margin: 0;
 	}
 
-	// Increase specificity by appending:link and :visited.
-	&__btn:link,
-	&__btn:visited,
-	&__btn:active {
+	&__btn {
 		display: block;
 		padding: 0;
 		margin: 0;
@@ -44,9 +41,5 @@
 	// polyfill
 	[hidden="hidden"] {
 		display: none;
-	}
-
-	&.twrp-block:last-child {
-		margin-bottom: 0;
 	}
 }

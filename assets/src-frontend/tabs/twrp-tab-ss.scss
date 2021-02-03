@@ -1,6 +1,5 @@
-// Use 2 classes to increase specify.
-.twrp-tab .twrp-tab-ss {
-	@include twrp-tab;
+.twrp-tab-ss {
+	@include twrp-tab-clean-style;
 
 	&__btns-wrapper {
 		align-items: flex-end;
@@ -13,10 +12,7 @@
 		margin-left: 5px;
 	}
 
-	// Increase specificity by appending:link and :visited.
-	&__btn:link,
-	&__btn:visited,
-	&__btn:active {
+	&__btn {
 		padding: 0.2rem 0.35rem 0.2rem;
 		color: var(--twrp-accent-color);
 		background-color: var(--twrp-background-color);
