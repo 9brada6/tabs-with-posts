@@ -3,6 +3,7 @@
 
 	&__btns-wrapper {
 		flex-wrap: wrap;
+		margin-bottom: 0.25rem;
 	}
 
 	&__btn-item {
@@ -10,9 +11,9 @@
 	}
 
 	&__btn {
-		padding: 2px 6px;
-		color: var(--twrp-accent-color);
-		background-color: var(--twrp-secondary-background-color);
+		padding: 1px 0.5rem;
+		color: var(--twrp-accent-best-text-color);
+		background-color: var(--twrp-secondary-accent-color);
 		border: 1px solid var(--twrp-accent-color);
 		border-radius: 3px;
 		transition: var(--twrp-default-component-transition);
@@ -39,28 +40,21 @@
 	}
 }
 
-.twrp-tab.twrp-tab-bs--inverse-colors .twrp-tab-bs {
+.twrp-tab-bs--inverse-colors .twrp-tab-bs {
 	/* stylelint-disable-next-line no-descending-specificity */
 	&__btn {
-		color: var(--twrp-accent-best-text-color);
-		background-color: var(--twrp-accent-color);
-
-		/* stylelint-disable-next-line no-descending-specificity */
-		&:focus {
-			outline: none;
-			box-shadow: 0 0 0 2px var(--twrp-outline-accent-color);
-		}
+		color: var(--twrp-accent-color);
+		background-color: var(--twrp-secondary-background-color);
 	}
 
 	&__btn[aria-selected="false"],
 	&__btn-item:not([role]):not(:first-child) .twrp-tab-bs__btn {
-		color: var(--twrp-accent-color);
-		background-color: var(--twrp-secondary-background-color);
+		color: var(--twrp-accent-best-text-color);
+		background-color: var(--twrp-accent-color);
 
 		&:hover,
 		&:focus {
-			color: var(--twrp-accent-best-text-color);
-			background-color: var(--twrp-accent-color);
+			background-color: var(--twrp-secondary-accent-color);
 		}
 	}
 }

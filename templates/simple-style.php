@@ -12,8 +12,8 @@ if ( empty( get_the_title() ) ) {
 
 ?>
 
-<div class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
-	<a class="twrp-ss__link-expanded twrp-link-expand" href="<?php the_permalink(); ?>">
+<article class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
+	<a class="twrp-link-expand twrp-block-padding twrp-ss__link-expanded" href="<?php the_permalink(); ?>">
 		<h3 class="twrp-ss__title">
 			<?php the_title(); ?>
 		</h3>
@@ -25,7 +25,7 @@ if ( empty( get_the_title() ) ) {
 		</div>
 	<?php endif; ?>
 
-	<div class="twrp-ss__meta-wrapper">
+	<div class="twrp-block-padding twrp-ss__meta-wrapper">
 		<?php if ( $artblock->is_author_displayed() ) : ?>
 			<span class="twrp-ss__meta twrp-ss__author">
 				<?php $artblock->display_author_icon(); ?>
@@ -66,4 +66,4 @@ if ( empty( get_the_title() ) ) {
 			</span>
 		<?php endif; ?>
 	</div>
-</div>
+</article>

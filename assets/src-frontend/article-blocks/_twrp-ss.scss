@@ -1,11 +1,14 @@
 .twrp-ss {
+	@include twrp-box;
+
 	position: relative;
 	margin-top: var(--twrp-block-margin-top);
 	margin-bottom: var(--twrp-block-margin-bottom);
 
 	&__title {
+		@include twrp-box;
+
 		position: relative;
-		display: block;
 		display: -webkit-box;
 		max-height: calc(calc(var(--twrp-title-font-size) * var(--twrp-title-line-clamp)) * var(--twrp-title-line-height));
 		margin-bottom: 0.4rem;
@@ -19,19 +22,38 @@
 		-webkit-line-clamp: var(--twrp-title-line-clamp);
 	}
 
+	&__meta-wrapper {
+		@include twrp-box;
+	}
+
 	&__meta {
+		@include twrp-box;
+
+		display: inline-block;
 		margin-right: 0.4rem;
-		// This will make the numbers appear normal on fonts that by default
-		// do not have numbers vertically aligned.
 		font-variant-numeric: lining-nums;
+		font-size: 0.92rem;
 	}
 
 	&__thumbnail-wrapper {
+		@include twrp-box;
+
+		margin-bottom: 0.4rem;
+	}
+
+	&__thumbnail {
+		@include twrp-box;
+
 		margin-bottom: 0.4rem;
 	}
 
 	// Hover, Focus state
 	&__link-expanded {
+		@include twrp-box;
+		@include twrp-anchor;
+
+		color: var(--twrp-text-color);
+
 		&:hover,
 		&:focus {
 			.twrp-ss__title {

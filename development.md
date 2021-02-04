@@ -29,18 +29,37 @@ It's best to keep them updated.
 
 #### General Settings
 
-- Change twrp to twrpb classes, change also ts filename, make ts scripts to work.
-- Add a diagram, and explain everything, how this package works.
 - Change by default to include icons inline?
 - Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
 
 ## ✅ Todo
 
-- In css, add a normal mode, and a mode that increase specificity.
+- If there is a single tab, then do not display tabs, just add a widget title.
+- Generate Icon File when plugin is installed.
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.
+- Make sure that Jquery UI JS that we enqueue don't interfere with other jquery ui.
 
-### After first release
+### Query Settings
+
+- Add interaction between settings warning: post__in and ignore_sticky_posts
+will interact if they are both set. This warning should be shown only if they are both set.
+
+- Add a lot of notices in order by setting. Some ideas: if orderby comments is
+set in asc order. If only order by comments is set, then suggest to add orderby date.
+- Add in documentation examples on how to use advanced arguments and what query filters to use.
+- Order: maybe add more orders, like post__in?.
+
+### Icons
+
+- Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
+- Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
+
+### Documentation
+
+- Don't forget to add CSS specificity in documentation
+
+## 🎉 Todo: After first release
 
 - 🥇 Add taxonomy options(with post formats).
 - ➕ Add filters for all things.
@@ -56,20 +75,6 @@ It's best to keep them updated.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
 
-### Various
-
-- Make sure that Jquery UI JS that we enqueue don't interfere with other jquery ui.
-
-### Query Settings
-
-- Add interaction between settings warning: post__in and ignore_sticky_posts
-will interact if they are both set. This warning should be shown only if they are both set.
-
-- Add a lot of notices in order by setting. Some ideas: if orderby comments is
-set in asc order. If only order by comments is set, then suggest to add orderby date.
-- Add in documentation examples on how to use advanced arguments and what query filters to use.
-- Order: maybe add more orders, like post__in?.
-
 ### Plugins
 
 - Make Plugin DFactory Block Suppress filter option.
@@ -78,16 +83,6 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 - Don't know how to count site reviews ratings, maybe email for support?
 - Add each plugin, move orderby plugin indicators to classes.
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
-
-### Icons
-
-- Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
-- In tests, add coverage for each method.
-- Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
-
-### Testing
-
-- Everything needs to be tested.
 
 ## 📖 Development Documentation
 

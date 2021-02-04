@@ -10,15 +10,19 @@
 
 body:not(#twrpS) {
 	@import '../src-common/style';
-	@import 'main-framework/twrp-main';
-	@import 'main-framework/twrp-link-expand';
-	@import 'main-framework/twrp-thumbnail';
+	@import 'main-mixins/twrp-box';
+	@import 'main-mixins/twrp-anchor';
 
 	// Import the tab styles.
 	@import 'tabs/mixin-twrp-tab-clean-style.scss';
-	@import 'tabs/twrp-tab-ss.scss';
+	@import 'tabs/twrp-tab-ts.scss';
 	@import 'tabs/twrp-tab-bs.scss';
 
 	// Article Blocks Styles
 	@import 'article-blocks/twrp-ss';
+
+	// Import other helping classes.
+	@import 'main-framework/twrp-block-padding';
+	@import 'main-framework/twrp-link-expand';
+	@import 'main-framework/twrp-thumbnail';
 }
