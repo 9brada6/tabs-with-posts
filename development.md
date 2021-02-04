@@ -34,7 +34,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Maybe add an option to disable vertical padding.
 - If there is a single tab, then do not display tabs, just add a widget title.
 - Generate Icon File when plugin is installed.
 - Add more order by options in query_settings "order posts by" collapsible.

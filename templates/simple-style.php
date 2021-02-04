@@ -10,24 +10,29 @@ if ( empty( get_the_title() ) ) {
 	return;
 }
 
+$horizontal_padding_class = '';
+if ( $artblock->display_horizontal_padding() ) {
+	$horizontal_padding_class = ' twrp-block-padding';
+}
+
 ?>
 
 <article class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
-	<a class="twrp-link-expand twrp-block-padding twrp-ss__link-expanded" href="<?php the_permalink(); ?>">
+	<a class="twrp-link-expand twrp-ss__link-expanded<?= esc_attr( $horizontal_padding_class ); ?>" href="<?php the_permalink(); ?>">
 		<h3 class="twrp-ss__title">
 			<?php the_title(); ?>
 		</h3>
 	</a>
 
 	<?php if ( $artblock->thumbnail_exist_and_displayed() ) : ?>
-		<div class="twrp-block-padding twrp-ss__thumbnail-container">
+		<div class="twrp-ss__thumbnail-container<?= esc_attr( $horizontal_padding_class ); ?>">
 			<div class="twrp-thumbnail-wrapper twrp-ss__thumbnail-wrapper">
 				<?php the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) ); ?>
 			</div>
 		</div>
 	<?php endif; ?>
 
-	<div class="twrp-block-padding twrp-ss__meta-wrapper">
+	<div class="twrp-ss__meta-wrapper<?= esc_attr( $horizontal_padding_class ); ?>">
 		<?php if ( $artblock->is_author_displayed() ) : ?>
 			<span class="twrp-ss__meta twrp-ss__author">
 				<?php $artblock->display_author_icon(); ?>

@@ -13,6 +13,7 @@ use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Article_Block\Settings\Artblock_Setting;
+use TWRP\Article_Block\Settings\Horizontal_Padding_Setting;
 
 use WP_Post;
 use RuntimeException;
@@ -619,6 +620,20 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	// Todo: need to add more functions.
 
 	#endregion -- Icons
+
+	#region -- Some Setting Functions
+
+	/**
+	 * Check if the horizontal padding is displayed or not. This will work for
+	 * only the article blocks that supports this function.
+	 *
+	 * @return bool
+	 */
+	public function display_horizontal_padding() {
+		return isset( $this->settings['horizontal_padding'] ) && $this->settings['horizontal_padding'];
+	}
+
+	#endregion -- Some Setting Functions
 
 	#region -- Helper methods
 

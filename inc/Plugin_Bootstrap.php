@@ -103,6 +103,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Settings/Display_Date_Setting',
 		'Article_Block/Settings/Display_Comments_Setting',
 		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
+		'Article_Block/Settings/Horizontal_Padding_Setting',
 
 		'Article_Block/Blocks/Simple_Article',
 		'Article_Block/Blocks/Modern_Article',
