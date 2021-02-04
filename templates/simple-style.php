@@ -20,8 +20,10 @@ if ( empty( get_the_title() ) ) {
 	</a>
 
 	<?php if ( $artblock->thumbnail_exist_and_displayed() ) : ?>
-		<div class="twrp-thumbnail-wrapper twrp-ss__thumbnail-wrapper">
-			<?php the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) ); ?>
+		<div class="twrp-block-padding twrp-ss__thumbnail-container">
+			<div class="twrp-thumbnail-wrapper twrp-ss__thumbnail-wrapper">
+				<?php the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) ); ?>
+			</div>
 		</div>
 	<?php endif; ?>
 

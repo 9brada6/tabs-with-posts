@@ -22,7 +22,9 @@ body:not(#twrpS) {
 	@import 'article-blocks/twrp-ss';
 
 	// Import other helping classes.
-	@import 'main-framework/twrp-block-padding';
 	@import 'main-framework/twrp-link-expand';
+
+	// Block padding must override the thumbnail.
 	@import 'main-framework/twrp-thumbnail';
+	@import 'main-framework/twrp-block-padding';
 }

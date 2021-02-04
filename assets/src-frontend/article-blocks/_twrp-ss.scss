@@ -11,7 +11,8 @@
 		position: relative;
 		display: -webkit-box;
 		max-height: calc(calc(var(--twrp-title-font-size) * var(--twrp-title-line-clamp)) * var(--twrp-title-line-height));
-		margin-bottom: 0.4rem;
+		margin-top: 0.3rem;
+		margin-bottom: 0.2rem;
 		overflow: hidden;
 		font-size: var(--twrp-title-font-size);
 		line-height: var(--twrp-title-line-height);
@@ -24,6 +25,9 @@
 
 	&__meta-wrapper {
 		@include twrp-box;
+
+		margin-bottom: 0.3rem;
+		line-height: 1.5;
 	}
 
 	&__meta {
@@ -35,17 +39,16 @@
 		font-size: 0.92rem;
 	}
 
-	&__thumbnail-wrapper {
-		@include twrp-box;
-
-		margin-bottom: 0.4rem;
+	&__thumbnail-container {
+		margin-top: 0.3rem;
+		margin-bottom: 0.3rem;
 	}
 
-	&__thumbnail {
-		@include twrp-box;
+	/* stylelint-disable-next-line block-no-empty */
+	&__thumbnail-wrapper {}
 
-		margin-bottom: 0.4rem;
-	}
+	/* stylelint-disable-next-line block-no-empty */
+	&__thumbnail {}
 
 	// Hover, Focus state
 	&__link-expanded {
@@ -53,6 +56,7 @@
 		@include twrp-anchor;
 
 		color: var(--twrp-text-color);
+		background-color: transparent;
 
 		&:hover,
 		&:focus {
