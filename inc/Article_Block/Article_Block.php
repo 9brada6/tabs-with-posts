@@ -621,20 +621,6 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 	#endregion -- Icons
 
-	#region -- Some Setting Functions
-
-	/**
-	 * Check if the horizontal padding is displayed or not. This will work for
-	 * only the article blocks that supports this function.
-	 *
-	 * @return bool
-	 */
-	public function display_horizontal_padding() {
-		return isset( $this->settings['horizontal_padding'] ) && $this->settings['horizontal_padding'];
-	}
-
-	#endregion -- Some Setting Functions
-
 	#region -- Helper methods
 
 	/**
