@@ -24,7 +24,7 @@
 	}
 
 	&__contents-wrapper {
-		padding: 1px 0;
+		padding: 0;
 		margin: 0;
 	}
 
@@ -32,7 +32,7 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(230px, auto));
 		grid-gap: 16px;
-		padding: 0;
+		padding: 12px 0;
 		margin: 0;
 	}
 

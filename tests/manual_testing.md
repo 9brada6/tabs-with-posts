@@ -31,4 +31,4 @@ in the classes.
 7. Meta elements should have font-variant-numeric: lining-nums; to align the numbers in meta with the icons.
 8. All anchors should have the color and background color set in CSS, including in hover, focus state.
 9. Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
-10. On first/last child items of the article block, add a small margin of elements, thus if someone add a border around the article block, the margin will take the role as a padding.
+10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible.

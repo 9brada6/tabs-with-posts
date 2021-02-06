@@ -2,8 +2,6 @@
 	@include twrp-box;
 
 	position: relative;
-	margin-top: var(--twrp-block-margin-top);
-	margin-bottom: var(--twrp-block-margin-bottom);
 	overflow: hidden;
 
 	&__title {
@@ -12,7 +10,6 @@
 		position: relative;
 		display: -webkit-box;
 		max-height: calc(calc(var(--twrp-title-font-size) * var(--twrp-title-line-clamp)) * var(--twrp-title-line-height));
-		margin-top: 0.3rem;
 		margin-bottom: 0.2rem;
 		overflow: hidden;
 		font-size: var(--twrp-title-font-size);
@@ -27,7 +24,7 @@
 	&__meta-wrapper {
 		@include twrp-box;
 
-		margin-bottom: 0.3rem;
+		margin-top: 0.3rem;
 		line-height: 1.5;
 	}
 
@@ -42,7 +39,6 @@
 
 	&__thumbnail-container {
 		margin-top: 0.3rem;
-		margin-bottom: 0.3rem;
 	}
 
 	/* stylelint-disable-next-line block-no-empty */
