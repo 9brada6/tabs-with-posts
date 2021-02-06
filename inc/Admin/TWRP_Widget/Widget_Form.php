@@ -65,6 +65,7 @@ class Widget_Form {
 				$this->display_no_queries_exist();
 			} else {
 				$this->display_tab_style_options();
+				$this->display_horizontal_padding_setting();
 				$this->display_artblock_sync_settings();
 				$this->display_select_query_options();
 				$this->display_queries_settings();
@@ -129,6 +130,24 @@ class Widget_Form {
 	}
 
 	/**
+	 * Display the setting that will add a padding to the whole widget.
+	 *
+	 * @return void
+	 */
+	protected function display_horizontal_padding_setting() {
+		$id          = Widget_Utils::get_field_id( $this->widget_id, 'horizontal-padding' );
+		$option_name = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME );
+
+		$option_value = $this->get_horizontal_padding_control_args();
+		$option_value = $option_value['default'];
+		if ( array_key_exists( TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME, $this->instance_settings ) ) {
+			$option_value = $this->instance_settings[ TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME ];
+		}
+
+		Checkbox_Control::display_setting( $id, $option_name, $option_value, self::get_horizontal_padding_control_args() );
+	}
+
+	/**
 	 * Display if the query settings should be synced, or simplified.
 	 *
 	 * @return void
@@ -139,7 +158,6 @@ class Widget_Form {
 		if ( array_key_exists( TWRP_Widget::SYNC_QUERY_SETTINGS__NAME, $this->instance_settings ) && '1' !== $this->instance_settings[ TWRP_Widget::SYNC_QUERY_SETTINGS__NAME ] ) {
 			$option_value = '';
 		}
-
 		$id = Widget_Utils::get_field_id( $this->widget_id, 'js-sync-query' );
 
 		Checkbox_Control::display_setting( $id, $option_name, $option_value, self::get_query_sync_control_args() );
@@ -361,6 +379,19 @@ class Widget_Form {
 			'after'   => _x( 'Make all the tabs look the same.', 'backend', 'twrp' ),
 			'value'   => '1',
 			'default' => '1',
+		);
+	}
+
+	/**
+	 * Get the arguments to display the query sync option.
+	 *
+	 * @return array
+	 */
+	public static function get_horizontal_padding_control_args() {
+		return array(
+			'after'   => _x( 'Add horizontal padding to the widget.', 'backend', 'twrp' ),
+			'value'   => '1',
+			'default' => '',
 		);
 	}
 

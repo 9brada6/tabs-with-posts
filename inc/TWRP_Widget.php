@@ -21,6 +21,8 @@ class TWRP_Widget extends WP_Widget {
 
 	const TAB_STYLE_AND_VARIANT__NAME = 'tab_style_and_variant';
 
+	const HORIZONTAL_PADDING_SETTING__NAME = 'horizontal_padding';
+
 	const SYNC_QUERY_SETTINGS__NAME = 'sync_query_settings';
 
 	const ARTBLOCK_SELECTOR__NAME = 'article_block';

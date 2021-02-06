@@ -74,7 +74,14 @@ class Widget_Sanitization {
 	protected function sanitize_all_non_queries_widget_settings() {
 		$sanitized_settings = array();
 
-		// Sanitize sync all queries option.
+		// Sanitize widget padding option.
+		$current_setting = null;
+		if ( isset( $this->settings [ TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME ] ) ) {
+			$current_setting = $this->settings [ TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME ];
+		}
+		$sanitized_settings[ TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME ] = Checkbox_Control::sanitize_setting( $current_setting, Widget_Form::get_horizontal_padding_control_args() );
+
+		// Sanitize sync queries option.
 		$current_setting = null;
 		if ( isset( $this->settings [ TWRP_Widget::SYNC_QUERY_SETTINGS__NAME ] ) ) {
 			$current_setting = $this->settings [ TWRP_Widget::SYNC_QUERY_SETTINGS__NAME ];

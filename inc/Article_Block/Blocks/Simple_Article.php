@@ -92,9 +92,6 @@ class Simple_Article extends Article_Block {
 	public function get_artblock_settings() {
 		$query_settings = array();
 
-		$horizontal_padding_setting = new Horizontal_Padding_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings []          = $horizontal_padding_setting;
-
 		$author_setting    = new Display_Author_Setting( $this->widget_id, $this->query_id, $this->settings );
 		$query_settings [] = $author_setting;
 

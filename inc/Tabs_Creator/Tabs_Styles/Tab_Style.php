@@ -238,6 +238,7 @@ abstract class Tab_Style {
 	public function tab_class() {
 		echo 'twrp-main ';
 		$this->bem_class();
+		echo ' twrp-widget-padding';
 	}
 
 	/**
