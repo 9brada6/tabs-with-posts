@@ -56,14 +56,23 @@ abstract class Tab_Style {
 	protected static $instances_num = array();
 
 	/**
+	 * The widget instance settings.
+	 *
+	 * @var array
+	 */
+	protected $instance_settings = array();
+
+	/**
 	 * Construct the class.
 	 *
 	 * @param int $widget_id
+	 * @param array $instance_settings
 	 * @param string $variant Optional parameter.
 	 */
-	final public function __construct( $widget_id, $variant = '' ) {
-		$this->widget_id = $widget_id;
-		$this->variant   = $variant;
+	final public function __construct( $widget_id, $instance_settings, $variant = '' ) {
+		$this->widget_id         = $widget_id;
+		$this->instance_settings = $instance_settings;
+		$this->variant           = $variant;
 
 		if ( empty( self::$instances_num[ $widget_id ] ) ) {
 			self::$instances_num[ $widget_id ] = 1;
@@ -238,7 +247,12 @@ abstract class Tab_Style {
 	public function tab_class() {
 		echo 'twrp-main ';
 		$this->bem_class();
-		echo ' twrp-widget-padding';
+
+		// We added the horizontal padding class here, because if we use native
+		// title(single tab), to not add the padding to the default widget title.
+		if ( isset( $this->instance_settings['horizontal_padding'] ) && (bool) $this->instance_settings['horizontal_padding'] ) {
+			echo ' twrp-widget-padding';
+		}
 	}
 
 	/**

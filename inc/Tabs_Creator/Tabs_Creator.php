@@ -107,7 +107,7 @@ class Tabs_Creator {
 			throw new RuntimeException();
 		}
 
-		$this->tab_style = new $tab_style_class_name( $this->widget_id, $tab_variant );
+		$this->tab_style = new $tab_style_class_name( $this->widget_id, $this->instance_settings, $tab_variant );
 
 		$this->query_ids = Widget_Utils::pluck_valid_query_ids( $this->instance_settings );
 
