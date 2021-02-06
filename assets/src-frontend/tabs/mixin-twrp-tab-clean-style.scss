@@ -1,11 +1,15 @@
 // Mixin class that all tabs should implement.
 
-@mixin twrp-tab-clean-style {
+@mixin twrp-tab-clean-style($block-name) {
 	&__btns-wrapper {
 		display: flex;
 		padding: 0;
 		margin: 0;
 		list-style-type: none;
+
+		& + #{$block-name}__contents-wrapper {
+			padding-top: 10px;
+		}
 	}
 
 	&__btn-item {
@@ -32,7 +36,7 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(230px, auto));
 		grid-gap: 16px;
-		padding: 12px 0;
+		padding: 0;
 		margin: 0;
 	}
 

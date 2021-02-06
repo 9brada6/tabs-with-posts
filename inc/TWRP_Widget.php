@@ -82,9 +82,14 @@ class TWRP_Widget extends WP_Widget {
 			return;
 		}
 
-		echo $args['before_widget']; // phpcs:ignore -- No XSS.
-			$tabs_creator->display_tabs();
-		echo $args['after_widget']; // phpcs:ignore -- No XSS.
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security -- No XSS.
+		$queries_ids = explode( ';', $instance_settings['queries'] );
+		if ( 1 === count( $queries_ids ) ) {
+			$button_text = Widget_Utils::pluck_tab_button_title( $instance_settings, (int) $queries_ids[0] );
+			echo $args['before_title'] . esc_html( $button_text ) . $args['after_title']; // phpcs:ignore WordPress.Security -- No XSS.
+		}
+		$tabs_creator->display_tabs();
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security -- No XSS.
 	}
 
 	/**

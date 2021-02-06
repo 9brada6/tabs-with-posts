@@ -1,5 +1,5 @@
 .twrp-tab-bs {
-	@include twrp-tab-clean-style;
+	@include twrp-tab-clean-style('.twrp-tab-bs');
 
 	&__btns-wrapper {
 		flex-wrap: wrap;

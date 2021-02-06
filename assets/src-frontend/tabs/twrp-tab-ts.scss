@@ -1,5 +1,5 @@
 .twrp-tab-ts {
-	@include twrp-tab-clean-style;
+	@include twrp-tab-clean-style('.twrp-tab-ts');
 
 	&__btns-wrapper {
 		align-items: flex-end;
