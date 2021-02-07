@@ -35,7 +35,6 @@ It's best to keep them updated.
 ## ✅ Todo
 
 - The tabs do not work if multiple widgets are displayed on the same page.
-- Decrease column gap on smaller devices?
 - Generate Icon File when plugin is installed.
 - In widget, find what settings do not update the widget when is changed.
 Notably includes are add query and remove query.
@@ -62,6 +61,7 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 ### Documentation
 
 - Don't forget to add CSS specificity in documentation
+- Dont forget to say that tabs are not displayed when only a single tab is displayed.
 
 ## 🎉 Todo: After first release
 

@@ -3,13 +3,22 @@
 	// Select Query.
 	&__select-query-wrapper {
 		display: flex;
-		flex-wrap: wrap;
 		align-items: center;
 	}
 
 	&__select-query-to-add-text,
 	&__select-query-to-add {
 		margin-right: 8px;
+	}
+
+	&__select-query-to-add {
+		flex-shrink: 1;
+	}
+
+	// Increase specificity to overwrite WP default style.
+	&__select-query-to-add#{&}__select-query-to-add#{&}__select-query-to-add {
+		max-width: 200px;
+		max-width: clamp(130px, 220px, calc(100% - 130px));
 	}
 
 	// Selected Queries

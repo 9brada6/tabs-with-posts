@@ -111,7 +111,7 @@ class Widget_Form {
 		?>
 		<p class="<?php $this->bem_class( 'select-query-wrapper' ); ?>">
 			<span class="<?php $this->bem_class( 'select-query-to-add-text' ); ?>">
-				<?= _x( 'Select a query(tab) to add:', 'backend', 'twrp' ); ?>
+				<?= _x( 'Add tab:', 'backend', 'twrp' ); ?>
 			</span>
 
 			<select class="<?php $this->bem_class( 'select-query-to-add' ); ?>">
