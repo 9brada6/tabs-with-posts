@@ -199,6 +199,7 @@ function updateQueriesInput( widgetId: string ): void {
 	const input = widget.find( queriesInputSelector );
 	const value = queries.join( ';' );
 	input.val( value );
+	input.trigger( 'change' );
 }
 
 /**

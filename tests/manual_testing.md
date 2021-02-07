@@ -19,6 +19,10 @@
 
 - Check that each rating pack have 3 different icons, empty, half-filled, and filled.
 
+## Widget
+
+- If a setting is changed, the "Save" button becomes active, for all items.
+
 ## CSS of Article Blocks
 
 1. Each element that exist in a template file must have at least a class(BEM style).
