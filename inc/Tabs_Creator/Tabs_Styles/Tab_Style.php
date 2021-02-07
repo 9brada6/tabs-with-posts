@@ -240,6 +240,15 @@ abstract class Tab_Style {
 	#region -- Tab Attribute Class Functions
 
 	/**
+	 * Get the id of the main wrapper of tabs.
+	 *
+	 * @return void
+	 */
+	public function tabs_wrapper_id() {
+		echo esc_attr( 'twrp-main--id-' . $this->widget_id . '-instance-' . $this->additional_instance );
+	}
+
+	/**
 	 * Echo the must have classes for the tab.
 	 *
 	 * @return void

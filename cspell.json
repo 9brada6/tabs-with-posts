@@ -71,6 +71,7 @@
         "linebreak",
         "mixins",
         "ndash",
+        "nocheck",
         "nonce",
         "nums",
         "octicons",

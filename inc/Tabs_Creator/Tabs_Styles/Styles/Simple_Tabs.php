@@ -19,7 +19,7 @@ class Simple_Tabs extends Tab_Style {
 
 	public function start_tabs_wrapper() {
 		?>
-		<div class="<?php $this->tab_class(); ?>">
+		<div id="<?php $this->tabs_wrapper_id(); ?>" class="<?php $this->tab_class(); ?>">
 		<?php
 	}
 

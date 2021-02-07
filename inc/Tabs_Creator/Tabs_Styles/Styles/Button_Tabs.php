@@ -25,7 +25,7 @@ class Button_Tabs extends Tab_Style {
 		}
 
 		?>
-		<div class="<?php $this->tab_class(); ?><?= esc_attr( $additional_tab_class ); ?>">
+		<div id="<?php $this->tabs_wrapper_id(); ?>" class="<?php $this->tab_class(); ?><?= esc_attr( $additional_tab_class ); ?>">
 		<?php
 	}
 

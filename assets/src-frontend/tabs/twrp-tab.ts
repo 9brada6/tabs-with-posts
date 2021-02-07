@@ -1,7 +1,7 @@
 import '../external/tabby/tabby_polyfill';
 import Tabby from '../external/tabby/tabby';
 
-let tabs;
+const tabs: any = [];
 
 if ( document.readyState === 'loading' ) {
 	window.addEventListener( 'DOMContentLoaded', initializeAllTabs );
@@ -10,11 +10,30 @@ if ( document.readyState === 'loading' ) {
 }
 
 function initializeAllTabs() {
-	// @ts-ignore -- No Tabby type declared yet.
-	tabs = new Tabby( '[data-twrp-tabs-btns]', {
-		idPrefix: 'twrp-tabby__',
-		default: '[data-twrp-default-tab]',
-	} );
+	const allTabs = document.querySelectorAll( '[data-twrp-tabs-btns]' );
+
+	if ( allTabs.length === 0 ) {
+		return;
+	}
+
+	for ( let i = 0; i < allTabs.length; i++ ) {
+		const element = allTabs[ i ];
+		const tabsWrapper = element.closest( '.twrp-main' );
+		if ( tabsWrapper === null ) {
+			continue;
+		}
+
+		const tabId = tabsWrapper.getAttribute( 'id' );
+		const tabSelectorId = '#' + tabId + ' [data-twrp-tabs-btns]';
+
+		setTimeout( function() {
+			// @ts-ignore -- No Tabby type declared yet.
+			tabs.push( new Tabby( tabSelectorId, {
+				idPrefix: 'twrp-tabby__',
+				default: '[data-twrp-default-tab]',
+			} ) );
+		}, 0 );
+	}
 }
 
 // #region -- Add Active/Inactive Classes to Tab Items.
@@ -28,8 +47,6 @@ if ( document.readyState === 'loading' ) {
 	handleAllAdditionalClasses();
 }
 
-document.addEventListener( 'tabby', handleAdditionalActiveClassesToTabs );
-
 function handleAllAdditionalClasses() {
 	const allListTabs = document.querySelectorAll( '[data-twrp-tabs-btns]' );
 
@@ -37,6 +54,8 @@ function handleAllAdditionalClasses() {
 		updateAdditionalTabClasses( allListTabs[ i ] );
 	}
 }
+
+document.addEventListener( 'tabby', handleAdditionalActiveClassesToTabs );
 
 function handleAdditionalActiveClassesToTabs( event: Event ) {
 	const targetElement = event.target as HTMLElement;
@@ -85,6 +104,7 @@ function isElement( element: unknown ): boolean {
 	return element instanceof Element || element instanceof HTMLDocument;
 }
 
+// eslint-disable-next-line no-unused-vars
 function isNodeList( nodes: any ): boolean {
 	const stringRepresentation = Object.prototype.toString.call( nodes );
 
