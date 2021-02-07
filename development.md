@@ -34,8 +34,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Generate Icon File when plugin is installed.
-
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.
 - Make sure that Jquery UI JS that we enqueue don't interfere with other jquery ui.
@@ -58,7 +56,8 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 ### Documentation
 
 - Don't forget to add CSS specificity in documentation
-- Dont forget to say that tabs are not displayed when only a single tab is displayed.
+- Don't forget to say that tabs are not displayed when only a single tab is displayed.
+- Tell how to regenerate icons if one is not displayed.
 
 ## 🎉 Todo: After first release
 

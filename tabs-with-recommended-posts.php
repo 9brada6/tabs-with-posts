@@ -22,6 +22,11 @@ require_once __DIR__ . '/inc/Plugin_Bootstrap.php';
 Plugin_Bootstrap::include_all_files();
 
 /**
+ * Script to execute right now. Cannot wait until 'after_setup_theme' action.
+ */
+Plugin_Bootstrap::after_file_including_execute();
+
+/**
  * Initialize all the WordPress Hooks and Actions that needs to be called.
  *
  * The function called search for all classes that implements a specific trait,

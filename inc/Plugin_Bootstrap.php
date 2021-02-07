@@ -6,6 +6,8 @@
 namespace TWRP;
 
 use TWRP\Utils\Class_Retriever_Utils;
+use TWRP\CSS\Icons_CSS;
+use TWRP\Utils\Directory_Utils;
 
 /**
  * Class used to require all files needed by this plugin.
@@ -201,6 +203,23 @@ class Plugin_Bootstrap {
 		foreach ( self::$required_files as $file ) {
 			require __DIR__ . '/' . $file . '.php';
 		}
+	}
+
+	/**
+	 * Function that is executed after all this plugin files have been included.
+	 * These are things that cannot wait until 'after_setup_theme' action, that
+	 * this plugin uses to initialize classes.
+	 *
+	 * If you want to add basic actions, see After_Setup_Theme_Init_Trait.
+	 *
+	 * @return void
+	 */
+	public static function after_file_including_execute() {
+
+		// Regenerate the database and file icons, in case the plugin was
+		// previously installed.
+		$main_file_path = Directory_Utils::get_path_of_main_plugin_file();
+		register_activation_hook( $main_file_path, array( Icons_CSS::class, 'write_needed_icons_to_file_on_plugin_activation' ) );
 	}
 
 	/**

@@ -17,6 +17,7 @@ namespace TWRP\\CSS {
 
 	class Icons_CSS <<private class>> <<static collection>> <<auto-init>> {
 		+ void after_setup_theme_init()
+		+ void write_needed_icons_to_file_on_plugin_activation()
 		..
 		+ void include_needed_icons_inline()
 		+ void include_needed_icons_file()

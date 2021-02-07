@@ -46,6 +46,20 @@ class Icons_CSS {
 		add_action( 'twrp_general_before_settings_submitted', array( __CLASS__, 'write_needed_icons_on_settings_submitted' ) );
 	}
 
+	/**
+	 * When plugin is activated, we write the needed icons to the icons file,
+	 * because an old version of the database with some other icons can be
+	 * installed.
+	 *
+	 * This function should be registered with register_activation_hook() function.
+	 *
+	 * @return void
+	 */
+	public static function write_needed_icons_to_file_on_plugin_activation() {
+		self::write_needed_icons_to_file();
+		self::write_needed_icons_to_option_in_database();
+	}
+
 	#region -- Enqueue icons
 
 	/**

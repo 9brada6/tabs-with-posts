@@ -34,6 +34,11 @@ class Directory_Utils {
 	const PLUGIN_VERSION = '1.0.0';
 
 	/**
+	 * The main file name of this plugin, without .php extension.
+	 */
+	const PLUGIN_MAIN_FILE_NAME = 'tabs-with-recommended-posts';
+
+	/**
 	 * The folder name of this plugin.
 	 */
 	const PLUGIN_FOLDER_NAME = 'tabs-with-recommended-posts';
@@ -78,6 +83,15 @@ class Directory_Utils {
 	 * The file that contains only needed icons of this plugin.
 	 */
 	const NEEDED_ICONS_FILE = 'assets/svgs/needed-icons.svg';
+
+	/**
+	 * Get the path of the main plugin file.
+	 *
+	 * @return string
+	 */
+	public static function get_path_of_main_plugin_file() {
+		return self::get_plugin_directory_path() . self::PLUGIN_MAIN_FILE_NAME . '.php';
+	}
 
 	/**
 	 * Returns the path to this plugin directory.
