@@ -14,7 +14,7 @@ class Rating_Icons implements Icon_Definitions {
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_rating_icons() {
+	public static function get_definitions() {
 		$registered_rating_vectors = array(
 
 			#region -- TWRP Icons
@@ -323,7 +323,7 @@ class Rating_Icons implements Icon_Definitions {
 	 *
 	 * @return array<string,array>
 	 */
-	public static function get_definitions() {
+	public static function get_rating_packs() {
 		return array(
 
 			'twrp-hearts'      => array(

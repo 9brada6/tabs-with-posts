@@ -176,7 +176,7 @@ class Icon_Factory {
 	 * @return array<string,Icon>
 	 */
 	public static function get_rating_icons() {
-		$icons = Rating_Icons::get_rating_icons();
+		$icons = Rating_Icons::get_definitions();
 
 		$icons_classes = array();
 		foreach ( $icons as $icon_id => $icon ) {
@@ -197,7 +197,7 @@ class Icon_Factory {
 	 * @return array<string,array>
 	 */
 	public static function get_rating_packs_attr() {
-		return Rating_Icons::get_definitions();
+		return Rating_Icons::get_rating_packs();
 	}
 
 	/**
@@ -206,7 +206,7 @@ class Icon_Factory {
 	 * @return array<string,Rating_Icon_Pack>
 	 */
 	public static function get_rating_packs() {
-		$rating_packs         = Rating_Icons::get_definitions();
+		$rating_packs         = Rating_Icons::get_rating_packs();
 		$rating_packs_objects = array();
 
 		foreach ( $rating_packs as $rating_pack_id => $rating_pack ) {
@@ -237,7 +237,7 @@ class Icon_Factory {
 			Comments_Icons::get_definitions() +
 			Comments_Disabled_Icons::get_definitions() +
 			Views_Icons::get_definitions() +
-			Rating_Icons::get_rating_icons();
+			Rating_Icons::get_definitions();
 	}
 
 	/**

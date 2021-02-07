@@ -35,9 +35,7 @@ It's best to keep them updated.
 ## ✅ Todo
 
 - Generate Icon File when plugin is installed.
-- In widget, find what settings do not update the widget when is changed.
-Notably includes are add query and remove query.
-- Fix select rating pack in general settings.
+- In widget, find what settings do not update the widget when is changed. Notably includes are add query and remove query.
 
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.
