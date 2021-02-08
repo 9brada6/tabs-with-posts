@@ -34,7 +34,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Delete the generated ts/scss files that do not have _ in front in backend/frontend folder.
 - Make sure that CodeMirror will not interact with other CodeMirrors.
 - Make the default component tabs collapsible, to not show them, the options will appear to not be so many.
 - Make accordion tabs cursor pointer.
