@@ -36,7 +36,6 @@ It's best to keep them updated.
 
 - Make sure that CodeMirror will not interact with other CodeMirrors.
 - Make the default component tabs collapsible, to not show them, the options will appear to not be so many.
-- Make accordion tabs cursor pointer.
 
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.
