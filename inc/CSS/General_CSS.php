@@ -111,7 +111,14 @@ class Generate_CSS {
 		wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
 
 		// Jquery UI.
-		wp_enqueue_script( 'twrpb-jquery-ui', $backend_url . 'jquery-ui.min.js', array(), $version, true );
+		wp_enqueue_script( 'jquery-ui-accordion' );
+		wp_enqueue_script( 'jquery-ui-sortable' );
+		wp_enqueue_script( 'jquery-ui-tabs' );
+		wp_enqueue_script( 'jquery-effects-blind' );
+		// Needs to be included only on the setting page.
+		wp_enqueue_script( 'jquery-ui-autocomplete' );
+		wp_enqueue_script( 'jquery-ui-datepicker' );
+
 	}
 
 	/**

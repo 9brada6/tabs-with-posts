@@ -86,6 +86,7 @@
         "postdata",
         "postviews",
         "prepended",
+        "query",
         "queryable",
         "readonly",
         "rescan",

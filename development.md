@@ -34,9 +34,13 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- Delete the generated ts/scss files that do not have _ in front in backend/frontend folder.
+- Make sure that CodeMirror will not interact with other CodeMirrors.
+- Make the default component tabs collapsible, to not show them, the options will appear to not be so many.
+- Make accordion tabs cursor pointer.
+
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.
-- Make sure that Jquery UI JS that we enqueue don't interfere with other jquery ui.
 
 ### Query Settings
 
@@ -85,6 +89,10 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 ## 📖 Development Documentation
+
+### Assets
+
+- In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
 
 ### Tools used
 

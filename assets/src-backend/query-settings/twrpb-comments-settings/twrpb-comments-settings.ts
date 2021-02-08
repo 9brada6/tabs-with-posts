@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import 'jqueryui';
 import { hideUp, showUp } from '../../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 const selectCommentsComparator = $( '#twrpb-comments-settings__js-comparator' );

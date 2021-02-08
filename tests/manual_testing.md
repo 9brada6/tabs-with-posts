@@ -1,5 +1,9 @@
 # Manual Testing
 
+## Assets
+
+- Make sure that in the backend script, the JQuery ui widgets used are compatible with Jquery UI v11 and up.
+
 ## Query Settings Manual Testing
 
 - Test each setting, and each javascript thing that might be pop-out/hide when a setting change.

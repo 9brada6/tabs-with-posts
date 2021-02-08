@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import 'jqueryui';
 import { hideUp, showUp } from '../../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 const firstOrderGroup = $( '#twrpb-order-setting__js-first-order-group' );
