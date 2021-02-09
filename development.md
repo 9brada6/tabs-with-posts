@@ -35,10 +35,12 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
+- Add more notes on order by options in query_settings:
+    1. how ordering by search works.
+    2. On meta and meta_num, how these works.
+    3. On post__in.
 
-- Add more order by options in query_settings "order posts by" collapsible.
-- Add more notes on order by options in query_settings.
+- Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
 
 ### Query Settings
 

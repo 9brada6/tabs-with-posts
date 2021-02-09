@@ -65,7 +65,7 @@ class Post_Order_Display extends Query_Setting_Display {
 			<p id="<?php $this->bem_class( 'js-first-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
 				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $first_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
-					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_orderby_single_select_options() ); ?>
+					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_additional_first_orderby_select_options() ); ?>
 				</select>
 
 				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_first_order_type_class ); ?>" name=<?= esc_attr( $first_select_order_type_name ); ?>>

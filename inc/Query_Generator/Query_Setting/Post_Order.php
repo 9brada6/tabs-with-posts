@@ -58,17 +58,21 @@ class Post_Order extends Query_Setting {
 	 */
 	public static function get_orderby_select_options() {
 		$select_options = array(
-			'not_applied'   => _x( 'Not applied', 'backend', 'twrp' ),
-			'ID'            => _x( 'Order by post id', 'backend', 'twrp' ),
-			'author'        => _x( 'Order by author', 'backend', 'twrp' ),
-			'name'          => _x( 'Order by post slug', 'backend', 'twrp' ),
-			'type'          => _x( 'Order by post type', 'backend', 'twrp' ),
-			'date'          => _x( 'Order by date', 'backend', 'twrp' ),
-			'modified'      => _x( 'Order by last modified date', 'backend', 'twrp' ),
-			'parent'        => _x( 'Order by post/page parent id', 'backend', 'twrp' ),
-			'rand'          => _x( 'Random order', 'backend', 'twrp' ),
-			'comment_count' => _x( 'Order by number of comments', 'backend', 'twrp' ),
-			'relevance'     => _x( 'Order by searched terms', 'backend', 'twrp' ),
+			'not_applied'    => _x( 'Not applied', 'backend', 'twrp' ),
+			'ID'             => _x( 'Order by post id', 'backend', 'twrp' ),
+			'author'         => _x( 'Order by author', 'backend', 'twrp' ),
+			'title'          => _x( 'Order by title', 'backend', 'twrp' ),
+			'name'           => _x( 'Order by post slug', 'backend', 'twrp' ),
+			'type'           => _x( 'Order by post type', 'backend', 'twrp' ),
+			'date'           => _x( 'Order by date', 'backend', 'twrp' ),
+			'modified'       => _x( 'Order by last modified date', 'backend', 'twrp' ),
+			'parent'         => _x( 'Order by post/page parent id', 'backend', 'twrp' ),
+			'rand'           => _x( 'Random order', 'backend', 'twrp' ),
+			'comment_count'  => _x( 'Order by number of comments', 'backend', 'twrp' ),
+			'relevance'      => _x( 'Order by searched terms', 'backend', 'twrp' ),
+			'meta_value'     => _x( 'Order by meta value(alphabetically)', 'backend', 'twrp' ), // phpcs:ignore WordPress.DB -- No slow query.
+			'meta_value_num' => _x( 'Order by meta value(numerically)', 'backend', 'twrp' ),
+			'post__in'       => _x( 'Order by included posts', 'backend', 'twrp' ),
 		);
 
 		/**
@@ -86,7 +90,7 @@ class Post_Order extends Query_Setting {
 	 *
 	 * @return array
 	 */
-	public static function get_orderby_single_select_options() {
+	public static function get_additional_first_orderby_select_options() {
 		$select_options = array();
 
 		/**
@@ -116,7 +120,7 @@ class Post_Order extends Query_Setting {
 		$setting           = wp_parse_args( $setting, $this->get_default_setting() );
 
 		$orderby_options       = array_keys( self::get_orderby_select_options() );
-		$first_orderby_options = array_keys( self::get_orderby_single_select_options() );
+		$first_orderby_options = array_keys( self::get_additional_first_orderby_select_options() );
 
 		$order_type_options = array( 'DESC', 'ASC' );
 
@@ -135,8 +139,8 @@ class Post_Order extends Query_Setting {
 		// Sanitize orderby Settings, check if elements are valid and if one of
 		// the element in the array setting equals 'not_applied', then all
 		// elements after will also equal 'not_applied'.
-		$must_apply_next_orderby = true;
-		$foreach_iteration       = 0;
+		$do_not_apply_orderby = false;
+		$foreach_iteration    = 0;
 		foreach ( $orderby_settings_keys as $orderby_key ) {
 			$foreach_iteration++;
 			$is_valid_option = in_array( $setting[ $orderby_key ], $orderby_options, true );
@@ -145,12 +149,12 @@ class Post_Order extends Query_Setting {
 				$is_valid_option = $is_valid_option || in_array( $setting[ $orderby_key ], $first_orderby_options, true );
 			}
 
-			if ( ! $is_valid_option || ! $must_apply_next_orderby ) {
+			if ( ! $is_valid_option || $do_not_apply_orderby ) {
 				$setting[ $orderby_key ] = 'not_applied';
 			}
 
 			if ( ( 'not_applied' === $setting[ $orderby_key ] ) ) {
-				$must_apply_next_orderby = false;
+				$do_not_apply_orderby = true;
 			}
 
 			$sanitized_setting[ $orderby_key ] = $setting[ $orderby_key ];
