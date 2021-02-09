@@ -3,7 +3,7 @@
 !include ./colors.iuml
 
 package "TWRP\Admin -- The backend of the website" {
-	class Settings_Menu <<private class>> {}
+	class Settings_Menu <<public class>> {}
 
 	package "TWRP\Admin\Helpers" {
 		class Remember_Note <<private class>> {}
@@ -18,10 +18,10 @@ package "TWRP\Admin -- The backend of the website" {
 	}
 
 	package "TWRP\Admin\Tabs" {
-		abstract Admin_Menu_Tab <<private class>> {}
-		class Documentation_Tab <<private class>> {}
-		class General_Settings_Tab <<private class>> {}
-		class Queries_Tab <<private class>> {}
+		abstract Admin_Menu_Tab <<public class>> {}
+		class Documentation_Tab <<public class>> {}
+		class General_Settings_Tab <<public class>> {}
+		class Queries_Tab <<public class>> {}
 
 		package "TWRP\Admin\Tabs\Documentation" {
 			class Icons_Documentation <<private class>> {}

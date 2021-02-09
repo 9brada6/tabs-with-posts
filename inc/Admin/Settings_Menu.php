@@ -205,7 +205,7 @@ class Settings_Menu {
 	 * @return bool
 	 */
 	public static function is_tab_active( $tab_class ) {
-		if ( self::get_active_tab_arg() === $tab_class->get_tab_url_arg() ) {
+		if ( self::is_active_screen() && self::get_active_tab_arg() === $tab_class->get_tab_url_arg() ) {
 			return true;
 		}
 

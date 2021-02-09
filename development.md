@@ -35,8 +35,7 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- In gulp, do not watch every .js/.ts file.
-- Enqueue the scripts/css only on the pages they need in the backend.
+- Try to make admin_menu_tab and all other tabs private.
 - Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
 
 - Add more order by options in query_settings "order posts by" collapsible.
