@@ -81,8 +81,8 @@ class Generate_CSS {
 		wp_enqueue_style( 'twrpb-style', $backend_url . 'style.css', array(), $version, 'all' );
 
 		// CodeMirror.
-		wp_enqueue_style( 'twrpb-codemirror-style', $backend_url . 'codemirror/codemirror.css', array(), $version, 'all' );
-		wp_enqueue_style( 'twrpb-codemirror-theme', $backend_url . 'codemirror/material-darker.css', array(), $version, 'all' );
+		// Enqueue only on query page.
+		wp_enqueue_style( 'wp-codemirror' );
 
 		// Pickr.
 		wp_enqueue_style( 'twrpb-pickr-theme', $backend_url . 'pickr.min.css', array(), $version, 'all' );
@@ -99,16 +99,13 @@ class Generate_CSS {
 
 		wp_enqueue_script( 'twrpb-script', $backend_url . 'script.js', array( 'jquery', 'wp-api' ), $version, true );
 
-		// CodeMirror.
-		wp_enqueue_script( 'twrpb-codemirror-script', $backend_url . 'codemirror/codemirror.js', array(), $version, true );
-		wp_enqueue_script( 'twrpb-codemirror-css', $backend_url . 'codemirror/css.js', array(), $version, true );
-		wp_enqueue_script( 'twrpb-codemirror-javascript', $backend_url . 'codemirror/javascript.js', array(), $version, true );
-		// Need to refresh the editor when is hidden.
-		wp_enqueue_script( 'twrpb-codemirror-autorefresh', $backend_url . 'codemirror/autorefresh.js', array(), $version, true );
-
 		// Pickr.
 		wp_enqueue_script( 'twrpb-pickr', $backend_url . 'pickr.min.js', array(), $version, true );
 		wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
+
+		// CodeMirror.
+		// Needs to be included only on the setting page.
+		wp_enqueue_script( 'wp-codemirror' );
 
 		// Jquery UI.
 		wp_enqueue_script( 'jquery-ui-accordion' );

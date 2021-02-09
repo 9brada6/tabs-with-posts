@@ -34,8 +34,9 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Make sure that CodeMirror will not interact with other CodeMirrors.
-- Make the default component tabs collapsible, to not show them, the options will appear to not be so many.
+- Enqueue the scripts/css only on the pages they need in the backend.
+- Make sure that Pickr does not interact with other Pickrs. Maybe encapsulate in the global.
+- Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
 
 - Add more order by options in query_settings "order posts by" collapsible.
 - Add more notes on order by options in query_settings.

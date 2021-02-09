@@ -24,8 +24,8 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 
 	public function display_setting( $current_setting ) {
 		$arguments_settings_class = $this->get_setting_class();
-		$selector_name = $arguments_settings_class->get_setting_name() . '[' . Advanced_Arguments::IS_APPLIED__SETTING_NAME . ']';
-		$textarea_name = $arguments_settings_class->get_setting_name() . '[' . Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME . ']';
+		$selector_name            = $arguments_settings_class->get_setting_name() . '[' . Advanced_Arguments::IS_APPLIED__SETTING_NAME . ']';
+		$textarea_name            = $arguments_settings_class->get_setting_name() . '[' . Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME . ']';
 
 		$advanced_args  = $current_setting[ Advanced_Arguments::CUSTOM_ARGS__SETTING_NAME ];
 		$selector_value = $current_setting[ Advanced_Arguments::IS_APPLIED__SETTING_NAME ];
@@ -53,7 +53,7 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 				</select>
 			</div>
 
-			<div id="<?php $this->bem_class( 'textarea-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_setting_hidden_class ); ?>">
+			<div id="<?php $this->bem_class( 'textarea-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> twrpb-codemirror-material-dark<?= esc_attr( $additional_setting_hidden_class ); ?>">
 				<?php
 				$remember_note = new Remember_Note( Remember_Note::NOTE__ADVANCED_ARGS_NOTE );
 				$remember_note->display_note( $this->get_query_setting_paragraph_class() );
