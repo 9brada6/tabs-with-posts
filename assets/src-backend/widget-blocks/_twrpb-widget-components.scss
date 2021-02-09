@@ -3,8 +3,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: flex-end;
-		padding: 0.3rem 0.5rem 0;
-		margin-bottom: -1px;
+		padding: 0.5rem 0.5rem 0;
 		list-style-type: none;
 		background-color: #f1f1f1;
 		border: 1px solid gray;
@@ -12,7 +11,6 @@
 
 	&__btn-wrapper {
 		margin: 0;
-		overflow: hidden;
 	}
 
 	&__btn {
@@ -20,7 +18,6 @@
 		padding: 0.2rem 0.5rem;
 		margin: 0;
 		margin-right: 0.3rem;
-		margin-bottom: -1px;
 		font-size: 0.8rem;
 		color: black;
 		text-decoration: none;
@@ -32,6 +29,7 @@
 
 		&:hover {
 			padding: 0.3rem 0.5rem;
+			margin-top: -0.3rem;
 			color: black;
 			background-color: #fafafa;
 			border: 1px solid black;
@@ -40,23 +38,20 @@
 	}
 
 	.ui-state-active {
+		margin-bottom: -2px;
 		overflow: visible;
 	}
 
 	.ui-state-active &__btn {
 		padding: 0.3rem 0.5rem;
+		margin-top: -0.3rem;
 		background-color: white;
 	}
 
-	&__btn-active {
-		display: block;
-		padding: 0.3rem;
-		margin: 0 5px;
-		background-color: gray;
-	}
-
 	&__components {
+		position: relative;
 		padding: 1px 0.5rem;
+		background-color: white;
 		border: 1px solid gray;
 		border-top: 0;
 	}
