@@ -1,6 +1,6 @@
 import $ from 'jquery';
+import Pickr from '@simonwep/pickr';
 
-declare const Pickr: any;
 declare const TwrpPickrTranslations: any;
 
 $( createPicker );
@@ -25,10 +25,11 @@ function createPicker() {
 
 		const pickr = Pickr.create( {
 			el: element,
-			theme: 'classic',
+			theme: 'nano',
 			container: 'body',
-			default: inputVal,
+			default: String( inputVal ),
 			appClass: 'twrpb-pickr',
+			// @ts-ignore
 			i18n: translations,
 
 			swatches: [

@@ -126,7 +126,7 @@ function getBrowserify( type ) {
 	} ).transform( {
 		global: true,
 	}, 'browserify-shim' )
-		.plugin( tsify, { target: 'es5', esModuleInterop: true, lib: [ 'es2015', 'dom' ], strict: type.tsStrict } );
+		.plugin( tsify, { target: 'es5', allowJs: true, esModuleInterop: true, lib: [ 'es2015', 'dom' ], strict: type.tsStrict } );
 }
 
 function bundleBrowserify( toBundle, type ) {

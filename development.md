@@ -4,8 +4,9 @@
 
 It's best to keep them updated.
 
-- Codemirror
-- Pickr
+- Pickr -> Included by default in the backend style/scripts. Pickr class does not exist globally. The original styles are not scoped, as is hard to do and they will not change in the future. Included only in the admin area.
+- Codemirror -> Use WP default script/themes, a dark theme css is included, but is scoped inside a twrpb class. Included only in the admin area.
+- Jquery-ui -> Use WP default scripts/themes, only a datepicker css theme exist, but is scoped inside a twrpb class. Included only in the admin area.
 
 ## Article Blocks
 
@@ -34,8 +35,8 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- In gulp, do not watch every .js/.ts file.
 - Enqueue the scripts/css only on the pages they need in the backend.
-- Make sure that Pickr does not interact with other Pickrs. Maybe encapsulate in the global.
 - Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
 
 - Add more order by options in query_settings "order posts by" collapsible.

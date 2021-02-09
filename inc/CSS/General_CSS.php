@@ -83,9 +83,6 @@ class Generate_CSS {
 		// CodeMirror.
 		// Enqueue only on query page.
 		wp_enqueue_style( 'wp-codemirror' );
-
-		// Pickr.
-		wp_enqueue_style( 'twrpb-pickr-theme', $backend_url . 'pickr.min.css', array(), $version, 'all' );
 	}
 
 	/**
@@ -99,8 +96,7 @@ class Generate_CSS {
 
 		wp_enqueue_script( 'twrpb-script', $backend_url . 'script.js', array( 'jquery', 'wp-api' ), $version, true );
 
-		// Pickr.
-		wp_enqueue_script( 'twrpb-pickr', $backend_url . 'pickr.min.js', array(), $version, true );
+		// Pickr Translations.
 		wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
 
 		// CodeMirror.
