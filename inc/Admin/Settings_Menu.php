@@ -3,6 +3,7 @@
 namespace TWRP\Admin;
 
 use TWRP\Admin\Tabs\Admin_Menu_Tab;
+use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
@@ -205,6 +206,20 @@ class Settings_Menu {
 	 * @return bool
 	 */
 	public static function is_tab_active( $tab_class ) {
+		if ( self::is_active_screen() && self::get_active_tab_arg() === $tab_class->get_tab_url_arg() ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Whether or not the query settings tab is active.
+	 *
+	 * @return bool
+	 */
+	public static function is_query_settings_tab_active() {
+		$tab_class = new Queries_Tab();
 		if ( self::is_active_screen() && self::get_active_tab_arg() === $tab_class->get_tab_url_arg() ) {
 			return true;
 		}

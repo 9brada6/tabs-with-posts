@@ -35,7 +35,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Try to make admin_menu_tab and all other tabs private.
 - Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
 
 - Add more order by options in query_settings "order posts by" collapsible.
@@ -62,6 +61,15 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 - Don't forget to say that tabs are not displayed when only a single tab is displayed.
 - Tell how to regenerate icons if one is not displayed.
 
+### Plugins
+
+- Make Plugin DFactory Block Suppress filter option.
+- GamerZ/BlazK: Sort by most rated/unrated posts.
+- Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
+- Don't know how to count site reviews ratings, maybe email for support?
+- Add each plugin, move orderby plugin indicators to classes.
+- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
+
 ## 🎉 Todo: After first release
 
 - 🥇 Add taxonomy options(with post formats).
@@ -77,15 +85,6 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
-
-### Plugins
-
-- Make Plugin DFactory Block Suppress filter option.
-- GamerZ/BlazK: Sort by most rated/unrated posts.
-- Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
-- Don't know how to count site reviews ratings, maybe email for support?
-- Add each plugin, move orderby plugin indicators to classes.
-- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 ## 📖 Development Documentation
 

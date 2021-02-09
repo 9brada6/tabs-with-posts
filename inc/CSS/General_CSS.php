@@ -3,7 +3,6 @@
 namespace TWRP\CSS;
 
 use TWRP\Admin\Settings_Menu;
-use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Database\General_Options;
 
 use TWRP\Utils\Color_Utils;
@@ -239,6 +238,6 @@ class Generate_CSS {
 	 * @return bool
 	 */
 	protected static function is_query_tab_displayed() {
-		return Settings_Menu::is_tab_active( new Queries_Tab() );
+		return Settings_Menu::is_query_settings_tab_active();
 	}
 }
