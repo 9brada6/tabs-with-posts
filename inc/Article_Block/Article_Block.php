@@ -171,7 +171,6 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		<h5 class="twrpb-widget-form__query-description-title">
 			<?= _x( 'Change component CSS:', 'backend', 'twrp' ); ?>
 		</h5>
-		<hr class="twrpb-widget-form__style-separator">
 		<?php
 
 		// Display the components settings.
