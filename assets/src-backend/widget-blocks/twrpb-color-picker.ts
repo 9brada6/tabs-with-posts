@@ -17,7 +17,7 @@ function createPicker() {
 	colorPickers.each( function() {
 		const element: any = this;
 		const input = $( element ).parent().find( 'input' );
-		let inputVal = input.val();
+		let inputVal = String( input.val() );
 
 		if ( ! inputVal ) {
 			inputVal = null;
@@ -25,9 +25,9 @@ function createPicker() {
 
 		const pickr = Pickr.create( {
 			el: element,
-			theme: 'nano',
+			theme: 'monolith',
 			container: 'body',
-			default: String( inputVal ),
+			default: inputVal,
 			appClass: 'twrpb-pickr',
 			// @ts-ignore
 			i18n: translations,
@@ -59,7 +59,7 @@ function createPicker() {
 				// Input / output Options
 				interaction: {
 					input: true,
-					cancel: true,
+					cancel: false,
 					clear: true,
 					save: true,
 				},

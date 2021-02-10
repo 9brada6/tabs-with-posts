@@ -76,27 +76,26 @@
 .pcr-app .pcr-selection .pcr-color-chooser:active,
 .pcr-app .pcr-selection .pcr-color-opacity:active,
 .pcr-app .pcr-selection .pcr-color-palette:active { cursor: grabbing; cursor: -webkit-grabbing; }
-.pcr-app[data-theme=nano] { width: 14.25em; max-width: 95vw; }
-.pcr-app[data-theme=nano] .pcr-swatches { padding: 0 0.6em; margin-top: 0.6em; }
-.pcr-app[data-theme=nano] .pcr-interaction { padding: 0 0.6em 0.6em; }
-.pcr-app[data-theme=nano] .pcr-selection { display: grid; grid-template-rows: 5fr auto auto; grid-template-columns: 1fr 4fr; grid-gap: 0.6em; align-items: center; align-self: flex-start; width: 100%; height: 10.5em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-preview { display: flex; flex-direction: row; grid-area: 2/1/4/1; justify-content: center; width: 100%; height: 100%; margin-left: 0.6em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-preview .pcr-last-color { display: none; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-preview .pcr-current-color { position: relative; width: 2em; height: 2em; overflow: hidden; background: currentColor; border-radius: 50em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-preview .pcr-current-color::before { position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; content: ""; background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>'); background-size: 0.5em; border-radius: 0.15em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-palette { z-index: 1; grid-area: 1/1/2/3; width: 100%; height: 100%; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-palette .pcr-palette { width: 100%; height: 100%; border-radius: 0.15em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-palette .pcr-palette::before { position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; content: ""; background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>'); background-size: 0.5em; border-radius: 0.15em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-chooser { grid-area: 2/2/2/2; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-opacity { grid-area: 3/2/3/2; }
+.pcr-app[data-theme=monolith] { width: 14.25em; max-width: 95vw; padding: 0.8em; }
+.pcr-app[data-theme=monolith] .pcr-selection { display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview { position: relative; z-index: 1; display: flex; flex-direction: row; justify-content: space-between; width: 100%; height: 1em; margin-bottom: 0.5em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview::before { position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; content: ""; background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>'); background-size: 0.5em; border-radius: 0.15em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-last-color { z-index: 2; cursor: pointer; border-radius: 0.15em 0 0 0.15em; transition: background-color 0.3s, box-shadow 0.3s; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-current-color { border-radius: 0 0.15em 0.15em 0; }
 
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-chooser,
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-opacity { height: 0.5em; margin: 0 0.6em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-current-color,
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-preview .pcr-last-color { width: 50%; height: 100%; background: currentColor; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-palette { z-index: 1; width: 100%; height: 8em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-palette .pcr-palette { width: 100%; height: 100%; border-radius: 0.15em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-palette .pcr-palette::before { position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; content: ""; background: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>'); background-size: 0.5em; border-radius: 0.15em; }
 
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-chooser .pcr-picker,
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-opacity .pcr-picker { top: 50%; transform: translateY(-50%); }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser,
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity { height: 0.5em; margin-top: 0.75em; }
 
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-chooser .pcr-slider,
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-opacity .pcr-slider { flex-grow: 1; border-radius: 50em; }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-chooser .pcr-slider { background: linear-gradient(90deg, red, #ff0, #0f0, #0ff, #00f, #f0f, red); }
-.pcr-app[data-theme=nano] .pcr-selection .pcr-color-opacity .pcr-slider { background: linear-gradient(90deg, transparent, #000), url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>'); background-size: 100%, 0.25em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser .pcr-picker,
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity .pcr-picker { top: 50%; transform: translateY(-50%); }
+
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser .pcr-slider,
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity .pcr-slider { flex-grow: 1; border-radius: 50em; }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-chooser .pcr-slider { background: linear-gradient(90deg, red, #ff0, #0f0, #0ff, #00f, #f0f, red); }
+.pcr-app[data-theme=monolith] .pcr-selection .pcr-color-opacity .pcr-slider { background: linear-gradient(90deg, transparent, #000), url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 2"><path fill="white" d="M1,0H2V1H1V0ZM0,1H1V2H0V1Z"/><path fill="gray" d="M0,0H1V1H0V0ZM1,1H2V2H1V1Z"/></svg>'); background-size: 100%, 0.25em; }

@@ -35,7 +35,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Change Pickr theme from nano to classic or see what is displayed the nicest.
 - Add more notes on order by options in query_settings:
     1. How ordering by search works.
     2. On meta and meta_num, how these works.
