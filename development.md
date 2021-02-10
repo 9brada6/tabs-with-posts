@@ -35,7 +35,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Widget tabs, add a button on tabs that lets them scroll vertically.
 - On close/open/change tabs, make the height adjust dinamically with a nice effect.
 
 - Change Pickr theme from nano to classic or see what is displayed the nicest.

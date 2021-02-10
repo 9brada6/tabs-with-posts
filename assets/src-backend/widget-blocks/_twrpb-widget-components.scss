@@ -1,4 +1,6 @@
 .twrpb-widget-components {
+	// margin: 0 -0.5rem;
+
 	&__tab-buttons {
 		display: flex;
 		flex-wrap: wrap;
@@ -6,53 +8,42 @@
 		padding: 0.5rem 0.5rem 0;
 		list-style-type: none;
 		background-color: #f1f1f1;
-		border: 1px solid gray;
+		border: 1px solid #ccc;
 	}
 
 	&__btn-wrapper {
-		margin: 0;
+		margin: 0 0.5rem 0.5rem 0;
 	}
 
 	&__btn {
 		display: block;
-		padding: 0.2rem 0.5rem;
-		margin: 0;
-		margin-right: 0.3rem;
-		font-size: 0.8rem;
-		color: black;
+		padding: 0.15rem 0.6rem;
+		font-size: 0.9rem;
+		color: #eee;
 		text-decoration: none;
-		background-color: #f4f4f4;
-		border: 1px solid gray;
-		border-bottom: 0;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
+		background-color: #777;
+		border: 1px solid #777;
+		border-radius: 2px;
+		transition: color 250ms ease, background-color 250ms ease;
 
 		&:hover {
-			padding: 0.3rem 0.5rem;
-			margin-top: -0.3rem;
-			color: black;
-			background-color: #fafafa;
-			border: 1px solid black;
-			border-bottom: 0;
+			color: white;
+			background-color: #333;
 		}
 	}
 
-	.ui-state-active {
-		margin-bottom: -2px;
-		overflow: visible;
-	}
-
 	.ui-state-active &__btn {
-		padding: 0.3rem 0.5rem;
-		margin-top: -0.3rem;
-		background-color: white;
+		color: white;
+		background-color: #333;
 	}
 
 	&__components {
 		position: relative;
-		padding: 1px 0.5rem;
+		padding: 0 0.5rem;
+		// Keep margins inside.
+		overflow: auto;
 		background-color: white;
-		border: 1px solid gray;
+		border: 1px solid #ccc;
 		border-top: 0;
 	}
 }
