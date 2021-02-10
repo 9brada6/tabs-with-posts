@@ -7,12 +7,21 @@ $( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', creat
 const animationDuration = 250;
 
 function createWidgetTabs() {
-	$( '.twrpb-widget-components' ).tabs( {
-		active: getActiveTab(),
-		collapsible: true,
-		show: { effect: 'slideDown', duration: animationDuration },
-		hide: { effect: 'slideUp', duration: animationDuration },
-		beforeActivate: changeTabsAnimation,
+	$( '.twrpb-widget-components' ).each( function( index, element ) {
+		const jQueryElement = $( element );
+
+		let tabActive: number|boolean = false;
+		if ( componentsModified( jQueryElement ) ) {
+			tabActive = 0;
+		}
+
+		jQueryElement.tabs( {
+			active: tabActive,
+			collapsible: true,
+			show: { effect: 'slideDown', duration: animationDuration },
+			hide: { effect: 'slideUp', duration: animationDuration },
+			beforeActivate: changeTabsAnimation,
+		} );
 	} );
 }
 
@@ -68,7 +77,28 @@ function makePanelsHeightAnimatable( oldPanel, newPanel ) {
 	}, ( animationDuration * 2 ) );
 }
 
-// todo:
-function getActiveTab() {
+/**
+ * Check if the settings inside a components are modified from the defaults.
+ * It works on input of type hidden, number, and select.
+ */
+function componentsModified( element: JQuery ) {
+	const components = element.find( '.twrpb-widget-components__component-wrapper' );
+	const settingInputs = components.find( 'input, select' );
+
+	for ( let i = 0; i < settingInputs.length; i++ ) {
+		const setting = settingInputs.eq( i );
+		if ( setting.is( 'select' ) ) {
+			if ( ! setting.find( 'option' ).first().is( ':selected' ) ) {
+				return true;
+			}
+		}
+
+		if ( setting.is( '[type="number"], [type="hidden"]' ) ) {
+			if ( setting.val() ) {
+				return true;
+			}
+		}
+	}
+
 	return false;
 }

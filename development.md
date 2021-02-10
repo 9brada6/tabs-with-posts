@@ -40,7 +40,8 @@ It's best to keep them updated.
     2. On meta and meta_num, how these works.
     3. On post__in.
 
-- Make the default component tabs collapsible?, to not show them, the options will appear to not be so many.
+- add in manual testing things about components. Components settings should be hidden, number and select. We must test each
+setting to detect that if we change from the default, the tabs are collapsed.
 
 ### Query Settings
 
