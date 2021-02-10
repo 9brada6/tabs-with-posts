@@ -242,7 +242,7 @@ class Widget_Form {
 				<?php $this->display_tab_query_select_artblock( $query_id ); ?>
 
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
-					<?= _x( 'Post Settings:', 'backend', 'twrp' ); ?>
+					<?= _x( 'Post settings:', 'backend', 'twrp' ); ?>
 				</h5>
 				<hr class="<?php $this->bem_class( 'style-separator' ); ?>">
 				<div class="<?php $this->bem_class( 'article-block-settings-container' ); ?>">

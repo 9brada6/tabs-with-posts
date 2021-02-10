@@ -35,8 +35,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- On close/open/change tabs, make the height adjust dinamically with a nice effect.
-
 - Change Pickr theme from nano to classic or see what is displayed the nicest.
 - Add more notes on order by options in query_settings:
     1. How ordering by search works.

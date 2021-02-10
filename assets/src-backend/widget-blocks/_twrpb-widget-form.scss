@@ -21,6 +21,11 @@
 		max-width: clamp(100px, 220px, calc(100% - 130px));
 	}
 
+	&__selected-queries-list {
+		margin-right: -4px;
+		margin-left: -4px;
+	}
+
 	// Selected Queries
 	&__selected-queries{
 
