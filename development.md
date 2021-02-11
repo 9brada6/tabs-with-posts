@@ -30,6 +30,10 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+- Create a way to easy make templates of query settings.
+- Add in manual testing what types of HTML control settings are possible in
+query settings. And add that by default settings, each control that have a name setting must have a default setting.
+
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts

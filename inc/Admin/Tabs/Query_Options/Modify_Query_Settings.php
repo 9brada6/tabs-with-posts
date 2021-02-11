@@ -41,12 +41,20 @@ class Modify_Query_Settings {
 	 * @return void
 	 */
 	protected function display_query_setting( $setting_display_class ) {
-		$current_setting = $this->get_query_input_setting( $setting_display_class );
-		$collapsed       = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
-		$queries_tab     = new Queries_Tab();
+		$current_setting       = $this->get_query_input_setting( $setting_display_class );
+		$collapsed             = $this->get_if_setting_collapsed( $setting_display_class, $current_setting ) ? '1' : '0';
+		$queries_tab           = new Queries_Tab();
+		$default_settings_json = wp_json_encode( $setting_display_class->get_default_setting() );
+		if ( false === $default_settings_json ) {
+			$default_settings_json = '';
+		}
 
 		?>
-		<div class="<?= esc_attr( $queries_tab->get_query_setting_wrapper_class() ); ?> twrpb-collapsible" data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>">
+		<div class="<?= esc_attr( $queries_tab->get_query_setting_wrapper_class() ); ?> twrpb-collapsible"
+			data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>"
+			data-twrpb-default-settings="<?= esc_attr( $default_settings_json ); ?>"
+			data-twrpb-setting-name="<?= esc_attr( $setting_display_class->get_setting_name() ); ?>"
+		>
 			<h2 class="twrpb-collapsible__title">
 				<span class="twrpb-collapsible__indicator"></span>
 				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>

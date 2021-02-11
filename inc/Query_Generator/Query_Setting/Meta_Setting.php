@@ -45,7 +45,7 @@ class Meta_Setting extends Query_Setting {
 			self::META_IS_APPLIED__SETTING_NAME     => 'NA',
 			self::META_KEY_NAME__SETTING_NAME       => '',
 			self::META_KEY_VALUE__SETTING_NAME      => '',
-			self::META_KEY_COMPARATOR__SETTING_NAME => '',
+			self::META_KEY_COMPARATOR__SETTING_NAME => 'EXISTS',
 		);
 	}
 
