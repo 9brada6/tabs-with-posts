@@ -65,25 +65,116 @@ function hideOrShowSelectedValues() {
 
 const postIdOrderWarning = $( '#twrpb-setting-note__ordering_by_post_id_warning' );
 
-$( hideOrShowWarning );
-$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowWarning );
+$( hideOrShowPostIdWarning );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowPostIdWarning );
 
-function hideOrShowWarning() : void {
+function hideOrShowPostIdWarning() : void {
+	hideOrShowNoteOnSelect( 'ID', postIdOrderWarning );
+}
+
+// #endregion -- Hide/Show Post ID warning notice if selected.
+
+// #region -- Hide/Show order by comments warning.
+
+const commentsOrderWarning = $( '#twrpb-setting-note__order_by_comments_warning' );
+
+$( hideOrShowCommentsWarning );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowCommentsWarning );
+
+function hideOrShowCommentsWarning() : void {
 	let showWarning = false;
+	const values = [];
+
+	for ( let i = 0; i < orderGroups.length; i++ ) {
+		const orderByVal = String( $( orderGroups[ i ] ).find( `.${ orderByClassName }` ).val() );
+		values.push( orderByVal );
+	}
+
+	if ( values.indexOf( 'comment_count' ) === 0 && values.indexOf( 'not_applied' ) === 1 ) {
+		showWarning = true;
+	}
+
+	if ( showWarning ) {
+		showUp( commentsOrderWarning );
+	} else {
+		hideUp( commentsOrderWarning );
+	}
+}
+
+// #endregion -- Hide/Show order by comments warning.
+
+// #region -- Hide/Show Search notice if selected.
+
+const searchOrderNote = $( '#twrpb-setting-note__order_by_search_note' );
+
+$( hideOrShowSearchNote );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowSearchNote );
+
+function hideOrShowSearchNote() : void {
+	hideOrShowNoteOnSelect( 'relevance', searchOrderNote );
+}
+
+// #endregion -- Hide/Show Search notice if selected.
+
+// #region -- Hide/Show Meta notice if selected.
+
+const metaNote = $( '#twrpb-setting-note__order_by_meta_note' );
+
+$( hideOrShowMetaNote );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowMetaNote );
+
+function hideOrShowMetaNote() : void {
+	hideOrShowNoteOnSelect( [ 'meta_value', 'meta_value_num' ], metaNote );
+}
+
+// #endregion -- Hide/Show Meta notice if selected.
+
+// #region -- Hide/Show Post In notice if selected.
+
+const postsInNote = $( '#twrpb-setting-note__order_by_posts_in_note' );
+
+$( hideOrShowPostInNote );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowPostInNote );
+
+function hideOrShowPostInNote() : void {
+	hideOrShowNoteOnSelect( 'post__in', postsInNote );
+}
+
+// #endregion -- Hide/Show Post In notice if selected.
+
+// #region -- Hide/Show Note if OrderBy option is selected.
+
+function hideOrShowNoteOnSelect( $orderByValue: string|Array<string>, $note: JQuery ) {
+	let showWarning = false;
+	const values = [];
 
 	for ( let i = 0; i < orderGroups.length; i++ ) {
 		const orderByVal = String( $( orderGroups[ i ] ).find( `.${ orderByClassName }` ).val() );
 
-		if ( orderByVal === 'ID' ) {
+		if ( orderByVal === 'not_applied' ) {
+			break;
+		}
+
+		values.push( orderByVal );
+	}
+
+	if ( typeof $orderByValue === 'string' || $orderByValue instanceof String ) {
+		if ( values.indexOf( $orderByValue ) !== -1 ) {
 			showWarning = true;
+		}
+	} else {
+		for ( let i = 0; i < $orderByValue.length; i++ ) {
+			if ( values.indexOf( $orderByValue[ i ] ) !== -1 ) {
+				showWarning = true;
+			}
 		}
 	}
 
 	if ( showWarning ) {
-		showUp( postIdOrderWarning );
+		showUp( $note );
 	} else {
-		hideUp( postIdOrderWarning );
+		hideUp( $note );
 	}
 }
 
-// #endregion -- Hide/Show Post ID warning notice if selected.
+// #endregion -- Hide/Show Note if OrderBy option is selected.

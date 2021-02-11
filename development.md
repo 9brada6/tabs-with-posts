@@ -28,41 +28,36 @@ It's best to keep them updated.
     - ✔ Functions used are don't have a chance to change in future, and even, a
     deprecation warning might be displayed(as in other parts of the code).
 
-#### General Settings
-
-- Change by default to include icons inline?
-- Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
-
 ## ✅ Todo
-
-- Add more notes on order by options in query_settings:
-    1. How ordering by search works.
-    2. On meta and meta_num, how these works.
-    3. On post__in.
-
-- add in manual testing things about components. Components settings should be hidden, number and select. We must test each
-setting to detect that if we change from the default, the tabs are collapsed.
 
 ### Query Settings
 
 - Add interaction between settings warning: post__in and ignore_sticky_posts
 will interact if they are both set. This warning should be shown only if they are both set.
 
-- Add a lot of notices in order by setting. Some ideas: if orderby comments is
-set in asc order. If only order by comments is set, then suggest to add orderby date.
-- Add in documentation examples on how to use advanced arguments and what query filters to use.
-- Order: maybe add more orders, like post__in?.
-
 ### Icons
 
 - Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
+
+### General Settings
+
+- Change by default to include icons inline?
+- Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
 
 ### Documentation
 
 - Don't forget to add CSS specificity in documentation
 - Don't forget to say that tabs are not displayed when only a single tab is displayed.
 - Tell how to regenerate icons if one is not displayed.
+- When say how to use orderby setting, say to add order by date if ordered first
+by something else, like number of comments.
+- When writing how the search orderby works in the documentation, add a link to
+that from the search orderby note.
+- When writing how the meta/meta_num orderby works in the documentation, add a link to
+that from the meta/meta_num orderby note.
+- Document each orderby option, and see whether or not orderby author/post type/...etc is influenced by order in which we declare authors/post types. 2. Unify parent_id note with post_id note if parent_id are not fetched from the array.
+- Add in documentation examples on how to use advanced arguments in query settings and what query filters to use. Also make a link from query settings to documentation?
 
 ### Plugins
 
@@ -91,16 +86,16 @@ set in asc order. If only order by comments is set, then suggest to add orderby 
 
 ## 📖 Development Documentation
 
-### Assets
-
-- In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
-
 ### Tools used
 
 #### Phan
 
 - Phan can be run via docker(see the script in the composer). In VSCode it comes pre-installed with the extension. It is not installed in vendor via composer.
 - You need to change the Phan path in vscode workspace options when you change the PC.
+
+### Assets
+
+- In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
 
 ### Packages
 

@@ -93,16 +93,51 @@ class Post_Order_Display extends Query_Setting_Display {
 				</select>
 			</p>
 			<?php
+
+			$orderby_settings = array( $first_orderby_setting, $second_orderby_setting, $third_orderby_setting );
+			// Ordering Note.
 			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_INFO );
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
 
+			// Post Id Ordering Warning.
 			$note_is_hidden_class = ' twrpb-hidden';
-			if ( 'ID' === $first_orderby_setting || 'ID' === $second_orderby_setting || 'ID' === $third_orderby_setting ) {
+			if ( in_array( 'ID', $orderby_settings, true ) ) {
 				$note_is_hidden_class = '';
 			}
-
 			$warning_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_POST_ID_WARNING, 'warning' );
 			$warning_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
+
+			// Comments order warning.
+			$note_is_hidden_class = ' twrpb-hidden';
+			if ( 'comment_count' === $first_orderby_setting && 'not_applied' === $second_orderby_setting ) {
+				$note_is_hidden_class = '';
+			}
+			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_COMMENTS_WARNING, 'warning' );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
+
+			// Search note.
+			$note_is_hidden_class = ' twrpb-hidden';
+			if ( in_array( 'relevance', $orderby_settings, true ) ) {
+				$note_is_hidden_class = '';
+			}
+			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_SEARCH_NOTE );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
+
+			// Meta note.
+			$note_is_hidden_class = ' twrpb-hidden';
+			if ( in_array( 'meta_value', $orderby_settings, true ) || in_array( 'meta_value_num', $orderby_settings, true ) ) {
+				$note_is_hidden_class = '';
+			}
+			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_META_NOTE );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
+
+			// Post In note.
+			$note_is_hidden_class = ' twrpb-hidden';
+			if ( in_array( 'post__in', $orderby_settings, true ) ) {
+				$note_is_hidden_class = '';
+			}
+			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_POSTS_IN_NOTE );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
 			?>
 		</div>
 		<?php

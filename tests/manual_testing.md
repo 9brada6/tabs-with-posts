@@ -27,6 +27,16 @@
 
 - If a setting is changed, the "Save" button becomes active, for all items.
 
+### Components
+
+- Components settings by default should be collapsed(hidden).
+- If any component setting change, components settings should be open. This should work either if the page is refreshed, or if a new/previous style was selected.
+- The only component setting controls that should be used are: number, pickr color-picker, select.
+- If any new setting control is added, make sure that is verified.
+- All the pickr color picker controls by default their value should be blank(no value).
+- All the number inputs controls, by default should be empty(no value).
+- All the select controls that apply CSS, should have an option "Not Apply" that must be default.
+
 ## CSS of Article Blocks
 
 1. Each element that exist in a template file must have at least a class(BEM style).

@@ -39,6 +39,14 @@ class Remember_Note {
 
 	const NOTE__ORDERING_BY_POST_ID_WARNING = 'ordering_by_post_id_warning';
 
+	const NOTE__ORDERING_BY_COMMENTS_WARNING = 'order_by_comments_warning';
+
+	const NOTE__ORDERING_BY_SEARCH_NOTE = 'order_by_search_note';
+
+	const NOTE__ORDERING_BY_META_NOTE = 'order_by_meta_note';
+
+	const NOTE__ORDERING_BY_POSTS_IN_NOTE = 'order_by_posts_in_note';
+
 	const NOTE__ORDERING_INFO = 'ordering_info';
 
 	const NOTE__POST_SETTINGS_NOTE = 'post_settings_note';
@@ -143,12 +151,28 @@ class Remember_Note {
 				'text' => _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in documentation how to do it.', 'backend', 'twrp' ),
 			),
 
+			static::NOTE__ORDERING_INFO                  => array(
+				'text' => _x( 'This is an option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
+			),
+
 			static::NOTE__ORDERING_BY_POST_ID_WARNING    => array(
 				'text' => _x( 'Ordering by post ID is not usually a good choice. If you don\'t know what a post ID is, then you maybe want to order by date, which is more efficient.', 'backend', 'twrp' ),
 			),
 
-			static::NOTE__ORDERING_INFO                  => array(
-				'text' => _x( 'This is an option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
+			static::NOTE__ORDERING_BY_COMMENTS_WARNING   => array(
+				'text' => _x( 'When ordering by comments, is good to order by something else secondarily(like date), in case the number of comments are equal between posts.', 'backend', 'twrp' ),
+			),
+
+			static::NOTE__ORDERING_BY_SEARCH_NOTE        => array(
+				'text' => _x( 'Don\'t forget to add some search terms, also, there is a technical explanation in the documentation of how ordering by search works.', 'backend', 'twrp' ),
+			),
+
+			static::NOTE__ORDERING_BY_META_NOTE          => array(
+				'text' => _x( 'Don\'t forget to add a meta value. Do not confuse sorting alphabetically with numerically, in documentation there is an explanation between the two.', 'backend', 'twrp' ),
+			),
+
+			static::NOTE__ORDERING_BY_POSTS_IN_NOTE      => array(
+				'text' => _x( 'Don\'t forget to add posts to the "Included Posts" setting, and sort them how you want.', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__POST_SETTINGS_NOTE             => array(
