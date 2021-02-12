@@ -53,6 +53,7 @@ class Plugin_Bootstrap {
 
 		'Admin/Tabs/Query_Options/Modify_Query_Settings',
 		'Admin/Tabs/Query_Options/Existing_Table',
+		'Admin/Tabs/Query_Options/Query_Templates',
 		'Admin/Tabs/Query_Options/Query_Settings_Display/Query_Setting_Display',
 		'Admin/Tabs/Query_Options/Query_Settings_Display/Advanced_Arguments_Display',
 		'Admin/Tabs/Query_Options/Query_Settings_Display/Author_Display',

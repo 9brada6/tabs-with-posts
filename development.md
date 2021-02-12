@@ -30,9 +30,10 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Create a way to easy make templates of query settings.
+- Add a style to template selector, add more templates.
+
 - Add in manual testing what types of HTML control settings are possible in
-query settings. And add that by default settings, each control that have a name setting must have a default setting.
+query settings. And add that by default settings, each control that have a name setting must have a default setting, or at least to be hidden by a select with "No apply"(because when resetting via template, some settings may remains when unhid, which is not a problem). Add a thing that should be said that the hidden values and textareas should be overwrite by a "Not Applied" select. All date controls should have yy-mm-dd format. All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting.
 
 ### Query Settings
 
@@ -87,6 +88,7 @@ that from the meta/meta_num orderby note.
 - ➕ Custom date format, make it disabled(not to hide). Does not make any sense to do this.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
+- ➕ In query templates, when resetting settings, make hidden texts be reset to default 0.
 
 ## 📖 Development Documentation
 

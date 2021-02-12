@@ -7,12 +7,15 @@ use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Database\Query_Options;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
  * Class that displays the query settings, where an administrator can add/edit
  * a query setting.
  */
 class Modify_Query_Settings {
+
+	use BEM_Class_Naming_Trait;
 
 	const NAME__QUERY_ID_HIDDEN_INPUT = 'query_id_being_modified';
 
@@ -29,9 +32,51 @@ class Modify_Query_Settings {
 		?>
 			<input type="hidden" name="<?= esc_attr( self::NAME__QUERY_ID_HIDDEN_INPUT ) ?>" value="<?= esc_attr( $query_id ); ?>">
 		<?php
+		$this->display_template_selector();
+
 		foreach ( $settings_classes as $setting_class ) :
 			$this->display_query_setting( $setting_class );
 		endforeach;
+	}
+
+	/**
+	 * Display the section that lets an administrator to apply a common template
+	 * to all the settings.
+	 *
+	 * @return void
+	 */
+	protected function display_template_selector() {
+		$query_templates_class          = new Query_Templates();
+		$query_templates_settings       = wp_json_encode( $query_templates_class->get_all_query_posts_templates() );
+		$query_templates_options        = $query_templates_class->get_all_query_posts_templates_options();
+		$templates_confirmation_message = _x( 'This will modify all the current settings to the specific template. Are you sure?', 'backend', 'twrp' );
+
+		if ( false === $query_templates_settings ) {
+			$query_templates_settings = '';
+		}
+
+		?>
+		<div class="<?php $this->bem_class( 'apply_templates_container' ); ?>">
+			<div class="<?php $this->bem_class( 'apply_templates_label' ); ?>">
+				<?= _x( 'Apply predefined template:', 'backend', 'twrp' ); ?>
+			</div>
+
+			<select
+				id="<?php $this->bem_class( 'predefined_template_selector' ); ?>"
+				class="<?php $this->bem_class( 'predefined_template_selector' ); ?>"
+				data-twrpb-templates="<?= esc_attr( $query_templates_settings ); ?>"
+				data-twrpb-confirm-template-changes="<?= esc_attr( $templates_confirmation_message ); ?>"
+			>
+				<?php foreach ( $query_templates_options as $value => $display_option ) : ?>
+					<option value="<?= esc_attr( $value ); ?>"><?= esc_html( $display_option ); ?></option>
+				<?php endforeach; ?>
+			</select>
+
+			<button id="<?php $this->bem_class( 'apply_template_btn' ); ?>" class="twrpb-button <?php $this->bem_class( 'apply_template_btn' ); ?>" type="button">
+				<?= esc_html( _x( 'Apply template', 'backend', 'twrp' ) ); ?>
+			</button>
+		</div>
+		<?php
 	}
 
 	/**
@@ -151,5 +196,9 @@ class Modify_Query_Settings {
 		}
 
 		return false;
+	}
+
+	protected function get_bem_base_class() {
+		return 'twrpb-query-settings';
 	}
 }

@@ -118,7 +118,11 @@ class Post_Date extends Query_Setting {
 
 	public function get_default_setting() {
 		return array(
-			self::DATE_TYPE_NAME => 'NA',
+			self::DATE_TYPE_NAME        => 'NA',
+			self::DATE_LAST_PERIOD_NAME => '',
+			self::DATE_LAST_DAYS_NAME   => '',
+			self::BEFORE_DATE_NAME      => '',
+			self::AFTER_DATE_NAME       => '',
 		);
 	}
 
