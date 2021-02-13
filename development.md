@@ -30,7 +30,7 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Add a style to template selector, add more templates.
+- Add more templates.
 
 - Add in manual testing what types of HTML control settings are possible in
 query settings. And add that by default settings, each control that have a name setting must have a default setting, or at least to be hidden by a select with "No apply"(because when resetting via template, some settings may remains when unhid, which is not a problem). Add a thing that should be said that the hidden values and textareas should be overwrite by a "Not Applied" select. All date controls should have yy-mm-dd format. All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting.
@@ -63,6 +63,7 @@ that from the search orderby note.
 that from the meta/meta_num orderby note.
 - Document each orderby option, and see whether or not orderby author/post type/...etc is influenced by order in which we declare authors/post types. 2. Unify parent_id note with post_id note if parent_id are not fetched from the array.
 - Add in documentation examples on how to use advanced arguments in query settings and what query filters to use. Also make a link from query settings to documentation?
+- Add in documentation how to set scheduled posts, and link from query settings there.
 
 ### Plugins
 

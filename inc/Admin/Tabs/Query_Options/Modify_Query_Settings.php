@@ -58,7 +58,7 @@ class Modify_Query_Settings {
 		?>
 		<div class="<?php $this->bem_class( 'apply_templates_container' ); ?>">
 			<div class="<?php $this->bem_class( 'apply_templates_label' ); ?>">
-				<?= _x( 'Apply predefined template:', 'backend', 'twrp' ); ?>
+				<?= _x( 'Start with a template:', 'backend', 'twrp' ); ?>
 			</div>
 
 			<select
