@@ -100,12 +100,32 @@ class Post_Date_Display extends Query_Setting_Display {
 			?>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
+				<input id="<?php $this->bem_class( 'last-7-days' ); ?>" type="radio" value="L7D"
+					name="<?= esc_attr( $name ) ?>"
+					<?php checked( 'L7D', $last_period ); ?>
+				/>
+				<label for="<?php $this->bem_class( 'last-7-days' ); ?>">
+					<?= _x( 'Last 7 days', 'backend', 'twrp' ); ?>
+				</label>
+			</p>
+
+			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
+				<input id="<?php $this->bem_class( 'last-30-days' ); ?>" type="radio" value="L30D"
+					name="<?= esc_attr( $name ) ?>"
+					<?php checked( 'L30D', $last_period ); ?>
+				/>
+				<label for="<?php $this->bem_class( 'last-30-days' ); ?>">
+					<?= _x( 'Last 30 days', 'backend', 'twrp' ); ?>
+				</label>
+			</p>
+
+			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'last-week' ); ?>" type="radio" value="LW"
 					name="<?= esc_attr( $name ) ?>"
 					<?php checked( 'LW', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-week' ); ?>">
-					<?= _x( 'This and last week (7-14 days)', 'backend', 'twrp' ); ?>
+					<?= _x( 'This and last week (max 7-14 days)', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 
@@ -115,7 +135,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'LM', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-month' ); ?>">
-					<?= _x( 'This and last month (30-60 days)', 'backend', 'twrp' ); ?>
+					<?= _x( 'This and last month (max 30-60 days)', 'backend', 'twrp' ); ?>
 				</label>
 			</p>
 

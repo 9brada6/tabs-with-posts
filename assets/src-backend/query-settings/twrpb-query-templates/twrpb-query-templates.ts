@@ -141,13 +141,13 @@ function setControlValue( control: JQuery, setting: string|Array<string> ) {
 
 		control.each( ( index, el ) => {
 			const element = $( el );
-			if ( element.prop( 'checked' ) && ! control.is( '[value="' + setting + '"]' ) ) {
+			if ( element.prop( 'checked' ) && ! element.is( '[value="' + setting + '"]' ) ) {
 				element.prop( 'checked', false );
 				triggerControlChange( element );
 			}
 
-			if ( control.is( '[value="' + setting + '"]' ) && ! element.prop( 'checked' ) ) {
-				control.prop( 'checked', true );
+			if ( element.is( '[value="' + setting + '"]' ) && ! element.prop( 'checked' ) ) {
+				element.prop( 'checked', true );
 				triggerControlChange( element );
 			}
 		} );

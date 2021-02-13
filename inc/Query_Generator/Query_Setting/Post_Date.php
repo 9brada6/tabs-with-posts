@@ -55,7 +55,7 @@ class Post_Date extends Query_Setting {
 		if ( 'LT' === $setting[ self::DATE_TYPE_NAME ] ) {
 			$sanitized_settings[ self::DATE_TYPE_NAME ] = $setting[ self::DATE_TYPE_NAME ];
 
-			$last_period_possibilities = array( 'LW', 'LM', 'TY', 'C' );
+			$last_period_possibilities = array( 'L7D', 'L30D', 'LW', 'LM', 'TY', 'C' );
 			if ( ( ! isset( $setting[ self::DATE_LAST_PERIOD_NAME ] ) ) ||
 				( ! in_array( $setting[ self::DATE_LAST_PERIOD_NAME ], $last_period_possibilities, true ) )
 			) {
@@ -159,6 +159,20 @@ class Post_Date extends Query_Setting {
 	 * @return array|null Null if cannot be created
 	 */
 	protected function get_last_period_args( $date_settings ) {
+		if ( 'L7D' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
+			$time = new DateTime( 'now' );
+			$time->setTimezone( Date_Utils::wp_timezone() );
+			$time->modify( 'tomorrow' );
+			$time->modify( '-7 day' );
+		}
+
+		if ( 'L30D' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
+			$time = new DateTime( 'now' );
+			$time->setTimezone( Date_Utils::wp_timezone() );
+			$time->modify( 'tomorrow' );
+			$time->modify( '-30 day' );
+		}
+
 		if ( 'LW' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
 			$time->setTimezone( Date_Utils::wp_timezone() );
