@@ -92,10 +92,7 @@ class Post_Date_Display extends Query_Setting_Display {
 		?>
 		<div id="<?php $this->bem_class( 'js-last-period-wrapper' ); ?>" class="<?php $this->bem_class( 'last-period-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_settings_hidden_class ); ?>">
 			<?php
-			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_INFO );
-			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
-
-			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_REMEMBER );
+			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_REMEMBER, 'warning' );
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() . ' twrpb-hidden' );
 			?>
 

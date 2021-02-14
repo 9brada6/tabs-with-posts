@@ -21,8 +21,6 @@ class Remember_Note {
 
 	use BEM_Class_Naming_Trait;
 
-	const NOTE__POST_DATE_SETTING_INFO = 'post_date_setting_info';
-
 	const NOTE__POST_DATE_SETTING_REMEMBER = 'post_date_setting_remember';
 
 	const NOTE__POST_DATE_AFTER_BEFORE_SETTING_EXAMPLE = 'post_date_after_before_setting_example';
@@ -119,12 +117,8 @@ class Remember_Note {
 	protected function get_all_notes() {
 		$all_notes = array(
 
-			static::NOTE__POST_DATE_SETTING_INFO         => array(
-				'text' => _x( 'You can either put a number of days manually(7 for week, 30 for a month, ..etc) in the last option, or let the plugin calculate first day of week/month.', 'backend', 'twrp' ),
-			),
-
 			static::NOTE__POST_DATE_SETTING_REMEMBER     => array(
-				'text' => _x( 'When putting a custom number of days, do not forget to also check the last option.', 'backend', 'twrp' ),
+				'text' => _x( 'When putting a custom number of days, do not forget to check the last option and to put a number of days.', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__POST_DATE_AFTER_BEFORE_SETTING_EXAMPLE => array(

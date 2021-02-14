@@ -20,3 +20,20 @@ function handleDeleteButtonClicked( event ) {
 }
 
 // #endregion -- Ask an alert question before deleting a query.
+
+// #region -- Make Query Arguments Debugger Accordion.
+
+const displayQueryArgsSelector = '#twrpb-query-settings__query_generated_array_container';
+
+$( makeQueryArgsCollapsible );
+
+function makeQueryArgsCollapsible() {
+	$( displayQueryArgsSelector ).accordion( {
+		active: false,
+		heightStyle: 'content',
+		collapsible: true,
+		icons: false,
+	} );
+}
+
+// #region -- Make Query Arguments Debugger Accordion.

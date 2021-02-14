@@ -87,12 +87,12 @@ $( document ).on( 'keyup mouseup change click', '#twrpb-date-settings__js-last-p
 
 function hideOrShowUncheckedRadioNote() {
 	const inputVal = $( numberOfDaysInputSelector ).val();
-	const radioIsSelected = $( numberOfDaysRadioSelector ).is( ':checked' );
+	const radioIsSelected = $( numberOfDaysRadioSelector ).prop( 'checked' );
 
-	if ( radioIsSelected || ! inputVal ) {
-		hideUp( $( numberOfDaysNoteSelector ) );
-	} else {
+	if ( ( radioIsSelected && ! inputVal ) || ( ! radioIsSelected && inputVal ) ) {
 		showUp( $( numberOfDaysNoteSelector ) );
+	} else {
+		hideUp( $( numberOfDaysNoteSelector ) );
 	}
 }
 

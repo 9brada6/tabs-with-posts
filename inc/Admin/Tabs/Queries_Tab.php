@@ -6,7 +6,9 @@ use TWRP\Admin\Settings_Menu;
 use TWRP\Database\Query_Options;
 use TWRP\Admin\Tabs\Query_Options\Modify_Query_Settings;
 use TWRP\Admin\Tabs\Query_Options\Query_Existing_Table;
+use TWRP\Query_Generator\Query_Generator;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+use RuntimeException;
 
 /**
  * Implements a tab in the Settings Menu called "Queries Tab". The implemented
@@ -324,6 +326,54 @@ class Queries_Tab extends Admin_Menu_Tab {
 					<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
 				</button>
 			</form>
+			<?php $this->display_query_debug(); ?>
+		</div>
+		<?php
+	}
+
+	/**
+	 * After the form, display a nice output of the query created.
+	 *
+	 * @return void
+	 */
+	protected function display_query_debug() {
+		$no_query_id = false;
+		$query_id    = $this->get_sanitized_id_of_query_being_modified();
+
+		if ( empty( $query_id ) ) {
+			$no_query_id = true;
+		}
+
+		$query_arguments = array();
+		try {
+			$query_arguments = Query_Generator::get_wp_query_arguments( $query_id );
+		} catch ( RuntimeException $e ) {
+			$no_query_id = true;
+		}
+
+		$result_json = wp_json_encode( $query_arguments );
+		$result_json = ( false === $result_json ? '' : $result_json );
+
+		if ( $no_query_id ) {
+			$result_to_display = _x( 'You must first save the query, then return here to see the arguments generated.', 'backend', 'twrp' );
+		} else {
+			$result_to_display = print_r( $query_arguments, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
+			// Regex, remove lines that are empty or have only one character, Usually they have open or close parenthesis.
+			$result_to_display = preg_replace( '/^\s*.?\n/m', '', $result_to_display );
+			$result_to_display = preg_replace( '/^(?:Array\n|    )/m', '', $result_to_display );
+		}
+
+		?>
+		<div id="<?php $this->bem_class( 'query_generated_array_container' ); ?>" class="<?php $this->bem_class( 'query_generated_array_container' ); ?>" data-twrpb-query-generated-array="<?= esc_attr( $result_json ); ?>">
+			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?= esc_html( _x( 'See WP_Query arguments generated', 'backend', 'twrp' ) ); ?></button>
+
+			<div class="<?php $this->bem_class( 'query_args_collapsible' ); ?>">
+				<div class="<?php $this->bem_class( 'query_generated_note' ); ?>">
+					<?= esc_html( _x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'twrp' ) ); ?>
+				</div>
+
+				<div class="<?php $this->bem_class( 'query_generated_array' ); ?>"><?= esc_html( $result_to_display ); ?></div>
+			</div>
 		</div>
 		<?php
 	}
