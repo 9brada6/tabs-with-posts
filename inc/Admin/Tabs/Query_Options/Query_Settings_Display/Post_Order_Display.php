@@ -95,9 +95,6 @@ class Post_Order_Display extends Query_Setting_Display {
 			<?php
 
 			$orderby_settings = array( $first_orderby_setting, $second_orderby_setting, $third_orderby_setting );
-			// Ordering Note.
-			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_INFO );
-			$remember_note->display_note( $this->get_query_setting_paragraph_class() );
 
 			// Post Id Ordering Warning.
 			$note_is_hidden_class = ' twrpb-hidden';

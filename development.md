@@ -30,11 +30,6 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Add a debugger at the end of the query settings.
-- Test 7 days and 30 days option in radio.
-- Maybe do not add date->modify(tomorrow) in date setting?
-- Delete order note?
-
 - Add in manual testing what types of HTML control settings are possible in
 query settings. And add that by default settings, each control that have a name setting must have a default setting, or at least to be hidden by a select with "No apply"(because when resetting via template, some settings may remains when unhid, which is not a problem). Add a thing that should be said that the hidden values and textareas should be overwrite by a "Not Applied" select. All date controls should have yy-mm-dd format. All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting. Add something to test each note/warning, and also before/after a template is set.
 

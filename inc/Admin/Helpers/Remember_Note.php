@@ -45,8 +45,6 @@ class Remember_Note {
 
 	const NOTE__ORDERING_BY_POSTS_IN_NOTE = 'order_by_posts_in_note';
 
-	const NOTE__ORDERING_INFO = 'ordering_info';
-
 	const NOTE__POST_SETTINGS_NOTE = 'post_settings_note';
 
 	const NOTE__INVALID_JSON_WARNING = 'invalid_json_warning';
@@ -143,10 +141,6 @@ class Remember_Note {
 
 			static::NOTE__POST_STATUS_INFO               => array(
 				'text' => _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in documentation how to do it.', 'backend', 'twrp' ),
-			),
-
-			static::NOTE__ORDERING_INFO                  => array(
-				'text' => _x( 'This is an option that doesn\'t filter the posts(adding or removing posts). The most common order is to order posts by date, in descending order(latest posts).', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__ORDERING_BY_POST_ID_WARNING    => array(

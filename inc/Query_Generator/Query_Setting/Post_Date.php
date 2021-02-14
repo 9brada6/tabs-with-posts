@@ -162,14 +162,12 @@ class Post_Date extends Query_Setting {
 		if ( 'L7D' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
 			$time->setTimezone( Date_Utils::wp_timezone() );
-			$time->modify( 'tomorrow' );
 			$time->modify( '-7 day' );
 		}
 
 		if ( 'L30D' === $date_settings[ self::DATE_LAST_PERIOD_NAME ] ) {
 			$time = new DateTime( 'now' );
 			$time->setTimezone( Date_Utils::wp_timezone() );
-			$time->modify( 'tomorrow' );
 			$time->modify( '-30 day' );
 		}
 
