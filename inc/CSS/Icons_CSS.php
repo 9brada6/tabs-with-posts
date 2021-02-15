@@ -78,7 +78,7 @@ class Icons_CSS {
 		}
 
 		?>
-		<script type="text/javascript">
+		<script id="twrp-include-icons-inline-script" type="text/javascript">
 		(function(){var div=document.createElement( 'div' );div.innerHTML=<?= $icon_definitions; // phpcs:ignore ?>;insertIntoDocument(div);
 		function insertIntoDocument(elem){if(document.body && document.body.firstElementChild){document.body.insertBefore(elem,document.body.firstElementChild);}else{setTimeout(insertIntoDocument.bind(null,elem),200);}}})();
 		</script>

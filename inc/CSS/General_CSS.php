@@ -44,7 +44,17 @@ class Generate_CSS {
 		// Include the needed icons.
 		$include_inline = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
 		if ( 'true' === $include_inline ) {
-			add_action( 'wp_head', array( Icons_CSS::class, 'include_needed_icons_inline' ) );
+			// todo: execute only one time.
+			add_action(
+				'twrp_before_tabs',
+				function() {
+					static $function_executed = false;
+					if ( ! $function_executed ) {
+						Icons_CSS::include_needed_icons_inline();
+						$function_executed = true;
+					}
+				}
+			);
 		} else {
 			add_action( 'wp_head', array( Icons_CSS::class, 'include_needed_icons_file' ) );
 		}

@@ -8,7 +8,7 @@ namespace TWRP\Database\Settings;
 class Svg_Include_Inline extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'false';
+		return 'true';
 	}
 
 	public function get_possible_options() {

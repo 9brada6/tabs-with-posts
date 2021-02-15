@@ -30,23 +30,9 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-- Add in manual testing what types of HTML control settings are possible in
-query settings. And add that by default settings, each control that have a name setting must have a default setting, or at least to be hidden by a select with "No apply"(because when resetting via template, some settings may remains when unhid, which is not a problem). Add a thing that should be said that the hidden values and textareas should be overwrite by a "Not Applied" select. All date controls should have yy-mm-dd format. All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting. Add something to test each note/warning, and also before/after a template is set.
-
-### Query Settings
-
-- Add interaction between settings warning: post__in and ignore_sticky_posts
-will interact if they are both set. This warning should be shown only if they are both set.
-
 ### Icons
 
-- Make icons work inline(add before tabs, only one time, but we will do this later), and make them the default behavior.
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
-
-### General Settings
-
-- Change by default to include icons inline?
-- Add a help button, and with a pop-out to document something, also the document might be exactly as in documentation.
 
 ### Documentation
 
@@ -88,6 +74,7 @@ that from the meta/meta_num orderby note.
 - ➕ When a query is saved or deleted, in the save or delete notification, also add the name of the query(better user experience), if possible.
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
 - ➕ In query templates, when resetting settings, make hidden texts be reset to default 0.
+- ➕ Add a help button, and with a pop-out to document a setting if needed in General Settings Tab, also the document might be exactly as in documentation.
 
 ## 📖 Development Documentation
 

@@ -6,21 +6,19 @@
 
 ## Query Settings Manual Testing
 
-- Test each setting, and each javascript thing that might be pop-out/hide when a setting change.
+- Test each setting, see in the debugger if it is as there should be.
+- Be sure that only these types of controls are used: text, number, checkbox, radio, date, number, select, textarea, and hidden(with a custom JS thing).
+- Test each note/warning when a setting change, also test them after/before the templates are set/resets.
 - Add here a list of more explicit things to test.
+- By default each control setting must have a default setting, even that is hidden by something else.
+- Its very good to keep settings hidden with a "No apply" select, mandatory for settings that are too long.
+- Hidden settings and textarea must always have a "No apply" select.
+- All date controls should have yy-mm-dd format.
+- All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting(that are array by default).
 
 ## Icons Manual Testing
 
 - Checked to see if they align in the middle:
-- Comments          ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- Date              ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- Disabled Comments ( Captain Icons*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr, Ionicons*, JamIcons*, Linea, Octicons*, TypIcons* )
-- Rating            ( Captain Icons*, Dashicons, Feather*, FontAwesome, Foundation*, Google*, IconMonstr*, Ionicons*, JamIcons*, Linea*, Octicons*, TypIcons* )
-- Taxonomy          ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- User              ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea*, Octicons, TypIcons )
-- Views             ( Captain Icons, Dashicons, Feather, FontAwesome, Foundation, Google, IconMonstr, Ionicons, JamIcons, Linea, Octicons, TypIcons )
-- (*) = No icons yet.
-
 - Check that each rating pack have 3 different icons, empty, half-filled, and filled.
 
 ## Widget

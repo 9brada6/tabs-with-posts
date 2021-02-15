@@ -144,6 +144,8 @@ class Tabs_Creator {
 		$tab_style   = $this->tab_style;
 		$default_tab = true;
 
+		do_action( 'twrp_before_tabs', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids );
+
 		// phpcs:disable Generic.WhiteSpace.ScopeIndent.IncorrectExact -- Visualize the HTML format created by the functions.
 		$tab_style->start_tabs_wrapper();
 			if ( count( $this->query_ids ) > 1 ) {
@@ -165,6 +167,8 @@ class Tabs_Creator {
 			$tab_style->end_all_tabs_wrapper();
 		$tab_style->end_tabs_wrapper();
 		// phpcs:enable Generic.WhiteSpace.ScopeIndent.IncorrectExact
+
+		do_action( 'twrp_after_tabs', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids );
 	}
 
 	/**
