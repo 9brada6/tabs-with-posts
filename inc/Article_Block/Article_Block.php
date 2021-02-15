@@ -13,10 +13,11 @@ use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Article_Block\Settings\Artblock_Setting;
-use TWRP\Article_Block\Settings\Horizontal_Padding_Setting;
 
 use WP_Post;
 use RuntimeException;
+use TWRP\Utils\Simple_Utils;
+use WP_Term;
 
 /**
  * The abstract for an article block. By extending this class, a class can
@@ -256,15 +257,6 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	}
 
 	/**
-	 * Whether or not the categories must be shown in the article.
-	 *
-	 * @return bool
-	 */
-	public function are_categories_displayed() {
-		return isset( $this->settings['display_categories'] ) && $this->settings['display_categories'];
-	}
-
-	/**
 	 * Whether or not the views must be shown in the article.
 	 *
 	 * @return bool
@@ -289,6 +281,15 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function are_comments_displayed() {
 		return isset( $this->settings['display_comments'] ) && $this->settings['display_comments'];
+	}
+
+	/**
+	 * Whether or not the main category must be shown in the article.
+	 *
+	 * @return bool
+	 */
+	public function is_main_category_displayed() {
+		return isset( $this->settings['display_main_category'] ) && $this->settings['display_main_category'];
 	}
 
 	#endregion -- Verify if meta post information is displayed
@@ -425,6 +426,61 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		return Post_Views::get_views( $post );
 	}
 
+	/**
+	 * Display the main category name.
+	 *
+	 * @param WP_Post|int|null $post_or_post_id Defaults to global post.
+	 * @return void
+	 */
+	public function display_the_main_category( $post_or_post_id = null ) {
+		$name = $this->get_the_main_category_name( $post_or_post_id );
+		if ( ! empty( $name ) ) {
+			echo esc_html( $name );
+		}
+	}
+
+	/**
+	 * Get the main category name.
+	 *
+	 * @param WP_Post|int|null $post_or_post_id Defaults to global post.
+	 * @return string Name of the category or empty string.
+	 */
+	public function get_the_main_category_name( $post_or_post_id = null ) {
+		$object = $this->get_the_main_category_class( $post_or_post_id );
+		if ( $object instanceof WP_Term ) {
+			return $object->name;
+		}
+
+		return '';
+	}
+
+	/**
+	 * Get the main category object.
+	 *
+	 * @param WP_Post|int|null $post_or_post_id Defaults to global post.
+	 * @return null|WP_Term
+	 */
+	public function get_the_main_category_class( $post_or_post_id = null ) {
+		global $post;
+
+		if ( is_numeric( $post_or_post_id ) ) {
+			$post_id = (int) $post_or_post_id;
+		} elseif ( $post_or_post_id instanceof WP_Post ) {
+			$post_id = $post_or_post_id->ID;
+		} elseif ( $post instanceof WP_Post ) {
+			$post_id = $post->ID;
+		} else {
+			return null;
+		}
+
+		$categories = Simple_Utils::get_post_primary_category( $post_id );
+		if ( $categories['primary_category'] instanceof WP_Term ) {
+			return $categories['primary_category'];
+		}
+
+		return null;
+	}
+
 	#endregion -- Display Post Meta
 
 	#region -- Display Icons Functions
@@ -522,7 +578,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function get_views_icon_html() {
 		try {
-			$icon = Icon_Factory::get_icon( $this->get_selected_date_icon() );
+			$icon = Icon_Factory::get_icon( $this->get_selected_views_icon() );
 			return $icon->get_html();
 		} catch ( RuntimeException $e ) {
 			return '';
@@ -616,6 +672,44 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	protected function get_selected_disabled_comments_icon() {
 		$option = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON );
+
+		if ( ! is_string( $option ) ) {
+			return '';
+		}
+		return $option;
+	}
+
+	/**
+	 * Include the HTML svg for the category icon.
+	 *
+	 * @return void
+	 */
+	public function display_category_icon() {
+		echo $this->get_category_icon_html(); // phpcs:ignore -- No XSS.
+	}	
+
+	/**
+	 * Return the svg for the category icon.
+	 *
+	 * @return string The HTML is safe for output.
+	 */
+	public function get_category_icon_html() {
+		try {
+			$icon = Icon_Factory::get_icon( $this->get_selected_category_icon() );
+			return $icon->get_html();
+		} catch ( RuntimeException $e ) {
+			return '';
+		}
+	}
+
+	/**
+	 * Get the Id of the selected category icon. Empty if nothing is set(usually
+	 * should not be encounter).
+	 *
+	 * @return string
+	 */
+	protected function get_selected_category_icon() {
+		$option = General_Options::get_option( General_Options::CATEGORY_ICON );
 
 		if ( ! is_string( $option ) ) {
 			return '';

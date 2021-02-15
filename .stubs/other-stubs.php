@@ -21,4 +21,8 @@ namespace {
 
 		return 0;
 	}
+
+	class WPSEO_Primary_Term{
+		public function get_primary_term(){}
+	}
 }

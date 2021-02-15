@@ -2,6 +2,9 @@
 
 namespace TWRP\Utils;
 
+use WPSEO_Primary_Term;
+
+use WP_Term;
 use ReflectionMethod;
 use ReflectionException;
 use RecursiveIteratorIterator;
@@ -112,5 +115,46 @@ class Simple_Utils {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Get the primary category, and additionally, all the categories.
+	 *
+	 * @param int $post_id
+	 * @param bool $return_all_categories
+	 * @param string $term Defaults to "category".
+	 * @return array{primary_category:null|WP_Term,all_categories:array}
+	 *
+	 * @psalm-suppress LessSpecificReturnStatement
+	 * @psalm-suppress MoreSpecificReturnType
+	 */
+	public static function get_post_primary_category( $post_id, $return_all_categories = false, $term = 'category' ) {
+		$return                     = array();
+		$return['primary_category'] = null;
+		$return['all_categories']   = array();
+
+		if ( class_exists( 'WPSEO_Primary_Term' ) ) {
+			// Show Primary category by Yoast if it is enabled & set.
+			$wpseo_primary_term = new WPSEO_Primary_Term( $term, $post_id );
+			$primary_term       = get_term( $wpseo_primary_term->get_primary_term() );
+
+			if ( ! is_wp_error( $primary_term ) ) {
+				$return['primary_category'] = $primary_term;
+			}
+		}
+
+		if ( empty( $return['primary_category'] ) || $return_all_categories ) {
+			$categories_list = get_the_terms( $post_id, $term );
+
+			if ( empty( $return['primary_category'] ) && is_array( $categories_list ) && ! empty( $categories_list ) ) {
+				$return['primary_category'] = $categories_list[0];
+			}
+
+			if ( $return_all_categories && ! empty( $categories_list ) && is_array( $categories_list ) ) {
+					$return['all_categories'] = $categories_list;
+			}
+		}
+
+		return $return;
 	}
 }

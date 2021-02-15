@@ -30,11 +30,10 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
-### Icons
-
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
+- Add order inside component setting?
 
-### Documentation
+### ✅ Todo Documentation
 
 - Don't forget to add CSS specificity in documentation
 - Don't forget to say that tabs are not displayed when only a single tab is displayed.
@@ -47,6 +46,7 @@ that from the search orderby note.
 that from the meta/meta_num orderby note.
 - Document each orderby option, and see whether or not orderby author/post type/...etc is influenced by order in which we declare authors/post types. 2. Unify parent_id note with post_id note if parent_id are not fetched from the array.
 - Add in documentation examples on how to use advanced arguments in query settings and what query filters to use. Also make a link from query settings to documentation?
+- Say that you can use Yoast plugin to set the primary category.
 - Add in documentation how to set scheduled posts, and link from query settings there.
 
 ### Plugins
@@ -75,6 +75,7 @@ that from the meta/meta_num orderby note.
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
 - ➕ In query templates, when resetting settings, make hidden texts be reset to default 0.
 - ➕ Add a help button, and with a pop-out to document a setting if needed in General Settings Tab, also the document might be exactly as in documentation.
+- Add support for more plugins that support primary category.
 
 ## 📖 Development Documentation
 

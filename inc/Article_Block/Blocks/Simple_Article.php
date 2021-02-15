@@ -7,10 +7,10 @@ use TWRP\Article_Block\Article_Block;
 use TWRP\Article_Block\Component\Artblock_Component;
 
 use TWRP\Article_Block\Settings\Display_Author_Setting;
+use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
 use TWRP\Article_Block\Settings\Display_Comments_Setting;
 use TWRP\Article_Block\Settings\Display_Date_Setting;
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
-use TWRP\Article_Block\Settings\Horizontal_Padding_Setting;
 
 /**
  * The class that display a post in a style, that is named "Simple", because
@@ -103,6 +103,9 @@ class Simple_Article extends Article_Block {
 
 		$comments_setting  = new Display_Comments_Setting( $this->widget_id, $this->query_id, $this->settings );
 		$query_settings [] = $comments_setting;
+
+		$category_setting  = new Display_Main_Category_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $category_setting;
 
 		return $query_settings;
 	}

@@ -55,16 +55,17 @@ if ( empty( get_the_title() ) ) {
 			</span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->are_categories_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__categories">
-				<?php // $artblock->include_rating_icon(); ?>
-			</span>
-		<?php endif; ?>
-
 		<?php if ( $artblock->are_comments_displayed() ) : ?>
 			<span class="twrp-ss__meta twrp-ss__comments">
 			<?php $artblock->display_comments_icon(); ?>
 			<?php $artblock->display_comments_number(); ?>
+			</span>
+		<?php endif; ?>
+
+		<?php if ( $artblock->is_main_category_displayed() ) : ?>
+			<span class="twrp-ss__meta twrp-ss__categories">
+				<?php $artblock->display_category_icon(); ?>
+				<?php $artblock->display_the_main_category(); ?>
 			</span>
 		<?php endif; ?>
 	</div>
