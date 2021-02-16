@@ -11,6 +11,7 @@ use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
 use TWRP\Article_Block\Settings\Display_Comments_Setting;
 use TWRP\Article_Block\Settings\Display_Date_Setting;
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
+use TWRP\Article_Block\Settings\Display_Views_Setting;
 
 /**
  * The class that display a post in a style, that is named "Simple", because
@@ -92,20 +93,23 @@ class Simple_Article extends Article_Block {
 	public function get_artblock_settings() {
 		$query_settings = array();
 
-		$author_setting    = new Display_Author_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $author_setting;
+		$setting           = new Display_Post_Thumbnail_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
 
-		$date_setting      = new Display_Date_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $date_setting;
+		$setting           = new Display_Author_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
 
-		$post_thumbnail_setting = new Display_Post_Thumbnail_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings []      = $post_thumbnail_setting;
+		$setting           = new Display_Date_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
 
-		$comments_setting  = new Display_Comments_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $comments_setting;
+		$setting           = new Display_Views_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
 
-		$category_setting  = new Display_Main_Category_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $category_setting;
+		$setting           = new Display_Comments_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Main_Category_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
 
 		return $query_settings;
 	}

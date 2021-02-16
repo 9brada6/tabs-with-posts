@@ -62,7 +62,7 @@ class Query_Generator {
 			$query_args = $setting_class_to_apply->add_query_arg( $query_args, $query_options );
 		}
 
-		return $query_args;
+		return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_options ); ;
 	}
 
 	/**

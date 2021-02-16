@@ -2,6 +2,8 @@
 
 namespace TWRP\Plugins\Known_Plugins;
 
+use TWRP\Plugins\Post_Views;
+
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by DFactory.
@@ -90,12 +92,12 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	 * @return array
 	 */
 	public function modify_query_arg_if_necessary( $query_args ) {
-		// todo.
-		if ( ! isset( $query_args['orderby']['todo'] ) ) {
+		$orderby_value = Post_Views::ORDERBY_VIEWS_OPTION_KEY;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
 		}
 
-		$query_args['order']            = $query_args['orderby']['todo'];
+		$query_args['order']            = $query_args['orderby'][ $orderby_value ];
 		$query_args['orderby']          = 'post_views';
 		$query_args['suppress_filters'] = false;
 

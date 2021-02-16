@@ -19,12 +19,18 @@ class Checkbox_Control implements Widget_Control {
 	 */
 	public static function display_setting( $id, $name, $value, $args ) {
 		$default_args = array(
-			'default' => '',
-			'value'   => '1',
-			'before'  => '',
-			'after'   => '',
+			'default'  => '',
+			'value'    => '1',
+			'before'   => '',
+			'after'    => '',
+			'disabled' => false,
 		);
 		$args         = wp_parse_args( $args, $default_args );
+
+		$disabled = '';
+		if ( $args['disabled'] ) {
+			$disabled = 'disabled';
+		}
 
 		$value = ( isset( $value ) && is_string( $value ) ) ? $value : $args['default'];
 		?>
@@ -42,6 +48,7 @@ class Checkbox_Control implements Widget_Control {
 				name="<?= esc_attr( $name ); ?>"
 				value="<?= esc_attr( $args['value'] ); ?>"
 				<?php checked( $value, $args['value'] ); ?>
+				<?= esc_attr( $disabled ); ?>
 			>
 
 			<?php if ( $args['after'] ) : ?>

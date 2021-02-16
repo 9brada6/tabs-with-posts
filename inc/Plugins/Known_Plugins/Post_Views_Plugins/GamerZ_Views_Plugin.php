@@ -2,6 +2,8 @@
 
 namespace TWRP\Plugins\Known_Plugins;
 
+use TWRP\Plugins\Post_Views;
+
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by GaMerZ.
@@ -72,15 +74,12 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function modify_query_arg_if_necessary( $query_args ) {
-
-		// todo.
-		$orderby_value = 'todo';
+		$orderby_value = Post_Views::ORDERBY_VIEWS_OPTION_KEY;
 		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
 		}
 
 		$new_orderby = array();
-
 		foreach ( $query_args['orderby'] as $orderby => $order ) {
 			if ( $orderby_value === $orderby ) {
 				$new_orderby['meta_value_num'] = $order;

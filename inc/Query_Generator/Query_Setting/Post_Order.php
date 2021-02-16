@@ -98,7 +98,7 @@ class Post_Order extends Query_Setting {
 		 * orderby selector(meaning that the posts can be ordered only by these
 		 * values, and not the others), in the query settings page.
 		 */
-		$select_options = apply_filters( 'twrp_post_orderby_select_options', $select_options );
+		$select_options = apply_filters( 'twrp_post_first_orderby_select_options', $select_options );
 
 		return $select_options;
 	}

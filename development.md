@@ -30,8 +30,16 @@ It's best to keep them updated.
 
 ## ✅ Todo
 
+Day:
+
+- Test orderby Views.
+- Make A3REV plugin support ordering posts, or add a message that it does not support.
+
+- Make all components work.
+- Add order inside component setting.
+
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
-- Add order inside component setting?
+
 
 ### ✅ Todo Documentation
 

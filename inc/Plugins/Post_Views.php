@@ -5,6 +5,7 @@ namespace TWRP\Plugins;
 use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
 
 use TWRP\Utils\Class_Retriever_Utils;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Simple_Utils;
 
 use WP_Post;
@@ -19,6 +20,10 @@ use WP_Post;
  * order of importance or preference.
  */
 class Post_Views {
+
+	const ORDERBY_VIEWS_OPTION_KEY = 'twrp_post_views_order';
+
+	use After_Setup_Theme_Init_Trait;
 
 	/**
 	 * Holds an array with an instance of each plugin class. The key is the
@@ -79,12 +84,12 @@ class Post_Views {
 	 * @return array
 	 */
 	public static function modify_query_arg_if_necessary( $query_args ) {
-		$plugin_classes = self::get_plugin_classes();
-
-		foreach ( $plugin_classes as $plugin_class ) {
-			$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
+		$plugin_class = self::get_plugin_to_use();
+		if ( false === $plugin_class ) {
+			return $query_args;
 		}
 
+		$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
 		return $query_args;
 	}
 
@@ -112,4 +117,37 @@ class Post_Views {
 		return $post_views;
 	}
 
+	/**
+	 * Add filters/actions necessary for this class to work. See
+	 * After_Setup_Theme_Init_Trait for more info.
+	 *
+	 * @return void
+	 */
+	public static function after_setup_theme_init() {
+		add_filter( 'twrp_post_first_orderby_select_options', array( self::class, 'add_orderby_views_option' ) );
+		add_filter( 'twrp_get_query_arguments_created', array( self::class, 'modify_query_arg_if_necessary' ), 3 );
+	}
+
+	/**
+	 * Function used to register the views as an orderby option in the query.
+	 *
+	 * @param array $orderby_options
+	 * @return array
+	 */
+	public static function add_orderby_views_option( $orderby_options ) {
+		$plugin_installed = ( self::get_plugin_to_use() === false ? false : true );
+
+		$not_installed_message = '';
+		if ( ! $plugin_installed ) {
+			$not_installed_message = _x( 'Plugin not installed', 'backend', 'twrp' );
+		}
+
+		$text = _x( 'Order by post views.', 'backend', 'twrp' );
+		if ( ! empty( $not_installed_message ) ) {
+			$text = $text . '(' . $not_installed_message . ')';
+		}
+
+		$orderby_options[ self::ORDERBY_VIEWS_OPTION_KEY ] = $text;
+		return $orderby_options;
+	}
 }
