@@ -80,6 +80,7 @@ class Plugin_Bootstrap {
 		'Admin/TWRP_Widget/Widget_Form',
 		'Admin/TWRP_Widget/Widget_Sanitization',
 		'Admin/TWRP_Widget/Widget_Ajax',
+		'Admin/TWRP_Widget/Widget_Form_Components_Display',
 
 		'Admin/Widget_Control/Widget_Control',
 		'Admin/Widget_Control/Checkbox_Control',

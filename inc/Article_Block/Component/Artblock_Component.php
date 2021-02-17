@@ -2,7 +2,6 @@
 
 namespace TWRP\Article_Block\Component;
 
-use TWRP\Utils\Widget_Utils;
 use TWRP\Article_Block\Component\Component_Setting;
 use TWRP\Utils\Simple_Utils;
 
@@ -50,20 +49,6 @@ class Artblock_Component {
 	protected $component_title;
 
 	/**
-	 * The widget id this component belongs.
-	 *
-	 * @var int
-	 */
-	protected $widget_id;
-
-	/**
-	 * The query id this component belongs.
-	 *
-	 * @var int
-	 */
-	protected $query_id;
-
-	/**
 	 * The current settings of the component.
 	 *
 	 * @var array
@@ -88,18 +73,14 @@ class Artblock_Component {
 	/**
 	 * Creates the class.
 	 *
-	 * @param int $widget_id
-	 * @param int $query_id
 	 * @param string $name The name must be unique between other components.
 	 * @param string $component_title
 	 * @param array $settings
 	 * @param array $css_settings
 	 */
-	public function __construct( $widget_id, $query_id, $name, $component_title, $settings, $css_settings ) {
+	public function __construct( $name, $component_title, $settings, $css_settings ) {
 		$this->name            = $name;
 		$this->component_title = $component_title;
-		$this->widget_id       = $widget_id;
-		$this->query_id        = $query_id;
 		$this->settings        = $settings;
 		$this->css_settings    = $css_settings;
 
@@ -125,42 +106,21 @@ class Artblock_Component {
 	}
 
 	/**
-	 * Display the component setting controls, in the widget settings manager.
+	 * Get an array with all component settings classes.
 	 *
-	 * @return void
+	 * @return array<Component_Setting>
 	 */
-	public function display_component_settings() {
-		$component_setting_classes = $this->setting_classes;
-
-		$prefix_name = $this->get_component_prefix_name();
-		$prefix_id   = $this->get_component_prefix_id();
-
-		foreach ( $component_setting_classes as $component_class ) {
-			$value = null;
-			if ( isset( $this->settings[ $component_class->get_key_name() ] ) ) {
-				$value = $this->settings[ $component_class->get_key_name() ];
-			}
-
-			$component_class->display_setting( $prefix_id, $prefix_name, $value );
-		}
+	public function get_component_setting_classes() {
+		return $this->setting_classes;
 	}
 
 	/**
-	 * Get the component prefix name for a setting.
+	 * Get an array with all component settings.
 	 *
-	 * @return string
+	 * @return array
 	 */
-	protected function get_component_prefix_name() {
-		return Widget_Utils::get_field_name( $this->widget_id, $this->query_id, $this->name );
-	}
-
-	/**
-	 * Get the component prefix id of a setting.
-	 *
-	 * @return string
-	 */
-	protected function get_component_prefix_id() {
-		return Widget_Utils::get_field_id( $this->widget_id, $this->query_id, $this->name );
+	public function get_settings() {
+		return $this->settings;
 	}
 
 	#region -- Sanitization
@@ -216,44 +176,6 @@ class Artblock_Component {
 		}
 
 		return $setting_classes;
-	}
-
-	/**
-	 * Display the components settings in the widget.
-	 *
-	 * @param array<Artblock_Component> $components
-	 * @return void
-	 */
-	public static function display_components( $components ) {
-		?>
-		<div class="twrpb-widget-components">
-			<ul class="twrpb-widget-components__tab-buttons">
-				<?php foreach ( $components as $component ) : ?>
-					<li class="twrpb-widget-components__btn-wrapper">
-						<a class="twrpb-widget-components__btn" href="<?= esc_attr( '#' . $component->get_html_id_attr() ); ?>">
-						<?= esc_html( $component->get_component_title() ); ?>
-						</a>
-					</li>
-				<?php endforeach; ?>
-			</ul>
-			<div class="twrpb-widget-components__components">
-				<?php foreach ( $components as $component ) : ?>
-					<div id="<?= esc_attr( $component->get_html_id_attr() ); ?>" class="twrpb-widget-components__component-wrapper">
-						<?php $component->display_component_settings(); ?>
-					</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
-		<?php
-	}
-
-	/**
-	 * Create and return the id for an input of the component.
-	 *
-	 * @return string
-	 */
-	public function get_html_id_attr() {
-		return 'twrpb-widget-components__' . $this->widget_id . '-' . $this->query_id . '-' . $this->name;
 	}
 
 	/**

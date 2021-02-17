@@ -45,47 +45,56 @@ class Simple_Article extends Article_Block {
 	}
 
 	public function get_components() {
-		$components  = array();
-		$block_class = '.' . $this->get_block_class();
+		$components = array();
+		$css_prefix = $this->get_body_css_specificity_selector() . ' .' . $this->get_block_class() . ' ';
 
 		#region -- Title Component
 
-		$title_component_settings = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
-		$title_css_components     = array(
-			$block_class . ' .twrp-ss__title' => Artblock_Component::TEXT_SETTINGS,
-			$block_class . ' .twrp-ss__link-expanded:hover .twrp-ss__title' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+		$current_settings     = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
+		$css_components       = array(
+			$css_prefix . '.twrp-ss__title' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__link-expanded:hover .twrp-ss__title' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
-		$title_component          = new Artblock_Component( $this->widget_id, $this->query_id, 'title', _x( 'Title', 'backend', 'twrp' ), $title_component_settings, $title_css_components );
-		$components ['title']     = $title_component;
+		$component            = new Artblock_Component( 'title', _x( 'Title', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['title'] = $component;
 
 		#endregion -- Title Component
 
+		#region -- Author Component
+
+		$css_components        = array(
+			$css_prefix . '.twrp-ss__author' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+		);
+		$current_settings      = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
+		$component             = new Artblock_Component( 'author', _x( 'Author', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['author'] = $component;
+
+		#endregion -- Author Component
+
 		#region -- Date Component
 
-		$date_component_current_settings = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
-
-		$date_css_components = array(
-			$block_class . ' .twrp-ss__date' => Artblock_Component::TEXT_SETTINGS,
-			$block_class . ' .twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+		$current_settings    = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
+		$css_components      = array(
+			$css_prefix . '.twrp-ss__date' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
-
-		$date_component      = new Artblock_Component( $this->widget_id, $this->query_id, 'date', _x( 'Date', 'backend', 'twrp' ), $date_component_current_settings, $date_css_components );
-		$components ['date'] = $date_component;
+		$component           = new Artblock_Component( 'date', _x( 'Date', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['date'] = $component;
 
 		#endregion -- Date Component
 
-		#region -- Author Component
+		#region -- Views Component
 
-		$author_css_components = array(
-			$block_class . ' .twrp-ss__author' => Artblock_Component::TEXT_SETTINGS,
-			$block_class . ' .twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+		$current_settings     = ( isset( $this->settings['views'] ) && is_array( $this->settings['views'] ) ) ? $this->settings['views'] : array();
+		$css_components       = array(
+			$css_prefix . '.twrp-ss__views' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__views' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
+		$component            = new Artblock_Component( 'views', _x( 'Views', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['views'] = $component;
 
-		$author_component_current_settings = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
-		$author_component                  = new Artblock_Component( $this->widget_id, $this->query_id, 'author', _x( 'Author', 'backend', 'twrp' ), $author_component_current_settings, $author_css_components );
-		$components ['author']             = $author_component;
-
-		#endregion -- Author Component
+		#endregion -- Views Component
 
 		return $components;
 	}

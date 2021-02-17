@@ -157,4 +157,14 @@ class Simple_Utils {
 
 		return $return;
 	}
+
+	/**
+	 * Get a css selector of the body, to increase specificity of the CSS. By
+	 * default this selector is used in all CSS.
+	 *
+	 * @return string
+	 */
+	public static function get_body_css_increase_specificity_selector() {
+		return 'body:not(#twrpS)';
+	}
 }

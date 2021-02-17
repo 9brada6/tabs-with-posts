@@ -23,6 +23,9 @@ namespace {
 	}
 
 	class WPSEO_Primary_Term{
+
+		public function __construct($a, $b){}
+
 		public function get_primary_term(){}
 	}
 }

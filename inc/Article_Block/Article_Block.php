@@ -2,6 +2,7 @@
 
 namespace TWRP\Article_Block;
 
+use TWRP\Admin\TWRP_Widget\Widget_Form_Components_Display;
 use TWRP\Database\General_Options;
 use TWRP\Plugins\Post_Views;
 use TWRP\Icons\Icon_Factory;
@@ -9,6 +10,7 @@ use TWRP\Icons\Icon_Factory;
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Date_Utils;
+use TWRP\Utils\Simple_Utils;
 use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 
 use TWRP\Article_Block\Component\Artblock_Component;
@@ -16,7 +18,6 @@ use TWRP\Article_Block\Settings\Artblock_Setting;
 
 use WP_Post;
 use RuntimeException;
-use TWRP\Utils\Simple_Utils;
 use WP_Term;
 
 /**
@@ -175,8 +176,9 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		<?php
 
 		// Display the components settings.
-		$components = $this->get_components();
-		Artblock_Component::display_components( $components );
+		$components         = $this->get_components();
+		$components_display = new Widget_Form_Components_Display( $this->widget_id, $this->query_id, $components );
+		$components_display->display_components();
 	}
 
 	/**
@@ -686,7 +688,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function display_category_icon() {
 		echo $this->get_category_icon_html(); // phpcs:ignore -- No XSS.
-	}	
+	}
 
 	/**
 	 * Return the svg for the category icon.
@@ -798,6 +800,16 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		return false;
+	}
+
+	/**
+	 * Get a css selector of the body, to increase specificity of the CSS. By
+	 * default this selector is used in all CSS.
+	 *
+	 * @return string
+	 */
+	protected function get_body_css_specificity_selector() {
+		return Simple_Utils::get_body_css_increase_specificity_selector();
 	}
 
 	#endregion -- Helper methods
