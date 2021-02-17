@@ -32,7 +32,10 @@ class Query_Generator {
 			throw $exception;
 		}
 		$wp_query = new WP_Query();
-		$posts    = $wp_query->query( $query_args );
+
+		$query_args = apply_filters( 'twrp_before_getting_query', $query_args, $query_id );
+		$posts      = $wp_query->query( $query_args );
+		$posts      = apply_filters( 'twrp_after_getting_posts_filter', $posts );
 
 		return $posts;
 	}
@@ -58,11 +61,13 @@ class Query_Generator {
 			throw $exception;
 		}
 
+		$query_args = apply_filters( 'twrp_starting_query_arguments', $query_args, $query_options );
+
 		foreach ( $registered_settings_classes as $setting_class_to_apply ) {
 			$query_args = $setting_class_to_apply->add_query_arg( $query_args, $query_options );
 		}
 
-		return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_options ); ;
+		return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_options );
 	}
 
 	/**

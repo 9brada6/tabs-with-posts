@@ -8,7 +8,7 @@
 			"name": "PHP Debug",
 			"type": "php",
 			"request": "launch",
-			"port": 10000,
+			"port": 10045,
             "log": true,
             "externalConsole": false,
             "pathMappings": {
@@ -18,13 +18,5 @@
                 "**/vendor/**/*.php"
             ]
 		},
-		{
-			"name": "Typescript Debug",
-			"type": "chrome",
-			"request": "attach",
-			"port": 9222,
-			"url": "http://localhost/wp-admin/widgets.php",
-			"webRoot": "${workspaceFolder}"
-		}
 	]
 }

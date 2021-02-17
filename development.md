@@ -32,14 +32,12 @@ It's best to keep them updated.
 
 Day:
 
-- Test orderby Views.
-- Make A3REV plugin support ordering posts, or add a message that it does not support.
-
+- Add how orderby views plugin works a notice in orderby setting.
 - Make all components work.
 - Add order inside component setting.
+- Tabs: flash of content: display only the first tab, even without javascript.
 
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
-
 
 ### ✅ Todo Documentation
 
@@ -56,6 +54,7 @@ that from the meta/meta_num orderby note.
 - Add in documentation examples on how to use advanced arguments in query settings and what query filters to use. Also make a link from query settings to documentation?
 - Say that you can use Yoast plugin to set the primary category.
 - Add in documentation how to set scheduled posts, and link from query settings there.
+- Add how orderby views plugin works.
 
 ### Plugins
 
