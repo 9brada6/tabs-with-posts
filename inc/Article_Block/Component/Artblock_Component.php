@@ -22,6 +22,9 @@ class Artblock_Component {
 	const LINE_HEIGHT_SETTING = 'Line_Height_Setting';
 	const FONT_WEIGHT_SETTING = 'Font_Weight_Setting';
 	const COLOR_SETTING       = 'Color_Setting';
+	const HOVER_COLOR_SETTING = 'Hover_Color_Setting';
+
+	const FLEX_ORDER_SETTING = 'Flex_Order_Setting';
 
 	const TEXT_SETTINGS = array(
 		self::FONT_SIZE_SETTING,
@@ -30,7 +33,7 @@ class Artblock_Component {
 		self::COLOR_SETTING,
 	);
 
-	const HOVER_COLOR_SETTING = 'Hover_Color_Setting';
+
 
 	/**
 	 * The name of the component. It should be as something unique, will appear

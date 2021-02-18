@@ -63,7 +63,7 @@ class Simple_Article extends Article_Block {
 		#region -- Author Component
 
 		$css_components        = array(
-			$css_prefix . '.twrp-ss__author' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__author' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
 			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
 		$current_settings      = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
@@ -76,7 +76,7 @@ class Simple_Article extends Article_Block {
 
 		$current_settings    = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
 		$css_components      = array(
-			$css_prefix . '.twrp-ss__date' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__date' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
 			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
 		$component           = new Artblock_Component( 'date', _x( 'Date', 'backend', 'twrp' ), $current_settings, $css_components );
@@ -88,13 +88,37 @@ class Simple_Article extends Article_Block {
 
 		$current_settings     = ( isset( $this->settings['views'] ) && is_array( $this->settings['views'] ) ) ? $this->settings['views'] : array();
 		$css_components       = array(
-			$css_prefix . '.twrp-ss__views' => Artblock_Component::TEXT_SETTINGS,
+			$css_prefix . '.twrp-ss__views' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
 			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__views' => array( Artblock_Component::HOVER_COLOR_SETTING ),
 		);
 		$component            = new Artblock_Component( 'views', _x( 'Views', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['views'] = $component;
 
 		#endregion -- Views Component
+
+		#region -- Comments Component
+
+		$current_settings        = ( isset( $this->settings['comments'] ) && is_array( $this->settings['comments'] ) ) ? $this->settings['comments'] : array();
+		$css_components          = array(
+			$css_prefix . '.twrp-ss__comments' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__comments' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+		);
+		$component               = new Artblock_Component( 'comments', _x( 'Comments', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['comments'] = $component;
+
+		#endregion -- Comments Component
+
+		#region -- Category Component
+
+		$current_settings        = ( isset( $this->settings['category'] ) && is_array( $this->settings['category'] ) ) ? $this->settings['category'] : array();
+		$css_components          = array(
+			$css_prefix . '.twrp-ss__category' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__category' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+		);
+		$component               = new Artblock_Component( 'category', _x( 'Category', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['category'] = $component;
+
+		#endregion -- Category Component
 
 		return $components;
 	}

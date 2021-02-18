@@ -63,7 +63,7 @@ if ( empty( get_the_title() ) ) {
 		<?php endif; ?>
 
 		<?php if ( $artblock->is_main_category_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__categories">
+			<span class="twrp-ss__meta twrp-ss__category">
 				<?php $artblock->display_category_icon(); ?>
 				<?php $artblock->display_the_main_category(); ?>
 			</span>

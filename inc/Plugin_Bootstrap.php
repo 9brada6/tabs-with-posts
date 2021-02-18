@@ -101,6 +101,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Component/Component_Settings/Font_Weight_Setting',
 		'Article_Block/Component/Component_Settings/Color_Setting',
 		'Article_Block/Component/Component_Settings/Hover_Color_Setting',
+		'Article_Block/Component/Component_Settings/Flex_Order_Setting',
 
 		'Article_Block/Settings/Artblock_Setting',
 		'Article_Block/Settings/Display_Author_Setting',
