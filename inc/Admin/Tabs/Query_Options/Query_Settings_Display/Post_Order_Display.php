@@ -135,6 +135,14 @@ class Post_Order_Display extends Query_Setting_Display {
 			}
 			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_POSTS_IN_NOTE );
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
+
+			// Views note.
+			$note_is_hidden_class = ' twrpb-hidden';
+			if ( in_array( 'twrp_post_views_order', $orderby_settings, true ) ) {
+				$note_is_hidden_class = '';
+			}
+			$remember_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_VIEWS_NOTE );
+			$remember_note->display_note( $this->get_query_setting_paragraph_class() . $note_is_hidden_class );
 			?>
 		</div>
 		<?php

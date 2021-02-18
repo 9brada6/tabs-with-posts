@@ -32,21 +32,18 @@ It's best to keep them updated.
 
 Day:
 
-- Add how orderby views plugin works a notice in orderby setting.
-
 - Add text decoration and hover text decoration.
 - See what other CSS settings we can add to components.
+
 - Try to make disabled comment icon as large as the comment icon, and disabled line bigger than the actual svg?
-
-- Make article blocks display flex, column direction?
-
 - Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
-
-- Add a way to for each article block to display an image, even if it's not set.
 
 When making tabs:
 
 - Tabs: flash of content: display only the first tab, even without javascript.
+- Make article blocks display flex, column direction?
+
+- Add a way to for each article block to display an image, even if it's not set.
 
 ### ✅ Todo Documentation
 

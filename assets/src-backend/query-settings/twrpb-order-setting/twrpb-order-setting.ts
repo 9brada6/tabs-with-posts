@@ -142,7 +142,20 @@ function hideOrShowPostInNote() : void {
 
 // #endregion -- Hide/Show Post In notice if selected.
 
-// #region -- Hide/Show Note if OrderBy option is selected.
+// #region -- Hide/Show Views notice if selected.
+
+const viewsNote = $( '#twrpb-setting-note__order_by_views_in_note' );
+
+$( hideOrShowViewsNote );
+$( document ).on( 'change', `.${ orderByClassName }`, hideOrShowViewsNote );
+
+function hideOrShowViewsNote() : void {
+	hideOrShowNoteOnSelect( 'twrp_post_views_order', viewsNote );
+}
+
+// #endregion -- Hide/Show Views notice if selected.
+
+// #region -- Hide/Show Note if Order By option is selected.
 
 function hideOrShowNoteOnSelect( $orderByValue: string|Array<string>, $note: JQuery ) {
 	let showWarning = false;

@@ -142,7 +142,7 @@ class Post_Views {
 			$not_installed_message = _x( 'Plugin not installed', 'backend', 'twrp' );
 		}
 
-		$text = _x( 'Order by post views.', 'backend', 'twrp' );
+		$text = _x( 'Order by post views', 'backend', 'twrp' );
 		if ( ! empty( $not_installed_message ) ) {
 			$text = $text . '(' . $not_installed_message . ')';
 		}

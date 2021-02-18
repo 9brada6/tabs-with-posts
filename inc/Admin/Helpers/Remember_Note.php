@@ -45,6 +45,8 @@ class Remember_Note {
 
 	const NOTE__ORDERING_BY_POSTS_IN_NOTE = 'order_by_posts_in_note';
 
+	const NOTE__ORDERING_BY_VIEWS_NOTE = 'order_by_views_in_note';
+
 	const NOTE__POST_SETTINGS_NOTE = 'post_settings_note';
 
 	const NOTE__INVALID_JSON_WARNING = 'invalid_json_warning';
@@ -161,6 +163,10 @@ class Remember_Note {
 
 			static::NOTE__ORDERING_BY_POSTS_IN_NOTE      => array(
 				'text' => _x( 'Don\'t forget to add posts to the "Included Posts" setting, and sort them how you want.', 'backend', 'twrp' ),
+			),
+
+			static::NOTE__ORDERING_BY_VIEWS_NOTE         => array(
+				'text' => _x( 'Depending on how the plugin is ordering, either "Suppress Filters" or "Meta Settings" options are overwritten.', 'backend', 'twrp' ),
 			),
 
 			static::NOTE__POST_SETTINGS_NOTE             => array(
