@@ -3,14 +3,15 @@
 namespace TWRP\Article_Block\Component;
 
 use TWRP\Admin\Widget_Control\Select_Control;
+use TWRP\Article_Block\Component\Text_Decoration_Setting;
 
 /**
- * Class used to change the font weight of the specific component.
+ * Class used to change the hover text decoration of the specific component.
  */
-class Font_Weight_Setting extends Component_Setting {
+class Hover_Text_Decoration_Setting extends Component_Setting {
 
 	public function get_key_name() {
-		return 'font_weight';
+		return 'hover_text_decoration';
 	}
 
 	public function display_setting( $prefix_id, $prefix_name, $value ) {
@@ -27,25 +28,13 @@ class Font_Weight_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Font weight:', 'backend; CSS unit', 'twrp' ),
+			'before'  => _x( 'Text decoration - mouse over:', 'backend', 'twrp' ),
 			'after'   => '',
-			'options' => array(
-				''        => _x( 'Not set', 'backend', 'twrp' ),
-				'inherit' => _x( 'inherit', 'backend', 'twrp' ),
-				'100'     => '100',
-				'200'     => '200',
-				'300'     => '300',
-				'400'     => '400',
-				'500'     => '500',
-				'600'     => '600',
-				'700'     => '700',
-				'800'     => '800',
-				'900'     => '900',
-			),
+			'options' => Text_Decoration_Setting::get_all_text_decoration_options(),
 		);
 	}
 
-	public function get_css( $font_weight ) {
+	public function get_css( $text_decoration ) {
 		$control_settings = $this->get_control_setting_args();
 		if ( isset( $control_settings['options'] ) && is_array( $control_settings['options'] ) ) {
 			$possible_values = $control_settings['options'];
@@ -53,14 +42,14 @@ class Font_Weight_Setting extends Component_Setting {
 			$possible_values = array();
 		}
 
-		if ( empty( $font_weight ) ) {
+		if ( empty( $text_decoration ) ) {
 			return '';
 		}
 
-		if ( ! in_array( $font_weight, $possible_values, true ) ) {
+		if ( ! in_array( $text_decoration, $possible_values, true ) ) {
 			return '';
 		}
 
-		return "font-weight:${font_weight};";
+		return "text-decoration:${text_decoration};";
 	}
 }

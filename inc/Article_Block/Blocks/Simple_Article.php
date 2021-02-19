@@ -48,12 +48,34 @@ class Simple_Article extends Article_Block {
 		$components = array();
 		$css_prefix = $this->get_body_css_specificity_selector() . ' .' . $this->get_block_class() . ' ';
 
+		$title_component_settings = array(
+			Artblock_Component::FONT_SIZE_SETTING,
+			Artblock_Component::LINE_HEIGHT_SETTING,
+			Artblock_Component::FONT_WEIGHT_SETTING,
+			Artblock_Component::TEXT_DECORATION_SETTING,
+			Artblock_Component::COLOR_SETTING,
+		);
+
+		$component_settings = array(
+			Artblock_Component::FLEX_ORDER_SETTING,
+			Artblock_Component::FONT_SIZE_SETTING,
+			Artblock_Component::LINE_HEIGHT_SETTING,
+			Artblock_Component::FONT_WEIGHT_SETTING,
+			Artblock_Component::TEXT_DECORATION_SETTING,
+			Artblock_Component::COLOR_SETTING,
+		);
+
+		$component_settings_hover = array(
+			Artblock_Component::HOVER_TEXT_DECORATION_SETTING,
+			Artblock_Component::HOVER_COLOR_SETTING,
+		);
+
 		#region -- Title Component
 
 		$current_settings     = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
 		$css_components       = array(
-			$css_prefix . '.twrp-ss__title' => Artblock_Component::TEXT_SETTINGS,
-			$css_prefix . '.twrp-ss__link-expanded:hover .twrp-ss__title' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$css_prefix . '.twrp-ss__title' => $title_component_settings,
+			$css_prefix . '.twrp-ss__link-expanded:hover .twrp-ss__title' => $component_settings_hover,
 		);
 		$component            = new Artblock_Component( 'title', _x( 'Title', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['title'] = $component;
@@ -63,8 +85,8 @@ class Simple_Article extends Article_Block {
 		#region -- Author Component
 
 		$css_components        = array(
-			$css_prefix . '.twrp-ss__author' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$css_prefix . '.twrp-ss__author' => $component_settings,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => $component_settings_hover,
 		);
 		$current_settings      = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
 		$component             = new Artblock_Component( 'author', _x( 'Author', 'backend', 'twrp' ), $current_settings, $css_components );
@@ -76,8 +98,8 @@ class Simple_Article extends Article_Block {
 
 		$current_settings    = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
 		$css_components      = array(
-			$css_prefix . '.twrp-ss__date' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$css_prefix . '.twrp-ss__date' => $component_settings,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => $component_settings_hover,
 		);
 		$component           = new Artblock_Component( 'date', _x( 'Date', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['date'] = $component;
@@ -88,8 +110,8 @@ class Simple_Article extends Article_Block {
 
 		$current_settings     = ( isset( $this->settings['views'] ) && is_array( $this->settings['views'] ) ) ? $this->settings['views'] : array();
 		$css_components       = array(
-			$css_prefix . '.twrp-ss__views' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__views' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$css_prefix . '.twrp-ss__views' => $component_settings,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__views' => $component_settings_hover,
 		);
 		$component            = new Artblock_Component( 'views', _x( 'Views', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['views'] = $component;
@@ -100,8 +122,8 @@ class Simple_Article extends Article_Block {
 
 		$current_settings        = ( isset( $this->settings['comments'] ) && is_array( $this->settings['comments'] ) ) ? $this->settings['comments'] : array();
 		$css_components          = array(
-			$css_prefix . '.twrp-ss__comments' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__comments' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$css_prefix . '.twrp-ss__comments' => $component_settings,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__comments' => $component_settings_hover,
 		);
 		$component               = new Artblock_Component( 'comments', _x( 'Comments', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['comments'] = $component;
@@ -112,8 +134,8 @@ class Simple_Article extends Article_Block {
 
 		$current_settings        = ( isset( $this->settings['category'] ) && is_array( $this->settings['category'] ) ) ? $this->settings['category'] : array();
 		$css_components          = array(
-			$css_prefix . '.twrp-ss__category' => array( Artblock_Component::FLEX_ORDER_SETTING, Artblock_Component::TEXT_SETTINGS ),
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__category' => array( Artblock_Component::HOVER_COLOR_SETTING ),
+			$css_prefix . '.twrp-ss__category' => $component_settings,
+			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__category' => $component_settings_hover,
 		);
 		$component               = new Artblock_Component( 'category', _x( 'Category', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['category'] = $component;

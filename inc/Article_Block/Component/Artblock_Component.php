@@ -18,22 +18,14 @@ class Artblock_Component {
 
 	const COMPONENTS_NAMESPACE_PREFIX = __NAMESPACE__;
 
-	const FONT_SIZE_SETTING   = 'Font_Size_Setting';
-	const LINE_HEIGHT_SETTING = 'Line_Height_Setting';
-	const FONT_WEIGHT_SETTING = 'Font_Weight_Setting';
-	const COLOR_SETTING       = 'Color_Setting';
-	const HOVER_COLOR_SETTING = 'Hover_Color_Setting';
-
-	const FLEX_ORDER_SETTING = 'Flex_Order_Setting';
-
-	const TEXT_SETTINGS = array(
-		self::FONT_SIZE_SETTING,
-		self::LINE_HEIGHT_SETTING,
-		self::FONT_WEIGHT_SETTING,
-		self::COLOR_SETTING,
-	);
-
-
+	const FLEX_ORDER_SETTING            = 'Flex_Order_Setting';
+	const FONT_SIZE_SETTING             = 'Font_Size_Setting';
+	const LINE_HEIGHT_SETTING           = 'Line_Height_Setting';
+	const FONT_WEIGHT_SETTING           = 'Font_Weight_Setting';
+	const TEXT_DECORATION_SETTING       = 'Text_Decoration_Setting';
+	const COLOR_SETTING                 = 'Color_Setting';
+	const HOVER_TEXT_DECORATION_SETTING = 'Hover_Text_Decoration_Setting';
+	const HOVER_COLOR_SETTING           = 'Hover_Color_Setting';
 
 	/**
 	 * The name of the component. It should be as something unique, will appear

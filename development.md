@@ -32,9 +32,6 @@ It's best to keep them updated.
 
 Day:
 
-- Add text decoration and hover text decoration.
-- See what other CSS settings we can add to components.
-
 - Try to make disabled comment icon as large as the comment icon, and disabled line bigger than the actual svg(overflow)?
 
 When making tabs:
@@ -43,6 +40,10 @@ When making tabs:
 - Make article blocks display flex, column direction?
 
 - Add a way to for each article block to display an image, even if it's not set.
+
+- Add in manual testing that each article block must have all components setting must be in same order.
+Add in test, to test each article block style meta and title for before/after space. Usually nothing should have before after space, because text-decoration might get applied.
+- Add in manual that each article block should have word-wrap: break-word where is necessary, including in the title and meta.
 
 ### ✅ Todo Documentation
 
