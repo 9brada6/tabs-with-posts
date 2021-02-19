@@ -59,6 +59,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'clock-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-fa-c-ol'   => array(
@@ -66,6 +67,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- FontAwesome Icons
@@ -161,6 +163,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'clock-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-goo-c-ol'  => array(
@@ -168,6 +171,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-goo-c-dt'  => array(
@@ -175,6 +179,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'clock-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Google Icons
@@ -200,6 +205,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Dashicons
@@ -218,6 +224,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Foundation Icons
@@ -264,6 +271,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'clock-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-ii-c-ol'   => array(
@@ -271,6 +279,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-ii-ic-f'   => array(
@@ -278,6 +287,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Ios Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'ios-clock-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-ii-ic-ol'  => array(
@@ -285,6 +295,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Ios Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-ii-it-f'   => array(
@@ -292,6 +303,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Ios Time', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'ios-time-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-ii-it-ol'  => array(
@@ -299,6 +311,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Ios Time', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'ios-time-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Ionicons Icons
@@ -352,6 +365,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'clock-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-im-c-ol'   => array(
@@ -359,6 +373,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-im-c-t'    => array(
@@ -366,6 +381,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'clock-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- IconMonstr Icons
@@ -391,6 +407,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Captain Icons
@@ -409,6 +426,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Feather Icons
@@ -448,6 +466,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'clock-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-ji-c-ol'   => array(
@@ -455,6 +474,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Jam Icons
@@ -480,6 +500,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-li-c2-ol'  => array(
@@ -487,6 +508,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-2-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Linea Icons
@@ -512,6 +534,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-cal-oi-c-t'    => array(
@@ -519,6 +542,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'clock-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Octicons Icons
@@ -544,6 +568,7 @@ class Date_Icons implements Icon_Definitions {
 				'description' => _x( 'Clock', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'clock-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Typicons Icons

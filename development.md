@@ -35,8 +35,7 @@ Day:
 - Add text decoration and hover text decoration.
 - See what other CSS settings we can add to components.
 
-- Try to make disabled comment icon as large as the comment icon, and disabled line bigger than the actual svg?
-- Verify each icon alignment, in the simple style. Take the reference the user and the calendar icon.
+- Try to make disabled comment icon as large as the comment icon, and disabled line bigger than the actual svg(overflow)?
 
 When making tabs:
 

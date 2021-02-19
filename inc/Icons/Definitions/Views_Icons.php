@@ -356,6 +356,7 @@ class Views_Icons implements Icon_Definitions {
 				'description' => _x( 'Chart', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-views-fe-c2-ol'   => array(
@@ -363,6 +364,7 @@ class Views_Icons implements Icon_Definitions {
 				'description' => _x( 'Chart 2', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'chart2-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			#endregion -- Feather Icons
