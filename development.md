@@ -32,7 +32,7 @@ It's best to keep them updated.
 
 Day:
 
-- Try to make disabled comment icon as large as the comment icon, and disabled line bigger than the actual svg(overflow)?
+- Try to write documentation for Query Settings and Icons.
 
 When making tabs:
 
