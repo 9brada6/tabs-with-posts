@@ -25,6 +25,8 @@ class General_Options {
 
 	const DARKER_ACCENT_COLOR = 'Darker_Accent_Color';
 
+	const LIGHTER_ACCENT_COLOR = 'Lighter_Accent_Color';
+
 	const TEXT_COLOR = 'Text_Color';
 
 	const DISABLED_TEXT_COLOR = 'Disabled_Text_Color';
@@ -92,6 +94,7 @@ class General_Options {
 		$settings_class_names = array(
 			self::ACCENT_COLOR,
 			self::DARKER_ACCENT_COLOR,
+			self::LIGHTER_ACCENT_COLOR,
 			self::TEXT_COLOR,
 			self::DISABLED_TEXT_COLOR,
 			self::BACKGROUND_COLOR,

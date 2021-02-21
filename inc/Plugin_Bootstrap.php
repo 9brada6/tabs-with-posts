@@ -125,6 +125,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/General_Option_Setting',
 		'Database/General_Options_Settings/Accent_Color',
 		'Database/General_Options_Settings/Darker_Accent_Color',
+		'Database/General_Options_Settings/Lighter_Accent_Color',
 		'Database/General_Options_Settings/Text_Color',
 		'Database/General_Options_Settings/Disabled_Text_Color',
 		'Database/General_Options_Settings/Background_Color',

@@ -172,6 +172,11 @@ class Generate_CSS {
 			$darker_accent_color = 'inherit';
 		}
 
+		$lighter_accent_color = General_Options::get_option( General_Options::LIGHTER_ACCENT_COLOR );
+		if ( ! is_string( $lighter_accent_color ) || ! Color_Utils::is_color( $lighter_accent_color ) || '' === $lighter_accent_color ) {
+			$lighter_accent_color = 'inherit';
+		}
+
 		$outline_accent_color = Color_Utils::set_opacity( $accent_color, 0.5 );
 		if ( ! is_string( $outline_accent_color ) ) {
 			$outline_accent_color = $accent_color;
@@ -196,6 +201,7 @@ class Generate_CSS {
 
 			'--twrp-accent-color: ' . esc_html( $accent_color ) . ';' .
 			'--twrp-darker-accent-color: ' . esc_html( $darker_accent_color ) . ';' .
+			'--twrp-lighter-accent-color: ' . esc_html( $lighter_accent_color ) . ';' .
 
 			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
 

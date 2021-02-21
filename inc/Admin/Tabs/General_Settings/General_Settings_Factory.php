@@ -129,6 +129,7 @@ class General_Settings_Factory {
 			General_Options::SECONDARY_BACKGROUND_COLOR => self::COLOR_SETTING_CLASS,
 			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
 			General_Options::DARKER_ACCENT_COLOR        => self::COLOR_SETTING_CLASS,
+			General_Options::LIGHTER_ACCENT_COLOR       => self::COLOR_SETTING_CLASS,
 			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
 			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
 			General_Options::AUTHOR_ICON                => self::SELECT_SETTING_CLASS,
@@ -155,6 +156,7 @@ class General_Settings_Factory {
 		$correlated_functions = array(
 			General_Options::ACCENT_COLOR               => 'get_accent_color_setting_args',
 			General_Options::DARKER_ACCENT_COLOR        => 'get_darker_accent_color_setting_args',
+			General_Options::LIGHTER_ACCENT_COLOR       => 'get_lighter_accent_color_setting_args',
 			General_Options::TEXT_COLOR                 => 'get_text_color_setting_args',
 			General_Options::DISABLED_TEXT_COLOR        => 'get_disabled_text_color_setting_args',
 			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
@@ -424,6 +426,18 @@ class General_Settings_Factory {
 	protected static function get_darker_accent_color_setting_args() {
 		return array(
 			'title'  => _x( 'Select the darker accent color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the lighter accent color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_lighter_accent_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the lighter accent color:', 'backend', 'twrp' ),
 			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
 		);
 	}
