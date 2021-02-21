@@ -10,7 +10,7 @@ use TWRP\Utils\Color_Utils;
 class Lighter_Accent_Color extends General_Option_Setting {
 
 	public function get_default_value() {
-		return 'rgba(50, 150, 255, 1)';
+		return 'rgba(70, 160, 255, 1)';
 	}
 
 	public function sanitize( $value ) {

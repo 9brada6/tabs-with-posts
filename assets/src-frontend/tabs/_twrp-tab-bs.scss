@@ -12,7 +12,7 @@
 	&__btn {
 		padding: 1px 0.5rem;
 		color: var(--twrp-accent-best-text-color);
-		background-color: var(--twrp-darker-accent-color);
+		background-color: var(--twrp-accent-color);
 		border: 1px solid var(--twrp-accent-color);
 		border-radius: 3px;
 		transition: var(--twrp-default-component-transition);
@@ -26,11 +26,12 @@
 	&__btn[aria-selected="false"],
 	&__btn-item:not([role]):not(:first-child) .twrp-tab-bs__btn {
 		color: var(--twrp-accent-best-text-color);
-		background-color: var(--twrp-accent-color);
+		background-color: var(--twrp-lighter-accent-color);
+		border: 1px solid var(--twrp-lighter-accent-color);
 
 		&:hover,
 		&:focus {
-			background-color: var(--twrp-darker-accent-color);
+			background-color: var(--twrp-accent-color);
 		}
 	}
 
