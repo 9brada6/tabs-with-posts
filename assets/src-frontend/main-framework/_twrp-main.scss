@@ -5,4 +5,9 @@
 		margin-bottom: 0.4rem;
 		font-size: 1.1rem;
 	}
+
+	// polyfill
+	[hidden="hidden"] {
+		display: none;
+	}
 }

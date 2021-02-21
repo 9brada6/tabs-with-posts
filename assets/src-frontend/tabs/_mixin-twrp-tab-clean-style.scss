@@ -1,10 +1,12 @@
 // Mixin class that all tabs should implement.
 
 @mixin twrp-tab-clean-style($block-name) {
+	@include twrp-box;
+
 	&__btns-wrapper {
+		@include twrp-box;
+
 		display: flex;
-		padding: 0;
-		margin: 0;
 		list-style-type: none;
 
 		& + #{$block-name}__contents-wrapper {
@@ -13,40 +15,34 @@
 	}
 
 	&__btn-item {
+		@include twrp-box;
+
 		display: inline-block;
-		padding: 0;
-		margin: 0;
 	}
 
 	&__btn {
-		display: block;
-		padding: 0;
-		margin: 0;
+		@include twrp-box;
+		@include twrp-anchor;
+
 		font-size: 1.05rem;
 		line-height: 1.5;
 		text-decoration: none;
 	}
 
 	&__contents-wrapper {
-		padding: 0;
-		margin: 0;
+		@include twrp-box;
 	}
 
 	&__content {
+		@include twrp-box;
+
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(230px, auto));
 		grid-gap: 16px;
-		padding: 0;
-		margin: 0;
 	}
 
 	// Prevent flash of content, by displaying only the first tab.
-	&__content:not([role]) ~ &__content {
-		display: none;
-	}
-
-	// polyfill
-	[hidden="hidden"] {
+	&__content:not([role]) ~ #{$block-name}__content {
 		display: none;
 	}
 }

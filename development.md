@@ -32,7 +32,7 @@ It's best to keep them updated.
 
 Day:
 
-- Unify parent_id note with post_id note if parent_id are not fetched from the array.
+- Fix colors, make accent color, lighter accent color, darker accent color, text color, disabled text color, background-color, secondary-background-color, border color, border-radius.
 - Add a way to get a specific number of posts in the widget.
 
 When making tabs:
@@ -49,6 +49,7 @@ Add in test, to test each article block style meta and title for before/after sp
 
 ### ✅ Todo Documentation
 
+- Add some photos.
 - Unify the 2 documentation block classes.
 - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 

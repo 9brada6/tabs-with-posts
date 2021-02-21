@@ -35,6 +35,13 @@
 - All the number inputs controls, by default should be empty(no value).
 - All the select controls that apply CSS, should have an option "Not Apply" that must be default.
 
+## CSS of Tabs
+
+1. The mixin twrp-tab-clean-style must contain all tab classes, even that they have no style.
+2. Each tab must implement the mixin twrp-tab-clean-style.
+3. Each element must implement twrp-box, anchor tags should also implement twrp-anchor.
+4. When displaying, any tab should not have any flash of content.
+
 ## CSS of Article Blocks
 
 1. Each element that exist in a template file must have at least a class(BEM style).
