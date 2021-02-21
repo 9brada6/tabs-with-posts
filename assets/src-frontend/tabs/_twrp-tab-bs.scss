@@ -12,7 +12,7 @@
 	&__btn {
 		padding: 1px 0.5rem;
 		color: var(--twrp-accent-best-text-color);
-		background-color: var(--twrp-secondary-accent-color);
+		background-color: var(--twrp-darker-accent-color);
 		border: 1px solid var(--twrp-accent-color);
 		border-radius: 3px;
 		transition: var(--twrp-default-component-transition);
@@ -30,7 +30,7 @@
 
 		&:hover,
 		&:focus {
-			background-color: var(--twrp-secondary-accent-color);
+			background-color: var(--twrp-darker-accent-color);
 		}
 	}
 
@@ -53,7 +53,7 @@
 
 		&:hover,
 		&:focus {
-			background-color: var(--twrp-secondary-accent-color);
+			background-color: var(--twrp-darker-accent-color);
 		}
 	}
 }

@@ -167,9 +167,9 @@ class Generate_CSS {
 			$accent_color = 'inherit';
 		}
 
-		$secondary_accent_color = General_Options::get_option( General_Options::SECONDARY_ACCENT_COLOR );
-		if ( ! is_string( $secondary_accent_color ) || ! Color_Utils::is_color( $secondary_accent_color ) || '' === $secondary_accent_color ) {
-			$secondary_accent_color = 'inherit';
+		$darker_accent_color = General_Options::get_option( General_Options::DARKER_ACCENT_COLOR );
+		if ( ! is_string( $darker_accent_color ) || ! Color_Utils::is_color( $darker_accent_color ) || '' === $darker_accent_color ) {
+			$darker_accent_color = 'inherit';
 		}
 
 		$outline_accent_color = Color_Utils::set_opacity( $accent_color, 0.5 );
@@ -183,7 +183,7 @@ class Generate_CSS {
 		}
 
 		$best_secondary_accent_text_color = 'rgba(256, 256, 256, 1)';
-		if ( 0 === Color_Utils::white_or_black_text( $secondary_accent_color ) ) {
+		if ( 0 === Color_Utils::white_or_black_text( $darker_accent_color ) ) {
 			$best_secondary_accent_text_color = 'rgba(0, 0, 0, 1)';
 		}
 
@@ -195,7 +195,7 @@ class Generate_CSS {
 			'--twrp-disabled-text-color: ' . esc_html( $disabled_text_color ) . ';' .
 
 			'--twrp-accent-color: ' . esc_html( $accent_color ) . ';' .
-			'--twrp-secondary-accent-color: ' . esc_html( $secondary_accent_color ) . ';' .
+			'--twrp-darker-accent-color: ' . esc_html( $darker_accent_color ) . ';' .
 
 			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
 

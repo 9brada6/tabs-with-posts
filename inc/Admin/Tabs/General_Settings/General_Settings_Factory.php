@@ -128,7 +128,7 @@ class General_Settings_Factory {
 			General_Options::BACKGROUND_COLOR           => self::COLOR_SETTING_CLASS,
 			General_Options::SECONDARY_BACKGROUND_COLOR => self::COLOR_SETTING_CLASS,
 			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
-			General_Options::SECONDARY_ACCENT_COLOR     => self::COLOR_SETTING_CLASS,
+			General_Options::DARKER_ACCENT_COLOR        => self::COLOR_SETTING_CLASS,
 			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
 			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
 			General_Options::AUTHOR_ICON                => self::SELECT_SETTING_CLASS,
@@ -154,7 +154,7 @@ class General_Settings_Factory {
 	protected static function get_argument_functions_correlated() {
 		$correlated_functions = array(
 			General_Options::ACCENT_COLOR               => 'get_accent_color_setting_args',
-			General_Options::SECONDARY_ACCENT_COLOR     => 'get_secondary_accent_color_setting_args',
+			General_Options::DARKER_ACCENT_COLOR        => 'get_darker_accent_color_setting_args',
 			General_Options::TEXT_COLOR                 => 'get_text_color_setting_args',
 			General_Options::DISABLED_TEXT_COLOR        => 'get_disabled_text_color_setting_args',
 			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
@@ -417,13 +417,13 @@ class General_Settings_Factory {
 	}
 
 	/**
-	 * Return the arguments to create the secondary accent color setting.
+	 * Return the arguments to create the darker accent color setting.
 	 *
 	 * @return array
 	 */
-	protected static function get_secondary_accent_color_setting_args() {
+	protected static function get_darker_accent_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the secondary accent color:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the darker accent color:', 'backend', 'twrp' ),
 			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
 		);
 	}

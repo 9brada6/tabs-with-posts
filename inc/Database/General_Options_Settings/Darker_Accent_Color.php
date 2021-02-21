@@ -5,9 +5,9 @@ namespace TWRP\Database\Settings;
 use TWRP\Utils\Color_Utils;
 
 /**
- * Class that manages the setting of the secondary accent color.
+ * Class that manages the setting of the darker accent color.
  */
-class Secondary_Accent_Color extends General_Option_Setting {
+class Darker_Accent_Color extends General_Option_Setting {
 
 	public function get_default_value() {
 		return 'rgba(0, 94, 196, 1)';

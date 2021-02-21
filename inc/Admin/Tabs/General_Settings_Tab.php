@@ -45,7 +45,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					General_Settings_Factory::display_setting( General_Options::TEXT_COLOR );
 					General_Settings_Factory::display_setting( General_Options::DISABLED_TEXT_COLOR );
 					General_Settings_Factory::display_setting( General_Options::ACCENT_COLOR );
-					General_Settings_Factory::display_setting( General_Options::SECONDARY_ACCENT_COLOR );
+					General_Settings_Factory::display_setting( General_Options::DARKER_ACCENT_COLOR );
 					?>
 				</fieldset>
 
