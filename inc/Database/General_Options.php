@@ -27,7 +27,7 @@ class General_Options {
 
 	const TEXT_COLOR = 'Text_Color';
 
-	const SECONDARY_TEXT_COLOR = 'Secondary_Text_Color';
+	const DISABLED_TEXT_COLOR = 'Disabled_Text_Color';
 
 	const BACKGROUND_COLOR = 'Background_Color';
 
@@ -93,7 +93,7 @@ class General_Options {
 			self::ACCENT_COLOR,
 			self::SECONDARY_ACCENT_COLOR,
 			self::TEXT_COLOR,
-			self::SECONDARY_TEXT_COLOR,
+			self::DISABLED_TEXT_COLOR,
 			self::BACKGROUND_COLOR,
 			self::SECONDARY_BACKGROUND_COLOR,
 			self::HUMAN_READABLE_DATE,

@@ -157,9 +157,9 @@ class Generate_CSS {
 			$text_color = 'inherit';
 		}
 
-		$secondary_text_color = General_Options::get_option( General_Options::SECONDARY_TEXT_COLOR );
-		if ( ! is_string( $secondary_text_color ) || ! Color_Utils::is_color( $secondary_text_color ) || '' === $secondary_text_color ) {
-			$secondary_text_color = 'inherit';
+		$disabled_text_color = General_Options::get_option( General_Options::DISABLED_TEXT_COLOR );
+		if ( ! is_string( $disabled_text_color ) || ! Color_Utils::is_color( $disabled_text_color ) || '' === $disabled_text_color ) {
+			$disabled_text_color = 'inherit';
 		}
 
 		$accent_color = General_Options::get_option( General_Options::ACCENT_COLOR );
@@ -192,7 +192,7 @@ class Generate_CSS {
 			'--twrp-secondary-background-color: ' . esc_html( $secondary_background_color ) . ';' .
 
 			'--twrp-text-color: ' . esc_html( $text_color ) . ';' .
-			'--twrp-secondary-text-color: ' . esc_html( $secondary_text_color ) . ';' .
+			'--twrp-disabled-text-color: ' . esc_html( $disabled_text_color ) . ';' .
 
 			'--twrp-accent-color: ' . esc_html( $accent_color ) . ';' .
 			'--twrp-secondary-accent-color: ' . esc_html( $secondary_accent_color ) . ';' .

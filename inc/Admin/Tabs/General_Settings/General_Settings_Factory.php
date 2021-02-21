@@ -124,7 +124,7 @@ class General_Settings_Factory {
 	protected static function get_setting_classes_correlated() {
 		$correlated_classes = array(
 			General_Options::TEXT_COLOR                 => self::COLOR_SETTING_CLASS,
-			General_Options::SECONDARY_TEXT_COLOR       => self::COLOR_SETTING_CLASS,
+			General_Options::DISABLED_TEXT_COLOR        => self::COLOR_SETTING_CLASS,
 			General_Options::BACKGROUND_COLOR           => self::COLOR_SETTING_CLASS,
 			General_Options::SECONDARY_BACKGROUND_COLOR => self::COLOR_SETTING_CLASS,
 			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
@@ -156,7 +156,7 @@ class General_Settings_Factory {
 			General_Options::ACCENT_COLOR               => 'get_accent_color_setting_args',
 			General_Options::SECONDARY_ACCENT_COLOR     => 'get_secondary_accent_color_setting_args',
 			General_Options::TEXT_COLOR                 => 'get_text_color_setting_args',
-			General_Options::SECONDARY_TEXT_COLOR       => 'get_secondary_text_color_setting_args',
+			General_Options::DISABLED_TEXT_COLOR        => 'get_disabled_text_color_setting_args',
 			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
 			General_Options::SECONDARY_BACKGROUND_COLOR => 'get_secondary_background_color_setting_args',
 			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
@@ -369,13 +369,13 @@ class General_Settings_Factory {
 	}
 
 	/**
-	 * Return the arguments to create the secondary text color setting.
+	 * Return the arguments to create the disabled text color setting.
 	 *
 	 * @return array
 	 */
-	protected static function get_secondary_text_color_setting_args() {
+	protected static function get_disabled_text_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the secondary text color:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the disabled text color:', 'backend', 'twrp' ),
 			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
 		);
 	}

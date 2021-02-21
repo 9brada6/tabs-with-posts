@@ -126,7 +126,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/Accent_Color',
 		'Database/General_Options_Settings/Secondary_Accent_Color',
 		'Database/General_Options_Settings/Text_Color',
-		'Database/General_Options_Settings/Secondary_Text_Color',
+		'Database/General_Options_Settings/Disabled_Text_Color',
 		'Database/General_Options_Settings/Background_Color',
 		'Database/General_Options_Settings/Secondary_Background_Color',
 		'Database/General_Options_Settings/Human_Readable_Date',

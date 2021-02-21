@@ -5,9 +5,9 @@ namespace TWRP\Database\Settings;
 use TWRP\Utils\Color_Utils;
 
 /**
- * Class that manages the setting of the secondary text color.
+ * Class that manages the setting of the disabled text color.
  */
-class Secondary_Text_Color extends General_Option_Setting {
+class Disabled_Text_Color extends General_Option_Setting {
 
 	public function get_default_value() {
 		return 'rgba(70, 70, 70, 1)';

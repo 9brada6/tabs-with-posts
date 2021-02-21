@@ -32,7 +32,7 @@ It's best to keep them updated.
 
 Day:
 
-- Fix colors, make accent color, lighter accent color, darker accent color, text color, disabled text color, background-color, secondary-background-color, border color, border-radius.
+- Fix colors, make accent color, lighter accent color, darker accent color border-color, secondary border-color, border-radius.
 - Add a way to get a specific number of posts in the widget.
 
 When making tabs:
