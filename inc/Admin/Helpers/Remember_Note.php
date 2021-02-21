@@ -2,6 +2,8 @@
 
 namespace TWRP\Admin\Helpers;
 
+use TWRP\Admin\Settings_Menu;
+use TWRP\Admin\Tabs\Documentation_Tab;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
@@ -115,6 +117,13 @@ class Remember_Note {
 	 * @return array
 	 */
 	protected function get_all_notes() {
+
+		$documentation                    = new Documentation_Tab();
+		$documentation_url                = Settings_Menu::get_tab_url( $documentation );
+		$advanced_arguments_documentation = $documentation_url . '#twrpb-docs__advanced-query-settings';
+
+		$ordering_documentation = $documentation_url . '#twrpb-docs__ordering-settings';
+
 		$all_notes = array(
 
 			static::NOTE__POST_DATE_SETTING_REMEMBER     => array(
@@ -142,7 +151,8 @@ class Remember_Note {
 			),
 
 			static::NOTE__POST_STATUS_INFO               => array(
-				'text' => _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in documentation how to do it.', 'backend', 'twrp' ),
+				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
+				'text' => sprintf( _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in %1$s documentation%2$s how to do it.', 'backend', 'twrp' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_POST_ID_WARNING    => array(
@@ -154,11 +164,13 @@ class Remember_Note {
 			),
 
 			static::NOTE__ORDERING_BY_SEARCH_NOTE        => array(
-				'text' => _x( 'Don\'t forget to add some search terms, also, there is a technical explanation in the documentation of how ordering by search works.', 'backend', 'twrp' ),
+				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
+				'text' => sprintf( _x( 'Don\'t forget to add some search terms, also, there is a technical explanation in the %1$s documentation%2$s of how ordering by search works.', 'backend', 'twrp' ), '<a href="' . esc_attr( $ordering_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_META_NOTE          => array(
-				'text' => _x( 'Don\'t forget to add a meta value. Do not confuse sorting alphabetically with numerically, in documentation there is an explanation between the two.', 'backend', 'twrp' ),
+				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
+				'text' => sprintf( _x( 'Don\'t forget to add a meta value. Do not confuse sorting alphabetically with numerically, in %1$s documentation%2$s there is an explanation between the two.', 'backend', 'twrp' ), '<a href="' . esc_attr( $ordering_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_POSTS_IN_NOTE      => array(
@@ -174,12 +186,13 @@ class Remember_Note {
 			),
 
 			static::NOTE__ADVANCED_ARGS_NOTE             => array(
-				'text' => _x( 'This is a JSON setting, will overwrite any other settings, used for more advanced settings that are not usually worth making a graphical settings for them. You can read in documentation some examples. If you want to use PHP, then use the filters to overwrite a specific query(examples in documentation).', 'backend', 'twrp' ),
+				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
+				'text' => sprintf( _x( 'This is a JSON setting, will overwrite any other settings, used for more advanced settings that are not usually worth making a graphical settings for them. You can see in %1$s documentation%2$s an example. If you want to use PHP, then use the filters to overwrite a specific query(examples in documentation).', 'backend', 'twrp' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__INVALID_JSON_WARNING           => array(
 				/* translators: The tags %1$s and %2$s will be replaced with a HTML link tag. */
-				'text' => sprintf( _x( 'The JSON you entered is invalid and will not be applied. If you can\'t detect where the error might be, you can copy the text into an %1$s online checker%2$s for more details.', 'backend', 'twrp' ), '<a href="' . esc_url( 'https://jsonformatter.curiousconcept.com/' ) . '">', '</a>' ),
+				'text' => sprintf( _x( 'The JSON you entered is invalid and will not be applied. If you can\'t detect where the error might be, you can copy the text into an %1$s online checker%2$s for more details.', 'backend', 'twrp' ), '<a href="' . esc_url( 'https://jsonformatter.curiousconcept.com/' ) . '" target="_blank">', '</a>' ),
 			),
 		);
 
@@ -198,8 +211,9 @@ class Remember_Note {
 		}
 		$allowed_html = array(
 			'a'      => array(
-				'href'  => array(),
-				'title' => array(),
+				'href'   => array(),
+				'target' => array(),
+				'title'  => array(),
 			),
 			'br'     => array(),
 			'em'     => array(),
@@ -212,7 +226,7 @@ class Remember_Note {
 			</span>
 
 			<span class="<?php $this->bem_class( 'text' ); ?>">
-				<?= wp_kses( $this->text, wp_kses_allowed_html() ); ?>
+				<?= wp_kses( $this->text, $allowed_html ); ?>
 			</span>
 		</p>
 		<?php

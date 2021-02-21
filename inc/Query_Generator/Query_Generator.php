@@ -61,13 +61,13 @@ class Query_Generator {
 			throw $exception;
 		}
 
-		$query_args = apply_filters( 'twrp_starting_query_arguments', $query_args, $query_options );
+		$query_args = apply_filters( 'twrp_starting_query_arguments', $query_args, $query_id, $query_options );
 
 		foreach ( $registered_settings_classes as $setting_class_to_apply ) {
 			$query_args = $setting_class_to_apply->add_query_arg( $query_args, $query_options );
 		}
 
-		return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_options );
+		return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_id, $query_options );
 	}
 
 	/**

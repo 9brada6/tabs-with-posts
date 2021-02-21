@@ -6,16 +6,23 @@ use TWRP\Plugins\Post_Views;
 use TWRP\Plugins\Known_Plugins\Known_Plugin;
 use TWRP\Admin\Tabs\Documentation\License_Display;
 use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
+use TWRP\Admin\Tabs\Documentation\Tab_Queries_Docs;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
  * Display the documentation tab in the admin area.
  */
 class Documentation_Tab extends Admin_Menu_Tab {
+
+	use BEM_Class_Naming_Trait;
+
 	public function display_tab() {
 		?>
 		<div class="twrpb-documentation-page">
 			<?php $this->display_views_plugin_support(); ?>
 			<?php
+			$icons_documentation = new Tab_Queries_Docs();
+			$icons_documentation->display();
 			$icons_documentation = new Icons_Documentation();
 			$icons_documentation->display_icon_documentation();
 			?>
@@ -112,4 +119,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 		<?php
 	}
 
+	public function get_bem_base_class() {
+		return 'twrpb-docs';
+	}
 }

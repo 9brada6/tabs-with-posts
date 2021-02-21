@@ -84,7 +84,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	 * @return string
 	 */
 	public function get_tab_title() {
-		return _x( 'Query Posts', 'backend', 'twrp' );
+		return _x( 'Tab Queries', 'backend', 'twrp' );
 	}
 
 	/**

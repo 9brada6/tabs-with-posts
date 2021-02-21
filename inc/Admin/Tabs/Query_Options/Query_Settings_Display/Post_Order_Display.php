@@ -98,7 +98,7 @@ class Post_Order_Display extends Query_Setting_Display {
 
 			// Post Id Ordering Warning.
 			$note_is_hidden_class = ' twrpb-hidden';
-			if ( in_array( 'ID', $orderby_settings, true ) ) {
+			if ( in_array( 'ID', $orderby_settings, true ) || in_array( 'parent', $orderby_settings, true ) ) {
 				$note_is_hidden_class = '';
 			}
 			$warning_note = new Remember_Note( Remember_Note::NOTE__ORDERING_BY_POST_ID_WARNING, 'warning' );

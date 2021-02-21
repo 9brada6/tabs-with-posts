@@ -2,15 +2,19 @@
 
 namespace TWRP\Admin\Tabs\Documentation;
 
+use TWRP\Admin\Tabs\Documentation_Tab;
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
  * Class that is used to display Icons Documentation. Mostly used as a class for
  * the separation of the content between files.
  */
 class Icons_Documentation {
+
+	use BEM_Class_Naming_Trait;
 
 	/**
 	 * Display the icons documentation. In this documentation there is also a
@@ -20,7 +24,68 @@ class Icons_Documentation {
 	 */
 	public function display_icon_documentation() {
 		?>
-		<h2><?= esc_html( _x( 'Icons', 'backend documentation', 'twrp' ) ); ?></h2>
+		<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html( _x( 'Icons', 'backend documentation', 'twrp' ) ); ?></h2>
+
+		<p>
+		<?= esc_html(
+			_x(
+				'This plugin comes with a lot of icons possibilities. When selecting a plugin, you will see the brand of the plugin, the icon name and the style(filled, outlined, ... etc). If there is a brand that is not included in this plugin, you can send a request to add that icon pack.',
+				'backend documentation',
+				'twrp'
+			)
+		); ?>
+		</p>
+
+		<p>
+		<?= esc_html(
+			_x(
+				'The first thing when selecting icons you must consider(In my opinion) is to look exactly(or at least similar) with other theme/plugins icons. You can select icons from different brands, the icons are made to be aligned perfectly with each other.',
+				'backend documentation',
+				'twrp'
+			)
+		); ?>
+		</p>
+
+		<p>
+		<?= esc_html(
+			_x(
+				'In the frontend of the website, only the selected icons are included, making all the icons code very small(1-2kb GZipped).',
+				'backend documentation',
+				'twrp'
+			)
+		); ?>
+		</p>
+
+		<p class="<?php $this->bem_class( 'developer-text' ); ?>">
+		<?= esc_html(
+			_x(
+				'Because the code is in svg format, to use the icons with an ID reference, the svg icons are included in a div, prepended to the "body" HTML element.',
+				'backend documentation',
+				'twrp'
+			)
+		); ?>
+		</p>
+
+		<p>
+		<?= esc_html(
+			_x(
+				'The icons can be included either inline, or via a file. The recommended way(and default) is to include them inline, because the page will load faster, and also they are included only if the tabs are displayed. The option to include them via a file is to let the browser cache them, to not be downloaded every time, but is not worth, since they are very small in size, and an additional request will rather slow the page down(trust me).',
+				'backend documentation',
+				'twrp'
+			)
+		); ?>
+		</p>
+
+		<p class="<?php $this->bem_class( 'problem-text' ); ?>">
+		<?= esc_html(
+			_x(
+				'If an icon is not displayed, go to "General Settings" tab, change the setting of an icon, and save the settings. The icons are generated when the save button is pressed and at least an icon setting is changed(you can revert back to the icon after), or when the plugin is activated.',
+				'backend documentation',
+				'twrp'
+			)
+		); ?>
+		</p>
+
 		<p>
 			<?= esc_html( _x( 'Check the spoilers bellow to see all available icons:', 'backend documentation', 'twrp' ) ); ?>
 		</p>
@@ -39,7 +104,7 @@ class Icons_Documentation {
 
 		?>
 		<div id="twrpb-documentation-page__all-icons-reference" class="twrpb-icons-spoiler twrpb-documentation-page__icons-spoiler-wrapper">
-			<h3><?= _x( 'All icons reference', 'backend', 'twrp' ); ?></h3>
+			<h3 class="<?php $this->bem_class( 'title-sub-section' ); ?>"><?= _x( 'All icons reference', 'backend', 'twrp' ); ?></h3>
 			<?php foreach ( $title_and_icons as $category => $title_and_icon ) : ?>
 			<div class="twrpb-icons-spoiler__category">
 				<button class="twrpb-icons-spoiler__btn button">
@@ -150,6 +215,11 @@ class Icons_Documentation {
 		);
 
 		return $title_and_icons;
+	}
+
+	protected function get_bem_base_class() {
+		$documentation_tab = new Documentation_Tab();
+		return $documentation_tab->get_bem_base_class();
 	}
 
 }

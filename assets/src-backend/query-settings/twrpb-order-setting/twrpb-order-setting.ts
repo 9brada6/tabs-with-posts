@@ -69,7 +69,7 @@ $( hideOrShowPostIdWarning );
 $( document ).on( 'change', `.${ orderByClassName }`, hideOrShowPostIdWarning );
 
 function hideOrShowPostIdWarning() : void {
-	hideOrShowNoteOnSelect( 'ID', postIdOrderWarning );
+	hideOrShowNoteOnSelect( [ 'ID', 'parent' ], postIdOrderWarning );
 }
 
 // #endregion -- Hide/Show Post ID warning notice if selected.

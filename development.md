@@ -32,7 +32,8 @@ It's best to keep them updated.
 
 Day:
 
-- Try to write documentation for Query Settings and Icons.
+- Unify parent_id note with post_id note if parent_id are not fetched from the array.
+- Add a way to get a specific number of posts in the widget.
 
 When making tabs:
 
@@ -44,23 +45,29 @@ When making tabs:
 - Add in manual testing that each article block must have all components setting must be in same order.
 Add in test, to test each article block style meta and title for before/after space. Usually nothing should have before after space, because text-decoration might get applied.
 - Add in manual that each article block should have word-wrap: break-word where is necessary, including in the title and meta.
+- Add in manual testing of tab queries, that each documentation link should work, and open in a new tab.
 
 ### ✅ Todo Documentation
 
+- Unify the 2 documentation block classes.
+- Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
+
+CSS:
+
 - Don't forget to add CSS specificity in documentation
+
+Tabs:
+
 - Don't forget to say that tabs are not displayed when only a single tab is displayed.
-- Tell how to regenerate icons if one is not displayed.
-- When say how to use orderby setting, say to add order by date if ordered first
-by something else, like number of comments.
-- When writing how the search orderby works in the documentation, add a link to
-that from the search orderby note.
-- When writing how the meta/meta_num orderby works in the documentation, add a link to
-that from the meta/meta_num orderby note.
-- Document each orderby option, and see whether or not orderby author/post type/...etc is influenced by order in which we declare authors/post types. 2. Unify parent_id note with post_id note if parent_id are not fetched from the array.
-- Add in documentation examples on how to use advanced arguments in query settings and what query filters to use. Also make a link from query settings to documentation?
+
+Article Block:
+
 - Say that you can use Yoast plugin to set the primary category.
-- Add in documentation how to set scheduled posts, and link from query settings there.
-- Add how orderby views plugin works.
+
+Documentation Style:
+
+- Add a style for documentation.
+- Add a style for twrpb-documentation__text-developer.
 
 ### Plugins
 
@@ -102,9 +109,3 @@ that from the meta/meta_num orderby note.
 ### Assets
 
 - In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
-
-### Packages
-
-This documentation is split between packages.
-
-### TWRP\Admin\ Package

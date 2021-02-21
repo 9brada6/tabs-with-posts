@@ -40,6 +40,7 @@ class Plugin_Bootstrap {
 		// Admin.
 		'Admin/Helpers/Remember_Note',
 
+		'Admin/Tabs/Documentation/Tab_Queries_Docs',
 		'Admin/Tabs/Documentation/License_Display',
 		'Admin/Tabs/Documentation/Icons_Documentation',
 

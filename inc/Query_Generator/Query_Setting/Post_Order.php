@@ -72,7 +72,7 @@ class Post_Order extends Query_Setting {
 			'relevance'      => _x( 'Order by searched terms', 'backend', 'twrp' ),
 			'meta_value'     => _x( 'Order by meta value(alphabetically)', 'backend', 'twrp' ), // phpcs:ignore WordPress.DB -- No slow query.
 			'meta_value_num' => _x( 'Order by meta value(numerically)', 'backend', 'twrp' ),
-			'post__in'       => _x( 'Order by included posts', 'backend', 'twrp' ),
+			'post__in'       => _x( 'Order by included posts(sort them below)', 'backend', 'twrp' ),
 		);
 
 		/**
