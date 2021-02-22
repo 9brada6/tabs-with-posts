@@ -70,6 +70,11 @@ class Directory_Utils {
 	const PLUGIN_AVATARS_FOLDER = 'assets/plugin-avatars/';
 
 	/**
+	 * The folder where no thumbnail images are keep.
+	 */
+	const NO_THUMBNAIL_IMAGES_FOLDER = 'assets/no-thumbnail-images/';
+
+	/**
 	 * The folder where all svg assets are to be found.
 	 */
 	const SVG_FOLDER = 'assets/svgs/';
@@ -155,6 +160,26 @@ class Directory_Utils {
 	public static function get_plugin_avatars_directory_url() {
 		$plugins_url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::PLUGIN_AVATARS_FOLDER, '/' );
 		return trailingslashit( $plugins_url );
+	}
+
+	/**
+	 * Get folder path with images that should display when no thumbnail is available.
+	 *
+	 * @return string The path is has an ending slash.
+	 */
+	public static function get_no_thumbnail_images_directory_path() {
+		$directory = trailingslashit( self::get_plugin_directory_path() ) . ltrim( self::NO_THUMBNAIL_IMAGES_FOLDER, '/' );
+		return trailingslashit( $directory );
+	}
+
+	/**
+	 * Get folder URL with images that should display when no thumbnail is available.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_no_thumbnail_images_directory_url() {
+		$url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::NO_THUMBNAIL_IMAGES_FOLDER, '/' );
+		return trailingslashit( $url );
 	}
 
 	/**

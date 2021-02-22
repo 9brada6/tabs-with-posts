@@ -19,10 +19,16 @@ if ( empty( get_the_title() ) ) {
 		</h3>
 	</a>
 
-	<?php if ( $artblock->thumbnail_exist_and_displayed() ) : ?>
+	<?php if ( $artblock->thumbnail_is_displayed() ) : ?>
 		<div class="twrp-ss__thumbnail-container">
 			<div class="twrp-thumbnail-wrapper twrp-ss__thumbnail-wrapper">
-				<?php the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) ); ?>
+				<?php
+				if ( has_post_thumbnail() ) {
+					the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) );
+				} else {
+					$artblock->display_no_thumbnail_image();
+				}
+				?>
 			</div>
 		</div>
 	<?php endif; ?>

@@ -2,6 +2,8 @@
 	@include twrp-box;
 
 	position: relative;
+	display: flex;
+	flex-direction: column;
 	overflow: hidden;
 
 	&__title {
@@ -10,7 +12,7 @@
 		position: relative;
 		display: -webkit-box;
 		max-height: calc(calc(var(--twrp-title-font-size) * var(--twrp-title-line-clamp)) * var(--twrp-title-line-height));
-		margin-bottom: 0.2rem;
+		margin-bottom: 0.35rem;
 		overflow: hidden;
 		font-size: var(--twrp-title-font-size);
 		line-height: var(--twrp-title-line-height);
@@ -27,7 +29,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		margin-top: 0.3rem;
 		line-height: 1.5;
 	}
 
@@ -41,7 +42,12 @@
 	}
 
 	&__thumbnail-container {
-		margin-top: 0.3rem;
+		margin-top: auto;
+		margin-bottom: 0.35rem;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
 	}
 
 	/* stylelint-disable-next-line block-no-empty */

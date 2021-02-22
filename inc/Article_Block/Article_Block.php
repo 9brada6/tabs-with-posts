@@ -229,6 +229,15 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	#region -- Verify if meta post information is displayed
 
 	/**
+	 * Whether or not the thumbnail must be displayed in the article.
+	 *
+	 * @return bool
+	 */
+	public function thumbnail_is_displayed() {
+		return isset( $this->settings['display_post_thumbnail'] ) && $this->settings['display_post_thumbnail'];
+	}
+
+	/**
 	 * Whether or not the thumbnail exist and must be displayed in the article.
 	 *
 	 * @return bool
@@ -297,6 +306,13 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	#endregion -- Verify if meta post information is displayed
 
 	#region -- Display Post Meta
+
+	public function display_no_thumbnail_image() {
+		$thumbnail_image_src = Directory_Utils::get_no_thumbnail_images_directory_url() . 'no-thumbnail.jpg';
+		?>
+		<img class="twrp-thumbnail" src="<?= esc_url( $thumbnail_image_src ); ?>">
+		<?php
+	}
 
 	/**
 	 * Display the author of the current post.

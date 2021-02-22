@@ -32,18 +32,15 @@ It's best to keep them updated.
 
 Day:
 
-- Fix colors, border-color, secondary border-color, border-radius, and calculate others.
+- Fix colors, add border-color, secondary border-color, border-radius, tab button size, and calculate others.
 - Add a way to get a specific number of posts in the widget.
 
 When making tabs:
 
-- Tabs: flash of content: display only the first tab, even without javascript.
-- Make article blocks display flex, column direction?
-
 - Add a way to for each article block to display an image, even if it's not set.
 
 - Add in manual testing that each article block must have all components setting must be in same order.
-Add in test, to test each article block style meta and title for before/after space. Usually nothing should have before after space, because text-decoration might get applied.
+Add in test, to test each article block style meta and title for before/after space. Usually nothing should have before after space, because text-decoration might get applied., tab buttons must also not have html spaces between tags.
 - Add in manual that each article block should have word-wrap: break-word where is necessary, including in the title and meta.
 - Add in manual testing of tab queries, that each documentation link should work, and open in a new tab.
 
