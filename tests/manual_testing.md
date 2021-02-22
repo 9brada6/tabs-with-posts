@@ -15,6 +15,7 @@
 - Hidden settings and textarea must always have a "No apply" select.
 - All date controls should have yy-mm-dd format.
 - All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting(that are array by default).
+- Each link to a documentation section should work, and open in a new tab.
 
 ## Icons Manual Testing
 
@@ -28,6 +29,7 @@
 ### Components
 
 - Components settings by default should be collapsed(hidden).
+- Order of components tab buttons should be the same as they appear in the HTML.
 - If any component setting change, components settings should be open. This should work either if the page is refreshed, or if a new/previous style was selected.
 - The only component setting controls that should be used are: number, pickr color-picker, select.
 - If any new setting control is added, make sure that is verified.
@@ -35,12 +37,20 @@
 - All the number inputs controls, by default should be empty(no value).
 - All the select controls that apply CSS, should have an option "Not Apply" that must be default.
 
+## Tabs
+
+1. The tab buttons text should not have space before/after the HTML tags, because text-decoration might be applied wrong.
+
 ## CSS of Tabs
 
 1. The mixin twrp-tab-clean-style must contain all tab classes, even that they have no style.
 2. Each tab must implement the mixin twrp-tab-clean-style.
 3. Each element must implement twrp-box, anchor tags should also implement twrp-anchor.
 4. When displaying, any tab should not have any flash of content.
+
+## Article Blocks
+
+1. There should be no space between HTML tags and the meta/title. So the starting HTML and ending tags should be on the same line as the meta/title output(because text-decoration might get applied wrong).
 
 ## CSS of Article Blocks
 
@@ -55,3 +65,4 @@ in the classes.
 8. All anchors should have the color and background color set in CSS, including in hover, focus state.
 9. Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
 10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible.
+11. Each article block should have word-wrap: break-word where is necessary, including in the title and meta.
