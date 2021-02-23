@@ -11,6 +11,7 @@ use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 use TWRP\Utils\Widget_Utils;
 
 use TWRP\Admin\Widget_Control\Checkbox_Control;
+use TWRP\Admin\Widget_Control\Number_Control;
 use TWRP\Admin\Widget_Control\Select_Control;
 
 use RuntimeException;
@@ -65,6 +66,7 @@ class Widget_Form {
 				$this->display_no_queries_exist();
 			} else {
 				$this->display_tab_style_options();
+				$this->display_number_of_posts_and_pages();
 				$this->display_horizontal_padding_setting();
 				$this->display_artblock_sync_settings();
 				$this->display_select_query_options();
@@ -101,32 +103,39 @@ class Widget_Form {
 	}
 
 	/**
-	 * Display a selector and an add button to add queries to be displayed.
+	 * Display the options for selecting the tab style and the variant.
 	 *
 	 * @return void
 	 */
-	protected function display_select_query_options() {
-		$queries     = Query_Options::get_all_queries();
-		$queries_ids = array_keys( $queries );
-		?>
-		<p class="<?php $this->bem_class( 'select-query-wrapper' ); ?>">
-			<span class="<?php $this->bem_class( 'select-query-to-add-text' ); ?>">
-				<?= _x( 'Add tab:', 'backend', 'twrp' ); ?>
-			</span>
+	protected function display_tab_style_options() {
+		$id          = Widget_Utils::get_field_id( $this->widget_id, TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME );
+		$select_name = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME );
 
-			<select class="<?php $this->bem_class( 'select-query-to-add' ); ?>">
-				<?php foreach ( $queries_ids as $query_id ) : ?>
-					<option value="<?= esc_attr( (string) $query_id ) ?>">
-						<?= esc_html( Query_Options::get_query_display_name( $query_id ) ); ?>
-					</option>
-				<?php endforeach; ?>
-			</select>
+		$current_option_value = '';
+		if ( isset( $this->instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
+			$current_option_value = $this->instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ];
+		}
 
-			<button class="<?php $this->bem_class( 'select-query-to-add-btn' ); ?> twrpb-button" type="button">
-				<?= _x( 'Add', 'backend', 'twrp' ); ?>
-			</button>
-		</p>
-		<?php
+		Select_Control::display_setting( $id, $select_name, $current_option_value, self::get_tab_style_control_args() );
+	}
+
+	/**
+	 * Display the options for selecting the number of posts and pages.
+	 *
+	 * @return void
+	 */
+	protected function display_number_of_posts_and_pages() {
+		$option_name  = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::NUMBER_OF_POSTS__NAME );
+		$option_value = null;
+		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ] ) ) {
+			$number_setting = $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ];
+			if ( is_numeric( $number_setting ) ) {
+				$option_value = $number_setting;
+			}
+		}
+		$id = Widget_Utils::get_field_id( $this->widget_id, 'number-of-posts' );
+
+		Number_Control::display_setting( $id, $option_name, $option_value, self::get_number_of_posts_args() );
 	}
 
 	/**
@@ -164,20 +173,32 @@ class Widget_Form {
 	}
 
 	/**
-	 * Display the options for selecting the tab style and the variant.
+	 * Display a selector and an add button to add queries to be displayed.
 	 *
 	 * @return void
 	 */
-	protected function display_tab_style_options() {
-		$id          = Widget_Utils::get_field_id( $this->widget_id, TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME );
-		$select_name = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME );
+	protected function display_select_query_options() {
+		$queries     = Query_Options::get_all_queries();
+		$queries_ids = array_keys( $queries );
+		?>
+		<p class="<?php $this->bem_class( 'select-query-wrapper' ); ?>">
+			<span class="<?php $this->bem_class( 'select-query-to-add-text' ); ?>">
+				<?= _x( 'Add tab:', 'backend', 'twrp' ); ?>
+			</span>
 
-		$current_option_value = '';
-		if ( isset( $this->instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ] ) ) {
-			$current_option_value = $this->instance_settings[ TWRP_Widget::TAB_STYLE_AND_VARIANT__NAME ];
-		}
+			<select class="<?php $this->bem_class( 'select-query-to-add' ); ?>">
+				<?php foreach ( $queries_ids as $query_id ) : ?>
+					<option value="<?= esc_attr( (string) $query_id ) ?>">
+						<?= esc_html( Query_Options::get_query_display_name( $query_id ) ); ?>
+					</option>
+				<?php endforeach; ?>
+			</select>
 
-		Select_Control::display_setting( $id, $select_name, $current_option_value, self::get_tab_style_control_args() );
+			<button class="<?php $this->bem_class( 'select-query-to-add-btn' ); ?> twrpb-button" type="button">
+				<?= _x( 'Add', 'backend', 'twrp' ); ?>
+			</button>
+		</p>
+		<?php
 	}
 
 	/**
@@ -207,9 +228,8 @@ class Widget_Form {
 			id="<?= esc_attr( $queries_field_id ); ?>"
 			class="<?php $this->bem_class( 'selected-queries' ); ?>"
 			name="<?= esc_attr( $queries_field_name ); ?>"
-			<?php // todo: change text with hidden. ?>
-			type="text"
-			value="<?= esc_attr( $selected_queries_list ); ?>"
+			type="hidden"
+			value="<?= esc_attr( (string) $selected_queries_list ); ?>"
 		/>
 		<?php
 	}
@@ -319,8 +339,6 @@ class Widget_Form {
 		<?php
 	}
 
-	#endregion -- Display the settings per each tab.
-
 	#region -- Functions to display the artblock settings.
 
 	/**
@@ -367,6 +385,21 @@ class Widget_Form {
 	#endregion -- Functions to display the artblock settings.
 
 	#endregion -- Display the settings per each tab.
+
+	/**
+	 * Get the arguments to display the number of posts option.
+	 *
+	 * @return array
+	 */
+	public static function get_number_of_posts_args() {
+		return array(
+			'default' => '12',
+			'min'     => '1',
+			'max'     => '60',
+			'step'    => '1',
+			'before'  => _x( 'Number of posts:', 'backend', 'twrp' ),
+		);
+	}
 
 	/**
 	 * Get the arguments to display the query sync option.

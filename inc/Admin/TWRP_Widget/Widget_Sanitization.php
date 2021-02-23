@@ -9,6 +9,7 @@ use TWRP\Database\Query_Options;
 use TWRP\Utils\Simple_Utils;
 
 use TWRP\Admin\Widget_Control\Checkbox_Control;
+use TWRP\Admin\Widget_Control\Number_Control;
 use TWRP\Admin\Widget_Control\Select_Control;
 use TWRP\Admin\TWRP_Widget\Widget_Form;
 
@@ -73,6 +74,13 @@ class Widget_Sanitization {
 	 */
 	protected function sanitize_all_non_queries_widget_settings() {
 		$sanitized_settings = array();
+
+		// Sanitize the number of posts.
+		$current_setting = null;
+		if ( isset( $this->settings [ TWRP_Widget::NUMBER_OF_POSTS__NAME ] ) ) {
+			$current_setting = $this->settings [ TWRP_Widget::NUMBER_OF_POSTS__NAME ];
+		}
+		$sanitized_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ] = Number_Control::sanitize_setting( $current_setting, Widget_Form::get_number_of_posts_args() );
 
 		// Sanitize widget padding option.
 		$current_setting = null;

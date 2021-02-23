@@ -22,16 +22,17 @@ class Query_Generator {
 	 * @throws RuntimeException If the Query ID does not exist.
 	 *
 	 * @param int|string $query_id The Query ID to get posts from.
-	 *
+	 * @param array $additional_args Additional arguments to be merged.
 	 * @return WP_Post[] The WordPress Posts.
 	 */
-	public static function get_posts_by_query_id( $query_id ) {
+	public static function get_posts_by_query_id( $query_id, $additional_args = array() ) {
 		try {
 			$query_args = self::get_wp_query_arguments( $query_id );
 		} catch ( RuntimeException $exception ) {
 			throw $exception;
 		}
-		$wp_query = new WP_Query();
+		$wp_query   = new WP_Query();
+		$query_args = array_merge( $query_args, $additional_args );
 
 		$query_args = apply_filters( 'twrp_before_getting_query', $query_args, $query_id );
 		$posts      = $wp_query->query( $query_args );

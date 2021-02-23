@@ -1,6 +1,5 @@
 # Tabs With Recommended Posts - Development Notes
 
-
 ## Plugins Used
 
 ### Rating Plugins
@@ -20,7 +19,8 @@
 ## ✅ Todo
 
 - Fix colors, add border-color, secondary border-color, border-radius, tab button size, and calculate others.
-- Add a way to get a specific number of posts in the widget.
+
+- Add in manual testing that each article block should be tested with a title that has a lot of html tags.
 
 ### ✅ Todo Documentation
 

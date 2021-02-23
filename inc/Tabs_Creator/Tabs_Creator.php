@@ -2,6 +2,7 @@
 
 namespace TWRP\Tabs_Creator;
 
+use TWRP\TWRP_Widget;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
 
@@ -120,9 +121,22 @@ class Tabs_Creator {
 			}
 		}
 
+		$number_of_posts = 12;
+		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ] ) ) {
+			$num_posts_aux = $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ];
+			if ( is_numeric( $num_posts_aux ) ) {
+				$number_of_posts = (int) $num_posts_aux;
+			}
+		}
+
 		foreach ( $this->query_ids as $key => $query_id ) {
 			try {
-				$query_posts                             = Query_Generator::get_posts_by_query_id( $query_id );
+				$additional_args                         = array(
+					'nopaging'       => false,
+					'posts_per_page' => $number_of_posts,
+					'page'           => 1,
+				);
+				$query_posts                             = Query_Generator::get_posts_by_query_id( $query_id, $additional_args );
 				$this->query_array_of_posts[ $query_id ] = $query_posts;
 			} catch ( RuntimeException $e ) {
 				unset( $this->query_ids[ $key ] );
