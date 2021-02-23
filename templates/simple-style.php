@@ -22,13 +22,7 @@ if ( empty( get_the_title() ) ) {
 	<?php if ( $artblock->thumbnail_is_displayed() ) : ?>
 		<div class="twrp-ss__thumbnail-container">
 			<div class="twrp-thumbnail-wrapper twrp-ss__thumbnail-wrapper">
-				<?php
-				if ( has_post_thumbnail() ) {
-					the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) );
-				} else {
-					$artblock->display_no_thumbnail_image( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) );
-				}
-				?>
+				<?php $artblock->display_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) ); ?>
 			</div>
 		</div>
 	<?php endif; ?>

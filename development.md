@@ -19,9 +19,6 @@
 
 ## ✅ Todo
 
-- add option for lazyload images.
-- Add no-thumbnail image to the media?
-
 - Fix colors, add border-color, secondary border-color, border-radius, tab button size, and calculate others.
 - Add a way to get a specific number of posts in the widget.
 
@@ -42,6 +39,7 @@ Tabs:
 Article Block:
 
 - Say that you can use Yoast plugin to set the primary category.
+- Say in documentation that the thumbnails are loading lazy.
 
 Documentation Style:
 

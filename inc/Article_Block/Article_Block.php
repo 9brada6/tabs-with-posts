@@ -308,6 +308,21 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	#region -- Display Post Meta
 
 	/**
+	 * Display the post thumbnail, or an image that say there is no thumbnail.
+	 *
+	 * @param string $size The WordPress image size, defaults to 'medium'.
+	 * @param array $attr A list of attributes to add to the image.
+	 * @return void
+	 */
+	public function display_post_thumbnail( $size = 'medium', $attr = array() ) {
+		if ( has_post_thumbnail() ) {
+			the_post_thumbnail( $size, $attr );
+		} else {
+			$this->display_no_thumbnail_image( $size, $attr );
+		}
+	}
+
+	/**
 	 * Display an image in case that the post has no thumbnail.
 	 *
 	 * @param string $size The WordPress image size, defaults to 'medium'.
@@ -329,16 +344,28 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			$src_set = ' srcset="' . $src_set . '"';
 		}
 
+		$lazy_loading = ' loading="lazy"';
+		if ( isset( $attr['loading'] ) && ! $attr['loading'] ) {
+			$lazy_loading = '';
+		}
+
+		if ( ! isset( $attr['alt'] ) ) {
+			$alt = __( 'Post with no thumbnail', 'twrp' );
+		} else {
+			$alt = $attr['alt'];
+		}
+
+		unset( $attr['loading'] );
+		unset( $attr['alt'] );
+
 		$attr_html = '';
 		foreach ( $attr as $name => $value ) {
 			$attr_html .= " $name=" . '"' . esc_attr( $value ) . '"';
 		}
 
-		$alt = __( 'Post with no thumbnail', 'twrp' );
-
 		// phpcs:disable WordPress.Security -- No XSS
 		?>
-		<img src="<?= esc_url( $thumbnail_image_src ); ?>" loading="lazy" alt="<?= esc_attr( $alt ) ?>"<?= $attr_html; ?><?= $src_set; ?>>
+	<img src="<?= esc_url( $thumbnail_image_src ); ?>" alt="<?= esc_attr( $alt ) ?>"<?= $lazy_loading; ?><?= $attr_html; ?><?= $src_set; ?>>
 		<?php
 		// phpcs:enable WordPress.Security
 	}
