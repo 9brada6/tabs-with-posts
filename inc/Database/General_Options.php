@@ -45,6 +45,8 @@ class General_Options {
 
 	#endregion -- Date Keys
 
+	const NO_THUMBNAIL_IMAGE = 'No_Thumbnail_Image';
+
 	#region -- Icon Keys
 
 	const ICON_KEYS = array(
@@ -101,6 +103,7 @@ class General_Options {
 			self::SECONDARY_BACKGROUND_COLOR,
 			self::HUMAN_READABLE_DATE,
 			self::DATE_FORMAT,
+			self::NO_THUMBNAIL_IMAGE,
 			self::AUTHOR_ICON,
 			self::DATE_ICON,
 			self::CATEGORY_ICON,

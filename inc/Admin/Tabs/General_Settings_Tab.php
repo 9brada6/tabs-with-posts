@@ -59,6 +59,13 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= _x( 'Thumbnail Settings', 'backend', 'twrp' ); ?></legend>
+					<?php
+					General_Settings_Factory::display_setting( General_Options::NO_THUMBNAIL_IMAGE );
+					?>
+				</fieldset>
+
+				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
 					<p>
 						<?php

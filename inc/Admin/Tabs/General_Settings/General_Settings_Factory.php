@@ -2,6 +2,7 @@
 
 namespace TWRP\Admin\Tabs\General_Settings;
 
+use TWRP\Article_Block\Article_Block;
 use TWRP\Database\General_Options;
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
@@ -34,6 +35,8 @@ class General_Settings_Factory {
 	const TEXT_SETTING_CLASS = 'General_Text_Setting';
 
 	const COLOR_SETTING_CLASS = 'General_Color_Setting';
+
+	const IMAGE_SETTING_CLASS = 'General_Image_Setting';
 
 	const SELECT_SETTING_WITH_SWITCH_CLASS = 'General_Select_With_Switch_Setting';
 
@@ -131,6 +134,7 @@ class General_Settings_Factory {
 			General_Options::DARKER_ACCENT_COLOR        => self::COLOR_SETTING_CLASS,
 			General_Options::LIGHTER_ACCENT_COLOR       => self::COLOR_SETTING_CLASS,
 			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
+			General_Options::NO_THUMBNAIL_IMAGE         => self::IMAGE_SETTING_CLASS,
 			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
 			General_Options::AUTHOR_ICON                => self::SELECT_SETTING_CLASS,
 			General_Options::DATE_ICON                  => self::SELECT_SETTING_CLASS,
@@ -162,6 +166,7 @@ class General_Settings_Factory {
 			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
 			General_Options::SECONDARY_BACKGROUND_COLOR => 'get_secondary_background_color_setting_args',
 			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
+			General_Options::NO_THUMBNAIL_IMAGE         => 'get_no_thumbnail_image_setting_args',
 			General_Options::DATE_FORMAT                => 'get_date_format_setting_args',
 			General_Options::AUTHOR_ICON                => 'get_author_icon_setting_args',
 			General_Options::DATE_ICON                  => 'get_date_icon_setting_args',
@@ -439,6 +444,28 @@ class General_Settings_Factory {
 		return array(
 			'title'  => _x( 'Select the lighter accent color:', 'backend', 'twrp' ),
 			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the setting to select an image if the post
+	 * has no thumbnail.
+	 *
+	 * @return array
+	 */
+	protected static function get_no_thumbnail_image_setting_args() {
+		return array(
+			'title'       => _x( 'Select an image to display in case the post has no thumbnail:', 'backend', 'twrp' ),
+			'default_src' => Article_Block::get_default_no_thumbnail_image_url(),
+			'input_attr'  => array(
+				'data-twrpb-default-image' => Article_Block::get_default_no_thumbnail_image_url(),
+				'data-twrpb-media-args'    => wp_json_encode(
+					array(
+						'multiple' => false,
+						'library'  => array( 'type' => 'image' ),
+					)
+				),
+			),
 		);
 	}
 

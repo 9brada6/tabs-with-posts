@@ -307,11 +307,40 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 	#region -- Display Post Meta
 
-	public function display_no_thumbnail_image() {
-		$thumbnail_image_src = Directory_Utils::get_no_thumbnail_images_directory_url() . 'no-thumbnail.jpg';
+	/**
+	 * Display an image in case that the post has no thumbnail.
+	 *
+	 * @param string $size The WordPress image size, defaults to 'medium'.
+	 * @param array $attr A list of attributes to add to the image.
+	 * @return void
+	 */
+	public function display_no_thumbnail_image( $size = 'medium', $attr = array() ) {
+		$thumbnail_image_src = self::get_custom_no_thumbnail_image_url( $size );
+		$src_set             = self::get_custom_no_thumbnail_image_srcset( $size );
+
+		if ( false === $thumbnail_image_src ) {
+			$thumbnail_image_src = self::get_default_no_thumbnail_image_url( $size );
+			$src_set             = '';
+		} elseif ( false === $src_set ) {
+			$src_set = '';
+		}
+
+		if ( ! empty( $src_set ) ) {
+			$src_set = ' srcset="' . $src_set . '"';
+		}
+
+		$attr_html = '';
+		foreach ( $attr as $name => $value ) {
+			$attr_html .= " $name=" . '"' . esc_attr( $value ) . '"';
+		}
+
+		$alt = __( 'Post with no thumbnail', 'twrp' );
+
+		// phpcs:disable WordPress.Security -- No XSS
 		?>
-		<img class="twrp-thumbnail" src="<?= esc_url( $thumbnail_image_src ); ?>">
+		<img src="<?= esc_url( $thumbnail_image_src ); ?>" loading="lazy" alt="<?= esc_attr( $alt ) ?>"<?= $attr_html; ?><?= $src_set; ?>>
 		<?php
+		// phpcs:enable WordPress.Security
 	}
 
 	/**
@@ -826,6 +855,58 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	protected function get_body_css_specificity_selector() {
 		return Simple_Utils::get_body_css_increase_specificity_selector();
+	}
+
+	/**
+	 * Return the default image src to display if a post has no thumbnail.
+	 *
+	 * @param string $size The WordPress size of the thumbnail to retrieve. Defaults to 'medium'.
+	 * @return string
+	 */
+	public static function get_default_no_thumbnail_image_url( $size = 'medium' ) {
+		return Directory_Utils::get_no_thumbnail_images_directory_url() . 'no-thumbnail.jpg';
+	}
+
+	/**
+	 * Return the custom image src to display if a post has no thumbnail.
+	 *
+	 * @param string $size The WordPress size of the thumbnail to retrieve. Defaults to 'medium'.
+	 * @return string|false
+	 */
+	public static function get_custom_no_thumbnail_image_url( $size = 'medium' ) {
+		$image_id = General_Options::get_option( General_Options::NO_THUMBNAIL_IMAGE );
+
+		$src = false;
+		if ( is_numeric( $image_id ) ) {
+			$image_data = wp_get_attachment_image_src( (int) $image_id, $size );
+			if ( false !== $image_data ) {
+				$src = $image_data[0];
+			}
+		}
+
+		return $src;
+	}
+
+	/**
+	 * Return the custom image srcset to display if a post has no thumbnail.
+	 *
+	 * @param string $size The WordPress size of the thumbnail to retrieve. Defaults to 'thumbnail'.
+	 * @return string|false
+	 */
+	public static function get_custom_no_thumbnail_image_srcset( $size = 'medium' ) {
+		$image_id = General_Options::get_option( General_Options::NO_THUMBNAIL_IMAGE );
+
+		$src = false;
+		if ( is_numeric( $image_id ) ) {
+			$src = wp_get_attachment_image_srcset( (int) $image_id, $size );
+		}
+
+		// Suppress code analyzer.
+		if ( is_bool( $src ) ) {
+			return false;
+		}
+
+		return $src;
 	}
 
 	#endregion -- Helper methods

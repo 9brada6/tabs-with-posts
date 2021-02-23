@@ -19,7 +19,9 @@
 
 ## ✅ Todo
 
-- Add an option to select an image to display if no tabs are displayed.
+- add option for lazyload images.
+- change no thumbnail image.
+
 - Fix colors, add border-color, secondary border-color, border-radius, tab button size, and calculate others, no thumbnail image.
 - Add a way to get a specific number of posts in the widget.
 

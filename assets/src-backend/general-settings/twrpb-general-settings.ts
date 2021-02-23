@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import { showUp, hideUp } from '../admin-blocks/twrpb-hidden/twrpb-hidden';
 
+declare const wp: any;
+
 // #region -- Hide or show custom date format depending on human readable date format.
 
 const humanReadableEnabledCheckboxSelector = '#twrpb-general-settings__human_readable_date-setting-true';
@@ -254,3 +256,53 @@ function onSubmitSendDisable() {
 }
 
 // #endregion -- Auto-Choose the compatible disabled icon.
+
+// #region -- Show WP Media selector.
+
+const containerSelector = '.twrpb-general-image';
+const buttonSelector = '.twrpb-general-image__btn';
+const clearBtnSelector = '.twrpb-general-image__clear-btn';
+const inputSelector = '.twrpb-general-image__img-src';
+const imgSelector = '.twrpb-general-image__img-preview';
+const defaultSrcAttrName = 'data-twrpb-default-image';
+const mediaArgsAttrName = 'data-twrpb-media-args';
+
+$( addButtonEvent );
+
+function addButtonEvent() {
+	$( buttonSelector ).on( 'click', function( e ) {
+		e.preventDefault();
+		let mediaWindow: any;
+		const button = $( this );
+		const input = button.closest( containerSelector ).find( inputSelector );
+		const img = button.closest( containerSelector ).find( imgSelector );
+		let mediaArgs = input.attr( mediaArgsAttrName );
+		mediaArgs = JSON.parse( mediaArgs );
+
+		if ( mediaWindow === undefined ) {
+			mediaWindow = wp.media( mediaArgs );
+
+			mediaWindow.on( 'select', () => {
+				const attachment = mediaWindow.state().get( 'selection' ).first().toJSON();
+				input.val( attachment.id );
+				img.attr( 'src', attachment.url );
+			} );
+		}
+
+		mediaWindow.open( button );
+
+		return false;
+	} );
+
+	$( clearBtnSelector ).on( 'click', function( e ) {
+		e.preventDefault();
+		const button = $( this );
+		const input = button.closest( containerSelector ).find( inputSelector );
+		const img = button.closest( containerSelector ).find( imgSelector );
+		const defaultSrc = input.attr( defaultSrcAttrName );
+		img.attr( 'src', defaultSrc );
+		input.val( '' );
+	} );
+}
+
+// #endregion -- Show WP Media selector.

@@ -51,6 +51,7 @@
 ## Article Blocks
 
 1. There should be no space between HTML tags and the meta/title. So the starting HTML and ending tags should be on the same line as the meta/title output(because text-decoration might get applied wrong).
+2. Each article block should show the thumbnail if the option is selected. If is not selected, then an image that say no thumbnail available must be placed.
 
 ## CSS of Article Blocks
 

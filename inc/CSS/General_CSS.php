@@ -134,6 +134,10 @@ class Generate_CSS {
 			wp_enqueue_script( 'jquery-ui-autocomplete' );
 			wp_enqueue_script( 'jquery-ui-datepicker' );
 		}
+
+		if ( self::is_plugin_settings_page_displayed() ) {
+			wp_enqueue_media();
+		}
 	}
 
 	/**
@@ -249,5 +253,14 @@ class Generate_CSS {
 	 */
 	protected static function is_query_tab_displayed() {
 		return Settings_Menu::is_query_settings_tab_active();
+	}
+
+	/**
+	 * Get if the current screen displayed is the Plugin Settings.
+	 *
+	 * @return bool
+	 */
+	protected static function is_plugin_settings_page_displayed() {
+		return Settings_Menu::is_active_screen();
 	}
 }

@@ -26,7 +26,7 @@ if ( empty( get_the_title() ) ) {
 				if ( has_post_thumbnail() ) {
 					the_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) );
 				} else {
-					$artblock->display_no_thumbnail_image();
+					$artblock->display_no_thumbnail_image( 'medium', array( 'class' => 'twrp-thumbnail twrp-ss__thumbnail' ) );
 				}
 				?>
 			</div>
