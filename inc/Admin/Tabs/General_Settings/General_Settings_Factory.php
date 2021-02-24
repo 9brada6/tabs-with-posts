@@ -133,6 +133,8 @@ class General_Settings_Factory {
 			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
 			General_Options::DARKER_ACCENT_COLOR        => self::COLOR_SETTING_CLASS,
 			General_Options::LIGHTER_ACCENT_COLOR       => self::COLOR_SETTING_CLASS,
+			General_Options::BORDER_COLOR               => self::COLOR_SETTING_CLASS,
+			General_Options::SECONDARY_BORDER_COLOR     => self::COLOR_SETTING_CLASS,
 			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
 			General_Options::NO_THUMBNAIL_IMAGE         => self::IMAGE_SETTING_CLASS,
 			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
@@ -165,6 +167,8 @@ class General_Settings_Factory {
 			General_Options::DISABLED_TEXT_COLOR        => 'get_disabled_text_color_setting_args',
 			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
 			General_Options::SECONDARY_BACKGROUND_COLOR => 'get_secondary_background_color_setting_args',
+			General_Options::BORDER_COLOR               => 'get_border_color_setting_args',
+			General_Options::SECONDARY_BORDER_COLOR     => 'get_secondary_border_color_setting_args',
 			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
 			General_Options::NO_THUMBNAIL_IMAGE         => 'get_no_thumbnail_image_setting_args',
 			General_Options::DATE_FORMAT                => 'get_date_format_setting_args',
@@ -443,6 +447,30 @@ class General_Settings_Factory {
 	protected static function get_lighter_accent_color_setting_args() {
 		return array(
 			'title'  => _x( 'Select the lighter accent color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the border color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_border_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the border color:', 'backend', 'twrp' ),
+			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the secondary border color setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_secondary_border_color_setting_args() {
+		return array(
+			'title'  => _x( 'Select the secondary border color:', 'backend', 'twrp' ),
 			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
 		);
 	}

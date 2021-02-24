@@ -35,6 +35,10 @@ class General_Options {
 
 	const SECONDARY_BACKGROUND_COLOR = 'Secondary_Background_Color';
 
+	const BORDER_COLOR = 'Border_Color';
+
+	const SECONDARY_BORDER_COLOR = 'Secondary_Border_Color';
+
 	#endregion -- Color Keys
 
 	#region -- Date Keys
@@ -101,6 +105,8 @@ class General_Options {
 			self::DISABLED_TEXT_COLOR,
 			self::BACKGROUND_COLOR,
 			self::SECONDARY_BACKGROUND_COLOR,
+			self::BORDER_COLOR,
+			self::SECONDARY_BORDER_COLOR,
 			self::HUMAN_READABLE_DATE,
 			self::DATE_FORMAT,
 			self::NO_THUMBNAIL_IMAGE,

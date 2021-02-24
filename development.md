@@ -18,8 +18,7 @@
 
 ## ✅ Todo
 
-- Fix colors, add border-color, secondary border-color, border-radius, tab button size, and calculate others.
-
+- Fix colors, border-radius, tab button size, and calculate others.
 - Add in manual testing that each article block should be tested with a title that has a lot of html tags.
 
 ### ✅ Todo Documentation

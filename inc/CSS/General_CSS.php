@@ -181,6 +181,16 @@ class Generate_CSS {
 			$lighter_accent_color = 'inherit';
 		}
 
+		$border_color = General_Options::get_option( General_Options::BORDER_COLOR );
+		if ( ! is_string( $border_color ) || ! Color_Utils::is_color( $border_color ) || '' === $border_color ) {
+			$border_color = 'inherit';
+		}
+
+		$secondary_border_color = General_Options::get_option( General_Options::SECONDARY_BORDER_COLOR );
+		if ( ! is_string( $secondary_border_color ) || ! Color_Utils::is_color( $secondary_border_color ) || '' === $secondary_border_color ) {
+			$secondary_border_color = 'inherit';
+		}
+
 		$outline_accent_color = Color_Utils::set_opacity( $accent_color, 0.5 );
 		if ( ! is_string( $outline_accent_color ) ) {
 			$outline_accent_color = $accent_color;
@@ -202,8 +212,10 @@ class Generate_CSS {
 			'--twrp-darker-accent-color: ' . esc_html( $darker_accent_color ) . ';' .
 			'--twrp-lighter-accent-color: ' . esc_html( $lighter_accent_color ) . ';' .
 
-			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
+			'--twrp-border-color: ' . esc_html( $border_color ) . ';' .
+			'--twrp-secondary-border-color: ' . esc_html( $secondary_border_color ) . ';' .
 
+			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
 			'--twrp-accent-best-text-color: ' . esc_html( $best_accent_text_color ) . ';' .
 		'}</style>';
 	}
