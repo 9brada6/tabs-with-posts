@@ -19,7 +19,10 @@
 ## ✅ Todo
 
 - Fix colors, border-radius, tab button size, and calculate others.
-- Add in manual testing that each article block should be tested with a title that has a lot of html tags.
+- Add pages to the tabs.
+- Add rating plugins.
+
+- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 ### ✅ Todo Documentation
 
@@ -48,11 +51,9 @@ Documentation Style:
 ### Plugins
 
 - Make Plugin DFactory Block Suppress filter option.
-- GamerZ/BlazK: Sort by most rated/unrated posts.
 - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
 - Don't know how to count site reviews ratings, maybe email for support?
 - Add each plugin, move orderby plugin indicators to classes.
-- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 ## 🎉 Todo: After first release
 
@@ -71,7 +72,8 @@ Documentation Style:
 - ➕ Try to speed up plugins, by trying to make a single call to database. For example for a list of posts, don't get the views for each one, but for all together.
 - ➕ In query templates, when resetting settings, make hidden texts be reset to default 0.
 - ➕ Add a help button, and with a pop-out to document a setting if needed in General Settings Tab, also the document might be exactly as in documentation.
-- Add support for more plugins that support primary category.
+- ➕ Add support for more plugins that support primary category.
+- ➕ Add support to sort by rating.
 
 ## 📖 Development Documentation
 

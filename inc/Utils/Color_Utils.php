@@ -9,13 +9,19 @@ namespace TWRP\Utils;
 class Color_Utils {
 
 	/**
-	 * Verify if the value is a hex/rgba/rgb color.
+	 * Verify if the value is a hex/rgba/rgb string color.
 	 *
-	 * @param string $value
+	 * @param mixed $value
 	 * @return bool
+	 *
+	 * @phan-assert string $value
 	 */
 	public static function is_color( $value ) {
-		return '' === $value || static::is_rgba_color( $value );
+		if ( ! is_string( $value ) ) {
+			return false;
+		}
+
+		return static::is_rgba_color( $value ) || static::is_hex_color( $value ) || static::is_rgb_color( $value );
 	}
 
 	/**

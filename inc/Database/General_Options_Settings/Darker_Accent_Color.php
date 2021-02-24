@@ -14,7 +14,7 @@ class Darker_Accent_Color extends General_Option_Setting {
 	}
 
 	public function sanitize( $value ) {
-		if ( Color_Utils::is_color( $value ) ) {
+		if ( '' === $value || Color_Utils::is_color( $value ) ) {
 			return $value;
 		}
 

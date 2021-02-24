@@ -147,47 +147,47 @@ class Generate_CSS {
 	 */
 	public static function generate_color_variables_inline_style() {
 		$background_color = General_Options::get_option( General_Options::BACKGROUND_COLOR );
-		if ( ! is_string( $background_color ) || ! Color_Utils::is_color( $background_color ) || '' === $background_color ) {
+		if ( ! Color_Utils::is_color( $background_color ) ) {
 			$background_color = 'inherit';
 		}
 
 		$secondary_background_color = General_Options::get_option( General_Options::SECONDARY_BACKGROUND_COLOR );
-		if ( ! is_string( $secondary_background_color ) || ! Color_Utils::is_color( $secondary_background_color ) || '' === $secondary_background_color ) {
+		if ( ! Color_Utils::is_color( $secondary_background_color ) ) {
 			$secondary_background_color = 'inherit';
 		}
 
 		$text_color = General_Options::get_option( General_Options::TEXT_COLOR );
-		if ( ! is_string( $text_color ) || ! Color_Utils::is_color( $text_color ) || '' === $text_color ) {
+		if ( ! Color_Utils::is_color( $text_color ) ) {
 			$text_color = 'inherit';
 		}
 
 		$disabled_text_color = General_Options::get_option( General_Options::DISABLED_TEXT_COLOR );
-		if ( ! is_string( $disabled_text_color ) || ! Color_Utils::is_color( $disabled_text_color ) || '' === $disabled_text_color ) {
+		if ( ! Color_Utils::is_color( $disabled_text_color ) ) {
 			$disabled_text_color = 'inherit';
 		}
 
 		$accent_color = General_Options::get_option( General_Options::ACCENT_COLOR );
-		if ( ! is_string( $accent_color ) || ! Color_Utils::is_color( $accent_color ) || '' === $accent_color ) {
+		if ( ! Color_Utils::is_color( $accent_color ) ) {
 			$accent_color = 'inherit';
 		}
 
 		$darker_accent_color = General_Options::get_option( General_Options::DARKER_ACCENT_COLOR );
-		if ( ! is_string( $darker_accent_color ) || ! Color_Utils::is_color( $darker_accent_color ) || '' === $darker_accent_color ) {
+		if ( ! Color_Utils::is_color( $darker_accent_color ) ) {
 			$darker_accent_color = 'inherit';
 		}
 
 		$lighter_accent_color = General_Options::get_option( General_Options::LIGHTER_ACCENT_COLOR );
-		if ( ! is_string( $lighter_accent_color ) || ! Color_Utils::is_color( $lighter_accent_color ) || '' === $lighter_accent_color ) {
+		if ( ! Color_Utils::is_color( $lighter_accent_color ) ) {
 			$lighter_accent_color = 'inherit';
 		}
 
 		$border_color = General_Options::get_option( General_Options::BORDER_COLOR );
-		if ( ! is_string( $border_color ) || ! Color_Utils::is_color( $border_color ) || '' === $border_color ) {
+		if ( ! Color_Utils::is_color( $border_color ) ) {
 			$border_color = 'inherit';
 		}
 
 		$secondary_border_color = General_Options::get_option( General_Options::SECONDARY_BORDER_COLOR );
-		if ( ! is_string( $secondary_border_color ) || ! Color_Utils::is_color( $secondary_border_color ) || '' === $secondary_border_color ) {
+		if ( ! Color_Utils::is_color( $secondary_border_color ) ) {
 			$secondary_border_color = 'inherit';
 		}
 
