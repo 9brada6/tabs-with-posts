@@ -167,12 +167,17 @@ class Plugin_Bootstrap {
 
 		// Plugins.
 		'Plugins/Post_Views',
+		'Plugins/Post_Rating',
 
 		'Plugins/Known_Plugins/Known_Plugin',
+
 		'Plugins/Known_Plugins/Post_Views_Plugins/Post_Views_Plugin',
 		'Plugins/Known_Plugins/Post_Views_Plugins/A3REV_Views_Plugin',
 		'Plugins/Known_Plugins/Post_Views_Plugins/DFactory_Views_Plugin',
 		'Plugins/Known_Plugins/Post_Views_Plugins/GamerZ_Views_Plugin',
+
+		'Plugins/Known_Plugins/Post_Rating_Plugins/Post_Rating_Plugin',
+		'Plugins/Known_Plugins/Post_Rating_Plugins/YASR_Rating_Plugin',
 
 		// Query_Setting.
 		'Query_Generator/Query_Generator',

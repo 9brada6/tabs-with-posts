@@ -4,10 +4,15 @@
 
 - ### Rating Plugins
 
+    How retrieving the rating is implemented:
+    1. If the rating is displayed, then the meta should be displayed for all posts, even if they don't have a rating yet.
+    2. If we have an average rating, then display the rating.
+    3. If we don't have a rating average, then just display 0, and an empty star?.
+    4. If we have a rating count and is selected to display and is above 0, then display it.
+
     YASR Rating Plugin
     ✔ Can get the rating for a post.
-    ✔ Has an API for getting the overall rating for a post.
-    ❌ Don't know of overall rating includes also the ratings from a multi set.
+    ✔ Every rating average and rating count implemented.
 
     BlazK Rating Plugin
     - ✔ Can get the rating for a post.
@@ -21,6 +26,8 @@
 - Add rating plugins.
 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
+
+- Add in manual testing of plugins to test if table exist.
 
 - ### ✅ Todo Documentation
 
@@ -75,6 +82,7 @@
 - ➕ Add a help button, and with a pop-out to document a setting if needed in General Settings Tab, also the document might be exactly as in documentation.
 - ➕ Add support for more plugins that support primary category.
 - ➕ Add support to sort by rating.
+- ➕ Try to speed up every plugin, by adding a static variable to hold an internal cache for each post id of average/sum_votes(especially the rating plugins).
 
 ## 📖 Development Documentation
 

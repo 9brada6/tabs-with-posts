@@ -29,6 +29,11 @@ namespace {
 		public function get_primary_term(){}
 	}
 
+	// For YASR Plugin:
+	const YASR_LOG_MULTI_SET = 'Some Value';
+
+	const ARRAY_A = 'Some Value';
+
 	class YasrDatabaseRatings {
 
 		/*
@@ -36,5 +41,17 @@ namespace {
 		* @return float|int|null
 		*/
 	   public static function getOverallRating ($post_id=false) {}
+
+	   	/*
+		* @param int $post_id
+		* @return array|float|int|null
+		*/
+		public static function getVisitorVotes ($post_id=false) {}
+	}
+
+	class YasrMultiSetData {
+		public static $array_to_return = array();
+		public static function returnMultiSetAverage( $a, $b, $c ) {}
+		public static function returnMultisetContent( $post_id, $set_id, $c ) {}
 	}
 }
