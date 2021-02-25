@@ -28,4 +28,13 @@ namespace {
 
 		public function get_primary_term(){}
 	}
+
+	class YasrDatabaseRatings {
+
+		/*
+		* @param int $post_id
+		* @return float|int|null
+		*/
+	   public static function getOverallRating ($post_id=false) {}
+	}
 }

@@ -36,6 +36,10 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		return '2.4.3';
 	}
 
+	public function get_plugin_file_relative_path() {
+		return 'page-views-count/page-views-count.php';
+	}
+
 	#endregion -- Plugin Meta
 
 	use After_Setup_Theme_Init_Trait;
@@ -166,10 +170,6 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		$query_args['suppress_filters']                  = false;
 
 		return $query_args;
-	}
-
-	public function get_plugin_file_relative_path() {
-		return 'page-views-count/page-views-count.php';
 	}
 
 }

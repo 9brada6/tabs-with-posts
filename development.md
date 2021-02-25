@@ -5,8 +5,9 @@
 - ### Rating Plugins
 
     YASR Rating Plugin
-    - ✔ Can get the rating for a post.
-    - ❌ Can NOT order the posts via rating.
+    ✔ Can get the rating for a post.
+    ✔ Has an API for getting the overall rating for a post.
+    ❌ Don't know of overall rating includes also the ratings from a multi set.
 
     BlazK Rating Plugin
     - ✔ Can get the rating for a post.
@@ -45,7 +46,10 @@
     - Add a style for documentation.
     - Add a style for twrpb-documentation__text-developer.
 
-- ### Plugins
+- ### ✅ Plugins
+
+    - Reorder the functions in the plugin classes, to be the same and to have a meaning.
+    - Change Get last tested, with get tested versions?
 
     - Make Plugin DFactory Block Suppress filter option.
     - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
