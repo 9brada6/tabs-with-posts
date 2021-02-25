@@ -2,19 +2,16 @@
 
 ## Plugins Used
 
-### Rating Plugins
+- ### Rating Plugins
 
-#### YASR Rating Plugin
-
+    YASR Rating Plugin
     - ✔ Can get the rating for a post.
     - ❌ Can NOT order the posts via rating.
 
-#### BlazK Rating Plugin
-
+    BlazK Rating Plugin
     - ✔ Can get the rating for a post.
     - ✔ Can order the posts via a post meta.
-    - ✔ Functions used are don't have a chance to change in future, and even, a
-    deprecation warning might be displayed(as in other parts of the code).
+    - ✔ Functions used are don't have a chance to change in future, and even, a deprecation warning might be displayed(as in other parts of the code).
 
 ## ✅ Todo
 
@@ -24,36 +21,36 @@
 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
-### ✅ Todo Documentation
+- ### ✅ Todo Documentation
 
-- Add some photos.
-- Unify the 2 documentation block classes.
-- Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
+    - Add some photos.
+    - Unify the 2 documentation block classes.
+    - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 
-CSS:
+    CSS:
 
-- Don't forget to add CSS specificity in documentation
+    - Don't forget to add CSS specificity in documentation
 
-Tabs:
+    Tabs:
 
-- Don't forget to say that tabs are not displayed when only a single tab is displayed.
+    - Don't forget to say that tabs are not displayed when only a single tab is displayed.
 
-Article Block:
+    Article Block:
 
-- Say that you can use Yoast plugin to set the primary category.
-- Say in documentation that the thumbnails are loading lazy.
+    - Say that you can use Yoast plugin to set the primary category.
+    - Say in documentation that the thumbnails are loading lazy.
 
-Documentation Style:
+    Documentation Style:
 
-- Add a style for documentation.
-- Add a style for twrpb-documentation__text-developer.
+    - Add a style for documentation.
+    - Add a style for twrpb-documentation__text-developer.
 
-### Plugins
+- ### Plugins
 
-- Make Plugin DFactory Block Suppress filter option.
-- Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
-- Don't know how to count site reviews ratings, maybe email for support?
-- Add each plugin, move orderby plugin indicators to classes.
+    - Make Plugin DFactory Block Suppress filter option.
+    - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
+    - Don't know how to count site reviews ratings, maybe email for support?
+    - Add each plugin, move orderby plugin indicators to classes.
 
 ## 🎉 Todo: After first release
 
@@ -77,25 +74,25 @@ Documentation Style:
 
 ## 📖 Development Documentation
 
-### Tools used
+- ### Tools used
 
-#### Phan
+    Phan
 
-- Phan can be run via docker(see the script in the composer). In VSCode it comes pre-installed with the extension. It is not installed in vendor via composer.
-- You need to change the Phan path in vscode workspace options when you change the PC.
+    - Phan can be run via docker(see the script in the composer). In VSCode it comes pre-installed with the extension. It is not installed in vendor via composer.
+    - You need to change the Phan path in vscode workspace options when you change the PC.
 
-### External programs used
+- ### External programs used
 
-It's best to keep them updated.
+    It's best to keep them updated.
 
-- Pickr -> Included by default in the backend style/scripts. Pickr class does not exist globally. The original styles are not scoped, as is hard to do and they will not change in the future. Included only in the admin area.
-- Codemirror -> Use WP default script/themes, a dark theme css is included, but is scoped inside a twrpb class. Included only in the admin area.
-- Jquery-ui -> Use WP default scripts/themes, only a datepicker css theme exist, but is scoped inside a twrpb class. Included only in the admin area.
+    - Pickr -> Included by default in the backend style/scripts. Pickr class does not exist globally. The original styles are not scoped, as is hard to do and they will not change in the future. Included only in the admin area.
+    - Codemirror -> Use WP default script/themes, a dark theme css is included, but is scoped inside a twrpb class. Included only in the admin area.
+    - Jquery-ui -> Use WP default scripts/themes, only a datepicker css theme exist, but is scoped inside a twrpb class. Included only in the admin area.
 
-### Assets
+- ### Assets
 
-- In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
+    - In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
 
-### Article Blocks
+- ### Article Blocks
 
-- The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.
+    - The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.

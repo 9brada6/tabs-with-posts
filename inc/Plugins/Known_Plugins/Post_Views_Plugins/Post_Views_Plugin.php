@@ -13,20 +13,6 @@ use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 abstract class Post_Views_Plugin extends Known_Plugin implements Class_Children_Order {
 
 	/**
-	 * Whether the plugin support getting the views for a post.
-	 *
-	 * @return bool
-	 */
-	abstract public function support_get_views();
-
-	/**
-	 * Whether the plugin support support ordering posts by querying the db.
-	 *
-	 * @return bool
-	 */
-	abstract public function support_order_posts();
-
-	/**
 	 * Get the views for a post. Return false if cannot be retrieved.
 	 *
 	 * @param int|string $post_id The post Id.

@@ -5,6 +5,7 @@ namespace TWRP\Utils;
 use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
+use TWRP\Plugins\Known_Plugins\Post_Rating_Plugin;
 use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 use TWRP\Article_Block\Article_Block;
 
@@ -110,12 +111,28 @@ class Class_Retriever_Utils {
 	}
 
 	/**
-	 * Get all the Post_Views_Plugin objects.
+	 * Get an instance object of each class that extends Post_Views_Plugin.
 	 *
 	 * @return array<Post_Views_Plugin>
 	 */
 	public static function get_all_post_views_plugins_objects() {
 		$class_names = static::get_all_child_classes( Post_Views_Plugin::class );
+		$classes     = array();
+
+		foreach ( $class_names as $key => $class_name ) {
+			$classes[ $key ] = new $class_name();
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Get an instance object of each class that extends Post_Rating_Plugin.
+	 *
+	 * @return array<Post_Rating_Plugin>
+	 */
+	public static function get_all_post_ratings_plugins_objects() {
+		$class_names = static::get_all_child_classes( Post_Rating_Plugin::class );
 		$classes     = array();
 
 		foreach ( $class_names as $key => $class_name ) {

@@ -129,14 +129,6 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		return $orderby;
 	}
 
-	public function support_get_views() {
-		return true;
-	}
-
-	public function support_order_posts() {
-		return false;
-	}
-
 	public function is_installed_and_can_be_used() {
 		return Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
 	}

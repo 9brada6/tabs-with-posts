@@ -36,25 +36,6 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 
 	#endregion -- Plugin Meta
 
-	/**
-	 * Whether the plugin support getting the views for a post and
-	 * for multiple posts in an array.
-	 *
-	 * @return bool
-	 */
-	public function support_get_views() {
-		return true;
-	}
-
-	/**
-	 * Whether the plugin support support ordering posts by querying the db.
-	 *
-	 * @return bool
-	 */
-	public function support_order_posts() {
-		return true;
-	}
-
 	public function is_installed_and_can_be_used() {
 		return function_exists( 'pvc_get_post_views' );
 	}

@@ -26,20 +26,43 @@ class Post_Views {
 	use After_Setup_Theme_Init_Trait;
 
 	/**
-	 * Holds an array with an instance of each plugin class. The key is the
-	 * acronym of the plugin, as seen in $all_plugin_class_names variable, while
-	 * the value is the class instance.
+	 * Holds an array with an object of each plugin class.
 	 *
 	 * @var array<string,Post_Views_Plugin>
 	 */
 	protected static $plugin_classes = array();
 
 	/**
-	 * WP views plugin class to use.
+	 * WP views plugin class to use. False means no plugin is installed, null
+	 * is the initial value, and the object is the object to use.
 	 *
-	 * @var Post_Views_Plugin|false
+	 * @var Post_Views_Plugin|false|null
 	 */
-	protected static $used_plugin_class = false;
+	protected static $used_plugin_class = null;
+
+	/**
+	 * Get the class of the plugin to use.
+	 *
+	 * @return false|Post_Views_Plugin False if no views plugin is installed, so
+	 * no class can be used, or the corresponding object to use.
+	 */
+	public static function get_plugin_to_use() {
+		$plugins = self::get_plugin_classes();
+
+		if ( null !== self::$used_plugin_class ) {
+			return self::$used_plugin_class; // @phan-suppress-current-line PhanPossiblyNullTypeReturn
+		}
+
+		foreach ( $plugins as $plugin_class ) {
+			if ( Simple_Utils::method_exist_and_is_public( $plugin_class, 'is_installed_and_can_be_used' ) && $plugin_class->is_installed_and_can_be_used() === true ) {
+				self::$used_plugin_class = $plugin_class;
+				return self::$used_plugin_class; // @phan-suppress-current-line PhanPossiblyNullTypeReturn
+			}
+		}
+
+		self::$used_plugin_class = false;
+		return false;
+	}
 
 	/**
 	 * Returns an array with each plugin classes, in the usage preference order.
@@ -56,46 +79,8 @@ class Post_Views {
 	}
 
 	/**
-	 * Get the class of the plugin to use.
-	 *
-	 * @return false|Post_Views_Plugin False if no views plugin is installed, so
-	 * no class can be used, or the corresponding class to use.
-	 */
-	public static function get_plugin_to_use() {
-		$plugins = self::get_plugin_classes();
-
-		foreach ( $plugins as $plugin_class ) {
-			if ( Simple_Utils::method_exist_and_is_public( $plugin_class, 'is_installed_and_can_be_used' ) && $plugin_class->is_installed_and_can_be_used() === true ) {
-				self::$used_plugin_class = $plugin_class;
-				return self::$used_plugin_class;
-			}
-		}
-
-		self::$used_plugin_class = false;
-		return false;
-	}
-
-	/**
-	 * Given an array with WP_Query args return the new WP_Query args that will
-	 * have the parameters added to order by the views plugin selected.
-	 *
-	 * @param array $query_args The normal WP_Query args, only that 'post_views'
-	 * appears as a key in 'orderby' parameter.
-	 * @return array
-	 */
-	public static function modify_query_arg_if_necessary( $query_args ) {
-		$plugin_class = self::get_plugin_to_use();
-		if ( false === $plugin_class ) {
-			return $query_args;
-		}
-
-		$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
-		return $query_args;
-	}
-
-	/**
 	 * Get the views for a post. Return false if the views cannot be retrieved,
-	 * like the plugin is not installed, or another error.
+	 * like the plugin is not installed, post don't exist, or another error.
 	 *
 	 * @param WP_Post|int|null $post The post to use. Defaults to global $post.
 	 * @return int|false
@@ -115,6 +100,24 @@ class Post_Views {
 
 		$post_views = $plugin_class->get_views( $post_id );
 		return $post_views;
+	}
+
+	/**
+	 * Given an array with WP_Query args return the new WP_Query args that will
+	 * have the parameters added to order by the views plugin selected.
+	 *
+	 * @param array $query_args The normal WP_Query args, only that 'post_views'
+	 * appears as a key in 'orderby' parameter.
+	 * @return array
+	 */
+	public static function modify_query_arg_if_necessary( $query_args ) {
+		$plugin_class = self::get_plugin_to_use();
+		if ( false === $plugin_class ) {
+			return $query_args;
+		}
+
+		$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
+		return $query_args;
 	}
 
 	/**

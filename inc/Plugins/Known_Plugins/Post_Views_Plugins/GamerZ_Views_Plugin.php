@@ -34,14 +34,6 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
 	#endregion -- Plugin Meta
 
-	public function support_get_views() {
-		return true;
-	}
-
-	public function support_order_posts() {
-		return true;
-	}
-
 	public function is_installed_and_can_be_used() {
 		if ( ! function_exists( 'the_views' ) ) {
 			return false;
