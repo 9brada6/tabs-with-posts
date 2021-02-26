@@ -34,6 +34,8 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
 	#endregion -- Plugin Meta
 
+	#region -- Detect if is installed.
+
 	public function is_installed_and_can_be_used() {
 		if ( ! function_exists( 'the_views' ) ) {
 			return false;
@@ -45,6 +47,10 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
 		return true;
 	}
+
+	#endregion -- Detect if is installed.
+
+	#region -- Get the views.
 
 	public function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
@@ -64,6 +70,10 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
 		return 0;
 	}
+
+	#endregion -- Get the views.
+
+	#region -- Modify the query argument to order posts.
 
 	public function modify_query_arg_if_necessary( $query_args ) {
 		$orderby_value = Post_Views::ORDERBY_VIEWS_OPTION_KEY;
@@ -85,5 +95,7 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
 		return $query_args;
 	}
+
+	#endregion -- Modify the query argument to order posts.
 
 }

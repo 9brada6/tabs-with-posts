@@ -59,9 +59,12 @@
     - Add a style for documentation.
     - Add a style for twrpb-documentation__text-developer.
 
+    Plugins:
+
+    - Say how YASR rating plugin setting works, and also put a link from settings.
+
 - ### ✅ Plugins
 
-    - Reorder the functions in the plugin classes, to be the same and to have a meaning.
     - Change Get last tested, with get tested versions?
 
     - Make Plugin DFactory Block Suppress filter option.

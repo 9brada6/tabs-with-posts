@@ -36,9 +36,15 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 
 	#endregion -- Plugin Meta
 
+	#region -- Detect if is installed.
+
 	public function is_installed_and_can_be_used() {
 		return function_exists( 'pvc_get_post_views' );
 	}
+
+	#endregion -- Detect if is installed.
+
+	#region -- Get the views.
 
 	public function get_views( $post_id ) {
 		if ( ! is_numeric( $post_id ) ) {
@@ -63,6 +69,10 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 		return 0;
 	}
 
+	#endregion -- Get the views.
+
+	#region -- Modify the query argument to order posts.
+
 	/**
 	 * Given an array with WP_Query args with 'orderby' of type array and a
 	 * custom orderby key. Return the new WP_Query args that will have the
@@ -84,5 +94,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 
 		return $query_args;
 	}
+
+	#endregion -- Modify the query argument to order posts.
 
 }

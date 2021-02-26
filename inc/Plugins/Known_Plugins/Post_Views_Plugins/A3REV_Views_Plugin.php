@@ -42,6 +42,59 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 
 	#endregion -- Plugin Meta
 
+	#region -- Detect if is installed.
+
+	public function is_installed_and_can_be_used() {
+		return Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
+	}
+
+	#endregion -- Detect if is installed.
+
+	#region -- Get the views.
+
+	public function get_views( $post_id ) {
+		if ( ! is_numeric( $post_id ) ) {
+			return 0;
+		}
+		$post_id = (int) $post_id;
+
+		if ( ! $this->is_installed_and_can_be_used() ) {
+			return 0;
+		}
+
+		if ( class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
+			$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id );
+		} else {
+			return 0;
+		}
+
+		if ( is_numeric( $post_views ) && $post_views >= 0 ) {
+			return (int) $post_views;
+		}
+
+		return 0;
+	}
+
+	#endregion -- Get the views.
+
+	#region -- Modify the query argument to order posts.
+
+	public function modify_query_arg_if_necessary( $query_args ) {
+		$orderby_value = Post_Views::ORDERBY_VIEWS_OPTION_KEY;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
+			return $query_args;
+		}
+
+		$query_args[ self::QUERY_ADDITIONAL_FILTER_KEY ] = true;
+		$query_args['suppress_filters']                  = false;
+
+		return $query_args;
+	}
+
+	#endregion -- Modify the query argument to order posts.
+
+	#region -- Creating custom filters for ordering posts.
+
 	use After_Setup_Theme_Init_Trait;
 
 	public static function after_setup_theme_init() {
@@ -133,43 +186,6 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		return $orderby;
 	}
 
-	public function is_installed_and_can_be_used() {
-		return Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
-	}
-
-	public function get_views( $post_id ) {
-		if ( ! is_numeric( $post_id ) ) {
-			return 0;
-		}
-		$post_id = (int) $post_id;
-
-		if ( ! $this->is_installed_and_can_be_used() ) {
-			return 0;
-		}
-
-		if ( class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
-			$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id );
-		} else {
-			return 0;
-		}
-
-		if ( is_numeric( $post_views ) && $post_views >= 0 ) {
-			return (int) $post_views;
-		}
-
-		return 0;
-	}
-
-	public function modify_query_arg_if_necessary( $query_args ) {
-		$orderby_value = Post_Views::ORDERBY_VIEWS_OPTION_KEY;
-		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
-			return $query_args;
-		}
-
-		$query_args[ self::QUERY_ADDITIONAL_FILTER_KEY ] = true;
-		$query_args['suppress_filters']                  = false;
-
-		return $query_args;
-	}
+	#endregion -- Creating custom filters for ordering posts.
 
 }
