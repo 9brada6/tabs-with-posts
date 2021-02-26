@@ -146,6 +146,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/Views_Icon',
 		'Database/General_Options_Settings/Rating_Pack_Icons',
 		'Database/General_Options_Settings/Svg_Include_Inline',
+		'Database/General_Options_Settings/YASR_Rating_Type',
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',

@@ -93,6 +93,12 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					?>
 				</fieldset>
 
+				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= _x( 'External Plugin Settings', 'backend', 'twrp' ); ?></legend>
+					<p><?= _x( 'Read more in documentation for what is this setting about.', 'backend', 'twrp' ); ?></p>
+					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
+				</fieldset>
+
 				<?php
 				self::display_submit_button();
 				?>

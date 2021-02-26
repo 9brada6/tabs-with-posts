@@ -3,6 +3,7 @@
 namespace TWRP\Plugins\Known_Plugins;
 
 use Exception;
+use TWRP\Database\General_Options;
 use YasrDatabaseRatings;
 use TWRP\Utils\Simple_Utils;
 use YasrMultiSetData;
@@ -10,12 +11,15 @@ use YasrMultiSetData;
 /**
  * Class used to retrieve the ratings for YASR Rating Plugin.
  *
- * todo: say better how this plugin works.
+ * This plugin implements various types of rating a post:
+ * 1. Overall/Authors vote, which is a vote in the backend, more like a review.
+ * 2. Visitors votes, a normal stars system.
+ * 3. Multiset Authors votes, votes give by an author in the backend. The multiset
+ * comes from the fact that there are votes for different things, like on Amazon.
+ * 4. Multiset visitors votes, like above, give by visitors.
  *
- * This plugin implements have multiple functions to return average ratings.
- * First it searches for authors/editors average rating, then it tries to
- * calculate the average rating, after it tries to calculate the multi-set
- * average. The multi-set is found by searching in the logs table.
+ * We cannot count the number of votes of Overall/Authors because there is only one.
+ * The system is between 1-5 stars.
  */
 class YASR_Rating_Plugin extends Post_Rating_Plugin {
 
@@ -46,6 +50,7 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 	#region -- Detect if is installed.
 
 	public function is_installed_and_can_be_used() {
+		// todo: add other classes and constants here.
 		return Simple_Utils::method_exist_and_is_public( YasrDatabaseRatings::class, 'getOverallRating' );
 	}
 
@@ -59,86 +64,109 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 			return false;
 		}
 
-		// If we have Overall rating, then return it.
-		$average_rating = YasrDatabaseRatings::getOverallRating( ( $post_id ) );
-		if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
-			return (float) $average_rating;
+		$yasr_rating_type = General_Options::get_option( General_Options::YASR_RATING_TYPE );
+
+		if ( 'overall' === $yasr_rating_type ) {
+			$average_rating = YasrDatabaseRatings::getOverallRating( ( $post_id ) );
+			if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
+				return (float) $average_rating;
+			}
+			return 0;
 		}
 
-		// Else calculate visitors average votes.
-		$votes          = YasrDatabaseRatings::getVisitorVotes( ( $post_id ) );
-		$average_rating = $this->calculate_yasr_average_votes( $votes );
-		if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
-			return (float) $average_rating;
+		if ( 'visitors' === $yasr_rating_type ) {
+			$votes          = YasrDatabaseRatings::getVisitorVotes( ( $post_id ) );
+			$average_rating = $this->calculate_yasr_average_votes( $votes );
+			if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
+				return (float) $average_rating;
+			}
+			return 0;
 		}
 
-		// Try to get the multi set id of the post.
-		$set_id = $this->try_to_get_set_id( $post_id );
-		if ( ! $set_id ) {
-			return false;
+		if ( 'multi_set_overall' === $yasr_rating_type ) {
+			// First try to get the multiset id.
+			$multiset_meta = get_post_meta( $post_id, 'yasr_multiset_author_votes', true );
+			if ( is_array( $multiset_meta ) && isset( $multiset_meta[0] ) && is_array( $multiset_meta[0] ) && isset( $multiset_meta[0]['set_id'] ) ) {
+				$set_id = $multiset_meta[0]['set_id'];
+				if ( is_numeric( $set_id ) && $set_id > 0 ) {
+					// Dunno if there is a bug, but this variable is static, so I assume it
+					// should be write every time to calculate good.
+					YasrMultiSetData::$array_to_return = array();
+					$average_rating                    = YasrMultiSetData::returnMultiSetAverage( $post_id, $set_id, false );
+					if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
+						return (float) $average_rating;
+					}
+				}
+			}
+
+			return 0;
 		}
 
-		// Else get multi-set average overall votes.
-		// Dunno if there is a bug, but this variable is static, so I assume it
-		// should be write every time to calculate good.
-		YasrMultiSetData::$array_to_return = array();
-		$average_rating                    = YasrMultiSetData::returnMultiSetAverage( $post_id, $set_id, false );
-		if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
-			return (float) $average_rating;
-		}
+		if ( 'multi_set_visitors' === $yasr_rating_type ) {
+			// Try to get the multi set id of the post.
+			$set_id = $this->try_to_get_visitors_multi_set_id( $post_id );
+			if ( ! $set_id ) {
+				return false;
+			}
 
-		// Else calculate multi-set average votes.
-		$average_rating = YasrMultiSetData::returnMultiSetAverage( $post_id, $set_id, true );
-		if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
-			return (float) $average_rating;
+			$average_rating = YasrMultiSetData::returnMultiSetAverage( $post_id, $set_id, true );
+			if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
+				return (float) $average_rating;
+			}
+
+			return 0;
 		}
 
 		return false;
 	}
 
 	public function get_rating_count( $post_id ) {
-		$post_id = (int) $post_id;
-
-		// Overall does not have votes count.
-		// If we have Overall rating, then return it.
-		$average_rating = YasrDatabaseRatings::getOverallRating( ( $post_id ) );
-		if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
-			return 0;
-		}
-
-		// Else calculate visitors votes.
-		$votes = YasrDatabaseRatings::getVisitorVotes( ( $post_id ) );
-		if ( is_array( $votes ) && isset( $votes['number_of_votes'] ) && is_numeric( $votes['number_of_votes'] ) && $votes['number_of_votes'] > 0 ) {
-			return (int) $votes['number_of_votes'];
-		}
-
-		// Try to get the multi set id of the post.
-		// Dunno if there is a bug, but this variable is static, so I assume it
-		// should be write every time to calculate good.
-		$set_id = $this->try_to_get_set_id( $post_id );
-		if ( ! $set_id ) {
+		$post_id = Simple_Utils::get_valid_wp_id( $post_id );
+		if ( ! $post_id ) {
 			return false;
 		}
 
-		// Multi-set average overall does not have votes count.
-		YasrMultiSetData::$array_to_return = array();
-		$average_rating                    = YasrMultiSetData::returnMultiSetAverage( $post_id, $set_id, false );
-		if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
+		$yasr_rating_type = General_Options::get_option( General_Options::YASR_RATING_TYPE );
+
+		if ( 'overall' === $yasr_rating_type ) {
+			// Overall does not have votes count.
 			return 0;
 		}
 
-		// Else calculate visitors multi set votes.
-		$multiset_votes = YasrMultiSetData::returnMultisetContent( $post_id, $set_id, true );
-		if ( is_array( $multiset_votes ) && ! ( empty( $multiset_votes ) ) ) {
-			$max = 0;
-			foreach ( $multiset_votes as $multiset_vote ) {
-				if ( is_array( $multiset_vote ) && isset( $multiset_vote['number_of_votes'] ) && is_numeric( $multiset_vote['number_of_votes'] ) && $multiset_vote['number_of_votes'] > $max ) {
-					$max = (int) $multiset_vote['number_of_votes'];
+		if ( 'visitors' === $yasr_rating_type ) {
+			$votes = YasrDatabaseRatings::getVisitorVotes( ( $post_id ) );
+			if ( is_array( $votes ) && isset( $votes['number_of_votes'] ) && is_numeric( $votes['number_of_votes'] ) && $votes['number_of_votes'] > 0 ) {
+				return (int) $votes['number_of_votes'];
+			}
+
+			return 0;
+		}
+
+		if ( 'multi_set_overall' === $yasr_rating_type ) {
+			// Multiset Overall does not have votes count.
+			return 0;
+		}
+
+		if ( 'multi_set_visitors' === $yasr_rating_type ) {
+			$set_id = $this->try_to_get_visitors_multi_set_id( $post_id );
+			if ( ! $set_id ) {
+				return 0;
+			}
+
+			$multiset_votes = YasrMultiSetData::returnMultisetContent( $post_id, $set_id, true );
+			if ( is_array( $multiset_votes ) && ! ( empty( $multiset_votes ) ) ) {
+				$max = 0;
+				foreach ( $multiset_votes as $multiset_vote ) {
+					if ( is_array( $multiset_vote ) && isset( $multiset_vote['number_of_votes'] ) && is_numeric( $multiset_vote['number_of_votes'] ) && $multiset_vote['number_of_votes'] > $max ) {
+						$max = (int) $multiset_vote['number_of_votes'];
+					}
+				}
+				if ( $max > 0 ) {
+					return $max;
 				}
 			}
-			if ( $max > 0 ) {
-				return $max;
-			}
+
+			return 0;
 		}
 
 		return false;
@@ -182,7 +210,7 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 	 * @param int $post_id
 	 * @return int|false|null Either the post_id, or false if not found.
 	 */
-	public function try_to_get_set_id( $post_id ) {
+	public function try_to_get_visitors_multi_set_id( $post_id ) {
 		global $wpdb;
 
 		$table_name = YASR_LOG_MULTI_SET;

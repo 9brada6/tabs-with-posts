@@ -7,7 +7,7 @@ use TWRP\Database\General_Options;
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
-
+use TWRP\Plugins\Known_Plugins\YASR_Rating_Plugin;
 use TWRP\Utils\Simple_Utils;
 
 /**
@@ -146,6 +146,7 @@ class General_Settings_Factory {
 			General_Options::VIEWS_ICON                 => self::SELECT_SETTING_CLASS,
 			General_Options::RATING_ICON_PACK           => self::SELECT_SETTING_CLASS,
 			General_Options::SVG_INCLUDE_INLINE         => self::RADIO_SETTING_CLASS,
+			General_Options::YASR_RATING_TYPE           => self::SELECT_SETTING_CLASS,
 		);
 
 		return $correlated_classes;
@@ -180,6 +181,7 @@ class General_Settings_Factory {
 			General_Options::VIEWS_ICON                 => 'get_views_icon_setting_args',
 			General_Options::RATING_ICON_PACK           => 'get_rating_pack_setting_args',
 			General_Options::SVG_INCLUDE_INLINE         => 'get_svg_include_inline_args',
+			General_Options::YASR_RATING_TYPE           => 'get_yasr_rating_type_args',
 		);
 
 		return $correlated_functions;
@@ -493,6 +495,30 @@ class General_Settings_Factory {
 						'library'  => array( 'type' => 'image' ),
 					)
 				),
+			),
+		);
+	}
+
+	/**
+	 * Return the arguments for the YASR plugin to select the rating type.
+	 *
+	 * @return array
+	 */
+	protected static function get_yasr_rating_type_args() {
+		$title       = _x( 'Select the YASR rating type that you wish this plugin to show in posts:', 'backend', 'twrp' );
+		$yasr_plugin = new YASR_Rating_Plugin();
+
+		if ( ! $yasr_plugin->is_installed_and_can_be_used() ) {
+			$title = '(' . _x( 'Not Installed', 'backend', 'twrp' ) . ') ' . $title;
+		}
+
+		return array(
+			'title'   => $title,
+			'options' => array(
+				'overall'            => _x( 'Overall/Author Rating', 'backend', 'twrp' ),
+				'visitors'           => _x( 'Visitors Vote', 'backend', 'twrp' ),
+				'multi_set_overall'  => _x( 'Multiset Overall/Authors Vote', 'backend', 'twrp' ),
+				'multi_set_visitors' => _x( 'Multiset Visitors Vote', 'backend', 'twrp' ),
 			),
 		);
 	}

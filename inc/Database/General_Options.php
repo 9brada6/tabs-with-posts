@@ -87,6 +87,8 @@ class General_Options {
 
 	#endregion -- SVG Inclusion Keys
 
+	const YASR_RATING_TYPE = 'YASR_Rating_Type';
+
 	#region -- Getting Options
 
 	/**
@@ -119,6 +121,7 @@ class General_Options {
 			self::VIEWS_ICON,
 			self::RATING_ICON_PACK,
 			self::SVG_INCLUDE_INLINE,
+			self::YASR_RATING_TYPE,
 		);
 
 		$default_settings = array();

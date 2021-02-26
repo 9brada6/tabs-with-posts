@@ -4,7 +4,7 @@
 
 - ### Rating Plugins
 
-    How retrieving the rating is implemented:
+    How retrieving the rating:
     1. If the rating is displayed, then the meta should be displayed for all posts, even if they don't have a rating yet.
     2. If we have an average rating, then display the rating.
     3. If we don't have a rating average, then just display 0, and an empty star?.
@@ -21,7 +21,7 @@
 
 ## ✅ Todo
 
-- Test YASR plugin.
+- Add an option to select whether or not to display rating counts.
 - Add rating plugins.
 
 - Fix colors, border-radius, tab button size, and calculate others.
@@ -89,6 +89,7 @@
 - ➕ Add support for more plugins that support primary category.
 - ➕ Add support to sort by rating.
 - ➕ Try to speed up every plugin, by adding a static variable to hold an internal cache for each post id of average/sum_votes(especially the rating plugins).
+- ➕ Maybe try to test more YASR Rating Plugin? I didn't tested very good and maybe there is a very hard bug to find.
 
 ## 📖 Development Documentation
 

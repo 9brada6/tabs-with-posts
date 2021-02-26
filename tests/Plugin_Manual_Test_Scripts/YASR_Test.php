@@ -19,7 +19,7 @@ function twrp_test_yasr_overall_rating( $content ) {
 	$content .= do_shortcode( '[yasr_overall_rating size="medium"]' );
 
 	// Else calculate multi-set average votes.
-	$set_id = $plugin_class->try_to_get_set_id( $post_id );
+	$set_id = $plugin_class->try_to_get_visitors_multi_set_id( $post_id );
 	$average_rating = YasrMultiSetData::returnMultiSetAverage( $post_id, $set_id, true );
 	if ( is_numeric( $average_rating ) && $average_rating > 0 ) {
 		// return (float) $average_rating;
