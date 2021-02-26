@@ -18,7 +18,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 
 	public function display_tab() {
 		?>
-		<div class="twrpb-documentation-page">
+		<div class="<?php $this->bem_class(); ?>">
 			<?php $this->display_views_plugin_support(); ?>
 			<?php
 			$icons_documentation = new Tab_Queries_Docs();
@@ -48,7 +48,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 		$plugin_classes = Post_Views::get_plugin_classes();
 		$plugin_in_use  = Post_Views::get_plugin_to_use();
 		?>
-		<div class="twrpb-plugins-support twrpb-documentation-page__plugins-support twrpb-plugins-support--views-plugin">
+		<div class="<?php $this->bem_class( 'plugins-support' ); ?> twrpb-plugins-support twrpb-plugins-support--views-plugin">
 			<div class="twrpb-plugins-support__plugins-list-title-wrap">
 				<h2 class="twrpb-plugins-support__plugins-list-title">
 					<?= _x( 'Views plugin support', 'backend', 'twrp' ); ?>

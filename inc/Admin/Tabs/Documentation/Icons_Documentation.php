@@ -103,7 +103,7 @@ class Icons_Documentation {
 		$title_and_icons = $this->get_title_and_icons();
 
 		?>
-		<div id="twrpb-documentation-page__all-icons-reference" class="twrpb-icons-spoiler twrpb-documentation-page__icons-spoiler-wrapper">
+		<div id="<?php $this->bem_class( 'all-icons-reference' ); ?>" class="<?php $this->bem_class( 'icons-spoiler-wrapper' ); ?> twrpb-icons-spoiler">
 			<h3 class="<?php $this->bem_class( 'title-sub-section' ); ?>"><?= _x( 'All icons reference', 'backend', 'twrp' ); ?></h3>
 			<?php foreach ( $title_and_icons as $category => $title_and_icon ) : ?>
 			<div class="twrpb-icons-spoiler__category">

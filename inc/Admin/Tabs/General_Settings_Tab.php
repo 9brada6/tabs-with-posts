@@ -72,7 +72,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					<p>
 						<?php
 						$icon_reference_link = Settings_Menu::get_tab_url( new Documentation_Tab() );
-						$icon_reference_link = $icon_reference_link . '#twrpb-documentation-page__all-icons-reference';
+						$icon_reference_link = $icon_reference_link . '#twrpb-docs__all-icons-reference';
 						echo sprintf(
 							/* translators: %1$s and %2$s are placeholder where HTML code will be inserted, as a link wrapper(going to another page). No translation words are inserted there. Just translate the whole sentence, and be sure the corresponding words are between %$1s and %2$s tags. */
 							_x( 'Note: To see a long list with all the icons, please look at %1$s documentation icons reference %2$s.', 'backend', 'twrp' ),
