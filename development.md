@@ -21,13 +21,19 @@
 
 ## ✅ Todo
 
+- Test YASR plugin.
+- Add rating plugins.
+
 - Fix colors, border-radius, tab button size, and calculate others.
 - Add pages to the tabs.
-- Add rating plugins.
 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 - Add in manual testing of plugins to test if table exist.
+
+- Add in General Settings, settings and quirks about the plugins.
+
+- Make Article Block first search in child theme, then in theme, then in plugin, add this thing in documentation.
 
 - ### ✅ Todo Documentation
 

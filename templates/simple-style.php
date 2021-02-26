@@ -51,7 +51,8 @@ if ( empty( get_the_title() ) ) {
 
 		<?php if ( $artblock->is_rating_displayed() ) : ?>
 			<span class="twrp-ss__meta twrp-ss__rating">
-				<?php // $artblock->include_rating_icon(); ?>
+				<?php $artblock->display_rating_icon(); ?>
+				<?php $artblock->display_rating(); ?>
 			</span>
 		<?php endif; ?>
 

@@ -5,7 +5,9 @@ namespace TWRP\Article_Block;
 use TWRP\Admin\TWRP_Widget\Widget_Form_Components_Display;
 use TWRP\Database\General_Options;
 use TWRP\Plugins\Post_Views;
+use TWRP\Plugins\Post_Rating;
 use TWRP\Icons\Icon_Factory;
+use TWRP\Icons\Icon;
 
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
@@ -455,7 +457,8 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			return;
 		}
 
-		echo $this->get_the_comments_number(); // phpcs:ignore -- No XSS.
+		$num_comments = (int) $this->get_the_comments_number();
+		echo esc_html( number_format_i18n( $num_comments, 0 ) );
 	}
 
 	/**
@@ -482,9 +485,9 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @return void
 	 */
 	public function display_the_views( $post = null ) {
-		$author = $this->get_the_views( $post );
-		if ( is_int( $author ) ) {
-			echo esc_html( (string) $author );
+		$views = $this->get_the_views( $post );
+		if ( is_int( $views ) ) {
+			echo esc_html( number_format_i18n( $views, 0 ) );
 		} else {
 			echo '0';
 		}
@@ -498,6 +501,54 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function get_the_views( $post = null ) {
 		return Post_Views::get_views( $post );
+	}
+
+	/**
+	 * Display the average rating for a post and the rating count.
+	 * If there is no rating, it displays 0.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return void
+	 */
+	public function display_rating( $post = null ) {
+		$avg_rating   = $this->get_the_average_rating( $post );
+		$rating_count = $this->get_rating_count( $post );
+
+		if ( false === $rating_count ) {
+			$rating_count = 0;
+		}
+
+		if ( false === $avg_rating ) {
+			$avg_rating   = 0;
+			$rating_count = 0;
+		}
+
+		echo esc_html( number_format_i18n( $avg_rating, 1 ) );
+		if ( 0 !== $avg_rating && 0 !== $rating_count ) {
+			echo '<span class="twrp-rating-count">(';
+			echo esc_html( number_format_i18n( $rating_count, 0 ) );
+			echo ')</span>';
+		}
+	}
+
+	/**
+	 * Get the average rating for a post.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return false|float|int
+	 */
+	public function get_the_average_rating( $post = null ) {
+		return Post_Rating::get_rating( $post );
+	}
+
+	/**
+	 * Get the rating count for a post.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @return false|float|int
+	 */
+	public function get_rating_count( $post = null ) {
+		return Post_Rating::get_rating_count( $post );
 	}
 
 	/**
@@ -675,6 +726,60 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	}
 
 	/**
+	 * Include the HTML svg for the rating icon.
+	 *
+	 * @param float|int|false $rating Calculate the icon to use by the rating. False means to use default half-filled.
+	 * @param int|float|false $min The minimum of rating. False means that is determined if necessary.
+	 * @param int|float|false $max The maximum of rating. False means that is determined if necessary.
+	 * @return void
+	 */
+	public function display_rating_icon( $rating = false, $min = false, $max = false ) {
+		echo $this->get_rating_icon_html( $rating, $min, $max ); // phpcs:ignore -- No XSS.
+	}
+
+	/**
+	 * Return the svg for the rating icon.
+	 *
+	 * @param float|int|false $rating Calculate the icon to use by the rating. False means to use default half-filled.
+	 * @param int|float|false $min The minimum of rating. False means that is determined if necessary.
+	 * @param int|float|false $max The maximum of rating. False means that is determined if necessary.
+	 * @return string
+	 */
+	public function get_rating_icon_html( $rating = false, $min = false, $max = false ) {
+		$icon = $this->get_selected_rating_icon( $rating, $min, $max );
+		if ( false === $icon ) {
+			return '';
+		}
+
+		return $icon->get_html();
+	}
+
+	/**
+	 * Get the Id of the selected views icon. Empty if nothing is set(usually
+	 * should not be encounter).
+	 *
+	 * @param float|int|false $rating Calculate the icon to use by the rating. False means to use default half-filled.
+	 * @param int|float|false $min The minimum of rating. False means that is determined if necessary.
+	 * @param int|float|false $max The maximum of rating. False means that is determined if necessary.
+	 * @return Icon|false
+	 */
+	protected function get_selected_rating_icon( $rating = false, $min = false, $max = false ) {
+		$rating_pack_id = General_Options::get_option( General_Options::RATING_ICON_PACK );
+		if ( ! is_string( $rating_pack_id ) ) {
+			return false;
+		}
+
+		try {
+			$rating_pack = Icon_Factory::get_rating_pack( $rating_pack_id );
+		} catch ( RuntimeException $e ) {
+			return false;
+		}
+
+		// todo: get different icon by rating?
+		return $rating_pack->get_half_filled_icon();
+	}
+
+	/**
 	 * Display the HTML svg icon
 	 *
 	 * If comments are disabled and the post has no comments, then the comments
@@ -790,8 +895,6 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 		return $option;
 	}
-
-	// Todo: need to add more functions.
 
 	#endregion -- Icons
 

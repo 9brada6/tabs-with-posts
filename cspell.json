@@ -16,7 +16,7 @@
         ".git/**",
         ".phan/**",
         ".stubs/**",
-        ".svg-cons-src/**",
+        ".assets-sources/**",
         ".vscode/**",
         "puml/**",
         "*.code-workspace"

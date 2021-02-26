@@ -19,8 +19,7 @@
 		"test": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit",
 		"test-query-settings": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite query_settings",
 		"test-icons": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite icons",
-		"graph":  "docker run --rm -v ${PWD}:/app mamuz/phpda",
-		"todo": "--mount type=volume,dst=/app/vendor"
+		"graph":  "docker run --rm -v ${PWD}:/app mamuz/phpda"
 	},
 	"autoload": {
         "psr-4": {}

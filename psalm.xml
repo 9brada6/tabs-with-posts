@@ -20,7 +20,7 @@
         <ignoreFiles>
             <directory name=".git"/>
             <directory name=".stubs"/>
-            <directory name=".svg-icons-src"/>
+            <directory name=".assets-sources"/>
             <directory name=".vscode"/>
             <directory name="node_modules"/>
             <directory name="vendor"/>
