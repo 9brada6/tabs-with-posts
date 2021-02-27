@@ -21,7 +21,7 @@
 
 ## ✅ Todo
 
-- Add an option to select whether or not to display rating counts.
+- Add an option to select whether or not to display rating counts, and style the rating counts.
 - Add rating plugins.
 
 - Fix colors, border-radius, tab button size, and calculate others.
@@ -30,6 +30,7 @@
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 - Add in manual testing of plugins to test if table exist.
+- Add in manual testing that each gettext _x, _ex, etc should have as a context "backend, documentation".
 
 - Add in General Settings, settings and quirks about the plugins.
 

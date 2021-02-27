@@ -2,18 +2,23 @@
 
 namespace TWRP\Admin\Tabs\Documentation;
 
+use TWRP\Admin\Tabs\Documentation_Tab;
+use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+
 /**
  * Class that is used to display licenses of the external works, and the license
  * of this plugin.
  */
 class License_Display {
 
+	use BEM_Class_Naming_Trait;
+
 	/**
 	 * Get an array, where each value is an array with the license attributions.
 	 *
 	 * @return array<string,array{brand:string,title:string,license_url:string,license_link_description:string,description:string}>
 	 */
-	protected static function get_external_licenses_settings() {
+	protected function get_external_licenses_settings() {
 
 		$mit_license_url        = 'https://opensource.org/licenses/MIT';
 		$apache_v2_license_url  = 'https://www.apache.org/licenses/LICENSE-2.0';
@@ -139,19 +144,19 @@ class License_Display {
 	 *
 	 * @return void
 	 */
-	public static function display_external_licenses() {
-		$licenses = self::get_external_licenses_settings();
+	public function display_external_licenses() {
+		$licenses = $this->get_external_licenses_settings();
 
 		?>
-		<div class="twrpb-licenses">
-			<div class="twrpb-licenses__title-wrapper">
-				<h2 class="twrpb-licenses__title"><?= esc_html( _x( 'Licenses and external programs used', 'backend', 'twrp' ) ); ?></h2>
+		<div class="<?php $this->bem_class( 'licenses' ); ?>">
+			<div class="<?php $this->bem_class( 'licenses-title-wrapper' ); ?>">
+				<h2 class="<?php $this->bem_class( 'licenses-title' ); ?>"><?= esc_html( _x( 'Licenses and external programs used', 'backend, documentation', 'twrp' ) ); ?></h2>
 			</div>
 
-			<div class="twrpb-licenses__licenses-list">
+			<div class="<?php $this->bem_class( 'licenses-list' ); ?>">
 				<?php
 				foreach ( $licenses as $license ) {
-					self::display_external_license( $license );
+					$this->display_external_license( $license );
 				}
 				?>
 			</div>
@@ -165,28 +170,33 @@ class License_Display {
 	 * @param array{brand:string,title:string,license_url:string,license_link_description:string,description:string} $license
 	 * @return void
 	 */
-	protected static function display_external_license( $license ) {
+	protected function display_external_license( $license ) {
 		if ( ! isset( $license['brand'], $license['title'], $license['license_url'], $license['license_link_description'], $license['description'] ) ) {
 			return;
 		}
 
 		?>
-			<div class="twrpb-licenses__license">
-				<h3 class="twrpb-licenses__license-title">
+			<div class="<?php $this->bem_class( 'license' ); ?>">
+				<h3 class="<?php $this->bem_class( 'license-title' ); ?>">
 					<?= esc_html( $license['title'] ); ?>
 				</h3>
 
-				<div class="twrpb-licenses__license-description">
+				<div class="<?php $this->bem_class( 'license-description' ); ?>">
 					<?= $license['description']; // phpcs:ignore -- It's a feature to include HTML. ?>
 				</div>
 
-				<div class="twrpb-licenses__license-link-wrapper">
+				<div class="<?php $this->bem_class( 'license-link-wrapper' ); ?>">
 					<?= esc_html( _x( 'License Link:', 'backend', 'twrp' ) ); ?>
-					<a href="<?= esc_url( $license['license_link_description'] ); ?>" class="twrpb-licenses__license-link">
+					<a href="<?= esc_url( $license['license_link_description'] ); ?>" class="<?php $this->bem_class( 'license-link' ); ?>">
 						<?= esc_html( $license['license_link_description'] ); ?>
 					</a>
 				</div>
 			</div>
 		<?php
+	}
+
+	protected function get_bem_base_class() {
+		$documentation_tab = new Documentation_Tab();
+		return $documentation_tab->get_bem_base_class();
 	}
 }

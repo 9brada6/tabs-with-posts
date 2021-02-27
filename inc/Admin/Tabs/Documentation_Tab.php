@@ -21,12 +21,15 @@ class Documentation_Tab extends Admin_Menu_Tab {
 		<div class="<?php $this->bem_class(); ?>">
 			<?php $this->display_views_plugin_support(); ?>
 			<?php
-			$icons_documentation = new Tab_Queries_Docs();
-			$icons_documentation->display();
+			$tab_queries_docs = new Tab_Queries_Docs();
+			$tab_queries_docs->display();
+
 			$icons_documentation = new Icons_Documentation();
 			$icons_documentation->display_icon_documentation();
+
+			$license_docs = new License_Display();
+			$license_docs->display_external_licenses();
 			?>
-			<?php License_Display::display_external_licenses(); ?>
 		</div>
 		<?php
 	}
@@ -48,14 +51,14 @@ class Documentation_Tab extends Admin_Menu_Tab {
 		$plugin_classes = Post_Views::get_plugin_classes();
 		$plugin_in_use  = Post_Views::get_plugin_to_use();
 		?>
-		<div class="<?php $this->bem_class( 'plugins-support' ); ?> twrpb-plugins-support twrpb-plugins-support--views-plugin">
-			<div class="twrpb-plugins-support__plugins-list-title-wrap">
-				<h2 class="twrpb-plugins-support__plugins-list-title">
+		<div class="<?php $this->bem_class( 'plugins-support' ); ?> <?php $this->bem_class( 'plugins-support', 'views-plugin' ); ?>">
+			<div class="<?php $this->bem_class( 'plugins-list-title-wrap' ); ?>">
+				<h2 class="<?php $this->bem_class( 'plugins-list-title' ); ?>">
 					<?= _x( 'Views plugin support', 'backend', 'twrp' ); ?>
 				</h2>
 			</div>
 
-			<div class="twrpb-plugins-support__plugins-list">
+			<div class="<?php $this->bem_class( 'plugins-list' ); ?>">
 				<?php
 				foreach ( $plugin_classes as $plugin ) {
 					$this->display_plugin_info( $plugin, $plugin_in_use );
@@ -75,35 +78,35 @@ class Documentation_Tab extends Admin_Menu_Tab {
 	 */
 	protected function display_plugin_info( $plugin, $plugin_in_use ) {
 		?>
-		<div class="twrpb-plugins-support__plugin">
-			<div class="twrpb-plugins-support__avatar-wrapper">
+		<div class="<?php $this->bem_class( 'docs-plugin' ); ?>">
+			<div class="<?php $this->bem_class( 'plugin-avatar-wrapper' ); ?>">
 				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend image alt', 'twrp' ) ); ?>"/>
 			</div>
 
-			<div class="twrpb-plugins-support__meta-wrapper">
-				<h3 class="twrpb-plugins-support__plugin-title"><?= esc_html( $plugin->get_plugin_title() ); ?></h3>
+			<div class="<?php $this->bem_class( 'meta-wrapper' ); ?>">
+				<h3 class="<?php $this->bem_class( 'plugin-title' ); ?>"><?= esc_html( $plugin->get_plugin_title() ); ?></h3>
 
-				<p class="twrpb-plugins-support__plugin-author-wrap">
+				<p class="<?php $this->bem_class( 'plugin-author-wrap' ); ?>">
 					<?= _x( 'Author:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin->get_plugin_author() ); ?>
 				</p>
 
-				<p class="twrpb-plugins-support__plugin-version-wrap">
+				<p class="<?php $this->bem_class( 'plugin-version-wrap' ); ?>">
 					<?php
 					echo _x( 'Installed Version:', 'backend', 'twrp' ) . ' ';
 					$plugin_version = $plugin->get_plugin_version();
 					if ( false === $plugin_version ) {
-						echo '<span class="twrpb-plugins-support__not-installed-text">';
+						echo '<span class="' . esc_attr( $this->get_bem_class( 'plugin-not-installed-text' ) ) . '">';
 						echo _x( 'Not Installed', 'backend', 'twrp' );
 						echo '</span>';
 					} else {
 						echo esc_html( $plugin_version );
 
 						if ( false === $plugin->is_installed_and_can_be_used() ) {
-							echo '<span class="twrpb-plugins-support__not-active-text">';
+							echo '<span class="' . esc_attr( $this->get_bem_class( 'plugin-not-active-text' ) ) . '">';
 							echo ' (' . _x( 'Not Active', 'backend', 'twrp' ) . ')';
 							echo '</span>';
 						} elseif ( ( false !== $plugin_in_use ) && ( get_class( $plugin_in_use ) === get_class( $plugin ) ) ) {
-							echo '<span class="twrpb-plugins-support__used-text">';
+							echo '<span class="' . esc_attr( $this->get_bem_class( 'plugin-used-text' ) ) . '">';
 							echo ' (' . _x( 'Used', 'backend', 'twrp' ) . ')';
 							echo '</span>';
 						}
@@ -111,7 +114,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 					?>
 				</p>
 
-				<p class="twrpb-plugins-support__plugin-tested-version-wrap">
+				<p class="<?php $this->bem_class( 'plugin-tested-version-wrap' ); ?>">
 					<?= _x( 'Last tested version:', 'backend', 'twrp' ) . ' ' . esc_html( $plugin->get_last_tested_plugin_version() ); ?>
 				</p>
 			</div>
