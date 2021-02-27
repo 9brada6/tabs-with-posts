@@ -1,9 +1,7 @@
 // Admin Blocks
 import './admin-blocks/twrpb-hidden/twrpb-hidden';
 import './admin-blocks/twrpb-collapsible/twrpb-collapsible';
-
-// Documentation Page
-import './documentation-page/twrpb-documentation-page';
+import './admin-blocks/twrpb-docs/twrpb-docs';
 
 // General Settings
 import './general-settings/twrpb-general-settings';

@@ -2,10 +2,6 @@
 @import '../src-common/style';
 @import 'external/pickr-scss/monolith';
 
-// Documentation tab
-@import 'documentation-page/twrpb-docs';
-@import 'documentation-page/twrpb-icons-spoiler';
-
 // General Settings
 @import 'general-settings/twrpb-general-radio';
 @import 'general-settings/twrpb-general-select';
@@ -36,6 +32,7 @@
 @import 'admin-blocks/twrpb-button/twrpb-button';
 @import 'admin-blocks/twrpb-codemirror-material-dark/twrpb-codemirror-material-dark';
 @import 'admin-blocks/twrpb-collapsible/twrpb-collapsible';
+@import 'admin-blocks/twrpb-docs/twrpb-docs';
 @import 'admin-blocks/twrpb-hidden/twrpb-hidden';
 @import 'admin-blocks/twrpb-jqueryui-autocomplete-menu/twrpb-jqueryui-autocomplete-menu';
 @import 'admin-blocks/twrpb-jqueryui-datepicker/twrpb-jqueryui-datepicker';

@@ -103,11 +103,11 @@ class Icons_Documentation {
 		$title_and_icons = $this->get_title_and_icons();
 
 		?>
-		<div id="<?php $this->bem_class( 'all-icons-reference' ); ?>" class="<?php $this->bem_class( 'icons-spoiler-wrapper' ); ?> twrpb-icons-spoiler">
+		<div id="<?php $this->bem_class( 'all-icons-reference' ); ?>" class="<?php $this->bem_class( 'icons-spoiler-wrapper' ); ?>">
 			<h3 class="<?php $this->bem_class( 'title-sub-section' ); ?>"><?= _x( 'All icons reference', 'backend', 'twrp' ); ?></h3>
 			<?php foreach ( $title_and_icons as $category => $title_and_icon ) : ?>
-			<div class="twrpb-icons-spoiler__category">
-				<button class="twrpb-icons-spoiler__btn button">
+			<div class="<?php $this->bem_class( 'icon-spoiler-category' ); ?>">
+				<button class="<?php $this->bem_class( 'icon-spoiler-btn' ); ?> button">
 					<?php /* translators: %s: icon category. Ex: "Author Icons" or "Date Icons"  */ ?>
 					<?= esc_html( sprintf( _x( 'Toggle "%s" Spoiler', 'backend', 'twrp' ), $title_and_icon['title'] ) ); ?>
 				</button>
@@ -128,18 +128,18 @@ class Icons_Documentation {
 	 */
 	protected function display_icon_category_spoiler( $icons, $additional_class_modifier ) {
 		$icons              = Icon::nest_icons_by_brands( $icons );
-		$bem_modifier_class = ' twrpb-icons-spoiler__spoiler--' . $additional_class_modifier;
 		?>
-		<div class="twrpb-icons-spoiler__spoiler twrpb-hidden<?= esc_attr( $bem_modifier_class ); ?>">
+
+		<div class="<?php $this->bem_class( 'spoiler' ); ?> <?php $this->bem_class( 'spoiler', $additional_class_modifier ); ?> twrpb-hidden">
 		<?php foreach ( $icons as $brand => $brand_icons ) : ?>
-			<div class="twrpb-icons-spoiler__icon-group">
-				<h4 class="twrpb-icons-spoiler__brand-title">
+			<div class="<?php $this->bem_class( 'spoiler-icon-group' ); ?>">
+				<h4 class="<?php $this->bem_class( 'icons-brand-title' ); ?>">
 					<?= esc_html( $brand ); ?>
 				</h4>
 
 				<?php foreach ( $brand_icons as $icon ) : ?>
-					<div class="twrpb-icons-spoiler__icon-presentation">
-						<span class="twrpb-icons-spoiler__icon">
+					<div class="<?php $this->bem_class( 'icon-presentation' ); ?>">
+						<span class="<?php $this->bem_class( 'icon-wrapper' ); ?>">
 							<?php
 							if ( $icon instanceof Rating_Icon_Pack ) {
 								$rating_icon = $icon->get_filled_icon();
@@ -153,7 +153,7 @@ class Icons_Documentation {
 							}
 							?>
 						</span>
-						<span class="twrpb-icons-spoiler__description">
+						<span class="<?php $this->bem_class( 'icon-description' ); ?>">
 							<?php
 							if ( $icon instanceof Rating_Icon_Pack ) {
 								echo esc_html( $icon->get_option_pack_description() );
