@@ -18,6 +18,11 @@ class Tab_Queries_Docs {
 		return $documentation_tab->get_bem_base_class();
 	}
 
+	/**
+	 * Display the documentation for the tab queries.
+	 *
+	 * @return void
+	 */
 	public function display() {
 		?>
 		<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html_x( 'Tab Queries', 'backend, documentation', 'twrp' ); ?></h2>

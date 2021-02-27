@@ -27,20 +27,20 @@ class License_Display {
 		$cc_by_sa_license_url   = 'https://creativecommons.org/licenses/by-sa/2.0/';
 		$cc_zero_license_url    = '';
 
-		$mit_license_text        = _x( 'MIT License', 'backend', 'twrp' );
-		$apache_v2_license_text  = _x( 'Apache License Version 2.0', 'backend', 'twrp' );
-		$gnu_v3_license_text     = _x( 'GNU General Public License Version 3', 'backend', 'twrp' );
-		$iconmonstr_license_text = _x( 'IconMonstr License', 'backend', 'twrp' );
-		$cc_by_sa_license_text   = _x( 'Attribution-ShareAlike 2.0 Generic (CC BY-SA 2.0) License', 'backend', 'twrp' );
-		$cc_zero_license_text    = _x( 'Creative Commons Zero v1.0 Universal', 'backend', 'twrp' );
+		$mit_license_text        = _x( 'MIT License', 'backend, documentation', 'twrp' );
+		$apache_v2_license_text  = _x( 'Apache License Version 2.0', 'backend, documentation', 'twrp' );
+		$gnu_v3_license_text     = _x( 'GNU General Public License Version 3', 'backend, documentation', 'twrp' );
+		$iconmonstr_license_text = _x( 'IconMonstr License', 'backend, documentation', 'twrp' );
+		$cc_by_sa_license_text   = _x( 'Attribution-ShareAlike 2.0 Generic (CC BY-SA 2.0) License', 'backend, documentation', 'twrp' );
+		$cc_zero_license_text    = _x( 'Creative Commons Zero v1.0 Universal', 'backend, documentation', 'twrp' );
 
 		/* translators: %1$s: icons brand name, %2$s: license name. */
-		$icons_license_description = _x( '%1$s Icons are published under "%2$s", which grant the permission to be included in this plugin. Some icons may be modified in scale(increased to the margin of svg view box) and alignment(centered in svg view box), to be uniform displayed with other icons.', 'backend', 'twrp' );
+		$icons_license_description = _x( '%1$s Icons are published under "%2$s", which grant the permission to be included in this plugin. Some icons may be modified in scale(increased to the margin of svg view box) and alignment(centered in svg view box), to be uniform displayed with other icons.', 'backend, documentation', 'twrp' );
 
 		$external_licenses = array(
 			'fontawesome'  => array(
 				'brand'                    => 'FontAwesome',
-				'title'                    => _x( 'FontAwesome Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'FontAwesome Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $mit_license_url,
 				'license_link_description' => $mit_license_text,
 				'description'              => sprintf( $icons_license_description, 'FontAwesome', $mit_license_text ),
@@ -48,7 +48,7 @@ class License_Display {
 
 			'google'       => array(
 				'brand'                    => 'Google',
-				'title'                    => _x( 'Google Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'Google Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $apache_v2_license_url,
 				'license_link_description' => $apache_v2_license_text,
 				'description'              => sprintf( $icons_license_description, 'Google', $apache_v2_license_text ),
@@ -64,7 +64,7 @@ class License_Display {
 
 			'foundation'   => array(
 				'brand'                    => 'Foundation',
-				'title'                    => _x( 'Foundation Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'Foundation Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $mit_license_url,
 				'license_link_description' => $mit_license_text,
 				'description'              => sprintf( $icons_license_description, 'Foundation', $mit_license_text ),
@@ -88,7 +88,7 @@ class License_Display {
 
 			'captain-icon' => array(
 				'brand'                    => 'Captain Icons',
-				'title'                    => _x( 'Captain Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'Captain Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $cc_by_sa_license_url,
 				'license_link_description' => $cc_by_sa_license_text,
 				'description'              => sprintf( $icons_license_description, 'Captain', $cc_by_sa_license_text ),
@@ -96,7 +96,7 @@ class License_Display {
 
 			'feather'      => array(
 				'brand'                    => 'Feather',
-				'title'                    => _x( 'Feather Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'Feather Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $mit_license_url,
 				'license_link_description' => $mit_license_text,
 				'description'              => sprintf( $icons_license_description, 'Feather', $mit_license_text ),
@@ -104,7 +104,7 @@ class License_Display {
 
 			'jamicons'     => array(
 				'brand'                    => 'Jam Icons',
-				'title'                    => _x( 'Jam Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'Jam Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $mit_license_url,
 				'license_link_description' => $mit_license_text,
 				'description'              => sprintf( $icons_license_description, 'Jam', $mit_license_text ),
@@ -112,7 +112,7 @@ class License_Display {
 
 			'linea'        => array(
 				'brand'                    => 'Linea Icons',
-				'title'                    => _x( 'Linea Icons', 'backend', 'twrp' ),
+				'title'                    => _x( 'Linea Icons', 'backend, documentation', 'twrp' ),
 				'license_url'              => $cc_zero_license_url,
 				'license_link_description' => $cc_zero_license_text,
 				'description'              => sprintf( $icons_license_description, 'Linea', $cc_zero_license_text ),
@@ -186,7 +186,7 @@ class License_Display {
 				</div>
 
 				<div class="<?php $this->bem_class( 'license-link-wrapper' ); ?>">
-					<?= esc_html( _x( 'License Link:', 'backend', 'twrp' ) ); ?>
+					<?= esc_html( _x( 'License Link:', 'backend, documentation', 'twrp' ) ); ?>
 					<a href="<?= esc_url( $license['license_link_description'] ); ?>" class="<?php $this->bem_class( 'license-link' ); ?>">
 						<?= esc_html( $license['license_link_description'] ); ?>
 					</a>

@@ -38,20 +38,20 @@ class Post_Rating {
 	/**
 	 * Get the class of the plugin to use.
 	 *
-	 * @return false|Post_Rating_Plugin|null False if no rating plugin is installed,
+	 * @return false|Post_Rating_Plugin False if no rating plugin is installed,
 	 * so no class can be used, or the corresponding object to use.
 	 */
 	public static function get_plugin_to_use() {
 		$plugins = self::get_plugin_classes();
 
 		if ( null !== self::$used_plugin_class ) {
-			return self::$used_plugin_class;
+			return self::$used_plugin_class; // @phan-suppress-current-line PhanPossiblyNullTypeReturn
 		}
 
 		foreach ( $plugins as $plugin_class ) {
 			if ( Simple_Utils::method_exist_and_is_public( $plugin_class, 'is_installed_and_can_be_used' ) && $plugin_class->is_installed_and_can_be_used() === true ) {
 				self::$used_plugin_class = $plugin_class;
-				return self::$used_plugin_class;
+				return self::$used_plugin_class; // @phan-suppress-current-line PhanPossiblyNullTypeReturn
 			}
 		}
 
@@ -112,6 +112,10 @@ class Post_Rating {
 
 		$post_id      = $post->ID;
 		$plugin_class = self::get_plugin_to_use();
+
+		if ( ! $plugin_class ) {
+			return false;
+		}
 
 		$post_rating_num = $plugin_class->get_rating_count( $post_id );
 		return $post_rating_num;
