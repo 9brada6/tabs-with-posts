@@ -21,25 +21,23 @@
 
 ## ✅ Todo
 
-- Add an option to select whether or not to display rating counts, and style the rating counts.
+- Make views and rating display only if a plugin detected is installed?
+- Test Blaz Rating Plugin.
 - Add rating plugins.
+- Add an option to select whether or not to display rating counts, and style the rating counts.
 
 - Fix colors, border-radius, tab button size, and calculate others.
 - Add pages to the tabs.
 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
-- Add in manual testing of plugins to test if table exist.
 - Add in manual testing that each gettext _x, _ex, etc should have as a context "backend, documentation".
-
-- Add in General Settings, settings and quirks about the plugins.
 
 - Make Article Block first search in child theme, then in theme, then in plugin, add this thing in documentation.
 
 - ### ✅ Todo Documentation
 
     - Add some photos.
-    - Unify the 2 documentation block classes.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 
     CSS:
@@ -94,6 +92,7 @@
 - ➕ Add support to sort by rating.
 - ➕ Try to speed up every plugin, by adding a static variable to hold an internal cache for each post id of average/sum_votes(especially the rating plugins).
 - ➕ Maybe try to test more YASR Rating Plugin? I didn't tested very good and maybe there is a very hard bug to find.
+- ➕ Maybe make the documentation and all the backend settings centered?(for ultra-wide monitors)
 
 ## 📖 Development Documentation
 

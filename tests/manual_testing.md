@@ -69,3 +69,7 @@ in the classes.
 9. Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
 10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible.
 11. Each article block should have word-wrap: break-word where is necessary, including in the title and meta.
+
+## Plugins
+
+1. Each custom plugin that use a Database table to retrieve the custom data to display/order posts, must verify first if the Mysql table exist in database.

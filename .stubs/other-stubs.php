@@ -54,4 +54,20 @@ namespace {
 		public static function returnMultiSetAverage( $a, $b, $c ) {}
 		public static function returnMultisetContent( $post_id, $set_id, $c ) {}
 	}
+
+	// For Blaz Plugin.
+
+	/**
+	 *
+	 * @param int|false $post_id
+	 * @return int
+	 */
+	function rmp_get_vote_count($post_id = false){}
+
+	/**
+	 *
+	 * @param int|false $post_id
+	 * @return float|int
+	 */
+	function rmp_get_avg_rating($post_id = false){}
 }
