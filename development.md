@@ -11,18 +11,14 @@
     4. If we have a rating count and is selected to display and is above 0, then display it.
 
     YASR Rating Plugin
-    ✔ Can get the rating for a post.
-    ✔ Every rating average and rating count implemented.
-
     BlazK Rating Plugin
-    - ✔ Can get the rating for a post.
-    - ✔ Can order the posts via a post meta.
-    - ✔ Functions used are don't have a chance to change in future, and even, a deprecation warning might be displayed(as in other parts of the code).
+    GamerZ Rating Plugin
 
 ## ✅ Todo
 
 - Add rating plugins.
 - Add an option to select whether or not to display rating counts, and style the rating counts.
+- Change all plugin images from png to jpg and resize them, and compress them.
 
 - Scheduled posts can only be viewed by authors? disable link for them?
 - Fix colors, border-radius, tab button size, and calculate others.
@@ -60,6 +56,7 @@
     Plugins:
 
     - Say how YASR rating plugin setting works, and also put a link from settings.
+    - Write in documentation that GamerZ like/dislike system is not working.
 
 - ### ✅ Plugins
 

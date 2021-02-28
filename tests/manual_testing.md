@@ -74,4 +74,6 @@ in the classes.
 
 1. Test each plugin very good.
 2. Each function/class/method used by the plugin should be verified if exists in the plugin_is_installed function.
-2. Each custom plugin that use a Database table to retrieve the custom data to display/order posts, must verify first if the Mysql table exist in database.
+3. Each custom plugin that use a Database table to retrieve the custom data to display/order posts, must verify first if the Mysql table exist in database.
+4. Be sure that the plugins must not have the same order, and the plugins order must be declared in interface they implement.
+5. Make sure that each plugin has an avatar and is displayed in documentation.

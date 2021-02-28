@@ -7,10 +7,12 @@ use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 /**
  * Interface that will tell what methods the plugin wrapper classes should
  * implement.
- * 
+ *
  * Order of rating Plugins:
- * Blaz: 40
+ * Blaz: 20
+ * Gamerz: 40
  * Yasr: 50
+ * KK: 60
  *
  * @psalm-consistent-constructor The constructor should not have any parameter.
  */

@@ -276,7 +276,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function are_views_displayed() {
 		$plugin_is_installed = Post_Views::get_plugin_to_use();
-		if ( $plugin_is_installed !== false) {
+		if ( false !== $plugin_is_installed ) {
 			$plugin_is_installed = true;
 		}
 
@@ -290,7 +290,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function is_rating_displayed() {
 		$plugin_is_installed = Post_Rating::get_plugin_to_use();
-		if ( $plugin_is_installed !== false) {
+		if ( false !== $plugin_is_installed ) {
 			$plugin_is_installed = true;
 		}
 

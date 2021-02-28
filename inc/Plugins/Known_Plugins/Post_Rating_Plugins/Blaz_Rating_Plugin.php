@@ -12,13 +12,13 @@ use TWRP\Utils\Simple_Utils;
 class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 
 	public static function get_class_order_among_siblings() {
-		return 40;
+		return 20;
 	}
 
 	#region -- Plugin Meta
 
 	public function get_plugin_title() {
-		return 'Rate my Post - WP Rating System';
+		return 'Rate my Post';
 	}
 
 	public function get_plugin_author() {
