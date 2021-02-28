@@ -72,4 +72,6 @@ in the classes.
 
 ## Plugins
 
-1. Each custom plugin that use a Database table to retrieve the custom data to display/order posts, must verify first if the Mysql table exist in database.
+1. Test each plugin very good.
+2. Each function/class/method used by the plugin should be verified if exists in the plugin_is_installed function.
+2. Each custom plugin that use a Database table to retrieve the custom data to display/order posts, must verify first if the Mysql table exist in database.

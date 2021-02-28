@@ -275,7 +275,12 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @return bool
 	 */
 	public function are_views_displayed() {
-		return isset( $this->settings['display_views'] ) && $this->settings['display_views'];
+		$plugin_is_installed = Post_Views::get_plugin_to_use();
+		if ( $plugin_is_installed !== false) {
+			$plugin_is_installed = true;
+		}
+
+		return isset( $this->settings['display_views'] ) && $this->settings['display_views'] && $plugin_is_installed;
 	}
 
 	/**
@@ -284,7 +289,12 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @return bool
 	 */
 	public function is_rating_displayed() {
-		return isset( $this->settings['display_rating'] ) && $this->settings['display_rating'];
+		$plugin_is_installed = Post_Rating::get_plugin_to_use();
+		if ( $plugin_is_installed !== false) {
+			$plugin_is_installed = true;
+		}
+
+		return isset( $this->settings['display_rating'] ) && $this->settings['display_rating'] && $plugin_is_installed;
 	}
 
 	/**

@@ -5,7 +5,7 @@
 - ### Rating Plugins
 
     How retrieving the rating:
-    1. If the rating is displayed, then the meta should be displayed for all posts, even if they don't have a rating yet.
+    1. If the rating is displayed, and a plugin exist, then the meta should be displayed for all posts, even if they don't have a rating yet.
     2. If we have an average rating, then display the rating.
     3. If we don't have a rating average, then just display 0, and an empty star?.
     4. If we have a rating count and is selected to display and is above 0, then display it.
@@ -21,11 +21,10 @@
 
 ## ✅ Todo
 
-- Make views and rating display only if a plugin detected is installed?
-- Test Blaz Rating Plugin.
 - Add rating plugins.
 - Add an option to select whether or not to display rating counts, and style the rating counts.
 
+- Scheduled posts can only be viewed by authors? disable link for them?
 - Fix colors, border-radius, tab button size, and calculate others.
 - Add pages to the tabs.
 
