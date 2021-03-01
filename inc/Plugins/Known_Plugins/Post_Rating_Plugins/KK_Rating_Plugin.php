@@ -6,6 +6,10 @@ use TWRP\Utils\Simple_Utils;
 
 /**
  * Class used to retrieve the ratings for KK Rating Plugin.
+ *
+ * This plugin use 5 stars, but can use any stars. Depending on the stars, it
+ * calculates the average based on the 5 stars. This implementation does the
+ * same.
  */
 class KK_Rating_Plugin extends Post_Rating_Plugin {
 

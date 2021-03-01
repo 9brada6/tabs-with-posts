@@ -10,6 +10,7 @@ use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
  *
  * Order of rating Plugins:
  * Blaz: 20
+ * Site Reviews: 30
  * Gamerz: 40
  * Yasr: 50
  * KK: 60

@@ -13,12 +13,12 @@
     YASR Rating Plugin
     BlazK Rating Plugin
     GamerZ Rating Plugin
+    KK Rating Plugin
 
 ## ✅ Todo
 
-- Add rating plugins.
+- Support all versions of plugins.
 - Add an option to select whether or not to display rating counts, and style the rating counts.
-- Change all plugin images from png to jpg and resize them, and compress them.
 
 - Scheduled posts can only be viewed by authors? disable link for them?
 - Fix colors, border-radius, tab button size, and calculate others.
@@ -89,6 +89,8 @@
 - ➕ Try to speed up every plugin, by adding a static variable to hold an internal cache for each post id of average/sum_votes(especially the rating plugins).
 - ➕ Maybe try to test more YASR Rating Plugin? I didn't tested very good and maybe there is a very hard bug to find.
 - ➕ Maybe make the documentation and all the backend settings centered?(for ultra-wide monitors)
+- ➕ Add Translate strings setting, and say to use Loco Translate if they want to translate more.
+- ➕ Add more rating/views plugins.
 
 ## 📖 Development Documentation
 
