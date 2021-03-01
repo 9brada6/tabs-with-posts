@@ -7,6 +7,8 @@ use TWRP\Plugins\Post_Views;
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by DFactory.
+ *
+ * Internally, this plugin use the table "wp_post_views" to store the views.
  */
 class DFactory_Views_Plugin extends Post_Views_Plugin {
 
@@ -27,7 +29,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '1.3.2 - 1.3.2';
+		return '1.0.0 - 1.3.3';
 	}
 
 	public function get_plugin_file_relative_path() {
@@ -52,15 +54,7 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! $this->is_installed_and_can_be_used() ) {
-			return false;
-		}
-
-		if ( function_exists( 'pvc_get_post_views' ) ) {
-			$post_views = pvc_get_post_views( $post_id );
-		} else {
-			return false;
-		}
+		$post_views = pvc_get_post_views( $post_id );
 
 		if ( is_numeric( $post_views ) && $post_views >= 0 ) {
 			return (int) $post_views;

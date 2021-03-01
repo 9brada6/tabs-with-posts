@@ -7,6 +7,11 @@ use TWRP\Plugins\Post_Views;
 /**
  * Adapter type of class that will manage and call the functions for the views
  * plugin written by GaMerZ.
+ *
+ * Internally this plugin use the post meta to store the post views values.
+ *
+ * The last tested version of this plugin is 1.66, but we assume 1.0.0 since
+ * 1.66 version is from 2013, and is very old.
  */
 class GamerZ_Views_Plugin extends Post_Views_Plugin {
 
@@ -25,7 +30,7 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '1.76.1 - 1.76.1';
+		return '1.0.0 - 1.76.1';
 	}
 
 	public function get_plugin_file_relative_path() {

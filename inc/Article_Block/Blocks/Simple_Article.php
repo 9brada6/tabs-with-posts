@@ -11,6 +11,7 @@ use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
 use TWRP\Article_Block\Settings\Display_Comments_Setting;
 use TWRP\Article_Block\Settings\Display_Date_Setting;
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
+use TWRP\Article_Block\Settings\Display_Rating_Count_Setting;
 use TWRP\Article_Block\Settings\Display_Rating_Setting;
 use TWRP\Article_Block\Settings\Display_Views_Setting;
 
@@ -162,6 +163,9 @@ class Simple_Article extends Article_Block {
 		$query_settings [] = $setting;
 
 		$setting           = new Display_Rating_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Rating_Count_Setting( $this->widget_id, $this->query_id, $this->settings );
 		$query_settings [] = $setting;
 
 		$setting           = new Display_Comments_Setting( $this->widget_id, $this->query_id, $this->settings );

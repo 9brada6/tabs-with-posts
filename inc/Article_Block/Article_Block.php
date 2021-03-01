@@ -298,6 +298,17 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	}
 
 	/**
+	 * Whether or not the rating must be shown in the article.
+	 *
+	 * Before using this method, is_rating_displayed() should be used first.
+	 *
+	 * @return bool
+	 */
+	public function is_rating_count_displayed() {
+		return isset( $this->settings['display_rating_count'] ) && $this->settings['display_rating_count'];
+	}
+
+	/**
 	 * Whether or not the comments must be shown in the article.
 	 *
 	 * @return bool
@@ -522,11 +533,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function display_rating( $post = null ) {
 		$avg_rating   = $this->get_the_average_rating( $post );
-		$rating_count = $this->get_rating_count( $post );
-
-		if ( false === $rating_count ) {
-			$rating_count = 0;
-		}
+		$rating_count = null;
 
 		if ( false === $avg_rating ) {
 			$avg_rating   = 0;
@@ -534,10 +541,18 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		echo esc_html( number_format_i18n( $avg_rating, 1 ) );
-		if ( 0 !== $avg_rating && 0 !== $rating_count ) {
-			echo '<span class="twrp-rating-count">(';
-			echo esc_html( number_format_i18n( $rating_count, 0 ) );
-			echo ')</span>';
+		if ( 0 !== $avg_rating && 0 !== $rating_count && $this->is_rating_count_displayed() ) {
+			$rating_count = $this->get_rating_count( $post );
+
+			if ( false === $rating_count ) {
+				$rating_count = 0;
+			}
+
+			if ( 0 !== $rating_count ) {
+				echo '<span class="twrp-rating-count">(';
+				echo esc_html( number_format_i18n( $rating_count, 0 ) );
+				echo ')</span>';
+			}
 		}
 	}
 

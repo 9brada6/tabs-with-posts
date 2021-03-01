@@ -116,6 +116,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
 		'Article_Block/Settings/Display_Views_Setting',
 		'Article_Block/Settings/Display_Rating_Setting',
+		'Article_Block/Settings/Display_Rating_Count_Setting',
 
 		'Article_Block/Blocks/Simple_Article',
 		'Article_Block/Blocks/Modern_Article',

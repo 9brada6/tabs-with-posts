@@ -18,7 +18,6 @@
 ## ✅ Todo
 
 - Support all versions of plugins.
-- Add an option to select whether or not to display rating counts, and style the rating counts.
 
 - Scheduled posts can only be viewed by authors? disable link for them?
 - Fix colors, border-radius, tab button size, and calculate others.

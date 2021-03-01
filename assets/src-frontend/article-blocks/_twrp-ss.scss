@@ -41,6 +41,14 @@
 		font-variant-numeric: lining-nums;
 	}
 
+	&__rating {
+		.twrp-rating-count {
+			font-size: 1.1em;
+			font-variant: all-petite-caps;
+			line-height: 0.6;
+		}
+	}
+
 	&__thumbnail-container {
 		margin-top: auto;
 		margin-bottom: 0.35rem;
