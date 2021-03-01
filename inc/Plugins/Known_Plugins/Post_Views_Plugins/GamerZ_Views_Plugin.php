@@ -24,8 +24,8 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 		return "Lester 'GaMerZ' Chan";
 	}
 
-	public function get_last_tested_plugin_version() {
-		return '1.76.1';
+	public function get_tested_plugin_versions() {
+		return '1.76.1 - 1.76.1';
 	}
 
 	public function get_plugin_file_relative_path() {

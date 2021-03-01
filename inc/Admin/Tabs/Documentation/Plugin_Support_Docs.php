@@ -134,7 +134,7 @@ class Plugin_Support_Docs {
 				</p>
 
 				<p class="<?php $this->bem_class( 'plugin-tested-version-wrap' ); ?>">
-					<?= _x( 'Last tested version:', 'backend, documentation', 'twrp' ) . ' ' . esc_html( $plugin->get_last_tested_plugin_version() ); ?>
+					<?= _x( 'Last tested version:', 'backend, documentation', 'twrp' ) . ' ' . esc_html( $plugin->get_tested_plugin_versions() ); ?>
 				</p>
 			</div>
 		</div>

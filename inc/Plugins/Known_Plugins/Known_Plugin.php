@@ -54,7 +54,7 @@ abstract class Known_Plugin {
 	 *
 	 * @return string
 	 */
-	abstract public function get_last_tested_plugin_version();
+	abstract public function get_tested_plugin_versions();
 
 	/**
 	 * Get the plugin avatar src.

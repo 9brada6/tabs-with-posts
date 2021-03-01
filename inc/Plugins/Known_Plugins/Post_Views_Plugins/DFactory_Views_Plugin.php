@@ -26,8 +26,8 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 		return 'Digital Factory';
 	}
 
-	public function get_last_tested_plugin_version() {
-		return '1.3.2';
+	public function get_tested_plugin_versions() {
+		return '1.3.2 - 1.3.2';
 	}
 
 	public function get_plugin_file_relative_path() {

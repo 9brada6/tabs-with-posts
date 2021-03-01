@@ -32,8 +32,8 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		return 'a3rev Software';
 	}
 
-	public function get_last_tested_plugin_version() {
-		return '2.4.3';
+	public function get_tested_plugin_versions() {
+		return '2.4.3 - 2.4.3';
 	}
 
 	public function get_plugin_file_relative_path() {

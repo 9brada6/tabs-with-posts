@@ -27,8 +27,8 @@ class KK_Rating_Plugin extends Post_Rating_Plugin {
 		return 'Kamal Khan.';
 	}
 
-	public function get_last_tested_plugin_version() {
-		return '4.1.7';
+	public function get_tested_plugin_versions() {
+		return '4.1.7 - 4.1.7';
 	}
 
 	public function get_plugin_file_relative_path() {

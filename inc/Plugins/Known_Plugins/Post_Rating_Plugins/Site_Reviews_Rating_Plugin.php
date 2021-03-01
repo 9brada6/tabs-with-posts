@@ -6,7 +6,7 @@ use TWRP\Utils\Simple_Utils;
 
 /**
  * Class used to retrieve the ratings for Paul Ryley Rating Plugin, "Site Reviews".
- * 
+ *
  * @todo: This plugin seems to not get the ratings via the filters.
  */
 class Site_Reviews_Rating_Plugin extends Post_Rating_Plugin {
@@ -25,8 +25,8 @@ class Site_Reviews_Rating_Plugin extends Post_Rating_Plugin {
 		return 'Paul Ryley';
 	}
 
-	public function get_last_tested_plugin_version() {
-		return '5.7.3';
+	public function get_tested_plugin_versions() {
+		return '5.7.3 - 5.7.3';
 	}
 
 	public function get_plugin_file_relative_path() {

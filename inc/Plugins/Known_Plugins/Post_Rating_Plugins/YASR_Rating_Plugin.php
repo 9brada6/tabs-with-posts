@@ -37,8 +37,8 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 		return 'Dario Curvino';
 	}
 
-	public function get_last_tested_plugin_version() {
-		return '2.6.2';
+	public function get_tested_plugin_versions() {
+		return '2.6.2 - 2.6.2';
 	}
 
 	public function get_plugin_file_relative_path() {
