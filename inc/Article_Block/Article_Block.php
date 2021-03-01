@@ -60,6 +60,13 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	protected $settings;
 
 	/**
+	 * Hold into a variable the path of the file, to not calculate every time.
+	 *
+	 * @var string|false
+	 */
+	protected $cache_include_file = false;
+
+	/**
 	 * Get the widget Id this artblock is build for.
 	 *
 	 * @return int
@@ -142,8 +149,71 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @psalm-suppress UnresolvableInclude
 	 */
 	public function include_template() {
-		$artblock = $this;
-		include Directory_Utils::get_template_directory_path() . static::get_file_name();
+		// Artblock is assigned to $this to be used in the template style.
+		$artblock  = $this;
+		$file_path = $this->get_template_path_found();
+
+		if ( ! empty( $file_path ) ) {
+			include $file_path;
+		}
+	}
+
+	/**
+	 * Get the full path to the template file of the style.
+	 *
+	 * @return string Empty string if not found
+	 */
+	protected function get_template_path_found() {
+		if ( false !== $this->cache_include_file ) {
+			return $this->cache_include_file;
+		}
+
+		$file_name         = static::get_file_name();
+		$has_php_extension = strpos( $file_name, '.php', strlen( $file_name ) - 4 );
+		if ( false === $has_php_extension ) {
+			$file_name .= '.php';
+		}
+
+		// Either the child theme directory or only the parent theme.
+		$stylesheet_directory = trailingslashit( get_stylesheet_directory() );
+
+		// Search in child theme if enabled, else in parent theme.
+		$file_path = $stylesheet_directory . 'twrp-templates/' . $file_name;
+		if ( file_exists( $file_path ) ) {
+			$this->cache_include_file = $file_path;
+			return $file_path;
+		}
+
+		$file_path = $stylesheet_directory . 'twrp-' . $file_name;
+		if ( file_exists( $file_path ) ) {
+			$this->cache_include_file = $file_path;
+			return $file_path;
+		}
+
+		// Search in parent theme.
+		$parent_theme_directory = trailingslashit( get_template_directory() );
+
+		$file_path = $parent_theme_directory . 'twrp-templates/' . $file_name;
+		if ( file_exists( $file_path ) ) {
+			$this->cache_include_file = $file_path;
+			return $file_path;
+		}
+
+		$file_path = $parent_theme_directory . 'twrp-' . $file_name;
+		if ( file_exists( $file_path ) ) {
+			$this->cache_include_file = $file_path;
+			return $file_path;
+		}
+
+		// Else, get the template from plugin directory.
+		$plugin_path = Directory_Utils::get_template_directory_path() . $file_name;
+		if ( file_exists( $plugin_path ) ) {
+			$this->cache_include_file = $plugin_path;
+			return $plugin_path;
+		}
+
+		$this->cache_include_file = '';
+		return '';
 	}
 
 	/**

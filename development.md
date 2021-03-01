@@ -25,9 +25,8 @@
 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
-- Add in manual testing that each gettext _x,_ex, etc should have as a context "backend, documentation".
-
 - Make Article Block first search in child theme, then in theme, then in plugin, add this thing in documentation.
+- Add in documentation that you can overwrite an article block either via 'twrp-style-name.php' or 'twrp-templates/style-name.php'
 
 - ### ✅ Todo Documentation
 

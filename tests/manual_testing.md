@@ -77,3 +77,7 @@ in the classes.
 3. Each custom plugin that use a Database table to retrieve the custom data to display/order posts, must verify first if the Mysql table exist in database.
 4. Be sure that the plugins must not have the same order, and the plugins order must be declared in interface they implement.
 5. Make sure that each plugin has an avatar and is displayed in documentation.
+
+## Documentation
+
+1. Make sure that each gettext function(\_x, \_ex, ..etc) have the context "backend, documentation".
