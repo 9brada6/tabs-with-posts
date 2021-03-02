@@ -7340,7 +7340,7 @@ function is_locale_switched()
  * @since 1.2.0
  * @since 4.4.0 Added the `$post` parameter.
  *
- * @param int|WP_Post $post Optional. Post ID or post object. Default is the global `$post`.
+ * @param int|WP_Post|null $post Optional. Post ID or post object. Default is the global `$post`.
  */
 function the_permalink($post = 0)
 {
@@ -7387,7 +7387,7 @@ function permalink_anchor($mode = 'id')
  *
  * @see get_permalink()
  *
- * @param int|WP_Post $post      Optional. Post ID or post object. Default is the global `$post`.
+ * @param int|WP_Post|null $post      Optional. Post ID or post object. Default is the global `$post`.
  * @param bool        $leavename Optional. Whether to keep post name or page name. Default false.
  *
  * @return string|false The permalink URL or false if post does not exist.

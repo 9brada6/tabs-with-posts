@@ -54,6 +54,7 @@
 2. Each article block should show the thumbnail if the option is selected. If is not selected, then an image that say no thumbnail available must be placed.
 3. Add a title that has a lot HTML tags.
 4. Test each meta/title with a long text, and long unbreakable text.
+5. Make sure that each function written in an article block reference article block class, even the_title() or the_permalink().
 
 ## CSS of Article Blocks
 

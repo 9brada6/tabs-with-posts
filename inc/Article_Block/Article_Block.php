@@ -401,6 +401,68 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	#region -- Display Post Meta
 
 	/**
+	 * Display the permalink of the post, if the post can be viewed by the current
+	 * user.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global post.
+	 * @return void
+	 */
+	public function the_permalink( $post = null ) {
+		echo esc_url( $this->get_the_permalink( $post ) );
+	}
+
+	/**
+	 * Get the permalink of the post, if the post can be viewed by the current
+	 * user.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global post.
+	 * @return string
+	 */
+	public function get_the_permalink( $post = null ) {
+		$post_status = get_post_status( $post );
+
+		if ( 'publish' === $post_status ) {
+			$permalink = get_the_permalink( $post );
+
+			if ( false === $permalink ) {
+				$permalink = '#';
+			}
+			return $permalink;
+		}
+
+		if ( current_user_can( 'read_private_pages' ) && current_user_can( 'read_private_posts' ) ) {
+			$permalink = get_the_permalink( $post );
+
+			if ( false === $permalink ) {
+				$permalink = '#';
+			}
+			return $permalink;
+		}
+
+		return '#';
+	}
+
+	/**
+	 * Display the title of the post.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global post.
+	 * @return void
+	 */
+	public function the_title( $post = null ) {
+		echo $this->get_the_title( $post ); // phpcs:ignore WordPress.Security -- This is a feature.
+	}
+
+	/**
+	 * Get the title of the post.
+	 *
+	 * @param WP_Post|int|null $post Defaults to global post.
+	 * @return string
+	 */
+	public function get_the_title( $post = null ) {
+		return get_the_title( $post );
+	}
+
+	/**
 	 * Display the post thumbnail, or an image that say there is no thumbnail.
 	 *
 	 * @param string $size The WordPress image size, defaults to 'medium'.

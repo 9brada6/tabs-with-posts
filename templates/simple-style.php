@@ -2,20 +2,16 @@
 
 use TWRP\Article_Block\Blocks\Simple_Article;
 
-if ( ! isset( $artblock ) && ! ( $artblock instanceof Simple_Article ) ) {
-	return;
-}
-
-if ( empty( get_the_title() ) ) {
+if ( ! isset( $artblock ) || ! ( $artblock instanceof Simple_Article ) || empty( $artblock->get_the_title() ) ) {
 	return;
 }
 
 ?>
 
 <article class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
-	<a class="twrp-link-expand twrp-ss__link-expanded" href="<?php the_permalink(); ?>">
+	<a class="twrp-link-expand twrp-ss__link-expanded" href="<?php $artblock->the_permalink(); ?>">
 		<h3 class="twrp-ss__title">
-			<?php the_title(); ?>
+			<?php $artblock->the_title(); ?>
 		</h3>
 	</a>
 

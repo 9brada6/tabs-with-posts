@@ -3130,7 +3130,7 @@ function the_title_attribute($args = '')
  *
  * @since 0.71
  *
- * @param int|WP_Post $post Optional. Post ID or WP_Post object. Default is global $post.
+ * @param int|WP_Post|null $post Optional. Post ID or WP_Post object. Default is global $post.
  * @return string
  */
 function get_the_title($post = 0)
@@ -3999,7 +3999,7 @@ function get_post_mime_type($ID = '')
  *
  * @since 2.0.0
  *
- * @param int|WP_Post $ID Optional. Post ID or post object. Default empty.
+ * @param int|WP_Post|null $ID Optional. Post ID or post object. Default empty.
  * @return string|false Post status on success, false on failure.
  */
 function get_post_status($ID = '')

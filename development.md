@@ -10,23 +10,13 @@
     3. If we don't have a rating average, then just display 0, and an empty star?.
     4. If we have a rating count and is selected to display and is above 0, then display it.
 
-    YASR Rating Plugin
-    BlazK Rating Plugin
-    GamerZ Rating Plugin
-    KK Rating Plugin
-
 ## ✅ Todo
 
 - Support all versions of plugins.
-
-- Scheduled posts can only be viewed by authors? disable link for them?
-- Fix colors, border-radius, tab button size, and calculate others.
 - Add pages to the tabs.
+- Fix colors, border-radius, tab button size, and calculate others.
 
 - Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
-
-- Make Article Block first search in child theme, then in theme, then in plugin, add this thing in documentation.
-- Add in documentation that you can overwrite an article block either via 'twrp-style-name.php' or 'twrp-templates/style-name.php'
 
 - ### ✅ Todo Documentation
 
@@ -45,6 +35,7 @@
 
     - Say that you can use Yoast plugin to set the primary category.
     - Say in documentation that the thumbnails are loading lazy.
+    - Add in documentation that you can overwrite an article block either via 'twrp-style-name.php' or 'twrp-templates/style-name.php'
 
     Documentation Style:
 
@@ -55,15 +46,6 @@
 
     - Say how YASR rating plugin setting works, and also put a link from settings.
     - Write in documentation that GamerZ like/dislike system is not working.
-
-- ### ✅ Plugins
-
-    - Change Get last tested, with get tested versions?
-
-    - Make Plugin DFactory Block Suppress filter option.
-    - Site Reviews Plugin has a custom Category Id ratting, Think if we should implement that.
-    - Don't know how to count site reviews ratings, maybe email for support?
-    - Add each plugin, move orderby plugin indicators to classes.
 
 ## 🎉 Todo: After first release
 
