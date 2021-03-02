@@ -12,11 +12,9 @@
 
 ## ✅ Todo
 
+- Fix colors, border-radius, tab button size, and calculate others.
 - Support all versions of plugins.
 - Add pages to the tabs.
-- Fix colors, border-radius, tab button size, and calculate others.
-
-- Test a plugin as a MU plugin to see with debugger how function Post_Meta::get_plugin_version() get the plugin keys, maybe we will need to make another get_plugin_file_relative_path for MU plugins?.
 
 - ### ✅ Todo Documentation
 
@@ -96,3 +94,7 @@
 - ### Article Blocks
 
     - The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.
+
+- ### Plugins
+
+    - It seems that MU Plugins work, but we can't get the version yet.

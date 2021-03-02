@@ -37,10 +37,6 @@ abstract class Known_Plugin {
 	public function get_plugin_version() {
 		$plugins = get_plugins();
 
-		if ( ! Simple_Utils::method_exist_and_is_public( get_called_class(), 'get_plugin_file_relative_path' ) ) {
-			return false;
-		}
-
 		$plugin_file = $this->get_plugin_file_relative_path();
 		if ( ! isset( $plugins[ $plugin_file ]['Version'] ) ) {
 			return false;
