@@ -13,6 +13,9 @@ use WP_Query;
  *
  * By default this plugin does not implement a way to query posts by order of
  * views, so a way to order them was added, via WP filters.
+ * 
+ * Version 1.0.0 is not supported, but given the fac that the version is from
+ * 2013, no one will use it. The real version is from 1.1.0 onwards.
  */
 class A3REV_Views_Plugin extends Post_Views_Plugin {
 
@@ -33,7 +36,7 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '2.4.3 - 2.4.3';
+		return '1.0.0 - 2.4.5';
 	}
 
 	public function get_plugin_file_relative_path() {
@@ -45,7 +48,10 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 	#region -- Detect if is installed.
 
 	public function is_installed_and_can_be_used() {
-		return Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
+		$early_version_method_exist = Simple_Utils::method_exist_and_is_public( 'A3_PVC', 'pvc_fetch_post_total' );
+		$method_exist               = Simple_Utils::method_exist_and_is_public( 'A3Rev\\PageViewsCount\\A3_PVC', 'pvc_fetch_post_total' );
+
+		return $method_exist || $early_version_method_exist;
 	}
 
 	#endregion -- Detect if is installed.
@@ -58,12 +64,10 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		}
 		$post_id = (int) $post_id;
 
-		if ( ! $this->is_installed_and_can_be_used() ) {
-			return 0;
-		}
-
 		if ( class_exists( 'A3Rev\\PageViewsCount\\A3_PVC' ) ) {
 			$post_views = \A3Rev\PageViewsCount\A3_PVC::pvc_fetch_post_total( $post_id );
+		} elseif ( class_exists( 'A3_PVC' ) ) {
+			$post_views = \A3_PVC::pvc_fetch_post_total( $post_id );
 		} else {
 			return 0;
 		}

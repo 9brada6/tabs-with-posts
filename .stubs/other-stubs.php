@@ -1,6 +1,7 @@
 <?php
 
 // Intelephense and Phan suppress, because there is no suppress comment for code.
+// Page View Count Plugin(A3REV)
 namespace A3Rev\PageViewsCount {
 	class A3_PVC {
 		public static function pvc_fetch_post_total( $post_id ) {}
@@ -8,6 +9,11 @@ namespace A3Rev\PageViewsCount {
 }
 
 namespace {
+	// Page View Count Plugin(A3REV)
+	class A3_PVC {
+		public static function pvc_fetch_post_total( $post_id ) {}
+	}
+	
 	/**
 	 * Stub.
 	 *

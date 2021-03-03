@@ -13,7 +13,8 @@ use TWRP\Utils\Directory_Utils;
  * Class used to require all files needed by this plugin.
  *
  * An autoloader is not used, because other plugins can use an autoloader that
- * is slow, making this plugin slow as well.
+ * is slow, making this plugin slow as well, also is not that hard to add a file
+ * here every time one is created.
  */
 class Plugin_Bootstrap {
 
@@ -51,6 +52,7 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Text_Setting',
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Image_Setting',
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Color_Setting',
+		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Number_Setting',
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Select_With_Switch_Setting',
 		'Admin/Tabs/General_Settings/General_Settings_Factory',
 
@@ -136,6 +138,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/Secondary_Background_Color',
 		'Database/General_Options_Settings/Border_Color',
 		'Database/General_Options_Settings/Secondary_Border_Color',
+		'Database/General_Options_Settings/Border_Radius',
 		'Database/General_Options_Settings/Human_Readable_Date',
 		'Database/General_Options_Settings/Date_Format',
 		'Database/General_Options_Settings/No_Thumbnail_Image',

@@ -41,6 +41,12 @@ class General_Options {
 
 	#endregion -- Color Keys
 
+	#region -- Style Keys
+
+	const BORDER_RADIUS = 'Border_Radius';
+
+	#region -- Style Keys
+
 	#region -- Date Keys
 
 	const HUMAN_READABLE_DATE = 'Human_Readable_Date';
@@ -109,6 +115,7 @@ class General_Options {
 			self::SECONDARY_BACKGROUND_COLOR,
 			self::BORDER_COLOR,
 			self::SECONDARY_BORDER_COLOR,
+			self::BORDER_RADIUS,
 			self::HUMAN_READABLE_DATE,
 			self::DATE_FORMAT,
 			self::NO_THUMBNAIL_IMAGE,

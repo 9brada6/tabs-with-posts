@@ -53,6 +53,13 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= _x( 'Style Settings', 'backend', 'twrp' ); ?></legend>
+					<?php
+					General_Settings_Factory::display_setting( General_Options::BORDER_RADIUS );
+					?>
+				</fieldset>
+
+				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::HUMAN_READABLE_DATE );
@@ -95,7 +102,6 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 
 				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= _x( 'External Plugin Settings', 'backend', 'twrp' ); ?></legend>
-					<p><?= _x( 'Read more in documentation for what is this setting about.', 'backend', 'twrp' ); ?></p>
 					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
 				</fieldset>
 

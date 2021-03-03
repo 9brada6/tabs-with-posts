@@ -12,9 +12,14 @@
 
 ## ✅ Todo
 
-- Fix colors, border-radius, tab button size, and calculate others.
-- Support all versions of plugins.
+- Tab button size.
 - Add pages to the tabs.
+
+- Make all tabs/article blocks use CSS variables where necessary.
+
+- "Select an image to display in case the post has no thumbnail:" - Change this.
+
+- Support all versions of rating plugins.
 
 - ### ✅ Todo Documentation
 
