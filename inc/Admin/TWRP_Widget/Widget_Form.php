@@ -125,6 +125,7 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected function display_number_of_posts_and_pages() {
+		// Number of posts option.
 		$option_name  = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::NUMBER_OF_POSTS__NAME );
 		$option_value = null;
 		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ] ) ) {
@@ -136,6 +137,19 @@ class Widget_Form {
 		$id = Widget_Utils::get_field_id( $this->widget_id, 'number-of-posts' );
 
 		Number_Control::display_setting( $id, $option_name, $option_value, self::get_number_of_posts_args() );
+
+		// Posts per page option.
+		$option_name  = Widget_Utils::get_field_name( $this->widget_id, TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME );
+		$option_value = null;
+		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] ) ) {
+			$number_setting = $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ];
+			if ( is_numeric( $number_setting ) ) {
+				$option_value = $number_setting;
+			}
+		}
+		$id = Widget_Utils::get_field_id( $this->widget_id, 'number-of-posts-per-page' );
+
+		Number_Control::display_setting( $id, $option_name, $option_value, self::get_number_of_posts_per_page_args() );
 	}
 
 	/**
@@ -398,6 +412,21 @@ class Widget_Form {
 			'max'     => '60',
 			'step'    => '1',
 			'before'  => _x( 'Number of posts:', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Get the arguments to display the number of posts option.
+	 *
+	 * @return array
+	 */
+	public static function get_number_of_posts_per_page_args() {
+		return array(
+			'default' => '6',
+			'min'     => '1',
+			'max'     => '60',
+			'step'    => '1',
+			'before'  => _x( 'Number of posts per page:', 'backend', 'twrp' ),
 		);
 	}
 

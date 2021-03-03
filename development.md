@@ -15,10 +15,9 @@
 - Add pages to the tabs.
 
 - Make all tabs/article blocks use CSS variables where necessary, and add css variable.
-
-- "Select an image to display in case the post has no thumbnail:" - Change this.
-
 - Support all versions of rating plugins.
+
+- Where plugin is displayed, change Tested Versions with Working versions.
 
 - ### ✅ Todo Documentation
 

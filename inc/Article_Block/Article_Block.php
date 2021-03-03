@@ -134,11 +134,19 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function display_blocks( $query_posts ) {
 		global $post;
+		$post_number = 0;
 
 		foreach ( $query_posts as $query_post ) {
+			// todo.
+			if ( 6 === $post_number ) {
+				$this->display_next_page_button();
+			}
+
 			$post = $query_post; // phpcs:ignore -- We reset it.
 			setup_postdata( $query_post );
 			$this->include_template();
+
+			$post_number++;
 		}
 	}
 
@@ -156,6 +164,15 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		if ( ! empty( $file_path ) ) {
 			include $file_path;
 		}
+	}
+
+	// todo
+	public function display_next_page_button() {
+		?>
+			<div class="twrp-next-page">
+				<button class="twrp-next-page_btn" type="button"><?= esc_html( __( 'Show next posts', 'twrp' ) ); ?></button>
+			</div>
+		<?php
 	}
 
 	/**
