@@ -56,6 +56,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					<legend class="twrpb-general-settings__legend"><?= _x( 'Style Settings', 'backend', 'twrp' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::BORDER_RADIUS );
+					General_Settings_Factory::display_setting( General_Options::TAB_BUTTON_SIZE );
 					?>
 				</fieldset>
 

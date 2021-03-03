@@ -12,10 +12,9 @@
 
 ## ✅ Todo
 
-- Tab button size.
 - Add pages to the tabs.
 
-- Make all tabs/article blocks use CSS variables where necessary.
+- Make all tabs/article blocks use CSS variables where necessary, and add css variable.
 
 - "Select an image to display in case the post has no thumbnail:" - Change this.
 

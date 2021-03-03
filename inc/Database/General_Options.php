@@ -45,6 +45,8 @@ class General_Options {
 
 	const BORDER_RADIUS = 'Border_Radius';
 
+	const TAB_BUTTON_SIZE = 'Tab_Button_Size';
+
 	#region -- Style Keys
 
 	#region -- Date Keys
@@ -116,6 +118,7 @@ class General_Options {
 			self::BORDER_COLOR,
 			self::SECONDARY_BORDER_COLOR,
 			self::BORDER_RADIUS,
+			self::TAB_BUTTON_SIZE,
 			self::HUMAN_READABLE_DATE,
 			self::DATE_FORMAT,
 			self::NO_THUMBNAIL_IMAGE,

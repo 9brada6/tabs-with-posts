@@ -139,6 +139,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/Border_Color',
 		'Database/General_Options_Settings/Secondary_Border_Color',
 		'Database/General_Options_Settings/Border_Radius',
+		'Database/General_Options_Settings/Tab_Button_Size',
 		'Database/General_Options_Settings/Human_Readable_Date',
 		'Database/General_Options_Settings/Date_Format',
 		'Database/General_Options_Settings/No_Thumbnail_Image',

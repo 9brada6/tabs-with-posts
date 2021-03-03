@@ -138,6 +138,7 @@ class General_Settings_Factory {
 			General_Options::BORDER_COLOR               => self::COLOR_SETTING_CLASS,
 			General_Options::SECONDARY_BORDER_COLOR     => self::COLOR_SETTING_CLASS,
 			General_Options::BORDER_RADIUS              => self::NUMBER_SETTING_CLASS,
+			General_Options::TAB_BUTTON_SIZE            => self::NUMBER_SETTING_CLASS,
 			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
 			General_Options::NO_THUMBNAIL_IMAGE         => self::IMAGE_SETTING_CLASS,
 			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
@@ -174,6 +175,7 @@ class General_Settings_Factory {
 			General_Options::BORDER_COLOR               => 'get_border_color_setting_args',
 			General_Options::SECONDARY_BORDER_COLOR     => 'get_secondary_border_color_setting_args',
 			General_Options::BORDER_RADIUS              => 'get_border_radius_setting_args',
+			General_Options::TAB_BUTTON_SIZE            => 'tab_button_size_setting_args',
 			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
 			General_Options::NO_THUMBNAIL_IMAGE         => 'get_no_thumbnail_image_setting_args',
 			General_Options::DATE_FORMAT                => 'get_date_format_setting_args',
@@ -488,8 +490,25 @@ class General_Settings_Factory {
 	 */
 	protected static function get_border_radius_setting_args() {
 		return array(
-			'title'  => _x( 'Change the default border radius of elements:', 'backend', 'twrp' ),
-			'after'  => _x( 'px', 'backend', 'twrp' ),
+			'title' => _x( 'Change the default border radius of elements:', 'backend', 'twrp' ),
+			'after' => _x( 'px', 'backend', 'twrp' ),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the border radius setting.
+	 *
+	 * @return array
+	 */
+	protected static function tab_button_size_setting_args() {
+		return array(
+			'title'      => _x( 'Change the default tab button font-size:', 'backend', 'twrp' ),
+			'after'      => _x( 'rem', 'backend', 'twrp' ),
+			'input_attr' => array(
+				'min'  => '0.8',
+				'max'  => '2',
+				'step' => '0.05',
+			),
 		);
 	}
 
@@ -501,7 +520,7 @@ class General_Settings_Factory {
 	 */
 	protected static function get_no_thumbnail_image_setting_args() {
 		return array(
-			'title'       => _x( 'Select an image to display in case the post has no thumbnail:', 'backend', 'twrp' ),
+			'title'       => _x( 'Select an image to display if the post has no thumbnail:', 'backend', 'twrp' ),
 			'default_src' => Article_Block::get_default_no_thumbnail_image_url(),
 			'input_attr'  => array(
 				'data-twrpb-default-image' => Article_Block::get_default_no_thumbnail_image_url(),
