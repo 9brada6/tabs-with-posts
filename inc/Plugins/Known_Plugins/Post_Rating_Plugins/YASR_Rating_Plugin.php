@@ -38,7 +38,7 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '2.6.2 - 2.6.2';
+		return '2.3.0 - 2.6.2';
 	}
 
 	public function get_plugin_file_relative_path() {
@@ -50,8 +50,14 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 	#region -- Detect if is installed.
 
 	public function is_installed_and_can_be_used() {
-		// todo: add other classes and constants here.
-		return Simple_Utils::method_exist_and_is_public( YasrDatabaseRatings::class, 'getOverallRating' );
+		$overall_rating   = Simple_Utils::method_exist_and_is_public( YasrDatabaseRatings::class, 'getOverallRating' );
+		$visitors_votes   = Simple_Utils::method_exist_and_is_public( YasrDatabaseRatings::class, 'getVisitorVotes' );
+		$multiset_average = Simple_Utils::method_exist_and_is_public( YasrMultiSetData::class, 'returnMultiSetAverage' );
+
+		$multiset_count = Simple_Utils::method_exist_and_is_public( YasrMultiSetData::class, 'returnMultisetContent' ) ||
+		Simple_Utils::method_exist_and_is_public( YasrMultiSetData::class, 'returnVisitorMultiSetContent' );
+
+		return $overall_rating && $visitors_votes && $multiset_average && $multiset_count;
 	}
 
 	#endregion -- Detect if is installed.
@@ -153,7 +159,12 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 				return 0;
 			}
 
-			$multiset_votes = YasrMultiSetData::returnMultisetContent( $post_id, $set_id, true );
+			if ( Simple_Utils::method_exist_and_is_public( YasrMultiSetData::class, 'returnVisitorMultiSetContent' ) ) {
+				$multiset_votes = YasrMultiSetData::returnVisitorMultiSetContent( $post_id, $set_id );
+			} else {
+				$multiset_votes = YasrMultiSetData::returnMultisetContent( $post_id, $set_id, true );
+			}
+
 			if ( is_array( $multiset_votes ) && ! ( empty( $multiset_votes ) ) ) {
 				$max = 0;
 				foreach ( $multiset_votes as $multiset_vote ) {

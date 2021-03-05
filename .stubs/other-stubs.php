@@ -59,6 +59,7 @@ namespace {
 		public static $array_to_return = array();
 		public static function returnMultiSetAverage( $a, $b, $c ) {}
 		public static function returnMultisetContent( $post_id, $set_id, $c ) {}
+		public static function returnVisitorMultiSetContent( $post_id, $set_id ) {}
 	}
 
 	// For Blaz Plugin.
