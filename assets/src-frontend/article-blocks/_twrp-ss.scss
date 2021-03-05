@@ -1,5 +1,5 @@
 .twrp-ss {
-	@include twrp-box;
+	@extend .twrp-reset-box;
 
 	position: relative;
 	display: flex;
@@ -7,7 +7,7 @@
 	overflow: hidden;
 
 	&__title {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		position: relative;
 		display: -webkit-box;
@@ -24,7 +24,7 @@
 	}
 
 	&__meta-wrapper {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		display: flex;
 		flex-wrap: wrap;
@@ -33,7 +33,7 @@
 	}
 
 	&__meta {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		display: inline-block;
 		margin-right: 0.5rem;
@@ -66,8 +66,8 @@
 
 	// Hover, Focus state
 	&__link-expanded {
-		@include twrp-box;
-		@include twrp-anchor;
+		@extend .twrp-reset-box;
+		@extend .twrp-reset-anchor;
 
 		color: var(--twrp-text-color);
 		background-color: transparent;

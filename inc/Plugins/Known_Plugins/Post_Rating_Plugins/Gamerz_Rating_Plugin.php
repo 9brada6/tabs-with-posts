@@ -32,7 +32,7 @@ class Gamerz_Rating_Plugin extends Post_Rating_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '1.89 - 1.89';
+		return '1.50 - 1.89';
 	}
 
 	public function get_plugin_file_relative_path() {

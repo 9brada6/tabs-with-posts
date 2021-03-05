@@ -8,8 +8,7 @@
 
 body:not(#twrpS) {
 	@import '../src-common/style';
-	@import 'main-mixins/twrp-box';
-	@import 'main-mixins/twrp-anchor';
+	@import 'main-mixins/twrp-reset';
 
 	// Import the tab styles.
 	@import 'tabs/mixin-twrp-tab-clean-style.scss';
@@ -26,4 +25,5 @@ body:not(#twrpS) {
 	// Block padding must override the thumbnail.
 	@import 'main-framework/twrp-thumbnail';
 	@import 'main-framework/twrp-widget-padding';
+	@import 'main-framework/twrp-next-page';
 }

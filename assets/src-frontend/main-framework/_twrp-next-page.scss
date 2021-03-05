@@ -1,0 +1,15 @@
+.twrp-next-page {
+	@extend .twrp-reset-box;
+
+	&__btn {
+		@extend .twrp-reset;
+
+		padding: 0.2rem 0.6rem;
+		color: var(--twrp-accent-best-text-color);
+		background-color: var(--twrp-accent-color);
+	}
+}
+
+.twrp-next-page ~ .twrp-block {
+	display: none !important;
+}

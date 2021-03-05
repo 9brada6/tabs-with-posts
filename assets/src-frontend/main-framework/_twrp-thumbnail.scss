@@ -1,5 +1,5 @@
 .twrp-thumbnail-wrapper {
-	@include twrp-box;
+	@extend .twrp-reset-box;
 
 	position: relative;
 	display: flex;
@@ -15,7 +15,7 @@
 }
 
 .twrp-thumbnail {
-	@include twrp-box;
+	@extend .twrp-reset-box;
 
 	position: absolute;
 	left: 0;

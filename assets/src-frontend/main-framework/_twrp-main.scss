@@ -1,6 +1,6 @@
 .twrp-main {
 	&__title {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		margin-bottom: 0.4rem;
 		font-size: 1.1rem;

@@ -1,10 +1,10 @@
 // Mixin class that all tabs should implement.
 
 @mixin twrp-tab-clean-style($block-name) {
-	@include twrp-box;
+	@extend .twrp-reset-box;
 
 	&__btns-wrapper {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		display: flex;
 		list-style-type: none;
@@ -15,14 +15,14 @@
 	}
 
 	&__btn-item {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		display: inline-block;
 	}
 
 	&__btn {
-		@include twrp-box;
-		@include twrp-anchor;
+		@extend .twrp-reset-box;
+		@extend .twrp-reset-anchor;
 
 		font-size: 1rem;
 		line-height: 1.5;
@@ -30,11 +30,11 @@
 	}
 
 	&__contents-wrapper {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 	}
 
 	&__content {
-		@include twrp-box;
+		@extend .twrp-reset-box;
 
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

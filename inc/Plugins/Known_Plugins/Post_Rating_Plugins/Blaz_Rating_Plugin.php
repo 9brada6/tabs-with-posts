@@ -26,7 +26,7 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '3.3.1 - 3.3.1';
+		return '2.5.0 - 3.3.1';
 	}
 
 	public function get_plugin_file_relative_path() {

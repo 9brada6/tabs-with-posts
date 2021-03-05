@@ -13,9 +13,6 @@ use WP_Query;
  *
  * By default this plugin does not implement a way to query posts by order of
  * views, so a way to order them was added, via WP filters.
- * 
- * Version 1.0.0 is not supported, but given the fac that the version is from
- * 2013, no one will use it. The real version is from 1.1.0 onwards.
  */
 class A3REV_Views_Plugin extends Post_Views_Plugin {
 
@@ -36,7 +33,7 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '1.0.0 - 2.4.5';
+		return '1.1.0 - 2.4.5';
 	}
 
 	public function get_plugin_file_relative_path() {

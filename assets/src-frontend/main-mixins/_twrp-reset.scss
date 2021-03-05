@@ -1,0 +1,24 @@
+.twrp-reset-box {
+	display: block;
+	padding: 0;
+	margin: 0;
+	overflow: visible;
+	border-width: 0;
+}
+
+.twrp-reset-anchor {
+	position: static;
+	color: initial;
+	text-decoration: none;
+	cursor: pointer;
+	background-color: initial;
+	outline-width: 0;
+	box-shadow: none;
+}
+
+.twrp-reset {
+	@extend .twrp-reset-box;
+	@extend .twrp-reset-anchor;
+
+	font-weight: initial;
+}

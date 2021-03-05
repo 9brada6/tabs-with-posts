@@ -170,7 +170,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	public function display_next_page_button() {
 		?>
 			<div class="twrp-next-page">
-				<button class="twrp-next-page_btn" type="button"><?= esc_html( __( 'Show next posts', 'twrp' ) ); ?></button>
+				<button class="twrp-next-page__btn" type="button"><?= esc_html( __( 'Show next posts', 'twrp' ) ); ?></button>
 			</div>
 		<?php
 	}

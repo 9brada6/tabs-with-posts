@@ -12,12 +12,14 @@
 
 ## ✅ Todo
 
+- Support a lot versions of rating plugins.
+
+- Add more CSS properties to reset mixin classes? And comment them.
+
 - Add pages to the tabs.
 
 - Make all tabs/article blocks use CSS variables where necessary, and add css variable.
 - Support all versions of rating plugins.
-
-- Where plugin is displayed, change Tested Versions with Working versions.
 
 - ### ✅ Todo Documentation
 
