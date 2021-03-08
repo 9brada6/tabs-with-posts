@@ -55,6 +55,7 @@
 3. Add a title that has a lot HTML tags.
 4. Test each meta/title with a long text, and long unbreakable text.
 5. Make sure that each function written in an article block reference article block class, even the_title() or the_permalink().
+6. Usually, the title should have &__title, and the meta should have &__meta.
 
 ## CSS of Article Blocks
 
@@ -70,6 +71,8 @@ in the classes.
 9. Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
 10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible.
 11. Each article block should have word-wrap: break-word where is necessary, including in the title and meta. Test this by inserting long lines of text.
+12. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited.
+13. Any block should import twrp-block-mixin.
 
 ## Plugins
 

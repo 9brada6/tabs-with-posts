@@ -1,4 +1,6 @@
 .twrp-ss {
+	@import "twrp-block-mixin";
+
 	@extend .twrp-reset-box;
 
 	position: relative;
@@ -10,17 +12,7 @@
 		@extend .twrp-reset-box;
 
 		position: relative;
-		display: -webkit-box;
-		max-height: calc(calc(var(--twrp-title-font-size) * var(--twrp-title-line-clamp)) * var(--twrp-title-line-height));
 		margin-bottom: 0.35rem;
-		overflow: hidden;
-		font-size: var(--twrp-title-font-size);
-		line-height: var(--twrp-title-line-height);
-		color: var(--twrp-text-color);
-		text-overflow: ellipsis;
-		transition: var(--twrp-default-component-transition);
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: var(--twrp-title-line-clamp);
 	}
 
 	&__meta-wrapper {
@@ -29,7 +21,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		line-height: 1.5;
 	}
 
 	&__meta {
@@ -37,16 +28,6 @@
 
 		display: inline-block;
 		margin-right: 0.5rem;
-		font-size: 0.92rem;
-		font-variant-numeric: lining-nums;
-	}
-
-	&__rating {
-		.twrp-rating-count {
-			font-size: 1.1em;
-			font-variant: all-petite-caps;
-			line-height: 0.6;
-		}
 	}
 
 	&__thumbnail-container {
@@ -78,9 +59,5 @@
 				color: var(--twrp-accent-color);
 			}
 		}
-	}
-
-	&:last-child {
-		margin-bottom: 0;
 	}
 }

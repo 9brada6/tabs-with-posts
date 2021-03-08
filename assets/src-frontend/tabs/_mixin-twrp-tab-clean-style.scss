@@ -10,7 +10,7 @@
 		list-style-type: none;
 
 		& + #{$block-name}__contents-wrapper {
-			padding-top: 10px;
+			padding-top: var(--twrp-contents-wrapper-padding-top);
 		}
 	}
 
@@ -24,8 +24,8 @@
 		@extend .twrp-reset-box;
 		@extend .twrp-reset-anchor;
 
-		font-size: 1rem;
-		line-height: 1.5;
+		font-size: var(--twrp-tab-button-font-size);
+		line-height: var(--twrp-tab-button-line-height);
 		text-decoration: none;
 	}
 
@@ -37,8 +37,8 @@
 		@extend .twrp-reset-box;
 
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-		grid-gap: 16px;
+		grid-template-columns: var(--twrp-grid-columns);
+		grid-gap: var(--twrp-grid-gap);
 	}
 
 	// Prevent flash of content, by displaying only the first tab.
