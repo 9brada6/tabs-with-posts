@@ -201,6 +201,20 @@ class Generate_CSS {
 			$best_accent_text_color = 'rgba(0, 0, 0, 1)';
 		}
 
+		$border_radius = General_Options::get_option( General_Options::BORDER_RADIUS );
+		if ( empty( $border_radius ) || ! is_string( $border_radius ) ) {
+			$border_radius = '0';
+		} else {
+			$border_radius = $border_radius . 'px';
+		}
+
+		$tab_button_size = General_Options::get_option( General_Options::TAB_BUTTON_SIZE );
+		if ( empty( $tab_button_size ) || ! is_string( $tab_button_size ) ) {
+			$tab_button_size = '1rem';
+		} else {
+			$tab_button_size = $tab_button_size . 'rem';
+		}
+
 		echo '<style type="text/css">:root{' .
 			'--twrp-background-color: ' . esc_html( $background_color ) . ';' .
 			'--twrp-secondary-background-color: ' . esc_html( $secondary_background_color ) . ';' .
@@ -214,9 +228,12 @@ class Generate_CSS {
 
 			'--twrp-border-color: ' . esc_html( $border_color ) . ';' .
 			'--twrp-secondary-border-color: ' . esc_html( $secondary_border_color ) . ';' .
+			'--twrp-border-radius: ' . esc_html( $border_radius ) . ';' .
 
 			'--twrp-outline-accent-color: ' . esc_html( $outline_accent_color ) . ';' .
 			'--twrp-accent-best-text-color: ' . esc_html( $best_accent_text_color ) . ';' .
+
+			'--twrp-tab-button-font-size: ' . esc_html( $tab_button_size ) . ';' .
 		'}</style>';
 	}
 

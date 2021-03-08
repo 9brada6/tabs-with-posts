@@ -1,4 +1,6 @@
 @mixin twrp-block-mixin {
+	border-radius: var(--twrp-border-radius);
+
 	&:last-child {
 		margin-bottom: 0;
 	}

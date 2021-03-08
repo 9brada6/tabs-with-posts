@@ -18,8 +18,8 @@
 		background-color: var(--twrp-background-color);
 		border: 1px solid var(--twrp-accent-color);
 		border-bottom: 1px solid transparent;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
+		border-top-left-radius: var(--twrp-border-radius);
+		border-top-right-radius: var(--twrp-border-radius);
 
 		&:hover,
 		&:focus {

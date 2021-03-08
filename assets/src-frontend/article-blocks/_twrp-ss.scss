@@ -1,5 +1,5 @@
 .twrp-ss {
-	@import "twrp-block-mixin";
+	@include twrp-block-mixin;
 
 	@extend .twrp-reset-box;
 

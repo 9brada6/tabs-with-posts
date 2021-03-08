@@ -12,7 +12,6 @@
 
 ## ✅ Todo
 
-- Make all tabs/article blocks use CSS variables where necessary, and add css variable.
 - Add pages to the tabs.
 
 - ### ✅ Todo Documentation
