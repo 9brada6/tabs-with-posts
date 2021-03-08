@@ -2,7 +2,9 @@
 	@extend .twrp-reset-box;
 
 	&__btn {
-		@extend .twrp-reset;
+		@extend .twrp-reset-box;
+		@extend .twrp-reset-anchor;
+		@extend .twrp-reset-inherited-and-more;
 
 		padding: 0.2rem 0.6rem;
 		color: var(--twrp-accent-best-text-color);

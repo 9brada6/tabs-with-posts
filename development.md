@@ -12,10 +12,7 @@
 
 ## ✅ Todo
 
-- Support a lot versions of rating plugins.
-- Add more CSS properties to reset mixin classes? And comment them.
 - Make all tabs/article blocks use CSS variables where necessary, and add css variable.
-
 - Add pages to the tabs.
 
 - ### ✅ Todo Documentation
@@ -71,6 +68,7 @@
 - ➕ Maybe make the documentation and all the backend settings centered?(for ultra-wide monitors)
 - ➕ Add Translate strings setting, and say to use Loco Translate if they want to translate more.
 - ➕ Add more rating/views plugins.
+- ➕ Support more versions of KK rating plugin, maybe version 3.0 or 2.6 too?.
 
 ## 📖 Development Documentation
 
