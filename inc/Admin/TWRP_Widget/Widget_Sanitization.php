@@ -82,6 +82,13 @@ class Widget_Sanitization {
 		}
 		$sanitized_settings[ TWRP_Widget::NUMBER_OF_POSTS__NAME ] = Number_Control::sanitize_setting( $current_setting, Widget_Form::get_number_of_posts_args() );
 
+		// Sanitize the number of posts per page.
+		$current_setting = null;
+		if ( isset( $this->settings [ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] ) ) {
+			$current_setting = $this->settings [ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ];
+		}
+		$sanitized_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] = Number_Control::sanitize_setting( $current_setting, Widget_Form::get_number_of_posts_per_page_args() );
+
 		// Sanitize widget padding option.
 		$current_setting = null;
 		if ( isset( $this->settings [ TWRP_Widget::HORIZONTAL_PADDING_SETTING__NAME ] ) ) {

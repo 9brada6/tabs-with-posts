@@ -163,20 +163,20 @@ class Tabs_Creator {
 		// phpcs:disable Generic.WhiteSpace.ScopeIndent.IncorrectExact -- Visualize the HTML format created by the functions.
 		$tab_style->start_tabs_wrapper();
 			if ( count( $this->query_ids ) > 1 ) {
-				$tab_style->start_tab_buttons_wrapper();
-				foreach ( $this->query_ids as $query_id ) :
-					$button_text = Widget_Utils::pluck_tab_button_title( $this->instance_settings, $query_id );
-					$tab_style->tab_button( $button_text, $query_id, $default_tab );
-					$default_tab = false;
+			$tab_style->start_tab_buttons_wrapper();
+			foreach ( $this->query_ids as $query_id ) :
+				$button_text = Widget_Utils::pluck_tab_button_title( $this->instance_settings, $query_id );
+				$tab_style->tab_button( $button_text, $query_id, $default_tab );
+				$default_tab = false;
 				endforeach;
-				$tab_style->end_tab_buttons_wrapper();
+			$tab_style->end_tab_buttons_wrapper();
 			}
 
 			$tab_style->start_all_tabs_wrapper();
 				foreach ( $this->query_ids as $query_id ) :
-					$tab_style->start_tab_content_wrapper( $query_id );
-					$this->display_query_posts( $query_id );
-					$tab_style->end_tab_content_wrapper( $query_id );
+			$tab_style->start_tab_content_wrapper( $query_id );
+			$this->display_query_posts( $query_id );
+			$tab_style->end_tab_content_wrapper( $query_id );
 				endforeach;
 			$tab_style->end_all_tabs_wrapper();
 		$tab_style->end_tabs_wrapper();
@@ -195,7 +195,12 @@ class Tabs_Creator {
 		$artblock    = $this->query_artblocks[ $query_id ];
 		$query_posts = $this->query_array_of_posts[ $query_id ];
 
-		$artblock->display_blocks( $query_posts );
+		$posts_per_page = 6;
+		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] ) ) {
+			$posts_per_page = (int) $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ];
+		}
+
+		$artblock->display_blocks( $query_posts, $posts_per_page );
 	}
 
 	/**

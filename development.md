@@ -68,6 +68,7 @@
 - ➕ Add Translate strings setting, and say to use Loco Translate if they want to translate more.
 - ➕ Add more rating/views plugins.
 - ➕ Support more versions of KK rating plugin, maybe version 3.0 or 2.6 too?.
+- ➕ Animate when a page is shown(increase height).
 
 ## 📖 Development Documentation
 

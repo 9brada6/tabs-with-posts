@@ -20,6 +20,7 @@ use TWRP\Article_Block\Settings\Artblock_Setting;
 
 use WP_Post;
 use RuntimeException;
+use TWRP\TWRP_Widget;
 use WP_Term;
 
 /**
@@ -130,15 +131,19 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * Create the block for each post inside of the array.
 	 *
 	 * @param array<WP_Post> $query_posts
+	 * @param int $posts_per_page
 	 * @return void
 	 */
-	public function display_blocks( $query_posts ) {
+	public function display_blocks( $query_posts, $posts_per_page ) {
 		global $post;
 		$post_number = 0;
 
+		if ( $posts_per_page < 1 ) {
+			$posts_per_page = 6;
+		}
+
 		foreach ( $query_posts as $query_post ) {
-			// todo.
-			if ( 6 === $post_number ) {
+			if ( ( 0 === $post_number % $posts_per_page ) && 0 !== $post_number ) {
 				$this->display_next_page_button();
 			}
 

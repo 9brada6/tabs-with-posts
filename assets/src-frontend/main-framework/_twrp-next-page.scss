@@ -9,9 +9,16 @@
 		padding: 0.2rem 0.6rem;
 		color: var(--twrp-accent-best-text-color);
 		background-color: var(--twrp-accent-color);
+		border-radius: var(--twrp-border-radius);
+
+		&:hover,
+		&:focus {
+			background-color: var(--twrp-darker-accent-color);
+		}
 	}
 }
 
-.twrp-next-page ~ .twrp-block {
+.twrp-next-page ~ .twrp-block,
+.twrp-next-page ~ .twrp-next-page {
 	display: none !important;
 }
