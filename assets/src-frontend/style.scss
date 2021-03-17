@@ -58,6 +58,6 @@ body:not(#twrpS) {
 	// Block padding must override the thumbnail.
 	@import 'main-framework/twrp-thumbnail';
 	@import 'main-framework/twrp-widget-padding';
-	@import 'main-framework/twrp-next-page';
+	@import 'main-framework/twrp-show-more';
 	@import 'main-framework/twrp-rating-count';
 }

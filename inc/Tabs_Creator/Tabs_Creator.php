@@ -192,13 +192,9 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	protected function display_query_posts( $query_id ) {
-		$artblock    = $this->query_artblocks[ $query_id ];
-		$query_posts = $this->query_array_of_posts[ $query_id ];
-
-		$posts_per_page = 6;
-		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] ) ) {
-			$posts_per_page = (int) $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ];
-		}
+		$artblock       = $this->query_artblocks[ $query_id ];
+		$query_posts    = $this->query_array_of_posts[ $query_id ];
+		$posts_per_page = $this->get_posts_per_page_setting();
 
 		$artblock->display_blocks( $query_posts, $posts_per_page );
 	}
@@ -244,5 +240,19 @@ class Tabs_Creator {
 		}
 
 		return $artblock;
+	}
+
+	/**
+	 * Get the setting of how many posts to display per page.
+	 *
+	 * @return int
+	 */
+	protected function get_posts_per_page_setting() {
+		$posts_per_page = TWRP_Widget::DEFAULT_POSTS_PER_PAGE;
+		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] ) ) {
+			$posts_per_page = (int) $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ];
+		}
+
+		return $posts_per_page;
 	}
 }

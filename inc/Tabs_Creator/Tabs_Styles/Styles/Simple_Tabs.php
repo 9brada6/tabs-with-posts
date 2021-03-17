@@ -65,7 +65,7 @@ class Simple_Tabs extends Tab_Style {
 
 	public function start_tab_content_wrapper( $query_id = '' ) {
 		?>
-		<div id="<?php $this->tab_id( $query_id ); ?>" class="<?php $this->tab_content_class(); ?>">
+		<div id="<?php $this->tab_id( $query_id ); ?>" class="<?php $this->tab_content_class(); ?>"<?php $this->display_tab__paging_attributes(); ?>>
 		<?php
 	}
 

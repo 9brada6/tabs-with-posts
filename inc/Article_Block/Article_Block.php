@@ -138,13 +138,9 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		global $post;
 		$post_number = 0;
 
-		if ( $posts_per_page < 1 ) {
-			$posts_per_page = 6;
-		}
-
 		foreach ( $query_posts as $query_post ) {
-			if ( ( 0 === $post_number % $posts_per_page ) && 0 !== $post_number ) {
-				$this->display_next_page_button();
+			if ( 0 !== $posts_per_page && ( 0 === ( $post_number % $posts_per_page ) ) && 0 !== $post_number ) {
+				$this->display_show_more_button();
 			}
 
 			$post = $query_post; // phpcs:ignore -- We reset it.
@@ -172,10 +168,10 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	}
 
 	// todo
-	public function display_next_page_button() {
+	public function display_show_more_button() {
 		?>
-			<div class="twrp-next-page">
-				<button class="twrp-next-page__btn" type="button"><?= esc_html( __( 'Show next posts', 'twrp' ) ); ?></button>
+			<div class="twrp-show-more">
+				<button class="twrp-show-more__btn" type="button"><?= esc_html( __( 'Show next posts', 'twrp' ) ); ?></button>
 			</div>
 		<?php
 	}

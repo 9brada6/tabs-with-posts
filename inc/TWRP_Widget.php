@@ -25,6 +25,8 @@ class TWRP_Widget extends WP_Widget {
 
 	const NUMBER_OF_POSTS_PER_PAGE__NAME = 'number_of_posts_per_page';
 
+	const DEFAULT_POSTS_PER_PAGE = 6;
+
 	const HORIZONTAL_PADDING_SETTING__NAME = 'horizontal_padding';
 
 	const SYNC_QUERY_SETTINGS__NAME = 'sync_query_settings';

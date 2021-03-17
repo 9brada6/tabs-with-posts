@@ -1,5 +1,7 @@
-.twrp-next-page {
+.twrp-show-more {
 	@extend .twrp-reset-box;
+
+	grid-column: 1/-1;
 
 	&__btn {
 		@extend .twrp-reset-box;
@@ -18,7 +20,7 @@
 	}
 }
 
-.twrp-next-page ~ .twrp-block,
-.twrp-next-page ~ .twrp-next-page {
+.twrp-show-more ~ .twrp-block,
+.twrp-show-more ~ .twrp-show-more {
 	display: none !important;
 }

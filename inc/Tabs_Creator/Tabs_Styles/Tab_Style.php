@@ -2,6 +2,7 @@
 
 namespace TWRP\Tabs_Creator\Tabs_Styles;
 
+use TWRP\TWRP_Widget;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
@@ -308,6 +309,7 @@ abstract class Tab_Style {
 	 * @return void
 	 */
 	public function tab_content_class() {
+		echo 'twrp-main__tab-content ';
 		$this->bem_class( 'content' );
 	}
 
@@ -323,4 +325,31 @@ abstract class Tab_Style {
 
 	#endregion -- Tab Attribute Class Functions
 
+	#region -- Other Attributes
+
+	/**
+	 * Display the paging attributes for a tab.
+	 *
+	 * @return void
+	 */
+	protected function display_tab__paging_attributes() {
+		$posts_per_page = $this->get_posts_per_page_setting();
+		echo ' data-twrp-posts-per-page="' . esc_attr( (string) $posts_per_page ) . '" data-twrp-pages-displayed="1"';
+	}
+
+	/**
+	 * Get the setting of how many posts to display per page.
+	 *
+	 * @return int
+	 */
+	protected function get_posts_per_page_setting() {
+		$posts_per_page = TWRP_Widget::DEFAULT_POSTS_PER_PAGE;
+		if ( isset( $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ] ) ) {
+			$posts_per_page = (int) $this->instance_settings[ TWRP_Widget::NUMBER_OF_POSTS_PER_PAGE__NAME ];
+		}
+
+		return $posts_per_page;
+	}
+
+	#endregion -- Other Attributes
 }

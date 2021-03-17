@@ -98,30 +98,6 @@ function updateAdditionalTabClasses( tabList: Element ) {
 
 // #endregion -- Add Active/Inactive Classes to Tab Items.
 
-// #region -- Show more pages button
-
-const showMoreWrapperClassName = 'twrp-next-page';
-const showMoreButtonClassName = 'twrp-next-page__btn';
-
-document.addEventListener( 'click', handleMorePostsBtnClick );
-
-function handleMorePostsBtnClick( e: Event ) {
-	const target = e.target;
-	if ( ! ( target instanceof Element ) ) {
-		return;
-	}
-
-	if ( target.classList.contains( showMoreWrapperClassName ) || target.classList.contains( showMoreButtonClassName ) ) {
-		const toRemove = target.closest( '.' + showMoreWrapperClassName );
-		if ( toRemove !== null ) {
-			// @ts-ignore -- Parent Node is not null.
-			toRemove.parentNode.removeChild( toRemove );
-		}
-	}
-}
-
-// #endregion -- Show more pages button
-
 // #region -- Helpers.
 
 function isElement( element: unknown ): boolean {
