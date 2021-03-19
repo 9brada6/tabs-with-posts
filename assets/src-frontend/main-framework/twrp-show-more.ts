@@ -63,6 +63,7 @@ if ( document.readyState === 'loading' ) {
 	tryToEqualizeAllTabs();
 }
 window.addEventListener( 'resize', tryToEqualizeAllTabs );
+document.addEventListener( 'tabby', tryToEqualizeAllTabs );
 
 function tryToEqualizeAllTabs() {
 	const tabsWrappers = document.getElementsByClassName( tabContentClassName );

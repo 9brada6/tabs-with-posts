@@ -40,6 +40,7 @@
 ## Tabs
 
 1. The tab buttons text should not have space before/after the HTML tags, because text-decoration might be applied wrong.
+2. Test how each article block style works with show more posts button.
 
 ## CSS of Tabs
 
@@ -56,23 +57,25 @@
 4. Test each meta/title with a long text, and long unbreakable text.
 5. Make sure that each function written in an article block reference article block class, even the_title() or the_permalink().
 6. Usually, the title should have &__title, and the meta should have &__meta.
+7. Test how each article block style works with show more posts button.
 
 ## CSS of Article Blocks
 
 1. Each element that exist in a template file must have at least a class(BEM style).
 2. Each class element must be declared in the SCSS file, even if that we don't need to style that class.(Some classes might not be declared only if they target same element, and they are additional descriptors. Ex: an element with &__meta and &__meta-author is unnecessary to add &__meta-author in SCSS file if it is not needed.)
-3. Each block element, or inline element, like div, span, h tags, a, article/sections elements must extend .twrp-box mixin, including the main element. Exceptions are elements that use .twrp-thumbnail-wrapper and .twrp-thumbnail, since these mixins are already included
-in the classes.
+3. Each block element, or inline element, like div, span, h tags, a, article/sections elements must extend .twrp-box mixin, including the main element. Exceptions are elements that use .twrp-thumbnail-wrapper and .twrp-thumbnail, since these mixins are already included in the classes.
 4. Only these elements can be used in a template: div, span, h tags, a, article/sections.
 5. Usually only one a(anchor) tag should be used.
-6. Each element must not declare css proprieties that can inherit: font-weight, font-face, font-kerning... etc. The only exceptions are font-size, word-break, word-wrap, white-spacing and line-height, but line-height should be used only when calculating the number of lines to be displayed.
+6. Each element must not declare css proprieties that can inherit: font-weight, font-face, font-kerning... etc. The only exceptions are font-size, word-break, word-wrap, white-spacing and line-height.
 7. Meta elements should have font-variant-numeric: lining-nums; to align the numbers in meta with the icons.
 8. All anchors should have the color and background color set in CSS, including in hover, focus state.
-9. Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
-10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible.
+9. ???? Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
+10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible. Margin-top: auto or margin-bottom: auto is permitted to align blocks in grid.
 11. Each article block should have word-wrap: break-word where is necessary, including in the title and meta. Test this by inserting long lines of text.
 12. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited.
-13. Any block should import twrp-block-mixin.
+13. Any block should import twrp-block-mixin, and additionally, any meta item should have the class &__meta, title should have the class &__title.
+14. Test how article blocks are displayed in grid mode when the title/meta is longer than the others. Make sure is
+displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last item.
 
 ## Plugins
 

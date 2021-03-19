@@ -12,11 +12,7 @@
 
 ## ✅ Todo
 
-- Make pages work good in grid mode.
-- Change "Show next posts" to "Show more posts".
-- Add in manual tests to test show more button for each article block/tab.
-- Add instance id to the tab id.
-
+- Add an option to disable equalizer?
 
 - ### ✅ Todo Documentation
 

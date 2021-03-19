@@ -171,7 +171,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	public function display_show_more_button() {
 		?>
 			<div class="twrp-show-more">
-				<button class="twrp-show-more__btn" type="button"><?= esc_html( __( 'Show next posts', 'twrp' ) ); ?></button>
+				<button class="twrp-show-more__btn" type="button"><?= esc_html( __( 'Show more posts', 'twrp' ) ); ?></button>
 			</div>
 		<?php
 	}
@@ -477,7 +477,13 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @return string
 	 */
 	public function get_the_title( $post = null ) {
-		return get_the_title( $post );
+		$title = get_the_title( $post );
+
+		if ( empty( trim( $title ) ) ) {
+			$title = __( '&laquo; No title &raquo;', 'twrp' );
+		}
+
+		return $title;
 	}
 
 	/**

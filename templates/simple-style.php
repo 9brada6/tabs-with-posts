@@ -2,7 +2,7 @@
 
 use TWRP\Article_Block\Blocks\Simple_Article;
 
-if ( ! isset( $artblock ) || ! ( $artblock instanceof Simple_Article ) || empty( $artblock->get_the_title() ) ) {
+if ( ! isset( $artblock ) || ! ( $artblock instanceof Simple_Article ) ) {
 	return;
 }
 

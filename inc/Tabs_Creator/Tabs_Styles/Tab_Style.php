@@ -230,7 +230,7 @@ abstract class Tab_Style {
 	 */
 	protected function get_tab_id( $query_id ) {
 		if ( $this->additional_instance > 1 ) {
-			return "twrp-tab-{$this->widget_id}-{$query_id}-{$this->additional_instance}";
+			return "twrp-tab-{$this->widget_id}-{$query_id}--instance-{$this->additional_instance}";
 		} else {
 			return "twrp-tab-{$this->widget_id}-{$query_id}";
 		}
@@ -246,7 +246,12 @@ abstract class Tab_Style {
 	 * @return void
 	 */
 	public function tabs_wrapper_id() {
-		echo esc_attr( 'twrp-main--id-' . $this->widget_id . '-instance-' . $this->additional_instance );
+		if ( $this->additional_instance > 1 ) {
+			echo esc_attr( 'twrp-main-' . $this->widget_id . '--instance-' . $this->additional_instance );
+		} else {
+			echo esc_attr( 'twrp-main-' . $this->widget_id );
+		}
+
 	}
 
 	/**

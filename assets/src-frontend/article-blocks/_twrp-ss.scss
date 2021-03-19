@@ -31,7 +31,6 @@
 	}
 
 	&__thumbnail-container {
-		margin-top: auto;
 		margin-bottom: 0.35rem;
 
 		&:last-child {
@@ -50,6 +49,7 @@
 		@extend .twrp-reset-box;
 		@extend .twrp-reset-anchor;
 
+		margin-top: auto;
 		color: var(--twrp-text-color);
 		background-color: transparent;
 
