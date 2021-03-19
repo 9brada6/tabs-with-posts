@@ -151,6 +151,7 @@ class General_Settings_Factory {
 			General_Options::RATING_ICON_PACK           => self::SELECT_SETTING_CLASS,
 			General_Options::SVG_INCLUDE_INLINE         => self::RADIO_SETTING_CLASS,
 			General_Options::YASR_RATING_TYPE           => self::SELECT_SETTING_CLASS,
+			General_Options::FILL_GRID_WITH_POSTS       => self::RADIO_SETTING_CLASS,
 		);
 
 		return $correlated_classes;
@@ -188,6 +189,7 @@ class General_Settings_Factory {
 			General_Options::RATING_ICON_PACK           => 'get_rating_pack_setting_args',
 			General_Options::SVG_INCLUDE_INLINE         => 'get_svg_include_inline_args',
 			General_Options::YASR_RATING_TYPE           => 'get_yasr_rating_type_args',
+			General_Options::FILL_GRID_WITH_POSTS       => 'get_fill_grid_with_posts_args',
 		);
 
 		return $correlated_functions;
@@ -554,6 +556,21 @@ class General_Settings_Factory {
 				'visitors'           => _x( 'Visitors Vote', 'backend', 'twrp' ),
 				'multi_set_overall'  => _x( 'Multiset Overall/Authors Vote', 'backend', 'twrp' ),
 				'multi_set_visitors' => _x( 'Multiset Visitors Vote', 'backend', 'twrp' ),
+			),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the fill grid with posts setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_fill_grid_with_posts_args() {
+		return array(
+			'title'   => _x( 'Fill the empty grid spaces with posts?', 'backend', 'twrp' ),
+			'options' => array(
+				'true'  => __( 'Yes', 'twrp' ),
+				'false' => __( 'No', 'twrp' ),
 			),
 		);
 	}

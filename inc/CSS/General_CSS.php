@@ -82,8 +82,16 @@ class Generate_CSS {
 	 * @return void
 	 */
 	public static function include_the_frontend_scripts() {
-		$version = Directory_Utils::PLUGIN_VERSION;
+		$version         = Directory_Utils::PLUGIN_VERSION;
+		$grid_posts_fill = General_Options::get_option( General_Options::FILL_GRID_WITH_POSTS );
+
 		wp_enqueue_script( 'twrp-script', Directory_Utils::get_frontend_directory_url() . 'script.js', array(), $version, true );
+
+		// By default, the grid posts fill is enabled,  the below code will only disable it.
+		if ( 'false' === $grid_posts_fill ) {
+			$disable_grid_posts_fill = array( 'disable' => 'true' );
+			wp_localize_script( 'twrp-script', 'TwrpDisableGridPostsFill', $disable_grid_posts_fill );
+		}
 	}
 
 	/**

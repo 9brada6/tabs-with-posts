@@ -167,7 +167,11 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 	}
 
-	// todo
+	/**
+	 * Display a button that will show more posts if they are displayed.
+	 *
+	 * @return void
+	 */
 	public function display_show_more_button() {
 		?>
 			<div class="twrp-show-more">

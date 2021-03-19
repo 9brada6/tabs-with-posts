@@ -97,6 +97,8 @@ class General_Options {
 
 	const YASR_RATING_TYPE = 'YASR_Rating_Type';
 
+	const FILL_GRID_WITH_POSTS = 'Fill_Grid_With_Posts';
+
 	#region -- Getting Options
 
 	/**
@@ -132,6 +134,7 @@ class General_Options {
 			self::RATING_ICON_PACK,
 			self::SVG_INCLUDE_INLINE,
 			self::YASR_RATING_TYPE,
+			self::FILL_GRID_WITH_POSTS,
 		);
 
 		$default_settings = array();

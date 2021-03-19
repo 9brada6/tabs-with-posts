@@ -12,8 +12,6 @@
 
 ## ✅ Todo
 
-- Add an option to disable equalizer?
-
 - ### ✅ Todo Documentation
 
     - Add some photos.

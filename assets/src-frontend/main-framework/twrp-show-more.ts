@@ -1,3 +1,5 @@
+declare const TwrpDisableGridPostsFill: any;
+
 // #region -- Show more pages button
 
 const showMoreWrapperClassName = 'twrp-show-more';
@@ -65,7 +67,11 @@ if ( document.readyState === 'loading' ) {
 window.addEventListener( 'resize', tryToEqualizeAllTabs );
 document.addEventListener( 'tabby', tryToEqualizeAllTabs );
 
-function tryToEqualizeAllTabs() {
+function tryToEqualizeAllTabs(): void {
+	if ( ( typeof TwrpDisableGridPostsFill !== 'undefined' ) && ( TwrpDisableGridPostsFill.disable ) && ( TwrpDisableGridPostsFill.disable === 'true' ) ) {
+		return;
+	}
+
 	const tabsWrappers = document.getElementsByClassName( tabContentClassName );
 	for ( let i = 0; i < tabsWrappers.length; i++ ) {
 		equalizePagesToNumberOfColumns( tabsWrappers[ i ] );
