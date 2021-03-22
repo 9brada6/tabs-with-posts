@@ -91,6 +91,28 @@ class Youtube_Article extends Article_Block {
 		);
 		$query_settings [] = $setting;
 
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 5,
+				'meta'     => 'short',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 6,
+				'meta'     => 'short',
+			)
+		);
+		$query_settings [] = $setting;
+
 		return $query_settings;
 	}
 }

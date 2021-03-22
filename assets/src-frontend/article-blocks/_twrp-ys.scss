@@ -16,6 +16,7 @@
 	}
 
 	&__thumbnail-container {
+		position: relative;
 		flex: 0 0 120px;
 		margin-right: 0.4rem;
 	}
@@ -27,13 +28,43 @@
 	/* stylelint-disable-next-line block-no-empty */
 	&__thumbnail {}
 
+	&__thumbnail-meta-wrapper {
+		@extend .twrp-reset-box;
+
+		position: absolute;
+		bottom: 0;
+		display: flex;
+		width: 100%;
+	}
+
 	&__meta {
+		@extend .twrp-reset-box;
+
 		display: inline-block;
+		overflow: hidden;
 		white-space: nowrap;
+	}
+
+	&__meta--5,
+	&__meta--6 {
+		padding: 0 0.4em;
+		color: var(--twrp-meta-thumbnail-over-color);
+		background-color: var(--twrp-meta-thumbnail-over-background-color);
+	}
+
+	&__meta--5 {
+		border-top-right-radius: var(--twrp-border-radius);
+	}
+
+	&__meta--6 {
+		margin-left: auto;
+		border-top-left-radius: var(--twrp-border-radius);
 	}
 
 	&__first-meta-wrapper,
 	&__second-meta-wrapper {
+		@extend .twrp-reset-box;
+
 		display: flex;
 
 		& > * {

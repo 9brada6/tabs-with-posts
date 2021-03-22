@@ -14,11 +14,13 @@
 
 - Finish Youtube Article Block.
 - In article block, make sure that rating/rating_and_count when selected display only the rating/rating_and_count.
-- Add 5,6 meta places to YT article block.
+
 - Try to speed up PHPCS by removing/updating slevomat standards.
+- Remove display post thumbnail from YT style.
 - Make Simple Article BLock with meta places.
 - Delete Meta Settings to display, but not Post Thumbnail.
 - Add margin-top: auto and display flex to title/meta in youtube style.
+- In display meta, show items as disabled if they are not installed.
 
 - If there are no components, then do not display the tabs at all.
 
@@ -96,6 +98,7 @@ in hover/focusable, because the CSS specificity already overwritten those from t
 - ➕ Add more rating/views plugins.
 - ➕ Support more versions of KK rating plugin, maybe version 3.0 or 2.6 too?.
 - ➕ Animate when a page is shown(increase height).
+- ➕ Support reading time plugins.
 
 ## 📖 Development Documentation
 
