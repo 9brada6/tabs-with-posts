@@ -58,6 +58,7 @@
 5. Make sure that each function written in an article block reference article block class, even the_title() or the_permalink().
 6. Usually, the title should have &__title, and the meta should have &__meta.
 7. Test how each article block style works with show more posts button.
+8. Make sure that the meta wrapper is not displayed, if the meta inside is not.
 
 ## CSS of Article Blocks
 

@@ -36,15 +36,24 @@ abstract class Artblock_Setting {
 	protected $current_setting;
 
 	/**
+	 * Additional attributes for the setting.
+	 *
+	 * @var array
+	 */
+	protected $additional_attrs;
+
+	/**
 	 * Construct the settings class.
 	 *
 	 * @param int $widget_id
 	 * @param int $query_id
 	 * @param array $settings
+	 * @param array $additional_attrs
 	 */
-	final public function __construct( $widget_id, $query_id, $settings ) {
-		$this->widget_id = $widget_id;
-		$this->query_id  = $query_id;
+	public function __construct( $widget_id, $query_id, $settings, $additional_attrs = array() ) {
+		$this->widget_id        = $widget_id;
+		$this->query_id         = $query_id;
+		$this->additional_attrs = $additional_attrs;
 
 		if ( isset( $settings[ $this->get_setting_name() ] ) ) {
 			$this->current_setting = $settings[ $this->get_setting_name() ];

@@ -111,6 +111,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Component/Component_Settings/Hover_Text_Decoration_Setting',
 
 		'Article_Block/Settings/Artblock_Setting',
+		'Article_Block/Settings/Display_Meta',
 		'Article_Block/Settings/Display_Author_Setting',
 		'Article_Block/Settings/Display_Date_Setting',
 		'Article_Block/Settings/Display_Comments_Setting',

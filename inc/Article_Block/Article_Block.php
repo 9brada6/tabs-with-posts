@@ -554,6 +554,82 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	}
 
 	/**
+	 * Display the meta that needs to be displayed in that place defined by a number.
+	 * 
+	 * @param int $number
+	 * @return void
+	 */
+	public function display_meta( $number ) {
+		$meta_displayed = $this->get_meta_displayed_name( $number );
+		if ( false === $meta_displayed ) {
+			return;
+		}
+
+		if ( 'author' === $meta_displayed ) {
+			$this->display_author_icon();
+			echo ' ';
+			$this->display_the_author();
+		} elseif ( 'date' === $meta_displayed ) {
+			$this->display_date_icon();
+			echo ' ';
+			$this->display_the_date();
+		} elseif ( 'views' === $meta_displayed ) {
+			$this->display_views_icon();
+			echo ' ';
+			$this->display_the_views();
+		} elseif ( 'rating' === $meta_displayed || 'rating_and_count' === $meta_displayed ) {
+			$this->display_rating_icon();
+			echo ' ';
+			$this->display_rating();
+		} elseif ( 'comments' === $meta_displayed ) {
+			$this->display_comments_icon();
+			echo ' ';
+			$this->display_comments_number();
+		} elseif ( 'category' === $meta_displayed ) {
+			$this->display_category_icon();
+			echo ' ';
+			$this->display_the_main_category();
+		}
+	}
+
+	/**
+	 * Get what meta should be displayed in the space defined by the number.
+	 *
+	 * @param int $number
+	 * @return string|false
+	 */
+	public function get_meta_displayed_name( $number ) {
+		if ( ! ( $number > 0 ) ) {
+			return false;
+		}
+
+		$key_name = 'display_meta_' . $number;
+
+		if ( isset( $this->settings[ $key_name ] ) && 'none' !== $this->settings[ $key_name ] ) {
+			return $this->settings[ $key_name ];
+		}
+
+		return false;
+	}
+
+	/**
+	 * Whether or not one(or more) of the meta instances is displayed.
+	 *
+	 * @param array<int> $array_of_numbers
+	 * @return bool
+	 */
+	public function one_or_more_meta_id_displayed( $array_of_numbers ) {
+		foreach ( $array_of_numbers as $number ) {
+			$return_value = $this->get_meta_displayed_name( $number );
+			if ( false !== $return_value ) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	/**
 	 * Display the author of the current post.
 	 *
 	 * @return void
@@ -1104,6 +1180,26 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		return $option;
+	}
+
+	/**
+	 * Display the class suffix for the wrapper.
+	 *
+	 * @param int $number The number of the meta.
+	 * @return void
+	 */
+	public function meta_suffix_class( $number ) {
+		$meta = $this->get_meta_displayed_name( $number );
+
+		if ( false === $meta ) {
+			return;
+		}
+
+		if ( 'rating_and_count' === $meta ) {
+			echo 'rating'; // phpcs:ignore -- NO XSS.
+		}
+
+		echo $meta; // phpcs:ignore -- NO XSS.
 	}
 
 	/**

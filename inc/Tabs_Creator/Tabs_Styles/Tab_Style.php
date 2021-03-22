@@ -3,6 +3,8 @@
 namespace TWRP\Tabs_Creator\Tabs_Styles;
 
 use TWRP\TWRP_Widget;
+
+use TWRP\Utils\Widget_Utils;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
@@ -311,11 +313,21 @@ abstract class Tab_Style {
 	/**
 	 * Echo the class for a tab.
 	 *
+	 * @param string|int $query_id
 	 * @return void
 	 */
-	public function tab_content_class() {
+	public function tab_content_class( $query_id = '' ) {
 		echo 'twrp-main__tab-content ';
 		$this->bem_class( 'content' );
+
+		$artblock_style = '';
+		if ( isset( $this->instance_settings, $this->instance_settings[ $query_id ]['article_block'] ) ) {
+			$artblock_style = $this->instance_settings[ $query_id ]['article_block'];
+		}
+
+		if ( ! empty( $artblock_style ) ) {
+			echo ' twrp-main__tab-content--' . esc_attr( $artblock_style );
+		}
 	}
 
 	/**

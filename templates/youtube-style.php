@@ -24,25 +24,29 @@ if ( ! isset( $artblock ) || ! ( $artblock instanceof Youtube_Article ) ) {
 			</h3>
 		</a>
 
+		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2 ) ) ) : ?>
 		<div class="twrp-ys__first-meta-wrapper">
-			<?php if ( $artblock->are_views_displayed() ) : ?>
-				<span class="twrp-ys__meta twrp-ys__views"><?php $artblock->display_views_icon(); ?> <?php $artblock->display_the_views(); ?></span>
+			<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
+				<span class="twrp-ys__meta twrp-ys__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
 			<?php endif; ?>
 
-			<?php if ( $artblock->is_author_displayed() ) : ?>
-				<span class="twrp-ys__meta twrp-ys__author"><?php $artblock->display_author_icon(); ?> <?php $artblock->display_the_author(); ?></span>
+			<?php if ( $artblock->get_meta_displayed_name( 2 ) ) : ?>
+				<span class="twrp-ys__meta twrp-ys__<?php $artblock->meta_suffix_class( 2 ); ?>"><?php $artblock->display_meta( 2 ); ?></span>
 			<?php endif; ?>
 		</div>
+		<?php endif; ?>
 
+		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 3, 4 ) ) ) : ?>
 		<div class="twrp-ys__second-meta-wrapper">
-			<?php if ( $artblock->is_rating_displayed() ) : ?>
-				<span class="twrp-ys__meta twrp-ys__rating"><?php $artblock->display_rating_icon(); ?> <?php $artblock->display_rating(); ?></span>
+			<?php if ( $artblock->get_meta_displayed_name( 3 ) ) : ?>
+				<span class="twrp-ys__meta twrp-ys__<?php $artblock->meta_suffix_class( 3 ); ?>"><?php $artblock->display_meta( 3 ); ?></span>
 			<?php endif; ?>
 
-			<?php if ( $artblock->is_date_displayed() ) : ?>
-				<span class="twrp-ys__meta twrp-ys__date"><?php $artblock->display_date_icon(); ?> <?php $artblock->display_the_date(); ?></span>
+			<?php if ( $artblock->get_meta_displayed_name( 4 ) ) : ?>
+				<span class="twrp-ys__meta twrp-ys__<?php $artblock->meta_suffix_class( 4 ); ?>"><?php $artblock->display_meta( 4 ); ?></span>
 			<?php endif; ?>
 		</div>
+		<?php endif; ?>
 	</div>
 
 </article>

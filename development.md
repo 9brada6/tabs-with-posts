@@ -13,7 +13,12 @@
 ## ✅ Todo
 
 - Finish Youtube Article Block.
-- Try to speed up PHPCS by removing/updating slevomat standards
+- In article block, make sure that rating/rating_and_count when selected display only the rating/rating_and_count.
+- Add 5,6 meta places to YT article block.
+- Try to speed up PHPCS by removing/updating slevomat standards.
+- Make Simple Article BLock with meta places.
+- Delete Meta Settings to display, but not Post Thumbnail.
+- Add margin-top: auto and display flex to title/meta in youtube style.
 
 - If there are no components, then do not display the tabs at all.
 
@@ -30,6 +35,10 @@ in hover/focusable, because the CSS specificity already overwritten those from t
 - Add a thumbnail component, with the width, in the Yt style?
 
 - Add in manual tests to be sure that we use css variables where we need(meta font size, title font size... etc).
+
+- Add in manual tests to check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
+
+- In tab creators and tab styles, make query id mandatory.
 
 - ### ✅ Todo Documentation
 

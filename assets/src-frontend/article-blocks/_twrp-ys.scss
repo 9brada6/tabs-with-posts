@@ -46,7 +46,8 @@
 	}
 
 	&__author,
-	&__date {
+	&__date,
+	&__category {
 		flex-shrink: 1;
 		overflow: hidden;
 		text-overflow: ellipsis;

@@ -4,15 +4,8 @@ namespace TWRP\Article_Block\Blocks;
 
 use TWRP\Article_Block\Article_Block;
 
+use TWRP\Article_Block\Settings\Display_Meta;
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
-use TWRP\Article_Block\Settings\Display_Author_Setting;
-use TWRP\Article_Block\Settings\Display_Date_Setting;
-use TWRP\Article_Block\Settings\Display_Views_Setting;
-use TWRP\Article_Block\Settings\Display_Rating_Setting;
-use TWRP\Article_Block\Settings\Display_Rating_Count_Setting;
-use TWRP\Article_Block\Settings\Display_Comments_Setting;
-use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
-
 
 /**
  * The class that display a post in a style, that is named "Youtube", because
@@ -54,25 +47,48 @@ class Youtube_Article extends Article_Block {
 		$setting           = new Display_Post_Thumbnail_Setting( $this->widget_id, $this->query_id, $this->settings );
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Author_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 1,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Date_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 2,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Views_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 3,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Rating_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $setting;
-
-		$setting           = new Display_Rating_Count_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $setting;
-
-		$setting           = new Display_Comments_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $setting;
-
-		$setting           = new Display_Main_Category_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 4,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
 		return $query_settings;
