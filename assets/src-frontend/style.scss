@@ -24,6 +24,7 @@
 	--twrp-title-font-size: 1.1rem;
 	--twrp-title-line-height: 1.4;
 	--twrp-title-line-clamp: 3;
+
 	//
 	--twrp-meta-font-size: 0.92rem;
 	--twrp-meta-line-height: 1.5;
@@ -35,7 +36,7 @@
 	--twrp-grid-gap: 16px;
 
 	// Article Block & Tabs Variables.
-	--twrp-default-component-transition: color 250ms ease, background-color 250ms ease, border-color 250ms ease font-size 250ms ease, margin 250ms ease, padding 250ms ease, width 250ms ease, height 250ms ease;
+	--twrp-default-component-transition: color 300ms ease, background-color 250ms ease, border-color 250ms ease, font-size 250ms ease, margin 250ms ease, padding 250ms ease, width 250ms ease, height 250ms ease;
 }
 
 body:not(#twrpS) {
@@ -50,6 +51,7 @@ body:not(#twrpS) {
 	// Article Blocks Styles
 	@import 'article-blocks/twrp-block-mixin';
 	@import 'article-blocks/twrp-ss';
+	@import 'article-blocks/twrp-ys';
 
 	// Import other helping classes.
 	@import 'main-framework/twrp-main';

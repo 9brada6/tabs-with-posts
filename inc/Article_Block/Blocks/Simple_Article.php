@@ -6,14 +6,14 @@ use TWRP\Article_Block\Article_Block;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 
-use TWRP\Article_Block\Settings\Display_Author_Setting;
-use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
-use TWRP\Article_Block\Settings\Display_Comments_Setting;
-use TWRP\Article_Block\Settings\Display_Date_Setting;
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
-use TWRP\Article_Block\Settings\Display_Rating_Count_Setting;
-use TWRP\Article_Block\Settings\Display_Rating_Setting;
+use TWRP\Article_Block\Settings\Display_Author_Setting;
+use TWRP\Article_Block\Settings\Display_Date_Setting;
 use TWRP\Article_Block\Settings\Display_Views_Setting;
+use TWRP\Article_Block\Settings\Display_Rating_Setting;
+use TWRP\Article_Block\Settings\Display_Rating_Count_Setting;
+use TWRP\Article_Block\Settings\Display_Comments_Setting;
+use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
 
 /**
  * The class that display a post in a style, that is named "Simple", because
@@ -39,7 +39,7 @@ class Simple_Article extends Article_Block {
 	}
 
 	public static function get_name() {
-		return 'Simple Style';
+		return _x( 'Simple Style', 'backend', 'twrp' );
 	}
 
 	public static function get_file_name() {

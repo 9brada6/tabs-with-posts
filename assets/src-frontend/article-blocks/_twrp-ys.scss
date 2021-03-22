@@ -1,0 +1,70 @@
+.twrp-ys {
+	@include twrp-block-mixin;
+
+	@extend .twrp-reset-box;
+
+	--twrp-title-font-size: 0.95rem;
+	--twrp-title-line-clamp: 2;
+	--twrp-meta-font-size: 0.8rem;
+
+	display: flex;
+
+	&__title {
+		@extend .twrp-reset-box;
+
+		margin-bottom: 0.4rem;
+	}
+
+	&__thumbnail-container {
+		flex: 0 0 120px;
+		margin-right: 0.4rem;
+	}
+
+	&__thumbnail-wrapper {
+		height: 100%;
+	}
+
+	/* stylelint-disable-next-line block-no-empty */
+	&__thumbnail {}
+
+	&__meta {
+		display: inline-block;
+		white-space: nowrap;
+	}
+
+	&__first-meta-wrapper,
+	&__second-meta-wrapper {
+		display: flex;
+
+		& > * {
+			margin-right: 0.6em;
+		}
+
+		& > *:last-child {
+			margin-right: 0;
+		}
+	}
+
+	&__author,
+	&__date {
+		flex-shrink: 1;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__link-expanded {
+		@extend .twrp-reset-box;
+		@extend .twrp-reset-anchor;
+
+		color: var(--twrp-text-color);
+		background-color: transparent;
+
+		&:hover,
+		&:focus {
+			.twrp-ys__title {
+				color: var(--twrp-accent-color);
+			}
+		}
+	}
+}

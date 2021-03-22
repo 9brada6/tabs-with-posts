@@ -12,6 +12,25 @@
 
 ## ✅ Todo
 
+- Finish Youtube Article Block.
+- Try to speed up PHPCS by removing/updating slevomat standards
+
+- If there are no components, then do not display the tabs at all.
+
+- Verify if the Simple Article Block pass all the manual tests.
+- In manual tests, is necessary to declare only the color and background-color for anchor tags, but not even
+in hover/focusable, because the CSS specificity already overwritten those from theme.
+
+- Add numbering shorthand to the views/comment count/rating count meta.
+
+- Make youtube style select small meta/big meta?
+
+- Do not display meta wrapper if the meta inside is not displayed.
+
+- Add a thumbnail component, with the width, in the Yt style?
+
+- Add in manual tests to be sure that we use css variables where we need(meta font size, title font size... etc).
+
 - ### ✅ Todo Documentation
 
     - Add some photos.
@@ -19,7 +38,8 @@
 
     CSS:
 
-    - Don't forget to add CSS specificity in documentation
+    - Don't forget to add CSS specificity in documentation.
+    - Say in documentation that tab variables css are better to be overwrite in tab main classes.
 
     Tabs:
 

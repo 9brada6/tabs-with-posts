@@ -121,6 +121,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Settings/Display_Rating_Count_Setting',
 
 		'Article_Block/Blocks/Simple_Article',
+		'Article_Block/Blocks/Youtube_Article',
 		'Article_Block/Blocks/Modern_Article',
 
 		// CSS.

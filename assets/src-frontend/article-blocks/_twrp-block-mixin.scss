@@ -1,5 +1,6 @@
 @mixin twrp-block-mixin {
-	border-radius: var(--twrp-border-radius);
+	position: relative;
+	overflow: hidden;
 
 	&:last-child {
 		margin-bottom: 0;
