@@ -151,7 +151,7 @@ abstract class Tab_Style {
 	 * @param bool $default_tab
 	 * @return void
 	 */
-	abstract public function tab_button( $button_text, $query_id = '', $default_tab = false );
+	abstract public function tab_button( $button_text, $query_id, $default_tab = false );
 
 	/**
 	 * Template function that is called one time to encapsulate all the tabs
@@ -177,7 +177,7 @@ abstract class Tab_Style {
 	 * @param int|string $query_id
 	 * @return void
 	 */
-	abstract public function start_tab_content_wrapper( $query_id = '' );
+	abstract public function start_tab_content_wrapper( $query_id );
 
 	/**
 	 * Template function that is called before every tab content with its posts
@@ -188,7 +188,7 @@ abstract class Tab_Style {
 	 * @param int|string $query_id
 	 * @return void
 	 */
-	abstract public function end_tab_content_wrapper( $query_id = '' );
+	abstract public function end_tab_content_wrapper( $query_id );
 
 	#region -- Tabby JavaScript attributes
 
@@ -316,7 +316,7 @@ abstract class Tab_Style {
 	 * @param string|int $query_id
 	 * @return void
 	 */
-	public function tab_content_class( $query_id = '' ) {
+	public function tab_content_class( $query_id ) {
 		echo 'twrp-main__tab-content ';
 		$this->bem_class( 'content' );
 

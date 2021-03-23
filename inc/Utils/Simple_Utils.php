@@ -159,6 +159,44 @@ class Simple_Utils {
 	}
 
 	/**
+	 * For a given number, create a number abbreviation.
+	 * It works only for positive numbers. If the number is negative, return 0.
+	 *
+	 * @param int|string $number
+	 * @param bool $extra_shortener Show a decimal only if one number is shortener, default true.
+	 * @return string
+	 */
+	public static function get_number_abbreviation( $number, $extra_shortener = true ) {
+		$abbrevs = array(
+			1000000000 => _x( 'B', 'Abbreviation for Billions', 'twrp' ),
+			1000000    => _x( 'M', 'Abbreviation for Millions', 'twrp' ),
+			1000       => _x( 'K', 'Abbreviation for Thousands', 'twrp' ),
+			1          => '',
+		);
+
+		if ( 0 === $number || $number < 0 ) {
+			return '0';
+		}
+
+		$number_decimal_threshold = 100;
+		if ( $extra_shortener ) {
+			$number_decimal_threshold = 10;
+		}
+
+		$number = (int) $number;
+
+		foreach ( $abbrevs as $exponent => $abbrev ) {
+			if ( $number >= $exponent ) {
+				$display_num = $number / $exponent;
+				$decimals    = ( $exponent >= 1000 && round( $display_num ) < $number_decimal_threshold ) ? 1 : 0;
+				return number_format_i18n( $display_num, $decimals ) . $abbrev;
+			}
+		}
+
+		return (string) $number;
+	}
+
+	/**
 	 * Get a css selector of the body, to increase specificity of the CSS. By
 	 * default this selector is used in all CSS.
 	 *

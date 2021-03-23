@@ -18,16 +18,23 @@ class Select_Control implements Widget_Control {
 	 */
 	public static function display_setting( $id, $name, $value, $args ) {
 		$default_args = array(
-			'default' => '',
-			'options' => array(),
-			'before'  => '',
-			'after'   => '',
+			'default'                => '',
+			'options'                => array(),
+			'before'                 => '',
+			'after'                  => '',
+			'control_class_modifier' => '',
 		);
 		$args         = wp_parse_args( $args, $default_args );
 
 		$value = isset( $value ) && is_string( $value ) ? $value : $args['default'];
+
+		$control_class_modifier = '';
+		if ( ! empty( $args['control_class_modifier'] ) ) {
+			$control_class_modifier = ' twrpb-widget-form__' . $args['control_class_modifier'];
+		}
+
 		?>
-		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-select-control">
+		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-select-control<?= esc_attr( $control_class_modifier ); ?>">
 			<?php if ( $args['before'] ) : ?>
 				<span class="twrpb-widget-form__select-label-before" for="<?= esc_attr( $id ) ?>">
 					<?= $args['before']; // phpcs:ignore -- No XSS. ?>

@@ -105,41 +105,19 @@
 		no difference(eg: no additional errors.)
 	 -->
 
-	<!-- Slevomat Functional - improving the safety and behaviour of code -->
-	<!-- Reports useless @var annotation for constants because the type of constant is always clear. -->
-	<rule ref="SlevomatCodingStandard.TypeHints.UselessConstantTypeHint"/>
-	<!-- If the catch statement contained Exception on PHP 5.x, it means it should probably be rewritten to reference Throwable on PHP 7.x. This sniff enforces that. -->
-	<rule ref="SlevomatCodingStandard.Exceptions.ReferenceThrowableOnly"/>
-	<!-- Disallows assignments in if, elseif and do-while loop conditions. -->
-	<rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition"/>
-	<!-- Disallows use of continue without integer operand in switch because it emits a warning in PHP 7.3 and higher. -->
-	<rule ref="SlevomatCodingStandard.ControlStructures.DisallowContinueWithoutIntegerOperandInSwitch"/>
-	<!-- Disallows using loose == and != comparison operators. Use === and !== instead, they are much more secure and predictable. -->
-	<rule ref="SlevomatCodingStandard.Operators.DisallowEqualOperators"/>
-	<!-- Reports ++ and - operators not used standalone. -->
-	<rule ref="SlevomatCodingStandard.Operators.RequireOnlyStandaloneIncrementAndDecrementOperators"/>
-
-
-	<!-- Slevomat Cleaning - detecting dead code -->
-	<!-- Prohibits uses from the same namespace: namespace Foo; use Foo\Bar -->
-	<rule name="SlevomatCodingStandard.Namespaces.UseFromSameNamespace" />
-	<!-- This sniff finds unreachable catch blocks. -->
-	<rule name="SlevomatCodingStandard.Exceptions.DeadCatch" />
-
-
 	<!-- Slevomat Formatting - rules for consistent code looks -->
-	<!-- Reports use of __CLASS__, get_parent_class(), get_called_class(), get_class() and get_class($this). Class names should be referenced via ::class constant when possible. -->
-	<rule name="SlevomatCodingStandard.Classes.ModernClassNameReference" />
-	<!-- Requires new with parentheses. -->
-	<rule name="SlevomatCodingStandard.ControlStructures.NewWithParentheses" />
-	<!-- Requires only one namespace in a file. -->
-	<rule name="SlevomatCodingStandard.Namespaces.RequireOneNamespaceInFile" />
 	<!-- Enforces using shorthand scalar typehint variants in phpDocs: int instead of integer and bool instead of boolean. -->
 	<rule name="SlevomatCodingStandard.TypeHints.LongTypeHints" />
+
 	<!-- Enforces null type hint on last position in annotations. -->
 	<rule name="SlevomatCodingStandard.TypeHints.NullTypeHintOnLastPosition" />
+
+	<!-- Reports use of __CLASS__, get_parent_class(), get_called_class(), get_class() and get_class($this). Class names should be referenced via ::class constant when possible. -->
+	<rule name="SlevomatCodingStandard.Classes.ModernClassNameReference" />
+
 	<!-- Enforces using shorthand cast operators, forbids use of unset and binary cast operators. -->
 	<rule name="SlevomatCodingStandard.PHP.TypeCast" />
+
 	<!-- Checks duplicate spaces anywhere because there aren't sniffs for every part of code to check formatting. -->
 	<rule name="SlevomatCodingStandard.Whitespaces.DuplicateSpaces">
 		<property name="ignoreSpacesBeforeAssignment" value="1" />

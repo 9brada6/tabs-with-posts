@@ -262,14 +262,19 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			$query_artblock_setting->display_setting();
 		}
 
+		// Display the components settings.
+		$components = $this->get_components();
+
+		if ( empty( $components ) ) {
+			return;
+		}
+
 		?>
 		<h5 class="twrpb-widget-form__query-description-title">
 			<?= _x( 'Change component CSS:', 'backend', 'twrp' ); ?>
 		</h5>
 		<?php
 
-		// Display the components settings.
-		$components         = $this->get_components();
 		$components_display = new Widget_Form_Components_Display( $this->widget_id, $this->query_id, $components );
 		$components_display->display_components();
 	}
@@ -610,6 +615,14 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 		if ( isset( $this->settings[ $key_name ] ) && 'none' !== $this->settings[ $key_name ] ) {
 			$return_value = $this->settings[ $key_name ];
+			if ( 'views' === $return_value && false === Post_Views::get_plugin_to_use() ) {
+				$return_value = false;
+			}
+
+			if ( ( 'rating' === $return_value || 'rating_and_count' === $return_value ) && false === Post_Rating::get_plugin_to_use() ) {
+				$return_value = false;
+			}
+
 			if ( is_string( $return_value ) ) {
 				return $return_value;
 			}
@@ -721,7 +734,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		$num_comments = (int) $this->get_the_comments_number();
-		echo esc_html( number_format_i18n( $num_comments, 0 ) );
+		echo esc_html( Simple_Utils::get_number_abbreviation( $num_comments ) );
 	}
 
 	/**
@@ -750,7 +763,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	public function display_the_views( $post = null ) {
 		$views = $this->get_the_views( $post );
 		if ( is_int( $views ) ) {
-			echo esc_html( number_format_i18n( $views, 0 ) );
+			echo esc_html( Simple_Utils::get_number_abbreviation( $views ) );
 		} else {
 			echo '0';
 		}
@@ -791,9 +804,10 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 				$rating_count = 0;
 			}
 
+			$rating_count = (int) $rating_count;
 			if ( 0 !== $rating_count ) {
 				echo '<span class="twrp-rating-count">(';
-				echo esc_html( number_format_i18n( $rating_count, 0 ) );
+				echo esc_html( Simple_Utils::get_number_abbreviation( $rating_count ) );
 				echo ')</span>';
 			}
 		}

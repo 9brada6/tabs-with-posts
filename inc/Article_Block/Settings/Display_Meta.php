@@ -3,6 +3,8 @@
 namespace TWRP\Article_Block\Settings;
 
 use TWRP\Admin\Widget_Control\Select_Control;
+use TWRP\Plugins\Post_Rating;
+use TWRP\Plugins\Post_Views;
 use TWRP\Utils\Widget_Utils;
 
 /**
@@ -144,10 +146,30 @@ class Display_Meta extends Artblock_Setting {
 	 * @return array
 	 */
 	public function get_setting_args() {
+		$options = $this->possible_options;
+		$number  = '';
+		if ( $this->setting_instance > 0 ) {
+			$number = '(' . $this->setting_instance . ') ';
+		}
+
+		$not_installed_text = _x( '(Not Installed)', 'backend', 'twrp' );
+
+		if ( isset( $options['views'] ) && false === Post_Views::get_plugin_to_use() ) {
+			$options['views'] = $options['views'] . ' ' . $not_installed_text;
+		}
+
+		if ( isset( $options['rating'] ) && false === Post_Rating::get_plugin_to_use() ) {
+			$options['rating'] = $options['rating'] . ' ' . $not_installed_text;
+		}
+
+		if ( isset( $options['rating_and_count'] ) && false === Post_Rating::get_plugin_to_use() ) {
+			$options['rating_and_count'] = $options['rating_and_count'] . ' ' . $not_installed_text;
+		}
+
 		return array(
 			'default' => $this->get_default_value(),
-			'options' => $this->possible_options,
-			'before'  => _x( 'Meta to display:', 'backend', 'twrp' ),
+			'options' => $options,
+			'before'  => $number . _x( 'Meta to display:', 'backend', 'twrp' ),
 		);
 	}
 

@@ -12,16 +12,10 @@
 
 ## ✅ Todo
 
-- Try to speed up PHPCS by removing/updating slevomat standards.
-- In display meta, show items as disabled if they are not installed.
-- If there are no components, then do not display the tabs at all.
-- Add numbering shorthand to the views/comment count/rating count meta.
-- In tab creators and tab styles, make query id mandatory.
-
 - Finish Youtube Article Block.
 - Add margin-top: auto and display flex to title/meta in youtube style.
-- Add a thumbnail component, with the width, in the Yt style?
 - Add components to YT Style.
+- Add a thumbnail component, with the width, in the Yt style?
 
 - Finish Simple Article Block
 - Verify if the Simple Article Block pass all the manual tests.

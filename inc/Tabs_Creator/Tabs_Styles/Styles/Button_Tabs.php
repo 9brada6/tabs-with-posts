@@ -47,7 +47,7 @@ class Button_Tabs extends Tab_Style {
 		<?php
 	}
 
-	public function tab_button( $button_text, $query_id = '', $default_tab = false ) {
+	public function tab_button( $button_text, $query_id, $default_tab = false ) {
 		$default_tab_attr = '';
 		if ( $default_tab ) {
 			$default_tab_attr = ' ' . $this->get_tabby_default_tab_data_attr();
@@ -69,13 +69,13 @@ class Button_Tabs extends Tab_Style {
 		<?php
 	}
 
-	public function start_tab_content_wrapper( $query_id = '' ) {
+	public function start_tab_content_wrapper( $query_id ) {
 		?>
 		<div id="<?php $this->tab_id( $query_id ); ?>" class="<?php $this->tab_content_class( $query_id ); ?>"<?php $this->display_tab__paging_attributes(); ?>>
 		<?php
 	}
 
-	public function end_tab_content_wrapper( $query_id = '' ) {
+	public function end_tab_content_wrapper( $query_id ) {
 		?>
 		</div>
 		<?php
