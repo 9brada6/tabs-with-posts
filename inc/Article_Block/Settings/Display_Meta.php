@@ -167,9 +167,10 @@ class Display_Meta extends Artblock_Setting {
 		}
 
 		return array(
-			'default' => $this->get_default_value(),
-			'options' => $options,
-			'before'  => $number . _x( 'Meta to display:', 'backend', 'twrp' ),
+			'default'                => $this->get_default_value(),
+			'options'                => $options,
+			'before'                 => $number . _x( 'Meta to display:', 'backend', 'twrp' ),
+			'control_class_modifier' => 'display-meta',
 		);
 	}
 

@@ -129,9 +129,12 @@
 		}
 	}
 
-	&__display_meta {
+	&__display-meta {
 		.twrpb-widget-form__select-control {
-			max-width: 180px;
+			flex-basis: 55%;
+			flex-grow: 1;
+			min-width: 160px;
+			max-width: 220px;
 		}
 	}
 }
