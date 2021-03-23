@@ -44,9 +44,6 @@ class Youtube_Article extends Article_Block {
 	public function get_artblock_settings() {
 		$query_settings = array();
 
-		$setting           = new Display_Post_Thumbnail_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $setting;
-
 		$setting           = new Display_Meta(
 			$this->widget_id,
 			$this->query_id,

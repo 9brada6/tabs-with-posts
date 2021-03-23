@@ -12,35 +12,27 @@
 
 ## ✅ Todo
 
-- Finish Youtube Article Block.
-- In article block, make sure that rating/rating_and_count when selected display only the rating/rating_and_count.
-
 - Try to speed up PHPCS by removing/updating slevomat standards.
-- Remove display post thumbnail from YT style.
+- In display meta, show items as disabled if they are not installed.
+- If there are no components, then do not display the tabs at all.
+- Add numbering shorthand to the views/comment count/rating count meta.
+- In tab creators and tab styles, make query id mandatory.
+
+- Finish Youtube Article Block.
+- Add margin-top: auto and display flex to title/meta in youtube style.
+- Add a thumbnail component, with the width, in the Yt style?
+- Add components to YT Style.
+
+- Finish Simple Article Block
+- Verify if the Simple Article Block pass all the manual tests.
 - Make Simple Article BLock with meta places.
 - Delete Meta Settings to display, but not Post Thumbnail.
-- Add margin-top: auto and display flex to title/meta in youtube style.
-- In display meta, show items as disabled if they are not installed.
+- Do not display meta wrapper if the meta inside is not displayed(in simple article).
 
-- If there are no components, then do not display the tabs at all.
-
-- Verify if the Simple Article Block pass all the manual tests.
 - In manual tests, is necessary to declare only the color and background-color for anchor tags, but not even
 in hover/focusable, because the CSS specificity already overwritten those from theme.
-
-- Add numbering shorthand to the views/comment count/rating count meta.
-
-- Make youtube style select small meta/big meta?
-
-- Do not display meta wrapper if the meta inside is not displayed.
-
-- Add a thumbnail component, with the width, in the Yt style?
-
 - Add in manual tests to be sure that we use css variables where we need(meta font size, title font size... etc).
-
 - Add in manual tests to check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
-
-- In tab creators and tab styles, make query id mandatory.
 
 - ### ✅ Todo Documentation
 

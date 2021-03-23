@@ -20,7 +20,6 @@ use TWRP\Article_Block\Settings\Artblock_Setting;
 
 use WP_Post;
 use RuntimeException;
-use TWRP\TWRP_Widget;
 use WP_Term;
 
 /**
@@ -555,7 +554,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 	/**
 	 * Display the meta that needs to be displayed in that place defined by a number.
-	 * 
+	 *
 	 * @param int $number
 	 * @return void
 	 */
@@ -580,7 +579,11 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		} elseif ( 'rating' === $meta_displayed || 'rating_and_count' === $meta_displayed ) {
 			$this->display_rating_icon();
 			echo ' ';
-			$this->display_rating();
+			if ( 'rating_and_count' === $meta_displayed ) {
+				$this->display_rating( null, true );
+			} else {
+				$this->display_rating( null, false );
+			}
 		} elseif ( 'comments' === $meta_displayed ) {
 			$this->display_comments_icon();
 			echo ' ';
@@ -606,7 +609,10 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		$key_name = 'display_meta_' . $number;
 
 		if ( isset( $this->settings[ $key_name ] ) && 'none' !== $this->settings[ $key_name ] ) {
-			return $this->settings[ $key_name ];
+			$return_value = $this->settings[ $key_name ];
+			if ( is_string( $return_value ) ) {
+				return $return_value;
+			}
 		}
 
 		return false;
@@ -765,9 +771,10 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * If there is no rating, it displays 0.
 	 *
 	 * @param WP_Post|int|null $post Defaults to global $post.
+	 * @param bool $display_count WHether or not to also display the count.
 	 * @return void
 	 */
-	public function display_rating( $post = null ) {
+	public function display_rating( $post = null, $display_count = true ) {
 		$avg_rating   = $this->get_the_average_rating( $post );
 		$rating_count = null;
 
@@ -777,7 +784,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		echo esc_html( number_format_i18n( $avg_rating, 1 ) );
-		if ( 0 !== $avg_rating && 0 !== $rating_count && $this->is_rating_count_displayed() ) {
+		if ( 0 !== $avg_rating && 0 !== $rating_count && $display_count ) {
 			$rating_count = $this->get_rating_count( $post );
 
 			if ( false === $rating_count ) {
