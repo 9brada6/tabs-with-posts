@@ -78,6 +78,7 @@
 displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last item.
 14. Be sure that we use css variables where we need(meta font size, title font size... etc).
 15. Check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
+16. Check if flex displayed meta should have align-items: baseline(in case one of the font-size is changed).
 
 ## Plugins
 

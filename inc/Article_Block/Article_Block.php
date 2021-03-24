@@ -571,19 +571,15 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 		if ( 'author' === $meta_displayed ) {
 			$this->display_author_icon();
-			echo ' ';
 			$this->display_the_author();
 		} elseif ( 'date' === $meta_displayed ) {
 			$this->display_date_icon();
-			echo ' ';
 			$this->display_the_date();
 		} elseif ( 'views' === $meta_displayed ) {
 			$this->display_views_icon();
-			echo ' ';
 			$this->display_the_views();
 		} elseif ( 'rating' === $meta_displayed || 'rating_and_count' === $meta_displayed ) {
 			$this->display_rating_icon();
-			echo ' ';
 			if ( 'rating_and_count' === $meta_displayed ) {
 				$this->display_rating( null, true );
 			} else {
@@ -591,11 +587,9 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			}
 		} elseif ( 'comments' === $meta_displayed ) {
 			$this->display_comments_icon();
-			echo ' ';
 			$this->display_comments_number();
 		} elseif ( 'category' === $meta_displayed ) {
 			$this->display_category_icon();
-			echo ' ';
 			$this->display_the_main_category();
 		}
 	}

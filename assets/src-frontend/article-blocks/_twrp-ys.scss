@@ -17,6 +17,8 @@
 		@extend .twrp-reset-box;
 
 		margin-bottom: 0.4rem;
+		color: var(--twrp-text-color);
+		background-color: transparent;
 	}
 
 	&__thumbnail-container {
@@ -38,6 +40,7 @@
 		position: absolute;
 		bottom: 0;
 		display: flex;
+		align-items: baseline;
 		width: 100%;
 	}
 
@@ -77,6 +80,7 @@
 		@extend .twrp-reset-box;
 
 		display: flex;
+		align-items: baseline;
 
 		& > * {
 			margin-right: 0.6em;
@@ -97,9 +101,6 @@
 	&__link-expanded {
 		@extend .twrp-reset-box;
 		@extend .twrp-reset-anchor;
-
-		color: var(--twrp-text-color);
-		background-color: transparent;
 
 		&:hover,
 		&:focus {
