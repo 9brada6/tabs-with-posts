@@ -1,3 +1,7 @@
+.twrp-main__tab-content--youtube_style {
+	--twrp-grid-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+}
+
 .twrp-ys {
 	@include twrp-block-mixin;
 
@@ -17,8 +21,8 @@
 
 	&__thumbnail-container {
 		position: relative;
-		flex: 0 0 120px;
-		margin-right: 0.4rem;
+		flex: 0 0 var(--twrp-yt-thumbnail-width);
+		margin-right: var(--twrp-yt-thumbnail-right-margin);
 	}
 
 	&__thumbnail-wrapper {
@@ -35,6 +39,13 @@
 		bottom: 0;
 		display: flex;
 		width: 100%;
+	}
+
+	&__right-presentation-wrapper {
+		@extend .twrp-reset-box;
+
+		flex-grow: 1;
+		width: calc(calc(100% - var(--twrp-yt-thumbnail-width)) - var(--twrp-yt-thumbnail-right-margin));
 	}
 
 	&__meta {
@@ -80,9 +91,7 @@
 	&__date,
 	&__category {
 		flex-shrink: 1;
-		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space: nowrap;
 	}
 
 	&__link-expanded {

@@ -69,14 +69,15 @@
 5. Usually only one a(anchor) tag should be used.
 6. Each element must not declare css proprieties that can inherit: font-weight, font-face, font-kerning... etc. The only exceptions are font-size, word-break, word-wrap, white-spacing and line-height.
 7. Meta elements should have font-variant-numeric: lining-nums; to align the numbers in meta with the icons.
-8. All anchors should have the color and background color set in CSS, including in hover, focus state.
-9. ???? Make sure that .twrp-block-padding class is added to the child of main article block if needed for horizontal padding.
-10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible. Margin-top: auto or margin-bottom: auto is permitted to align blocks in grid.
-11. Each article block should have word-wrap: break-word where is necessary, including in the title and meta. Test this by inserting long lines of text.
-12. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited.
-13. Any block should import twrp-block-mixin, and additionally, any meta item should have the class &__meta, title should have the class &__title.
-14. Test how article blocks are displayed in grid mode when the title/meta is longer than the others. Make sure is
+8. All anchors should have the color and background color set in CSS, hover/focus are not mandatory, since it is overwritten by CSS specificity.
+9. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible. Margin-top: auto or margin-bottom: auto is permitted to align blocks in grid.
+10. Each article block should have word-wrap: break-word where is necessary, including in the title and meta. Test this by inserting long lines of text.
+11. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited.
+12. Any block should import twrp-block-mixin, and additionally, any meta item should have the class &__meta, title should have the class &__title.
+13. Test how article blocks are displayed in grid mode when the title/meta is longer than the others. Make sure is
 displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last item.
+14. Be sure that we use css variables where we need(meta font size, title font size... etc).
+15. Check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
 
 ## Plugins
 

@@ -13,7 +13,6 @@
 ## ✅ Todo
 
 - Finish Youtube Article Block.
-- Add margin-top: auto and display flex to title/meta in youtube style.
 - Add components to YT Style.
 - Add a thumbnail component, with the width, in the Yt style?
 
@@ -22,11 +21,6 @@
 - Make Simple Article BLock with meta places.
 - Delete Meta Settings to display, but not Post Thumbnail.
 - Do not display meta wrapper if the meta inside is not displayed(in simple article).
-
-- In manual tests, is necessary to declare only the color and background-color for anchor tags, but not even
-in hover/focusable, because the CSS specificity already overwritten those from theme.
-- Add in manual tests to be sure that we use css variables where we need(meta font size, title font size... etc).
-- Add in manual tests to check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
 
 - ### ✅ Todo Documentation
 
@@ -37,6 +31,7 @@ in hover/focusable, because the CSS specificity already overwritten those from t
 
     - Don't forget to add CSS specificity in documentation.
     - Say in documentation that tab variables css are better to be overwrite in tab main classes.
+    - Say in YT style documentation to use the variables for yt style.
 
     Tabs:
 
