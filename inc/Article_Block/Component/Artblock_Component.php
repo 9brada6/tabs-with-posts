@@ -20,6 +20,7 @@ class Artblock_Component {
 
 	const FLEX_ORDER_SETTING            = 'Flex_Order_Setting';
 	const TITLE_FONT_SIZE_SETTING       = 'Title_Font_Size_Setting';
+	const META_FONT_SIZE_SETTING        = 'Meta_Font_Size_Setting';
 	const FONT_SIZE_SETTING             = 'Font_Size_Setting';
 	const LINE_HEIGHT_SETTING           = 'Line_Height_Setting';
 	const FONT_WEIGHT_SETTING           = 'Font_Weight_Setting';

@@ -12,8 +12,6 @@
 
 ## ✅ Todo
 
-- In widget, change the setting names that have *title* in them.
-
 - Finish Youtube Article Block.
 - Add a thumbnail component, with the width, in the Yt style?
 
@@ -24,6 +22,7 @@
 - Add in manual test: When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus if possible(and use + or ~ for next), if not select the block and use hover and :focus-within. Try to not use :focus-within where possible to increase browser compatibility.
 - Add in manual tests, for the title CSS, use color/background color target the title inside anchor, when hover/focus is used, target the title inside the anchor(css property should be on h3, and not on the anchor, in css and in components).
 - Add in manual test, check if thumbnail image dimension is correct.
+- Add in manual tests to use "header" and no "title" to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
 
 - ### ✅ Todo Documentation
 
@@ -83,6 +82,7 @@
 - ➕ Support more versions of KK rating plugin, maybe version 3.0 or 2.6 too?.
 - ➕ Animate when a page is shown(increase height).
 - ➕ Support reading time plugins.
+- ➕ Improve browser compatibility.
 
 ## 📖 Development Documentation
 

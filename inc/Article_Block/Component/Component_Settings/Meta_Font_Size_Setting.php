@@ -5,13 +5,12 @@ namespace TWRP\Article_Block\Component;
 use TWRP\Admin\Widget_Control\Number_Control;
 
 /**
- * Class used to change the title font size of the specific component.
+ * Class used to change the meta font size of the specific component.
  */
-class Title_Font_Size_Setting extends Component_Setting {
+class Meta_Font_Size_Setting extends Component_Setting {
 
 	public function get_key_name() {
-		// Use "header" and no "title" to prevent the WP widget to show a widget title.
-		return 'header_font_size';
+		return 'meta_font_size';
 	}
 
 	public function display_setting( $prefix_id, $prefix_name, $value ) {
@@ -38,7 +37,7 @@ class Title_Font_Size_Setting extends Component_Setting {
 
 	public function get_css( $value ) {
 		if ( is_numeric( $value ) ) {
-			return "--twrp-title-font-size:${value}rem;";
+			return "--twrp-meta-font-size:${value}rem;";
 		}
 
 		return '';

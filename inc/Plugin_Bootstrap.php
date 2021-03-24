@@ -101,6 +101,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Component/Artblock_Component',
 		'Article_Block/Component/Component_Settings/Component_Setting',
 		
+		'Article_Block/Component/Component_Settings/Meta_Font_Size_Setting',
 		'Article_Block/Component/Component_Settings/Title_Font_Size_Setting',
 		'Article_Block/Component/Component_Settings/Font_Size_Setting',
 		'Article_Block/Component/Component_Settings/Line_Height_Setting',
