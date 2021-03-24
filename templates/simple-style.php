@@ -23,47 +23,31 @@ if ( ! isset( $artblock ) || ! ( $artblock instanceof Simple_Article ) ) {
 		</div>
 	<?php endif; ?>
 
+	<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2, 3, 4, 5, 6 ) ) ) : ?>
 	<div class="twrp-ss__meta-wrapper">
-		<?php if ( $artblock->is_author_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__author">
-				<?php $artblock->display_author_icon(); ?>
-				<?php $artblock->display_the_author(); ?>
-			</span>
+		<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
+			<span class="twrp-ss__meta twrp-ss__meta--1 twrp-ss__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->is_date_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__date">
-				<?php $artblock->display_date_icon(); ?>
-				<?php $artblock->display_the_date(); ?>
-			</span>
+		<?php if ( $artblock->get_meta_displayed_name( 2 ) ) : ?>
+			<span class="twrp-ss__meta twrp-ss__meta--2 twrp-ss__<?php $artblock->meta_suffix_class( 2 ); ?>"><?php $artblock->display_meta( 2 ); ?></span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->are_views_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__views">
-				<?php $artblock->display_views_icon(); ?>
-				<?php $artblock->display_the_views(); ?>
-			</span>
+		<?php if ( $artblock->get_meta_displayed_name( 3 ) ) : ?>
+			<span class="twrp-ss__meta twrp-ss__meta--3 twrp-ss__<?php $artblock->meta_suffix_class( 3 ); ?>"><?php $artblock->display_meta( 3 ); ?></span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->is_rating_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__rating">
-				<?php $artblock->display_rating_icon(); ?>
-				<?php $artblock->display_rating(); ?>
-			</span>
+		<?php if ( $artblock->get_meta_displayed_name( 4 ) ) : ?>
+			<span class="twrp-ss__meta twrp-ss__meta--4 twrp-ss__<?php $artblock->meta_suffix_class( 4 ); ?>"><?php $artblock->display_meta( 4 ); ?></span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->are_comments_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__comments">
-			<?php $artblock->display_comments_icon(); ?>
-			<?php $artblock->display_comments_number(); ?>
-			</span>
+		<?php if ( $artblock->get_meta_displayed_name( 5 ) ) : ?>
+			<span class="twrp-ss__meta twrp-ss__meta--5 twrp-ss__<?php $artblock->meta_suffix_class( 5 ); ?>"><?php $artblock->display_meta( 5 ); ?></span>
 		<?php endif; ?>
 
-		<?php if ( $artblock->is_main_category_displayed() ) : ?>
-			<span class="twrp-ss__meta twrp-ss__category">
-				<?php $artblock->display_category_icon(); ?>
-				<?php $artblock->display_the_main_category(); ?>
-			</span>
+		<?php if ( $artblock->get_meta_displayed_name( 6 ) ) : ?>
+			<span class="twrp-ss__meta twrp-ss__meta--6 twrp-ss__<?php $artblock->meta_suffix_class( 6 ); ?>"><?php $artblock->display_meta( 6 ); ?></span>
 		<?php endif; ?>
 	</div>
+	<?php endif; ?>
 </article>

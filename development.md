@@ -12,18 +12,18 @@
 
 ## ✅ Todo
 
+- Make title font-size setting in component to change the variable title font size.
+
 - Finish Youtube Article Block.
 - Add a thumbnail component, with the width, in the Yt style?
 
-- Finish Simple Article Block
-- Verify if the Simple Article Block pass all the manual tests.
-- Make Simple Article BLock with meta places.
-- Delete Meta Settings to display, but not Post Thumbnail.
-- Do not display meta wrapper if the meta inside is not displayed(in simple article).
+- Finish Simple Article Block(pass all tests)
+- Display only 3 meta per row?
 
 - Add in manual tests in article blocks/tabs to check if elements differ from hover/focus
 - Add in manual test: When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus if possible(and use + or ~ for next), if not select the block and use hover and :focus-within. Try to not use :focus-within where possible to increase browser compatibility.
 - Add in manual tests, for the title CSS, use color/background color target the title inside anchor, when hover/focus is used, target the title inside the anchor(css property should be on h3, and not on the anchor, in css and in components).
+- Add in manual test, check if thumbnail image dimension is correct.
 
 - ### ✅ Todo Documentation
 

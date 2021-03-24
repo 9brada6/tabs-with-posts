@@ -11,7 +11,7 @@ if ( ! isset( $artblock ) || ! ( $artblock instanceof Youtube_Article ) ) {
 <article class="twrp-ys twrp-block <?php $artblock->the_block_class(); ?>">
 	<div class="twrp-ys__thumbnail-container">
 		<div class="twrp-thumbnail-wrapper twrp-ys__thumbnail-wrapper">
-			<?php $artblock->display_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ys__thumbnail' ) ); ?>
+			<?php $artblock->display_post_thumbnail( 'thumbnail', array( 'class' => 'twrp-thumbnail twrp-ys__thumbnail' ) ); ?>
 		</div>
 
 		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 5, 6 ) ) ) : ?>

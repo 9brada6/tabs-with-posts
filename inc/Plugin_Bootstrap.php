@@ -112,14 +112,7 @@ class Plugin_Bootstrap {
 
 		'Article_Block/Settings/Artblock_Setting',
 		'Article_Block/Settings/Display_Meta',
-		'Article_Block/Settings/Display_Author_Setting',
-		'Article_Block/Settings/Display_Date_Setting',
-		'Article_Block/Settings/Display_Comments_Setting',
-		'Article_Block/Settings/Display_Main_Category_Setting',
 		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
-		'Article_Block/Settings/Display_Views_Setting',
-		'Article_Block/Settings/Display_Rating_Setting',
-		'Article_Block/Settings/Display_Rating_Count_Setting',
 
 		'Article_Block/Blocks/Simple_Article',
 		'Article_Block/Blocks/Youtube_Article',

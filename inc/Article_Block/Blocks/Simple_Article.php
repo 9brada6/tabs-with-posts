@@ -7,13 +7,7 @@ use TWRP\Article_Block\Article_Block;
 use TWRP\Article_Block\Component\Artblock_Component;
 
 use TWRP\Article_Block\Settings\Display_Post_Thumbnail_Setting;
-use TWRP\Article_Block\Settings\Display_Author_Setting;
-use TWRP\Article_Block\Settings\Display_Date_Setting;
-use TWRP\Article_Block\Settings\Display_Views_Setting;
-use TWRP\Article_Block\Settings\Display_Rating_Setting;
-use TWRP\Article_Block\Settings\Display_Rating_Count_Setting;
-use TWRP\Article_Block\Settings\Display_Comments_Setting;
-use TWRP\Article_Block\Settings\Display_Main_Category_Setting;
+use TWRP\Article_Block\Settings\Display_Meta;
 
 /**
  * The class that display a post in a style, that is named "Simple", because
@@ -59,9 +53,7 @@ class Simple_Article extends Article_Block {
 		);
 
 		$component_settings = array(
-			Artblock_Component::FLEX_ORDER_SETTING,
 			Artblock_Component::FONT_SIZE_SETTING,
-			Artblock_Component::LINE_HEIGHT_SETTING,
 			Artblock_Component::FONT_WEIGHT_SETTING,
 			Artblock_Component::TEXT_DECORATION_SETTING,
 			Artblock_Component::COLOR_SETTING,
@@ -74,75 +66,94 @@ class Simple_Article extends Article_Block {
 
 		#region -- Title Component
 
+		$hover_css_selector   = $css_prefix . ' .twrp-ss__link-expanded:hover .twrp-ss__title, ' . $css_prefix . ' .twrp-ss__link-expanded:focus .twrp-ss__title';
 		$current_settings     = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
 		$css_components       = array(
 			$css_prefix . '.twrp-ss__title' => $title_component_settings,
-			$css_prefix . '.twrp-ss__link-expanded:hover .twrp-ss__title' => $component_settings_hover,
+			$hover_css_selector => $component_settings_hover,
 		);
 		$component            = new Artblock_Component( 'title', _x( 'Title', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['title'] = $component;
 
 		#endregion -- Title Component
 
-		#region -- Author Component
+		#region -- Meta 1
 
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__meta-wrapper .twrp-ss__meta--1, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__meta-wrapper .twrp-ss__meta--1';
+		$current_settings      = ( isset( $this->settings['meta_1'] ) && is_array( $this->settings['meta_1'] ) ) ? $this->settings['meta_1'] : array();
 		$css_components        = array(
-			$css_prefix . '.twrp-ss__author' => $component_settings,
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__author' => $component_settings_hover,
+			$css_prefix . ' .twrp-ss__meta--1' => $component_settings,
+			$hover_css_selector                => $component_settings_hover,
 		);
-		$current_settings      = ( isset( $this->settings['author'] ) && is_array( $this->settings['author'] ) ) ? $this->settings['author'] : array();
-		$component             = new Artblock_Component( 'author', _x( 'Author', 'backend', 'twrp' ), $current_settings, $css_components );
-		$components ['author'] = $component;
+		$component             = new Artblock_Component( 'meta_1', _x( 'Meta 1', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['meta_1'] = $component;
 
-		#endregion -- Author Component
+		#endregion -- Meta 1
 
-		#region -- Date Component
+		#region -- Meta 2
 
-		$current_settings    = ( isset( $this->settings['date'] ) && is_array( $this->settings['date'] ) ) ? $this->settings['date'] : array();
-		$css_components      = array(
-			$css_prefix . '.twrp-ss__date' => $component_settings,
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__date' => $component_settings_hover,
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__meta-wrapper .twrp-ss__meta--2, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__meta-wrapper .twrp-ss__meta--2';
+		$current_settings      = ( isset( $this->settings['meta_2'] ) && is_array( $this->settings['meta_2'] ) ) ? $this->settings['meta_2'] : array();
+		$css_components        = array(
+			$css_prefix . ' .twrp-ss__meta--2' => $component_settings,
+			$hover_css_selector                => $component_settings_hover,
 		);
-		$component           = new Artblock_Component( 'date', _x( 'Date', 'backend', 'twrp' ), $current_settings, $css_components );
-		$components ['date'] = $component;
+		$component             = new Artblock_Component( 'meta_2', _x( 'Meta 2', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['meta_2'] = $component;
 
-		#endregion -- Date Component
+		#endregion -- Meta 2
 
-		#region -- Views Component
+		#region -- Meta 3
 
-		$current_settings     = ( isset( $this->settings['views'] ) && is_array( $this->settings['views'] ) ) ? $this->settings['views'] : array();
-		$css_components       = array(
-			$css_prefix . '.twrp-ss__views' => $component_settings,
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__views' => $component_settings_hover,
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__meta-wrapper .twrp-ss__meta--3, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__meta-wrapper .twrp-ss__meta--3';
+		$current_settings      = ( isset( $this->settings['meta_3'] ) && is_array( $this->settings['meta_3'] ) ) ? $this->settings['meta_3'] : array();
+		$css_components        = array(
+			$css_prefix . ' .twrp-ss__meta--3' => $component_settings,
+			$hover_css_selector                => $component_settings_hover,
 		);
-		$component            = new Artblock_Component( 'views', _x( 'Views', 'backend', 'twrp' ), $current_settings, $css_components );
-		$components ['views'] = $component;
+		$component             = new Artblock_Component( 'meta_3', _x( 'Meta 3', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['meta_3'] = $component;
 
-		#endregion -- Views Component
+		#endregion -- Meta 3
 
-		#region -- Comments Component
+		#region -- Meta 4
 
-		$current_settings        = ( isset( $this->settings['comments'] ) && is_array( $this->settings['comments'] ) ) ? $this->settings['comments'] : array();
-		$css_components          = array(
-			$css_prefix . '.twrp-ss__comments' => $component_settings,
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__comments' => $component_settings_hover,
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__meta-wrapper .twrp-ss__meta--4, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__meta-wrapper .twrp-ss__meta--4';
+		$current_settings      = ( isset( $this->settings['meta_4'] ) && is_array( $this->settings['meta_4'] ) ) ? $this->settings['meta_4'] : array();
+		$css_components        = array(
+			$css_prefix . ' .twrp-ss__meta--4' => $component_settings,
+			$hover_css_selector                => $component_settings_hover,
 		);
-		$component               = new Artblock_Component( 'comments', _x( 'Comments', 'backend', 'twrp' ), $current_settings, $css_components );
-		$components ['comments'] = $component;
+		$component             = new Artblock_Component( 'meta_4', _x( 'Meta 4', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['meta_4'] = $component;
 
-		#endregion -- Comments Component
+		#endregion -- Meta 4
 
-		#region -- Category Component
+		#region -- Meta 5
 
-		$current_settings        = ( isset( $this->settings['category'] ) && is_array( $this->settings['category'] ) ) ? $this->settings['category'] : array();
-		$css_components          = array(
-			$css_prefix . '.twrp-ss__category' => $component_settings,
-			$css_prefix . '.twrp-ss__link-expanded:hover + .twrp-ss__meta-wrapper .twrp-ss__category' => $component_settings_hover,
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__meta-wrapper .twrp-ss__meta--5, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__meta-wrapper .twrp-ss__meta--5';
+		$current_settings      = ( isset( $this->settings['meta_5'] ) && is_array( $this->settings['meta_5'] ) ) ? $this->settings['meta_5'] : array();
+		$css_components        = array(
+			$css_prefix . ' .twrp-ss__meta--5' => $component_settings,
+			$hover_css_selector                => $component_settings_hover,
 		);
-		$component               = new Artblock_Component( 'category', _x( 'Category', 'backend', 'twrp' ), $current_settings, $css_components );
-		$components ['category'] = $component;
+		$component             = new Artblock_Component( 'meta_5', _x( 'Meta 5', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['meta_5'] = $component;
 
-		#endregion -- Category Component
+		#endregion -- Meta 5
+
+		#region -- Meta 6
+
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__meta-wrapper .twrp-ss__meta--6, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__meta-wrapper .twrp-ss__meta--6';
+		$current_settings      = ( isset( $this->settings['meta_6'] ) && is_array( $this->settings['meta_6'] ) ) ? $this->settings['meta_6'] : array();
+		$css_components        = array(
+			$css_prefix . ' .twrp-ss__meta--6' => $component_settings,
+			$hover_css_selector                => $component_settings_hover,
+		);
+		$component             = new Artblock_Component( 'meta_6', _x( 'Meta 6', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['meta_6'] = $component;
+
+		#endregion -- Meta 6
 
 		return $components;
 	}
@@ -153,25 +164,70 @@ class Simple_Article extends Article_Block {
 		$setting           = new Display_Post_Thumbnail_Setting( $this->widget_id, $this->query_id, $this->settings );
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Author_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 1,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Date_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 2,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Views_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 3,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Rating_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 4,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Rating_Count_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 5,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
-		$setting           = new Display_Comments_Setting( $this->widget_id, $this->query_id, $this->settings );
-		$query_settings [] = $setting;
-
-		$setting           = new Display_Main_Category_Setting( $this->widget_id, $this->query_id, $this->settings );
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 6,
+				'meta'     => 'all',
+			)
+		);
 		$query_settings [] = $setting;
 
 		return $query_settings;
