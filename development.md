@@ -12,7 +12,7 @@
 
 ## ✅ Todo
 
-- Make title font-size setting in component to change the variable title font size.
+- In widget, change the setting names that have *title* in them.
 
 - Finish Youtube Article Block.
 - Add a thumbnail component, with the width, in the Yt style?

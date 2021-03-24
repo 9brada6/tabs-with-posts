@@ -47,8 +47,8 @@ class Youtube_Article extends Article_Block {
 			Artblock_Component::COLOR_SETTING,
 		);
 
-		$component_settings_with_line_height = array(
-			Artblock_Component::FONT_SIZE_SETTING,
+		$title_component_settings = array(
+			Artblock_Component::TITLE_FONT_SIZE_SETTING,
 			Artblock_Component::LINE_HEIGHT_SETTING,
 			Artblock_Component::FONT_WEIGHT_SETTING,
 			Artblock_Component::TEXT_DECORATION_SETTING,
@@ -65,7 +65,7 @@ class Youtube_Article extends Article_Block {
 		$hover_css_selector   = $css_prefix . ' .twrp-ys__link-expanded:hover .twrp-ys__title, ' . $css_prefix . ' .twrp-ys__link-expanded:focus .twrp-ys__title';
 		$current_settings     = ( isset( $this->settings['title'] ) && is_array( $this->settings['title'] ) ) ? $this->settings['title'] : array();
 		$css_components       = array(
-			$css_prefix . ' .twrp-ys__title' => $component_settings_with_line_height,
+			$css_prefix . ' .twrp-ys__title' => $title_component_settings,
 			$hover_css_selector              => $component_settings_hover,
 		);
 		$component            = new Artblock_Component( 'title', _x( 'Title', 'backend', 'twrp' ), $current_settings, $css_components );
