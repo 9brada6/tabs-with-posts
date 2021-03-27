@@ -29,6 +29,8 @@ class Artblock_Component {
 	const HOVER_TEXT_DECORATION_SETTING = 'Hover_Text_Decoration_Setting';
 	const HOVER_COLOR_SETTING           = 'Hover_Color_Setting';
 
+	const YOUTUBE_STYLE_THUMBNAIL_WIDTH          = 'Youtube_Style_Thumbnail_Width';
+
 	/**
 	 * The name of the component. It should be as something unique, will appear
 	 * when creating the names in HTML attribute.

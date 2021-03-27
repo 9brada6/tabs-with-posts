@@ -13,7 +13,6 @@
 ## ✅ Todo
 
 - Finish Youtube Article Block.
-- Add a thumbnail component, with the width, in the Yt style?
 
 - Finish Simple Article Block(pass all tests)
 - Display only 3 meta per row?

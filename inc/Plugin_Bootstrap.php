@@ -100,7 +100,7 @@ class Plugin_Bootstrap {
 
 		'Article_Block/Component/Artblock_Component',
 		'Article_Block/Component/Component_Settings/Component_Setting',
-		
+
 		'Article_Block/Component/Component_Settings/Meta_Font_Size_Setting',
 		'Article_Block/Component/Component_Settings/Title_Font_Size_Setting',
 		'Article_Block/Component/Component_Settings/Font_Size_Setting',
@@ -111,6 +111,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Component/Component_Settings/Flex_Order_Setting',
 		'Article_Block/Component/Component_Settings/Text_Decoration_Setting',
 		'Article_Block/Component/Component_Settings/Hover_Text_Decoration_Setting',
+		'Article_Block/Component/Component_Settings/Youtube_Style_Thumbnail_Width',
 
 		'Article_Block/Settings/Artblock_Setting',
 		'Article_Block/Settings/Display_Meta',

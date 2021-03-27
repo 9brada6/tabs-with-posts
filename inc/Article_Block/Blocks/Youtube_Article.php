@@ -55,6 +55,10 @@ class Youtube_Article extends Article_Block {
 			Artblock_Component::COLOR_SETTING,
 		);
 
+		$thumbnail_settings = array(
+			Artblock_Component::YOUTUBE_STYLE_THUMBNAIL_WIDTH,
+		);
+
 		$component_settings_hover = array(
 			Artblock_Component::HOVER_TEXT_DECORATION_SETTING,
 			Artblock_Component::HOVER_COLOR_SETTING,
@@ -73,6 +77,17 @@ class Youtube_Article extends Article_Block {
 		$components ['header'] = $component;
 
 		#endregion -- Title
+
+		#region -- Thumbnail
+
+		$current_settings         = ( isset( $this->settings['thumbnail'] ) && is_array( $this->settings['thumbnail'] ) ) ? $this->settings['thumbnail'] : array();
+		$css_components           = array(
+			$css_prefix => $thumbnail_settings,
+		);
+		$component                = new Artblock_Component( 'thumbnail', _x( 'Thumbnail', 'backend', 'twrp' ), $current_settings, $css_components );
+		$components ['thumbnail'] = $component;
+
+		#endregion -- Thumbnail
 
 		#region -- Meta 1
 
