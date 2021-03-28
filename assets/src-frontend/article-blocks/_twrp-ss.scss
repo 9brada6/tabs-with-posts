@@ -15,11 +15,11 @@
 		margin-bottom: 0.35rem;
 	}
 
-	&__meta-wrapper {
+	&__first-meta-wrapper,
+	&__second-meta-wrapper {
 		@extend .twrp-reset-box;
 
 		display: flex;
-		flex-wrap: wrap;
 		align-items: baseline;
 	}
 
@@ -28,6 +28,15 @@
 
 		display: inline-block;
 		margin-right: 0.5rem;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	&__author,
+	&__date,
+	&__category {
+		flex-shrink: 1;
+		text-overflow: ellipsis;
 	}
 
 	&__thumbnail-container {
