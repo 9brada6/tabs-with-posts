@@ -2,10 +2,6 @@
 	position: relative;
 	overflow: hidden;
 
-	&:last-child {
-		margin-bottom: 0;
-	}
-
 	&__meta {
 		font-size: var(--twrp-meta-font-size);
 		line-height: var(--twrp-meta-line-height);
@@ -26,6 +22,8 @@
 		line-height: var(--twrp-title-line-height);
 		color: var(--twrp-text-color);
 		text-overflow: ellipsis;
+		word-wrap: break-word;
+		overflow-wrap: break-word;
 		transition: var(--twrp-default-component-transition);
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: var(--twrp-title-line-clamp);

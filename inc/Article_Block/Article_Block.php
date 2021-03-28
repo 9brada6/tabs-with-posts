@@ -471,11 +471,22 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	/**
 	 * Display the title of the post.
 	 *
+	 * @param string $before HTML to display before the title.
+	 * @param string $after HTML to display after the title.
+	 * @param bool $echo
 	 * @param WP_Post|int|null $post Defaults to global post.
-	 * @return void
+	 * @return string
 	 */
-	public function the_title( $post = null ) {
-		echo $this->get_the_title( $post ); // phpcs:ignore WordPress.Security -- This is a feature.
+	public function the_title( $before = '', $after = '', $echo = true, $post = null ) {
+		$title  = $before;
+		$title .= $this->get_the_title( $post );
+		$title .= $after;
+
+		if ( $echo ) {
+			echo $title; // phpcs:ignore WordPress.Security -- This is a feature.
+		}
+
+		return $title;
 	}
 
 	/**

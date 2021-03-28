@@ -1,8 +1,6 @@
 <?php
 
-use TWRP\Article_Block\Blocks\Youtube_Article;
-
-if ( ! isset( $artblock ) || ! ( $artblock instanceof Youtube_Article ) ) {
+if ( ! isset( $artblock ) ) {
 	return;
 }
 
@@ -29,9 +27,7 @@ if ( ! isset( $artblock ) || ! ( $artblock instanceof Youtube_Article ) ) {
 
 	<div class="twrp-ys__right-presentation-wrapper">
 		<a class="twrp-link-expand twrp-ys__link-expanded" href="<?php $artblock->the_permalink(); ?>">
-			<h3 class="twrp-ys__title">
-				<?php $artblock->the_title(); ?>
-			</h3>
+			<?php $artblock->the_title( '<h3 class="twrp-ys__title">', '</h3>' ); ?>
 		</a>
 
 		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2 ) ) ) : ?>
@@ -58,5 +54,4 @@ if ( ! isset( $artblock ) || ! ( $artblock instanceof Youtube_Article ) ) {
 		</div>
 		<?php endif; ?>
 	</div>
-
 </article>

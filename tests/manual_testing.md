@@ -27,7 +27,7 @@
 1. If a setting is changed, the "Save" button becomes active, for all items.
 2. Use "header" and no "title" to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
 
-### Components
+### Widget(Components)
 
 - Components settings by default should be collapsed(hidden).
 - Order of components tab buttons should be the same as they appear in the HTML.
@@ -53,41 +53,42 @@
 
 ## Article Blocks
 
-1. There should be no space between HTML tags and the meta/title. So the starting HTML and ending tags should be on the same line as the meta/title output(because text-decoration might get applied wrong).
-2. Each article block should show the thumbnail if the option is selected. If is not selected, then an image that say no thumbnail available must be placed.
-3. Add a title that has a lot HTML tags.
-4. Test each meta/title with a long text, and long unbreakable text.
-5. Make sure that each function written in an article block reference article block class, even the_title() or the_permalink().
-6. Usually, the title should have &__title, and the meta should have &__meta.
-7. Test how each article block style works with show more posts button.
-8. Make sure that the meta wrapper is not displayed, if the meta inside is not.
-9. Test the hover/focus state of the elements, to not differ between them(or to not work at all).
-10. When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus if possible(and use + or ~ for next), if not select the block and use hover and :focus-within. Try to not use :focus-within where possible to increase browser compatibility.
-11. Check if thumbnail image dimension is correct, in proportion of what it needs to display(thumbnail or medium).
-12. Use "header" and no "title" to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
-13. Inspect the template file and check if everything is good, and there are no mistakes.
-14. Check components classes, if they exist in template file.
+1. There should be no space between HTML tags and the actual meta/title value(text-decoration applied wrong).
+2. Only these elements can be used in a template: div, span, h tags, a, article/sections.
+3. Usually only one a(anchor) tag should be used.
+4. Each element that exist in a template file must have at least a class(BEM style).
+5. Each article block should show the thumbnail if the option is selected(and exist), and should use artblock function.
+6. Add a title that has a lot HTML tags, and test how it displays, if the tags don't break anything.
+7. Test each meta/title with a long text, and long unbreakable text(date, folder, author, should ellipsis and not overflow).
+8. Make sure that each function written in an article block reference article block class, even the_title() or the_permalink().
+9. Make sure that at the beginning of the template we check if artblock exist.
+10. The title should have &__title, and the meta should have &__meta, &__meta--artblock->meta_suffix_class( $n );, and $meta--$n.
+11. Test how each article block style works with show more posts button.
+12. Make sure that the meta wrapper is not displayed, if the meta inside is not.
+13. Test the hover/focus state of the elements, to not differ between them(or to not work at all).
+14. When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus if possible(and use + or ~ for next), if not select the block and use hover and :focus-within. Try to not use :focus-within where possible to increase browser compatibility.
+15. Check if thumbnail image dimension is correct, in proportion of what it needs to display(thumbnail or medium).
+16. Use "header" and no "title" to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
+17. Check components classes, if they exist in template file.
+18. Inspect the template file and check if everything is good, and there are no mistakes.
 
 ## CSS of Article Blocks
 
-1. Each element that exist in a template file must have at least a class(BEM style).
-2. Each class element must be declared in the SCSS file, even if that we don't need to style that class.(Some classes might not be declared only if they target same element, and they are additional descriptors. Ex: an element with &__meta and &__meta-author is unnecessary to add &__meta-author in SCSS file if it is not needed.)
-3. Each block element, or inline element, like div, span, h tags, a, article/sections elements must extend .twrp-box mixin, including the main element. Exceptions are elements that use .twrp-thumbnail-wrapper and .twrp-thumbnail, since these mixins are already included in the classes.
-4. Only these elements can be used in a template: div, span, h tags, a, article/sections.
-5. Usually only one a(anchor) tag should be used.
-6. Each element must not declare css proprieties that can inherit: font-weight, font-face, font-kerning... etc. The only exceptions are font-size, word-break, word-wrap, white-spacing and line-height.
-7. Meta elements should have font-variant-numeric: lining-nums; to align the numbers in meta with the icons.
-8. All anchors should have the color and background color set in CSS(or not set, ut inherited from mixin as default), hover/focus are not mandatory, since it is overwritten by CSS specificity.
-9. For the title CSS, use color/background color target the title, when hover/focus is used, target the title inside the anchor(css property should be on h3, and not on the anchor, in css and in components).
-10. Make sure no margin bottom is on last article element, and no margin top is on last article element. For each combination of last-item, first item possible. Margin-top: auto or margin-bottom: auto is permitted to align blocks in grid.
-11. Each article block should have word-wrap: break-word where is necessary, including in the title and meta. Test this by inserting long lines of text.
-12. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited.
-13. Any block should import twrp-block-mixin, and additionally, any meta item should have the class &__meta, title should have the class &__title.
-14. Test how article blocks are displayed in grid mode when the title/meta is longer than the others. Make sure is
+1. Any block should import twrp-block-mixin, and additionally, any meta item should have the class &__meta, title should have the class &__title.
+2. Each class element must be declared in the SCSS file, even if that we don't need to style that class.(Some classes might not be declared only if they target same element, and they are additional descriptors. Ex: an element with &__meta and &__author is unnecessary to add &__author in SCSS file if it is not needed.)
+3. Each block element, or inline element must extend .twrp-reset-box mixin, including the main element, the anchor tags(things that are often styled, should also extend .twrp-reset-anchor). Exceptions are elements that use .twrp-thumbnail-wrapper, and .twrp-thumbnail, since these mixins are already included in the classes.
+4. Each element must not declare css proprieties that can inherit: font-weight, font-face, font-kerning... etc. The only exceptions are font-size, word-break, word-wrap, white-spacing and line-height, color.
+5. Meta elements should have font-variant-numeric: lining-nums; to align the numbers in meta with the icons(inherited from block mixin).
+6. All anchors should have the color and background color set in CSS(or not set, but inherited from reset anchor mixin), hover/focus are not mandatory, since it is overwritten by CSS specificity.
+7. For the title CSS, use color/background color target the title, when hover/focus is used, target the title inside the anchor(css property should be on h3, and not on the anchor, in css and in components).
+8. Each article block should have word-wrap: break-word(and overflow-wrap: break-word;) where is necessary. The title gets it from the mixin, meta usually needs white-space: nowrap, the long ones. Test this by inserting long lines of text.
+9. Make sure that the long meta have white-space:nowrap if needed.
+10. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited. Define for meta and title in article block mixin.
+11. Test how article blocks are displayed in grid mode when the title/meta is longer than the others. Make sure is
 displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last item.
-15. Be sure that we use css variables where we need(meta font size, title font size... etc).
-16. Check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
-17. Check if flex displayed meta should have align-items: baseline(in case one of the font-size is changed).
+12. Be sure that we use css variables where we need(meta font size, title font size... etc).
+13. Check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
+14. Check if flex displayed meta should have align-items: baseline(in case one of the font-size is changed).
 
 ## Plugins
 

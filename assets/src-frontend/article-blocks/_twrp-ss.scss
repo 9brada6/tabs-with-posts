@@ -13,6 +13,7 @@
 
 		position: relative;
 		margin-bottom: 0.35rem;
+		color: var(--twrp-text-color);
 	}
 
 	&__first-meta-wrapper,
@@ -59,8 +60,6 @@
 		@extend .twrp-reset-anchor;
 
 		margin-top: auto;
-		color: var(--twrp-text-color);
-		background-color: transparent;
 
 		&:hover,
 		&:focus {

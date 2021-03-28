@@ -1,8 +1,6 @@
 <?php
 
-use TWRP\Article_Block\Blocks\Simple_Article;
-
-if ( ! isset( $artblock ) || ! ( $artblock instanceof Simple_Article ) ) {
+if ( ! isset( $artblock ) ) {
 	return;
 }
 
@@ -10,9 +8,7 @@ if ( ! isset( $artblock ) || ! ( $artblock instanceof Simple_Article ) ) {
 
 <article class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
 	<a class="twrp-link-expand twrp-ss__link-expanded" href="<?php $artblock->the_permalink(); ?>">
-		<h3 class="twrp-ss__title">
-			<?php $artblock->the_title(); ?>
-		</h3>
+		<?php $artblock->the_title( '<h3 class="twrp-ss__title">', '</h3>' ); ?>
 	</a>
 
 	<?php if ( $artblock->thumbnail_is_displayed() ) : ?>

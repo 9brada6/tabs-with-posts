@@ -1,7 +1,3 @@
-.twrp-main__tab-content--youtube_style {
-	--twrp-grid-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
-}
-
 .twrp-ys {
 	@include twrp-block-mixin;
 
@@ -18,7 +14,6 @@
 
 		margin-bottom: 0.4rem;
 		color: var(--twrp-text-color);
-		background-color: transparent;
 	}
 
 	&__thumbnail-container {
