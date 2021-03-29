@@ -48,8 +48,10 @@
 
 1. The mixin twrp-tab-clean-style must contain all tab classes, even that they have no style.
 2. Each tab must implement the mixin twrp-tab-clean-style.
-3. Each element must implement twrp-box, anchor tags should also implement twrp-anchor.
+3. Each element must implement twrp-box, anchor tags should also implement twrp-anchor(implemented in tab-mixin).
 4. When displaying, any tab should not have any flash of content.
+5. Buttons should use border-radius variable, and all other elements that have border-radius.
+6. Make sure that active buttons have a :focus state even when they are active. Hover state is not necessary.
 
 ## Article Blocks
 

@@ -98,6 +98,22 @@ function updateAdditionalTabClasses( tabList: Element ) {
 
 // #endregion -- Add Active/Inactive Classes to Tab Items.
 
+// #region -- Make button not take focus on click.
+
+// document.addEventListener( 'click', removeTabButtonFocus );
+
+// function removeTabButtonFocus( event: Event ) {
+// 	const tab = event.target;
+
+// 	// @ts-ignore
+// 	if ( tab.getAttribute( 'role' ) === 'tab' && ( tab.className.search( 'twrp-' ) !== -1 && tab.getAttribute( 'href' ) ).search( '#twrp-' ) === 0 ) {
+// 		// @ts-ignore
+// 		tab.blur();
+// 	}
+// }
+
+// //#endregion -- Make button not take focus on click.
+
 // #region -- Helpers.
 
 function isElement( element: unknown ): boolean {

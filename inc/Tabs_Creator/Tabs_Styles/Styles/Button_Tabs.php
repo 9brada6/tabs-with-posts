@@ -14,14 +14,22 @@ class Button_Tabs extends Tab_Style {
 	}
 
 	public static function get_all_variants() {
-		return array( 'inverse_colors' => _x( 'Inverse Accent Colors', 'backend', 'twrp' ) );
+		return array(
+			// cspell:disable-next-line -- Inversed is a name.
+			'inverse_colors' => _x( 'Inversed', 'backend, name of style', 'twrp' ),
+			'neon'           => _x( 'Neon', 'backend, name of style', 'twrp' ),
+		);
 	}
 
 	public function start_tabs_wrapper() {
 
 		$additional_tab_class = '';
 		if ( 'inverse_colors' === $this->variant ) {
-			$additional_tab_class = ' ' . $this->get_bem_class( '', 'inverse-colors' );
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'inverse' );
+		}
+
+		if ( 'neon' === $this->variant ) {
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'neon' );
 		}
 
 		?>
