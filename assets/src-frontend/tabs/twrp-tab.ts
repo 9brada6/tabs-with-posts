@@ -36,68 +36,6 @@ function initializeAllTabs() {
 	}
 }
 
-// #region -- Add Active/Inactive Classes to Tab Items.
-
-const tabBtnItemActiveClass = 'twrp-main__btn-item--active';
-const tabBtnItemInactiveClass = 'twrp-main__btn-item--inactive';
-
-if ( document.readyState === 'loading' ) {
-	window.addEventListener( 'DOMContentLoaded', handleAllAdditionalClasses );
-} else {
-	handleAllAdditionalClasses();
-}
-
-function handleAllAdditionalClasses() {
-	const allListTabs = document.querySelectorAll( '[data-twrp-tabs-btns]' );
-
-	for ( let i = 0; i < allListTabs.length; i++ ) {
-		updateAdditionalTabClasses( allListTabs[ i ] );
-	}
-}
-
-document.addEventListener( 'tabby', handleAdditionalActiveClassesToTabs );
-
-function handleAdditionalActiveClassesToTabs( event: Event ) {
-	const targetElement = event.target as HTMLElement;
-
-	if ( ! isElement( targetElement ) ) {
-		return;
-	}
-
-	const btnsWrapper = targetElement.closest( '[data-twrp-tabs-btns]' );
-
-	if ( ! btnsWrapper ) {
-		return;
-	}
-
-	updateAdditionalTabClasses( btnsWrapper );
-}
-
-function updateAdditionalTabClasses( tabList: Element ) {
-	if ( ! tabList.hasAttribute( 'data-twrp-tabs-btns' ) ) {
-		return;
-	}
-
-	const inactiveButtons = tabList.querySelectorAll( '[aria-selected="false"]' );
-	const activeButton = tabList.querySelectorAll( '[aria-selected="true"]' );
-
-	for ( let i = 0; i < inactiveButtons.length; i++ ) {
-		// @ts-ignore -- Parent element is not null.
-		inactiveButtons[ i ].parentElement.classList.remove( tabBtnItemActiveClass );
-		// @ts-ignore -- Parent element is not null.
-		inactiveButtons[ i ].parentElement.classList.add( tabBtnItemInactiveClass );
-	}
-
-	for ( let i = 0; i < activeButton.length; i++ ) {
-		// @ts-ignore -- Parent element is not null.
-		activeButton[ i ].parentElement.classList.remove( tabBtnItemInactiveClass );
-		// @ts-ignore -- Parent element is not null.
-		activeButton[ i ].parentElement.classList.add( tabBtnItemActiveClass );
-	}
-}
-
-// #endregion -- Add Active/Inactive Classes to Tab Items.
-
 // #region -- Make button not take focus on click.
 
 // document.addEventListener( 'click', removeTabButtonFocus );
@@ -112,10 +50,46 @@ function updateAdditionalTabClasses( tabList: Element ) {
 // 	}
 // }
 
-// //#endregion -- Make button not take focus on click.
+//#endregion -- Make button not take focus on click.
+
+// #region -- Add active item to button wrapper.
+
+const activeButtonItemClass = 'twrp-tab-btn-item-active';
+
+if ( document.readyState === 'loading' ) {
+	window.addEventListener( 'DOMContentLoaded', addButtonWrapperInitial );
+} else {
+	addButtonWrapperInitial();
+}
+function addButtonWrapperInitial() {
+	const buttons = document.querySelectorAll( '[data-twrp-default-tab]' );
+
+	for ( let i = 0; i < buttons.length; i++ ) {
+		const btnWrapper = buttons[ i ].parentElement;
+		// @ts-ignore
+		btnWrapper.classList.add( activeButtonItemClass );
+	}
+}
+
+document.addEventListener( 'tabby', addButtonWrapperActiveClass );
+function addButtonWrapperActiveClass( event: Event ) {
+	// @ts-ignore
+	const buttonWrapper: Element = event.target.parentElement;
+	// @ts-ignore
+	const prevButtonWrapper: Element = event.detail.previousTab.parentElement;
+
+	if ( buttonWrapper.nodeName === 'LI' && buttonWrapper.className.search( 'twrp-' ) !== -1 ) {
+		buttonWrapper.classList.add( activeButtonItemClass );
+	}
+
+	prevButtonWrapper.classList.remove( activeButtonItemClass );
+}
+
+// #endregion -- Add active item to button wrapper.
 
 // #region -- Helpers.
 
+// eslint-disable-next-line no-unused-vars
 function isElement( element: unknown ): boolean {
 	return element instanceof Element || element instanceof HTMLDocument;
 }
