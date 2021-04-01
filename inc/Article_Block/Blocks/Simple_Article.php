@@ -42,7 +42,7 @@ class Simple_Article extends Article_Block {
 
 	public function get_components() {
 		$components = array();
-		$css_prefix = $this->get_body_css_specificity_selector() . ' .' . $this->get_block_class() . ' ';
+		$css_prefix = $this->get_body_css_specificity_selector() . ' .' . $this->get_block_class();
 
 		$title_component_settings = array(
 			Artblock_Component::TITLE_FONT_SIZE_SETTING,
@@ -67,11 +67,11 @@ class Simple_Article extends Article_Block {
 		#region -- Title Component
 
 		// Use 'header' instead of 'title' to prevent WP widget to mistake the name with an usual title setting.
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover .twrp-ss__title, ' . $css_prefix . ' .twrp-ss__link-expanded:focus .twrp-ss__title';
+		$hover_css_selector    = $css_prefix . ' .twrp-ss__link:hover .twrp-ss__title, ' . $css_prefix . ' .twrp-ss__link:focus .twrp-ss__title';
 		$current_settings      = ( isset( $this->settings['header'] ) && is_array( $this->settings['header'] ) ) ? $this->settings['header'] : array();
 		$css_components        = array(
-			$css_prefix . '.twrp-ss__title' => $title_component_settings,
-			$hover_css_selector             => $component_settings_hover,
+			$css_prefix . ' .twrp-ss__title' => $title_component_settings,
+			$hover_css_selector              => $component_settings_hover,
 		);
 		$component             = new Artblock_Component( 'header', _x( 'Title', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['header'] = $component;
@@ -80,7 +80,7 @@ class Simple_Article extends Article_Block {
 
 		#region -- Meta 1
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__first-meta-wrapper .twrp-ss__meta--1, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__first-meta-wrapper .twrp-ss__meta--1';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ss__meta--1, ' . $css_prefix . ':focus-within .twrp-ss__meta--1';
 		$current_settings      = ( isset( $this->settings['meta_1'] ) && is_array( $this->settings['meta_1'] ) ) ? $this->settings['meta_1'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ss__meta--1' => $meta_component_settings,
@@ -93,7 +93,7 @@ class Simple_Article extends Article_Block {
 
 		#region -- Meta 2
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__first-meta-wrapper .twrp-ss__meta--2, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__first-meta-wrapper .twrp-ss__meta--2';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ss__meta--2, ' . $css_prefix . ':focus-within .twrp-ss__meta--2';
 		$current_settings      = ( isset( $this->settings['meta_2'] ) && is_array( $this->settings['meta_2'] ) ) ? $this->settings['meta_2'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ss__meta--2' => $meta_component_settings,
@@ -106,7 +106,7 @@ class Simple_Article extends Article_Block {
 
 		#region -- Meta 3
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__first-meta-wrapper .twrp-ss__meta--3, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__first-meta-wrapper .twrp-ss__meta--3';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ss__meta--3, ' . $css_prefix . ':focus-within .twrp-ss__meta--3';
 		$current_settings      = ( isset( $this->settings['meta_3'] ) && is_array( $this->settings['meta_3'] ) ) ? $this->settings['meta_3'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ss__meta--3' => $meta_component_settings,
@@ -119,7 +119,7 @@ class Simple_Article extends Article_Block {
 
 		#region -- Meta 4
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__second-meta-wrapper .twrp-ss__meta--4, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__second-meta-wrapper .twrp-ss__meta--4';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ss__meta--4, ' . $css_prefix . ':focus-within .twrp-ss__meta--4';
 		$current_settings      = ( isset( $this->settings['meta_4'] ) && is_array( $this->settings['meta_4'] ) ) ? $this->settings['meta_4'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ss__meta--4' => $meta_component_settings,
@@ -132,7 +132,7 @@ class Simple_Article extends Article_Block {
 
 		#region -- Meta 5
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__second-meta-wrapper .twrp-ss__meta--5, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__second-meta-wrapper .twrp-ss__meta--5';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ss__meta--5, ' . $css_prefix . ':focus-within .twrp-ss__meta--5';
 		$current_settings      = ( isset( $this->settings['meta_5'] ) && is_array( $this->settings['meta_5'] ) ) ? $this->settings['meta_5'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ss__meta--5' => $meta_component_settings,
@@ -145,7 +145,7 @@ class Simple_Article extends Article_Block {
 
 		#region -- Meta 6
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ss__link-expanded:hover ~ .twrp-ss__second-meta-wrapper .twrp-ss__meta--6, ' . $css_prefix . ' .twrp-ss__link-expanded:focus ~ .twrp-ss__second-meta-wrapper .twrp-ss__meta--6';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ss__meta--6, ' . $css_prefix . ':focus-within .twrp-ss__meta--6';
 		$current_settings      = ( isset( $this->settings['meta_6'] ) && is_array( $this->settings['meta_6'] ) ) ? $this->settings['meta_6'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ss__meta--6' => $meta_component_settings,

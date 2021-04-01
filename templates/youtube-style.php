@@ -26,7 +26,7 @@ if ( ! isset( $artblock ) ) {
 	</div>
 
 	<div class="twrp-ys__right-presentation-wrapper">
-		<a class="twrp-link-expand twrp-ys__link-expanded" href="<?php $artblock->the_permalink(); ?>">
+		<a class="twrp-link-expand twrp-ys__link" href="<?php $artblock->the_permalink(); ?>">
 			<?php $artblock->the_title( '<h3 class="twrp-ys__title">', '</h3>' ); ?>
 		</a>
 

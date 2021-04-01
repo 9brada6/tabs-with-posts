@@ -67,7 +67,7 @@ class Youtube_Article extends Article_Block {
 		#region -- Title
 
 		// Use 'header' instead of 'title' to prevent WP widget to mistake the name with an usual title setting.
-		$hover_css_selector    = $css_prefix . ' .twrp-ys__link-expanded:hover .twrp-ys__title, ' . $css_prefix . ' .twrp-ys__link-expanded:focus .twrp-ys__title';
+		$hover_css_selector    = $css_prefix . ' .twrp-ys__link:hover .twrp-ys__title, ' . $css_prefix . ' .twrp-ys__link:focus .twrp-ys__title';
 		$current_settings      = ( isset( $this->settings['header'] ) && is_array( $this->settings['header'] ) ) ? $this->settings['header'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__title' => $title_component_settings,
@@ -91,7 +91,7 @@ class Youtube_Article extends Article_Block {
 
 		#region -- Meta 1
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ys__link-expanded:hover ~ .twrp-ys__first-meta-wrapper .twrp-ys__meta--1, ' . $css_prefix . ' .twrp-ys__link-expanded:focus ~ .twrp-ys__first-meta-wrapper .twrp-ys__meta--1';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--1, ' . $css_prefix . ':focus-within .twrp-ys__meta--1';
 		$current_settings      = ( isset( $this->settings['meta_1'] ) && is_array( $this->settings['meta_1'] ) ) ? $this->settings['meta_1'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__meta--1' => $meta_component_settings,
@@ -104,7 +104,7 @@ class Youtube_Article extends Article_Block {
 
 		#region -- Meta 2
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ys__link-expanded:hover ~ .twrp-ys__first-meta-wrapper .twrp-ys__meta--2, ' . $css_prefix . ' .twrp-ys__link-expanded:focus ~ .twrp-ys__first-meta-wrapper .twrp-ys__meta--2';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--2, ' . $css_prefix . ':focus-within .twrp-ys__meta--2';
 		$current_settings      = ( isset( $this->settings['meta_2'] ) && is_array( $this->settings['meta_2'] ) ) ? $this->settings['meta_2'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__meta--2' => $meta_component_settings,
@@ -117,7 +117,7 @@ class Youtube_Article extends Article_Block {
 
 		#region -- Meta 3
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ys__link-expanded:hover ~ .twrp-ys__second-meta-wrapper .twrp-ys__meta--3, ' . $css_prefix . ' .twrp-ys__link-expanded:focus ~ .twrp-ys__second-meta-wrapper .twrp-ys__meta--3';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--3, ' . $css_prefix . ':focus-within .twrp-ys__meta--3';
 		$current_settings      = ( isset( $this->settings['meta_3'] ) && is_array( $this->settings['meta_3'] ) ) ? $this->settings['meta_3'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__meta--3' => $meta_component_settings,
@@ -130,7 +130,7 @@ class Youtube_Article extends Article_Block {
 
 		#region -- Meta 4
 
-		$hover_css_selector    = $css_prefix . ' .twrp-ys__link-expanded:hover ~ .twrp-ys__second-meta-wrapper .twrp-ys__meta--4, ' . $css_prefix . ' .twrp-ys__link-expanded:focus ~ .twrp-ys__second-meta-wrapper .twrp-ys__meta--4';
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--4, ' . $css_prefix . ':focus-within .twrp-ys__meta--4';
 		$current_settings      = ( isset( $this->settings['meta_4'] ) && is_array( $this->settings['meta_4'] ) ) ? $this->settings['meta_4'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__meta--4' => $meta_component_settings,
@@ -143,10 +143,11 @@ class Youtube_Article extends Article_Block {
 
 		#region -- Meta 5
 
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--5, ' . $css_prefix . ':focus-within .twrp-ys__meta--5';
 		$current_settings      = ( isset( $this->settings['meta_5'] ) && is_array( $this->settings['meta_5'] ) ) ? $this->settings['meta_5'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__meta--5' => $meta_component_settings,
-			$css_prefix . ':hover .twrp-ys__meta--5, ' . $css_prefix . ':focus-within .twrp-ys__meta--5' => $component_settings_hover,
+			$hover_css_selector                => $component_settings_hover,
 		);
 		$component             = new Artblock_Component( 'meta_5', _x( 'Meta 5', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['meta_5'] = $component;
@@ -155,10 +156,11 @@ class Youtube_Article extends Article_Block {
 
 		#region -- Meta 6
 
+		$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--6, ' . $css_prefix . ':focus-within .twrp-ys__meta--6';
 		$current_settings      = ( isset( $this->settings['meta_6'] ) && is_array( $this->settings['meta_6'] ) ) ? $this->settings['meta_6'] : array();
 		$css_components        = array(
 			$css_prefix . ' .twrp-ys__meta--6' => $meta_component_settings,
-			$css_prefix . ':hover .twrp-ys__meta--6, ' . $css_prefix . ':focus-within .twrp-ys__meta--6' => $component_settings_hover,
+			$hover_css_selector                => $component_settings_hover,
 		);
 		$component             = new Artblock_Component( 'meta_6', _x( 'Meta 6', 'backend', 'twrp' ), $current_settings, $css_components );
 		$components ['meta_6'] = $component;

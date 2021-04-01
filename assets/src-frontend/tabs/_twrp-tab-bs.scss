@@ -17,7 +17,7 @@
 		border-radius: var(--twrp-border-radius);
 		transition: var(--twrp-default-component-transition);
 
-		&:focus {
+		&:focus-visible {
 			outline: none;
 			box-shadow: 0 0 0 2px var(--twrp-outline-accent-color);
 		}

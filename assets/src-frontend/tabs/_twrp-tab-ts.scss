@@ -36,11 +36,16 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		background-color: var(--twrp-secondary-background-color);
-		border: 1px solid var(--twrp-text-color);
+		border: 1px solid var(--twrp-border-color);
 		border-bottom-color: var(--twrp-accent-color);
 		border-top-left-radius: var(--twrp-border-radius);
 		border-top-right-radius: var(--twrp-border-radius);
 		transition: var(--twrp-default-component-transition);
+
+		&:hover,
+		&:focus {
+			padding-bottom: 0.2rem;
+		}
 	}
 
 	&__btn[aria-selected="true"],
@@ -50,6 +55,10 @@
 		background-color: var(--twrp-background-color);
 		border-color: var(--twrp-accent-color);
 		border-bottom-color: transparent;
+
+		&:focus-visible {
+			text-decoration: underline;
+		}
 	}
 
 	&__contents-wrapper {

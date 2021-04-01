@@ -85,7 +85,7 @@ function test_all_icons_alignment() {
 function test_icon_alignment( $author, $date, $views, $category ) {
 	?>
 	<article class="twrp-ss twrp-block twrp-block--2-1">
-		<a class="twrp-link-expand twrp-ss__link-expanded" href="http://localhost/2018/11/03/block-image/">
+		<a class="twrp-link-expand twrp-ss__link" href="http://localhost/2018/11/03/block-image/">
 			<h3 class="twrp-ss__title">Block: Image</h3>
 		</a>
 

@@ -51,13 +51,13 @@
 3. Each element must implement twrp-box, anchor tags should also implement twrp-anchor(implemented in tab-mixin).
 4. When displaying, any tab should not have any flash of content.
 5. Buttons should use border-radius variable, and all other elements that have border-radius.
-6. Make sure that active buttons have a :focus state even when they are active. Hover state is not necessary.
+6. Make sure that active buttons have a :focus-active state even when they are active(with no @support added). Hover state is not necessary.
 
 ## Article Blocks
 
 1. There should be no space between HTML tags and the actual meta/title value(text-decoration applied wrong).
 2. Only these elements can be used in a template: div, span, h tags, a, article/sections.
-3. Usually only one a(anchor) tag should be used.
+3. Usually only one a(anchor) tag should be used, and should have .twrp-link-expanded, to expand to the whole article block.
 4. Each element that exist in a template file must have at least a class(BEM style).
 5. Each article block should show the thumbnail if the option is selected(and exist), and should use artblock function.
 6. Add a title that has a lot HTML tags, and test how it displays, if the tags don't break anything.
@@ -68,7 +68,7 @@
 11. Test how each article block style works with show more posts button.
 12. Make sure that the meta wrapper is not displayed, if the meta inside is not.
 13. Test the hover/focus state of the elements, to not differ between them(or to not work at all).
-14. When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus if possible(and use + or ~ for next), if not select the block and use hover and :focus-within. Try to not use :focus-within where possible to increase browser compatibility.
+14. When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus(use focus-within on parent).
 15. Check if thumbnail image dimension is correct, in proportion of what it needs to display(thumbnail or medium).
 16. Use "header" and no "title" to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
 17. Check components classes, if they exist in template file.

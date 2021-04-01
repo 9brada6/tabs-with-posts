@@ -10,6 +10,10 @@
     3. If we don't have a rating average, then just display 0, and an empty star?.
     4. If we have a rating count and is selected to display and is above 0, then display it.
 
+## Tabs
+
+- The code use :focus-visible, and does not use additional @support check. Even if the support is 70%, the majority of the users that are impaired and need this feature use a browser, where this feature is supported. Also this is not something like a deal-breaker, since this feature is already widely being implemented as a spec.
+
 ## ✅ Todo
 
 - Fix disable comments align.
@@ -19,6 +23,9 @@
 
 Main: Add a way to cache tabs/queries.
 In this thing, either cache globally(query can be at any part of the website), or per post(a query will be available only per a post).
+
+- Add in manual test: Test disabled comment display align(usually, not having margin-right).
+- Add in manual testing a lot of testing, mainly including javascript things.
 
 - ### ✅ Todo Documentation
 

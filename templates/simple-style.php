@@ -7,7 +7,7 @@ if ( ! isset( $artblock ) ) {
 ?>
 
 <article class="twrp-ss twrp-block <?php $artblock->the_block_class(); ?>">
-	<a class="twrp-link-expand twrp-ss__link-expanded" href="<?php $artblock->the_permalink(); ?>">
+	<a class="twrp-link-expand twrp-ss__link" href="<?php $artblock->the_permalink(); ?>">
 		<?php $artblock->the_title( '<h3 class="twrp-ss__title">', '</h3>' ); ?>
 	</a>
 
@@ -32,7 +32,7 @@ if ( ! isset( $artblock ) ) {
 			<?php if ( $artblock->get_meta_displayed_name( 3 ) ) : ?>
 				<span class="twrp-ss__meta twrp-ss__meta--3 twrp-ss__<?php $artblock->meta_suffix_class( 3 ); ?>"><?php $artblock->display_meta( 3 ); ?></span>
 			<?php endif; ?>
-		</div>	
+		</div>
 	<?php endif; ?>
 
 	<?php if ( $artblock->one_or_more_meta_id_displayed( array( 4, 5, 6 ) ) ) : ?>
