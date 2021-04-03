@@ -4,7 +4,6 @@ namespace TWRP\Tabs_Creator\Tabs_Styles;
 
 use TWRP\TWRP_Widget;
 
-use TWRP\Utils\Widget_Utils;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**

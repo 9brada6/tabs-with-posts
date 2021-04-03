@@ -22,6 +22,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comment-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c-ol'   => array(
@@ -36,6 +37,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'comment-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c-sh'   => array(
@@ -43,6 +45,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
 				'file_name'   => 'comment-sharp.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c-t'    => array(
@@ -50,6 +53,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'comment-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-f'   => array(
@@ -57,6 +61,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Filled', 'backend', 'twrp' ),
 				'file_name'   => 'comment-alt-filled.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-ol'  => array(
@@ -64,6 +69,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
 				'file_name'   => 'comment-alt-outlined.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-dt'  => array(
@@ -71,6 +77,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
 				'file_name'   => 'comment-alt-duotone.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-t'   => array(
@@ -78,6 +85,7 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
 				'type'        => _x( 'Thin', 'backend', 'twrp' ),
 				'file_name'   => 'comment-alt-thin.svg',
+				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-cs-f'   => array(

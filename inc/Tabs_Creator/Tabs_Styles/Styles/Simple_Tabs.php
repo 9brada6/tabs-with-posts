@@ -14,12 +14,29 @@ class Simple_Tabs extends Tab_Style {
 	}
 
 	public static function get_all_variants() {
-		return array();
+		return array(
+			'accent'       => _x( 'Accent', 'backend, name of style', 'twrp' ),
+			'accent_light' => _x( 'Accent Light', 'backend, name of style', 'twrp' ),
+			'inverse'      => _x( 'Inversed', 'backend, name of style', 'twrp' ),
+		);
 	}
 
 	public function start_tabs_wrapper() {
+		$additional_tab_class = '';
+		if ( 'accent' === $this->variant ) {
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'accent' );
+		}
+
+		if ( 'accent_light' === $this->variant ) {
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'accent-light' );
+		}
+
+		if ( 'inverse' === $this->variant ) {
+			$additional_tab_class = ' ' . $this->get_bem_class( '', 'inverse' );
+		}
+
 		?>
-		<div id="<?php $this->tabs_wrapper_id(); ?>" class="<?php $this->tab_class(); ?>">
+		<div id="<?php $this->tabs_wrapper_id(); ?>" class="<?php $this->tab_class(); ?><?= esc_attr( $additional_tab_class ); ?>">
 		<?php
 	}
 

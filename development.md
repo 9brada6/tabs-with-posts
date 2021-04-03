@@ -13,10 +13,10 @@
 ## Tabs
 
 - The code use :focus-visible, and does not use additional @support check. Even if the support is 70%, the majority of the users that are impaired and need this feature use a browser, where this feature is supported. Also this is not something like a deal-breaker, since this feature is already widely being implemented as a spec.
+- Depending on what setting on the widget were used, to generate the inline style for a tab take 20ms(old laptop).
+- Depending on what tabs and query were used, it will take some seconds to generate the tabs.
 
 ## ✅ Todo
-
-- Fix disable comments align.
 
 - Test the widget outside(in customizer, elementor)... etc, and make it work.
 - In the widget, add a photo where the meta are displayed.

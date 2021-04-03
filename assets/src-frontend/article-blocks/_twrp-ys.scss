@@ -12,6 +12,7 @@
 	&__title {
 		@extend .twrp-reset-box;
 
+		margin-top: -0.2em;
 		margin-bottom: 0.4rem;
 		color: var(--twrp-text-color);
 	}
