@@ -1,6 +1,55 @@
 <?php
 
-namespace Debug;
+namespace TWRP\Debug;
+
+class Benchmark {
+
+	private static $benchmarks = array();
+
+	private $name;
+
+	public function __construct( $name = '' ) {
+		if ( empty( $name ) ) {
+			$name = uniqid();
+		}
+		$this->name = $name;
+
+		self::$benchmarks[ $name ]['start'] = microtime( true );
+	}
+
+	public function stop( $pre = '', $echo = true ) {
+		$name                              = $this->name;
+		self::$benchmarks[ $name ]['stop'] = microtime( true );
+		self::$benchmarks[ $name ]['time'] = self::$benchmarks[ $name ]['stop'] - self::$benchmarks[ $name ]['start'];
+
+		if ( $echo ) {
+			$this->dump_bench( $pre );
+		}
+	}
+
+	public function dump_bench( $pre = '' ) {
+		$name = $this->name;
+		if ( isset( self::$benchmarks[ $name ]['time'] ) ) {
+			$this->console_dump( round( self::$benchmarks[ $name ]['time'] * 1000, 2 ) . 'ms', $pre );
+		} else {
+			$this->console_dump( 'not run', $pre );
+		}
+	}
+
+	public function console_dump( $variable, $pre = '' ) {
+		echo '<script>';
+			echo 'var debug_var = "' . wp_slash( json_encode( $variable ) ) . '";';
+			echo "\n";
+			echo 'var encoded_var = JSON.parse(debug_var);';
+			echo "\n";
+			echo 'console.log("' . wp_slash( $pre ) . '");';
+			echo "\n";
+			echo 'console.dir(encoded_var);';
+		echo '</script>';
+		echo ' ';
+	}
+
+}
 
 function start_bench( $name ) {
 	$start                                   = microtime( true );

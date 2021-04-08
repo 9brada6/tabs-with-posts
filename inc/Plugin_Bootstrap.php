@@ -5,8 +5,10 @@
 
 namespace TWRP;
 
-use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\CSS\Icons_CSS;
+use TWRP\Tabs_Cache\Tabs_Cache;
+
+use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
 
 /**
@@ -29,6 +31,8 @@ class Plugin_Bootstrap {
 		'Utils/Helper_Trait/BEM_Class_Naming_Trait',
 		'Utils/Helper_Trait/After_Setup_Theme_Init_Trait',
 		'Utils/Helper_Interfaces/Class_Children_Order',
+		'Utils/Background_Processing/WP_Async_Request',
+		'Utils/Background_Processing/WP_Background_Process',
 
 		'Utils/Simple_Utils',
 		'Utils/Class_Retriever_Utils',
@@ -212,6 +216,10 @@ class Plugin_Bootstrap {
 		// Tabs_Creator.
 		'Tabs_Creator/Tabs_Creator',
 
+		// Tabs_Cache.
+		'Tabs_Cache/Tabs_Cache',
+		'Tabs_Cache/Create_Tabs_Cache',
+
 		// Tabs_Styles.
 		'Tabs_Creator/Tabs_Styles/Tab_Style',
 		'Tabs_Creator/Tabs_Styles/Styles/Simple_Tabs',
@@ -245,10 +253,14 @@ class Plugin_Bootstrap {
 	 */
 	public static function after_file_including_execute() {
 
-		// Regenerate the database and file icons, in case the plugin was
-		// previously installed.
 		$main_file_path = Directory_Utils::get_path_of_main_plugin_file();
+
+		// Regenerate the database and file icons, in case the plugin was previously installed.
 		register_activation_hook( $main_file_path, array( Icons_CSS::class, 'write_needed_icons_to_file_on_plugin_activation' ) );
+
+		// Create the tab cache table on plugin activation.
+		register_activation_hook( $main_file_path, array( Tabs_Cache::class, 'create_table_on_plugin_activation' ) );
+
 	}
 
 	/**

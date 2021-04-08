@@ -9,11 +9,13 @@ namespace A3Rev\PageViewsCount {
 }
 
 namespace {
+	const ABSPATH = '';
+
 	// Page View Count Plugin(A3REV)
 	class A3_PVC {
 		public static function pvc_fetch_post_total( $post_id ) {}
 	}
-	
+
 	/**
 	 * Stub.
 	 *

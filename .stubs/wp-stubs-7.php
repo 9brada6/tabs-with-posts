@@ -1553,7 +1553,7 @@ function _http_build_query($data, $prefix = \null, $sep = \null, $key = '', $url
  * @param string       $url   Optional. A URL to act upon.
  * @return string New URL query string (unescaped).
  */
-function add_query_arg( $key, $value, $url )
+function add_query_arg( $key, $value, $url = '' )
 {
 }
 /**

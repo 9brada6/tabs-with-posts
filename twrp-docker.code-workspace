@@ -208,7 +208,7 @@
 
 		// =====================================================================
 		// Markdown Lint
-		
+
 		"markdownlint.config": {
 			"default": true,
 			"MD007": { "indent": 4 },
