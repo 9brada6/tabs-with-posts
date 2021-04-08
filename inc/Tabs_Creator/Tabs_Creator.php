@@ -5,6 +5,7 @@ namespace TWRP\Tabs_Creator;
 use TWRP\TWRP_Widget;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Query_Generator\Query_Generator;
+use TWRP\Database\Tabs_Cache_Table;
 
 use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 
@@ -12,7 +13,7 @@ use TWRP\Utils\Widget_Utils;
 use TWRP\Utils\Class_Retriever_Utils;
 
 use RuntimeException;
-use TWRP\Tabs_Cache\Tabs_Cache;
+
 
 /**
  * Construct the tabs widget.
@@ -186,7 +187,7 @@ class Tabs_Creator {
 	 */
 	protected function display_query_posts( $query_id ) {
 		// todo: cache, add post id.
-		$tabs_cache = new Tabs_Cache( $this->widget_id, $query_id );
+		$tabs_cache = new Tabs_Cache_Table( $this->widget_id, $query_id );
 		$widget     = $tabs_cache->get_widget_html();
 
 		if ( ! empty( $widget ) ) {

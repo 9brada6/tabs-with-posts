@@ -1,8 +1,8 @@
 <?php
 
-namespace TWRP\Tabs_Cache;
+namespace TWRP\Database;
 
-class Tabs_Cache {
+class Tabs_Cache_Table {
 
 	const TABLE_NAME = 'twrp_widget_cache';
 

@@ -6,7 +6,7 @@
 namespace TWRP;
 
 use TWRP\CSS\Icons_CSS;
-use TWRP\Tabs_Cache\Tabs_Cache;
+use TWRP\Database\Tabs_Cache_Table;
 
 use TWRP\Utils\Class_Retriever_Utils;
 use TWRP\Utils\Directory_Utils;
@@ -160,6 +160,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options',
 		'Database/Aside_Options',
 		'Database/Inline_Icons_Option',
+		'Database/Tabs_Cache_Table',
 
 		// Icons.
 		'Icons/Icon',
@@ -217,8 +218,8 @@ class Plugin_Bootstrap {
 		'Tabs_Creator/Tabs_Creator',
 
 		// Tabs_Cache.
-		'Tabs_Cache/Tabs_Cache',
 		'Tabs_Cache/Create_Tabs_Cache',
+		'Tabs_Cache/Tabs_Cache_Async_Request',
 
 		// Tabs_Styles.
 		'Tabs_Creator/Tabs_Styles/Tab_Style',
@@ -259,7 +260,7 @@ class Plugin_Bootstrap {
 		register_activation_hook( $main_file_path, array( Icons_CSS::class, 'write_needed_icons_to_file_on_plugin_activation' ) );
 
 		// Create the tab cache table on plugin activation.
-		register_activation_hook( $main_file_path, array( Tabs_Cache::class, 'create_table_on_plugin_activation' ) );
+		register_activation_hook( $main_file_path, array( Tabs_Cache_Table::class, 'create_table_on_plugin_activation' ) );
 
 	}
 

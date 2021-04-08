@@ -16,6 +16,11 @@
 - Depending on what setting on the widget were used, to generate the inline style for a tab take 20ms(old laptop).
 - Depending on what tabs and query were used, it will take some seconds to generate the tabs.
 
+## Cache
+
+- The cache is created when:
+    1. Any post is updated.
+
 ## ✅ Todo
 
 - It seems that phpcs:disabled was used where phpcs:ignore should be used, fix these problems.
