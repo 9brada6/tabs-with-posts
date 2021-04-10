@@ -19,18 +19,18 @@
 ## Cache
 
 - The cache is created when:
-    1. Any post is updated.
+    1. Any post is updated/add/deleted.
 
 ## ✅ Todo
 
 - It seems that phpcs:disabled was used where phpcs:ignore should be used, fix these problems.
 
 - Cache:
-- Add a way to verify if the HTML has finished(no only half html)?
-- Add a way in which when we interrogate the database for a widget id and a post_id, we retrieve all query ids.
-- Cache the style.
+- Add a setting for cache refresh minutes.
 - Add a way to stop caching from settings.
 - Add a way to refresh caching from settings.
+- Refresh cache when a plugin is installed?
+- Delete unnecessary widget cache.
 
 - Bug: If we make a most rated posts, then we disable the plugin, the tab will display but the contents not.
 
@@ -42,6 +42,8 @@ In this thing, either cache globally(query can be at any part of the website), o
 
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
+
+- Make debugger not throw when class_exist_and_method is not exist.
 
 - ### ✅ Todo Documentation
 

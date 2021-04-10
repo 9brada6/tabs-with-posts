@@ -136,9 +136,6 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	public function display_tabs() {
-		// todo: remove.
-		$bench = new \TWRP\Debug\Benchmark();
-
 		$this->widget_inline_css();
 		$tab_style   = $this->tab_style;
 		$default_tab = true;
@@ -166,8 +163,6 @@ class Tabs_Creator {
 		$tab_style->end_tabs_wrapper();
 
 		do_action( 'twrp_after_tabs', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids );
-
-		$bench->stop( 'Widget:' );
 	}
 
 	/**
@@ -186,9 +181,8 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	protected function display_query_posts( $query_id ) {
-		// todo: cache, add post id.
-		$tabs_cache = new Tabs_Cache_Table( $this->widget_id, $query_id );
-		$widget     = $tabs_cache->get_widget_html();
+		$tabs_cache = new Tabs_Cache_Table( $this->widget_id );
+		$widget     = $tabs_cache->get_widget_html( (string) $query_id );
 
 		if ( ! empty( $widget ) ) {
 			echo $widget; // phpcs:ignore
@@ -196,24 +190,16 @@ class Tabs_Creator {
 	}
 
 	/**
-	 * Echo the inline css for the whole tabs.
+	 * Echo the inline css for the whole tabs, the css is from table cache..
 	 *
 	 * @return void
 	 */
 	protected function widget_inline_css() {
-		$css = '';
-		foreach ( $this->query_ids as $query_id ) {
-			$artblock = $this->get_artblock( $query_id );
-			if ( null === $artblock ) {
-				continue;
-			}
+		$tabs_cache   = new Tabs_Cache_Table( $this->widget_id );
+		$inline_style = $tabs_cache->get_widget_html( 'style' );
 
-			$css .= $artblock->get_css();
-		}
-
-		if ( ! empty( $css ) ) {
-			// phpcs:ignore -- No XSS.
-			echo '<style>' . $css . '</style>';
+		if ( ! empty( $inline_style ) ) {
+			echo $inline_style; //phpcs:ignore -- No XSS.
 		}
 	}
 
@@ -250,6 +236,29 @@ class Tabs_Creator {
 		}
 
 		return $posts_per_page;
+	}
+
+	/**
+	 * Create the inline css for a widget.
+	 *
+	 * @return string
+	 */
+	public function create_widget_inline_css() {
+		$css = '';
+		foreach ( $this->query_ids as $query_id ) {
+			$artblock = $this->get_artblock( $query_id );
+			if ( null === $artblock ) {
+				continue;
+			}
+
+			$css .= $artblock->get_css();
+		}
+
+		if ( ! empty( $css ) ) {
+			$css = '<style>' . $css . '</style>';
+		}
+
+		return $css;
 	}
 
 	/**

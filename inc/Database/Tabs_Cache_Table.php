@@ -2,57 +2,285 @@
 
 namespace TWRP\Database;
 
+/**
+ * Manages the database table where the html of a widget will be cached.
+ *
+ * The query_id is not mandatory to be an id of a query, and can also be a
+ * string like "style", used to cache the inline style of a widget. This is why
+ * query_id is of type string, but can also represent an id in that string.
+ *
+ * phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
+ */
 class Tabs_Cache_Table {
 
 	const TABLE_NAME = 'twrp_widget_cache';
 
-	private $widget_id = null;
+	const CACHE_REFRESHED_TIMESTAMP_OPTION_NAME = 'twrp_cache_refreshed_timestamp';
 
-	private $query_id = null;
+	/**
+	 * Holds the table cache, to not be needed to query again the table.
+	 *
+	 * The first array contain a key with the widget id, and the value is an
+	 * array of keys representing the post ids, and the value is an array with
+	 * the keys of query ids, where the value is an array containing query_id
+	 * html cache.
+	 * array {
+	 *    (int): widget_id.
+	 *    1 => array {
+	 *        (int): post_id (0 means a query that can be displayed anywhere).
+	 *        0   => array {
+	 *            (string): query_id
+	 *            1 => array {
+	 *                widget_id: "1"
+	 *                query_id: "1"
+	 *                html: "..."
+	 *            }
+	 *            ...
+	 *        }
+	 *    }
+	 * }
+	 *
+	 * @var array
+	 */
+	private static $table_cache = array();
 
-	private $post_id = null;
+	/**
+	 * Holds the widget id.
+	 *
+	 * @var int
+	 */
+	private $widget_id;
 
-	public function __construct( $widget_id, $query_id, $post_id = 0 ) {
+	/**
+	 * Holds the post id.
+	 *
+	 * @var int
+	 */
+	private $post_id;
+
+	/**
+	 * Construct the class.
+	 *
+	 * @param int $widget_id
+	 * @param int $post_id
+	 */
+	public function __construct( $widget_id, $post_id = 0 ) {
 		$this->widget_id = $widget_id;
-		$this->query_id  = $query_id;
 		$this->post_id   = $post_id;
 	}
 
-	public function get_widget_html() {
-		global $wpdb;
-		$table_name = $wpdb->prefix . self::TABLE_NAME;
-		$widget_id  = $this->widget_id;
-		$query_id   = $this->query_id;
-		$post_id    = $this->post_id;
+	/**
+	 * Get the HTML for a widget query id.
+	 *
+	 * @param string $query_id
+	 * @return string
+	 */
+	public function get_widget_html( $query_id ) {
+		$this->update_internal_widget_cache();
 
-		$results = $wpdb->get_results(
-			$wpdb->prepare(
-				"SELECT html FROM $table_name WHERE widget_id=%d AND query_id=%s AND post_id=%d",
-				$widget_id,
-				$query_id,
-				$post_id
-			),
-			ARRAY_A
-		);
+		$widget_id = $this->widget_id;
+		$post_id   = $this->post_id;
 
-		if ( is_array( $results ) && isset( $results[0], $results[0]['html'] ) ) {
-			return $results[0]['html'];
+		if ( isset( self::$table_cache[ $widget_id ][ $post_id ][ $query_id ]['html'] ) ) {
+			return self::$table_cache[ $widget_id ][ $post_id ][ $query_id ]['html'];
+		}
+
+		if ( isset( self::$table_cache[ $widget_id ][0][ $query_id ]['html'] ) ) {
+			return self::$table_cache[ $widget_id ][0][ $query_id ]['html'];
 		}
 
 		return '';
 	}
 
-	public function update_widget_html( $html ) {
+	#region -- Update static variable from database.
+
+	/**
+	 * Update the internal class static variable to the results from database,
+	 * if necessary.
+	 *
+	 * @return void
+	 */
+	private function update_internal_widget_cache() {
+		if ( $this->widget_is_cached() ) {
+			return;
+		}
+
+		global $wpdb;
+		$table_name = $wpdb->prefix . self::TABLE_NAME;
+		$widget_id  = $this->widget_id;
+		$post_id    = $this->post_id;
+
+		if ( 0 === $post_id ) {
+			$sql_query = $wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				'SELECT html, post_id, query_id, time_generated FROM ' . $table_name . ' WHERE widget_id=%d AND post_id=0',
+				$widget_id
+			);
+		} else {
+			$sql_query = $wpdb->prepare(
+				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
+				'SELECT query_id, html, post_id, time_generated FROM ' . $table_name . ' WHERE widget_id=%d AND ( post_id=0 OR post_id=%d )',
+				$widget_id,
+				$post_id
+			);
+		}
+
+		// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$results = $wpdb->get_results( $sql_query, ARRAY_A );
+
+		if ( ! empty( $results ) ) {
+			$results = $this->format_database_results( $results, $widget_id );
+			$this->update_cache( $results );
+			$this->mark_post_id_cache_updated();
+		}
+	}
+
+	/**
+	 * Format the database results in a consistent way, with better accessibility.
+	 *
+	 * @param array $results
+	 * @param int $widget_id
+	 *
+	 * @return array<array{widget_id:int,query_id:string,post_id:int,html:string,time_generated:string}>
+	 */
+	private function format_database_results( $results, $widget_id ) {
+		$pretty_results = array();
+
+		foreach ( $results as $result ) {
+			$query_id_result = array();
+
+			$query_id_result['widget_id'] = $widget_id;
+
+			if ( isset( $result['query_id'] ) ) {
+				$query_id_result['query_id'] = (string) $result['query_id'];
+			} else {
+				continue;
+			}
+
+			if ( isset( $result['post_id'] ) ) {
+				$query_id_result['post_id'] = (int) $result['post_id'];
+			} else {
+				continue;
+			}
+
+			if ( isset( $result['html'] ) ) {
+				$query_id_result['html'] = (string) $result['html'];
+			} else {
+				$query_id_result['html'] = '';
+			}
+
+			if ( isset( $result['time_generated'] ) ) {
+				$query_id_result['time_generated'] = (string) $result['time_generated'];
+			} else {
+				$query_id_result['time_generated'] = '';
+			}
+
+			array_push( $pretty_results, $query_id_result );
+		}
+
+		return $pretty_results;
+	}
+
+	#endregion -- Update static variable from database.
+
+	#region -- Manage static cache.
+
+	/**
+	 * Check if the widget html was previously retrieved from database.
+	 *
+	 * @return bool
+	 */
+	private function widget_is_cached() {
+		if ( ! isset( self::$table_cache[ $this->widget_id ][ $this->post_id ] ) ) {
+			return false;
+		}
+
+		if ( ! isset( self::$table_cache[ $this->widget_id ][0] ) ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Update this class static cache variable with the results from database.
+	 *
+	 * @param array $results
+	 * @return void
+	 */
+	private function update_cache( $results ) {
+		foreach ( $results as $result ) {
+
+			// Make sure that in cache we have the widget_id as an array.
+			if ( isset( $result['widget_id'] ) ) {
+				$widget_id = $result['widget_id'];
+				if ( ! isset( self::$table_cache[ $widget_id ] ) || ! is_array( self::$table_cache[ $widget_id ] ) ) {
+					self::$table_cache[ $widget_id ] = array();
+				}
+			} else {
+				continue;
+			}
+
+			if ( isset( $result['post_id'] ) ) {
+				$post_id = $result['post_id'];
+				if ( ! isset( self::$table_cache[ $widget_id ][ $post_id ] ) || ! is_array( self::$table_cache[ $widget_id ][ $post_id ] ) ) {
+					self::$table_cache[ $widget_id ][ $post_id ] = array();
+				}
+			} else {
+				continue;
+			}
+
+			if ( isset( $result['query_id'] ) ) {
+				$query_id = $result['query_id'];
+			} else {
+				continue;
+			}
+
+			self::$table_cache[ $widget_id ][ $post_id ][ $query_id ] = $result;
+		}
+	}
+
+	/**
+	 * Make sure that the static variable that holds the cache updates it's key
+	 * to be detected as previously retrieved from database, when verified by
+	 * widget_is_cached() function, to not make widget_is_cached() return false
+	 * when in fact should return true.
+	 *
+	 * @return void
+	 */
+	private function mark_post_id_cache_updated() {
+		if ( ! isset( self::$table_cache[ $this->widget_id ][ $this->post_id ] ) ) {
+			self::$table_cache[ $this->widget_id ][ $this->post_id ] = array();
+		}
+
+		if ( ! isset( self::$table_cache[ $this->widget_id ][0] ) ) {
+			self::$table_cache[ $this->widget_id ][0] = array();
+		}
+	}
+
+	#endregion -- Manage static cache.
+
+	#region -- Update table with widget html
+
+	/**
+	 * Update the database table with new tab content.
+	 *
+	 * @param string|int $query_id
+	 * @param string $html
+	 * @return void
+	 */
+	public function update_widget_html( $query_id, $html ) {
 		global $wpdb;
 
 		$table_name   = $wpdb->prefix . self::TABLE_NAME;
 		$widget_id    = $this->widget_id;
-		$query_id     = $this->query_id;
+		$query_id     = (string) $query_id;
 		$post_id      = $this->post_id;
 		$current_time = time();
 		$post_id      = 0;
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
+		// No need to cache here to static variable, since the database cache will anyway occur from an async request.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		$wpdb->query(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
@@ -68,6 +296,45 @@ class Tabs_Cache_Table {
 		);
 
 	}
+
+	#endregion -- Update table with widget html
+
+	#region -- Delete widget cache
+
+	public function delete_widget_cache() {
+		// todo..
+	}
+
+	#endregion -- Delete widget cache
+
+	#region -- Manages global query timestamp
+
+	/**
+	 * Get the timestamp when global cache was generated.
+	 *
+	 * @return string Represents a number as a string.
+	 */
+	public static function get_cache_refreshed_timestamp() {
+		$timestamp = get_option( self::CACHE_REFRESHED_TIMESTAMP_OPTION_NAME, '0' );
+
+		if ( is_numeric( $timestamp ) ) {
+			return (string) $timestamp;
+		}
+
+		return '0';
+	}
+
+	/**
+	 * Set the global cache generated at the current timestamp.
+	 *
+	 * @return void
+	 */
+	public static function refresh_cache_timestamp() {
+		$timestamp = time();
+		update_option( self::CACHE_REFRESHED_TIMESTAMP_OPTION_NAME, $timestamp );
+	}
+
+	#endregion -- Manages global query timestamp
 
 	#region -- Create cache table.
 

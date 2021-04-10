@@ -14,11 +14,29 @@ use RuntimeException;
  */
 class Tabs_Cache_Async_Request extends WP_Background_Process {
 
+	/**
+	 * The prefix of the action.
+	 *
+	 * @var string
+	 */
 	protected $prefix = 'twrp';
 
+	/**
+	 * TThe action name.
+	 *
+	 * @var string
+	 */
 	protected $action = 'tabs_cache_request';
 
 	protected function task( $item ) {
+		if ( isset( $item['delete_all_except_widget_ids'] ) ) {
+			if ( ! is_array( $item['delete_all_except_widget_ids'] ) ) {
+				return false;
+			}
+
+			// todo: delete every widget id that does not exist.
+		}
+
 		$widget_id         = $item['widget_id'];
 		$instance_settings = $item['widget_instance_settings'];
 
@@ -26,10 +44,17 @@ class Tabs_Cache_Async_Request extends WP_Background_Process {
 			return false;
 		}
 
-		$this->create_widget_cache( $widget_id, $instance_settings );
+		$this->create_widget_cache( (int) $widget_id, $instance_settings );
 		return false;
 	}
 
+	/**
+	 * Given an widget id and it's instance settings, create the cache.
+	 *
+	 * @param int $widget_id
+	 * @param array $instance_settings
+	 * @return void
+	 */
 	protected function create_widget_cache( $widget_id, $instance_settings ) {
 		try {
 			$tabs_creator = new Tabs_Creator( $widget_id, $instance_settings );
@@ -37,18 +62,27 @@ class Tabs_Cache_Async_Request extends WP_Background_Process {
 			return;
 		}
 
-		$query_ids = $tabs_creator->get_query_ids();
+		$table_cache = new Tabs_Cache_Table( $widget_id );
 
+		// Cache inline style.
+		$inline_style = $tabs_creator->create_widget_inline_css();
+		$table_cache->update_widget_html( 'style', $inline_style );
+
+		// Cache query ids.
+		$query_ids = $tabs_creator->get_query_ids();
 		foreach ( $query_ids as $query_id ) {
 			$tab_content_html = $tabs_creator->create_tab_articles( $query_id );
 			if ( empty( $tab_content_html ) ) {
 				continue;
 			}
 
-			$cache = new Tabs_Cache_Table( $widget_id, $query_id );
-			$cache->update_widget_html( $tab_content_html );
+			$table_cache->update_widget_html( $query_id, $tab_content_html );
 		}
 	}
 
-	// Use function complete() to notice the user, or perform other arbitrary task...
+	protected function complete() {
+		parent::complete();
+
+		Tabs_Cache_Table::refresh_cache_timestamp();
+	}
 }
