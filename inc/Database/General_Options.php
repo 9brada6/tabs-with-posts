@@ -99,6 +99,8 @@ class General_Options {
 
 	const FILL_GRID_WITH_POSTS = 'Fill_Grid_With_Posts';
 
+	const ENABLE_CACHE = 'Enable_Cache';
+
 	#region -- Getting Options
 
 	/**
@@ -135,6 +137,7 @@ class General_Options {
 			self::SVG_INCLUDE_INLINE,
 			self::YASR_RATING_TYPE,
 			self::FILL_GRID_WITH_POSTS,
+			self::ENABLE_CACHE,
 		);
 
 		$default_settings = array();

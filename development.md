@@ -24,10 +24,10 @@
 ## ✅ Todo
 
 - It seems that phpcs:disabled was used where phpcs:ignore should be used, fix these problems.
+- Make General_Options::get_option faster.
 
 - Cache:
 - Add a setting for cache refresh minutes.
-- Add a way to stop caching from settings.
 - Add a way to refresh caching from settings.
 - Refresh cache when a plugin is installed?
 - Delete unnecessary widget cache.
@@ -75,6 +75,8 @@ In this thing, either cache globally(query can be at any part of the website), o
 
     - Say how YASR rating plugin setting works, and also put a link from settings.
     - Write in documentation that GamerZ like/dislike system is not working.
+
+    Cache: Say how it works, and why is good to be enabled.
 
 ## 🎉 Todo: After first release
 

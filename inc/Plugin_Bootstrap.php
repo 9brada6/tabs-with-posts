@@ -156,6 +156,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/Svg_Include_Inline',
 		'Database/General_Options_Settings/YASR_Rating_Type',
 		'Database/General_Options_Settings/Fill_Grid_With_Posts',
+		'Database/General_Options_Settings/Enable_Cache',
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',

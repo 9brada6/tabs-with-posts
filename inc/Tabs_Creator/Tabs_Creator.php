@@ -13,7 +13,7 @@ use TWRP\Utils\Widget_Utils;
 use TWRP\Utils\Class_Retriever_Utils;
 
 use RuntimeException;
-
+use TWRP\Database\General_Options;
 
 /**
  * Construct the tabs widget.
@@ -181,6 +181,13 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	protected function display_query_posts( $query_id ) {
+		$cache_is_enabled = General_Options::get_option( General_Options::ENABLE_CACHE );
+
+		if ( 'false' === $cache_is_enabled ) {
+			$this->create_tab_articles( $query_id, true );
+			return;
+		}
+
 		$tabs_cache = new Tabs_Cache_Table( $this->widget_id );
 		$widget     = $tabs_cache->get_widget_html( (string) $query_id );
 
@@ -195,6 +202,13 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	protected function widget_inline_css() {
+		$cache_is_enabled = General_Options::get_option( General_Options::ENABLE_CACHE );
+
+		if ( 'false' === $cache_is_enabled ) {
+			echo $this->create_widget_inline_css(); // phpcs:ignore -- No XSS.
+			return;
+		}
+
 		$tabs_cache   = new Tabs_Cache_Table( $this->widget_id );
 		$inline_style = $tabs_cache->get_widget_html( 'style' );
 

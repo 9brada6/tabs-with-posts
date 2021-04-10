@@ -2,7 +2,9 @@
 
 namespace TWRP\Tabs_Cache;
 
+use TWRP\Database\General_Options;
 use TWRP\Database\Tabs_Cache_Table;
+
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Widget_Utils;
 
@@ -35,6 +37,11 @@ class Create_Tabs_Cache {
 	 * @return void
 	 */
 	public static function after_setup_theme_init() {
+		// If cache is not enable, then return.
+		if ( 'false' === General_Options::get_option( General_Options::ENABLE_CACHE ) ) {
+			return;
+		}
+
 		// We need to initialize this class here, because after it's too late, and won't work.
 		self::$async_request = new Tabs_Cache_Async_Request();
 

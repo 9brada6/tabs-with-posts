@@ -151,6 +151,7 @@ class General_Settings_Factory {
 			General_Options::RATING_ICON_PACK           => self::SELECT_SETTING_CLASS,
 			General_Options::SVG_INCLUDE_INLINE         => self::RADIO_SETTING_CLASS,
 			General_Options::YASR_RATING_TYPE           => self::SELECT_SETTING_CLASS,
+			General_Options::ENABLE_CACHE               => self::RADIO_SETTING_CLASS,
 			General_Options::FILL_GRID_WITH_POSTS       => self::RADIO_SETTING_CLASS,
 		);
 
@@ -189,6 +190,7 @@ class General_Settings_Factory {
 			General_Options::RATING_ICON_PACK           => 'get_rating_pack_setting_args',
 			General_Options::SVG_INCLUDE_INLINE         => 'get_svg_include_inline_args',
 			General_Options::YASR_RATING_TYPE           => 'get_yasr_rating_type_args',
+			General_Options::ENABLE_CACHE               => 'get_enable_cache_args',
 			General_Options::FILL_GRID_WITH_POSTS       => 'get_fill_grid_with_posts_args',
 		);
 
@@ -568,6 +570,21 @@ class General_Settings_Factory {
 	protected static function get_fill_grid_with_posts_args() {
 		return array(
 			'title'   => _x( 'Fill the empty grid spaces with posts?', 'backend', 'twrp' ),
+			'options' => array(
+				'true'  => __( 'Yes', 'twrp' ),
+				'false' => __( 'No', 'twrp' ),
+			),
+		);
+	}
+
+	/**
+	 * Return the arguments to create "enable cache" setting.
+	 *
+	 * @return array
+	 */
+	protected static function get_enable_cache_args() {
+		return array(
+			'title'   => _x( 'Enable widget cache?', 'backend', 'twrp' ),
 			'options' => array(
 				'true'  => __( 'Yes', 'twrp' ),
 				'false' => __( 'No', 'twrp' ),
