@@ -23,11 +23,12 @@
 
 ## ✅ Todo
 
-- Make General_Options::get_option faster.
+- In general settings, we get a javascript error: autocomplete is not a function.
+
+- Make General_Options::get_option faster(and all other functions).
 
 - Cache:
 - Add a setting for cache refresh minutes.
-- Add a way to refresh caching from settings.
 - Refresh cache when a plugin is installed?
 - Delete unnecessary widget cache.
 
@@ -36,7 +37,7 @@
 - Test the widget outside(in customizer, elementor)... etc, and make it work.
 - In the widget, add a photo where the meta are displayed about meta positions.
 
-- Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at teh actions.
+- Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 

@@ -2,6 +2,7 @@ import $ from 'jquery';
 import { showUp, hideUp } from '../admin-blocks/twrpb-hidden/twrpb-hidden';
 
 declare const wp: any;
+declare const ajaxurl: any;
 
 // #region -- Hide or show custom date format depending on human readable date format.
 
@@ -306,3 +307,41 @@ function addButtonEvent() {
 }
 
 // #endregion -- Show WP Media selector.
+
+// #region -- Cache rebuild handler.
+
+$( document ).on( 'click', '#twrpb-refresh-cache-button', handleRefreshCache );
+
+function handleRefreshCache( e ) {
+	e.preventDefault();
+	const button = $( this );
+	const runningPrefix = ' (' + button.attr( 'data-twrpb-refresh-cache-waiting' ) + ')';
+	const failedPrefix = ' (' + button.attr( 'data-twrpb-refresh-cache-failed' ) + ')';
+	const successPrefix = ' (' + button.attr( 'data-twrpb-refresh-cache-success' ) + ')';
+
+	const nonce = button.attr( 'data-twrpb-refresh-cache-nonce' );
+	const text = button.text();
+	const cleanText = text.replace( runningPrefix, '' ).replace( failedPrefix, '' ).replace( successPrefix, '' );
+
+	button.html( cleanText + runningPrefix );
+
+	$.ajax( {
+		type: 'post',
+		dataType: 'json',
+		cache: false,
+		data: {
+			action: 'twrp_refresh_widget_cache',
+			nonce,
+		},
+		url: ajaxurl,
+		complete( response ) {
+			if ( response.status === 200 ) {
+				button.html( cleanText + successPrefix );
+			} else {
+				button.html( cleanText + failedPrefix );
+			}
+		},
+	} );
+}
+
+// #endregion -- Cache rebuild handler.

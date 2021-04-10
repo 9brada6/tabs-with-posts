@@ -109,6 +109,18 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= _x( 'Cache Settings', 'backend', 'twrp' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::ENABLE_CACHE ); ?>
+
+					<?php $nonce = wp_create_nonce( 'twrp_refresh_widget_cache_nonce' ); ?>
+					<button 
+						id="twrpb-refresh-cache-button" 
+						class="twrpb-button twrpb-general-settings__refresh-cache-btn" 
+						data-twrpb-refresh-cache-nonce="<?= esc_attr( $nonce ) ?>" 
+						data-twrpb-refresh-cache-waiting="<?= esc_attr_x( 'Waiting', 'backend', 'twrp' ); ?>"
+						data-twrpb-refresh-cache-success="<?= esc_attr_x( 'Success', 'backend', 'twrp' ); ?>"
+						data-twrpb-refresh-cache-failed="<?= esc_attr_x( 'Failed', 'backend', 'twrp' ); ?>"
+						type="button">
+						<?= esc_html( _x( 'Refresh widget cache', 'backend', 'twrp' ) ); ?>
+					</button>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">

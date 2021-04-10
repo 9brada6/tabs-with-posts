@@ -61,6 +61,9 @@ class Create_Tabs_Cache {
 			Tabs_Cache_Table::refresh_cache_timestamp();
 			self::cache_all_widgets_and_tabs();
 		};
+
+		// Refresh at ajax call.
+		add_action( 'wp_ajax_twrp_refresh_widget_cache', array( static::class, 'ajax_refresh_cache' ) );
 	}
 
 	/**
@@ -166,5 +169,25 @@ class Create_Tabs_Cache {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Refresh the widget cache via an ajax call.
+	 *
+	 * @return void
+	 */
+	public static function ajax_refresh_cache() {
+		if ( ! isset( $_POST['nonce'] ) ) {
+			die();
+		}
+
+		$nonce = wp_unslash( (string) $_POST['nonce'] ); // phpcs:ignore WordPress.Security
+		if ( ! is_string( $nonce ) || ! wp_verify_nonce( $nonce, 'twrp_refresh_widget_cache_nonce' ) ) {
+			die();
+		}
+
+		self::cache_all_widgets_and_tabs();
+
+		die();
 	}
 }
