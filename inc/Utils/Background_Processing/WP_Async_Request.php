@@ -106,7 +106,7 @@ abstract class WP_Async_Request {
 		 *
 		 * @param array $url
 		 */
-		return apply_filters( $this->identifier . '_query_args', $args ); // phpcs:disable WordPress.NamingConventions
+		return apply_filters( $this->identifier . '_query_args', $args ); // phpcs:ignore WordPress.NamingConventions
 	}
 
 	/**
@@ -128,13 +128,15 @@ abstract class WP_Async_Request {
 		 *
 		 * @param string $url
 		 */
-		return apply_filters( $this->identifier . '_query_url', $url );
+		return apply_filters( $this->identifier . '_query_url', $url ); // phpcs:ignore WordPress.NamingConventions
 	}
 
 	/**
 	 * Get post args
 	 *
 	 * @return array
+	 *
+	 * @psalm-suppress UndefinedThisPropertyFetch
 	 */
 	protected function get_post_args() {
 		if ( property_exists( $this, 'post_args' ) ) {
@@ -146,8 +148,8 @@ abstract class WP_Async_Request {
 			'blocking'  => false,
 			'body'      => $this->data,
 			'cookies'   => $_COOKIE,
-			// cspell:disable-next-line -- Ignre word.
-			'sslverify' => apply_filters( 'https_local_ssl_verify', false ),
+			// cspell:disable-next-line -- Ignore word.
+			'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions
 		);
 
 		/**
@@ -155,7 +157,7 @@ abstract class WP_Async_Request {
 		 *
 		 * @param array $args
 		 */
-		return apply_filters( $this->identifier . '_post_args', $args );
+		return apply_filters( $this->identifier . '_post_args', $args ); // phpcs:ignore WordPress.NamingConventions
 	}
 
 	/**

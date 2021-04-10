@@ -561,11 +561,8 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			$attr_html .= " $name=" . '"' . esc_attr( $value ) . '"';
 		}
 
-		// phpcs:disable WordPress.Security -- No XSS
-		?>
-	<img src="<?= esc_url( $thumbnail_image_src ); ?>" alt="<?= esc_attr( $alt ) ?>"<?= $lazy_loading; ?><?= $attr_html; ?><?= $src_set; ?>>
-		<?php
-		// phpcs:enable WordPress.Security
+		// phpcs:ignore WordPress.Security -- No XSS
+		echo '<img src="' . esc_url( $thumbnail_image_src ) . '" alt="' . esc_attr( $alt ) . '"' . $lazy_loading . $attr_html . $src_set . '>';
 	}
 
 	/**

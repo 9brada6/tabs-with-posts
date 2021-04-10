@@ -23,7 +23,6 @@
 
 ## ✅ Todo
 
-- It seems that phpcs:disabled was used where phpcs:ignore should be used, fix these problems.
 - Make General_Options::get_option faster.
 
 - Cache:
@@ -35,11 +34,9 @@
 - Bug: If we make a most rated posts, then we disable the plugin, the tab will display but the contents not.
 
 - Test the widget outside(in customizer, elementor)... etc, and make it work.
-- In the widget, add a photo where the meta are displayed.
+- In the widget, add a photo where the meta are displayed about meta positions.
 
-Main: Add a way to cache tabs/queries.
-In this thing, either cache globally(query can be at any part of the website), or per post(a query will be available only per a post).
-
+- Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at teh actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 
