@@ -113,13 +113,13 @@ class Tabs_Cache_Table {
 		if ( 0 === $post_id ) {
 			$sql_query = $wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-				'SELECT html, post_id, query_id, time_generated FROM ' . $table_name . ' WHERE widget_id=%d AND post_id=0',
+				'SELECT html, post_id, query_id, cache_generation_time FROM ' . $table_name . ' WHERE widget_id=%d AND post_id=0',
 				$widget_id
 			);
 		} else {
 			$sql_query = $wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-				'SELECT query_id, html, post_id, time_generated FROM ' . $table_name . ' WHERE widget_id=%d AND ( post_id=0 OR post_id=%d )',
+				'SELECT query_id, html, post_id, cache_generation_time FROM ' . $table_name . ' WHERE widget_id=%d AND ( post_id=0 OR post_id=%d )',
 				$widget_id,
 				$post_id
 			);
@@ -141,7 +141,7 @@ class Tabs_Cache_Table {
 	 * @param array $results
 	 * @param int $widget_id
 	 *
-	 * @return array<array{widget_id:int,query_id:string,post_id:int,html:string,time_generated:string}>
+	 * @return array<array{widget_id:int,query_id:string,post_id:int,html:string,cache_generation_time:string}>
 	 */
 	private function format_database_results( $results, $widget_id ) {
 		$pretty_results = array();
@@ -169,10 +169,10 @@ class Tabs_Cache_Table {
 				$query_id_result['html'] = '';
 			}
 
-			if ( isset( $result['time_generated'] ) ) {
-				$query_id_result['time_generated'] = (string) $result['time_generated'];
+			if ( isset( $result['cache_generation_time'] ) ) {
+				$query_id_result['cache_generation_time'] = (string) $result['cache_generation_time'];
 			} else {
-				$query_id_result['time_generated'] = '';
+				$query_id_result['cache_generation_time'] = '';
 			}
 
 			array_push( $pretty_results, $query_id_result );
@@ -284,7 +284,7 @@ class Tabs_Cache_Table {
 		$wpdb->query(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-				"INSERT INTO {$table_name} (widget_id,query_id,post_id,html,time_generated) VALUES (%d,%s,%s,%s,%d) ON DUPLICATE KEY UPDATE html=%s, time_generated=%d",
+				"INSERT INTO {$table_name} (widget_id,query_id,post_id,html,cache_generation_time) VALUES (%d,%s,%s,%s,%d) ON DUPLICATE KEY UPDATE html=%s, cache_generation_time=%d",
 				$widget_id,
 				$query_id,
 				$post_id,
@@ -301,8 +301,35 @@ class Tabs_Cache_Table {
 
 	#region -- Delete widget cache
 
-	public function delete_widget_cache() {
-		// todo..
+	/**
+	 * Delete all the rows in the cache that DOES NOT exist in the widget_ids array.
+	 *
+	 * @param array $widget_ids
+	 * @return void
+	 */
+	public static function delete_widgets_cache_not_in( $widget_ids ) {
+		global $wpdb;
+		$table_name         = $wpdb->prefix . self::TABLE_NAME;
+		$escaped_widget_ids = array();
+
+		foreach ( $widget_ids as $widget_id ) {
+			if ( is_numeric( $widget_id ) ) {
+				$widget_id = $wpdb->prepare( '%d', $widget_id );
+				if ( is_array( $widget_id ) ) {
+					continue;
+				}
+
+				array_push( $escaped_widget_ids, $widget_id );
+			}
+		}
+
+		if ( empty( $escaped_widget_ids ) ) {
+			return;
+		}
+		$not_in = implode( ', ', $escaped_widget_ids );
+
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$wpdb->query( "DELETE FROM {$table_name} WHERE widget_id NOT IN ({$not_in})" );
 	}
 
 	#endregion -- Delete widget cache
@@ -367,7 +394,7 @@ class Tabs_Cache_Table {
 			query_id varchar(16) NOT NULL,
 			post_id int NOT NULL,
 			html text NOT NULL,
-			time_generated varchar(16) NOT NULL,
+			cache_generation_time varchar(16) NOT NULL,
 			PRIMARY KEY  (id),
 			UNIQUE KEY widget_id (widget_id,query_id,post_id)
 		) $charset_collate;";

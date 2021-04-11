@@ -34,7 +34,7 @@ class Tabs_Cache_Async_Request extends WP_Background_Process {
 				return false;
 			}
 
-			// todo: delete every widget id that does not exist.
+			Tabs_Cache_Table::delete_widgets_cache_not_in( $item['delete_all_except_widget_ids'] );
 		}
 
 		$widget_id         = $item['widget_id'];

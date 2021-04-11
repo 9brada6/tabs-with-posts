@@ -23,14 +23,14 @@
 
 ## ✅ Todo
 
+- Bench file inclusion?
 - In general settings, we get a javascript error: autocomplete is not a function.
 
 - Make General_Options::get_option faster(and all other functions).
 
 - Cache:
 - Add a setting for cache refresh minutes.
-- Refresh cache when a plugin is installed?
-- Delete unnecessary widget cache.
+- Refresh cache when a plugin is activated/deactivated? : Yes
 
 - Bug: If we make a most rated posts, then we disable the plugin, the tab will display but the contents not.
 
