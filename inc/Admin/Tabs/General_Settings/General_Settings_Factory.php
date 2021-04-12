@@ -152,6 +152,7 @@ class General_Settings_Factory {
 			General_Options::SVG_INCLUDE_INLINE         => self::RADIO_SETTING_CLASS,
 			General_Options::YASR_RATING_TYPE           => self::SELECT_SETTING_CLASS,
 			General_Options::ENABLE_CACHE               => self::RADIO_SETTING_CLASS,
+			General_Options::CACHE_AUTOMATIC_REFRESH    => self::SELECT_SETTING_CLASS,
 			General_Options::FILL_GRID_WITH_POSTS       => self::RADIO_SETTING_CLASS,
 		);
 
@@ -191,6 +192,7 @@ class General_Settings_Factory {
 			General_Options::SVG_INCLUDE_INLINE         => 'get_svg_include_inline_args',
 			General_Options::YASR_RATING_TYPE           => 'get_yasr_rating_type_args',
 			General_Options::ENABLE_CACHE               => 'get_enable_cache_args',
+			General_Options::CACHE_AUTOMATIC_REFRESH    => 'get_cache_minutes_automatic_refresh_args',
 			General_Options::FILL_GRID_WITH_POSTS       => 'get_fill_grid_with_posts_args',
 		);
 
@@ -588,6 +590,27 @@ class General_Settings_Factory {
 			'options' => array(
 				'true'  => __( 'Yes', 'twrp' ),
 				'false' => __( 'No', 'twrp' ),
+			),
+		);
+	}
+
+	/**
+	 * Return the arguments to create the setting to select after how many
+	 * minutes a cache should refresh.
+	 *
+	 * @return array
+	 */
+	protected static function get_cache_minutes_automatic_refresh_args() {
+		return array(
+			'title'   => _x( 'After how many minutes the cache should refresh?', 'backend', 'twrp' ),
+			'options' => array(
+				'7'  => _x( '7 minutes', 'backend', 'twrp' ),
+				'10' => _x( '10 minutes', 'backend', 'twrp' ),
+				'15' => _x( '15 minutes', 'backend', 'twrp' ),
+				'20' => _x( '20 minutes', 'backend', 'twrp' ),
+				'30' => _x( '30 minutes', 'backend', 'twrp' ),
+				'45' => _x( '45 minutes', 'backend', 'twrp' ),
+				'60' => _x( '60 minutes', 'backend', 'twrp' ),
 			),
 		);
 	}

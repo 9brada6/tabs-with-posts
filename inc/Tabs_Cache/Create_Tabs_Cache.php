@@ -56,6 +56,13 @@ class Create_Tabs_Cache {
 		// When the settings are updated.
 		add_action( 'twrp_general_after_settings_submitted', array( static::class, 'cache_all_widgets_and_tabs' ) );
 
+		// When a plugin is activated/deactivated.
+		add_action( 'activated_plugin', array( static::class, 'cache_all_widgets_and_tabs' ) );
+		add_action( 'deactivated_plugin', array( static::class, 'cache_all_widgets_and_tabs' ) );
+
+		// When a plugin updated, or WordPress itself updated.
+		add_action( 'upgrader_process_complete', array( static::class, 'cache_all_widgets_and_tabs' ) );
+
 		// Every n minutes.
 		if ( self::check_if_minimum_timestamp_to_refresh_has_passed() ) {
 			Tabs_Cache_Table::refresh_cache_timestamp();
@@ -138,7 +145,16 @@ class Create_Tabs_Cache {
 			return false;
 		}
 
-		$minutes = 15; // todo: get minutes.
+		$minutes = General_Options::get_option( General_Options::CACHE_AUTOMATIC_REFRESH );
+
+		if ( ! is_numeric( $minutes ) ) {
+			return false;
+		}
+		$minutes = (int) $minutes;
+
+		if ( $minutes < 1 ) {
+			return false;
+		}
 
 		$current_timestamp   = time();
 		$timestamp_refreshed = (int) Tabs_Cache_Table::get_cache_refreshed_timestamp();

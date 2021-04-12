@@ -23,16 +23,16 @@
 
 ## ✅ Todo
 
-- Bench file inclusion?
+- Benchmark file inclusion?
 - In general settings, we get a javascript error: autocomplete is not a function.
 
 - Make General_Options::get_option faster(and all other functions).
 
 - Cache:
 - Add a setting for cache refresh minutes.
-- Refresh cache when a plugin is activated/deactivated? : Yes
 
 - Bug: If we make a most rated posts, then we disable the plugin, the tab will display but the contents not.
+- Bug: autoselect disable comment does not work.
 
 - Test the widget outside(in customizer, elementor)... etc, and make it work.
 - In the widget, add a photo where the meta are displayed about meta positions.
@@ -104,6 +104,7 @@
 - ➕ Animate when a page is shown(increase height).
 - ➕ Support reading time plugins.
 - ➕ Improve browser compatibility.
+- ➕ On widget refresh cache, after the success dispatch, say a message when the cache has been successfully created.
 
 ## 📖 Development Documentation
 

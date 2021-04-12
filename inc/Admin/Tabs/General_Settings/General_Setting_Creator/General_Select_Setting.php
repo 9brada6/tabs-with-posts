@@ -55,7 +55,7 @@ class General_Select_Setting extends General_Setting_Creator {
 	 */
 	protected function display_select_options( $options ) {
 		foreach ( $options as $option_value => $option_label ) :
-			$selected = ( $option_value === $this->value ? ' selected' : '' );
+			$selected = ( (string) $option_value === (string) $this->value ? ' selected' : '' );
 			?>
 			<option value="<?= esc_attr( $option_value ); ?>"<?= esc_attr( $selected ); ?>>
 				<?= esc_html( $option_label ); ?>

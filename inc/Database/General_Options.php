@@ -101,6 +101,8 @@ class General_Options {
 
 	const ENABLE_CACHE = 'Enable_Cache';
 
+	const CACHE_AUTOMATIC_REFRESH = 'Cache_Automatic_Refresh';
+
 	#region -- Getting Options
 
 	/**
@@ -138,6 +140,7 @@ class General_Options {
 			self::YASR_RATING_TYPE,
 			self::FILL_GRID_WITH_POSTS,
 			self::ENABLE_CACHE,
+			self::CACHE_AUTOMATIC_REFRESH,
 		);
 
 		$default_settings = array();
