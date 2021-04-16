@@ -218,15 +218,15 @@ class Plugin_Bootstrap {
 
 		// Tabs_Creator.
 		'Tabs_Creator/Tabs_Creator',
+		'Tabs_Creator/Tabs_Creator_Ajax',
+
+		'Tabs_Creator/Tabs_Styles/Tab_Style',
+		'Tabs_Creator/Tabs_Styles/Styles/Simple_Tabs',
+		'Tabs_Creator/Tabs_Styles/Styles/Button_Tabs',
 
 		// Tabs_Cache.
 		'Tabs_Cache/Create_Tabs_Cache',
 		'Tabs_Cache/Tabs_Cache_Async_Request',
-
-		// Tabs_Styles.
-		'Tabs_Creator/Tabs_Styles/Tab_Style',
-		'Tabs_Creator/Tabs_Styles/Styles/Simple_Tabs',
-		'Tabs_Creator/Tabs_Styles/Styles/Button_Tabs',
 
 		// TWRP_Widget.
 		'TWRP_Widget',

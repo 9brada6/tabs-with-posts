@@ -14,6 +14,7 @@ use TWRP\Utils\Class_Retriever_Utils;
 
 use RuntimeException;
 use TWRP\Database\General_Options;
+use WP_Post;
 
 /**
  * Construct the tabs widget.
@@ -65,6 +66,13 @@ class Tabs_Creator {
 	 * @var array
 	 */
 	protected $query_array_of_posts = array();
+
+	/**
+	 * Variable used to overwrite the general setting to load via ajax.
+	 *
+	 * @var bool|null
+	 */
+	protected $load_via_ajax = null;
 
 	/**
 	 * Construct the object based on some widget settings.
@@ -136,6 +144,11 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	public function display_tabs() {
+		if ( $this->widget_is_loaded_via_ajax() ) {
+			$this->display_widget_to_load_via_ajax();
+			return;
+		}
+
 		$this->widget_inline_css();
 		$tab_style   = $this->tab_style;
 		$default_tab = true;
@@ -329,5 +342,40 @@ class Tabs_Creator {
 		}
 
 		return null;
+	}
+
+	/**
+	 * Set the Ajax loading manually.
+	 *
+	 * @param bool $load_via_ajax Whether to force the widget to load via ajax or not.
+	 * @return void
+	 */
+	public function set_ajax_loading( $load_via_ajax ) {
+		if ( is_bool( $load_via_ajax ) ) {
+			$this->load_via_ajax = $load_via_ajax;
+		}
+	}
+
+	public function widget_is_loaded_via_ajax() {
+		if ( null !== $this->load_via_ajax ) {
+			return $this->load_via_ajax;
+		}
+
+		// todo: fix this.
+		return true;
+	}
+
+	protected function display_widget_to_load_via_ajax() {
+		$widget_id = (string) $this->widget_id;
+		$post_id   = '0';
+
+		global $post;
+		// todo: search how to check if global $post exist and is good better maybe is_single?.
+		if ( ( $post instanceof WP_Post ) && $post->ID > 0 ) {
+			$post_id = (string) $post->ID;
+		}
+
+		$failed_text = __( 'Loading articles failed, please refresh the page to try again.', 'twrp' );
+		echo '<div id="twrp-widget-load-via-ajax--' . esc_attr( $widget_id ) . '" style="display:none;" data-twrp-ajax-widget-id="' . esc_attr( $widget_id ) . '" data-twrp-ajax-post-id="' . esc_attr( $post_id ) . '" data-twrp-failed-text="' . esc_attr( $failed_text ) . '">';
 	}
 }

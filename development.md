@@ -23,28 +23,35 @@
 
 ## ✅ Todo
 
-- Benchmark file inclusion?
+Ajax:
+
+- Check how include inline svg when necessary works (maybe add a new action before checking for ajax?).
+- Test all js that use events on document/document-load how they work.
+- Create an option if the widget will be loaded via ajax.
+
+Cache: Make an item with only the widget id, then get the instance settings. same with the delete cache, no need to put ll ids, get the ids directly.
+
+- Move every database general class into a single file?(to load 1ms faster :))
 - In general settings, we get a javascript error: autocomplete is not a function.
 
 - Make General_Options::get_option faster(and all other functions).
 
-- Cache:
-- Add a setting for cache refresh minutes.
-
-- Bug: If we make a most rated posts, then we disable the plugin, the tab will display but the contents not.
-- Bug: autoselect disable comment does not work.
+- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message).
 
 - Test the widget outside(in customizer, elementor)... etc, and make it work.
 - In the widget, add a photo where the meta are displayed about meta positions.
+
+- Make debugger not throw when class_exist_and_method is not exist.
 
 - Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 
-- Make debugger not throw when class_exist_and_method is not exist.
+- Say in settings that if you change the icons, you must refresh the cache.
 
 - ### ✅ Todo Documentation
 
+    - Move the documentation to the last position, in he tabs.
     - Add some photos.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 
@@ -57,6 +64,7 @@
     Tabs:
 
     - Don't forget to say that tabs are not displayed when only a single tab is displayed.
+    - A widget can be forced to load via ajax or not, via a method call.
 
     Article Block:
 

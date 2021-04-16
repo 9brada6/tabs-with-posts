@@ -63,7 +63,8 @@
 			".phpunit.result.cache": true,
 			"phpunit.xml": true,
 			"phpstan.neon": true,
-			"twrp-docker.code-workspace": true,
+			"twrp.code-workspace": true,
+			".devcontainer.json": true,
 			"gulpfile.js": true,
 			"psalm.xml": true,
 			".stylelintrc.json": true,
@@ -122,7 +123,7 @@
 		// PHP Phan - Static analyzer:
 
 		// Important! Change this when the project is moved around.
-		"phan.analyzedProjectDirectory": "/wordpress/wp-content/plugins/tabs-with-recommended-posts/",
+		"phan.analyzedProjectDirectory": "W:\\Projects\\twrp-plugin\\wp-content\\plugins\\tabs-with-recommended-posts",
 
 		// "phan.connectToServerWithStdio": true,
 		"phan.enableGoToDefinition": false,
@@ -227,8 +228,6 @@
 		"git.ignoreLimitWarning": false,
 		"git.enableSmartCommit": false,
 		"git.autoRepositoryDetection": "openEditors",
-		"git.ignoredRepositories": [ ".\\..\\..\\..\\..", "./../../../.." ],
-
 
 		// To-do Tree:
 		// ===========================

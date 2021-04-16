@@ -249,7 +249,7 @@ function disableIconSelector() {
 }
 
 function enableIconSelector() {
-	$( selectDisabledCommentIconSelector ).removeProp( 'disabled' );
+	$( selectDisabledCommentIconSelector ).prop( 'disabled', false );
 }
 
 function onSubmitSendDisable() {

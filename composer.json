@@ -11,6 +11,7 @@
 		"dealerdirect/phpcodesniffer-composer-installer": "*",
 		"vimeo/psalm": "*",
 		"psalm/plugin-phpunit": "^0.12.2",
+		"phan/phan": "^4.0",
 		"php-stubs/wordpress-stubs": "4.9.11"
 	},
 	"scripts": {
@@ -24,6 +25,5 @@
 	"autoload": {
         "psr-4": {}
     },
-    "require": {
-    }
+    "require": {}
 }
