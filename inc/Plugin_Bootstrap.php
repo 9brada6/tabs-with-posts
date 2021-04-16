@@ -5,7 +5,7 @@
 
 namespace TWRP;
 
-use TWRP\CSS\Icons_CSS;
+use TWRP\Enqueue_Scripts\Icons_CSS;
 use TWRP\Database\Tabs_Cache_Table;
 
 use TWRP\Utils\Class_Retriever_Utils;
@@ -126,39 +126,12 @@ class Plugin_Bootstrap {
 		'Article_Block/Blocks/Modern_Article',
 
 		// CSS.
-		'CSS/General_CSS',
-		'CSS/Icons_CSS',
+		'Enqueue_Scripts/Enqueue_Scripts',
+		'Enqueue_Scripts/Icons_CSS',
 
 		// Database.
 		'Database/General_Options_Settings/General_Option_Setting',
-		'Database/General_Options_Settings/Accent_Color',
-		'Database/General_Options_Settings/Darker_Accent_Color',
-		'Database/General_Options_Settings/Lighter_Accent_Color',
-		'Database/General_Options_Settings/Text_Color',
-		'Database/General_Options_Settings/Disabled_Text_Color',
-		'Database/General_Options_Settings/Background_Color',
-		'Database/General_Options_Settings/Secondary_Background_Color',
-		'Database/General_Options_Settings/Border_Color',
-		'Database/General_Options_Settings/Secondary_Border_Color',
-		'Database/General_Options_Settings/Border_Radius',
-		'Database/General_Options_Settings/Tab_Button_Size',
-		'Database/General_Options_Settings/Human_Readable_Date',
-		'Database/General_Options_Settings/Date_Format',
-		'Database/General_Options_Settings/No_Thumbnail_Image',
-		'Database/General_Options_Settings/Author_Icon',
-		'Database/General_Options_Settings/Date_Icon',
-		'Database/General_Options_Settings/Category_Icon',
-		'Database/General_Options_Settings/Comments_Icon',
-		'Database/General_Options_Settings/Comments_Disabled_Icon_Auto_Select',
-		'Database/General_Options_Settings/Comments_Disabled_Icon',
-		'Database/General_Options_Settings/Views_Icon',
-		'Database/General_Options_Settings/Rating_Pack_Icons',
-		'Database/General_Options_Settings/Svg_Include_Inline',
-		'Database/General_Options_Settings/YASR_Rating_Type',
-		'Database/General_Options_Settings/Fill_Grid_With_Posts',
-		'Database/General_Options_Settings/Enable_Cache',
-		'Database/General_Options_Settings/Cache_Automatic_Refresh',
-		'Database/General_Options_Settings/Load_Widget_Via_Ajax',
+		'Database/General_Options_Settings/General_Options_Settings_Classes',
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',

@@ -23,7 +23,7 @@
 
 ## ✅ Todo
 
-- Change the CSS folder to "Enqueue" or something like this.
+- Test the cache and ajax with various Cache plugins. Write in documentation what plugins are supported(all shall be).
 
 - Move every database general class into a single file?(to load 1ms faster :))
 - In general settings, we get a javascript error: autocomplete is not a function.

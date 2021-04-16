@@ -5,7 +5,7 @@
 
 use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
-use TWRP\CSS\Icons_CSS;
+use TWRP\Enqueue_Scripts\Icons_CSS;
 
 
 add_filter( 'the_content', 'add_after_content_test_all_icons_alignment' );

@@ -370,7 +370,7 @@ class Tabs_Creator {
 			return $this->load_via_ajax;
 		}
 
-		$option = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
+		$option = General_Options::get_option( General_Options::LOAD_WIDGET_VIA_AJAX );
 
 		if ( 'true' === $option ) {
 			return true;

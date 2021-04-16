@@ -1,6 +1,6 @@
 <?php
 
-namespace TWRP\CSS;
+namespace TWRP\Enqueue_Scripts;
 
 use TWRP\Icons\Icon_Factory;
 use TWRP\Database\General_Options;
@@ -15,7 +15,7 @@ use RuntimeException;
 
 /**
  * Class used to generate the methods to include the Icons SVG. The icons are
- * enqueue in General_CSS file.
+ * enqueue in Enqueue_Scripts file.
  *
  * The method in which the icons SVG are included is that in the HTML head, we
  * put a script tag, where we prepend a div with all the SVG in the <body>

@@ -1,6 +1,6 @@
 <?php
 
-namespace TWRP\CSS;
+namespace TWRP\Enqueue_Scripts;
 
 use TWRP\Admin\Settings_Menu;
 use TWRP\Database\General_Options;
@@ -9,7 +9,7 @@ use TWRP\Utils\Color_Utils;
 use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
-use TWRP\CSS\Icons_CSS;
+use TWRP\Enqueue_Scripts\Icons_CSS;
 
 /**
  * Class used to enqueue the CSS/JS files, and to generate some CSS.
@@ -26,7 +26,7 @@ use TWRP\CSS\Icons_CSS;
  *
  * The inline CSS is added in a Tabs_Creator method.
  */
-class Generate_CSS {
+class Enqueue_Scripts {
 
 	use After_Setup_Theme_Init_Trait;
 

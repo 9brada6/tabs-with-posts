@@ -7,7 +7,7 @@ namespace TWRP\Development_Tests;
 
 use TWRP\Icons\Icon;
 use TWRP\Icons\Icon_Factory;
-use TWRP\CSS\Icons_CSS;
+use TWRP\Enqueue_Scripts\Icons_CSS;
 
 /**
  * Implement some static methods to display all icons for testing purpose, as
