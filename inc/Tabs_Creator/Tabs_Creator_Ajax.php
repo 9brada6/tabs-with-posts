@@ -7,31 +7,53 @@ use TWRP\Utils\Widget_Utils;
 
 use RuntimeException;
 
+/**
+ * Class that manages the retrieval of the widgets via an ajax call.
+ */
 class Tabs_Creator_Ajax {
 
 	use After_Setup_Theme_Init_Trait;
 
+	/**
+	 * Register the Ajax actions.
+	 *
+	 * @return void
+	 */
 	public static function after_setup_theme_init() {
 		add_action( 'wp_ajax_twrp_load_widget', array( static::class, 'create_widget' ) );
 		add_action( 'wp_ajax_nopriv_twrp_load_widget', array( static::class, 'create_widget' ) );
 	}
 
+	/**
+	 * Manages the ajax call, that requests the widgets.
+	 *
+	 * @return void
+	 */
 	public static function create_widget() {
 		// phpcs:disable WordPress.Security.NonceVerification -- Since this is an anti-cache retrieval, we can't use a nonce that is cached.
 		if ( ! isset( $_GET['items'] ) || ! is_string( $_GET['items'] ) ) {
 			die();
 		}
-		$returned_data = array();
+		// phpcs:disable WordPress.Security.ValidatedSanitizedInput
+		$items_encoded = wp_unslash( ( $_GET['items'] ) );
+		if ( ! is_string( $items_encoded ) ) {
+			die();
+		}
 
-		// todo: test if json is valid and catch.
-		$items = json_decode( wp_unslash( ( $_GET['items'] ) ) );
+		$items = json_decode( $items_encoded, true );
+
+		if ( null === $items ) {
+			die();
+		}
+
+		$returned_data = array();
 		foreach ( $items as $item ) {
 			// Get widget id and post id and sanitize them.
-			if ( ! property_exists( $item, 'widget_id' ) || ! property_exists( $item, 'post_id' ) ) {
+			if ( ! array_key_exists( 'widget_id', $item ) || ! array_key_exists( 'post_id', $item ) ) {
 				continue;
 			}
-			$widget_id = $item->widget_id;
-			$post_id   = $item->post_id;
+			$widget_id = $item['widget_id'];
+			$post_id   = $item['post_id'];
 
 			if ( ! is_numeric( $widget_id ) || ! is_numeric( $post_id ) ) {
 				continue;

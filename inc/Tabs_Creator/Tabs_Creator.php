@@ -144,7 +144,10 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	public function display_tabs() {
-		if ( $this->widget_is_loaded_via_ajax() ) {
+		$loaded_via_ajax = $this->widget_is_loaded_via_ajax();
+		do_action( 'twrp_display_tabs_before_ajax', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids, $loaded_via_ajax );
+
+		if ( $loaded_via_ajax ) {
 			$this->display_widget_to_load_via_ajax();
 			return;
 		}
@@ -345,7 +348,8 @@ class Tabs_Creator {
 	}
 
 	/**
-	 * Set the Ajax loading manually.
+	 * Set the Ajax loading manually, overwriting the global option for this
+	 * widget.
 	 *
 	 * @param bool $load_via_ajax Whether to force the widget to load via ajax or not.
 	 * @return void
@@ -356,15 +360,31 @@ class Tabs_Creator {
 		}
 	}
 
+	/**
+	 * Check if the widget needs to be loaded via Ajax or not.
+	 *
+	 * @return bool
+	 */
 	public function widget_is_loaded_via_ajax() {
 		if ( null !== $this->load_via_ajax ) {
 			return $this->load_via_ajax;
 		}
 
-		// todo: fix this.
-		return true;
+		$option = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
+
+		if ( 'true' === $option ) {
+			return true;
+		}
+
+		return false;
 	}
 
+	/**
+	 * Display the HTML that needs to be replaced with the widget after the
+	 * ajax call.
+	 *
+	 * @return void
+	 */
 	protected function display_widget_to_load_via_ajax() {
 		$widget_id = (string) $this->widget_id;
 		$post_id   = '0';

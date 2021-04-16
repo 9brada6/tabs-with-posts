@@ -8,6 +8,7 @@ use TWRP\Tabs_Creator\Tabs_Creator;
 use TWRP\Utils\WP_Background_Process;
 
 use RuntimeException;
+use TWRP\Utils\Widget_Utils;
 
 /**
  * This class manages how the async request that caches tabs works.
@@ -37,10 +38,15 @@ class Tabs_Cache_Async_Request extends WP_Background_Process {
 			Tabs_Cache_Table::delete_widgets_cache_not_in( $item['delete_all_except_widget_ids'] );
 		}
 
-		$widget_id         = $item['widget_id'];
-		$instance_settings = $item['widget_instance_settings'];
+		$widget_id = $item['widget_id'];
 
-		if ( ! is_numeric( $widget_id ) || ! is_array( $instance_settings ) ) {
+		if ( ! is_numeric( $widget_id ) ) {
+			return false;
+		}
+
+		$instance_settings = Widget_Utils::get_instance_settings( (string) $widget_id );
+
+		if ( empty( $instance_settings ) ) {
 			return false;
 		}
 

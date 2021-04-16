@@ -166,7 +166,7 @@ class Widget_Utils {
 	}
 
 	/**
-	 * Get the instance settings array based on.
+	 * Get the instance settings array for the widget id.
 	 *
 	 * @param string|int $widget_id Either the int or the whole widget Id.
 	 * @return array Empty array if no settings are present.

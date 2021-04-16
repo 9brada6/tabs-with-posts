@@ -122,6 +122,8 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 						type="button">
 						<?= esc_html( _x( 'Refresh widget cache', 'backend', 'twrp' ) ); ?>
 					</button>
+
+					<?php General_Settings_Factory::display_setting( General_Options::LOAD_WIDGET_VIA_AJAX ); ?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">

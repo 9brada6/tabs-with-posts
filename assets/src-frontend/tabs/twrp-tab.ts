@@ -9,6 +9,7 @@ if ( document.readyState === 'loading' ) {
 } else {
 	initializeAllTabs();
 }
+document.addEventListener( 'twrp-widgets-loaded-via-ajax', initializeAllTabs );
 
 function initializeAllTabs() {
 	const allTabs = document.querySelectorAll( '[data-twrp-tabs-btns]' );
@@ -27,12 +28,23 @@ function initializeAllTabs() {
 		const tabId = tabsWrapper.getAttribute( 'id' );
 		const tabSelectorId = '#' + tabId + ' [data-twrp-tabs-btns]';
 
+		// @ts-ignore
+		if ( ( typeof element.twrpTabbyObject === 'object' ) && ( element.twrpTabbyObject !== null ) ) {
+			continue;
+		}
+
+		// Set timeout to make this execute later, to make the page feel faster.
 		setTimeout( function() {
 			// @ts-ignore -- No Tabby type declared yet.
-			tabs.push( new Tabby( tabSelectorId, {
+			const tabby = new Tabby( tabSelectorId, {
 				idPrefix: 'twrp-tabby__',
 				default: '[data-twrp-default-tab]',
-			} ) );
+			} );
+			const tabElement = document.querySelector( tabSelectorId );
+
+			// @ts-ignore
+			tabElement.twrpTabbyObject = tabby;
+			tabs.push( tabby );
 		}, 0 );
 	}
 }
@@ -164,11 +176,15 @@ function handleAjaxFinished( ajaxObject: XMLHttpRequest, items: Array<Object> ) 
 			for ( let i = 0; i < parsedItems.length; i++ ) {
 				updateWidgetViaAjax( parsedItems[ i ] );
 			}
-
-			initializeAllTabs();
 		} else {
 			showWidgetsCannotBeLoaded( items );
 		}
+
+		// todo: make this IE 11 compatible.
+		const event = new Event( 'twrp-widgets-loaded-via-ajax', {
+			bubbles: true,
+		} );
+		document.dispatchEvent( event );
 	}
 }
 

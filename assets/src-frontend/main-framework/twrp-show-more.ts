@@ -1,4 +1,4 @@
-declare const TwrpDisableGridPostsFill: any;
+declare const TWRPLocalizeObject: any;
 
 // #region -- Show more pages button
 
@@ -36,6 +36,7 @@ if ( document.readyState === 'loading' ) {
 	addOrRemoveColumnsClass();
 }
 window.addEventListener( 'resize', addOrRemoveColumnsClass );
+document.addEventListener( 'twrp-widgets-loaded-via-ajax', addOrRemoveColumnsClass );
 
 function addOrRemoveColumnsClass() {
 	const tabsWrappers = document.getElementsByClassName( tabContentClassName );
@@ -66,9 +67,10 @@ if ( document.readyState === 'loading' ) {
 }
 window.addEventListener( 'resize', tryToEqualizeAllTabs );
 document.addEventListener( 'tabby', tryToEqualizeAllTabs );
+document.addEventListener( 'twrp-widgets-loaded-via-ajax', tryToEqualizeAllTabs );
 
 function tryToEqualizeAllTabs(): void {
-	if ( ( typeof TwrpDisableGridPostsFill !== 'undefined' ) && ( TwrpDisableGridPostsFill.disable ) && ( TwrpDisableGridPostsFill.disable === 'true' ) ) {
+	if ( ( typeof TWRPLocalizeObject !== 'undefined' ) && ( TWRPLocalizeObject.disableGridPostsFill ) && ( TWRPLocalizeObject.disableGridPostsFill === 'true' ) ) {
 		return;
 	}
 
@@ -83,6 +85,7 @@ function equalizePagesToNumberOfColumns( element: unknown ): void {
 		return;
 	}
 
+	// This value represents the widget posts per page, set in widget settings.
 	const postsPerPage = Number( element.getAttribute( dataPostsPerPage ) );
 
 	// Get the current posts per page displayed(if modified previously).
@@ -104,15 +107,18 @@ function equalizePagesToNumberOfColumns( element: unknown ): void {
 		return;
 	}
 
+	// This value represents what the new posts per page should be(can be same as previous).
 	let newPostsPerPage = postsPerPage;
 	if ( columns > 1 ) {
 		if ( postsPerPage > columns ) {
-			newPostsPerPage = postsPerPage + ( postsPerPage % columns );
+			if ( postsPerPage % columns === 0 ) {
+				newPostsPerPage = postsPerPage;
+			} else {
+				newPostsPerPage = columns * ( Math.floor( postsPerPage / columns ) + 1 ); // postsPerPage + ( postsPerPage % columns );
+			}
 		} else {
 			newPostsPerPage = columns;
 		}
-	} else {
-		newPostsPerPage = postsPerPage;
 	}
 
 	if ( columns > 1 && ( ( currentPostsPerPage % columns ) === 0 ) && ( newPostsPerPage === currentPostsPerPage ) ) {

@@ -158,6 +158,7 @@ class Plugin_Bootstrap {
 		'Database/General_Options_Settings/Fill_Grid_With_Posts',
 		'Database/General_Options_Settings/Enable_Cache',
 		'Database/General_Options_Settings/Cache_Automatic_Refresh',
+		'Database/General_Options_Settings/Load_Widget_Via_Ajax',
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',

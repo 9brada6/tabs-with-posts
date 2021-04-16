@@ -100,10 +100,7 @@ class Create_Tabs_Cache {
 			}
 			array_push( $widget_ids, $id );
 
-			$item = array(
-				'widget_id'                => $id,
-				'widget_instance_settings' => $widget_instance_settings,
-			);
+			$item = array( 'widget_id' => $id );
 
 			array_push( $items, $item );
 		}

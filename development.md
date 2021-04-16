@@ -23,13 +23,7 @@
 
 ## ✅ Todo
 
-Ajax:
-
-- Check how include inline svg when necessary works (maybe add a new action before checking for ajax?).
-- Test all js that use events on document/document-load how they work.
-- Create an option if the widget will be loaded via ajax.
-
-Cache: Make an item with only the widget id, then get the instance settings. same with the delete cache, no need to put ll ids, get the ids directly.
+- Change the CSS folder to "Enqueue" or something like this.
 
 - Move every database general class into a single file?(to load 1ms faster :))
 - In general settings, we get a javascript error: autocomplete is not a function.

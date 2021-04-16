@@ -44,9 +44,8 @@ class Generate_CSS {
 		// Include the needed icons.
 		$include_inline = General_Options::get_option( General_Options::SVG_INCLUDE_INLINE );
 		if ( 'true' === $include_inline ) {
-			// todo: execute only one time, add this before the widget ajax action.
 			add_action(
-				'twrp_before_tabs',
+				'twrp_display_tabs_before_ajax',
 				function() {
 					static $function_executed = false;
 					if ( ! $function_executed ) {
@@ -87,14 +86,16 @@ class Generate_CSS {
 
 		wp_enqueue_script( 'twrp-script', Directory_Utils::get_frontend_directory_url() . 'script.js', array(), $version, true );
 
-		// todo: move TwrpDisableGridPostsFill to other localization.
+		$localization_object = array(
+			'ajaxUrl' => admin_url( 'admin-ajax.php' ),
+		);
+
 		// By default, the grid posts fill is enabled,  the below code will only disable it.
 		if ( 'false' === $grid_posts_fill ) {
-			$disable_grid_posts_fill = array( 'disable' => 'true' );
-			wp_localize_script( 'twrp-script', 'TwrpDisableGridPostsFill', $disable_grid_posts_fill );
+			$localization_object['disableGridPostsFill'] = 'true';
 		}
 
-		wp_localize_script( 'twrp-script', 'TWRPLocalizeObject', array( 'ajaxUrl' => admin_url( 'admin-ajax.php' ) ) );
+		wp_localize_script( 'twrp-script', 'TWRPLocalizeObject', $localization_object );
 	}
 
 	/**

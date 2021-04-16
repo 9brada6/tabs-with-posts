@@ -103,6 +103,8 @@ class General_Options {
 
 	const CACHE_AUTOMATIC_REFRESH = 'Cache_Automatic_Refresh';
 
+	const LOAD_WIDGET_VIA_AJAX = 'Load_Widget_Via_Ajax';
+
 	#region -- Getting Options
 
 	/**
@@ -141,6 +143,7 @@ class General_Options {
 			self::FILL_GRID_WITH_POSTS,
 			self::ENABLE_CACHE,
 			self::CACHE_AUTOMATIC_REFRESH,
+			self::LOAD_WIDGET_VIA_AJAX,
 		);
 
 		$default_settings = array();
