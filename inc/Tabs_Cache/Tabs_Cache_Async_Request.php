@@ -38,6 +38,10 @@ class Tabs_Cache_Async_Request extends WP_Background_Process {
 			Tabs_Cache_Table::delete_widgets_cache_not_in( $item['delete_all_except_widget_ids'] );
 		}
 
+		if ( ! isset( $item['widget_id'] ) ) {
+			return false;
+		}
+
 		$widget_id = $item['widget_id'];
 
 		if ( ! is_numeric( $widget_id ) ) {

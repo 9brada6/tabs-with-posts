@@ -51,6 +51,10 @@ $( initializeAutoComplete );
  * automatically search and display the options.
  */
 function initializeAutoComplete() {
+	if ( postsSearchInput.length === 0 ) {
+		return;
+	}
+
 	postsSearchInput.autocomplete( {
 		source: showSearchedPosts,
 		minLength: 2,

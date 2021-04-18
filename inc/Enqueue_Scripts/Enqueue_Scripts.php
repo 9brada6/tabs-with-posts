@@ -107,7 +107,7 @@ class Enqueue_Scripts {
 		$version     = Directory_Utils::PLUGIN_VERSION;
 		$backend_url = Directory_Utils::get_backend_directory_url();
 
-		if ( self::is_plugin_displayed_in_admin_area() ) {
+		if ( is_admin() ) {
 			wp_enqueue_style( 'twrpb-style', $backend_url . 'style.css', array(), $version, 'all' );
 		}
 
@@ -126,7 +126,7 @@ class Enqueue_Scripts {
 		$version     = Directory_Utils::PLUGIN_VERSION;
 		$backend_url = Directory_Utils::get_backend_directory_url();
 
-		if ( self::is_plugin_displayed_in_admin_area() ) {
+		if ( is_admin() ) {
 			wp_enqueue_script( 'twrpb-script', $backend_url . 'script.js', array( 'jquery', 'wp-api' ), $version, true );
 			// Include Pickr translations.
 			wp_localize_script( 'twrpb-script', 'TwrpPickrTranslations', self::get_pickr_translations() );
@@ -278,11 +278,11 @@ class Enqueue_Scripts {
 	}
 
 	/**
-	 * Get if the plugin code is present in the admin area currently displayed.
+	 * Get if the current page is widgets page
 	 *
 	 * @return bool
 	 */
-	protected static function is_plugin_displayed_in_admin_area() {
+	protected static function is_widgets_page() {
 		global $pagenow;
 		return Settings_Menu::is_active_screen() || 'widgets.php' === $pagenow;
 	}

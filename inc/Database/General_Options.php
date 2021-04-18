@@ -108,6 +108,13 @@ class General_Options {
 	#region -- Getting Options
 
 	/**
+	 * Holds the default settings, to not compute them at each call.
+	 *
+	 * @var array
+	 */
+	protected static $cached_default_settings = array();
+
+	/**
 	 * Get an array with all default settings.
 	 *
 	 * Guarantees that all array indexes are set.
@@ -115,6 +122,10 @@ class General_Options {
 	 * @return array
 	 */
 	public static function get_default_settings() {
+		if ( ! empty( self::$cached_default_settings ) ) {
+			return self::$cached_default_settings;
+		}
+
 		$settings_class_names = array(
 			self::ACCENT_COLOR,
 			self::DARKER_ACCENT_COLOR,
@@ -154,6 +165,8 @@ class General_Options {
 			}
 			$default_settings[ $object->get_key_name() ] = $object->get_default_value();
 		}
+
+		self::$cached_default_settings = $default_settings;
 
 		return $default_settings;
 	}

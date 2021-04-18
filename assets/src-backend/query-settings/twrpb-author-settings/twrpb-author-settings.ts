@@ -45,6 +45,10 @@ const authorSearchInput = $( '#twrpb-author-settings__js-author-search' );
  * automatically search and display the options.
  */
 function initializeAutoComplete() {
+	if ( authorSearchInput.length === 0 ) {
+		return;
+	}
+
 	authorSearchInput.autocomplete( {
 		source: showSearchedUsers,
 		minLength: 2,

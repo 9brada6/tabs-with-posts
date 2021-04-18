@@ -25,23 +25,19 @@
 
 - Test the cache and ajax with various Cache plugins. Write in documentation what plugins are supported(all shall be).
 
-- Move every database general class into a single file?(to load 1ms faster :))
-- In general settings, we get a javascript error: autocomplete is not a function.
-
-- Make General_Options::get_option faster(and all other functions).
-
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message).
+
+- Make ajax show a "Loading..." text before loading widget.
+- Make ajax show a "Loading..." text in widget when selecting article block.
 
 - Test the widget outside(in customizer, elementor)... etc, and make it work.
 - In the widget, add a photo where the meta are displayed about meta positions.
 
-- Make debugger not throw when class_exist_and_method is not exist.
+- Say in settings that if you change the icons, you must refresh the cache.
 
 - Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
-
-- Say in settings that if you change the icons, you must refresh the cache.
 
 - ### ✅ Todo Documentation
 

@@ -87,6 +87,10 @@ class Simple_Utils {
 	 * @psalm-suppress ArgumentTypeCoercion ReflectionMethod takes class-string.
 	 */
 	public static function method_exist_and_is_public( $class_name, $method_name ) {
+		if ( is_string( $class_name ) && ! class_exists( $class_name ) ) {
+			return false;
+		}
+
 		try {
 			$reflection_method = new ReflectionMethod( $class_name, $method_name );
 		} catch ( ReflectionException $e ) {
