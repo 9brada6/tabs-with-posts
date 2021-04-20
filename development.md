@@ -16,24 +16,25 @@
 - Depending on what setting on the widget were used, to generate the inline style for a tab take 20ms(old laptop).
 - Depending on what tabs and query were used, it will take some seconds to generate the tabs.
 
-## Cache
-
-- The cache is created when:
-    1. Any post is updated/add/deleted.
-
 ## ✅ Todo
 
-- Test the cache and ajax with various Cache plugins. Write in documentation what plugins are supported(all shall be).
+- Learn about Jetpack, and make this plugin compatible with it.
+- Learn about multi-language support and test all of the plugins.
+
+- Add @supports where :focus-visible is not supported.
+
+- Bug, clicking on a schedule post should not open a new tab.
+
+- In the widget, add a photo where the meta are displayed about meta positions.
 
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message).
 
 - Make ajax show a "Loading..." text before loading widget.
 - Make ajax show a "Loading..." text in widget when selecting article block.
 
-- Test the widget outside(in customizer, elementor)... etc, and make it work.
-- In the widget, add a photo where the meta are displayed about meta positions.
-
 - Say in settings that if you change the icons, you must refresh the cache.
+
+- Make widget work in elementor and other page builders.
 
 - Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
@@ -44,6 +45,10 @@
     - Move the documentation to the last position, in he tabs.
     - Add some photos.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
+
+    Cache:
+    - Say how cache works, what plugin have been tested on.
+    - Write in documentation what plugins are supported: WP Fastest Cache(By Emre Vona), Autoptimize(By Frank Goossens (futtta)), WP Super Cache(By Automattic), WP-Optimize(By David Anderson, Ruhani Rabin, Team Updraft), Hummingbird(By WPMU DEV), W3 Total Cache(By BoldGrid)
 
     CSS:
 
@@ -103,6 +108,7 @@
 - ➕ Support reading time plugins.
 - ➕ Improve browser compatibility.
 - ➕ On widget refresh cache, after the success dispatch, say a message when the cache has been successfully created.
+- ➕ Test Redis object caching.
 
 ## 📖 Development Documentation
 

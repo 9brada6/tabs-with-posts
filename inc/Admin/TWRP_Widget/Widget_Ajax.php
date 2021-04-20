@@ -24,7 +24,7 @@ class Widget_Ajax {
 		add_action( 'wp_ajax_twrpb_widget_create_query_setting', self::class . '::ajax_create_query_selected_item' );
 		add_action( 'wp_ajax_twrpb_widget_create_artblock_settings', self::class . '::ajax_create_artblock_settings' );
 
-		add_action( 'admin_footer', self::class . '::enqueue_nonce' );
+		add_action( 'admin_print_footer_scripts', self::class . '::enqueue_nonce' );
 	}
 
 	/**
@@ -90,6 +90,10 @@ class Widget_Ajax {
 	 * @return void
 	 */
 	public static function enqueue_nonce() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		$nonce = wp_create_nonce( self::NONCE_ACTION_NAME );
 		?>
 			<div id="twrpb-plugin-widget-ajax-nonce" data-twrpb-plugin-widget-ajax-nonce="<?= esc_attr( $nonce ) ?>" style="display:none"></div>

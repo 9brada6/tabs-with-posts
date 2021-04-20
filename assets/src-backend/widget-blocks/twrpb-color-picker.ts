@@ -4,7 +4,7 @@ import Pickr from '@simonwep/pickr';
 declare const TwrpPickrTranslations: any;
 
 $( createPicker );
-$( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', createPicker );
+$( document ).on( 'widget-updated widget-added twrpb-artblock-added twrpb-query-added', createPicker );
 
 function createPicker() {
 	const colorPickers = $( '.twrpb-color-picker' );
@@ -12,6 +12,11 @@ function createPicker() {
 	let translations = [];
 	if ( typeof TwrpPickrTranslations === 'object' ) {
 		translations = TwrpPickrTranslations;
+	}
+
+	let pickrContainer = 'body';
+	if ( $( '#widgets-right' ).length ) {
+		pickrContainer = '#widgets-right';
 	}
 
 	colorPickers.each( function() {
@@ -26,7 +31,7 @@ function createPicker() {
 		const pickr = Pickr.create( {
 			el: element,
 			theme: 'monolith',
-			container: 'body',
+			container: pickrContainer,
 			default: inputVal,
 			appClass: 'twrpb-pickr',
 			// @ts-ignore

@@ -2,7 +2,7 @@ import $ from 'jquery';
 import 'jqueryui';
 
 $( createWidgetTabs );
-$( document ).on( 'widget-updated twrpb-artblock-added twrpb-query-added', createWidgetTabs );
+$( document ).on( 'widget-updated widget-added twrpb-artblock-added twrpb-query-added', createWidgetTabs );
 
 const animationDuration = 250;
 
@@ -15,13 +15,16 @@ function createWidgetTabs() {
 			tabActive = 0;
 		}
 
-		jQueryElement.tabs( {
-			active: tabActive,
-			collapsible: true,
-			show: { effect: 'slideDown', duration: animationDuration },
-			hide: { effect: 'slideUp', duration: animationDuration },
-			beforeActivate: changeTabsAnimation,
-		} );
+		const previousInstance = jQueryElement.tabs( 'instance' );
+		if ( ! previousInstance ) {
+			jQueryElement.tabs( {
+				active: tabActive,
+				collapsible: true,
+				show: { effect: 'slideDown', duration: animationDuration },
+				hide: { effect: 'slideUp', duration: animationDuration },
+				beforeActivate: changeTabsAnimation,
+			} );
+		}
 	} );
 }
 
