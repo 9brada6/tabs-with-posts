@@ -102,33 +102,33 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'External Plugin Settings', 'backend', 'twrp' ); ?></legend>
-					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
-				</fieldset>
-
-				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Cache Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html__( 'Cache Settings', 'twrpb' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::ENABLE_CACHE ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::CACHE_AUTOMATIC_REFRESH ); ?>
 
 					<?php $nonce = wp_create_nonce( 'twrp_refresh_widget_cache_nonce' ); ?>
-					<button 
-						id="twrpb-refresh-cache-button" 
-						class="twrpb-button twrpb-general-settings__refresh-cache-btn" 
-						data-twrpb-refresh-cache-nonce="<?= esc_attr( $nonce ) ?>" 
-						data-twrpb-refresh-cache-waiting="<?= esc_attr_x( 'Waiting', 'backend', 'twrp' ); ?>"
-						data-twrpb-refresh-cache-success="<?= esc_attr_x( 'Success', 'backend', 'twrp' ); ?>"
-						data-twrpb-refresh-cache-failed="<?= esc_attr_x( 'Failed', 'backend', 'twrp' ); ?>"
+					<button
+						id="twrpb-refresh-cache-button"
+						class="twrpb-button twrpb-general-settings__refresh-cache-btn"
+						data-twrpb-refresh-cache-nonce="<?= esc_attr( $nonce ) ?>"
+						data-twrpb-refresh-cache-waiting="<?= esc_attr__( 'Waiting', 'twrpb' ); ?>"
+						data-twrpb-refresh-cache-success="<?= esc_attr__( 'Success', 'twrpb' ); ?>"
+						data-twrpb-refresh-cache-failed="<?= esc_attr__( 'Failed', 'twrpb' ); ?>"
 						type="button">
-						<?= esc_html( _x( 'Refresh widget cache', 'backend', 'twrp' ) ); ?>
+						<?= esc_html( __( 'Refresh widget cache', 'twrpb' ) ); ?>
 					</button>
 
 					<?php General_Settings_Factory::display_setting( General_Options::LOAD_WIDGET_VIA_AJAX ); ?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Other Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html__( 'Other Settings', 'twrpb' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::FILL_GRID_WITH_POSTS ); ?>
+				</fieldset>
+
+				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= esc_html__( 'External Plugin Settings', 'twrpb' ); ?></legend>
+					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
 				</fieldset>
 
 				<?php

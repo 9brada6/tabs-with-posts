@@ -209,4 +209,28 @@ class Simple_Utils {
 	public static function get_body_css_increase_specificity_selector() {
 		return 'body:not(#twrpS)';
 	}
+
+	/**
+	 * Return an array with safe allowed html, to pass to kses functions.
+	 *
+	 * Usually used with translations, where is a need for html.
+	 *
+	 * @return array
+	 */
+	public static function get_plugin_allowed_kses_html() {
+		return array(
+			'a'      => array(
+				'href'   => array(),
+				'target' => array(),
+				'title'  => array(),
+			),
+			'b'      => array(),
+			'br'     => array(),
+			'em'     => array(),
+			'strong' => array(),
+			'span'   => array(
+				'class' => array(),
+			),
+		);
+	}
 }

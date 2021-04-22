@@ -456,15 +456,6 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			return $permalink;
 		}
 
-		if ( current_user_can( 'read_private_pages' ) && current_user_can( 'read_private_posts' ) ) {
-			$permalink = get_the_permalink( $post );
-
-			if ( false === $permalink ) {
-				$permalink = '#';
-			}
-			return $permalink;
-		}
-
 		return '#';
 	}
 

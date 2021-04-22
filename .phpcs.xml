@@ -21,7 +21,11 @@
     <rule ref="WordPress">
 		<properties>
 			<!-- Custom domain name. -->
-			<property name="text_domain" type="array" value="twrp" />
+			<property name="text_domain" type="array">
+				<element value="twrp"/>
+				<element value="twrpb"/>
+				<element value="twrpb-docs"/>
+			</property>
 
 			<!-- Prefix all globals. -->
 			<property name="prefixes" type="array">
@@ -32,13 +36,6 @@
 
 			<!-- Minimum supported version. -->
 			<property name="minimum_supported_version" value="4.9"/>
-
-			<property name="customAutoEscapedFunctions" type="array">
-				<element value="__"/>
-				<element value="_x"/>
-				<element value="_n"/>
-				<element value="_nx"/>
-			</property>
 		</properties>
 
 		<!-- We will use <?= instead of <?php echo. -->

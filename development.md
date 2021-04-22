@@ -16,14 +16,22 @@
 - Depending on what setting on the widget were used, to generate the inline style for a tab take 20ms(old laptop).
 - Depending on what tabs and query were used, it will take some seconds to generate the tabs.
 
+## Cache
+
+- ! Careful, because the page is cached, getting posts or other things depending by the user privileges
+can be dangerous, because an admin can generate a cache that should not be visible to a user that is not logged in.
+
 ## ✅ Todo
 
+1. Change all twrp to twrpb or twrpb-docs, and all _x to __.
+2. Add in widget utils a function, get plugin allowed kses html, where we return an array with allowed html, can be the one from remember note+ some other html.
+
+Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
+disable admin privilege.
+
 - Learn about Jetpack, and make this plugin compatible with it.
-- Learn about multi-language support and test all of the plugins.
 
 - Add @supports where :focus-visible is not supported.
-
-- Bug, clicking on a schedule post should not open a new tab.
 
 - In the widget, add a photo where the meta are displayed about meta positions.
 
@@ -32,13 +40,24 @@
 - Make ajax show a "Loading..." text before loading widget.
 - Make ajax show a "Loading..." text in widget when selecting article block.
 
-- Say in settings that if you change the icons, you must refresh the cache.
-
-- Make widget work in elementor and other page builders.
-
 - Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
+- Add in Manual tests, to test the cache with various plugins.
+
+- ### Todo Page Builders
+
+- Make widget work in elementor and other page builders, test other page builders how they work.
+- Add in manual tests to test how they work in page builders.
+
+- ### Todo Translations
+
+- Add frontend translations to settings.
+- Split translations in half(or 3, with documentation), frontend and backend.
+- Learn about multi-language support and test all of the plugins.
+- Create a script that generates these POI files instantly?
+- Add in Manual tests, to test the translations with various plugins.
+- Delete phpcs rule, and escape all translations.
 
 - ### ✅ Todo Documentation
 
@@ -78,6 +97,11 @@
     - Write in documentation that GamerZ like/dislike system is not working.
 
     Cache: Say how it works, and why is good to be enabled.
+
+    Translations:
+
+    - Add a section in documentation where you write about translations, how they work,
+    and how to translate this plugin.
 
 ## 🎉 Todo: After first release
 
