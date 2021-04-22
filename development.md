@@ -23,8 +23,9 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-1. Change all twrp to twrpb or twrpb-docs, and all _x to __.
-2. Add in widget utils a function, get plugin allowed kses html, where we return an array with allowed html, can be the one from remember note+ some other html.
+1. Change twrp to tabs-with-posts in translations.
+2. create .pot file, and see how to edit it with .poteditor.
+3. Change domain name or slug of the plugin to "tabs-with-posts".
 
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.

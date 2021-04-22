@@ -15,37 +15,37 @@ class Category_Icons implements Icon_Definitions {
 	 * @return array<string,array>
 	 */
 	public static function get_definitions() {
-		$filled_type   = _x( 'Filled', 'icon type(aspect)', 'twrpb' );
-		$outlined_type = _x( 'Outlined', 'icon type(aspect)', 'twrpb' );
-		$duotone_type  = _x( 'DuoTone', 'icon type(aspect)', 'twrpb' );
-		$thin_type     = _x( 'Thin', 'icon type(aspect)', 'twrpb' );
-		$sharp_type    = _x( 'Sharp', 'icon type(aspect)', 'twrpb' );
+		$filled_type   = _x( 'Filled', 'backend, icon type(aspect)', 'twrp' );
+		$outlined_type = _x( 'Outlined', 'backend, icon type(aspect)', 'twrp' );
+		$duotone_type  = _x( 'DuoTone', 'backend, icon type(aspect)', 'twrp' );
+		$thin_type     = _x( 'Thin', 'backend, icon type(aspect)', 'twrp' );
+		$sharp_type    = _x( 'Sharp', 'backend, icon type(aspect)', 'twrp' );
 
-		$bookmark_description    = _x( 'Bookmark', 'icon name(description)', 'twrpb' );
-		$bookmark_2_description  = _x( 'Bookmark 2', 'icon name(description)', 'twrpb' );
-		$bookmark_3_description  = _x( 'Bookmark 3', 'icon name(description)', 'twrpb' );
-		$bookmarks_description   = _x( 'Bookmarks', 'icon name(description)', 'twrpb' );
-		$bookmarks_2_description = _x( 'Bookmarks 2', 'icon name(description)', 'twrpb' );
+		$bookmark_description    = _x( 'Bookmark', 'backend, icon name(description)', 'twrp' );
+		$bookmark_2_description  = _x( 'Bookmark 2', 'backend, icon name(description)', 'twrp' );
+		$bookmark_3_description  = _x( 'Bookmark 3', 'backend, icon name(description)', 'twrp' );
+		$bookmarks_description   = _x( 'Bookmarks', 'backend, icon name(description)', 'twrp' );
+		$bookmarks_2_description = _x( 'Bookmarks 2', 'backend, icon name(description)', 'twrp' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_bookmarks_description = _x( 'Ios Bookmarks', 'icon name(description)', 'twrpb' );
-		$folder_description        = _x( 'Folder', 'icon name(description)', 'twrpb' );
-		$folder_open_description   = _x( 'Folder Open', 'icon name(description)', 'twrpb' );
-		$folders_description       = _x( 'Folders', 'icon name(description)', 'twrpb' );
+		$ios_bookmarks_description = _x( 'Ios Bookmarks', 'backend, icon name(description)', 'twrp' );
+		$folder_description        = _x( 'Folder', 'backend, icon name(description)', 'twrp' );
+		$folder_open_description   = _x( 'Folder Open', 'backend, icon name(description)', 'twrp' );
+		$folders_description       = _x( 'Folders', 'backend, icon name(description)', 'twrp' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_folder_description = _x( 'Ios Folder', 'icon name(description)', 'twrpb' );
-		$hashtag_description    = _x( 'Hashtag', 'icon name(description)', 'twrpb' );
-		$label_description      = _x( 'Label', 'icon name(description)', 'twrpb' );
-		$label_2_description    = _x( 'Label 2', 'icon name(description)', 'twrpb' );
-		$tag_heart_description  = _x( 'Tag Heart', 'icon name(description)', 'twrpb' );
+		$ios_folder_description = _x( 'Ios Folder', 'backend, icon name(description)', 'twrp' );
+		$hashtag_description    = _x( 'Hashtag', 'backend, icon name(description)', 'twrp' );
+		$label_description      = _x( 'Label', 'backend, icon name(description)', 'twrp' );
+		$label_2_description    = _x( 'Label 2', 'backend, icon name(description)', 'twrp' );
+		$tag_heart_description  = _x( 'Tag Heart', 'backend, icon name(description)', 'twrp' );
 
-		$tag_description    = _x( 'Tag', 'icon name(description)', 'twrpb' );
-		$tag_2_description  = _x( 'Tag 2', 'icon name(description)', 'twrpb' );
-		$tags_description   = _x( 'Tags', 'icon name(description)', 'twrpb' );
-		$tags_2_description = _x( 'Tags 2', 'icon name(description)', 'twrpb' );
+		$tag_description    = _x( 'Tag', 'backend, icon name(description)', 'twrp' );
+		$tag_2_description  = _x( 'Tag 2', 'backend, icon name(description)', 'twrp' );
+		$tags_description   = _x( 'Tags', 'backend, icon name(description)', 'twrp' );
+		$tags_2_description = _x( 'Tags 2', 'backend, icon name(description)', 'twrp' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_tag_description = _x( 'Ios Tag', 'icon name(description)', 'twrpb' );
+		$ios_tag_description = _x( 'Ios Tag', 'backend, icon name(description)', 'twrp' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_tags_description = _x( 'Ios Tags', 'icon name(description)', 'twrpb' );
+		$ios_tags_description = _x( 'Ios Tags', 'backend, icon name(description)', 'twrp' );
 
 		$registered_category_vectors = array(
 
