@@ -13,141 +13,152 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 	 * @return array<string,array>
 	 */
 	public static function get_definitions() {
+		$filled_type   = _x( 'Filled', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$outlined_type = _x( 'Outlined', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$duotone_type  = _x( 'DuoTone', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$thin_type     = _x( 'Thin', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$sharp_type    = _x( 'Sharp', 'backend, icon type(aspect)', 'tabs-with-posts' );
+
+		$comment_disable_description      = _x( 'Comment Disabled', 'backend, icon name(description)', 'tabs-with-posts' );
+		$comments_disable_description     = _x( 'Comments Disabled', 'backend, icon name(description)', 'tabs-with-posts' );
+		$comment_alt_disable_description  = _x( 'Comment Alt Disabled', 'backend, icon name(description)', 'tabs-with-posts' );
+		$comments_alt_disable_description = _x( 'Comments Alt Disabled', 'backend, icon name(description)', 'tabs-with-posts' );
+
 		$registered_disabled_comments_vectors = array(
 
 			#region -- TWRP Icons
 
 			'twrp-dcom-twrp-c-f'    => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'comment-filled.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c-ol'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $outlined_type,
 				'file_name'   => 'comment-outlined.svg',
 			),
 
 			'twrp-dcom-twrp-c-dt'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $duotone_type,
 				'file_name'   => 'comment-duotone.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c-sh'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $sharp_type,
 				'file_name'   => 'comment-sharp.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c-t'    => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $thin_type,
 				'file_name'   => 'comment-thin.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-f'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comment_alt_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'comment-alt-filled.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-ol'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'description' => $comment_alt_disable_description,
+				'type'        => $outlined_type,
 				'file_name'   => 'comment-alt-outlined.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-dt'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
+				'description' => $comment_alt_disable_description,
+				'type'        => $duotone_type,
 				'file_name'   => 'comment-alt-duotone.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-c2-t'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comment Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'description' => $comment_alt_disable_description,
+				'type'        => $thin_type,
 				'file_name'   => 'comment-alt-thin.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
 
 			'twrp-dcom-twrp-cs-f'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comments_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'comments-filled.svg',
 			),
 
 			'twrp-dcom-twrp-cs-ol'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'description' => $comments_disable_description,
+				'type'        => $outlined_type,
 				'file_name'   => 'comments-outlined.svg',
 			),
 
 			'twrp-dcom-twrp-cs-dt'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
+				'description' => $comments_disable_description,
+				'type'        => $duotone_type,
 				'file_name'   => 'comments-duotone.svg',
 			),
 
 			'twrp-dcom-twrp-cs-sh'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Sharp', 'backend', 'twrp' ),
+				'description' => $comments_disable_description,
+				'type'        => $sharp_type,
 				'file_name'   => 'comments-sharp.svg',
 			),
 
 			'twrp-dcom-twrp-cs-t'   => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'description' => $comments_disable_description,
+				'type'        => $thin_type,
 				'file_name'   => 'comments-thin.svg',
 			),
 
 			'twrp-dcom-twrp-cs2-f'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comments_alt_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'comments-alt-filled.svg',
 			),
 
 			'twrp-dcom-twrp-cs2-ol' => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'description' => $comments_alt_disable_description,
+				'type'        => $outlined_type,
 				'file_name'   => 'comments-alt-outlined.svg',
 			),
 
 			'twrp-dcom-twrp-cs2-dt' => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'DuoTone', 'backend', 'twrp' ),
+				'description' => $comments_alt_disable_description,
+				'type'        => $duotone_type,
 				'file_name'   => 'comments-alt-duotone.svg',
 			),
 
 			'twrp-dcom-twrp-cs2-t'  => array(
 				'brand'       => 'TWRP',
-				'description' => _x( 'Comments Alt Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Thin', 'backend', 'twrp' ),
+				'description' => $comments_alt_disable_description,
+				'type'        => $thin_type,
 				'file_name'   => 'comments-alt-thin.svg',
 			),
 
@@ -157,8 +168,8 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 
 			'twrp-dcom-fa-f'        => array(
 				'brand'       => 'FontAwesome',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'filled.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
@@ -175,8 +186,8 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 
 			'twrp-dcom-di-f'        => array(
 				'brand'       => 'Dashicons',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'filled.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),
@@ -199,15 +210,15 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 
 			'twrp-dcom-im-f'        => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Filled', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $filled_type,
 				'file_name'   => 'filled.svg',
 			),
 
 			'twrp-dcom-im-ol'       => array(
 				'brand'       => 'IconMonstr',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $outlined_type,
 				'file_name'   => 'outlined.svg',
 			),
 
@@ -235,8 +246,8 @@ class Comments_Disabled_Icons implements Icon_Definitions {
 
 			'twrp-dcom-li-ol'       => array(
 				'brand'       => 'Linea',
-				'description' => _x( 'Comment Disabled', 'backend', 'twrp' ),
-				'type'        => _x( 'Outlined', 'backend', 'twrp' ),
+				'description' => $comment_disable_description,
+				'type'        => $outlined_type,
 				'file_name'   => 'outlined.svg',
 				'fix_classes' => 'twrp-i--va-15',
 			),

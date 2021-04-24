@@ -19,7 +19,7 @@ class Query_Name_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Name of the query', 'backend', 'twrp' );
+		return _x( 'Name of the query', 'backend', 'tabs-with-posts' );
 	}
 
 	public function setting_is_collapsed() {
@@ -30,7 +30,7 @@ class Query_Name_Display extends Query_Setting_Display {
 		$setting_class = $this->get_setting_class();
 		$name          = $setting_class->get_setting_name() . '[' . Query_Name::QUERY_NAME__SETTING_NAME . ']';
 		$value         = $current_setting[ Query_Name::QUERY_NAME__SETTING_NAME ];
-		$placeholder   = _x( 'Ex: Related Posts', 'backend', 'twrp' );
+		$placeholder   = _x( 'Ex: Related Posts', 'backend', 'tabs-with-posts' );
 
 		?>
 		<div class="<?php $this->bem_class(); ?>">

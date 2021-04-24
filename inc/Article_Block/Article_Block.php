@@ -174,7 +174,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	public function display_show_more_button() {
 		?>
 			<div class="twrp-show-more">
-				<button class="twrp-show-more__btn" type="button"><?= esc_html( __( 'Show more posts', 'twrp' ) ); ?></button>
+				<button class="twrp-show-more__btn" type="button"><?= esc_html__( 'Show more posts', 'tabs-with-posts' ); ?></button>
 			</div>
 		<?php
 	}
@@ -271,7 +271,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 		?>
 		<h5 class="twrpb-widget-form__query-description-title">
-			<?= _x( 'Change component CSS:', 'backend', 'twrp' ); ?>
+			<?= esc_html_x( 'Change component CSS:', 'backend', 'tabs-with-posts' ); ?>
 		</h5>
 		<?php
 
@@ -490,7 +490,8 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		$title = get_the_title( $post );
 
 		if ( empty( trim( $title ) ) ) {
-			$title = __( '&laquo; No title &raquo;', 'twrp' );
+			/* translators: Text to display if a post has no title. */
+			$title = __( '&laquo; No title &raquo;', 'tabs-with-posts' );
 		}
 
 		return $title;
@@ -539,7 +540,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		if ( ! isset( $attr['alt'] ) ) {
-			$alt = __( 'Post with no thumbnail', 'twrp' );
+			$alt = __( 'Post with no thumbnail', 'tabs-with-posts' );
 		} else {
 			$alt = $attr['alt'];
 		}
@@ -693,8 +694,8 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			if ( false === $from || 0 === $to ) {
 				$date_text = false;
 			} else {
-				/* translators: %s: a date representation, in the website language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc */
-				$date_text = sprintf( __( '%s ago', 'twrp' ), human_time_diff( $from, $to ) );
+				/* translators: %s: a date representation, in human language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc. the %s is expected to be already translated. */
+				$date_text = sprintf( __( '%s ago', 'tabs-with-posts' ), human_time_diff( $from, $to ) );
 			}
 		} else {
 			$date_text = get_the_time( $date_format, $post );

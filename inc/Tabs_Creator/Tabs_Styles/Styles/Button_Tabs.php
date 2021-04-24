@@ -10,14 +10,14 @@ class Button_Tabs extends Tab_Style {
 	const TAB_ID = 'buttons_tabs';
 
 	public static function get_tab_style_name() {
-		return _x( 'Buttons Style', 'backend', 'twrp' );
+		return _x( 'Buttons Style', 'backend', 'tabs-with-posts' );
 	}
 
 	public static function get_all_variants() {
 		return array(
 			// cspell:disable-next-line -- Inversed is a name.
-			'inverse_colors' => _x( 'Inversed', 'backend, name of style', 'twrp' ),
-			'neon'           => _x( 'Neon', 'backend, name of style', 'twrp' ),
+			'inverse_colors' => _x( 'Inversed', 'backend, name of style', 'tabs-with-posts' ),
+			'neon'           => _x( 'Neon', 'backend, name of style', 'tabs-with-posts' ),
 		);
 	}
 

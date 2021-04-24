@@ -448,7 +448,7 @@ abstract class WP_Background_Process extends WP_Async_Request {
 		$schedules[ $this->identifier . '_cron_interval' ] = array(
 			'interval' => 60 * $interval, // 60 seconds in a minute.
 			/* translators: %d is the number of minutes. */
-			'display'  => sprintf( _x( 'Every %d Minutes', 'backend', 'twrp' ), $interval ),
+			'display'  => sprintf( _x( 'Every %d Minutes', 'backend', 'tabs-with-posts' ), $interval ),
 		);
 
 		return $schedules;

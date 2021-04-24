@@ -10,14 +10,14 @@ class Simple_Tabs extends Tab_Style {
 	const TAB_ID = 'tabs_style';
 
 	public static function get_tab_style_name() {
-		return _x( 'Tabs Style', 'backend', 'twrp' );
+		return _x( 'Tabs Style', 'backend', 'tabs-with-posts' );
 	}
 
 	public static function get_all_variants() {
 		return array(
-			'accent'       => _x( 'Accent', 'backend, name of style', 'twrp' ),
-			'accent_light' => _x( 'Accent Light', 'backend, name of style', 'twrp' ),
-			'inverse'      => _x( 'Inversed', 'backend, name of style', 'twrp' ),
+			'accent'       => _x( 'Accent', 'backend, name of style', 'tabs-with-posts' ),
+			'accent_light' => _x( 'Accent Light', 'backend, name of style', 'tabs-with-posts' ),
+			'inverse'      => _x( 'Inversed', 'backend, name of style', 'tabs-with-posts' ),
 		);
 	}
 

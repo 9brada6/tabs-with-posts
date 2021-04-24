@@ -19,7 +19,7 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Advanced query settings', 'backend', 'twrp' );
+		return _x( 'Advanced query settings', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -44,11 +44,11 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 					name="<?= esc_attr( $selector_name ); ?>"  rows="10"
 				>
 					<option value="not_apply" <?php selected( $selector_value, 'not_apply' ); ?>>
-						<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
+						<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 
 					<option value="apply" <?php selected( $selector_value, 'apply' ); ?>>
-						<?= _x( 'Apply settings', 'backend', 'twrp' ); ?>
+						<?= esc_html_x( 'Apply settings', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 				</select>
 			</div>

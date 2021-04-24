@@ -23,7 +23,7 @@ class Meta_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Meta key', 'backend', 'twrp' );
+		return _x( 'Meta key', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -51,26 +51,26 @@ class Meta_Display extends Query_Setting_Display {
 			$additional_value_hidden_class = ' twrpb-hidden';
 		}
 
-		$name_placeholder  = _x( 'Meta Name', 'backend', 'twrp' );
-		$value_placeholder = _x( 'Meta Value', 'backend', 'twrp' );
+		$name_placeholder  = _x( 'Meta Name', 'backend', 'tabs-with-posts' );
+		$value_placeholder = _x( 'Meta Value', 'backend', 'tabs-with-posts' );
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<select id="<?php $this->bem_class( 'js-apply-meta-select' ); ?>" class="<?php $this->bem_class( 'apply-meta-select' ); ?> <?php $this->query_setting_paragraph_class(); ?>" name="<?= esc_attr( $meta_is_applied_name ); ?>">
-				<option value="NA" <?php selected( $meta_apply_value, 'NA' ); ?>><?= esc_html( _x( 'Not Applied', 'backend', 'twrp' ) ); ?></option>
-				<option value="A" <?php selected( $meta_apply_value, 'A' ); ?>><?= esc_html( _x( 'Apply Meta', 'backend', 'twrp' ) ); ?></option>
+				<option value="NA" <?php selected( $meta_apply_value, 'NA' ); ?>><?= esc_html( _x( 'Not Applied', 'backend', 'tabs-with-posts' ) ); ?></option>
+				<option value="A" <?php selected( $meta_apply_value, 'A' ); ?>><?= esc_html( _x( 'Apply Meta', 'backend', 'tabs-with-posts' ) ); ?></option>
 			</select>
 
 			<div id="<?php $this->bem_class( 'js-setting-wrapper' ); ?>" class="<?php $this->bem_class( 'setting-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_meta_hidden_class ); ?>">
 				<div class="<?php $this->bem_class( 'input-group' ); ?>">
 					<label for="<?php $this->bem_class( 'meta-key' ); ?>" class="<?php $this->bem_class( 'input-label' ); ?>">
-						<?= esc_html( _x( 'Meta Name:', 'backend', 'twrp' ) ); ?>
+						<?= esc_html( _x( 'Meta Name:', 'backend', 'tabs-with-posts' ) ); ?>
 					</label>
 					<input id="<?php $this->bem_class( 'meta-key' ); ?>" type="text" placeholder="<?= esc_attr( $name_placeholder ); ?>" name="<?= esc_attr( $meta_key_name ); ?>" value="<?= esc_attr( $meta_key_value ); ?>"/>
 				</div>
 
 				<div class="<?php $this->bem_class( 'input-group' ); ?>">
 					<label for="<?php $this->bem_class( 'js-meta-type' ); ?>" class="<?php $this->bem_class( 'input-label' ); ?>">
-						<?= esc_html( _x( 'Meta Comparator:', 'backend', 'twrp' ) ); ?>
+						<?= esc_html( _x( 'Meta Comparator:', 'backend', 'tabs-with-posts' ) ); ?>
 					</label>
 					<select id="<?php $this->bem_class( 'js-meta-type' ); ?>" name="<?= esc_attr( $meta_compare_name ); ?>">
 						<?php foreach ( $comparators as $value => $display ) : ?>
@@ -86,7 +86,7 @@ class Meta_Display extends Query_Setting_Display {
 
 				<div id="<?php $this->bem_class( 'js-meta-value-group' ); ?>" class="<?php $this->bem_class( 'input-group' ); ?> <?= esc_attr( $additional_value_hidden_class ); ?>">
 					<label for="<?php $this->bem_class( 'js-meta-value' ); ?>" class="<?php $this->bem_class( 'input-label' ); ?>">
-						<?= esc_html( _x( 'Meta Value:', 'backend', 'twrp' ) ); ?>
+						<?= esc_html( _x( 'Meta Value:', 'backend', 'tabs-with-posts' ) ); ?>
 					</label>
 					<input id="<?php $this->bem_class( 'js-meta-value' ); ?>" class="<?php $this->bem_class( 'meta-value' ); ?>" placeholder="<?= esc_attr( $value_placeholder ); ?>" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
 				</div>

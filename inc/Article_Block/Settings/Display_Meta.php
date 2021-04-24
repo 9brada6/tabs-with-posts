@@ -152,7 +152,7 @@ class Display_Meta extends Artblock_Setting {
 			$number = '(' . $this->setting_instance . ') ';
 		}
 
-		$not_installed_text = _x( '(Not Installed)', 'backend', 'twrp' );
+		$not_installed_text = _x( '(Not Installed)', 'backend', 'tabs-with-posts' );
 
 		if ( isset( $options['views'] ) && false === Post_Views::get_plugin_to_use() ) {
 			$options['views'] = $options['views'] . ' ' . $not_installed_text;
@@ -169,7 +169,7 @@ class Display_Meta extends Artblock_Setting {
 		return array(
 			'default'                => $this->get_default_value(),
 			'options'                => $options,
-			'before'                 => $number . _x( 'Meta to display:', 'backend', 'twrp' ),
+			'before'                 => $number . _x( 'Meta to display:', 'backend', 'tabs-with-posts' ),
 			'control_class_modifier' => 'display-meta',
 		);
 	}
@@ -190,21 +190,21 @@ class Display_Meta extends Artblock_Setting {
 		foreach ( $possible_values as $value ) {
 			$display_value = '';
 			if ( 'none' === $value ) {
-				$display_value = _x( 'None', 'backend', 'twrp' );
+				$display_value = _x( 'None', 'backend', 'tabs-with-posts' );
 			} elseif ( 'author' === $value ) {
-				$display_value = _x( 'Author', 'backend', 'twrp' );
+				$display_value = _x( 'Author', 'backend', 'tabs-with-posts' );
 			} elseif ( 'date' === $value ) {
-				$display_value = _x( 'Date', 'backend', 'twrp' );
+				$display_value = _x( 'Date', 'backend', 'tabs-with-posts' );
 			} elseif ( 'views' === $value ) {
-				$display_value = _x( 'Views', 'backend', 'twrp' );
+				$display_value = _x( 'Views', 'backend', 'tabs-with-posts' );
 			} elseif ( 'rating' === $value ) {
-				$display_value = _x( 'Rating', 'backend', 'twrp' );
+				$display_value = _x( 'Rating', 'backend', 'tabs-with-posts' );
 			} elseif ( 'rating_and_count' === $value ) {
-				$display_value = _x( 'Rating and Count', 'backend', 'twrp' );
+				$display_value = _x( 'Rating and Count', 'backend', 'tabs-with-posts' );
 			} elseif ( 'comments' === $value ) {
-				$display_value = _x( 'Number of Comments', 'backend', 'twrp' );
+				$display_value = _x( 'Number of Comments', 'backend', 'tabs-with-posts' );
 			} elseif ( 'category' === $value ) {
-				$display_value = _x( 'Main Category', 'backend', 'twrp' );
+				$display_value = _x( 'Main Category', 'backend', 'tabs-with-posts' );
 			}
 
 			$new_possible_values[ $value ] = $display_value;

@@ -9,6 +9,7 @@ use TWRP\Admin\Tabs\Query_Options\Query_Existing_Table;
 use TWRP\Query_Generator\Query_Generator;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 use RuntimeException;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Implements a tab in the Settings Menu called "Queries Tab". The implemented
@@ -84,7 +85,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	 * @return string
 	 */
 	public function get_tab_title() {
-		return _x( 'Tab Queries', 'backend', 'twrp' );
+		return _x( 'Tab Queries', 'backend', 'tabs-with-posts' );
 	}
 
 	/**
@@ -133,7 +134,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	 * @return void
 	 */
 	public function display_existing_queries_page( $additional_notification = '' ) {
-		$delete_query_confirmation_message = _x( 'Are you sure that do you want to delete this query?', 'backend', 'twrp' );
+		$delete_query_confirmation_message = _x( 'Are you sure that do you want to delete this query?', 'backend', 'tabs-with-posts' );
 		$existing_queries_table            = new Query_Existing_Table();
 		?>
 		<div class="<?php $this->bem_class(); ?>">
@@ -145,7 +146,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 			}
 			?>
 
-			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= _x( 'Existing Queries:', 'backend', 'twrp' ) ?></h3>
+			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= esc_html_x( 'Existing Queries:', 'backend', 'tabs-with-posts' ) ?></h3>
 			<div id="<?php $this->bem_class( 'before-deleting-confirmation' ); ?>" style="display:none" data-twrpb-query-delete-confirm="<?= esc_attr( $delete_query_confirmation_message ) ?>"></div>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
@@ -206,7 +207,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 		<a class="<?php $this->bem_class( 'add-query-btn' ); ?> twrpb-button twrpb-button--save twrpb-button--large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
 			<?php
 				/* translators: %s: plus dashicon html. */
-				echo sprintf( _x( '%s Add New Query', 'backend', 'twrp' ), $add_btn_icon ); // phpcs:ignore -- No XSS.
+				echo wp_kses( sprintf( _x( '%s Add New Query', 'backend', 'tabs-with-posts' ), $add_btn_icon ), Simple_Utils::get_plugin_allowed_kses_html() );
 			?>
 		</a>
 		<?php
@@ -281,7 +282,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	protected function display_successfully_query_saved_message() {
 		?>
 		<div class="<?php $this->bem_class( 'notification' ); ?> twrpb-notification twrpb-notification--success">
-			<?= _x( 'Settings saved successfully.', 'backend', 'twrp' ); ?>
+			<?= esc_html_x( 'Settings saved successfully.', 'backend', 'tabs-with-posts' ); ?>
 		</div>
 		<?php
 	}
@@ -294,7 +295,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	protected function display_successfully_query_deleted_message() {
 		?>
 		<div class="<?php $this->bem_class( 'notification' ); ?> twrpb-notification twrpb-notification--success">
-			<?= _x( 'Query deleted successfully.', 'backend', 'twrp' ); ?>
+			<?= esc_html_x( 'Query deleted successfully.', 'backend', 'tabs-with-posts' ); ?>
 		</div>
 		<?php
 	}
@@ -323,7 +324,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 					value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>"
 					type="submit"
 				>
-					<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Save Settings', 'backend', 'tabs-with-posts' ); ?>
 				</button>
 			</form>
 			<?php $this->display_query_debug(); ?>
@@ -355,7 +356,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 		$result_json = ( false === $result_json ? '' : $result_json );
 
 		if ( $no_query_id ) {
-			$result_to_display = _x( 'You must first save the query, then return here to see the arguments generated.', 'backend', 'twrp' );
+			$result_to_display = _x( 'You must first save the query, then return here to see the arguments generated.', 'backend', 'tabs-with-posts' );
 		} else {
 			$result_to_display = print_r( $query_arguments, true ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions
 			// Regex, remove lines that are empty or have only one character, Usually they have open or close parenthesis.
@@ -365,11 +366,11 @@ class Queries_Tab extends Admin_Menu_Tab {
 
 		?>
 		<div id="<?php $this->bem_class( 'query_generated_array_container' ); ?>" class="<?php $this->bem_class( 'query_generated_array_container' ); ?>" data-twrpb-query-generated-array="<?= esc_attr( $result_json ); ?>">
-			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?= esc_html( _x( 'See WP_Query arguments generated', 'backend', 'twrp' ) ); ?></button>
+			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?= esc_html( _x( 'See WP_Query arguments generated', 'backend', 'tabs-with-posts' ) ); ?></button>
 
 			<div class="<?php $this->bem_class( 'query_args_collapsible' ); ?>">
 				<div class="<?php $this->bem_class( 'query_generated_note' ); ?>">
-					<?= esc_html( _x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'twrp' ) ); ?>
+					<?= esc_html( _x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'tabs-with-posts' ) ); ?>
 				</div>
 
 				<div class="<?php $this->bem_class( 'query_generated_array' ); ?>"><?= esc_html( $result_to_display ); ?></div>
@@ -385,7 +386,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	 */
 	protected function display_back_to_existing_tables_btn() {
 		$link        = Settings_Menu::get_tab_url( $this );
-		$button_text = _x( '< Back to the Queries Overview', 'backend', 'twrp' );
+		$button_text = _x( '< Back to the Queries Overview', 'backend', 'tabs-with-posts' );
 		?>
 		<a href="<?= esc_url( $link ); ?>" class="<?php $this->bem_class( 'back-btn' ); ?> twrpb-button twrpb-button--large">
 			<?= esc_html( $button_text ); ?>

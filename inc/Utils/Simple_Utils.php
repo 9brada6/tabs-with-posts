@@ -172,9 +172,9 @@ class Simple_Utils {
 	 */
 	public static function get_number_abbreviation( $number, $extra_shortener = true ) {
 		$abbrevs = array(
-			1000000000 => _x( 'B', 'Abbreviation for Billions', 'twrp' ),
-			1000000    => _x( 'M', 'Abbreviation for Millions', 'twrp' ),
-			1000       => _x( 'K', 'Abbreviation for Thousands', 'twrp' ),
+			1000000000 => _x( 'B', 'Abbreviation for Billions', 'tabs-with-posts' ),
+			1000000    => _x( 'M', 'Abbreviation for Millions', 'tabs-with-posts' ),
+			1000       => _x( 'K', 'Abbreviation for Thousands', 'tabs-with-posts' ),
 			1          => '',
 		);
 

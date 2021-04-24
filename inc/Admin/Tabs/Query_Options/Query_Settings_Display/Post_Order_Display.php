@@ -19,7 +19,7 @@ class Post_Order_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Order of posts', 'backend', 'twrp' );
+		return esc_html_x( 'Order of posts', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {

@@ -395,7 +395,7 @@ class Tabs_Creator {
 			$post_id = (string) $post->ID;
 		}
 
-		$failed_text = __( 'Loading articles failed, please refresh the page to try again.', 'twrp' );
+		$failed_text = __( 'Loading articles failed, please refresh the page to try again.', 'tabs-with-posts' );
 		echo '<div id="twrp-widget-load-via-ajax--' . esc_attr( $widget_id ) . '" style="display:none;" data-twrp-ajax-widget-id="' . esc_attr( $widget_id ) . '" data-twrp-ajax-post-id="' . esc_attr( $post_id ) . '" data-twrp-failed-text="' . esc_attr( $failed_text ) . '">';
 	}
 }

@@ -103,7 +103,7 @@ abstract class Tab_Style {
 	 * @return string
 	 */
 	public static function get_tab_style_name() {
-		return _x( 'Not set', 'backend', 'twrp' );
+		return _x( 'Not set', 'backend', 'tabs-with-posts' );
 	}
 
 	/**

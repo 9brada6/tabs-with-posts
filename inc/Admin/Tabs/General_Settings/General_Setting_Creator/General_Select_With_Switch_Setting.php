@@ -37,8 +37,8 @@ class General_Select_With_Switch_Setting extends General_Select_Setting {
 		$disabled_value_checked = ( 'false' === $value ? 'checked' : '' );
 		$enabled_value_checked  = ( 'true' === $value ? 'checked' : '' );
 
-		$enabled_aria_label  = _x( 'Yes', 'backend', 'twrp' );
-		$disabled_aria_label = _x( 'No', 'backend', 'twrp' );
+		$enabled_aria_label  = _x( 'Yes', 'backend', 'tabs-with-posts' );
+		$disabled_aria_label = _x( 'No', 'backend', 'tabs-with-posts' );
 
 		?>
 		<div class="<?php $this->bem_class( 'switch-wrapper' ); ?>">

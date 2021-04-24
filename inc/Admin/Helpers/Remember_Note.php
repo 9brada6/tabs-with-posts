@@ -127,72 +127,72 @@ class Remember_Note {
 		$all_notes = array(
 
 			static::NOTE__POST_DATE_SETTING_REMEMBER     => array(
-				'text' => _x( 'When putting a custom number of days, do not forget to check the last option and to put a number of days.', 'backend', 'twrp' ),
+				'text' => _x( 'When putting a custom number of days, do not forget to check the last option and to put a number of days.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__POST_DATE_AFTER_BEFORE_SETTING_EXAMPLE => array(
-				'text' => _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after 2020, set only "after": 01/01/2020.', 'backend', 'twrp' ),
+				'text' => _x( 'If you want, only one setting can be set(either "after" or "before"). For example to display all posts after 2020, set only "after": 01/01/2020.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__QUERY_NAME_INFO                => array(
-				'text' => _x( 'The name will be visible ONLY in the admin screen.', 'backend', 'twrp' ),
+				'text' => _x( 'The name will be visible ONLY in the admin screen.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__SEARCH_QUERY_INFO              => array(
-				'text' => _x( 'You can remove keywords by placing "-" in front of them: "pillow -sofa". Leave empty to not apply.', 'backend', 'twrp' ),
+				'text' => _x( 'You can remove keywords by placing "-" in front of them: "pillow -sofa". Leave empty to not apply.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__SEARCH_QUERY_TOO_SHORT_WARNING => array(
-				'text' => _x( 'You have searched for a very small keyword, this can be a mistake. The query will work and include the search result whatsoever.', 'backend', 'twrp' ),
+				'text' => _x( 'You have searched for a very small keyword, this can be a mistake. The query will work and include the search result whatsoever.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__SUPPRESS_FILTERS_INFO          => array(
-				'text' => _x( 'Some theme/plugins can alter any WP database query, modifying it\'s results in unexpected ways. Fortunately, with this setting we can suppress/allow them all together.', 'backend', 'twrp' ),
+				'text' => _x( 'Some theme/plugins can alter any WP database query, modifying it\'s results in unexpected ways. Fortunately, with this setting we can suppress/allow them all together.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__POST_STATUS_INFO               => array(
 				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
-				'text' => sprintf( _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in %1$s documentation%2$s how to do it.', 'backend', 'twrp' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
+				'text' => sprintf( _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in %1$s documentation%2$s how to do it.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_POST_ID_WARNING    => array(
-				'text' => _x( 'Ordering by post ID is not usually a good choice. If you don\'t know what a post ID is, then you maybe want to order by date, which is more efficient.', 'backend', 'twrp' ),
+				'text' => _x( 'Ordering by post ID is not usually a good choice. If you don\'t know what a post ID is, then you maybe want to order by date, which is more efficient.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__ORDERING_BY_COMMENTS_WARNING   => array(
-				'text' => _x( 'When ordering by comments, is good to order by something else secondarily(like date), in case the number of comments are equal between posts.', 'backend', 'twrp' ),
+				'text' => _x( 'When ordering by comments, is good to order by something else secondarily(like date), in case the number of comments are equal between posts.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__ORDERING_BY_SEARCH_NOTE        => array(
 				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
-				'text' => sprintf( _x( 'Don\'t forget to add some search terms, also, there is a technical explanation in the %1$s documentation%2$s of how ordering by search works.', 'backend', 'twrp' ), '<a href="' . esc_attr( $ordering_documentation ) . '" target="_blank">', '</a>' ),
+				'text' => sprintf( _x( 'Don\'t forget to add some search terms, also, there is a technical explanation in the %1$s documentation%2$s of how ordering by search works.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_attr( $ordering_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_META_NOTE          => array(
 				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
-				'text' => sprintf( _x( 'Don\'t forget to add a meta value. Do not confuse sorting alphabetically with numerically, in %1$s documentation%2$s there is an explanation between the two.', 'backend', 'twrp' ), '<a href="' . esc_attr( $ordering_documentation ) . '" target="_blank">', '</a>' ),
+				'text' => sprintf( _x( 'Don\'t forget to add a meta value. Do not confuse sorting alphabetically with numerically, in %1$s documentation%2$s there is an explanation between the two.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_attr( $ordering_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_POSTS_IN_NOTE      => array(
-				'text' => _x( 'Don\'t forget to add posts to the "Included Posts" setting, and sort them how you want.', 'backend', 'twrp' ),
+				'text' => _x( 'Don\'t forget to add posts to the "Included Posts" setting, and sort them how you want.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__ORDERING_BY_VIEWS_NOTE         => array(
-				'text' => _x( 'Depending on how the plugin is ordering, either "Suppress Filters" or "Meta Settings" options are overwritten.', 'backend', 'twrp' ),
+				'text' => _x( 'Depending on how the plugin is ordering, either "Suppress Filters" or "Meta Settings" options are overwritten.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__POST_SETTINGS_NOTE             => array(
-				'text' => _x( 'This setting is a filter, and the posts added here can be filtered by other options. For example if a post(of type "Post") is added here, and in the Post Types Setting only "Pages" setting is selected, then the post will not be shown because it is filtered out by other setting.', 'backend', 'twrp' ),
+				'text' => _x( 'This setting is a filter, and the posts added here can be filtered by other options. For example if a post(of type "Post") is added here, and in the Post Types Setting only "Pages" setting is selected, then the post will not be shown because it is filtered out by other setting.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__ADVANCED_ARGS_NOTE             => array(
 				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
-				'text' => sprintf( _x( 'This is a JSON setting, will overwrite any other settings, used for more advanced settings that are not usually worth making a graphical settings for them. You can see in %1$s documentation%2$s an example. If you want to use PHP, then use the filters to overwrite a specific query(examples in documentation).', 'backend', 'twrp' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
+				'text' => sprintf( _x( 'This is a JSON setting, will overwrite any other settings, used for more advanced settings that are not usually worth making a graphical settings for them. You can see in %1$s documentation%2$s an example. If you want to use PHP, then use the filters to overwrite a specific query(examples in documentation).', 'backend', 'tabs-with-posts' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__INVALID_JSON_WARNING           => array(
 				/* translators: The tags %1$s and %2$s will be replaced with a HTML link tag. */
-				'text' => sprintf( _x( 'The JSON you entered is invalid and will not be applied. If you can\'t detect where the error might be, you can copy the text into an %1$s online checker%2$s for more details.', 'backend', 'twrp' ), '<a href="' . esc_url( 'https://jsonformatter.curiousconcept.com/' ) . '" target="_blank">', '</a>' ),
+				'text' => sprintf( _x( 'The JSON you entered is invalid and will not be applied. If you can\'t detect where the error might be, you can copy the text into an %1$s online checker%2$s for more details.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_url( 'https://jsonformatter.curiousconcept.com/' ) . '" target="_blank">', '</a>' ),
 			),
 		);
 
@@ -253,7 +253,7 @@ class Remember_Note {
 	 * @return string
 	 */
 	protected function get_default_note_label() {
-		return _x( 'Note:', 'backend', 'twrp' );
+		return _x( 'Note:', 'backend', 'tabs-with-posts' );
 	}
 
 	/**
@@ -262,7 +262,7 @@ class Remember_Note {
 	 * @return string
 	 */
 	protected function get_default_warning_label() {
-		return _x( 'Warning:', 'backend', 'twrp' );
+		return _x( 'Warning:', 'backend', 'tabs-with-posts' );
 	}
 
 

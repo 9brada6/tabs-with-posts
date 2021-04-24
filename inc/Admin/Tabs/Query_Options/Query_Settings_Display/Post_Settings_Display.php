@@ -21,7 +21,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Only Include/Exclude specific posts', 'backend', 'twrp' );
+		return _x( 'Only Include/Exclude specific posts', 'backend', 'tabs-with-posts' );
 	}
 
 	#region -- Display settings
@@ -57,13 +57,13 @@ class Post_Settings_Display extends Query_Setting_Display {
 		<div class="<?php $this->query_setting_paragraph_class(); ?>">
 			<select id="<?php $this->bem_class( 'js-filter-type' ); ?>" name="<?= esc_attr( $select_name ); ?>">
 				<option value="NA" <?php selected( 'NA', $option_selected ); ?>>
-					<?= _x( 'Not Applied', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 				<option value="IP" <?php selected( 'IP', $option_selected ); ?>>
-					<?= _x( 'Only these posts', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Only these posts', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 				<option value="EP" <?php selected( 'EP', $option_selected ); ?>>
-					<?= _x( 'Exclude these posts', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Exclude these posts', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
@@ -109,7 +109,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 		}
 
 		/* translators: %s -> post name. */
-		$remove_aria_label = _x( 'remove post %s', 'backend, accessibility text', 'twrp' );
+		$remove_aria_label = _x( 'remove post %s', 'backend, accessibility text', 'tabs-with-posts' );
 
 		$list_is_hidden_class = '';
 		if ( isset( $current_setting[ Post_Settings::FILTER_TYPE__SETTING_NAME ] ) && 'NA' === $current_setting[ Post_Settings::FILTER_TYPE__SETTING_NAME ] ) {
@@ -131,7 +131,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 				id="<?php $this->bem_class( 'js-no-posts-selected' ); ?>"
 				class="twrpb-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
 			>
-				<?= _x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'tabs-with-posts' ); ?>
 			</div>
 			<?php foreach ( $posts as $post ) : ?>
 				<?php
@@ -139,7 +139,7 @@ class Post_Settings_Display extends Query_Setting_Display {
 				array_push( $hidden_input_value, $post->ID );
 
 				if ( empty( $title ) ) {
-					$title = _x( 'Post with no title', 'backend', 'twrp' );
+					$title = esc_html_x( 'Post with no title', 'backend', 'tabs-with-posts' );
 				}
 
 				$remove_btn_label = sprintf( $remove_aria_label, $title );
@@ -174,14 +174,14 @@ class Post_Settings_Display extends Query_Setting_Display {
 			<input
 				id="<?php $this->bem_class( 'js-posts-search' ); ?>" type="text"
 				class="<?php $this->bem_class( 'posts-search' ); ?>"
-				placeholder="<?= _x( 'Search for a post', 'backend', 'twrp' ); ?>"
+				placeholder="<?= esc_attr_x( 'Search for a post', 'backend', 'tabs-with-posts' ); ?>"
 			/>
 
 			<button
 				id="<?php $this->bem_class( 'js-posts-add-btn' ); ?>" type="button"
 				class="<?php $this->bem_class( 'js-posts-add-btn' ); ?> twrpb-button"
 			>
-				<?= _x( 'Add Post', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'Add Post', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php

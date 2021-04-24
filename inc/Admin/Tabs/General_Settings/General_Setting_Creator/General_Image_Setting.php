@@ -28,8 +28,8 @@ class General_Image_Setting extends General_Setting_Creator {
 
 		?>
 		<div class="<?php $this->bem_class( 'btns-wrapper' ); ?>">
-			<button class="<?php $this->bem_class( 'btn' ); ?> twrpb-button" type="button"><?= esc_html_x( 'Add image', 'backend', 'twrp' ); ?></button>
-			<button class="<?php $this->bem_class( 'clear-btn' ); ?> twrpb-button twrpb-button--delete twrpb-button--small" type="button"><?= esc_html_x( 'Clear Image', 'backend', 'twrp' ); ?></button>
+			<button class="<?php $this->bem_class( 'btn' ); ?> twrpb-button" type="button"><?= esc_html_x( 'Add image', 'backend', 'tabs-with-posts' ); ?></button>
+			<button class="<?php $this->bem_class( 'clear-btn' ); ?> twrpb-button twrpb-button--delete twrpb-button--small" type="button"><?= esc_html_x( 'Clear Image', 'backend', 'tabs-with-posts' ); ?></button>
 		</div>
 
 		<input class="<?php $this->bem_class( 'img-src' ); ?>" name="<?= esc_attr( $this->name ); ?>" value="<?= esc_attr( $image_id ); ?>" type="hidden"<?php $this->display_input_attributes(); ?>/>

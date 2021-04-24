@@ -19,7 +19,7 @@ class Post_Status_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Filter by post statuses', 'backend', 'twrp' );
+		return _x( 'Filter by post statuses', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -36,10 +36,10 @@ class Post_Status_Display extends Query_Setting_Display {
 		<div class="<?php $this->query_setting_paragraph_class(); ?>">
 			<select id="<?php $this->bem_class( 'js-apply-select' ); ?>" name="<?= esc_attr( $apply_statuses_name ); ?>">
 				<option value="not_applied" <?= selected( $current_apply_statuses, 'not_applied' ); ?>>
-					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 				<option value="apply" <?= selected( $current_apply_statuses, 'apply' ); ?>>
-					<?= _x( 'Filter by post statuses', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Filter by post statuses', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>

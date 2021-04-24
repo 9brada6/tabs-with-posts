@@ -18,7 +18,7 @@ class Post_Types_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Post types to include', 'backend', 'twrp' );
+		return _x( 'Post types to include', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {

@@ -32,10 +32,10 @@ class Query_Templates {
 	 */
 	public function get_all_query_posts_templates_options() {
 		return array(
-			self::LAST_POSTS__TEMPLATE_NAME     => _x( 'Last Posts Template', 'backend', 'twrp' ),
-			self::MOST_COMMENTED__TEMPLATE_NAME => _x( 'Most Commented Template', 'backend', 'twrp' ),
-			self::RANDOM_POSTS__TEMPLATE_NAME   => _x( 'Random Posts Template', 'backend', 'twrp' ),
-			self::THIS_WEEK__TEMPLATE_NAME      => _x( 'This Week Template', 'backend', 'twrp' ),
+			self::LAST_POSTS__TEMPLATE_NAME     => _x( 'Last Posts Template', 'backend', 'tabs-with-posts' ),
+			self::MOST_COMMENTED__TEMPLATE_NAME => _x( 'Most Commented Template', 'backend', 'tabs-with-posts' ),
+			self::RANDOM_POSTS__TEMPLATE_NAME   => _x( 'Random Posts Template', 'backend', 'tabs-with-posts' ),
+			self::THIS_WEEK__TEMPLATE_NAME      => _x( 'This Week Template', 'backend', 'tabs-with-posts' ),
 		);
 	}
 

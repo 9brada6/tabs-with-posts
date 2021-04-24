@@ -212,10 +212,10 @@ class General_Settings_Factory {
 	 */
 	protected static function get_human_readable_setting_args() {
 		return array(
-			'title'   => _x( 'Display the date in relative format(Ex: 3 weeks ago)?', 'backend', 'twrp' ),
+			'title'   => _x( 'Display the date in relative format(Ex: 3 weeks ago)?', 'backend', 'tabs-with-posts' ),
 			'options' => array(
-				'true'  => __( 'Yes', 'twrp' ),
-				'false' => __( 'No', 'twrp' ),
+				'true'  => _x( 'Yes', 'backend', 'tabs-with-posts' ),
+				'false' => _x( 'No', 'backend', 'tabs-with-posts' ),
 			),
 			'default' => General_Options::get_default_setting( General_Options::HUMAN_READABLE_DATE ),
 		);
@@ -233,9 +233,9 @@ class General_Settings_Factory {
 		}
 
 		return array(
-			'title'      => _x( 'Enter custom date format(leave empty for WordPress default setting):', 'backend', 'twrp' ),
+			'title'      => _x( 'Enter custom date format(leave empty for WordPress default setting):', 'backend', 'tabs-with-posts' ),
 			'input_attr' => array(
-				'placeholder' => _x( 'Ex: F j, Y', 'backend', 'twrp' ),
+				'placeholder' => _x( 'Ex: F j, Y', 'backend, date format', 'tabs-with-posts' ),
 			),
 			'is_hidden'  => $is_hidden,
 		);
@@ -250,7 +250,7 @@ class General_Settings_Factory {
 		$options = Icon::get_description_options_by_brands( Icon_Factory::get_user_icons() );
 
 		return array(
-			'title'   => _x( 'Select the default author icon:', 'backend', 'twrp' ),
+			'title'   => _x( 'Select the default author icon:', 'backend', 'tabs-with-posts' ),
 			'options' => $options,
 		);
 	}
@@ -264,7 +264,7 @@ class General_Settings_Factory {
 		$options = Icon::get_description_options_by_brands( Icon_Factory::get_date_icons() );
 
 		return array(
-			'title'   => _x( 'Select the default date icon:', 'backend', 'twrp' ),
+			'title'   => _x( 'Select the default date icon:', 'backend', 'tabs-with-posts' ),
 			'options' => $options,
 		);
 	}
@@ -278,7 +278,7 @@ class General_Settings_Factory {
 		$options = Icon::get_description_options_by_brands( Icon_Factory::get_category_icons() );
 
 		return array(
-			'title'   => _x( 'Select the default category icon:', 'backend', 'twrp' ),
+			'title'   => _x( 'Select the default category icon:', 'backend', 'tabs-with-posts' ),
 			'options' => $options,
 		);
 	}
@@ -292,7 +292,7 @@ class General_Settings_Factory {
 		$options = Icon::get_description_options_by_brands( Icon_Factory::get_comment_icons() );
 
 		return array(
-			'title'   => _x( 'Select the default comments icon:', 'backend', 'twrp' ),
+			'title'   => _x( 'Select the default comments icon:', 'backend', 'tabs-with-posts' ),
 			'options' => $options,
 		);
 	}
@@ -309,13 +309,13 @@ class General_Settings_Factory {
 		$switch_value = General_Options::get_option( General_Options::COMMENTS_DISABLED_ICON_AUTO_SELECT );
 
 		return array(
-			'title'           => _x( 'Select the default disabled comments icon:', 'backend', 'twrp' ),
+			'title'           => _x( 'Select the default disabled comments icon:', 'backend', 'tabs-with-posts' ),
 			'options'         => $options,
 			'additional_attr' => array(
 				'data-twrpb-related-comment-icons' => wp_json_encode( $disabled_comments_packs_data ),
 			),
 			'switch'          => array(
-				'title' => _x( 'Auto-select this icon(best-looking) based on the comment icon.', 'backend', 'twrp' ),
+				'title' => _x( 'Auto-select this icon(best-looking) based on the comment icon.', 'backend', 'tabs-with-posts' ),
 				'value' => $switch_value,
 				'name'  => General_Options::get_key_by_class( General_Options::COMMENTS_DISABLED_ICON_AUTO_SELECT ),
 			),
@@ -331,7 +331,7 @@ class General_Settings_Factory {
 		$options = Icon::get_description_options_by_brands( Icon_Factory::get_views_icons() );
 
 		return array(
-			'title'   => _x( 'Select the default views icon:', 'backend', 'twrp' ),
+			'title'   => _x( 'Select the default views icon:', 'backend', 'tabs-with-posts' ),
 			'options' => $options,
 			'default' => General_Options::get_default_setting( General_Options::VIEWS_ICON ),
 		);
@@ -360,7 +360,7 @@ class General_Settings_Factory {
 		}
 
 		return array(
-			'title'           => _x( 'Select the default rating pack icons:', 'backend', 'twrp' ),
+			'title'           => _x( 'Select the default rating pack icons:', 'backend', 'tabs-with-posts' ),
 			'options'         => $options,
 			'additional_attr' => array(
 				'data-twrpb-rating-packs' => wp_json_encode( $rating_packs_data ),
@@ -375,10 +375,10 @@ class General_Settings_Factory {
 	 */
 	protected static function get_svg_include_inline_args() {
 		return array(
-			'title'   => _x( 'Include SVG icons inline?', 'backend', 'twrp' ),
+			'title'   => _x( 'Include SVG icons inline?', 'backend', 'tabs-with-posts' ),
 			'options' => array(
-				'true'  => __( 'Yes', 'twrp' ),
-				'false' => __( 'No', 'twrp' ),
+				'true'  => _x( 'Yes', 'backend', 'tabs-with-posts' ),
+				'false' => _x( 'No', 'backend', 'tabs-with-posts' ),
 			),
 		);
 	}
@@ -390,8 +390,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_text_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the text color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the text color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -402,8 +402,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_disabled_text_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the disabled text color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the disabled text color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -414,8 +414,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_background_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the background color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the background color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -426,8 +426,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_secondary_background_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the secondary background color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the secondary background color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -438,8 +438,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_accent_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the accent color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the accent color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -450,8 +450,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_darker_accent_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the darker accent color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the darker accent color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -462,8 +462,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_lighter_accent_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the lighter accent color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the lighter accent color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -474,8 +474,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_border_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the border color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the border color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -486,8 +486,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_secondary_border_color_setting_args() {
 		return array(
-			'title'  => _x( 'Select the secondary border color:', 'backend', 'twrp' ),
-			'before' => _x( 'Click to change:', 'backend', 'twrp' ),
+			'title'  => _x( 'Select the secondary border color:', 'backend', 'tabs-with-posts' ),
+			'before' => _x( 'Click to change:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -498,8 +498,8 @@ class General_Settings_Factory {
 	 */
 	protected static function get_border_radius_setting_args() {
 		return array(
-			'title' => _x( 'Change the default border radius of elements:', 'backend', 'twrp' ),
-			'after' => _x( 'px', 'backend', 'twrp' ),
+			'title' => _x( 'Change the default border radius of elements:', 'backend', 'tabs-with-posts' ),
+			'after' => 'px',
 		);
 	}
 
@@ -510,8 +510,8 @@ class General_Settings_Factory {
 	 */
 	protected static function tab_button_size_setting_args() {
 		return array(
-			'title'      => _x( 'Change the default tab button font-size:', 'backend', 'twrp' ),
-			'after'      => _x( 'rem', 'backend', 'twrp' ),
+			'title'      => _x( 'Change the default tab button font-size:', 'backend', 'tabs-with-posts' ),
+			'after'      => 'rem',
 			'input_attr' => array(
 				'min'  => '0.8',
 				'max'  => '2',
@@ -528,7 +528,7 @@ class General_Settings_Factory {
 	 */
 	protected static function get_no_thumbnail_image_setting_args() {
 		return array(
-			'title'       => _x( 'Select an image to display if the post has no thumbnail:', 'backend', 'twrp' ),
+			'title'       => _x( 'Select an image to display if the post has no thumbnail:', 'backend', 'tabs-with-posts' ),
 			'default_src' => Article_Block::get_default_no_thumbnail_image_url(),
 			'input_attr'  => array(
 				'data-twrpb-default-image' => Article_Block::get_default_no_thumbnail_image_url(),
@@ -548,20 +548,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_yasr_rating_type_args() {
-		$title       = _x( 'Select the YASR rating type that you wish this plugin to show in posts:', 'backend', 'twrp' );
+		$title       = _x( 'Select the YASR rating type that you wish this plugin to show in posts:', 'backend', 'tabs-with-posts' );
 		$yasr_plugin = new YASR_Rating_Plugin();
 
 		if ( ! $yasr_plugin->is_installed_and_can_be_used() ) {
-			$title = '(' . _x( 'Not Installed', 'backend', 'twrp' ) . ') ' . $title;
+			$title = '(' . _x( 'Not Installed', 'backend', 'tabs-with-posts' ) . ') ' . $title;
 		}
 
 		return array(
 			'title'   => $title,
 			'options' => array(
-				'overall'            => _x( 'Overall/Author Rating', 'backend', 'twrp' ),
-				'visitors'           => _x( 'Visitors Vote', 'backend', 'twrp' ),
-				'multi_set_overall'  => _x( 'Multiset Overall/Authors Vote', 'backend', 'twrp' ),
-				'multi_set_visitors' => _x( 'Multiset Visitors Vote', 'backend', 'twrp' ),
+				'overall'            => _x( 'Overall/Author Rating', 'backend', 'tabs-with-posts' ),
+				'visitors'           => _x( 'Visitors Vote', 'backend', 'tabs-with-posts' ),
+				'multi_set_overall'  => _x( 'Multiset Overall/Authors Vote', 'backend', 'tabs-with-posts' ),
+				'multi_set_visitors' => _x( 'Multiset Visitors Vote', 'backend', 'tabs-with-posts' ),
 			),
 		);
 	}
@@ -573,10 +573,10 @@ class General_Settings_Factory {
 	 */
 	protected static function get_fill_grid_with_posts_args() {
 		return array(
-			'title'   => _x( 'Fill the empty grid spaces with posts?', 'backend', 'twrp' ),
+			'title'   => _x( 'Fill the empty grid spaces with posts?', 'backend', 'tabs-with-posts' ),
 			'options' => array(
-				'true'  => __( 'Yes', 'twrp' ),
-				'false' => __( 'No', 'twrp' ),
+				'true'  => _x( 'Yes', 'backend', 'tabs-with-posts' ),
+				'false' => _x( 'No', 'backend', 'tabs-with-posts' ),
 			),
 		);
 	}
@@ -588,10 +588,10 @@ class General_Settings_Factory {
 	 */
 	protected static function get_enable_cache_args() {
 		return array(
-			'title'   => _x( 'Enable widget cache?', 'backend', 'twrp' ),
+			'title'   => _x( 'Enable widget cache?', 'backend', 'tabs-with-posts' ),
 			'options' => array(
-				'true'  => __( 'Yes', 'twrp' ),
-				'false' => __( 'No', 'twrp' ),
+				'true'  => _x( 'Yes', 'backend', 'tabs-with-posts' ),
+				'false' => _x( 'No', 'backend', 'tabs-with-posts' ),
 			),
 		);
 	}
@@ -604,15 +604,15 @@ class General_Settings_Factory {
 	 */
 	protected static function get_cache_minutes_automatic_refresh_args() {
 		return array(
-			'title'   => _x( 'After how many minutes the cache should refresh?', 'backend', 'twrp' ),
+			'title'   => _x( 'After how many minutes the cache should refresh?', 'backend', 'tabs-with-posts' ),
 			'options' => array(
-				'7'  => _x( '7 minutes', 'backend', 'twrp' ),
-				'10' => _x( '10 minutes', 'backend', 'twrp' ),
-				'15' => _x( '15 minutes', 'backend', 'twrp' ),
-				'20' => _x( '20 minutes', 'backend', 'twrp' ),
-				'30' => _x( '30 minutes', 'backend', 'twrp' ),
-				'45' => _x( '45 minutes', 'backend', 'twrp' ),
-				'60' => _x( '60 minutes', 'backend', 'twrp' ),
+				'7'  => _x( '7 minutes', 'backend', 'tabs-with-posts' ),
+				'10' => _x( '10 minutes', 'backend', 'tabs-with-posts' ),
+				'15' => _x( '15 minutes', 'backend', 'tabs-with-posts' ),
+				'20' => _x( '20 minutes', 'backend', 'tabs-with-posts' ),
+				'30' => _x( '30 minutes', 'backend', 'tabs-with-posts' ),
+				'45' => _x( '45 minutes', 'backend', 'tabs-with-posts' ),
+				'60' => _x( '60 minutes', 'backend', 'tabs-with-posts' ),
 			),
 		);
 	}
@@ -624,10 +624,10 @@ class General_Settings_Factory {
 	 */
 	protected static function get_load_widgets_via_ajax_args() {
 		return array(
-			'title'   => _x( 'Load widgets dynamically, via Ajax? Set "Yes" if you use another plugin to cache pages.', 'backend', 'twrp' ),
+			'title'   => _x( 'Load widgets dynamically, via Ajax? Set "Yes" if you use another plugin to cache pages.', 'backend', 'tabs-with-posts' ),
 			'options' => array(
-				'true'  => __( 'Yes', 'twrp' ),
-				'false' => __( 'No', 'twrp' ),
+				'true'  => _x( 'Yes', 'backend', 'tabs-with-posts' ),
+				'false' => _x( 'No', 'backend', 'tabs-with-posts' ),
 			),
 		);
 	}

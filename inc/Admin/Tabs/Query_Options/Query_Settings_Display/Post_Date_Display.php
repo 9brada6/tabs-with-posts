@@ -19,7 +19,7 @@ class Post_Date_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Filter by date', 'backend', 'twrp' );
+		return _x( 'Filter by date', 'backend', 'tabs-with-posts' );
 	}
 
 	#region -- Display Settings
@@ -47,15 +47,15 @@ class Post_Date_Display extends Query_Setting_Display {
 		<div class="<?php $this->bem_class( 'type-selector-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
 			<select id="<?php $this->bem_class( 'js-date-type' ); ?>" name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ) ?>">
 				<option value="NA" <?php selected( 'NA', $date_type ); ?>>
-					<?= _x( 'Not Applied', 'backend', 'twrp' ) ?>
+					<?= esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ) ?>
 				</option>
 
 				<option value="LT" <?php selected( 'LT', $date_type ); ?>>
-					<?= _x( 'Last period of time', 'backend', 'twrp' ) ?>
+					<?= esc_html_x( 'Last period of time', 'backend', 'tabs-with-posts' ) ?>
 				</option>
 
 				<option value="FT" <?php selected( 'FT', $date_type ); ?>>
-					<?= _x( 'Between points in time', 'backend', 'twrp' ) ?>
+					<?= esc_html_x( 'Between points in time', 'backend', 'tabs-with-posts' ) ?>
 				</option>
 			</select>
 		</div>
@@ -102,7 +102,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'L7D', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-7-days' ); ?>">
-					<?= _x( 'Last 7 days', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Last 7 days', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
@@ -112,7 +112,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'L30D', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-30-days' ); ?>">
-					<?= _x( 'Last 30 days', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Last 30 days', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
@@ -122,7 +122,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'LW', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-week' ); ?>">
-					<?= _x( 'This and last week (max 7-14 days)', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'This and last week (max 7-14 days)', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
@@ -132,7 +132,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'LM', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-month' ); ?>">
-					<?= _x( 'This and last month (max 30-60 days)', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'This and last month (max 30-60 days)', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
@@ -142,7 +142,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'TY', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'this-year' ); ?>">
-					<?= _x( 'This year', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'This year', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
@@ -152,7 +152,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					<?php checked( 'C', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'js-custom' ); ?>">
-					<?= _x( 'Last n days:', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Last n days:', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 
 				<input
@@ -160,7 +160,7 @@ class Post_Date_Display extends Query_Setting_Display {
 					class="<?php $this->bem_class( 'last-days-input' ); ?>"
 					min="0" step="1" type="number"
 					name="<?= esc_attr( $last_days_name ); ?>"
-					placeholder="<?= esc_attr_x( 'Last number of days...', 'backend', 'twrp' ); ?>"
+					placeholder="<?= esc_attr_x( 'Last number of days...', 'backend', 'tabs-with-posts' ); ?>"
 					value="<?= esc_attr( (string) $last_days_num ); ?>"
 				/>
 			</p>
@@ -201,7 +201,7 @@ class Post_Date_Display extends Query_Setting_Display {
 
 			<span class="<?php $this->bem_class( 'after-wrapper' ); ?>">
 				<label for="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after-label' ); ?>">
-					<?= _x( 'After:', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'After:', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 				<br />
 				<input id="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after' ); ?>" type="date" autocomplete="off"
@@ -214,7 +214,7 @@ class Post_Date_Display extends Query_Setting_Display {
 
 			<span class="<?php $this->bem_class( 'before-wrapper' ); ?>">
 				<label for="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before-label' ); ?>">
-					<?= _x( 'Before:', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Before:', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 				<br />
 				<input id="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before' ); ?>" type="date" autocomplete="off"

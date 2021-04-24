@@ -49,7 +49,7 @@ class Plugin_Support_Docs {
 		?>
 		<div class="<?php $this->bem_class( 'plugins-support' ); ?> <?php $this->bem_class( 'plugins-support', 'views-plugin' ); ?>">
 			<h2 class="<?php $this->bem_class( 'title-section' ); ?>">
-				<?= _x( 'Views plugin support', 'backend, documentation', 'twrp' ); ?>
+				<?= esc_html_x( 'Views plugin support', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</h2>
 
 			<div class="<?php $this->bem_class( 'plugins-list' ); ?>">
@@ -74,7 +74,7 @@ class Plugin_Support_Docs {
 		?>
 		<div class="<?php $this->bem_class( 'plugins-support' ); ?> <?php $this->bem_class( 'plugins-support', 'views-plugin' ); ?>">
 			<h2 class="<?php $this->bem_class( 'title-section' ); ?>">
-				<?= _x( 'Rating plugin support', 'backend, documentation', 'twrp' ); ?>
+				<?= esc_html_x( 'Rating plugin support', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</h2>
 
 			<div class="<?php $this->bem_class( 'plugins-list' ); ?>">
@@ -99,34 +99,34 @@ class Plugin_Support_Docs {
 		?>
 		<div class="<?php $this->bem_class( 'docs-plugin' ); ?>">
 			<div class="<?php $this->bem_class( 'plugin-avatar-wrapper' ); ?>">
-				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend, documentation, screen reader', 'twrp' ) ); ?>"/>
+				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend, documentation, screen reader', 'tabs-with-posts' ) ); ?>"/>
 			</div>
 
 			<div class="<?php $this->bem_class( 'meta-wrapper' ); ?>">
 				<h3 class="<?php $this->bem_class( 'plugin-title' ); ?>"><?= esc_html( $plugin->get_plugin_title() ); ?></h3>
 
 				<p class="<?php $this->bem_class( 'plugin-author-wrap' ); ?>">
-					<?= _x( 'Author:', 'backend, documentation', 'twrp' ) . ' ' . esc_html( $plugin->get_plugin_author() ); ?>
+					<?= esc_html_x( 'Author:', 'backend, documentation', 'tabs-with-posts' ) . ' ' . esc_html( $plugin->get_plugin_author() ); ?>
 				</p>
 
 				<p class="<?php $this->bem_class( 'plugin-version-wrap' ); ?>">
 					<?php
-					echo _x( 'Installed Version:', 'backend, documentation', 'twrp' ) . ' ';
+					echo esc_html_x( 'Installed Version:', 'backend, documentation', 'tabs-with-posts' ) . ' ';
 					$plugin_version = $plugin->get_plugin_version();
 					if ( false === $plugin_version ) {
 						echo '<span class="' . esc_attr( $this->get_bem_class( 'plugin-not-installed-text' ) ) . '">';
-						echo _x( 'Not Installed', 'backend, documentation', 'twrp' );
+						echo esc_html_x( 'Not Installed', 'backend, documentation', 'tabs-with-posts' );
 						echo '</span>';
 					} else {
 						echo esc_html( $plugin_version );
 
 						if ( false === $plugin->is_installed_and_can_be_used() ) {
 							echo '<span class="' . esc_attr( $this->get_bem_class( 'plugin-not-active-text' ) ) . '">';
-							echo ' (' . _x( 'Not Active', 'backend, documentation', 'twrp' ) . ')';
+							echo ' (' . esc_html_x( 'Not Active', 'backend, documentation', 'tabs-with-posts' ) . ')';
 							echo '</span>';
 						} elseif ( ( false !== $plugin_in_use ) && ( get_class( $plugin_in_use ) === get_class( $plugin ) ) ) {
 							echo '<span class="' . esc_attr( $this->get_bem_class( 'plugin-used-text' ) ) . '">';
-							echo ' (' . _x( 'Used', 'backend, documentation', 'twrp' ) . ')';
+							echo ' (' . esc_html_x( 'Used', 'backend, documentation', 'tabs-with-posts' ) . ')';
 							echo '</span>';
 						}
 					}
@@ -134,7 +134,7 @@ class Plugin_Support_Docs {
 				</p>
 
 				<p class="<?php $this->bem_class( 'plugin-tested-version-wrap' ); ?>">
-					<?= _x( 'Tested versions:', 'backend, documentation', 'twrp' ) . ' ' . esc_html( $plugin->get_tested_plugin_versions() ); ?>
+					<?= esc_html_x( 'Tested versions:', 'backend, documentation', 'tabs-with-posts' ) . ' ' . esc_html( $plugin->get_tested_plugin_versions() ); ?>
 				</p>
 			</div>
 		</div>

@@ -68,7 +68,7 @@ class Query_Name extends Query_Setting {
 
 		if ( empty( $name ) ) {
 			/* translators: %s: an unique id number, this translation will be displayed if somehow no query name is present. */
-			$name_replacement = _x( 'Query-%s', 'backend', 'twrp' );
+			$name_replacement = _x( 'Query-%s', 'backend', 'tabs-with-posts' );
 			$name             = sprintf( $name_replacement, $query_id_to_replace );
 		}
 

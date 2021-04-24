@@ -22,7 +22,7 @@
 		<properties>
 			<!-- Custom domain name. -->
 			<property name="text_domain" type="array">
-				<element value="twrp"/>
+				<element value="tabs-with-posts"/>
 			</property>
 
 			<!-- Prefix all globals. -->

@@ -27,7 +27,7 @@ class Hover_Color_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Font color - mouse over:', 'backend', 'twrp' ),
+			'before'  => _x( 'Font color - mouse over:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 

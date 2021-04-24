@@ -27,7 +27,7 @@ class Text_Decoration_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Text Decoration:', 'backend', 'twrp' ),
+			'before'  => _x( 'Text Decoration:', 'backend', 'tabs-with-posts' ),
 			'after'   => '',
 			'options' => self::get_all_text_decoration_options(),
 		);
@@ -35,13 +35,13 @@ class Text_Decoration_Setting extends Component_Setting {
 
 	public static function get_all_text_decoration_options() {
 		return array(
-			''                 => _x( 'Not set', 'backend', 'twrp' ),
-			'underline'        => _x( 'underline', 'backend', 'twrp' ),
-			'underline dashed' => _x( 'underline dashed', 'backend', 'twrp' ),
-			'underline dotted' => _x( 'underline dotted', 'backend', 'twrp' ),
-			'underline wavy'   => _x( 'underline wavy', 'backend', 'twrp' ),
-			'overline'         => _x( 'overline', 'backend', 'twrp' ),
-			'line-through'     => _x( 'line-through', 'backend', 'twrp' ),
+			''                 => _x( 'Not set', 'backend, css - text property', 'tabs-with-posts' ),
+			'underline'        => _x( 'underline', 'backend, css - text property', 'tabs-with-posts' ),
+			'underline dashed' => _x( 'underline dashed', 'backend, css - text property', 'tabs-with-posts' ),
+			'underline dotted' => _x( 'underline dotted', 'backend, css - text property', 'tabs-with-posts' ),
+			'underline wavy'   => _x( 'underline wavy', 'backend, css - text property', 'tabs-with-posts' ),
+			'overline'         => _x( 'overline', 'backend, css - text property', 'tabs-with-posts' ),
+			'line-through'     => _x( 'line-through', 'backend, css - text property', 'tabs-with-posts' ),
 		);
 	}
 

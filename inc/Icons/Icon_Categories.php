@@ -81,13 +81,13 @@ class Icon_Categories {
 	 */
 	public static function get_category_aria_label() {
 		$aria_labels = array(
-			self::USER_ICON             => _x( 'Author', 'Noun, accessibility text', 'twrp' ),
-			self::DATE_ICON             => _x( 'Date', 'Noun, accessibility text', 'twrp' ),
-			self::VIEWS_ICON            => _x( 'Views', 'Noun, accessibility text', 'twrp' ),
-			self::RATING_ICON           => _x( 'Rating', 'Noun, accessibility text', 'twrp' ),
-			self::CATEGORY_ICON         => _x( 'Category', 'Noun, accessibility text', 'twrp' ),
-			self::COMMENT_ICON          => _x( 'Comments', 'Noun, accessibility text', 'twrp' ),
-			self::DISABLED_COMMENT_ICON => _x( 'Comments are disabled', 'Noun, accessibility text', 'twrp' ),
+			self::USER_ICON             => _x( 'Author', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::DATE_ICON             => _x( 'Date', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::VIEWS_ICON            => _x( 'Views', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::RATING_ICON           => _x( 'Rating', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::CATEGORY_ICON         => _x( 'Category', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::COMMENT_ICON          => _x( 'Comments', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::DISABLED_COMMENT_ICON => _x( 'Comments are disabled', 'Noun, accessibility text', 'tabs-with-posts' ),
 		);
 
 		return $aria_labels;

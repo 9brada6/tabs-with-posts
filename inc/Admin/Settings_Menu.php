@@ -78,8 +78,8 @@ class Settings_Menu {
 	 * @return void
 	 */
 	public static function initialize_admin_menu() {
-		$page_title = _x( 'Tabs with Recommended Posts - Settings', 'backend', 'twrp' );
-		$menu_title = _x( 'Tabs with Recommended Posts', 'backend', 'twrp' );
+		$page_title = _x( 'Tabs with Recommended Posts - Settings', 'backend', 'tabs-with-posts' );
+		$menu_title = _x( 'Tabs with Recommended Posts', 'backend', 'tabs-with-posts' );
 		$capability = 'manage_options';
 		$slug       = 'tabs_with_recommended_posts';
 

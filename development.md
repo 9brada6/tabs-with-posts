@@ -23,9 +23,13 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
+Change all 'backend;' to 'backend' in translator context.
+
 1. Change twrp to tabs-with-posts in translations.
-2. create .pot file, and see how to edit it with .poteditor.
-3. Change domain name or slug of the plugin to "tabs-with-posts".
+2. Change esc_html(_x).
+3. find all $allowed_kses and use the function.
+4. find all phpcs:ignore -- CSS where we ignore _x, and use wp_kses.
+5. Change domain name or slug of the plugin to "tabs-with-posts", also see how to change the github folder-name/project-name.
 
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.

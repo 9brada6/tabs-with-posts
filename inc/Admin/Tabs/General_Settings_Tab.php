@@ -5,6 +5,7 @@ namespace TWRP\Admin\Tabs;
 use TWRP\Database\General_Options;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Admin\Tabs\General_Settings\General_Settings_Factory;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Display the general settings tab in the admin area. From this tab, the
@@ -17,7 +18,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 	}
 
 	public function get_tab_title() {
-		return _x( 'General Settings', 'backend', 'twrp' );
+		return _x( 'General Settings', 'backend', 'tabs-with-posts' );
 	}
 
 	#region -- Display Settings
@@ -38,7 +39,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 
 			<form class="twrpb-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Color Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Color Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::BACKGROUND_COLOR );
 					General_Settings_Factory::display_setting( General_Options::SECONDARY_BACKGROUND_COLOR );
@@ -53,7 +54,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Style Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Style Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::BORDER_RADIUS );
 					General_Settings_Factory::display_setting( General_Options::TAB_BUTTON_SIZE );
@@ -61,7 +62,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Date Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Date Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::HUMAN_READABLE_DATE );
 					General_Settings_Factory::display_setting( General_Options::DATE_FORMAT );
@@ -69,23 +70,26 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Thumbnail Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Thumbnail Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::NO_THUMBNAIL_IMAGE );
 					?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= _x( 'Icons Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Icons Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<p>
 						<?php
 						$icon_reference_link = Settings_Menu::get_tab_url( new Documentation_Tab() );
 						$icon_reference_link = $icon_reference_link . '#twrpb-docs__all-icons-reference';
-						echo sprintf(
+						echo wp_kses(
+							sprintf(
 							/* translators: %1$s and %2$s are placeholder where HTML code will be inserted, as a link wrapper(going to another page). No translation words are inserted there. Just translate the whole sentence, and be sure the corresponding words are between %$1s and %2$s tags. */
-							_x( 'Note: To see a long list with all the icons, please look at %1$s documentation icons reference %2$s.', 'backend', 'twrp' ),
-							'<a href="' . esc_url( $icon_reference_link ) . '" target="_blank">',
-							'</a>'
+								_x( 'Note: To see a long list with all the icons, please look at %1$s documentation icons reference %2$s.', 'backend', 'tabs-with-posts' ),
+								'<a href="' . esc_url( $icon_reference_link ) . '" target="_blank">',
+								'</a>'
+							),
+							Simple_Utils::get_plugin_allowed_kses_html()
 						);
 						?>
 					</p>
@@ -102,7 +106,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Cache Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Cache Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::ENABLE_CACHE ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::CACHE_AUTOMATIC_REFRESH ); ?>
 
@@ -111,23 +115,23 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 						id="twrpb-refresh-cache-button"
 						class="twrpb-button twrpb-general-settings__refresh-cache-btn"
 						data-twrpb-refresh-cache-nonce="<?= esc_attr( $nonce ) ?>"
-						data-twrpb-refresh-cache-waiting="<?= esc_attr_x( 'Waiting', 'backend', 'twrp' ); ?>"
-						data-twrpb-refresh-cache-success="<?= esc_attr_x( 'Success', 'backend', 'twrp' ); ?>"
-						data-twrpb-refresh-cache-failed="<?= esc_attr_x( 'Failed', 'backend', 'twrp' ); ?>"
+						data-twrpb-refresh-cache-waiting="<?= esc_attr_x( 'Waiting', 'backend', 'tabs-with-posts' ); ?>"
+						data-twrpb-refresh-cache-success="<?= esc_attr_x( 'Success', 'backend', 'tabs-with-posts' ); ?>"
+						data-twrpb-refresh-cache-failed="<?= esc_attr_x( 'Failed', 'backend', 'tabs-with-posts' ); ?>"
 						type="button">
-						<?= esc_html( _x( 'Refresh widget cache', 'backend', 'twrp' ) ); ?>
+						<?= esc_html( _x( 'Refresh widget cache', 'backend', 'tabs-with-posts' ) ); ?>
 					</button>
 
 					<?php General_Settings_Factory::display_setting( General_Options::LOAD_WIDGET_VIA_AJAX ); ?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Other Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Other Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::FILL_GRID_WITH_POSTS ); ?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'External Plugin Settings', 'backend', 'twrp' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'External Plugin Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
 				</fieldset>
 
@@ -147,7 +151,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 	protected static function settings_submitted_success_message() {
 		?>
 		<div class="twrpb-general-settings__success-submitted-wrapper twrpb-notification twrpb-notification--success">
-			<?= _x( 'Settings saved successfully.', 'backend', 'twrp' ); ?>
+			<?= esc_html_x( 'Settings saved successfully.', 'backend', 'tabs-with-posts' ); ?>
 		</div>
 		<?php
 	}
@@ -184,7 +188,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 		<div class="twrpb-general-settings__submit-btn-wrapper">
 			<?php wp_nonce_field( 'twrp_general_submit_nonce', 'twrp_general_nonce', true, true ); ?>
 			<button id="twrpb-general-settings__submit-btn" class="twrpb-general-settings__submit-btn twrpb-button twrpb-button--save twrpb-button--large" type="submit" name="submit" value="submit">
-				<?= _x( 'Save Settings', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'Save Settings', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php

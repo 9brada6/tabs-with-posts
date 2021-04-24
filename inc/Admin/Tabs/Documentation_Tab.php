@@ -51,7 +51,7 @@ class Documentation_Tab extends Admin_Menu_Tab {
 	}
 
 	public function get_tab_title() {
-		return _x( 'Documentation', 'backend', 'twrp' );
+		return _x( 'Documentation', 'backend', 'tabs-with-posts' );
 	}
 
 	public function get_bem_base_class() {

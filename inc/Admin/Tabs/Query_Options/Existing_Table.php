@@ -25,9 +25,9 @@ class Query_Existing_Table {
 		<table class="<?php $this->bem_class(); ?>">
 			<thead>
 				<tr>
-					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?= _x( 'Query Name', 'backend', 'twrp' ); ?></th>
+					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?= esc_html_x( 'Query Name', 'backend', 'tabs-with-posts' ); ?></th>
 					<th class="<?php $this->bem_class( 'edit-head' ); ?>">
-						<?= _x( 'Actions', 'backend', 'twrp' ) ?>
+						<?= esc_html_x( 'Actions', 'backend', 'tabs-with-posts' ) ?>
 					</th>
 				</tr>
 			</thead>
@@ -39,7 +39,7 @@ class Query_Existing_Table {
 				<?php else : ?>
 					<tr>
 						<td class="<?php $this->bem_class( 'no-queries-col' ); ?>" colspan="2">
-						<?= _x( 'No queries yet', 'backend', 'twrp' ); ?>
+						<?= esc_html_x( 'No queries yet', 'backend', 'tabs-with-posts' ); ?>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -63,9 +63,9 @@ class Query_Existing_Table {
 		$delete_icon = '<span class="' . $this->get_bem_class( 'delete-icon' ) . ' dashicons dashicons-trash"></span>';
 
 		/* translators: %s: edit dashicon html. */
-		$edit_text = sprintf( _x( '%sEdit', 'backend', 'twrp' ), $edit_icon );
+		$edit_text = sprintf( _x( '%sEdit', 'backend', 'tabs-with-posts' ), $edit_icon );
 		/* translators: %s: delete dashicon html. */
-		$delete_text = sprintf( _x( '%sDelete', 'backend', 'twrp' ), $delete_icon );
+		$delete_text = sprintf( _x( '%sDelete', 'backend', 'tabs-with-posts' ), $delete_icon );
 
 		?>
 		<tr>

@@ -27,7 +27,7 @@ class Line_Height_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Line Height:', 'backend; CSS unit', 'twrp' ),
+			'before'  => _x( 'Line Height:', 'backend, font line', 'tabs-with-posts' ),
 			'after'   => '',
 			'max'     => '3',
 			'min'     => '0.7',

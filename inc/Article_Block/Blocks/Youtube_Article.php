@@ -29,7 +29,7 @@ class Youtube_Article extends Article_Block {
 	}
 
 	public static function get_name() {
-		return _x( 'Youtube Style', 'backend', 'twrp' );
+		return _x( 'Youtube Style', 'backend', 'tabs-with-posts' );
 	}
 
 	public static function get_file_name() {
@@ -73,7 +73,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__title' => $title_component_settings,
 			$hover_css_selector              => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'header', _x( 'Title', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'header', _x( 'Title', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['header'] = $component;
 
 		#endregion -- Title
@@ -84,7 +84,7 @@ class Youtube_Article extends Article_Block {
 		$css_components           = array(
 			$css_prefix => $thumbnail_settings,
 		);
-		$component                = new Artblock_Component( 'thumbnail', _x( 'Thumbnail', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component                = new Artblock_Component( 'thumbnail', _x( 'Thumbnail', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['thumbnail'] = $component;
 
 		#endregion -- Thumbnail
@@ -97,7 +97,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__meta--1' => $meta_component_settings,
 			$hover_css_selector                => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'meta_1', _x( 'Meta 1', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'meta_1', _x( 'Meta 1', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['meta_1'] = $component;
 
 		#endregion -- Meta 1
@@ -110,7 +110,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__meta--2' => $meta_component_settings,
 			$hover_css_selector                => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'meta_2', _x( 'Meta 2', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'meta_2', _x( 'Meta 2', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['meta_2'] = $component;
 
 		#endregion -- Meta 2
@@ -123,7 +123,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__meta--3' => $meta_component_settings,
 			$hover_css_selector                => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'meta_3', _x( 'Meta 3', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'meta_3', _x( 'Meta 3', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['meta_3'] = $component;
 
 		#endregion -- Meta 3
@@ -136,7 +136,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__meta--4' => $meta_component_settings,
 			$hover_css_selector                => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'meta_4', _x( 'Meta 4', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'meta_4', _x( 'Meta 4', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['meta_4'] = $component;
 
 		#endregion -- Meta 4
@@ -149,7 +149,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__meta--5' => $meta_component_settings,
 			$hover_css_selector                => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'meta_5', _x( 'Meta 5', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'meta_5', _x( 'Meta 5', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['meta_5'] = $component;
 
 		#endregion -- Meta 5
@@ -162,7 +162,7 @@ class Youtube_Article extends Article_Block {
 			$css_prefix . ' .twrp-ys__meta--6' => $meta_component_settings,
 			$hover_css_selector                => $component_settings_hover,
 		);
-		$component             = new Artblock_Component( 'meta_6', _x( 'Meta 6', 'backend', 'twrp' ), $current_settings, $css_components );
+		$component             = new Artblock_Component( 'meta_6', _x( 'Meta 6', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 		$components ['meta_6'] = $component;
 
 		#endregion -- Meta 6

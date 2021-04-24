@@ -27,8 +27,8 @@ class Font_Size_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Font size:', 'backend; CSS unit', 'twrp' ),
-			'after'   => _x( 'rem.', 'backend; CSS unit', 'twrp' ),
+			'before'  => _x( 'Font size:', 'backend, CSS unit', 'tabs-with-posts' ),
+			'after'   => 'rem',
 			'max'     => '3',
 			'min'     => '0.7',
 			'step'    => '0.025',

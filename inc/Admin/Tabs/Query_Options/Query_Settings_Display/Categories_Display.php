@@ -20,7 +20,7 @@ class Categories_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Include/Exclude posts by categories', 'backend', 'twrp' );
+		return _x( 'Include/Exclude posts by categories', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -73,15 +73,15 @@ class Categories_Display extends Query_Setting_Display {
 				name="<?= esc_attr( $categories_class->get_setting_name() . '[' . Categories::CATEGORIES_TYPE__SETTING_KEY . ']' ) ?>"
 			>
 				<option value="NA" <?php selected( $cat_type_setting, 'NA' ); ?>>
-					<?= _x( 'Not applied', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 
 				<option value="IN" <?php selected( $cat_type_setting, 'IN' ); ?>>
-					<?= _x( 'Include categories', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Include categories', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 
 				<option value="OUT" <?php selected( $cat_type_setting, 'OUT' ); ?>>
-				<?= _x( 'Exclude categories', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Exclude categories', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
@@ -107,7 +107,7 @@ class Categories_Display extends Query_Setting_Display {
 				<?php checked( '1', $current_setting[ Categories::INCLUDE_CHILDREN__SETTING_KEY ] ); ?>
 			/>
 			<label for="<?php $this->bem_class( 'include-children' ); ?>" class="<?php $this->bem_class( 'include-children-label' ); ?>">
-				<?= _x( 'For each category selected include also all children categories.', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'For each category selected include also all children categories.', 'backend', 'tabs-with-posts' ); ?>
 			</label>
 		</div>
 		<?php
@@ -135,7 +135,7 @@ class Categories_Display extends Query_Setting_Display {
 			class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'select-relation-wrap' ); ?><?= esc_attr( $additional_class ); ?>"
 		>
 			<p class="<?php $this->bem_class( 'select-relation-text' ); ?>">
-				<?= _x( 'An article should have:', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'An article should have:', 'backend', 'tabs-with-posts' ); ?>
 			</p>
 
 			<select
@@ -144,10 +144,10 @@ class Categories_Display extends Query_Setting_Display {
 				name="<?= esc_attr( $select_name ); ?>"
 			>
 				<option value="OR" <?php selected( $cat_relation, 'OR' ); ?>>
-					<?= _x( 'Minimum one selected category', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Minimum one selected category', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 				<option value="AND" <?php selected( $cat_relation, 'AND' ); ?>>
-					<?= _x( 'All selected categories', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'All selected categories', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
@@ -162,7 +162,7 @@ class Categories_Display extends Query_Setting_Display {
 	 */
 	protected function display_categories_list( $current_setting ) {
 		/* translators: %s -> category name. */
-		$remove_aria_label = _x( 'remove category %s', 'backend, accessibility text', 'twrp' );
+		$remove_aria_label = _x( 'remove category %s', 'backend, accessibility text', 'tabs-with-posts' );
 
 		$categories_ids = $current_setting[ Categories::CATEGORIES_IDS__SETTING_KEY ];
 		$categories_ids = explode( ';', $categories_ids );
@@ -180,7 +180,7 @@ class Categories_Display extends Query_Setting_Display {
 
 		?>
 		<h4 class="<?php $this->bem_class( 'section-title' ); ?>">
-			<?= _x( 'Selected categories:', 'backend', 'twrp' ); ?>
+			<?= esc_html_x( 'Selected categories:', 'backend', 'tabs-with-posts' ); ?>
 		</h4>
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'cat-list-section' ); ?>">
 			<div
@@ -190,7 +190,7 @@ class Categories_Display extends Query_Setting_Display {
 			>
 				<div class="twrpb-display-list__empty-msg<?= esc_attr( $additional_empty_msg_class ); ?>">
 					<span>
-						<?= _x( 'No categories added. Select a category and click the button to add.', 'backend', 'twrp' ) ?>
+						<?= esc_html_x( 'No categories added. Select a category and click the button to add.', 'backend', 'tabs-with-posts' ) ?>
 					</span>
 				</div>
 				<?php foreach ( $categories_ids as $category_id ) : ?>
@@ -245,7 +245,7 @@ class Categories_Display extends Query_Setting_Display {
 		<div class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'add-cat-wrapper' ); ?>">
 			<?= $categories_dropdown; // phpcs:ignore -- No need to escape. ?>
 			<button id="<?php $this->bem_class( 'add-cat-btn' ); ?>" class="<?php $this->bem_class( 'add-cat-btn' ); ?> twrpb-button" type="button">
-				<?= _x( 'Add Category To List', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'Add Category To List', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php

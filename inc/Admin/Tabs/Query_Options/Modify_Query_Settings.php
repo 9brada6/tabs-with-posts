@@ -49,7 +49,7 @@ class Modify_Query_Settings {
 		$query_templates_class          = new Query_Templates();
 		$query_templates_settings       = wp_json_encode( $query_templates_class->get_all_query_posts_templates() );
 		$query_templates_options        = $query_templates_class->get_all_query_posts_templates_options();
-		$templates_confirmation_message = _x( 'This will modify all the current settings to the specific template. Are you sure?', 'backend', 'twrp' );
+		$templates_confirmation_message = _x( 'This will modify all the current settings to the specific template. Are you sure?', 'backend', 'tabs-with-posts' );
 
 		if ( false === $query_templates_settings ) {
 			$query_templates_settings = '';
@@ -58,7 +58,7 @@ class Modify_Query_Settings {
 		?>
 		<div class="<?php $this->bem_class( 'apply_templates_container' ); ?>">
 			<div class="<?php $this->bem_class( 'apply_templates_label' ); ?>">
-				<?= _x( 'Start with a template:', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'Start with a template:', 'backend', 'tabs-with-posts' ); ?>
 			</div>
 
 			<select
@@ -73,7 +73,7 @@ class Modify_Query_Settings {
 			</select>
 
 			<button id="<?php $this->bem_class( 'apply_template_btn' ); ?>" class="twrpb-button <?php $this->bem_class( 'apply_template_btn' ); ?>" type="button">
-				<?= esc_html( _x( 'Apply template', 'backend', 'twrp' ) ); ?>
+				<?= esc_html_x( 'Apply template', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php

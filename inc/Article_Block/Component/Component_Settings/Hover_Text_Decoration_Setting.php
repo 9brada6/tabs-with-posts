@@ -28,7 +28,7 @@ class Hover_Text_Decoration_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Text decoration - mouse over:', 'backend', 'twrp' ),
+			'before'  => _x( 'Text decoration - mouse over:', 'backend', 'tabs-with-posts' ),
 			'after'   => '',
 			'options' => Text_Decoration_Setting::get_all_text_decoration_options(),
 		);

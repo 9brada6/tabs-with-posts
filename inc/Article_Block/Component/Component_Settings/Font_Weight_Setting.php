@@ -27,11 +27,11 @@ class Font_Weight_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Font weight:', 'backend; CSS unit', 'twrp' ),
+			'before'  => _x( 'Font weight:', 'backend', 'tabs-with-posts' ),
 			'after'   => '',
 			'options' => array(
-				''        => _x( 'Not set', 'backend', 'twrp' ),
-				'inherit' => _x( 'inherit', 'backend', 'twrp' ),
+				''        => _x( 'Not set', 'backend', 'tabs-with-posts' ),
+				'inherit' => _x( 'inherit', 'backend', 'tabs-with-posts' ),
 				'100'     => '100',
 				'200'     => '200',
 				'300'     => '300',

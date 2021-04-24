@@ -29,14 +29,14 @@ class Meta_Setting extends Query_Setting {
 	 */
 	public function get_meta_key_comparators() {
 		return array(
-			'EXISTS'     => _x( 'Exists', 'backend', 'twrp' ),
-			'NOT EXISTS' => _x( 'Not Exists', 'backend', 'twrp' ),
-			'!='         => _x( 'Not equal (!=)', 'backend', 'twrp' ),
-			'='          => _x( 'Equal (=)', 'backend', 'twrp' ),
-			'>='         => _x( 'Bigger or equal than (>=)', 'backend', 'twrp' ),
-			'<='         => _x( 'Less or equal than (<=)', 'backend', 'twrp' ),
-			'>'          => _x( 'Bigger than (>)', 'backend', 'twrp' ),
-			'<'          => _x( 'Less than (<)', 'backend', 'twrp' ),
+			'EXISTS'     => _x( 'Exists', 'backend', 'tabs-with-posts' ),
+			'NOT EXISTS' => _x( 'Not Exists', 'backend', 'tabs-with-posts' ),
+			'!='         => _x( 'Not equal (!=)', 'backend', 'tabs-with-posts' ),
+			'='          => _x( 'Equal (=)', 'backend', 'tabs-with-posts' ),
+			'>='         => _x( 'Bigger or equal than (>=)', 'backend', 'tabs-with-posts' ),
+			'<='         => _x( 'Less or equal than (<=)', 'backend', 'tabs-with-posts' ),
+			'>'          => _x( 'Bigger than (>)', 'backend', 'tabs-with-posts' ),
+			'<'          => _x( 'Less than (<)', 'backend', 'tabs-with-posts' ),
 		);
 	}
 

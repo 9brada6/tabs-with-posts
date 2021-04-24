@@ -42,7 +42,7 @@ class TWRP_Widget extends WP_Widget {
 	use After_Setup_Theme_Init_Trait;
 
 	public function __construct() {
-		$description = _x( 'Tabs with recommended posts. The settings are available at Settings->Tabs With Recommended Posts', 'backend', 'twrp' );
+		$description = _x( 'Tabs with recommended posts. The settings are available at Settings->Tabs With Recommended Posts', 'backend', 'tabs-with-posts' );
 		$widget_ops  = array(
 			'classname'                   => 'twrp-widget',
 			'description'                 => $description,
@@ -51,7 +51,7 @@ class TWRP_Widget extends WP_Widget {
 
 		parent::__construct(
 			self::TWRP_BASE_ID,
-			_x( 'Tabs with Recommended posts', 'backend', 'twrp' ),
+			_x( 'Tabs with Recommended Posts', 'backend', 'tabs-with-posts' ),
 			$widget_ops
 		);
 	}

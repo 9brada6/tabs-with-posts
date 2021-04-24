@@ -18,7 +18,7 @@ class Password_Protected_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Filter by password', 'backend', 'twrp' );
+		return _x( 'Filter by password', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -26,9 +26,9 @@ class Password_Protected_Display extends Query_Setting_Display {
 		$select_name     = $setting_class->get_setting_name() . '[' . Password_Protected::PASSWORD_PROTECTED__SETTING_NAME . ']';
 		$current_setting = $current_setting[ Password_Protected::PASSWORD_PROTECTED__SETTING_NAME ];
 
-		$not_applied_text  = _x( 'Not Applied (Posts with and without password)', 'backend', 'twrp' );
-		$has_password_text = _x( 'Only posts with password', 'backend', 'twrp' );
-		$no_password_text  = _x( 'Only posts without password', 'backend', 'twrp' );
+		$not_applied_text  = _x( 'Not Applied (Posts with and without password)', 'backend', 'tabs-with-posts' );
+		$has_password_text = _x( 'Only posts with password', 'backend', 'tabs-with-posts' );
+		$no_password_text  = _x( 'Only posts without password', 'backend', 'tabs-with-posts' );
 
 		?>
 		<div class="<?php $this->bem_class(); ?>">

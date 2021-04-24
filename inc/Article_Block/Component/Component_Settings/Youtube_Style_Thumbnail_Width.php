@@ -27,8 +27,8 @@ class Youtube_Style_Thumbnail_Width extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Width:', 'backend; CSS unit', 'twrp' ),
-			'after'   => _x( 'px. (120px default).', 'backend; CSS unit', 'twrp' ),
+			'before'  => _x( 'Width:', 'backend', 'tabs-with-posts' ),
+			'after'   => _x( 'px. (120px default).', 'backend, px is a CSS unit', 'tabs-with-posts' ),
 			'max'     => '250',
 			'min'     => '80',
 			'step'    => '5',

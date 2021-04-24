@@ -58,21 +58,21 @@ class Post_Order extends Query_Setting {
 	 */
 	public static function get_orderby_select_options() {
 		$select_options = array(
-			'not_applied'    => _x( 'Not applied', 'backend', 'twrp' ),
-			'ID'             => _x( 'Order by post id', 'backend', 'twrp' ),
-			'author'         => _x( 'Order by author', 'backend', 'twrp' ),
-			'title'          => _x( 'Order by title', 'backend', 'twrp' ),
-			'name'           => _x( 'Order by post slug', 'backend', 'twrp' ),
-			'type'           => _x( 'Order by post type', 'backend', 'twrp' ),
-			'date'           => _x( 'Order by date', 'backend', 'twrp' ),
-			'modified'       => _x( 'Order by last modified date', 'backend', 'twrp' ),
-			'parent'         => _x( 'Order by post/page parent id', 'backend', 'twrp' ),
-			'rand'           => _x( 'Random order', 'backend', 'twrp' ),
-			'comment_count'  => _x( 'Order by number of comments', 'backend', 'twrp' ),
-			'relevance'      => _x( 'Order by searched terms', 'backend', 'twrp' ),
-			'meta_value'     => _x( 'Order by meta value(alphabetically)', 'backend', 'twrp' ), // phpcs:ignore WordPress.DB -- No slow query.
-			'meta_value_num' => _x( 'Order by meta value(numerically)', 'backend', 'twrp' ),
-			'post__in'       => _x( 'Order by included posts(sort them below)', 'backend', 'twrp' ),
+			'not_applied'    => _x( 'Not applied', 'backend', 'tabs-with-posts' ),
+			'ID'             => _x( 'Order by post id', 'backend', 'tabs-with-posts' ),
+			'author'         => _x( 'Order by author', 'backend', 'tabs-with-posts' ),
+			'title'          => _x( 'Order by title', 'backend', 'tabs-with-posts' ),
+			'name'           => _x( 'Order by post slug', 'backend', 'tabs-with-posts' ),
+			'type'           => _x( 'Order by post type', 'backend', 'tabs-with-posts' ),
+			'date'           => _x( 'Order by date', 'backend', 'tabs-with-posts' ),
+			'modified'       => _x( 'Order by last modified date', 'backend', 'tabs-with-posts' ),
+			'parent'         => _x( 'Order by post/page parent id', 'backend', 'tabs-with-posts' ),
+			'rand'           => _x( 'Random order', 'backend', 'tabs-with-posts' ),
+			'comment_count'  => _x( 'Order by number of comments', 'backend', 'tabs-with-posts' ),
+			'relevance'      => _x( 'Order by searched terms', 'backend', 'tabs-with-posts' ),
+			'meta_value'     => _x( 'Order by meta value(alphabetically)', 'backend', 'tabs-with-posts' ), // phpcs:ignore WordPress.DB -- No slow query.
+			'meta_value_num' => _x( 'Order by meta value(numerically)', 'backend', 'tabs-with-posts' ),
+			'post__in'       => _x( 'Order by included posts(sort them below)', 'backend', 'tabs-with-posts' ),
 		);
 
 		/**

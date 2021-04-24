@@ -27,7 +27,7 @@ class Flex_Order_Setting extends Component_Setting {
 	protected function get_control_setting_args() {
 		return array(
 			'default' => '',
-			'before'  => _x( 'Order:', 'backend;', 'twrp' ),
+			'before'  => _x( 'Order:', 'backend, noun', 'tabs-with-posts' ),
 			'max'     => '10',
 			'min'     => '-10',
 			'step'    => '1',

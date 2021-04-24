@@ -94,7 +94,7 @@ class Widget_Form {
 			<?=
 				wp_kses(
 					/* translators: The <b>, </b>, and <br /> tag is a HTML tag and is good to remain there(only these tags are allowed). */
-					_x( 'No queries created. You need to select from right menu: <br /><b> "Settings" -> "Tabs With Recommended Posts" (Submenu).</b><br /> Then navigate to: <br /><b> "Post Queries" (Tab) -> "Add Query".</b>', 'backend', 'twrp' ),
+					_x( 'No queries created. You need to select from right menu: <br /><b> "Settings" -> "Tabs With Recommended Posts" (Submenu).</b><br /> Then navigate to: <br /><b> "Post Queries" (Tab) -> "Add Query".</b>', 'backend', 'tabs-with-posts' ),
 					$allowed_tags
 				);
 			?>
@@ -197,7 +197,7 @@ class Widget_Form {
 		?>
 		<p class="<?php $this->bem_class( 'select-query-wrapper' ); ?>">
 			<span class="<?php $this->bem_class( 'select-query-to-add-text' ); ?>">
-				<?= _x( 'Add tab:', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'Add tab:', 'backend', 'tabs-with-posts' ); ?>
 			</span>
 
 			<select class="<?php $this->bem_class( 'select-query-to-add' ); ?>">
@@ -209,7 +209,7 @@ class Widget_Form {
 			</select>
 
 			<button class="<?php $this->bem_class( 'select-query-to-add-btn' ); ?> twrpb-button" type="button">
-				<?= _x( 'Add', 'backend', 'twrp' ); ?>
+				<?= esc_html_x( 'Add', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</p>
 		<?php
@@ -258,8 +258,8 @@ class Widget_Form {
 	 * @return void
 	 */
 	public function display_query_settings( $query_id ) {
-		$delete_button_text       = _x( 'Delete', 'backend', 'twrp' );
-		$delete_button_aria_label = _x( 'Delete this tab', 'backend', 'twrp' );
+		$delete_button_text       = _x( 'Delete', 'backend', 'tabs-with-posts' );
+		$delete_button_aria_label = _x( 'Delete this tab', 'backend', 'tabs-with-posts' );
 		?>
 		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrpb-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="<?php $this->bem_class( 'selected-query-title' ); ?>">
@@ -270,13 +270,13 @@ class Widget_Form {
 
 			<div class="<?php $this->bem_class( 'selected-query-settings' ); ?>">
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
-					<?= _x( 'Tab Settings:', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Tab Settings:', 'backend', 'tabs-with-posts' ); ?>
 				</h5>
 				<?php $this->display_tab_button_text_setting( $query_id ); ?>
 				<?php $this->display_tab_query_select_artblock( $query_id ); ?>
 
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
-					<?= _x( 'Post settings:', 'backend', 'twrp' ); ?>
+					<?= esc_html_x( 'Post settings:', 'backend', 'tabs-with-posts' ); ?>
 				</h5>
 				<div class="<?php $this->bem_class( 'article-block-settings-container' ); ?>">
 					<?php $this->display_artblock_settings( $query_id ); ?>
@@ -307,12 +307,12 @@ class Widget_Form {
 
 		?>
 		<p class="<?php $this->bem_class( 'tab-button-text-wrapper' ); ?>">
-			<?= esc_html( _x( 'Tab button text:', 'backend', 'twrp' ) ); ?>
+			<?= esc_html( _x( 'Tab button text:', 'backend', 'tabs-with-posts' ) ); ?>
 			<input
 				type="text"
 				class="<?php $this->bem_class( 'tab-button-text' ); ?>"
 				name="<?= esc_attr( $name ); ?>"
-				placeholder="<?= esc_attr( _x( 'Display tab title', 'backend', 'twrp' ) ); ?>"
+				placeholder="<?= esc_attr( _x( 'Display tab title', 'backend', 'tabs-with-posts' ) ); ?>"
 				value="<?= esc_attr( $value ); ?>"
 			/>
 		</p>
@@ -337,7 +337,7 @@ class Widget_Form {
 		$select_name = Widget_Utils::get_field_name( $this->widget_id, $query_id, TWRP_Widget::ARTBLOCK_SELECTOR__NAME );
 		?>
 		<p class="<?php $this->bem_class( 'article-block-selector-wrapper' ); ?>">
-			<?= _x( 'Select a style to display:', 'backend', 'twrp' ); ?>
+			<?= esc_html_x( 'Select a style to display:', 'backend', 'tabs-with-posts' ); ?>
 			<select class="<?php $this->bem_class( 'article-block-selector' ); ?>" name="<?= esc_attr( $select_name ); ?>">
 				<?php foreach ( $registered_artblocks as $artblock ) : ?>
 					<option
@@ -411,7 +411,7 @@ class Widget_Form {
 			'min'     => '1',
 			'max'     => '60',
 			'step'    => '1',
-			'before'  => _x( 'Number of posts:', 'backend', 'twrp' ),
+			'before'  => _x( 'Number of posts:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -426,7 +426,7 @@ class Widget_Form {
 			'min'     => '1',
 			'max'     => '60',
 			'step'    => '1',
-			'before'  => _x( 'Number of posts per page:', 'backend', 'twrp' ),
+			'before'  => _x( 'Number of posts per page:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -437,7 +437,7 @@ class Widget_Form {
 	 */
 	public static function get_query_sync_control_args() {
 		return array(
-			'after'   => _x( 'Make all the tabs look the same.', 'backend', 'twrp' ),
+			'after'   => _x( 'Make all the tabs look the same.', 'backend', 'tabs-with-posts' ),
 			'value'   => '1',
 			'default' => '1',
 		);
@@ -450,7 +450,7 @@ class Widget_Form {
 	 */
 	public static function get_horizontal_padding_control_args() {
 		return array(
-			'after'   => _x( 'Add horizontal padding to the widget.', 'backend', 'twrp' ),
+			'after'   => _x( 'Add horizontal padding to the widget.', 'backend', 'tabs-with-posts' ),
 			'value'   => '1',
 			'default' => '',
 		);
@@ -473,7 +473,7 @@ class Widget_Form {
 
 		return array(
 			'options' => self::get_all_tab_styles_options(),
-			'before'  => _x( 'Select the style of the tab buttons:', 'backend', 'twrp' ),
+			'before'  => _x( 'Select the style of the tab buttons:', 'backend', 'tabs-with-posts' ),
 			'default' => $first_key,
 		);
 	}

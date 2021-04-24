@@ -19,7 +19,7 @@ class Search_Display extends Query_Setting_Display {
 	}
 
 	public function get_title() {
-		return _x( 'Filter by search keywords', 'backend', 'twrp' );
+		return _x( 'Filter by search keywords', 'backend', 'tabs-with-posts' );
 	}
 
 	public function display_setting( $current_setting ) {
@@ -47,7 +47,7 @@ class Search_Display extends Query_Setting_Display {
 					type="text"
 					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Search::SEARCH_KEYWORDS__SETTING_NAME . ']' ); ?>"
 					value="<?= esc_attr( $search_keywords ) ?>"
-					placeholder="<?= esc_attr_x( 'Search keywords...', 'backend', 'twrp' ) ?>"
+					placeholder="<?= esc_attr_x( 'Search keywords...', 'backend', 'tabs-with-posts' ) ?>"
 				/>
 			</div>
 			<?php

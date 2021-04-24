@@ -258,22 +258,22 @@ class Enqueue_Scripts {
 	private static function get_pickr_translations() {
 		return array(
 			// Strings visible in the UI.
-			'ui:dialog'       => _x( 'color picker dialog', 'backend', 'twrp' ),
-			'btn:toggle'      => _x( 'toggle color picker dialog', 'backend', 'twrp' ),
-			'btn:swatch'      => _x( 'color swatch', 'backend', 'twrp' ),
-			'btn:last-color'  => _x( 'use previous color', 'backend', 'twrp' ),
-			'btn:save'        => _x( 'Save', 'backend', 'twrp' ),
-			'btn:cancel'      => _x( 'Cancel', 'backend', 'twrp' ),
-			'btn:clear'       => _x( 'Clear', 'backend', 'twrp' ),
+			'ui:dialog'       => _x( 'color picker dialog', 'backend', 'tabs-with-posts' ),
+			'btn:toggle'      => _x( 'toggle color picker dialog', 'backend', 'tabs-with-posts' ),
+			'btn:swatch'      => _x( 'color swatch', 'backend', 'tabs-with-posts' ),
+			'btn:last-color'  => _x( 'use previous color', 'backend', 'tabs-with-posts' ),
+			'btn:save'        => _x( 'Save', 'backend', 'tabs-with-posts' ),
+			'btn:cancel'      => _x( 'Cancel', 'backend', 'tabs-with-posts' ),
+			'btn:clear'       => _x( 'Clear', 'backend', 'tabs-with-posts' ),
 
 			// Strings used for aria-labels.
-			'aria:btn:save'   => _x( 'save and close', 'backend, screen reader text', 'twrp' ),
-			'aria:btn:cancel' => _x( 'cancel and close', 'backend, screen reader text', 'twrp' ),
-			'aria:btn:clear'  => _x( 'clear and close', 'backend, screen reader text', 'twrp' ),
-			'aria:input'      => _x( 'color input field', 'backend, screen reader text', 'twrp' ),
-			'aria:palette'    => _x( 'color selection area', 'backend, screen reader text', 'twrp' ),
-			'aria:hue'        => _x( 'hue selection slider', 'backend, screen reader text', 'twrp' ),
-			'aria:opacity'    => _x( 'selection slider', 'backend, screen reader text', 'twrp' ),
+			'aria:btn:save'   => _x( 'save and close', 'backend, screen reader text', 'tabs-with-posts' ),
+			'aria:btn:cancel' => _x( 'cancel and close', 'backend, screen reader text', 'tabs-with-posts' ),
+			'aria:btn:clear'  => _x( 'clear and close', 'backend, screen reader text', 'tabs-with-posts' ),
+			'aria:input'      => _x( 'color input field', 'backend, screen reader text', 'tabs-with-posts' ),
+			'aria:palette'    => _x( 'color selection area', 'backend, screen reader text', 'tabs-with-posts' ),
+			'aria:hue'        => _x( 'hue selection slider', 'backend, screen reader text', 'tabs-with-posts' ),
+			'aria:opacity'    => _x( 'selection slider', 'backend, screen reader text', 'tabs-with-posts' ),
 		);
 	}
 

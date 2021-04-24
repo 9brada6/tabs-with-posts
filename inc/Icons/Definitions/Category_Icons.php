@@ -15,37 +15,37 @@ class Category_Icons implements Icon_Definitions {
 	 * @return array<string,array>
 	 */
 	public static function get_definitions() {
-		$filled_type   = _x( 'Filled', 'backend, icon type(aspect)', 'twrp' );
-		$outlined_type = _x( 'Outlined', 'backend, icon type(aspect)', 'twrp' );
-		$duotone_type  = _x( 'DuoTone', 'backend, icon type(aspect)', 'twrp' );
-		$thin_type     = _x( 'Thin', 'backend, icon type(aspect)', 'twrp' );
-		$sharp_type    = _x( 'Sharp', 'backend, icon type(aspect)', 'twrp' );
+		$filled_type   = _x( 'Filled', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$outlined_type = _x( 'Outlined', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$duotone_type  = _x( 'DuoTone', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$thin_type     = _x( 'Thin', 'backend, icon type(aspect)', 'tabs-with-posts' );
+		$sharp_type    = _x( 'Sharp', 'backend, icon type(aspect)', 'tabs-with-posts' );
 
-		$bookmark_description    = _x( 'Bookmark', 'backend, icon name(description)', 'twrp' );
-		$bookmark_2_description  = _x( 'Bookmark 2', 'backend, icon name(description)', 'twrp' );
-		$bookmark_3_description  = _x( 'Bookmark 3', 'backend, icon name(description)', 'twrp' );
-		$bookmarks_description   = _x( 'Bookmarks', 'backend, icon name(description)', 'twrp' );
-		$bookmarks_2_description = _x( 'Bookmarks 2', 'backend, icon name(description)', 'twrp' );
+		$bookmark_description    = _x( 'Bookmark', 'backend, icon name(description)', 'tabs-with-posts' );
+		$bookmark_2_description  = _x( 'Bookmark 2', 'backend, icon name(description)', 'tabs-with-posts' );
+		$bookmark_3_description  = _x( 'Bookmark 3', 'backend, icon name(description)', 'tabs-with-posts' );
+		$bookmarks_description   = _x( 'Bookmarks', 'backend, icon name(description)', 'tabs-with-posts' );
+		$bookmarks_2_description = _x( 'Bookmarks 2', 'backend, icon name(description)', 'tabs-with-posts' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_bookmarks_description = _x( 'Ios Bookmarks', 'backend, icon name(description)', 'twrp' );
-		$folder_description        = _x( 'Folder', 'backend, icon name(description)', 'twrp' );
-		$folder_open_description   = _x( 'Folder Open', 'backend, icon name(description)', 'twrp' );
-		$folders_description       = _x( 'Folders', 'backend, icon name(description)', 'twrp' );
+		$ios_bookmarks_description = _x( 'Ios Bookmarks', 'backend, icon name(description)', 'tabs-with-posts' );
+		$folder_description        = _x( 'Folder', 'backend, icon name(description)', 'tabs-with-posts' );
+		$folder_open_description   = _x( 'Folder Open', 'backend, icon name(description)', 'tabs-with-posts' );
+		$folders_description       = _x( 'Folders', 'backend, icon name(description)', 'tabs-with-posts' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_folder_description = _x( 'Ios Folder', 'backend, icon name(description)', 'twrp' );
-		$hashtag_description    = _x( 'Hashtag', 'backend, icon name(description)', 'twrp' );
-		$label_description      = _x( 'Label', 'backend, icon name(description)', 'twrp' );
-		$label_2_description    = _x( 'Label 2', 'backend, icon name(description)', 'twrp' );
-		$tag_heart_description  = _x( 'Tag Heart', 'backend, icon name(description)', 'twrp' );
+		$ios_folder_description = _x( 'Ios Folder', 'backend, icon name(description)', 'tabs-with-posts' );
+		$hashtag_description    = _x( 'Hashtag', 'backend, icon name(description)', 'tabs-with-posts' );
+		$label_description      = _x( 'Label', 'backend, icon name(description)', 'tabs-with-posts' );
+		$label_2_description    = _x( 'Label 2', 'backend, icon name(description)', 'tabs-with-posts' );
+		$tag_heart_description  = _x( 'Tag Heart', 'backend, icon name(description)', 'tabs-with-posts' );
 
-		$tag_description    = _x( 'Tag', 'backend, icon name(description)', 'twrp' );
-		$tag_2_description  = _x( 'Tag 2', 'backend, icon name(description)', 'twrp' );
-		$tags_description   = _x( 'Tags', 'backend, icon name(description)', 'twrp' );
-		$tags_2_description = _x( 'Tags 2', 'backend, icon name(description)', 'twrp' );
+		$tag_description    = _x( 'Tag', 'backend, icon name(description)', 'tabs-with-posts' );
+		$tag_2_description  = _x( 'Tag 2', 'backend, icon name(description)', 'tabs-with-posts' );
+		$tags_description   = _x( 'Tags', 'backend, icon name(description)', 'tabs-with-posts' );
+		$tags_2_description = _x( 'Tags 2', 'backend, icon name(description)', 'tabs-with-posts' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_tag_description = _x( 'Ios Tag', 'backend, icon name(description)', 'twrp' );
+		$ios_tag_description = _x( 'Ios Tag', 'backend, icon name(description)', 'tabs-with-posts' );
 		/* translators: Ios is an Apple Phone operating system. */
-		$ios_tags_description = _x( 'Ios Tags', 'backend, icon name(description)', 'twrp' );
+		$ios_tags_description = _x( 'Ios Tags', 'backend, icon name(description)', 'tabs-with-posts' );
 
 		$registered_category_vectors = array(
 
