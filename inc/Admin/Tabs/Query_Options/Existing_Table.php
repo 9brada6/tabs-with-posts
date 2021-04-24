@@ -6,6 +6,7 @@ use TWRP\Admin\Tabs\Queries_Tab;
 use TWRP\Database\Query_Options;
 use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Display a table with the existing queries under "Queries Tab".
@@ -73,9 +74,9 @@ class Query_Existing_Table {
 				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
 			</td>
 			<td class="<?php $this->bem_class( 'edit-col' ); ?>">
-				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= $edit_text // phpcs:ignore -- No XSS. ?></a>
+				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= wp_kses( $edit_text, Simple_Utils::get_plugin_allowed_kses_html() ); ?></a>
 				<span class="<?php $this->bem_class( 'edit-delete-separator' ); ?>">|</span>
-				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= $delete_text // phpcs:ignore -- No XSS. ?></a>
+				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= wp_kses( $delete_text, Simple_Utils::get_plugin_allowed_kses_html() ); ?></a>
 			</td>
 		</tr>
 		<?php

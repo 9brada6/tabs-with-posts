@@ -99,7 +99,7 @@ class Plugin_Support_Docs {
 		?>
 		<div class="<?php $this->bem_class( 'docs-plugin' ); ?>">
 			<div class="<?php $this->bem_class( 'plugin-avatar-wrapper' ); ?>">
-				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr( _x( 'Plugin avatar', 'backend, documentation, screen reader', 'tabs-with-posts' ) ); ?>"/>
+				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr_x( 'Plugin avatar', 'backend, documentation, screen reader', 'tabs-with-posts' ); ?>"/>
 			</div>
 
 			<div class="<?php $this->bem_class( 'meta-wrapper' ); ?>">

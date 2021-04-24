@@ -24,7 +24,7 @@ class Icons_Documentation {
 	 */
 	public function display_icon_documentation() {
 		?>
-		<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html( _x( 'Icons', 'backend documentation', 'tabs-with-posts' ) ); ?></h2>
+		<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html_x( 'Icons', 'backend documentation', 'tabs-with-posts' ); ?></h2>
 
 		<p>
 		<?= esc_html_x(

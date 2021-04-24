@@ -4,6 +4,7 @@ namespace TWRP\Admin\Tabs\Documentation;
 
 use TWRP\Admin\Tabs\Documentation_Tab;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Class that is used to display licenses of the external works, and the license
@@ -182,7 +183,7 @@ class License_Display {
 				</h3>
 
 				<div class="<?php $this->bem_class( 'license-description' ); ?>">
-					<?= $license['description']; // phpcs:ignore -- It's a feature to include HTML. ?>
+					<?= wp_kses( $license['description'], Simple_Utils::get_plugin_allowed_kses_html() ); ?>
 				</div>
 
 				<div class="<?php $this->bem_class( 'license-link-wrapper' ); ?>">

@@ -366,11 +366,11 @@ class Queries_Tab extends Admin_Menu_Tab {
 
 		?>
 		<div id="<?php $this->bem_class( 'query_generated_array_container' ); ?>" class="<?php $this->bem_class( 'query_generated_array_container' ); ?>" data-twrpb-query-generated-array="<?= esc_attr( $result_json ); ?>">
-			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?= esc_html( _x( 'See WP_Query arguments generated', 'backend', 'tabs-with-posts' ) ); ?></button>
+			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?= esc_html_x( 'See WP_Query arguments generated', 'backend', 'tabs-with-posts' ); ?></button>
 
 			<div class="<?php $this->bem_class( 'query_args_collapsible' ); ?>">
 				<div class="<?php $this->bem_class( 'query_generated_note' ); ?>">
-					<?= esc_html( _x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'tabs-with-posts' ) ); ?>
+					<?= esc_html_x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'tabs-with-posts' ); ?>
 				</div>
 
 				<div class="<?php $this->bem_class( 'query_generated_array' ); ?>"><?= esc_html( $result_to_display ); ?></div>

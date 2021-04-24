@@ -1211,10 +1211,10 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		if ( 'rating_and_count' === $meta ) {
-			echo 'rating'; // phpcs:ignore -- NO XSS.
+			echo 'rating'; // phpcs:ignore -- No XSS.
 		}
 
-		echo $meta; // phpcs:ignore -- NO XSS.
+		echo $meta; // phpcs:ignore -- No XSS.
 	}
 
 	/**

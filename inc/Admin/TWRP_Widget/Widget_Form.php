@@ -15,6 +15,7 @@ use TWRP\Admin\Widget_Control\Number_Control;
 use TWRP\Admin\Widget_Control\Select_Control;
 
 use RuntimeException;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Class that manages the form to modify the settings for the widget, displayed
@@ -84,18 +85,13 @@ class Widget_Form {
 	 * @return void
 	 */
 	protected function display_no_queries_exist() {
-		$allowed_tags = array(
-			'br' => array(),
-			'b'  => array(),
-		);
-
 		?>
 		<p class="<?php $this->bem_class( 'select-queries-exist' ); ?>">
 			<?=
 				wp_kses(
 					/* translators: The <b>, </b>, and <br /> tag is a HTML tag and is good to remain there(only these tags are allowed). */
 					_x( 'No queries created. You need to select from right menu: <br /><b> "Settings" -> "Tabs With Recommended Posts" (Submenu).</b><br /> Then navigate to: <br /><b> "Post Queries" (Tab) -> "Add Query".</b>', 'backend', 'tabs-with-posts' ),
-					$allowed_tags
+					Simple_Utils::get_plugin_allowed_kses_html()
 				);
 			?>
 		</p>
@@ -307,12 +303,12 @@ class Widget_Form {
 
 		?>
 		<p class="<?php $this->bem_class( 'tab-button-text-wrapper' ); ?>">
-			<?= esc_html( _x( 'Tab button text:', 'backend', 'tabs-with-posts' ) ); ?>
+			<?= esc_html_x( 'Tab button text:', 'backend', 'tabs-with-posts' ); ?>
 			<input
 				type="text"
 				class="<?php $this->bem_class( 'tab-button-text' ); ?>"
 				name="<?= esc_attr( $name ); ?>"
-				placeholder="<?= esc_attr( _x( 'Display tab title', 'backend', 'tabs-with-posts' ) ); ?>"
+				placeholder="<?= esc_attr_x( 'Display tab title', 'backend', 'tabs-with-posts' ); ?>"
 				value="<?= esc_attr( $value ); ?>"
 			/>
 		</p>

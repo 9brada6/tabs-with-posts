@@ -5,6 +5,7 @@ namespace TWRP\Admin\Helpers;
 use TWRP\Admin\Settings_Menu;
 use TWRP\Admin\Tabs\Documentation_Tab;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Class that will generate notices that remembers the users about a
@@ -209,16 +210,6 @@ class Remember_Note {
 		if ( ! empty( $note_additional_class ) ) {
 			$note_additional_class = ' ' . $note_additional_class;
 		}
-		$allowed_html = array(
-			'a'      => array(
-				'href'   => array(),
-				'target' => array(),
-				'title'  => array(),
-			),
-			'br'     => array(),
-			'em'     => array(),
-			'strong' => array(),
-		);
 		?>
 		<p id="<?php $this->bem_class( $this->name ); ?>" class="<?php $this->bem_class(); ?><?php $this->additional_note_modifier_class(); ?><?= esc_attr( $note_additional_class ); ?>">
 			<span class="<?php $this->bem_class( 'label' ); ?>">
@@ -226,7 +217,7 @@ class Remember_Note {
 			</span>
 
 			<span class="<?php $this->bem_class( 'text' ); ?>">
-				<?= wp_kses( $this->text, $allowed_html ); ?>
+				<?= wp_kses( $this->text, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
 			</span>
 		</p>
 		<?php

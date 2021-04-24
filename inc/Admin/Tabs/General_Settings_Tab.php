@@ -119,7 +119,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 						data-twrpb-refresh-cache-success="<?= esc_attr_x( 'Success', 'backend', 'tabs-with-posts' ); ?>"
 						data-twrpb-refresh-cache-failed="<?= esc_attr_x( 'Failed', 'backend', 'tabs-with-posts' ); ?>"
 						type="button">
-						<?= esc_html( _x( 'Refresh widget cache', 'backend', 'tabs-with-posts' ) ); ?>
+						<?= esc_html_x( 'Refresh widget cache', 'backend', 'tabs-with-posts' ); ?>
 					</button>
 
 					<?php General_Settings_Factory::display_setting( General_Options::LOAD_WIDGET_VIA_AJAX ); ?>
@@ -162,7 +162,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 	 * @return bool
 	 */
 	protected static function are_settings_submitted() {
-		if ( isset( $_POST['submit'] ) && 'submit' === $_POST['submit'] ) { // phpcs:ignore -- Nonce verified.
+		if ( isset( $_POST['submit'] ) && 'submit' === wp_unslash( $_POST['submit'] ) ) { // phpcs:ignore -- Nonce verified.
 			return true;
 		}
 
@@ -208,7 +208,13 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 			return false;
 		}
 
-		if ( 1 === wp_verify_nonce( $_POST['twrp_general_nonce'], 'twrp_general_submit_nonce' ) ) { // phpcs:ignore -- No need for sanitization or unslash.
+		$nonce = wp_unslash( $_POST['twrp_general_nonce'] ); // phpcs:ignore -- variable is sanitized.
+
+		if ( ! is_string( $nonce ) ) {
+			return false;
+		}
+
+		if ( 1 === wp_verify_nonce( $nonce, 'twrp_general_submit_nonce' ) ) {
 			return true;
 		}
 

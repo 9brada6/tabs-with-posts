@@ -23,14 +23,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-Change all 'backend;' to 'backend' in translator context.
-
-1. Change twrp to tabs-with-posts in translations.
-2. Change esc_html(_x).
-3. find all $allowed_kses and use the function.
-4. find all phpcs:ignore -- CSS where we ignore _x, and use wp_kses.
-5. Change domain name or slug of the plugin to "tabs-with-posts", also see how to change the github folder-name/project-name.
-
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
 
@@ -57,12 +49,10 @@ disable admin privilege.
 
 - ### Todo Translations
 
+- Change domain name or slug of the plugin to "tabs-with-posts", also see how to change the github folder-name/project-name.
 - Add frontend translations to settings.
-- Split translations in half(or 3, with documentation), frontend and backend.
 - Learn about multi-language support and test all of the plugins.
-- Create a script that generates these POI files instantly?
 - Add in Manual tests, to test the translations with various plugins.
-- Delete phpcs rule, and escape all translations.
 
 - ### ✅ Todo Documentation
 
@@ -138,6 +128,7 @@ disable admin privilege.
 - ➕ Improve browser compatibility.
 - ➕ On widget refresh cache, after the success dispatch, say a message when the cache has been successfully created.
 - ➕ Test Redis object caching.
+- ➕ In the script that generates the .POT file, do not override previous translations?
 
 ## 📖 Development Documentation
 
