@@ -49,7 +49,6 @@ disable admin privilege.
 
 - ### Todo Translations
 
-- Change domain name or slug of the plugin to "tabs-with-posts", also see how to change the github folder-name/project-name.
 - Add frontend translations to settings.
 - Learn about multi-language support and test all of the plugins.
 - Add in Manual tests, to test the translations with various plugins.

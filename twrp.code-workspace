@@ -81,7 +81,7 @@
 		},
 
 		"npm.exclude": [
-			"**/wp-content/plugins/!(tabs-with-recommended-posts)/**",
+			"**/wp-content/plugins/!(tabs-with-posts)/**",
 			"**/wp-content/themes/**",
 		],
 
@@ -123,7 +123,7 @@
 		// PHP Phan - Static analyzer:
 
 		// Important! Change this when the project is moved around.
-		"phan.analyzedProjectDirectory": "W:\\Projects\\twrp-plugin\\wp-content\\plugins\\tabs-with-recommended-posts",
+		"phan.analyzedProjectDirectory": "W:\\Projects\\twrp-plugin\\wp-content\\plugins\\tabs-with-posts",
 
 		// "phan.connectToServerWithStdio": true,
 		"phan.enableGoToDefinition": false,
@@ -233,7 +233,7 @@
 		// ===========================
 		"todo-tree.regex.regexCaseSensitive": false,
 		"todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
-		"todo-tree.general.rootFolder": "/wordpress/wp-content/plugins/tabs-with-recommended-posts/",
+		"todo-tree.general.rootFolder": "/wordpress/wp-content/plugins/tabs-with-posts/",
 		"todo-tree.filtering.excludeGlobs": ["**/backend/**", "**/frontened/**"],
 		// Make todo work in docblocks and with @ in front.
 		"todo-tree.regex.regex": "(//|#|<!--|/\\*|^\\s*\\*)\\s*@*($TAGS)",
@@ -245,7 +245,7 @@
 
 		// "phpunit.driverPriority": ["DockerContainer"],
 		// "phpunit.docker.container": "twrp_wp",
-		"phpunit.command": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp",
+		"phpunit.command": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-posts twrp_wp",
 		"phpunit.paths":{
 			"${workspaceFolder}": "."
 		},
