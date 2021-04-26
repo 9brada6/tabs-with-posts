@@ -128,34 +128,51 @@ class General_Settings_Factory {
 	 */
 	protected static function get_setting_classes_correlated() {
 		$correlated_classes = array(
-			General_Options::TEXT_COLOR                 => self::COLOR_SETTING_CLASS,
-			General_Options::DISABLED_TEXT_COLOR        => self::COLOR_SETTING_CLASS,
-			General_Options::BACKGROUND_COLOR           => self::COLOR_SETTING_CLASS,
-			General_Options::SECONDARY_BACKGROUND_COLOR => self::COLOR_SETTING_CLASS,
-			General_Options::ACCENT_COLOR               => self::COLOR_SETTING_CLASS,
-			General_Options::DARKER_ACCENT_COLOR        => self::COLOR_SETTING_CLASS,
-			General_Options::LIGHTER_ACCENT_COLOR       => self::COLOR_SETTING_CLASS,
-			General_Options::BORDER_COLOR               => self::COLOR_SETTING_CLASS,
-			General_Options::SECONDARY_BORDER_COLOR     => self::COLOR_SETTING_CLASS,
-			General_Options::BORDER_RADIUS              => self::NUMBER_SETTING_CLASS,
-			General_Options::TAB_BUTTON_SIZE            => self::NUMBER_SETTING_CLASS,
-			General_Options::HUMAN_READABLE_DATE        => self::RADIO_SETTING_CLASS,
-			General_Options::NO_THUMBNAIL_IMAGE         => self::IMAGE_SETTING_CLASS,
-			General_Options::DATE_FORMAT                => self::TEXT_SETTING_CLASS,
-			General_Options::AUTHOR_ICON                => self::SELECT_SETTING_CLASS,
-			General_Options::DATE_ICON                  => self::SELECT_SETTING_CLASS,
-			General_Options::CATEGORY_ICON              => self::SELECT_SETTING_CLASS,
-			General_Options::COMMENTS_ICON              => self::SELECT_SETTING_CLASS,
-			General_Options::COMMENTS_DISABLED_ICON     => self::SELECT_SETTING_WITH_SWITCH_CLASS,
-			General_Options::VIEWS_ICON                 => self::SELECT_SETTING_CLASS,
-			General_Options::RATING_ICON_PACK           => self::SELECT_SETTING_CLASS,
-			General_Options::SVG_INCLUDE_INLINE         => self::RADIO_SETTING_CLASS,
-			General_Options::YASR_RATING_TYPE           => self::SELECT_SETTING_CLASS,
-			General_Options::ENABLE_CACHE               => self::RADIO_SETTING_CLASS,
-			General_Options::CACHE_AUTOMATIC_REFRESH    => self::SELECT_SETTING_CLASS,
-			General_Options::LOAD_WIDGET_VIA_AJAX       => self::RADIO_SETTING_CLASS,
-			General_Options::FILL_GRID_WITH_POSTS       => self::RADIO_SETTING_CLASS,
-			General_Options::FAIL_TO_LOAD_WIDGET_TEXT   => self::TEXT_SETTING_CLASS,
+			General_Options::TEXT_COLOR                  => self::COLOR_SETTING_CLASS,
+			General_Options::DISABLED_TEXT_COLOR         => self::COLOR_SETTING_CLASS,
+			General_Options::BACKGROUND_COLOR            => self::COLOR_SETTING_CLASS,
+			General_Options::SECONDARY_BACKGROUND_COLOR  => self::COLOR_SETTING_CLASS,
+			General_Options::ACCENT_COLOR                => self::COLOR_SETTING_CLASS,
+			General_Options::DARKER_ACCENT_COLOR         => self::COLOR_SETTING_CLASS,
+			General_Options::LIGHTER_ACCENT_COLOR        => self::COLOR_SETTING_CLASS,
+			General_Options::BORDER_COLOR                => self::COLOR_SETTING_CLASS,
+			General_Options::SECONDARY_BORDER_COLOR      => self::COLOR_SETTING_CLASS,
+			General_Options::BORDER_RADIUS               => self::NUMBER_SETTING_CLASS,
+			General_Options::TAB_BUTTON_SIZE             => self::NUMBER_SETTING_CLASS,
+			General_Options::HUMAN_READABLE_DATE         => self::RADIO_SETTING_CLASS,
+			General_Options::NO_THUMBNAIL_IMAGE          => self::IMAGE_SETTING_CLASS,
+			General_Options::DATE_FORMAT                 => self::TEXT_SETTING_CLASS,
+			General_Options::AUTHOR_ICON                 => self::SELECT_SETTING_CLASS,
+			General_Options::DATE_ICON                   => self::SELECT_SETTING_CLASS,
+			General_Options::CATEGORY_ICON               => self::SELECT_SETTING_CLASS,
+			General_Options::COMMENTS_ICON               => self::SELECT_SETTING_CLASS,
+			General_Options::COMMENTS_DISABLED_ICON      => self::SELECT_SETTING_WITH_SWITCH_CLASS,
+			General_Options::VIEWS_ICON                  => self::SELECT_SETTING_CLASS,
+			General_Options::RATING_ICON_PACK            => self::SELECT_SETTING_CLASS,
+			General_Options::SVG_INCLUDE_INLINE          => self::RADIO_SETTING_CLASS,
+			General_Options::YASR_RATING_TYPE            => self::SELECT_SETTING_CLASS,
+			General_Options::ENABLE_CACHE                => self::RADIO_SETTING_CLASS,
+			General_Options::CACHE_AUTOMATIC_REFRESH     => self::SELECT_SETTING_CLASS,
+			General_Options::LOAD_WIDGET_VIA_AJAX        => self::RADIO_SETTING_CLASS,
+			General_Options::FILL_GRID_WITH_POSTS        => self::RADIO_SETTING_CLASS,
+
+			General_Options::SHOW_MORE_POSTS_TEXT        => self::TEXT_SETTING_CLASS,
+			General_Options::POST_NO_TITLE_TEXT          => self::TEXT_SETTING_CLASS,
+			General_Options::POST_WITH_NO_THUMBNAIL_TEXT => self::TEXT_SETTING_CLASS,
+			General_Options::DATE_RELATIVE_TEXT          => self::TEXT_SETTING_CLASS,
+			General_Options::FAIL_TO_LOAD_WIDGET_TEXT    => self::TEXT_SETTING_CLASS,
+
+			General_Options::ARIA_AUTHOR_TEXT            => self::TEXT_SETTING_CLASS,
+			General_Options::ARIA_DATE_TEXT              => self::TEXT_SETTING_CLASS,
+			General_Options::ARIA_VIEWS_TEXT             => self::TEXT_SETTING_CLASS,
+			General_Options::ARIA_RATING_TEXT            => self::TEXT_SETTING_CLASS,
+			General_Options::ARIA_CATEGORY_TEXT          => self::TEXT_SETTING_CLASS,
+			General_Options::ARIA_COMMENTS_TEXT          => self::TEXT_SETTING_CLASS,
+			General_Options::ARIA_COMMENTS_ARE_DISABLED_TEXT => self::TEXT_SETTING_CLASS,
+
+			General_Options::ABBREVIATION_FOR_BILLIONS   => self::TEXT_SETTING_CLASS,
+			General_Options::ABBREVIATION_FOR_MILLIONS   => self::TEXT_SETTING_CLASS,
+			General_Options::ABBREVIATION_FOR_THOUSANDS  => self::TEXT_SETTING_CLASS,
 		);
 
 		return $correlated_classes;
@@ -170,34 +187,51 @@ class General_Settings_Factory {
 	 */
 	protected static function get_argument_functions_correlated() {
 		$correlated_functions = array(
-			General_Options::ACCENT_COLOR               => 'get_accent_color_setting_args',
-			General_Options::DARKER_ACCENT_COLOR        => 'get_darker_accent_color_setting_args',
-			General_Options::LIGHTER_ACCENT_COLOR       => 'get_lighter_accent_color_setting_args',
-			General_Options::TEXT_COLOR                 => 'get_text_color_setting_args',
-			General_Options::DISABLED_TEXT_COLOR        => 'get_disabled_text_color_setting_args',
-			General_Options::BACKGROUND_COLOR           => 'get_background_color_setting_args',
-			General_Options::SECONDARY_BACKGROUND_COLOR => 'get_secondary_background_color_setting_args',
-			General_Options::BORDER_COLOR               => 'get_border_color_setting_args',
-			General_Options::SECONDARY_BORDER_COLOR     => 'get_secondary_border_color_setting_args',
-			General_Options::BORDER_RADIUS              => 'get_border_radius_setting_args',
-			General_Options::TAB_BUTTON_SIZE            => 'tab_button_size_setting_args',
-			General_Options::HUMAN_READABLE_DATE        => 'get_human_readable_setting_args',
-			General_Options::NO_THUMBNAIL_IMAGE         => 'get_no_thumbnail_image_setting_args',
-			General_Options::DATE_FORMAT                => 'get_date_format_setting_args',
-			General_Options::AUTHOR_ICON                => 'get_author_icon_setting_args',
-			General_Options::DATE_ICON                  => 'get_date_icon_setting_args',
-			General_Options::CATEGORY_ICON              => 'get_category_icon_setting_args',
-			General_Options::COMMENTS_ICON              => 'get_comments_icon_setting_args',
-			General_Options::COMMENTS_DISABLED_ICON     => 'get_comments_disabled_icon_setting_args',
-			General_Options::VIEWS_ICON                 => 'get_views_icon_setting_args',
-			General_Options::RATING_ICON_PACK           => 'get_rating_pack_setting_args',
-			General_Options::SVG_INCLUDE_INLINE         => 'get_svg_include_inline_args',
-			General_Options::YASR_RATING_TYPE           => 'get_yasr_rating_type_args',
-			General_Options::ENABLE_CACHE               => 'get_enable_cache_args',
-			General_Options::CACHE_AUTOMATIC_REFRESH    => 'get_cache_minutes_automatic_refresh_args',
-			General_Options::LOAD_WIDGET_VIA_AJAX       => 'get_load_widgets_via_ajax_args',
-			General_Options::FILL_GRID_WITH_POSTS       => 'get_fill_grid_with_posts_args',
-			General_Options::FAIL_TO_LOAD_WIDGET_TEXT   => 'get_fail_to_load_widget_text_args',
+			General_Options::ACCENT_COLOR                => 'get_accent_color_setting_args',
+			General_Options::DARKER_ACCENT_COLOR         => 'get_darker_accent_color_setting_args',
+			General_Options::LIGHTER_ACCENT_COLOR        => 'get_lighter_accent_color_setting_args',
+			General_Options::TEXT_COLOR                  => 'get_text_color_setting_args',
+			General_Options::DISABLED_TEXT_COLOR         => 'get_disabled_text_color_setting_args',
+			General_Options::BACKGROUND_COLOR            => 'get_background_color_setting_args',
+			General_Options::SECONDARY_BACKGROUND_COLOR  => 'get_secondary_background_color_setting_args',
+			General_Options::BORDER_COLOR                => 'get_border_color_setting_args',
+			General_Options::SECONDARY_BORDER_COLOR      => 'get_secondary_border_color_setting_args',
+			General_Options::BORDER_RADIUS               => 'get_border_radius_setting_args',
+			General_Options::TAB_BUTTON_SIZE             => 'tab_button_size_setting_args',
+			General_Options::HUMAN_READABLE_DATE         => 'get_human_readable_setting_args',
+			General_Options::NO_THUMBNAIL_IMAGE          => 'get_no_thumbnail_image_setting_args',
+			General_Options::DATE_FORMAT                 => 'get_date_format_setting_args',
+			General_Options::AUTHOR_ICON                 => 'get_author_icon_setting_args',
+			General_Options::DATE_ICON                   => 'get_date_icon_setting_args',
+			General_Options::CATEGORY_ICON               => 'get_category_icon_setting_args',
+			General_Options::COMMENTS_ICON               => 'get_comments_icon_setting_args',
+			General_Options::COMMENTS_DISABLED_ICON      => 'get_comments_disabled_icon_setting_args',
+			General_Options::VIEWS_ICON                  => 'get_views_icon_setting_args',
+			General_Options::RATING_ICON_PACK            => 'get_rating_pack_setting_args',
+			General_Options::SVG_INCLUDE_INLINE          => 'get_svg_include_inline_args',
+			General_Options::YASR_RATING_TYPE            => 'get_yasr_rating_type_args',
+			General_Options::ENABLE_CACHE                => 'get_enable_cache_args',
+			General_Options::CACHE_AUTOMATIC_REFRESH     => 'get_cache_minutes_automatic_refresh_args',
+			General_Options::LOAD_WIDGET_VIA_AJAX        => 'get_load_widgets_via_ajax_args',
+			General_Options::FILL_GRID_WITH_POSTS        => 'get_fill_grid_with_posts_args',
+
+			General_Options::SHOW_MORE_POSTS_TEXT        => 'get_show_more_posts_text_args',
+			General_Options::POST_NO_TITLE_TEXT          => 'get_post_no_title_text_args',
+			General_Options::POST_WITH_NO_THUMBNAIL_TEXT => 'get_post_no_thumbnail_text_args',
+			General_Options::DATE_RELATIVE_TEXT          => 'get_date_relative_args',
+			General_Options::FAIL_TO_LOAD_WIDGET_TEXT    => 'get_fail_to_load_widget_text_args',
+
+			General_Options::ARIA_AUTHOR_TEXT            => 'get_aria_author_text_args',
+			General_Options::ARIA_DATE_TEXT              => 'get_aria_date_text_args',
+			General_Options::ARIA_VIEWS_TEXT             => 'get_aria_views_text_args',
+			General_Options::ARIA_RATING_TEXT            => 'get_aria_rating_text_args',
+			General_Options::ARIA_CATEGORY_TEXT          => 'get_aria_category_text_args',
+			General_Options::ARIA_COMMENTS_TEXT          => 'get_aria_comments_text_args',
+			General_Options::ARIA_COMMENTS_ARE_DISABLED_TEXT => 'get_aria_comments_disable_text_args',
+
+			General_Options::ABBREVIATION_FOR_BILLIONS   => 'get_abbreviation_for_billions_args',
+			General_Options::ABBREVIATION_FOR_MILLIONS   => 'get_abbreviation_for_millions_args',
+			General_Options::ABBREVIATION_FOR_THOUSANDS  => 'get_abbreviation_for_thousands_args',
 		);
 
 		return $correlated_functions;
@@ -635,6 +669,50 @@ class General_Settings_Factory {
 	}
 
 	/**
+	 * Get the arguments for the translation of the show more posts button text.
+	 *
+	 * @return array
+	 */
+	protected static function get_show_more_posts_text_args() {
+		return array(
+			'title' => _x( 'Enter the text to of the button to show more posts:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of a post with no title.
+	 *
+	 * @return array
+	 */
+	protected static function get_post_no_title_text_args() {
+		return array(
+			'title' => _x( 'Text to display as a title if post has no title:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of alt text when there is no thumbnail.
+	 *
+	 * @return array
+	 */
+	protected static function get_post_no_thumbnail_text_args() {
+		return array(
+			'title' => _x( 'Descriptive text of the default thumbnail that is loaded when a post has no thumbnail:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the relative date text.
+	 *
+	 * @return array
+	 */
+	protected static function get_date_relative_args() {
+		return array(
+			'title' => _x( 'Relative date text:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
 	 * Get the arguments for the translation of the widget fail to load via ajax.
 	 *
 	 * @return array
@@ -644,6 +722,118 @@ class General_Settings_Factory {
 			'title' => _x( 'Enter the text to display when the widget fails to load via Ajax:', 'backend', 'tabs-with-posts' ),
 		);
 	}
+
+	/**
+	 * Get the arguments for the translation of the author icon description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_author_args() {
+		return array(
+			'title' => _x( 'Text to describe the author icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the date icon description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_date_text_args() {
+		return array(
+			'title' => _x( 'Text to describe the date icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the views icon description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_views_text_args() {
+		return array(
+			'title' => _x( 'Text to describe the views icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the rating icon description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_rating_text_args() {
+		return array(
+			'title' => _x( 'Text to describe the rating icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the category icon description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_category_text_args() {
+		return array(
+			'title' => _x( 'Text to describe the category icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the comments icon description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_comments_text_args() {
+		return array(
+			'title' => _x( 'Text to describe the comments icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the comments are disabled icon
+	 * description.
+	 *
+	 * @return array
+	 */
+	protected static function get_aria_comments_disable_text_args() {
+		return array(
+			'title' => _x( 'Text to describe the comments are disabled icon:', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the abbreviation for thousands.
+	 *
+	 * @return array
+	 */
+	protected static function get_abbreviation_for_thousands_args() {
+		return array(
+			'title' => _x( 'Abbreviation of a number for thousands.', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the abbreviation for millions.
+	 *
+	 * @return array
+	 */
+	protected static function get_abbreviation_for_millions_args() {
+		return array(
+			'title' => _x( 'Abbreviation of a number for millions.', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the abbreviation for billions.
+	 *
+	 * @return array
+	 */
+	protected static function get_abbreviation_for_billions_args() {
+		return array(
+			'title' => _x( 'Abbreviation of a number for billions.', 'backend', 'tabs-with-posts' ),
+		);
+	}
+
 
 	#endregion -- Methods to get setting arguments for each of the setting available.
 

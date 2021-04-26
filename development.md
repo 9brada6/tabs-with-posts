@@ -29,7 +29,7 @@ Bug: Find where the cache might be generated different if the user has admin pri
 disable admin privilege.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
-- In General Settings tab, implement in all controls a "description" thing, and use for some settings, especially in translations to say the default.
+- In General Settings tab, implement in all controls a "description" thing, and use for some settings, especially in translations to say the default, and what translations are for visually impaired users.
 
 - Learn about Jetpack, and make this plugin compatible with it.
 
