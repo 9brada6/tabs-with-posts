@@ -105,7 +105,41 @@ class General_Options {
 
 	const LOAD_WIDGET_VIA_AJAX = 'Load_Widget_Via_Ajax';
 
+	#region -- Translation Settings
+
+	const SHOW_MORE_POSTS_TEXT = 'Show_More_Posts_Text';
+
+	const POST_NO_TITLE_TEXT = 'Post_No_Title_Text';
+
+	const POST_WITH_NO_THUMBNAIL_TEXT = 'Post_With_No_Thumbnail_Text';
+
+	const DATE_RELATIVE_TEXT = 'Date_Relative_Text';
+
 	const FAIL_TO_LOAD_WIDGET_TEXT = 'Fail_To_Load_Widget_Text';
+
+
+	const ARIA_AUTHOR_TEXT = 'Aria_Author_Text';
+
+	const ARIA_DATE_TEXT = 'Aria_Date_Text';
+
+	const ARIA_VIEWS_TEXT = 'Aria_Views_Text';
+
+	const ARIA_RATING_TEXT = 'Aria_Rating_Text';
+
+	const ARIA_CATEGORY_TEXT = 'Aria_Category_Text';
+
+	const ARIA_COMMENTS_TEXT = 'Aria_Comments_Text';
+
+	const ARIA_COMMENTS_ARE_DISABLED_TEXT = 'Aria_Comments_Are_Disabled_Text';
+
+
+	const ABBREVIATION_FOR_BILLIONS = 'Abbreviation_For_Billions';
+
+	const ABBREVIATION_FOR_MILLIONS = 'Abbreviation_For_Millions';
+
+	const ABBREVIATION_FOR_THOUSANDS = 'Abbreviation_For_Thousands';
+
+	#endregion -- Translation Settings
 
 	#region -- Getting Options
 
@@ -157,7 +191,22 @@ class General_Options {
 			self::ENABLE_CACHE,
 			self::CACHE_AUTOMATIC_REFRESH,
 			self::LOAD_WIDGET_VIA_AJAX,
+
+			self::SHOW_MORE_POSTS_TEXT,
+			self::POST_NO_TITLE_TEXT,
+			self::POST_WITH_NO_THUMBNAIL_TEXT,
+			self::DATE_RELATIVE_TEXT,
 			self::FAIL_TO_LOAD_WIDGET_TEXT,
+			self::ARIA_AUTHOR_TEXT,
+			self::ARIA_DATE_TEXT,
+			self::ARIA_VIEWS_TEXT,
+			self::ARIA_RATING_TEXT,
+			self::ARIA_CATEGORY_TEXT,
+			self::ARIA_COMMENTS_TEXT,
+			self::ARIA_COMMENTS_ARE_DISABLED_TEXT,
+			self::ABBREVIATION_FOR_BILLIONS,
+			self::ABBREVIATION_FOR_MILLIONS,
+			self::ABBREVIATION_FOR_THOUSANDS,
 		);
 
 		$default_settings = array();
