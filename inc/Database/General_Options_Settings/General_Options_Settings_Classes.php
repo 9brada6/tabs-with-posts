@@ -570,3 +570,31 @@ class YASR_Rating_Type extends General_Option_Setting {
 	}
 
 }
+
+#region -- Translation settings.
+
+/**
+ * Class that manages the setting of the text to display when the widget fails
+ * to load.
+ */
+class Fail_To_Load_Widget_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+#endregion -- Translation settings.

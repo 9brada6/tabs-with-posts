@@ -155,6 +155,7 @@ class General_Settings_Factory {
 			General_Options::CACHE_AUTOMATIC_REFRESH    => self::SELECT_SETTING_CLASS,
 			General_Options::LOAD_WIDGET_VIA_AJAX       => self::RADIO_SETTING_CLASS,
 			General_Options::FILL_GRID_WITH_POSTS       => self::RADIO_SETTING_CLASS,
+			General_Options::FAIL_TO_LOAD_WIDGET_TEXT   => self::TEXT_SETTING_CLASS,
 		);
 
 		return $correlated_classes;
@@ -196,6 +197,7 @@ class General_Settings_Factory {
 			General_Options::CACHE_AUTOMATIC_REFRESH    => 'get_cache_minutes_automatic_refresh_args',
 			General_Options::LOAD_WIDGET_VIA_AJAX       => 'get_load_widgets_via_ajax_args',
 			General_Options::FILL_GRID_WITH_POSTS       => 'get_fill_grid_with_posts_args',
+			General_Options::FAIL_TO_LOAD_WIDGET_TEXT   => 'get_fail_to_load_widget_text_args',
 		);
 
 		return $correlated_functions;
@@ -629,6 +631,17 @@ class General_Settings_Factory {
 				'true'  => _x( 'Yes', 'backend', 'tabs-with-posts' ),
 				'false' => _x( 'No', 'backend', 'tabs-with-posts' ),
 			),
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation of the widget fail to load via ajax.
+	 *
+	 * @return array
+	 */
+	protected static function get_fail_to_load_widget_text_args() {
+		return array(
+			'title' => _x( 'Enter the text to display when the widget fails to load via Ajax:', 'backend', 'tabs-with-posts' ),
 		);
 	}
 

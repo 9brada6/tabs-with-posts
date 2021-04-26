@@ -131,6 +131,18 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
+					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Translation', 'backend', 'tabs-with-posts' ); ?></legend>
+					<p>
+						<?php esc_html_x( 'These translations are only if you use a single language on the frontend. If you want to translate these strings into multiple languages, then use a plugin for localization, like "Loco Translate"(Free).', 'backend', 'tabs-with-posts' ); ?>
+					</p>
+					<p>
+						<?= esc_html_x( 'The string below will override the translations. If you want the default translation(or you use another plugin), then leave these empty. If you need to translate to multiple languages, then use a plugin for string localization, like "Loco Translate"(Free).', 'backend', 'tabs-with-posts' ); ?>
+					</p>
+
+					<?php General_Settings_Factory::display_setting( General_Options::FAIL_TO_LOAD_WIDGET_TEXT ); ?>
+				</fieldset>
+
+				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'External Plugin Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
 				</fieldset>

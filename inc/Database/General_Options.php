@@ -105,6 +105,8 @@ class General_Options {
 
 	const LOAD_WIDGET_VIA_AJAX = 'Load_Widget_Via_Ajax';
 
+	const FAIL_TO_LOAD_WIDGET_TEXT = 'Fail_To_Load_Widget_Text';
+
 	#region -- Getting Options
 
 	/**
@@ -155,6 +157,7 @@ class General_Options {
 			self::ENABLE_CACHE,
 			self::CACHE_AUTOMATIC_REFRESH,
 			self::LOAD_WIDGET_VIA_AJAX,
+			self::FAIL_TO_LOAD_WIDGET_TEXT,
 		);
 
 		$default_settings = array();
