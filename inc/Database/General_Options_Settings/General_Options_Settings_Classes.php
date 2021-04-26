@@ -574,10 +574,333 @@ class YASR_Rating_Type extends General_Option_Setting {
 #region -- Translation settings.
 
 /**
+ * Class that manages the setting of show more posts text.
+ */
+class Show_More_Posts_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the setting to display if post has no title.
+ */
+class Post_No_Title_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the setting of the post with no thumbnail alt text.
+ */
+class Post_With_No_Thumbnail_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the setting of the relative date text.
+ */
+class Date_Relative_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
  * Class that manages the setting of the text to display when the widget fails
  * to load.
  */
 class Fail_To_Load_Widget_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+
+/**
+ * Class that manages the aria author translation.
+ */
+class Aria_Author_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+}
+
+/**
+ * Class that manages the aria date translation.
+ */
+class Aria_Date_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the aria views translation.
+ */
+class Aria_Views_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the aria rating translation.
+ */
+class Aria_Rating_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the aria category translation.
+ */
+class Aria_Category_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the aria comments translation.
+ */
+class Aria_Comments_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the aria comments are disabled translation.
+ */
+class Aria_Comments_Are_Disabled_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+
+/**
+ * Class that manages the abbreviation for billions.
+ */
+class Abbreviation_For_Billions extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the abbreviation for millions.
+ */
+class Abbreviation_For_Millions extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+	public function get_possible_options() {
+		return array();
+	}
+
+}
+
+/**
+ * Class that manages the abbreviation for thousands.
+ */
+class Abbreviation_For_Thousands extends General_Option_Setting {
 
 	public function get_default_value() {
 		return '';

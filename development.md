@@ -23,8 +23,13 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
+Main: Add frontend translations to settings, add in manual tests to test this.
+
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
+
+- In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
+- In General Settings tab, implement in all controls a "description" thing, and use for some settings, especially in translations to say the default.
 
 - Learn about Jetpack, and make this plugin compatible with it.
 
@@ -49,7 +54,6 @@ disable admin privilege.
 
 - ### Todo Translations
 
-- Add frontend translations to settings.
 - Learn about multi-language support and test all of the plugins.
 - Add in Manual tests, to test the translations with various plugins.
 
