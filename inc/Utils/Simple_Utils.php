@@ -172,9 +172,9 @@ class Simple_Utils {
 	 */
 	public static function get_number_abbreviation( $number, $extra_shortener = true ) {
 		$abbrevs = array(
-			1000000000 => _x( 'B', 'Abbreviation for Billions', 'tabs-with-posts' ),
-			1000000    => _x( 'M', 'Abbreviation for Millions', 'tabs-with-posts' ),
-			1000       => _x( 'K', 'Abbreviation for Thousands', 'tabs-with-posts' ),
+			1000000000 => Frontend_Translation::get_translation( Frontend_Translation::ABBREVIATION_FOR_BILLIONS ),
+			1000000    => Frontend_Translation::get_translation( Frontend_Translation::ABBREVIATION_FOR_MILLIONS ),
+			1000       => Frontend_Translation::get_translation( Frontend_Translation::ABBREVIATION_FOR_THOUSANDS ),
 			1          => '',
 		);
 

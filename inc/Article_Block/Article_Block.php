@@ -14,6 +14,7 @@ use TWRP\Utils\Directory_Utils;
 use TWRP\Utils\Date_Utils;
 use TWRP\Utils\Simple_Utils;
 use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
+use TWRP\Utils\Frontend_Translation;
 
 use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Article_Block\Settings\Artblock_Setting;
@@ -174,7 +175,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	public function display_show_more_button() {
 		?>
 			<div class="twrp-show-more">
-				<button class="twrp-show-more__btn" type="button"><?= esc_html__( 'Show more posts', 'tabs-with-posts' ); ?></button>
+				<button class="twrp-show-more__btn" type="button"><?= esc_html( Frontend_Translation::get_translation( Frontend_Translation::SHOW_MORE_POSTS ) ) ?></button>
 			</div>
 		<?php
 	}
@@ -490,8 +491,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		$title = get_the_title( $post );
 
 		if ( empty( trim( $title ) ) ) {
-			/* translators: Text to display if a post has no title. */
-			$title = __( '&laquo; No title &raquo;', 'tabs-with-posts' );
+			$title = Frontend_Translation::get_translation( Frontend_Translation::POST_NO_TITLE );
 		}
 
 		return $title;
@@ -540,7 +540,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		}
 
 		if ( ! isset( $attr['alt'] ) ) {
-			$alt = __( 'Post with no thumbnail', 'tabs-with-posts' );
+			$alt = Frontend_Translation::get_translation( Frontend_Translation::POST_NO_THUMBNAIL );
 		} else {
 			$alt = $attr['alt'];
 		}
@@ -694,8 +694,8 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 			if ( false === $from || 0 === $to ) {
 				$date_text = false;
 			} else {
-				/* translators: %s: a date representation, in human language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc. the %s is expected to be already translated. */
-				$date_text = sprintf( __( '%s ago', 'tabs-with-posts' ), human_time_diff( $from, $to ) );
+				// The default English translation is "%s ago".
+				$date_text = sprintf( Frontend_Translation::get_translation( Frontend_Translation::HUMAN_RELATIVE_DATE ), human_time_diff( $from, $to ) );
 			}
 		} else {
 			$date_text = get_the_time( $date_format, $post );

@@ -14,6 +14,7 @@ use TWRP\Utils\Class_Retriever_Utils;
 
 use RuntimeException;
 use TWRP\Database\General_Options;
+use TWRP\Utils\Frontend_Translation;
 use WP_Post;
 
 /**
@@ -395,12 +396,8 @@ class Tabs_Creator {
 			$post_id = (string) $post->ID;
 		}
 
-		$fail_to_load_widget_text = General_Options::get_option( General_Options::FAIL_TO_LOAD_WIDGET_TEXT );
-		if ( is_string( $fail_to_load_widget_text ) && ! empty( trim( $fail_to_load_widget_text ) ) ) {
-			$failed_text = $fail_to_load_widget_text;
-		} else {
-			$failed_text = __( 'Loading articles failed, please refresh the page to try again.', 'tabs-with-posts' );
-		}
+		$failed_text = Frontend_Translation::get_translation(Frontend_Translation::WIDGET_FAIL_TO_LOAD);
+
 		echo '<div id="twrp-widget-load-via-ajax--' . esc_attr( $widget_id ) . '" style="display:none;" data-twrp-ajax-widget-id="' . esc_attr( $widget_id ) . '" data-twrp-ajax-post-id="' . esc_attr( $post_id ) . '" data-twrp-failed-text="' . esc_attr( $failed_text ) . '">';
 	}
 }

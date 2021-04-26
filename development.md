@@ -56,6 +56,7 @@ disable admin privilege.
 
 - Learn about multi-language support and test all of the plugins.
 - Add in Manual tests, to test the translations with various plugins.
+- Add in manual tests, to check if the default translations strings from general settings is the same as the ones from code.
 
 - ### ✅ Todo Documentation
 

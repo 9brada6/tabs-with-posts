@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-04-26T07:18:56+00:00\n"
+"POT-Creation-Date: 2021-04-26T09:32:06+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: tabs-with-posts\n"
@@ -2231,41 +2231,6 @@ msgctxt "backend, icon name(description)"
 msgid "Bar Chart"
 msgstr ""
 
-#: inc/Icons/Icon_Categories.php:84
-msgctxt "Noun, accessibility text"
-msgid "Author"
-msgstr ""
-
-#: inc/Icons/Icon_Categories.php:85
-msgctxt "Noun, accessibility text"
-msgid "Date"
-msgstr ""
-
-#: inc/Icons/Icon_Categories.php:86
-msgctxt "Noun, accessibility text"
-msgid "Views"
-msgstr ""
-
-#: inc/Icons/Icon_Categories.php:87
-msgctxt "Noun, accessibility text"
-msgid "Rating"
-msgstr ""
-
-#: inc/Icons/Icon_Categories.php:88
-msgctxt "Noun, accessibility text"
-msgid "Category"
-msgstr ""
-
-#: inc/Icons/Icon_Categories.php:89
-msgctxt "Noun, accessibility text"
-msgid "Comments"
-msgstr ""
-
-#: inc/Icons/Icon_Categories.php:90
-msgctxt "Noun, accessibility text"
-msgid "Comments are disabled"
-msgstr ""
-
 #: inc/Plugins/Post_Views.php:145
 msgctxt "backend"
 msgid "Plugin not installed"
@@ -2438,17 +2403,52 @@ msgctxt "backend"
 msgid "Every %d Minutes"
 msgstr ""
 
-#: inc/Utils/Simple_Utils.php:175
+#: inc/Utils/Frontend_Translation.php:91
+msgctxt "Noun, accessibility text"
+msgid "Author"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:92
+msgctxt "Noun, accessibility text"
+msgid "Date"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:93
+msgctxt "Noun, accessibility text"
+msgid "Views"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:94
+msgctxt "Noun, accessibility text"
+msgid "Rating"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:95
+msgctxt "Noun, accessibility text"
+msgid "Category"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:96
+msgctxt "Noun, accessibility text"
+msgid "Comments"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:97
+msgctxt "Noun, accessibility text"
+msgid "Comments are disabled"
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:99
 msgctxt "Abbreviation for Billions"
 msgid "B"
 msgstr ""
 
-#: inc/Utils/Simple_Utils.php:176
+#: inc/Utils/Frontend_Translation.php:100
 msgctxt "Abbreviation for Millions"
 msgid "M"
 msgstr ""
 
-#: inc/Utils/Simple_Utils.php:177
+#: inc/Utils/Frontend_Translation.php:101
 msgctxt "Abbreviation for Thousands"
 msgid "K"
 msgstr ""

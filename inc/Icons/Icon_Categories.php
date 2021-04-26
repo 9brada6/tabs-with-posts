@@ -3,6 +3,7 @@
 namespace TWRP\Icons;
 
 use RuntimeException;
+use TWRP\Utils\Frontend_Translation;
 
 /**
  * Class used to hold/retrieve values that needs to be different between each
@@ -81,13 +82,13 @@ class Icon_Categories {
 	 */
 	public static function get_category_aria_label() {
 		$aria_labels = array(
-			self::USER_ICON             => _x( 'Author', 'Noun, accessibility text', 'tabs-with-posts' ),
-			self::DATE_ICON             => _x( 'Date', 'Noun, accessibility text', 'tabs-with-posts' ),
-			self::VIEWS_ICON            => _x( 'Views', 'Noun, accessibility text', 'tabs-with-posts' ),
-			self::RATING_ICON           => _x( 'Rating', 'Noun, accessibility text', 'tabs-with-posts' ),
-			self::CATEGORY_ICON         => _x( 'Category', 'Noun, accessibility text', 'tabs-with-posts' ),
-			self::COMMENT_ICON          => _x( 'Comments', 'Noun, accessibility text', 'tabs-with-posts' ),
-			self::DISABLED_COMMENT_ICON => _x( 'Comments are disabled', 'Noun, accessibility text', 'tabs-with-posts' ),
+			self::USER_ICON             => Frontend_Translation::get_translation( Frontend_Translation::ARIA_AUTHOR ),
+			self::DATE_ICON             => Frontend_Translation::get_translation( Frontend_Translation::ARIA_DATE ),
+			self::VIEWS_ICON            => Frontend_Translation::get_translation( Frontend_Translation::ARIA_VIEWS ),
+			self::RATING_ICON           => Frontend_Translation::get_translation( Frontend_Translation::ARIA_RATING ),
+			self::CATEGORY_ICON         => Frontend_Translation::get_translation( Frontend_Translation::ARIA_CATEGORY ),
+			self::COMMENT_ICON          => Frontend_Translation::get_translation( Frontend_Translation::ARIA_COMMENTS ),
+			self::DISABLED_COMMENT_ICON => Frontend_Translation::get_translation( Frontend_Translation::ARIA_COMMENTS_DISABLED ),
 		);
 
 		return $aria_labels;

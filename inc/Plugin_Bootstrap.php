@@ -34,6 +34,7 @@ class Plugin_Bootstrap {
 		'Utils/Background_Processing/WP_Async_Request',
 		'Utils/Background_Processing/WP_Background_Process',
 
+		'Utils/Frontend_Translation',
 		'Utils/Simple_Utils',
 		'Utils/Class_Retriever_Utils',
 		'Utils/Color_Utils',
