@@ -3,6 +3,7 @@
 namespace TWRP\Admin\Tabs\General_Settings;
 
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
+use TWRP\Utils\Simple_Utils;
 
 /**
  * Abstract class used to create the settings in "General Settings" tab.
@@ -46,6 +47,13 @@ abstract class General_Setting_Creator {
 	 * @var string
 	 */
 	protected $title;
+
+	/**
+	 * A detailed description about a setting, if necessary.
+	 *
+	 * @var string
+	 */
+	protected $description;
 
 	/**
 	 * Holds the additional HTML attributes of the element. Usually used to
@@ -134,6 +142,11 @@ abstract class General_Setting_Creator {
 			$this->is_hidden = true;
 		}
 
+		$this->description = '';
+		if ( isset( $args['description'] ) && is_string( $args['description'] ) ) {
+			$this->description = $args['description'];
+		}
+
 		$this->all_args = $args;
 	}
 
@@ -153,6 +166,13 @@ abstract class General_Setting_Creator {
 			<div class="<?php $this->bem_class( 'title' ); ?>">
 				<?= $this->title; // phpcs:ignore -- No XSS ?>
 			</div>
+
+			<?php if ( ! empty( $this->description ) ) : ?>
+				<div class="<?php $this->bem_class( 'description' ); ?>">
+					<?= wp_kses( $this->description, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
+				</div>
+			<?php endif; ?>
+
 			<?php $this->display_internal_setting(); ?>
 
 		</div>

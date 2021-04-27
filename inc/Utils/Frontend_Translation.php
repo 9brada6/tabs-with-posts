@@ -76,7 +76,7 @@ class Frontend_Translation {
 	 *
 	 * @return array
 	 */
-	protected static function get_all_localized_translations() {
+	public static function get_all_localized_translations() {
 		if ( ! empty( self::$cached_translations ) ) {
 			return self::$cached_translations;
 		}
@@ -98,9 +98,9 @@ class Frontend_Translation {
 			self::ARIA_COMMENTS              => _x( 'Comments', 'Noun, accessibility text', 'tabs-with-posts' ),
 			self::ARIA_COMMENTS_DISABLED     => _x( 'Comments are disabled', 'Noun, accessibility text', 'tabs-with-posts' ),
 
-			self::ABBREVIATION_FOR_THOUSANDS => _x( 'B', 'Abbreviation for Billions', 'tabs-with-posts' ),
+			self::ABBREVIATION_FOR_THOUSANDS => _x( 'K', 'Abbreviation for Thousands', 'tabs-with-posts' ),
 			self::ABBREVIATION_FOR_MILLIONS  => _x( 'M', 'Abbreviation for Millions', 'tabs-with-posts' ),
-			self::ABBREVIATION_FOR_BILLIONS  => _x( 'K', 'Abbreviation for Thousands', 'tabs-with-posts' ),
+			self::ABBREVIATION_FOR_BILLIONS  => _x( 'B', 'Abbreviation for Billions', 'tabs-with-posts' ),
 		);
 
 		self::$cached_translations = $localized_translations;

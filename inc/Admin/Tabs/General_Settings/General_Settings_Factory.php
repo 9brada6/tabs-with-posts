@@ -8,6 +8,7 @@ use TWRP\Icons\Icon_Factory;
 use TWRP\Icons\Icon;
 use TWRP\Icons\Rating_Icon_Pack;
 use TWRP\Plugins\Known_Plugins\YASR_Rating_Plugin;
+use TWRP\Utils\Frontend_Translation;
 use TWRP\Utils\Simple_Utils;
 
 /**
@@ -674,8 +675,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_show_more_posts_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::SHOW_MORE_POSTS ] ) ) {
+			$default = $default_translations[ Frontend_Translation::SHOW_MORE_POSTS ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Enter the text to of the button to show more posts:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Enter the text to of the button to show more posts:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -685,8 +697,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_post_no_title_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::POST_NO_TITLE ] ) ) {
+			$default = $default_translations[ Frontend_Translation::POST_NO_TITLE ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Text to display as a title if post has no title:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to display as a title if post has no title:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -696,8 +719,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_post_no_thumbnail_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::POST_NO_THUMBNAIL ] ) ) {
+			$default = $default_translations[ Frontend_Translation::POST_NO_THUMBNAIL ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Descriptive text of the default thumbnail that is loaded when a post has no thumbnail:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Descriptive text of the default thumbnail that is loaded when a post has no thumbnail:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -707,8 +741,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_date_relative_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::HUMAN_RELATIVE_DATE ] ) ) {
+			$default = $default_translations[ Frontend_Translation::HUMAN_RELATIVE_DATE ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Relative date text:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Relative date text:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -718,8 +763,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_fail_to_load_widget_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::WIDGET_FAIL_TO_LOAD ] ) ) {
+			$default = $default_translations[ Frontend_Translation::WIDGET_FAIL_TO_LOAD ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Enter the text to display when the widget fails to load via Ajax:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Enter the text to display when the widget fails to load via Ajax:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -729,8 +785,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_author_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_AUTHOR ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_AUTHOR ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the author icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the author icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -740,8 +808,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_date_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_DATE ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_DATE ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the date icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the date icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -751,8 +831,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_views_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_VIEWS ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_VIEWS ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the views icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the views icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -762,8 +854,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_rating_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_RATING ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_RATING ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the rating icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the rating icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -773,8 +877,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_category_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_CATEGORY ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_CATEGORY ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the category icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the category icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -784,8 +900,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_comments_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_COMMENTS ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_COMMENTS ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the comments icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the comments icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -796,8 +924,20 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_aria_comments_disable_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ARIA_COMMENTS_DISABLED ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ARIA_COMMENTS_DISABLED ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text  = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$visually_impaired = _x( 'This text will be visible only to visually impaired users(or a screen reader).', 'backend', 'tabs-with-posts' );
+		$description       = $defaults_to_text . ' ' . $visually_impaired;
+
 		return array(
-			'title' => _x( 'Text to describe the comments are disabled icon:', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Text to describe the "comments disabled" icon:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -807,8 +947,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_abbreviation_for_thousands_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ABBREVIATION_FOR_THOUSANDS ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ABBREVIATION_FOR_THOUSANDS ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Abbreviation of a number for thousands.', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Abbreviation of a number for thousands.', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -818,8 +969,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_abbreviation_for_millions_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ABBREVIATION_FOR_MILLIONS ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ABBREVIATION_FOR_MILLIONS ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Abbreviation of a number for millions.', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Abbreviation of a number for millions.', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 
@@ -829,8 +991,19 @@ class General_Settings_Factory {
 	 * @return array
 	 */
 	protected static function get_abbreviation_for_billions_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::ABBREVIATION_FOR_BILLIONS ] ) ) {
+			$default = $default_translations[ Frontend_Translation::ABBREVIATION_FOR_BILLIONS ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
 		return array(
-			'title' => _x( 'Abbreviation of a number for billions.', 'backend', 'tabs-with-posts' ),
+			'title'       => _x( 'Abbreviation of a number for billions.', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
 		);
 	}
 

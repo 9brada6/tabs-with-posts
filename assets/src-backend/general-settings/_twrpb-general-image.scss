@@ -7,14 +7,18 @@
 		color: #333;
 	}
 
+	&__description {
+		margin-bottom: 0.6rem;
+	}
+
 	&__btn {
 		margin-right: 0.7rem;
 	}
 
 	&__btns-wrapper {
-		margin-top: 1rem;
 		display: flex;
 		align-items: center;
+		margin-top: 1rem;
 	}
 
 	&__img-preview-wrapper {

@@ -137,6 +137,10 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					<?php General_Settings_Factory::display_setting( General_Options::DATE_RELATIVE_TEXT ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::FAIL_TO_LOAD_WIDGET_TEXT ); ?>
 
+					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_THOUSANDS ); ?>
+					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_MILLIONS ); ?>
+					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_BILLIONS ); ?>
+
 					<?php General_Settings_Factory::display_setting( General_Options::ARIA_AUTHOR_TEXT ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::ARIA_DATE_TEXT ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::ARIA_VIEWS_TEXT ); ?>
@@ -145,9 +149,6 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					<?php General_Settings_Factory::display_setting( General_Options::ARIA_COMMENTS_TEXT ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::ARIA_COMMENTS_ARE_DISABLED_TEXT ); ?>
 
-					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_THOUSANDS ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_MILLIONS ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_BILLIONS ); ?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
