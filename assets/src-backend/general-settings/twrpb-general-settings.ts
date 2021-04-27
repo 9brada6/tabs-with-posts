@@ -345,3 +345,17 @@ function handleRefreshCache( e ) {
 }
 
 // #endregion -- Cache rebuild handler.
+
+// #region -- Show/Hide Translations.
+
+const btnHideTranslationsSelector = '#twrpb-general-settings__translations-show-btn';
+const translationContainer = '#twrpb-general-settings__translations-hidden';
+
+$( document ).on( 'click', btnHideTranslationsSelector, translationBtnHandler );
+
+function translationBtnHandler( e ) {
+	e.preventDefault();
+	$( translationContainer ).slideToggle();
+}
+
+// #region -- Show/Hide Translations.

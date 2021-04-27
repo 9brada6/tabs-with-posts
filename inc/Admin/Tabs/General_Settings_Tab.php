@@ -127,27 +127,32 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 
 				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Translation', 'backend', 'tabs-with-posts' ); ?></legend>
-					<p>
-						<?= esc_html_x( 'The string below will override the translations. If you want the default translation(or you use another plugin), then leave these empty. If you have a multi language website, then use a plugin for string localization, like "Loco Translate"(Free).', 'backend', 'tabs-with-posts' ); ?>
-					</p>
 
-					<?php General_Settings_Factory::display_setting( General_Options::SHOW_MORE_POSTS_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::POST_NO_TITLE_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::POST_WITH_NO_THUMBNAIL_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::DATE_RELATIVE_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::FAIL_TO_LOAD_WIDGET_TEXT ); ?>
+					<button id="twrpb-general-settings__translations-show-btn" class="twrpb-button twrpb-general-settings__btn-show-translations"><?= esc_html_x( 'Click to show/hide translations', 'backend', 'tabs-with-posts' ); ?></button>
 
-					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_THOUSANDS ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_MILLIONS ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_BILLIONS ); ?>
+					<div id="twrpb-general-settings__translations-hidden" class="twrpb-general-settings__translations-container">
+						<p>
+							<?= esc_html_x( 'The string below will override the translations. If you want the default translation(or you use another plugin), then leave these empty. If you have a multi language website, then use a plugin for string localization, like "Loco Translate"(Free).', 'backend', 'tabs-with-posts' ); ?>
+						</p>
 
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_AUTHOR_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_DATE_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_VIEWS_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_RATING_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_CATEGORY_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_COMMENTS_TEXT ); ?>
-					<?php General_Settings_Factory::display_setting( General_Options::ARIA_COMMENTS_ARE_DISABLED_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::SHOW_MORE_POSTS_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::POST_NO_TITLE_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::POST_WITH_NO_THUMBNAIL_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::DATE_RELATIVE_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::FAIL_TO_LOAD_WIDGET_TEXT ); ?>
+
+						<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_THOUSANDS ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_MILLIONS ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_BILLIONS ); ?>
+
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_AUTHOR_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_DATE_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_VIEWS_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_RATING_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_CATEGORY_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_COMMENTS_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::ARIA_COMMENTS_ARE_DISABLED_TEXT ); ?>
+					</div>
 
 				</fieldset>
 

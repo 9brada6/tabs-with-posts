@@ -66,4 +66,16 @@
 	&__refresh-cache-btn {
 		margin-bottom: 1rem;
 	}
+
+	&__btn-show-translations {
+		margin: 0.8rem 0;
+	}
+
+	&__translations-container {
+		display: none;
+
+		p:first-child{
+			margin-top: 0;
+		}
+	}
 }

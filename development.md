@@ -28,8 +28,7 @@ Main: Add frontend translations to settings, add in manual tests to test this.
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
 
-- In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
-- In General Settings tab, implement in all controls a "description" thing, and use for some settings, especially in translations to say the default, and what translations are for visually impaired users.
+- In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed. Also add a note to the documentation, where every setting is explained.
 
 - Learn about Jetpack, and make this plugin compatible with it.
 
@@ -56,7 +55,6 @@ disable admin privilege.
 
 - Learn about multi-language support and test all of the plugins.
 - Add in Manual tests, to test the translations with various plugins.
-- Add in manual tests, to check if the default translations strings from general settings is the same as the ones from code.
 
 - ### ✅ Todo Documentation
 
