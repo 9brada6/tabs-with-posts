@@ -137,6 +137,23 @@
 			max-width: 220px;
 		}
 	}
+
+	// Show/Hide meta locations.
+
+	&__artblock-tooltip-info {
+		margin: 0.7rem 0;
+	}
+
+	&__artblock-tooltip-content {
+		display: none;
+		margin-top: 0.6rem;
+	}
+
+	&__artblock-tooltip-img {
+		width: 250px;
+		max-width: 100%;
+		max-height: auto;
+	}
 }
 
 /**

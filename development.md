@@ -23,7 +23,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-Main: Add frontend translations to settings, add in manual tests to test this.
+Simple article: remove margin rightof last meta from row.
 
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
@@ -33,8 +33,6 @@ disable admin privilege.
 - Learn about Jetpack, and make this plugin compatible with it.
 
 - Add @supports where :focus-visible is not supported.
-
-- In the widget, add a photo where the meta are displayed about meta positions.
 
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message).
 

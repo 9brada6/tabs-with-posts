@@ -258,6 +258,8 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @return void
 	 */
 	public function display_form_settings() {
+		$this->display_artblock_meta_places();
+
 		$settings = $this->get_artblock_settings();
 		foreach ( $settings as $query_artblock_setting ) {
 			$query_artblock_setting->display_setting();
@@ -278,6 +280,44 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 		$components_display = new Widget_Form_Components_Display( $this->widget_id, $this->query_id, $components );
 		$components_display->display_components();
+	}
+
+	/**
+	 * Display a tooltip an image with the artblock and where the meta are
+	 * placed.
+	 *
+	 * @return void
+	 */
+	protected function display_artblock_meta_places() {
+		$image_src = $this->get_widget_meta_locations_image_src();
+		if ( empty( $image_src ) ) {
+			return;
+		}
+
+		?>
+		<div class="twrpb-widget-form__artblock-tooltip-info">
+			<button class="twrpb-widget-form__artblock-tooltip-btn" type="button">
+				<?= esc_html_x( 'Click to show/hide the meta locations', 'backend', 'tabs-with-posts' ); ?>
+			</button>
+
+			<div class="twrpb-widget-form__artblock-tooltip-content">
+				<img class="twrpb-widget-form__artblock-tooltip-img" src="<?= esc_attr( $image_src ); ?>" alt="<?= esc_attr_x( 'Image showing where the meta are placed.', 'backend', 'tabs-with-posts' ); ?>">
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Get the image url for the meta location, to enhance user experience.
+	 *
+	 * @return string
+	 */
+	protected function get_widget_meta_locations_image_src() {
+		$folder_path = Directory_Utils::get_artblock_meta_locations_images_directory_url();
+		$class_names = explode( '\\', get_class( $this ) );
+		$class_name  = array_pop( $class_names );
+
+		return $folder_path . $class_name . '.jpg';
 	}
 
 	/**

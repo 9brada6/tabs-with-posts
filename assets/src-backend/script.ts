@@ -22,6 +22,7 @@ import './query-settings/twrpb-statuses-settings/twrpb-statuses-settings';
 
 // Widget Blocks
 import './widget-blocks/twrpb-widget-form';
+import './widget-blocks/twrpb-meta-tooltip';
 import './widget-blocks/twrpb-widget-components';
 import './widget-blocks/twrpb-sync-widget-query-settings';
 import './widget-blocks/twrpb-color-picker';

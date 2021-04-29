@@ -100,6 +100,10 @@ displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last
 4. Be sure that the plugins must not have the same order, and the plugins order must be declared in interface they implement.
 5. Make sure that each plugin has an avatar and is displayed in documentation.
 
+## Translation
+
+1. Check if all frontend translations have the option to be modified in settings.
+
 ## Documentation
 
 1. Make sure that each gettext function(\_x, \_ex, ..etc) have the context "backend, documentation".

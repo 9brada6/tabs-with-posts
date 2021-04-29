@@ -75,6 +75,11 @@ class Directory_Utils {
 	const NO_THUMBNAIL_IMAGES_FOLDER = 'assets/no-thumbnail-images/';
 
 	/**
+	 * The folder where no thumbnail images are keep.
+	 */
+	const ARTBLOCK_META_LOCATIONS_IMAGES_FOLDER = 'assets/artblock-meta-locations/';
+
+	/**
 	 * The folder where all svg assets are to be found.
 	 */
 	const SVG_FOLDER = 'assets/svgs/';
@@ -179,6 +184,26 @@ class Directory_Utils {
 	 */
 	public static function get_no_thumbnail_images_directory_url() {
 		$url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::NO_THUMBNAIL_IMAGES_FOLDER, '/' );
+		return trailingslashit( $url );
+	}
+
+	/**
+	 * Get folder path with images of artblocks meta locations.
+	 *
+	 * @return string The path is has an ending slash.
+	 */
+	public static function get_artblock_meta_locations_images_directory_path() {
+		$directory = trailingslashit( self::get_plugin_directory_path() ) . ltrim( self::ARTBLOCK_META_LOCATIONS_IMAGES_FOLDER, '/' );
+		return trailingslashit( $directory );
+	}
+
+	/**
+	 * Get folder URL with images of artblocks meta locations.
+	 *
+	 * @return string Url has a trailing slash.
+	 */
+	public static function get_artblock_meta_locations_images_directory_url() {
+		$url = trailingslashit( self::get_plugin_directory_url() ) . ltrim( self::ARTBLOCK_META_LOCATIONS_IMAGES_FOLDER, '/' );
 		return trailingslashit( $url );
 	}
 
