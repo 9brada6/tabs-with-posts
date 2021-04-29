@@ -17,14 +17,17 @@
 		border-radius: var(--twrp-border-radius);
 		transition: var(--twrp-default-component-transition);
 
-		&:focus-visible {
-			outline: none;
-			box-shadow: 0 0 0 2px var(--twrp-outline-accent-color);
-		}
-
 		&:hover,
 		&:focus {
 			background-color: var(--twrp-accent-color);
+		}
+
+		&:focus {
+			outline: none;
+			box-shadow: 0 0 0 2px var(--twrp-outline-accent-color);
+		}
+		&:focus:not(:focus-visible) {
+			box-shadow: none;
 		}
 	}
 

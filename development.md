@@ -12,7 +12,7 @@
 
 ## Tabs
 
-- The code use :focus-visible, and does not use additional @support check. Even if the support is 70%, the majority of the users that are impaired and need this feature use a browser, where this feature is supported. Also this is not something like a deal-breaker, since this feature is already widely being implemented as a spec.
+- If the browser does not support :focus-visible, then the style will show as :focus, to increase compatibility.
 - Depending on what setting on the widget were used, to generate the inline style for a tab take 20ms(old laptop).
 - Depending on what tabs and query were used, it will take some seconds to generate the tabs.
 
@@ -23,16 +23,14 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-Simple article: remove margin rightof last meta from row.
+Add a way to clear the tables from this plugin.
+
+Simple article: remove margin right of last meta from row.
 
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed. Also add a note to the documentation, where every setting is explained.
-
-- Learn about Jetpack, and make this plugin compatible with it.
-
-- Add @supports where :focus-visible is not supported.
 
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message).
 

@@ -56,8 +56,11 @@
 		border-color: var(--twrp-accent-color);
 		border-bottom-color: transparent;
 
-		&:focus-visible {
+		&:focus {
 			text-decoration: underline;
+		}
+		&:focus:not(:focus-visible) {
+			text-decoration: none;
 		}
 	}
 
