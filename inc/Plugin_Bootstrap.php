@@ -5,6 +5,7 @@
 
 namespace TWRP;
 
+use TWRP\Database\Manage_Clean_Database;
 use TWRP\Enqueue_Scripts\Icons_CSS;
 use TWRP\Database\Tabs_Cache_Table;
 
@@ -232,7 +233,6 @@ class Plugin_Bootstrap {
 	 * @return void
 	 */
 	public static function after_file_including_execute() {
-
 		$main_file_path = Directory_Utils::get_path_of_main_plugin_file();
 
 		// Regenerate the database and file icons, in case the plugin was previously installed.
@@ -241,6 +241,8 @@ class Plugin_Bootstrap {
 		// Create the tab cache table on plugin activation.
 		register_activation_hook( $main_file_path, array( Tabs_Cache_Table::class, 'create_table_on_plugin_activation' ) );
 
+		// Delete all database when the plugin is uninstalled.
+		register_uninstall_hook( Directory_Utils::get_path_of_main_plugin_file(), array( Manage_Clean_Database::class, 'delete_all_plugin_database_entries' ) );
 	}
 
 	/**
