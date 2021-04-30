@@ -52,7 +52,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-Bug when plugin is installed: cache won't refresh when widget/tabs query change.
 Bug when plugin is installed: table cache is not generated.
 
 - Move inline_icons_options to Aside options.

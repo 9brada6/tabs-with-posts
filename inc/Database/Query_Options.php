@@ -128,7 +128,9 @@ class Query_Options implements Clean_Database {
 
 		$queries[] = $new_query_settings;
 
+		do_action( 'twrp_before_update_tab_queries', $queries );
 		update_option( self::QUERIES_OPTION_KEY, $queries );
+		do_action( 'twrp_after_update_tab_queries', $queries );
 	}
 
 	/**
@@ -151,7 +153,9 @@ class Query_Options implements Clean_Database {
 
 		if ( isset( $all_queries[ $query_id ] ) ) {
 			$all_queries[ $query_id ] = $new_query_settings;
+			do_action( 'twrp_before_update_tab_queries', $all_queries );
 			update_option( self::QUERIES_OPTION_KEY, $all_queries );
+			do_action( 'twrp_after_update_tab_queries', $all_queries );
 			return true;
 		}
 
@@ -178,7 +182,9 @@ class Query_Options implements Clean_Database {
 			$queries_options[ $query_id ] = null;
 		}
 
+		do_action( 'twrp_before_tab_query_deleted', $queries_options, $query_id );
 		update_option( self::QUERIES_OPTION_KEY, $queries_options );
+		do_action( 'twrp_after_tab_query_deleted', $queries_options, $query_id );
 	}
 
 	/**

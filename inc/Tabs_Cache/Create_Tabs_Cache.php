@@ -55,6 +55,8 @@ class Create_Tabs_Cache {
 
 		// When the settings are updated.
 		add_action( 'twrp_general_after_settings_submitted', array( static::class, 'cache_all_widgets_and_tabs' ) );
+		add_action( 'twrp_after_tab_query_deleted', array( static::class, 'cache_all_widgets_and_tabs' ) );
+		add_action( 'twrp_after_update_tab_queries', array( static::class, 'cache_all_widgets_and_tabs' ) );
 
 		// When a plugin is activated/deactivated.
 		add_action( 'activated_plugin', array( static::class, 'cache_all_widgets_and_tabs' ) );
