@@ -8,7 +8,7 @@ use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
 use TWRP\Plugins\Known_Plugins\Post_Rating_Plugin;
 use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 use TWRP\Article_Block\Article_Block;
-
+use TWRP\Database\Clean_Database;
 use TWRP\Utils\Helper_Interfaces\Class_Children_Order;
 use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Simple_Utils;
@@ -64,8 +64,18 @@ class Class_Retriever_Utils {
 	 */
 	public static function get_all_article_block_names() {
 		$class_names = static::get_all_child_classes( Article_Block::class );
-
 		return $class_names;
+	}
+
+	/**
+	 * Get all the Clean_Database class names.
+	 *
+	 * @return array<string,string>
+	 * @psalm-return array<string,class-string<Clean_Database>>
+	 */
+	public static function get_all_clean_database_class_names() {
+		$all_class_names = self::get_all_child_classes( Clean_Database::class );
+		return $all_class_names;
 	}
 
 	/**

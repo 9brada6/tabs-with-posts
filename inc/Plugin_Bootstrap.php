@@ -131,8 +131,10 @@ class Plugin_Bootstrap {
 		'Enqueue_Scripts/Icons_CSS',
 
 		// Database.
+		'Database/Interfaces/Clean_Database',
 		'Database/General_Options_Settings/General_Option_Setting',
 		'Database/General_Options_Settings/General_Options_Settings_Classes',
+		'Database/Manage_Clean_Database',
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',

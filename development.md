@@ -10,13 +10,42 @@
     3. If we don't have a rating average, then just display 0, and an empty star?.
     4. If we have a rating count and is selected to display and is above 0, then display it.
 
-## Tabs
+## 📖 Development Documentation
+
+- ### Tools used
+
+    Phan
+
+    - Phan can be run via docker(see the script in the composer). In VSCode it comes pre-installed with the extension. It is not installed in vendor via composer.
+    - You need to change the Phan path in vscode workspace options when you change the PC.
+
+- ### External programs used
+
+    It's best to keep them updated.
+
+    - Pickr -> Included by default in the backend style/scripts. Pickr class does not exist globally. The original styles are not scoped, as is hard to do and they will not change in the future. Included only in the admin area.
+    - Codemirror -> Use WP default script/themes, a dark theme css is included, but is scoped inside a twrpb class. Included only in the admin area.
+    - Jquery-ui -> Use WP default scripts/themes, only a datepicker css theme exist, but is scoped inside a twrpb class. Included only in the admin area.
+
+- ### Assets
+
+    - In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
+
+- ### Article Blocks
+
+    - The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.
+
+- ### Plugins
+
+    - It seems that MU Plugins work, but we can't get the version yet.
+
+- ### Tabs
 
 - If the browser does not support :focus-visible, then the style will show as :focus, to increase compatibility.
 - Depending on what setting on the widget were used, to generate the inline style for a tab take 20ms(old laptop).
 - Depending on what tabs and query were used, it will take some seconds to generate the tabs.
 
-## Cache
+- ### Cache
 
 - ! Careful, because the page is cached, getting posts or other things depending by the user privileges
 can be dangerous, because an admin can generate a cache that should not be visible to a user that is not logged in.
@@ -24,6 +53,9 @@ can be dangerous, because an admin can generate a cache that should not be visib
 ## ✅ Todo
 
 Add a way to clear the tables from this plugin.
+
+- Move inline_icons_options to Aside options.
+- Make get_possible_options in General_Option_Setting and General_Option_Setting_classes to return as default an empty array.
 
 Simple article: remove margin right of last meta from row.
 
@@ -127,32 +159,3 @@ disable admin privilege.
 - ➕ On widget refresh cache, after the success dispatch, say a message when the cache has been successfully created.
 - ➕ Test Redis object caching.
 - ➕ In the script that generates the .POT file, do not override previous translations?
-
-## 📖 Development Documentation
-
-- ### Tools used
-
-    Phan
-
-    - Phan can be run via docker(see the script in the composer). In VSCode it comes pre-installed with the extension. It is not installed in vendor via composer.
-    - You need to change the Phan path in vscode workspace options when you change the PC.
-
-- ### External programs used
-
-    It's best to keep them updated.
-
-    - Pickr -> Included by default in the backend style/scripts. Pickr class does not exist globally. The original styles are not scoped, as is hard to do and they will not change in the future. Included only in the admin area.
-    - Codemirror -> Use WP default script/themes, a dark theme css is included, but is scoped inside a twrpb class. Included only in the admin area.
-    - Jquery-ui -> Use WP default scripts/themes, only a datepicker css theme exist, but is scoped inside a twrpb class. Included only in the admin area.
-
-- ### Assets
-
-    - In the backend script, the default jQuery UI included with WordPress is used. These must be compatible from jQuery ui version 11 and up.
-
-- ### Article Blocks
-
-    - The line clamp work on 96% desktop browsers. On IE11 ellipses(...) are not displayed, but the text is on 3 lines.
-
-- ### Plugins
-
-    - It seems that MU Plugins work, but we can't get the version yet.

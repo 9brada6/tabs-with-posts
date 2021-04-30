@@ -7,7 +7,7 @@ namespace TWRP\Database;
  *
  * Basically, hold the HTML generated for the inline icons.
  */
-class Inline_Icons_Option {
+class Inline_Icons_Option implements Clean_Database {
 
 	const TABLE_OPTION_KEY = 'twrp__inline_icons_definition';
 
@@ -35,4 +35,12 @@ class Inline_Icons_Option {
 
 		return '';
 	}
+
+	#region -- Clean Database
+
+	public static function clean_database() {
+		delete_option( self::TABLE_OPTION_KEY );
+	}
+
+	#region -- Clean Database
 }

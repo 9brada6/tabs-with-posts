@@ -4,9 +4,10 @@ namespace TWRP\Database;
 
 /**
  * A setting in the WP_Options table, that will hold options that are not so
- * important, but nonetheless needs someplace to be stored.
+ * important, or are not modified directly by the user via an interface, but
+ * nonetheless needs someplace to be stored.
  */
-class Aside_Options {
+class Aside_Options implements Clean_Database {
 
 	const TABLE_OPTION_KEY = 'twrp__aside_options';
 
@@ -50,5 +51,13 @@ class Aside_Options {
 	}
 
 	#endregion -- Needed Icons Generation Timestamp
+
+	#region -- Clean Database
+
+	public static function clean_database() {
+		delete_option( self::TABLE_OPTION_KEY );
+	}
+
+	#region -- Clean Database
 
 }

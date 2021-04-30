@@ -11,11 +11,11 @@ namespace TWRP\Database;
  *
  * phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
  */
-class Tabs_Cache_Table {
+class Tabs_Cache_Table implements Clean_Database {
 
 	const TABLE_NAME = 'twrp_widget_cache';
 
-	const CACHE_REFRESHED_TIMESTAMP_OPTION_NAME = 'twrp_cache_refreshed_timestamp';
+	const CACHE_REFRESHED_TIMESTAMP_OPTION_NAME = 'twrp__cache_refreshed_timestamp';
 
 	/**
 	 * Holds the table cache, to not be needed to query again the table.
@@ -404,5 +404,28 @@ class Tabs_Cache_Table {
 	}
 
 	#endregion -- Create cache table.
+
+	#region -- Clean Database and delete table.
+
+	public static function clean_database() {
+		delete_option( self::CACHE_REFRESHED_TIMESTAMP_OPTION_NAME );
+		self::delete_table();
+	}
+
+	/**
+	 * Delete the cache table.
+	 *
+	 * @return void
+	 */
+	public static function delete_table() {
+		global $wpdb;
+		$table_name = $wpdb->prefix . self::TABLE_NAME;
+
+		$sql = "DROP TABLE IF EXISTS $table_name";
+		// phpcs:ignore WordPress.DB.PreparedSQL, WordPress.DB.DirectDatabaseQuery
+		$wpdb->query( $sql );
+	}
+
+	#region -- Clean Database
 
 }

@@ -12,7 +12,7 @@ use RuntimeException;
  *
  * This class store the settings of the queries.
  */
-class Query_Options {
+class Query_Options implements Clean_Database {
 	const QUERIES_OPTION_KEY = 'twrp__post_queries';
 
 	/**
@@ -250,4 +250,13 @@ class Query_Options {
 
 		return false;
 	}
+
+	#region -- Clean Database
+
+	public static function clean_database() {
+		delete_option( self::QUERIES_OPTION_KEY );
+	}
+
+	#region -- Clean Database
+
 }

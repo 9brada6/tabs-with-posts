@@ -13,7 +13,7 @@ use TWRP\Database\Settings\General_Option_Setting;
  *   General_Option_Setting class.
  *   3. Add the value in get_default_settings() function.
  */
-class General_Options {
+class General_Options implements Clean_Database {
 
 	const SETTINGS_NAMESPACE = 'TWRP\\Database\\Settings\\';
 
@@ -398,5 +398,13 @@ class General_Options {
 
 		return $object->get_key_name();
 	}
+
+	#region -- Clean Database
+
+	public static function clean_database() {
+		delete_option( self::TABLE_OPTION_KEY );
+	}
+
+	#region -- Clean Database
 
 }
