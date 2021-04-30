@@ -52,7 +52,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-Add a way to clear the tables from this plugin.
+Bug when plugin is installed: cache won't refresh when widget/tabs query change.
+Bug when plugin is installed: table cache is not generated.
 
 - Move inline_icons_options to Aside options.
 - Make get_possible_options in General_Option_Setting and General_Option_Setting_classes to return as default an empty array.
@@ -90,9 +91,13 @@ disable admin privilege.
     - Add some photos.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 
+    General Settings:
+    - Say that all tables/settings are deleted when plugin is uninstalled.
+
     Cache:
     - Say how cache works, what plugin have been tested on.
     - Write in documentation what plugins are supported: WP Fastest Cache(By Emre Vona), Autoptimize(By Frank Goossens (futtta)), WP Super Cache(By Automattic), WP-Optimize(By David Anderson, Ruhani Rabin, Team Updraft), Hummingbird(By WPMU DEV), W3 Total Cache(By BoldGrid)
+    - Say that all tables/settings are deleted when plugin is uninstalled.
 
     CSS:
 
