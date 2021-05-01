@@ -59,8 +59,8 @@ class Create_Tabs_Cache {
 		add_action( 'twrp_after_update_tab_queries', array( static::class, 'cache_all_widgets_and_tabs' ) );
 
 		// When a plugin is activated/deactivated.
-		add_action( 'activated_plugin', array( static::class, 'cache_all_widgets_and_tabs' ) );
-		add_action( 'deactivated_plugin', array( static::class, 'cache_all_widgets_and_tabs' ) );
+		add_action( 'activated_plugin', array( static::class, 'any_plugin_activation_or_deactivation_refresh_cache' ) );
+		add_action( 'deactivated_plugin', array( static::class, 'any_plugin_activation_or_deactivation_refresh_cache' ) );
 
 		// When a plugin updated, or WordPress itself updated.
 		add_action( 'upgrader_process_complete', array( static::class, 'cache_all_widgets_and_tabs' ) );
@@ -73,6 +73,12 @@ class Create_Tabs_Cache {
 
 		// Refresh at ajax call.
 		add_action( 'wp_ajax_twrp_refresh_widget_cache', array( static::class, 'ajax_refresh_cache' ) );
+	}
+
+	public static function plugin_activated_refresh_cache() {
+		// We can't create cache here because is too late, but anyway delete the
+		// cache timestamp to refresh next time a page load.
+		Tabs_Cache_Table::delete_cache_timestamp();
 	}
 
 	/**
@@ -184,6 +190,21 @@ class Create_Tabs_Cache {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Refresh the cache when any plugin(except this plugin itself) is
+	 * activated or deactivated.
+	 *
+	 * This does not count silent activated, like when updating.
+	 *
+	 * @param string $plugin
+	 * @return void
+	 */
+	public static function any_plugin_activation_or_deactivation_refresh_cache( $plugin ) {
+		if ( strpos( $plugin, 'tabs-with-posts' ) === false ) {
+			self::cache_all_widgets_and_tabs();
+		}
 	}
 
 	/**

@@ -56,7 +56,9 @@ abstract class General_Option_Setting {
 	 *
 	 * @return array
 	 */
-	abstract public function get_possible_options();
+	public function get_possible_options() {
+		return array();
+	}
 
 	/**
 	 * Sanitize choices the strings.

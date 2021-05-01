@@ -28,11 +28,6 @@ class Accent_Color extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
-	}
 }
 
 /**
@@ -69,11 +64,6 @@ class Background_Color extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
-	}
 }
 
 /**
@@ -92,11 +82,6 @@ class Border_Color extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
-	}
 }
 
 /**
@@ -114,10 +99,6 @@ class Border_Radius extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		return array();
 	}
 
 }
@@ -232,10 +213,6 @@ class Darker_Accent_Color extends General_Option_Setting {
 		return $this->get_default_value();
 	}
 
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
-	}
 }
 
 /**
@@ -254,11 +231,6 @@ class Date_Format extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -294,11 +266,6 @@ class Disabled_Text_Color extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
 	}
 }
 
@@ -363,11 +330,6 @@ class Lighter_Accent_Color extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
-	}
 }
 
 /**
@@ -400,11 +362,6 @@ class No_Thumbnail_Image extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
 	}
 }
 
@@ -442,11 +399,6 @@ class Secondary_Background_Color extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
-	}
 }
 
 /**
@@ -464,11 +416,6 @@ class Secondary_Border_Color extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
 	}
 }
 
@@ -504,10 +451,6 @@ class Tab_Button_Size extends General_Option_Setting {
 		return $this->get_default_value();
 	}
 
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -525,11 +468,6 @@ class Text_Color extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		// Have a lot of possibilities.
-		return array();
 	}
 }
 
@@ -590,10 +528,6 @@ class Show_More_Posts_Text extends General_Option_Setting {
 		return $this->get_default_value();
 	}
 
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -611,10 +545,6 @@ class Post_No_Title_Text extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		return array();
 	}
 
 }
@@ -636,10 +566,6 @@ class Post_With_No_Thumbnail_Text extends General_Option_Setting {
 		return $this->get_default_value();
 	}
 
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -657,10 +583,6 @@ class Date_Relative_Text extends General_Option_Setting {
 		}
 
 		return $this->get_default_value();
-	}
-
-	public function get_possible_options() {
-		return array();
 	}
 
 }
@@ -683,10 +605,6 @@ class Fail_To_Load_Widget_Text extends General_Option_Setting {
 		return $this->get_default_value();
 	}
 
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 
@@ -706,10 +624,6 @@ class Aria_Author_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
 }
 
 /**
@@ -728,11 +642,6 @@ class Aria_Date_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -751,11 +660,6 @@ class Aria_Views_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -774,11 +678,6 @@ class Aria_Rating_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -797,11 +696,6 @@ class Aria_Category_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -820,11 +714,6 @@ class Aria_Comments_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -843,11 +732,6 @@ class Aria_Comments_Are_Disabled_Text extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 
@@ -868,10 +752,6 @@ class Abbreviation_For_Billions extends General_Option_Setting {
 		return $this->get_default_value();
 	}
 
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -890,11 +770,6 @@ class Abbreviation_For_Millions extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 /**
@@ -913,11 +788,6 @@ class Abbreviation_For_Thousands extends General_Option_Setting {
 
 		return $this->get_default_value();
 	}
-
-	public function get_possible_options() {
-		return array();
-	}
-
 }
 
 #endregion -- Translation settings.

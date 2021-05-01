@@ -361,6 +361,15 @@ class Tabs_Cache_Table implements Clean_Database {
 		update_option( self::CACHE_REFRESHED_TIMESTAMP_OPTION_NAME, $timestamp );
 	}
 
+	/**
+	 * Delete the global cache timestamp.
+	 *
+	 * @return void
+	 */
+	public static function delete_cache_timestamp() {
+		delete_option( self::CACHE_REFRESHED_TIMESTAMP_OPTION_NAME );
+	}
+
 	#endregion -- Manages global query timestamp
 
 	#region -- Create cache table.

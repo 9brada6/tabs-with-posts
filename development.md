@@ -52,7 +52,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-Bug when plugin is installed: table cache is not generated.
+- Change the name of the main file to tabs-with-posts.php
+- When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
 - Move inline_icons_options to Aside options.
 - Make get_possible_options in General_Option_Setting and General_Option_Setting_classes to return as default an empty array.
