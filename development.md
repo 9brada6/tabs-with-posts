@@ -52,23 +52,23 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Change the name of the main file to tabs-with-posts.php
+- ➕ Add support to sort by rating.
+
 - When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
-- Move inline_icons_options to Aside options.
-- Make get_possible_options in General_Option_Setting and General_Option_Setting_classes to return as default an empty array.
-
-Simple article: remove margin right of last meta from row.
+Simple article: remove margin right of last meta from row, and from YT style?.
 
 Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed. Also add a note to the documentation, where every setting is explained.
 
-- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message).
+- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - Make ajax show a "Loading..." text before loading widget.
 - Make ajax show a "Loading..." text in widget when selecting article block.
+
+- ### TODO Manual Tests
 
 - Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
@@ -151,7 +151,6 @@ disable admin privilege.
 - ➕ In query templates, when resetting settings, make hidden texts be reset to default 0.
 - ➕ Add a help button, and with a pop-out to document a setting if needed in General Settings Tab, also the document might be exactly as in documentation.
 - ➕ Add support for more plugins that support primary category.
-- ➕ Add support to sort by rating.
 - ➕ Try to speed up every plugin, by adding a static variable to hold an internal cache for each post id of average/sum_votes(especially the rating plugins).
 - ➕ Maybe try to test more YASR Rating Plugin? I didn't tested very good and maybe there is a very hard bug to find.
 - ➕ Maybe make the documentation and all the backend settings centered?(for ultra-wide monitors), or maybe only make centered on ultra-wide monitors.

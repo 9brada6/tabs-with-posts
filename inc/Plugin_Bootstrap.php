@@ -139,7 +139,6 @@ class Plugin_Bootstrap {
 		'Database/Query_Options',
 		'Database/General_Options',
 		'Database/Aside_Options',
-		'Database/Inline_Icons_Option',
 		'Database/Tabs_Cache_Table',
 
 		// Icons.
@@ -244,7 +243,7 @@ class Plugin_Bootstrap {
 		register_activation_hook( $main_file_path, array( Create_Tabs_Cache::class, 'plugin_activated_refresh_cache' ) );
 
 		// Delete all database when the plugin is uninstalled.
-		register_uninstall_hook( Directory_Utils::get_path_of_main_plugin_file(), array( Manage_Clean_Database::class, 'delete_all_plugin_database_entries' ) );
+		register_uninstall_hook( $main_file_path, array( Manage_Clean_Database::class, 'delete_all_plugin_database_entries' ) );
 	}
 
 	/**

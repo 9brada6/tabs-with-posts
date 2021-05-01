@@ -14,7 +14,7 @@ if ( \function_exists( 'xdebug_set_filter' ) ) {
 		\XDEBUG_FILTER_CODE_COVERAGE,
 		\XDEBUG_PATH_WHITELIST,
 		array(
-			'/var/www/html/wp-content/plugins/tabs-with-recommended-posts/inc/Icons/',
+			'/var/www/html/wp-content/plugins/tabs-with-posts/inc/Icons/',
 		)
 	);
 }
@@ -37,7 +37,7 @@ require_once $_tests_dir . '/includes/functions.php';
  * Manually load the plugin being tested.
  */
 function _manually_load_plugin() {
-	require dirname( dirname( __FILE__ ) ) . '/tabs-with-recommended-posts.php';
+	require dirname( dirname( __FILE__ ) ) . '/tabs-with-posts.php';
 }
 tests_add_filter( 'muplugins_loaded', '_manually_load_plugin' );
 

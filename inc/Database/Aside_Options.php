@@ -13,6 +13,8 @@ class Aside_Options implements Clean_Database {
 
 	const KEY__NEEDED_ICONS_GENERATION_TIME = 'needed_icons_generation_timestamp';
 
+	const KEY__NEEDED_ICONS_SVG = 'needed_icons_svg';
+
 	#region -- Needed Icons Generation Timestamp
 
 	/**
@@ -51,6 +53,48 @@ class Aside_Options implements Clean_Database {
 	}
 
 	#endregion -- Needed Icons Generation Timestamp
+
+	#region -- Save Icons SVG to Database
+
+	/**
+	 * Set the inline icons definitions.
+	 *
+	 * @param string $content
+	 * @return bool True if setting was updated, false otherwise.
+	 */
+	public static function set_inline_icons( $content ) {
+		$options = get_option( static::TABLE_OPTION_KEY, array() );
+		if ( ! is_array( $options ) ) {
+			$options = array();
+		}
+
+		$options[ self::KEY__NEEDED_ICONS_SVG ] = $content;
+
+		return update_option( self::TABLE_OPTION_KEY, $options );
+	}
+
+	/**
+	 * Get the inline icons definitions.
+	 *
+	 * @return string Return empty string if not set.
+	 */
+	public static function get_inline_icons() {
+		$options = get_option( self::TABLE_OPTION_KEY );
+
+		if ( ! is_array( $options ) || ! isset( $options[ self::KEY__NEEDED_ICONS_SVG ] ) ) {
+			return '';
+		}
+
+		$content = $options[ self::KEY__NEEDED_ICONS_SVG ];
+
+		if ( is_string( $content ) ) {
+			return $content;
+		}
+
+		return '';
+	}
+
+	#endregion -- Save Icons SVG to Database
 
 	#region -- Clean Database
 

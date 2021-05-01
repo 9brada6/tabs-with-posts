@@ -4,7 +4,6 @@ namespace TWRP\Enqueue_Scripts;
 
 use TWRP\Icons\Icon_Factory;
 use TWRP\Database\General_Options;
-use TWRP\Database\Inline_Icons_Option;
 use TWRP\Database\Aside_Options;
 
 use TWRP\Utils\Directory_Utils;
@@ -71,7 +70,7 @@ class Icons_CSS {
 	 * @return void
 	 */
 	public static function include_needed_icons_inline() {
-		$icon_definitions = wp_json_encode( Inline_Icons_Option::get_inline_icons() );
+		$icon_definitions = wp_json_encode( Aside_Options::get_inline_icons() );
 
 		if ( false === $icon_definitions ) {
 			return;
@@ -189,7 +188,7 @@ class Icons_CSS {
 	protected static function write_needed_icons_to_option_in_database() {
 		$html = self::get_defs_inline_needed_icons();
 		Aside_Options::set_icons_generation_timestamp_to_current_timestamp();
-		return Inline_Icons_Option::set_inline_icons( $html );
+		return Aside_Options::set_inline_icons( $html );
 	}
 
 	/**
