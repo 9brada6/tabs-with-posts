@@ -22,8 +22,13 @@
 
 		display: flex;
 		align-items: baseline;
+
+		.twrp-ss__meta:last-child {
+			margin-right: 0;
+		}
 	}
 
+	/* stylelint-disable-next-line */
 	&__meta {
 		@extend .twrp-reset-box;
 

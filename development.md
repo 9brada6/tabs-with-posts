@@ -56,17 +56,15 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
-Simple article: remove margin right of last meta from row, and from YT style?.
-
-Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
-disable admin privilege.
+- Make ajax show a "Loading..." text before loading widget.
+- Make ajax show a "Loading..." text in widget when selecting article block.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed. Also add a note to the documentation, where every setting is explained.
 
-- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
+- Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
+disable admin privilege.
 
-- Make ajax show a "Loading..." text before loading widget.
-- Make ajax show a "Loading..." text in widget when selecting article block.
+- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - ### TODO Manual Tests
 
@@ -98,6 +96,9 @@ disable admin privilege.
     - Say how cache works, what plugin have been tested on.
     - Write in documentation what plugins are supported: WP Fastest Cache(By Emre Vona), Autoptimize(By Frank Goossens (futtta)), WP Super Cache(By Automattic), WP-Optimize(By David Anderson, Ruhani Rabin, Team Updraft), Hummingbird(By WPMU DEV), W3 Total Cache(By BoldGrid)
     - Say that all tables/settings are deleted when plugin is uninstalled.
+
+    Query tabs:
+    - Say that there should be not any difference in displaying between an admin and an user, because if an admin enter the website, the cache can be saved and all the users will see it.
 
     CSS:
 
