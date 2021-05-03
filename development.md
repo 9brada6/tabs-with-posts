@@ -54,12 +54,15 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - ➕ Add support to sort by rating.
 
+- Modern style: add border-radius and background color to component settings.
+
+- Simple Style, add flex-shrink: 0 to all meta?
 - When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
 - Make ajax show a "Loading..." text before loading widget.
 - Make ajax show a "Loading..." text in widget when selecting article block.
 
-- In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed. Also add a note to the documentation, where every setting is explained.
+- In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
 
 - Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
@@ -69,6 +72,7 @@ disable admin privilege.
 - ### TODO Manual Tests
 
 - Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
+- Check if article block have image with meta locations.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 - Add in Manual tests, to test the cache with various plugins.
@@ -90,6 +94,7 @@ disable admin privilege.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 
     General Settings:
+    - Say that if a plugin to cache pages is used, then the page cache must be purged(deleted).
     - Say that all tables/settings are deleted when plugin is uninstalled.
 
     Cache:

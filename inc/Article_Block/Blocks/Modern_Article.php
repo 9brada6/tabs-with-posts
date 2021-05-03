@@ -3,17 +3,19 @@
 namespace TWRP\Article_Block\Blocks;
 
 use TWRP\Article_Block\Article_Block;
+use TWRP\Article_Block\Settings\Display_Meta;
 
 /**
  * The class that display a post in a style, that is named "Modern".
- *
- * The style consists of a title, a thumbnail, and the meta displayed over the
- * thumbnail, decreasing the space used, and drawing the attention to the meta
- * when viewing the image.
- *
- * @todo.
  */
 class Modern_Article extends Article_Block {
+
+	/**
+	 * Redeclare to make Phan not trigger an error.
+	 *
+	 * @var array
+	 */
+	protected $settings;
 
 	public static function get_class_order_among_siblings() {
 		return 100;
@@ -24,19 +26,110 @@ class Modern_Article extends Article_Block {
 	}
 
 	public static function get_name() {
-		return 'Modern Style';
+		return _x( 'Modern Style', 'backend', 'tabs-with-posts' );
 	}
 
 	public static function get_file_name() {
-		return 'modern-style';
+		return 'modern-style.php';
 	}
 
 	public function get_components() {
-		return array();
+		$components = array();
+
+		return $components;
 	}
 
 	public function get_artblock_settings() {
-		return array();
-	}
+		$query_settings = array();
 
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 1,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 2,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 3,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 4,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 5,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 6,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 7,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		$setting           = new Display_Meta(
+			$this->widget_id,
+			$this->query_id,
+			$this->settings,
+			array(
+				'instance' => 8,
+				'meta'     => 'all',
+			)
+		);
+		$query_settings [] = $setting;
+
+		return $query_settings;
+	}
 }

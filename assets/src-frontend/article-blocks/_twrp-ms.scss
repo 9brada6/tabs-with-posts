@@ -1,0 +1,126 @@
+.twrp-ms {
+	@include twrp-block-mixin;
+
+	@extend .twrp-reset-box;
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+
+	&__title {
+		@extend .twrp-reset-box;
+
+		position: relative;
+		margin-bottom: 0.35rem;
+		color: var(--twrp-text-color);
+	}
+
+	&__thumbnail-container {
+		@extend .twrp-reset-box;
+
+		position: relative;
+	}
+
+	/* stylelint-disable-next-line block-no-empty */
+	&__thumbnail-wrapper {}
+
+	/* stylelint-disable-next-line block-no-empty */
+	&__thumbnail {}
+
+	&__top-meta-wrapper {
+		@extend .twrp-reset-box;
+
+		position: absolute;
+		top: 0px;
+		right: 0px;
+		left: 0px;
+		display: flex;
+		align-items: baseline;
+		width: 100%;
+		padding: 8px;
+
+		.twrp-ms__meta {
+			display: block;
+			margin: 0;
+		}
+	}
+
+	&__top-left-meta, &__top-right-meta {
+		@extend .twrp-reset-box;
+
+		flex-shrink: 1;
+		padding: 2px 8px;
+		margin-right: 0.5rem;
+		overflow: hidden;
+		background-color: rgba(0,0,0,0.7);
+		border-radius: var(--twrp-border-radius);
+
+	}
+
+	&__top-right-meta {
+		flex-shrink: 0;
+		margin-right: 0;
+		margin-left: auto;
+	}
+
+	&__bot-meta-wrapper{
+		@extend .twrp-reset-box;
+
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		padding: 2px 8px;
+		background-color: rgba(0,0,0,0.7);
+		border-top-left-radius: var(--twrp-border-radius);
+		border-top-right-radius: var(--twrp-border-radius);
+	}
+
+	&__first-meta-wrapper,
+	&__second-meta-wrapper {
+		@extend .twrp-reset-box;
+
+		display: flex;
+		align-items: baseline;
+
+		.twrp-ms__meta:last-child {
+			margin-right: 0;
+		}
+	}
+
+	/* stylelint-disable-next-line */
+	&__meta {
+		@extend .twrp-reset-box;
+
+		display: inline-block;
+		flex-shrink: 0;
+		margin-right: 0.5rem;
+		overflow: hidden;
+		color: #eee;
+		white-space: nowrap;
+	}
+
+	&__author,
+	&__date,
+	&__category {
+		flex-shrink: 1;
+		text-overflow: ellipsis;
+	}
+
+	// Hover, Focus state
+	&__link {
+		@extend .twrp-reset-box;
+		@extend .twrp-reset-anchor;
+
+		margin-top: auto;
+
+		&:hover,
+		&:focus {
+			.twrp-ms__title {
+				color: var(--twrp-accent-color);
+			}
+		}
+	}
+}

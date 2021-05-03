@@ -56,6 +56,7 @@ body:not(#twrpS) {
 	@import 'article-blocks/twrp-block-mixin';
 	@import 'article-blocks/twrp-ss';
 	@import 'article-blocks/twrp-ys';
+	@import 'article-blocks/twrp-ms';
 
 	// Import other helping classes.
 	@import 'main-framework/twrp-main';
