@@ -5,7 +5,7 @@ if ( ! isset( $artblock ) ) {
 }
 
 $additional_excerpt_class = '';
-if ( $artblock->excerpt_is_displayed() ) {
+if ( $artblock->excerpt_exist_and_is_displayed() ) {
 	$additional_excerpt_class = ' twrp-ms__excerpt-on-hover';
 }
 
@@ -21,7 +21,7 @@ if ( $artblock->excerpt_is_displayed() ) {
 			<?php $artblock->display_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ms__thumbnail' ) ); ?>
 		</div>
 
-		<?php if ( $artblock->excerpt_is_displayed() ) : ?>
+		<?php if ( $artblock->excerpt_exist_and_is_displayed() ) : ?>
 			<div class="twrp-ms__excerpt-container">
 				<div class="twrp-ms__excerpt">
 					<?php $artblock->display_the_excerpt(); ?>

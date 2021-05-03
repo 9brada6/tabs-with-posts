@@ -122,6 +122,7 @@ class Plugin_Bootstrap {
 		'Article_Block/Settings/Artblock_Setting',
 		'Article_Block/Settings/Display_Meta',
 		'Article_Block/Settings/Display_Post_Thumbnail_Setting',
+		'Article_Block/Settings/Display_Post_Excerpt_Setting',
 
 		'Article_Block/Blocks/Simple_Article',
 		'Article_Block/Blocks/Youtube_Article',

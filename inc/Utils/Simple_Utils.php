@@ -213,7 +213,7 @@ class Simple_Utils {
 	/**
 	 * Cut a string intelligently at the closest word of length if possible.
 	 *
-	 * The length should be bigger than 10. The string returned can be bigger
+	 * The length should be bigger than 20. The string returned can be bigger
 	 * than the length by 4, or less than the length.
 	 *
 	 * @param string $string The string to be cut.
@@ -241,6 +241,10 @@ class Simple_Utils {
 
 		if ( '.' === $last_char || ',' === $last_char ) {
 			$string = substr( $string, 0, -1 );
+		}
+
+		if ( strpos( $string, '&hellip;', strlen( $string ) - 13 ) || strpos( $string, '...', strlen( $string ) - 6 ) ) {
+			return $string;
 		}
 
 		return $string . $ellipses;

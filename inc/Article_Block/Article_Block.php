@@ -383,14 +383,35 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 */
 	public function thumbnail_exist_and_displayed() {
 		$display_thumbnail = isset( $this->settings['display_post_thumbnail'] ) && $this->settings['display_post_thumbnail'];
-		$thumbnail_exist   = has_post_thumbnail();
+		if ( false === $display_thumbnail ) {
+			return false;
+		}
 
-		return $display_thumbnail && $thumbnail_exist;
+		return has_post_thumbnail();
 	}
 
+	/**
+	 * Whether or not the excerpt must be displayed in the article.
+	 *
+	 * @return bool
+	 */
 	public function excerpt_is_displayed() {
-		// todo.
-		return true;
+		return isset( $this->settings['display_post_excerpt'] ) && $this->settings['display_post_excerpt'];
+	}
+
+	/**
+	 * Whether or not the excerpt is displayed in the article and also is not
+	 * empty.
+	 *
+	 * @return bool
+	 */
+	public function excerpt_exist_and_is_displayed() {
+		$is_displayed = $this->excerpt_is_displayed();
+		if ( false === $is_displayed ) {
+			return false;
+		}
+
+		return ( ! empty( trim( $this->get_the_excerpt() ) ) );
 	}
 
 	/**
