@@ -4,6 +4,11 @@ if ( ! isset( $artblock ) ) {
 	return;
 }
 
+$additional_excerpt_class = '';
+if ( $artblock->excerpt_is_displayed() ) {
+	$additional_excerpt_class = ' twrp-ms__excerpt-on-hover';
+}
+
 ?>
 
 <article class="twrp-ms twrp-block <?php $artblock->the_block_class(); ?>">
@@ -11,10 +16,18 @@ if ( ! isset( $artblock ) ) {
 		<?php $artblock->the_title( '<h3 class="twrp-ms__title">', '</h3>' ); ?>
 	</a>
 
-	<div class="twrp-ms__thumbnail-container">
+	<div class="twrp-ms__thumbnail-container<?= esc_attr( $additional_excerpt_class ); ?>">
 		<div class="twrp-thumbnail-wrapper twrp-ms__thumbnail-wrapper">
 			<?php $artblock->display_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ms__thumbnail' ) ); ?>
 		</div>
+
+		<?php if ( $artblock->excerpt_is_displayed() ) : ?>
+			<div class="twrp-ms__excerpt-container">
+				<div class="twrp-ms__excerpt">
+					<?php $artblock->display_the_excerpt(); ?>
+				</div>
+			</div>
+		<?php endif; ?>
 
 		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 7, 8 ) ) ) : ?>
 			<div class="twrp-ms__top-meta-wrapper">

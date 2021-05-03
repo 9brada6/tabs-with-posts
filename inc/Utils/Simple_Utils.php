@@ -211,6 +211,42 @@ class Simple_Utils {
 	}
 
 	/**
+	 * Cut a string intelligently at the closest word of length if possible.
+	 *
+	 * The length should be bigger than 10. The string returned can be bigger
+	 * than the length by 4, or less than the length.
+	 *
+	 * @param string $string The string to be cut.
+	 * @param int $length
+	 * @param string $ellipses
+	 * @return string
+	 */
+	public static function cut_string_at_closest_length( $string, $length, $ellipses ) {
+		$string_length = strlen( $string );
+		if ( $string_length <= $length + 4 ) {
+			return $string;
+		}
+
+		$string = substr( $string, 0, $length + 3 );
+
+		$last_word = strpos( $string, ' ', $length - 3 );
+
+		if ( is_int( $last_word ) && $last_word > $length - 4 ) {
+			$string = substr( $string, 0, $last_word );
+		} else {
+			$string = substr( $string, 0, $length );
+		}
+
+		$last_char = substr( $string, -1 );
+
+		if ( '.' === $last_char || ',' === $last_char ) {
+			$string = substr( $string, 0, -1 );
+		}
+
+		return $string . $ellipses;
+	}
+
+	/**
 	 * Return an array with safe allowed html, to pass to kses functions.
 	 *
 	 * Usually used with translations, where is a need for html.

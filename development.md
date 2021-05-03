@@ -54,6 +54,10 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - ➕ Add support to sort by rating.
 
+- Add at the excerpt component, how many lines to show.
+
+- Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
+- Finish Modern style.
 - Modern style: add border-radius and background color to component settings.
 
 - Simple Style, add flex-shrink: 0 to all meta?
