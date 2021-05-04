@@ -956,7 +956,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @param WP_Post|int|null $post_or_post_id Defaults to global post.
 	 * @return void
 	 */
-	public function display_the_excerpt( $length = 300, $post_or_post_id = null ) {
+	public function display_the_excerpt( $length = 320, $post_or_post_id = null ) {
 		$excerpt = $this->get_the_excerpt( $length, $post_or_post_id );
 		echo esc_html( $excerpt );
 	}
@@ -969,13 +969,14 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @param WP_Post|int|null $post_or_post_id Defaults to global post.
 	 * @return string
 	 */
-	public function get_the_excerpt( $length = 300, $post_or_post_id = null ) {
+	public function get_the_excerpt( $length = 320, $post_or_post_id = null ) {
 		$excerpt = get_the_excerpt( $post_or_post_id );
 		$excerpt = wp_strip_all_tags( str_replace( '&nbsp;', ' ', $excerpt ) );
 
 		$excerpt = apply_filters( 'twrp_get_excerpt_before_cut', $excerpt );
 		$excerpt = Simple_Utils::cut_string_at_closest_length( $excerpt, $length, '&hellip;' );
-		$excerpt = apply_filters( 'twrp_get_excerpt_after_cut', $excerpt );
+
+		$excerpt = apply_filters( 'twrp_get_excerpt', $excerpt );
 		return $excerpt;
 	}
 

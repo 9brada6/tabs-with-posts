@@ -52,15 +52,16 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- ➕ Add support to sort by rating.
-
-- Add at the excerpt component, how many lines to show.
-
-- Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
-- Finish Modern style.
-- Modern style: add border-radius and background color to component settings.
+- When cutting the excerpt, remove &helli... from the ending if present.
 
 - Simple Style, add flex-shrink: 0 to all meta?
+- Find a way to flex shrink only one big meta?
+
+- Finish Modern style.
+
+- ➕ Add support to sort by rating.
+- Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
+
 - When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
 - Make ajax show a "Loading..." text before loading widget.

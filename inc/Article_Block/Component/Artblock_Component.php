@@ -18,18 +18,22 @@ class Artblock_Component {
 
 	const COMPONENTS_NAMESPACE_PREFIX = __NAMESPACE__;
 
-	const FLEX_ORDER_SETTING            = 'Flex_Order_Setting';
-	const TITLE_FONT_SIZE_SETTING       = 'Title_Font_Size_Setting';
-	const META_FONT_SIZE_SETTING        = 'Meta_Font_Size_Setting';
-	const FONT_SIZE_SETTING             = 'Font_Size_Setting';
-	const LINE_HEIGHT_SETTING           = 'Line_Height_Setting';
-	const FONT_WEIGHT_SETTING           = 'Font_Weight_Setting';
-	const TEXT_DECORATION_SETTING       = 'Text_Decoration_Setting';
-	const COLOR_SETTING                 = 'Color_Setting';
-	const HOVER_TEXT_DECORATION_SETTING = 'Hover_Text_Decoration_Setting';
-	const HOVER_COLOR_SETTING           = 'Hover_Color_Setting';
+	const FLEX_ORDER_SETTING             = 'Flex_Order_Setting';
+	const TITLE_FONT_SIZE_SETTING        = 'Title_Font_Size_Setting';
+	const META_FONT_SIZE_SETTING         = 'Meta_Font_Size_Setting';
+	const FONT_SIZE_SETTING              = 'Font_Size_Setting';
+	const BORDER_RADIUS_SETTING          = 'Border_Radius_Setting';
+	const LINE_HEIGHT_SETTING            = 'Line_Height_Setting';
+	const FONT_WEIGHT_SETTING            = 'Font_Weight_Setting';
+	const TEXT_DECORATION_SETTING        = 'Text_Decoration_Setting';
+	const COLOR_SETTING                  = 'Color_Setting';
+	const BACKGROUND_COLOR_SETTING       = 'Background_Color_Setting';
+	const HOVER_TEXT_DECORATION_SETTING  = 'Hover_Text_Decoration_Setting';
+	const HOVER_COLOR_SETTING            = 'Hover_Color_Setting';
+	const HOVER_BACKGROUND_COLOR_SETTING = 'Hover_Background_Color_Setting';
+	const MAXIMUM_EXCERPT_LINES_SETTING  = 'Maximum_Excerpt_Lines_Setting';
 
-	const YOUTUBE_STYLE_THUMBNAIL_WIDTH          = 'Youtube_Style_Thumbnail_Width';
+	const YOUTUBE_STYLE_THUMBNAIL_WIDTH = 'Youtube_Style_Thumbnail_Width';
 
 	/**
 	 * The name of the component. It should be as something unique, will appear
@@ -194,7 +198,7 @@ class Artblock_Component {
 
 			$component_css = '';
 			foreach ( $components as $component ) {
-				if ( isset( $this->settings[ $component->get_key_name() ] ) && ( ! empty( $this->settings[ $component->get_key_name() ] ) ) ) {
+				if ( isset( $this->settings[ $component->get_key_name() ] ) && '' !== $this->settings[ $component->get_key_name() ] ) {
 					$value          = $this->settings[ $component->get_key_name() ];
 					$component_css .= $component->get_css( $value );
 				}
