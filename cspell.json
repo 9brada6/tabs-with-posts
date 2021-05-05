@@ -99,6 +99,7 @@
         "pickr",
         "postcount",
         "postdata",
+        "postmeta",
         "postnum",
         "postratings",
         "postviews",

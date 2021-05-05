@@ -101,4 +101,12 @@ class KK_Rating_Plugin extends Post_Rating_Plugin {
 
 	#endregion -- Get Ratings.
 
+	#region -- Modify the query argument to order posts.
+
+	public function modify_query_arg_if_necessary( $query_args ) {
+		return $query_args;
+	}
+
+	#endregion -- Modify the query argument to order posts.
+
 }

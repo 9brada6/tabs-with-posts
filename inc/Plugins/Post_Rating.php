@@ -5,6 +5,7 @@ namespace TWRP\Plugins;
 use TWRP\Plugins\Known_Plugins\Post_Rating_Plugin;
 
 use TWRP\Utils\Class_Retriever_Utils;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use TWRP\Utils\Simple_Utils;
 
 use WP_Post;
@@ -19,6 +20,10 @@ use WP_Post;
  * order of importance or preference.
  */
 class Post_Rating {
+
+	const ORDERBY_RATING_OPTION_KEY = 'twrp_post_rating_order';
+
+	use After_Setup_Theme_Init_Trait;
 
 	/**
 	 * Holds an array with an object of each plugin class.
@@ -119,6 +124,58 @@ class Post_Rating {
 
 		$post_rating_num = $plugin_class->get_rating_count( $post_id );
 		return $post_rating_num;
+	}
+
+	/**
+	 * Add filters/actions necessary for this class to work. See
+	 * After_Setup_Theme_Init_Trait for more info.
+	 *
+	 * @return void
+	 */
+	public static function after_setup_theme_init() {
+		add_filter( 'twrp_post_first_orderby_select_options', array( self::class, 'add_orderby_rating_option' ) );
+		add_filter( 'twrp_get_query_arguments_created', array( self::class, 'modify_query_arg_if_necessary' ), 3 );
+	}
+
+	/**
+	 * Given an array with WP_Query args return the new WP_Query args that will
+	 * have the parameters added to order by the rating plugin selected.
+	 *
+	 * @param array $query_args The normal WP_Query args, only that
+	 * ORDERBY_RATING_OPTION_KEY appears as a key in 'orderby' parameter.
+	 * @return array
+	 */
+	public static function modify_query_arg_if_necessary( $query_args ) {
+		$plugin_class = self::get_plugin_to_use();
+		if ( false === $plugin_class ) {
+			return $query_args;
+		}
+
+		$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
+		return $query_args;
+	}
+
+	/**
+	 * Function used to register the rating as an orderby option in the query.
+	 *
+	 * @param array $orderby_options
+	 * @return array
+	 */
+	public static function add_orderby_rating_option( $orderby_options ) {
+		$plugin_installed = ( self::get_plugin_to_use() === false ? false : true );
+
+		$not_installed_message = '';
+		if ( ! $plugin_installed ) {
+			$not_installed_message = _x( 'Plugin not installed', 'backend', 'tabs-with-posts' );
+		}
+
+		$text = _x( 'Order by rating', 'backend', 'tabs-with-posts' );
+		if ( ! empty( $not_installed_message ) ) {
+			$text = $text . '(' . $not_installed_message . ')';
+		}
+
+		$orderby_options[ self::ORDERBY_RATING_OPTION_KEY ] = $text;
+		return $orderby_options;
 	}
 
 }

@@ -52,7 +52,10 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- ➕ Add support to sort by rating.
+- Add support to sort by rating to other 3 rating plugins.
+- Add armonic rating? supported by: Blazk plugin.
+- Add most voted? supported by: Blazk plugin.
+
 - Add a new template to sort by rating.
 - Add query-name to template.
 
@@ -174,3 +177,4 @@ disable admin privilege.
 - ➕ On widget refresh cache, after the success dispatch, say a message when the cache has been successfully created.
 - ➕ Test Redis object caching.
 - ➕ In the script that generates the .POT file, do not override previous translations?
+- Add more rating icons, like trophies, smiles, thumbs.

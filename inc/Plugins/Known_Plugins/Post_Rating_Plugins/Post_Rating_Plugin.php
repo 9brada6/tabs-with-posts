@@ -36,4 +36,15 @@ abstract class Post_Rating_Plugin extends Known_Plugin implements Class_Children
 	 */
 	abstract public function get_rating_count( $post_id );
 
+	/**
+	 * Given an array with WP_Query args with 'orderby' of type array and a
+	 * custom orderby key. Return the new WP_Query args that will have the
+	 * parameters modified, to retrieve the posts in order of the rating.
+	 *
+	 * @param array $query_args The normal WP_Query args, only that a new key
+	 * will appear as a key in 'orderby' parameter.
+	 * @return array
+	 */
+	abstract public function modify_query_arg_if_necessary( $query_args );
+
 }

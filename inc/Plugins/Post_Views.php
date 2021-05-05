@@ -103,11 +103,22 @@ class Post_Views {
 	}
 
 	/**
+	 * Add filters/actions necessary for this class to work. See
+	 * After_Setup_Theme_Init_Trait for more info.
+	 *
+	 * @return void
+	 */
+	public static function after_setup_theme_init() {
+		add_filter( 'twrp_post_first_orderby_select_options', array( self::class, 'add_orderby_views_option' ) );
+		add_filter( 'twrp_get_query_arguments_created', array( self::class, 'modify_query_arg_if_necessary' ), 3 );
+	}
+
+	/**
 	 * Given an array with WP_Query args return the new WP_Query args that will
 	 * have the parameters added to order by the views plugin selected.
 	 *
-	 * @param array $query_args The normal WP_Query args, only that 'post_views'
-	 * appears as a key in 'orderby' parameter.
+	 * @param array $query_args The normal WP_Query args, only that
+	 * ORDERBY_VIEWS_OPTION_KEY appears as a key in 'orderby' parameter.
 	 * @return array
 	 */
 	public static function modify_query_arg_if_necessary( $query_args ) {
@@ -118,17 +129,6 @@ class Post_Views {
 
 		$query_args = $plugin_class->modify_query_arg_if_necessary( $query_args );
 		return $query_args;
-	}
-
-	/**
-	 * Add filters/actions necessary for this class to work. See
-	 * After_Setup_Theme_Init_Trait for more info.
-	 *
-	 * @return void
-	 */
-	public static function after_setup_theme_init() {
-		add_filter( 'twrp_post_first_orderby_select_options', array( self::class, 'add_orderby_views_option' ) );
-		add_filter( 'twrp_get_query_arguments_created', array( self::class, 'modify_query_arg_if_necessary' ), 3 );
 	}
 
 	/**
