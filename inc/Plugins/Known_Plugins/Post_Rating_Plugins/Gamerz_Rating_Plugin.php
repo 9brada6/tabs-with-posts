@@ -2,6 +2,7 @@
 
 namespace TWRP\Plugins\Known_Plugins;
 
+use TWRP\Plugins\Post_Rating;
 use TWRP\Utils\Simple_Utils;
 
 /**
@@ -95,6 +96,23 @@ class Gamerz_Rating_Plugin extends Post_Rating_Plugin {
 	#region -- Modify the query argument to order posts.
 
 	public function modify_query_arg_if_necessary( $query_args ) {
+		$orderby_value = Post_Rating::ORDERBY_RATING_OPTION_KEY;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
+			return $query_args;
+		}
+
+		$orderby     = $query_args['orderby'];
+		$new_orderby = array();
+		foreach ( $orderby as $key => $value ) {
+			if ( Post_Rating::ORDERBY_RATING_OPTION_KEY === $key ) {
+				$new_orderby['meta_value_num'] = $value;
+			} else {
+				$new_orderby[ $key ] = $value;
+			}
+		}
+		$query_args['orderby']  = $new_orderby;
+		$query_args['meta_key'] = 'ratings_average'; // phpcs:ignore WordPress.DB.SlowDBQuery
+
 		return $query_args;
 	}
 

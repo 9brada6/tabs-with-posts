@@ -52,12 +52,19 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Add support to sort by rating to other 3 rating plugins.
-- Add armonic rating? supported by: Blazk plugin.
-- Add most voted? supported by: Blazk plugin.
+- Rating:
+- Add support to sort by rating to other 2 rating plugins.
+Rating implemented: Average(BlazK, GamerZ), Armonic(), Counts().
+
+-Plugin to test previus versions: Blazk(average, armonic, most voted), Gamerz(average, armonic, most voted)
+
+- Add armonic rating? supported by: Blazk plugin, Gamerz.
+- Add most voted? supported by: Blazk plugin, Gamerz.
 
 - Add a new template to sort by rating.
 - Add query-name to template.
+
+- ------------------------------------------------------------------------------
 
 - Find a way to flex shrink only one big meta?
 - Check YT style for flex shrink of meta.
@@ -71,6 +78,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - Make ajax show a "Loading..." text in widget when selecting article block.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
+
+- Bug: If after a query, no posts are returned(article blocks are not created), then the cache is not updated.
 
 - Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
