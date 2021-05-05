@@ -33,6 +33,7 @@
 		@extend .twrp-reset-box;
 
 		display: inline-block;
+		flex-shrink: 0;
 		margin-right: 0.5rem;
 		overflow: hidden;
 		white-space: nowrap;

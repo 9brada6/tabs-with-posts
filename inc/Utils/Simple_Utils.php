@@ -247,6 +247,12 @@ class Simple_Utils {
 			return $string;
 		}
 
+		// remove chunks of &hellip;.
+		$possible_hellip_start = strpos( $string, '&', strlen( $string ) - 7 );
+		if ( $possible_hellip_start ) {
+			$string = substr( $string, 0, $possible_hellip_start );
+		}
+
 		return $string . $ellipses;
 	}
 

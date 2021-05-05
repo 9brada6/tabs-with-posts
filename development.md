@@ -52,19 +52,19 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- When cutting the excerpt, remove &helli... from the ending if present.
+- ➕ Add support to sort by rating.
+- Add a new template to sort by rating.
+- Add query-name to template.
 
-- Simple Style, add flex-shrink: 0 to all meta?
 - Find a way to flex shrink only one big meta?
-
+- Check YT style for flex shrink of meta.
 - Finish Modern style.
 
-- ➕ Add support to sort by rating.
 - Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 
 - When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
-- Make ajax show a "Loading..." text before loading widget.
+- Make ajax show a "Loading..." text before loading widget, and before adding a tab.
 - Make ajax show a "Loading..." text in widget when selecting article block.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
