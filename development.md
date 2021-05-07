@@ -53,14 +53,18 @@ can be dangerous, because an admin can generate a cache that should not be visib
 ## ✅ Todo
 
 - Rating:
-- Add support to sort by rating to other 2 rating plugins.
-Rating implemented: Average(BlazK, GamerZ), Armonic(), Counts().
+- Need to implement order by counts in the YASR plugin.
 
--Plugin to test previus versions: Blazk(average, armonic, most voted), Gamerz(average, armonic, most voted)
+- Plugin tested: BlazK, KK
+- Plugin to test previous versions: Gamerz(average, most voted), YASR(average, most voted)
 
-- Add armonic rating? supported by: Blazk plugin, Gamerz.
-- Add most voted? supported by: Blazk plugin, Gamerz.
+- Check if YASR table name constants are defined first.
 
+- ------------------------------------------------------------------------------
+
+- Tab Queries:
+- Add a way to check if a query needs external plugin, and to check if external plugin needed is installed.
+- Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
 - Add a new template to sort by rating.
 - Add query-name to template.
 
@@ -69,6 +73,8 @@ Rating implemented: Average(BlazK, GamerZ), Armonic(), Counts().
 - Find a way to flex shrink only one big meta?
 - Check YT style for flex shrink of meta.
 - Finish Modern style.
+
+- ------------------------------------------------------------------------------
 
 - Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 
@@ -85,6 +91,8 @@ Rating implemented: Average(BlazK, GamerZ), Armonic(), Counts().
 disable admin privilege.
 
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
+
+- Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 
 - ### TODO Manual Tests
 
@@ -147,6 +155,7 @@ disable admin privilege.
     Plugins:
 
     - Say how YASR rating plugin setting works, and also put a link from settings.
+    - Say that YASR performance sucks when using to order by this plugin.(maybe say that also in settings).
     - Write in documentation that GamerZ like/dislike system is not working.
 
     Cache: Say how it works, and why is good to be enabled.
@@ -185,5 +194,6 @@ disable admin privilege.
 - ➕ Improve browser compatibility.
 - ➕ On widget refresh cache, after the success dispatch, say a message when the cache has been successfully created.
 - ➕ Test Redis object caching.
+- ➕ In the settings, add a notice that says that the caching is not enabled, and is recommended to be enabled.
 - ➕ In the script that generates the .POT file, do not override previous translations?
 - Add more rating icons, like trophies, smiles, thumbs.

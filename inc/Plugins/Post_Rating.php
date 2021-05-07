@@ -23,6 +23,8 @@ class Post_Rating {
 
 	const ORDERBY_RATING_OPTION_KEY = 'twrp_post_rating_order';
 
+	const ORDERBY_RATING_COUNT_OPTION_KEY = 'twrp_post_rating_count_order';
+
 	use After_Setup_Theme_Init_Trait;
 
 	/**
@@ -175,6 +177,12 @@ class Post_Rating {
 		}
 
 		$orderby_options[ self::ORDERBY_RATING_OPTION_KEY ] = $text;
+
+		$text = _x( 'Order by rating count', 'backend', 'tabs-with-posts' );
+		if ( ! empty( $not_installed_message ) ) {
+			$text = $text . '(' . $not_installed_message . ')';
+		}
+		$orderby_options[ self::ORDERBY_RATING_COUNT_OPTION_KEY ] = $text;
 		return $orderby_options;
 	}
 

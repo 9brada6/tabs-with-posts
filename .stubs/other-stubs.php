@@ -40,6 +40,8 @@ namespace {
 	// For YASR Plugin:
 	const YASR_LOG_MULTI_SET = 'Some Value';
 
+	const YASR_LOG_TABLE = 'Some Value';
+
 	const ARRAY_A = 'Some Value';
 
 	class YasrDatabaseRatings {

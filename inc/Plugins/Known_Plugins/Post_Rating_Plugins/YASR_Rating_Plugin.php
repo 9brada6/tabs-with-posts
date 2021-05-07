@@ -4,8 +4,11 @@ namespace TWRP\Plugins\Known_Plugins;
 
 use Exception;
 use TWRP\Database\General_Options;
+use TWRP\Plugins\Post_Rating;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 use YasrDatabaseRatings;
 use TWRP\Utils\Simple_Utils;
+use WP_Query;
 use YasrMultiSetData;
 
 /**
@@ -250,9 +253,178 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 	#region -- Modify the query argument to order posts.
 
 	public function modify_query_arg_if_necessary( $query_args ) {
+		$orderby_value = Post_Rating::ORDERBY_RATING_OPTION_KEY;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
+			return $query_args;
+		}
+
+		$yasr_rating_type = General_Options::get_option( General_Options::YASR_RATING_TYPE );
+
+		if ( 'overall' === $yasr_rating_type ) {
+			$orderby     = $query_args['orderby'];
+			$new_orderby = array();
+			foreach ( $orderby as $key => $value ) {
+				if ( Post_Rating::ORDERBY_RATING_OPTION_KEY === $key ) {
+					$new_orderby['meta_value_num'] = $value;
+				} else {
+					$new_orderby[ $key ] = $value;
+				}
+			}
+			$query_args['orderby']  = $new_orderby;
+			$query_args['meta_key'] = 'yasr_overall_rating'; // phpcs:ignore WordPress.DB.SlowDBQuery
+
+			return $query_args;
+		}
+
+		if ( 'visitors' === $yasr_rating_type ) {
+			$query_args['twrp_order_by_yasr_average_visitors'] = true;
+			$query_args['suppress_filters']                    = false;
+
+			return $query_args;
+		}
+
+		if ( 'multi_set_overall' === $yasr_rating_type ) {
+			$orderby     = $query_args['orderby'];
+			$new_orderby = array();
+			foreach ( $orderby as $key => $value ) {
+				if ( Post_Rating::ORDERBY_RATING_OPTION_KEY === $key ) {
+					$new_orderby['meta_value_num'] = $value;
+				} else {
+					$new_orderby[ $key ] = $value;
+				}
+			}
+			$query_args['orderby']  = $new_orderby;
+			$query_args['meta_key'] = 'yasr_multiset_author_votes'; // phpcs:ignore WordPress.DB.SlowDBQuery
+
+			return $query_args;
+		}
+
+		if ( 'multi_set_visitors' === $yasr_rating_type ) {
+			$query_args['twrp_order_by_yasr_average_multiset_visitors'] = true;
+			$query_args['suppress_filters']                             = false;
+
+			return $query_args;
+		}
+
 		return $query_args;
 	}
 
 	#endregion -- Modify the query argument to order posts.
+
+	#region -- Order by average Query Hooks.
+
+	use After_Setup_Theme_Init_Trait;
+
+	public static function after_setup_theme_init() {
+		add_filter(
+			'twrp_before_getting_query',
+			/**
+			 * Added some filters that can order posts by this plugin views.
+			 *
+			 * @param array $query_args
+			 * @return array
+			*/
+			function( $query_args ) {
+				add_filter( 'posts_join', array( self::class, 'add_posts_query_join_table' ), 10, 2 );
+				add_filter( 'posts_orderby', array( self::class, 'add_query_posts_orderby_rating' ), 10, 2 );
+				return $query_args;
+			}
+		);
+
+		add_filter(
+			'twrp_after_getting_posts_filter',
+			/**
+			 * Remove the filters installed.
+			 *
+			 * @param array $query_args
+			 * @return array
+			*/
+			function( $query_args ) {
+				remove_filter( 'posts_join', array( self::class, 'add_posts_query_join_table' ) );
+				remove_filter( 'posts_orderby', array( self::class, 'add_query_posts_orderby_rating' ) );
+				return $query_args;
+			}
+		);
+	}
+
+	/**
+	 * Filter that joins 2 sql tables if needed to order by this plugin rating.
+	 *
+	 * @param string $join
+	 * @param WP_Query $wp_query
+	 * @return string
+	 *
+	 * @psalm-suppress DocblockTypeContradiction
+	 */
+	public static function add_posts_query_join_table( $join, $wp_query ) {
+		global $wpdb;
+
+		$query_array = $wp_query->query;
+		if ( ! is_array( $query_array ) ) {
+			return $join;
+		}
+
+		if ( array_key_exists( 'twrp_order_by_yasr_average_visitors', $query_array ) ) {
+			$wp_posts_table = $wpdb->posts;
+			$yasr_log_table = YASR_LOG_TABLE;
+			$join          .= "INNER JOIN (SELECT post_id as twrp_avg_post_id, SUM(vote)/COUNT(vote) as twrp_avg_vote FROM $yasr_log_table WHERE vote > 0 AND vote <= 5 GROUP BY post_id) as twrp_avg_rating_table ON twrp_avg_rating_table.twrp_avg_post_id = $wp_posts_table.ID";
+		}
+
+		if ( array_key_exists( 'twrp_order_by_yasr_average_multiset_visitors', $query_array ) ) {
+			$wp_posts_table = $wpdb->posts;
+			$yasr_log_table = YASR_LOG_MULTI_SET;
+			$join          .= "INNER JOIN (SELECT post_id as twrp_avg_post_id, SUM(vote)/COUNT(vote) as twrp_avg_vote FROM $yasr_log_table WHERE vote > 0 AND vote <= 5 GROUP BY post_id) as twrp_avg_rating_table ON twrp_avg_rating_table.twrp_avg_post_id = $wp_posts_table.ID";
+		}
+
+		return $join;
+	}
+
+	/**
+	 * Filter function that adds to the query how to order by views stored by
+	 * this plugin, if necessary.
+	 *
+	 * @param string $orderby
+	 * @param WP_Query $wp_query
+	 * @return string
+	 *
+	 * @psalm-suppress DocblockTypeContradiction
+	 */
+	public static function add_query_posts_orderby_rating( $orderby, $wp_query ) {
+		$orderby_value = Post_Rating::ORDERBY_RATING_OPTION_KEY;
+
+		$query_array = $wp_query->query;
+		if ( ! is_array( $query_array ) ) {
+			return $orderby;
+		}
+
+		if ( array_key_exists( 'twrp_order_by_yasr_average_visitors', $query_array ) ) {
+			$order = 'DESC';
+			if ( isset( $query_array['orderby'], $query_array['orderby'][ $orderby_value ] ) ) {
+				$order = $query_array['orderby'][ $orderby_value ];
+			}
+
+			if ( ! empty( $orderby ) ) {
+				$orderby = ', ' . $orderby;
+			}
+
+			$orderby = 'twrp_avg_rating_table.twrp_avg_vote ' . $order . $orderby;
+		}
+
+		if ( array_key_exists( 'twrp_order_by_yasr_average_multiset_visitors', $query_array ) ) {
+			$order = 'DESC';
+			if ( isset( $query_array['orderby'], $query_array['orderby'][ $orderby_value ] ) ) {
+				$order = $query_array['orderby'][ $orderby_value ];
+			}
+
+			if ( ! empty( $orderby ) ) {
+				$orderby = ', ' . $orderby;
+			}
+
+			$orderby = 'twrp_avg_rating_table.twrp_avg_vote ' . $order . $orderby;
+		}
+		return $orderby;
+	}
+
+	#endregion -- Order by average Query Hooks.
 
 }

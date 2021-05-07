@@ -32,7 +32,7 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 	}
 
 	public function get_tested_plugin_versions() {
-		return '2.5.0 - 3.3.1';
+		return '2.5.0 - 3.3.2';
 	}
 
 	public function get_plugin_file_relative_path() {
@@ -91,6 +91,19 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 	#region -- Modify the query argument to order posts.
 
 	public function modify_query_arg_if_necessary( $query_args ) {
+		$query_args = $this->modify_query_arg_if_necessary_to_order_by_average( $query_args );
+		$query_args = $this->modify_query_arg_if_necessary_to_order_by_count( $query_args );
+
+		return $query_args;
+	}
+
+	/**
+	 * Given the query args, modify them to order them by average.
+	 *
+	 * @param array $query_args
+	 * @return array
+	 */
+	public function modify_query_arg_if_necessary_to_order_by_average( $query_args ) {
 		$orderby_value = Post_Rating::ORDERBY_RATING_OPTION_KEY;
 		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
@@ -115,11 +128,45 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 				'type'    => 'NUMERIC',
 			),
 		);
-		$query_args['orderby']    = array(
+
+		$order_date = 'DESC';
+		if ( isset( $query_args['orderby']['date'] ) ) {
+			$order_date = $query_args['orderby']['date'];
+		}
+
+		$query_args['orderby'] = array(
 			'twrp_rmp_vote_total' => 'DESC',
 			'twrp_rmp_vote_count' => 'DESC',
-			'date'                => 'DESC',
+			'date'                => $order_date,
 		);
+
+		return $query_args;
+	}
+
+	/**
+	 * Given the query args, modify them to order them by rating count.
+	 *
+	 * @param array $query_args
+	 * @return array
+	 */
+	public function modify_query_arg_if_necessary_to_order_by_count( $query_args ) {
+		$orderby_value = Post_Rating::ORDERBY_RATING_COUNT_OPTION_KEY;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
+			return $query_args;
+		}
+
+		$query_args['meta_key'] = 'rmp_vote_count'; // phpcs:ignore WordPress.DB.SlowDBQuery
+
+		$orderby     = $query_args['orderby'];
+		$new_orderby = array();
+		foreach ( $orderby as $key => $value ) {
+			if ( Post_Rating::ORDERBY_RATING_COUNT_OPTION_KEY === $key ) {
+				$new_orderby['meta_value_num'] = $value;
+			} else {
+				$new_orderby[ $key ] = $value;
+			}
+		}
+		$query_args['orderby'] = $new_orderby;
 
 		return $query_args;
 	}
