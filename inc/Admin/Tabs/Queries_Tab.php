@@ -147,6 +147,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 			?>
 
 			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= esc_html_x( 'Existing Queries:', 'backend', 'tabs-with-posts' ) ?></h3>
+			<?php $this->display_queries_that_depends_on_non_installed_plugins(); ?>
 			<div id="<?php $this->bem_class( 'before-deleting-confirmation' ); ?>" style="display:none" data-twrpb-query-delete-confirm="<?= esc_attr( $delete_query_confirmation_message ) ?>"></div>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
@@ -210,6 +211,48 @@ class Queries_Tab extends Admin_Menu_Tab {
 				echo wp_kses( sprintf( _x( '%s Add New Query', 'backend', 'tabs-with-posts' ), $add_btn_icon ), Simple_Utils::get_plugin_allowed_kses_html() );
 			?>
 		</a>
+		<?php
+	}
+
+	/**
+	 * Display the queries that cannot be displayed correctly because a plugin
+	 * is not installed.
+	 *
+	 * @return void
+	 */
+	protected function display_queries_that_depends_on_non_installed_plugins() {
+		$existing_queries    = Query_Options::get_all_queries();
+		$unsupported_queries = array();
+
+		foreach ( $existing_queries as $id => $settings ) {
+			if ( ! Query_Options::query_plugin_dependencies_installed( $id ) ) {
+				array_push( $unsupported_queries, $id );
+			}
+		}
+
+		if ( empty( $unsupported_queries ) ) {
+			return;
+		}
+
+		$queries_names = '';
+		foreach ( $unsupported_queries as $id ) {
+			$query_name = Query_Options::get_query_display_name( $id );
+			if ( empty( $queries_names ) ) {
+				$queries_names = '"' . $query_name . '"';
+			} else {
+				$queries_names = $queries_names . ', "' . $query_name . '"';
+			}
+		}
+		/* translators: %s will be replaced with a name, or a list of names. */
+		$message = sprintf( _x( 'The query/queries: %s cannot be displayed because an external plugin that is needed is not installed.', 'backend', 'tabs-with-posts' ), $queries_names );
+
+		$documentation_url = Settings_Menu::get_tab_url( new Documentation_Tab() );
+		/* translators: both %1$s and %2$s will be replaced with an anchor HTML tag, so the "documentation" word must be between them.  */
+		$message_2 = sprintf( _x( 'See the %1$s documentation %2$s for supported rating/views plugins.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_url( $documentation_url ) . '" target="_blank">', '</a>' );
+		?>
+			<p>
+				<?php echo esc_html( $message ) . ' ' . wp_kses( $message_2, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
+			</p>
 		<?php
 	}
 

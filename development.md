@@ -58,15 +58,17 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - Plugin tested: BlazK, KK
 - Plugin to test previous versions: Gamerz(average, most voted), YASR(average, most voted)
 
+- Add in Query tabs if order by rating is selected, that either meta or suppress_filters is used.
+
 - Check if YASR table name constants are defined first.
 
 - ------------------------------------------------------------------------------
 
 - Tab Queries:
-- Add a way to check if a query needs external plugin, and to check if external plugin needed is installed.
 - Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
 - Add a new template to sort by rating.
 - Add query-name to template.
+- Do not display a tab, if a query doesn't have the needed plugins.
 
 - ------------------------------------------------------------------------------
 
@@ -101,6 +103,8 @@ disable admin privilege.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 - Add in Manual tests, to test the cache with various plugins.
+- Query/plugin, if a plugin from a category is not installed, then the query should say that the plugin is not installed
+and show an error.
 
 - ### Todo Page Builders
 

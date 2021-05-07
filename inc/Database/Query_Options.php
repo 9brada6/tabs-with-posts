@@ -5,6 +5,9 @@ namespace TWRP\Database;
 use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Utils\Class_Retriever_Utils;
 use RuntimeException;
+use TWRP\Plugins\Post_Rating;
+use TWRP\Plugins\Post_Views;
+use TWRP\Query_Generator\Query_Generator;
 
 /**
  * Class that contains functions to manage the settings stored in WordPress
@@ -255,6 +258,34 @@ class Query_Options implements Clean_Database {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Check if a query have all needed plugins installed.
+	 *
+	 * @param int|string $query_id
+	 * @return bool
+	 */
+	public static function query_plugin_dependencies_installed( $query_id ) {
+		try {
+			$query_args = Query_Generator::get_wp_query_arguments( $query_id, true );
+		} catch ( RuntimeException $e ) {
+			return false;
+		}
+
+		$depends_on_rating_plugin = Post_Rating::query_settings_depend_on_plugin( $query_args );
+		$depends_on_views_plugin  = Post_Views::query_settings_depend_on_plugin( $query_args );
+		$dependencies_ok          = true;
+
+		if ( $depends_on_rating_plugin && Post_Rating::get_plugin_to_use() === false ) {
+			$dependencies_ok = false;
+		}
+
+		if ( $depends_on_views_plugin && Post_Views::get_plugin_to_use() === false ) {
+			$dependencies_ok = false;
+		}
+
+		return $dependencies_ok;
 	}
 
 	#region -- Clean Database

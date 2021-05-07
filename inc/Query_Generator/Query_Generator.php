@@ -49,10 +49,10 @@ class Query_Generator {
 	 * @throws RuntimeException If the Query ID does not exist, or something went wrong.
 	 *
 	 * @param int|string $query_id The Id to construct query for.
-	 *
+	 * @param bool $suppress_twrp_filters Whether or not to suppress twrp filters.
 	 * @return array
 	 */
-	public static function get_wp_query_arguments( $query_id ) {
+	public static function get_wp_query_arguments( $query_id, $suppress_twrp_filters = false ) {
 		$registered_settings_classes = Class_Retriever_Utils::get_all_query_settings_objects();
 		$query_args                  = self::get_starting_query_args();
 
@@ -62,13 +62,20 @@ class Query_Generator {
 			throw $exception;
 		}
 
-		$query_args = apply_filters( 'twrp_starting_query_arguments', $query_args, $query_id, $query_options );
+		if ( ! $suppress_twrp_filters ) {
+			$query_args = apply_filters( 'twrp_starting_query_arguments', $query_args, $query_id, $query_options );
+		}
 
 		foreach ( $registered_settings_classes as $setting_class_to_apply ) {
 			$query_args = $setting_class_to_apply->add_query_arg( $query_args, $query_options );
 		}
 
-		return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_id, $query_options );
+		if ( ! $suppress_twrp_filters ) {
+			return apply_filters( 'twrp_get_query_arguments_created', $query_args, $query_id, $query_options );
+		} else {
+			return $query_args;
+		}
+
 	}
 
 	/**

@@ -186,4 +186,23 @@ class Post_Rating {
 		return $orderby_options;
 	}
 
+	/**
+	 * Check if query settings depends on one of the views plugins to be
+	 * installed.
+	 *
+	 * @param array $query_args
+	 * @return bool
+	 */
+	public static function query_settings_depend_on_plugin( $query_args ) {
+		if ( isset( $query_args['orderby'] ) && is_array( $query_args['orderby'] ) && isset( $query_args['orderby'][ self::ORDERBY_RATING_OPTION_KEY ] ) ) {
+			return true;
+		}
+
+		if ( isset( $query_args['orderby'] ) && is_array( $query_args['orderby'] ) && isset( $query_args['orderby'][ self::ORDERBY_RATING_COUNT_OPTION_KEY ] ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
 }
