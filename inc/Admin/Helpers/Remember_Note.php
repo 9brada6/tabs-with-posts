@@ -179,7 +179,7 @@ class Remember_Note {
 			),
 
 			static::NOTE__ORDERING_BY_VIEWS_NOTE         => array(
-				'text' => _x( 'Depending on how the plugin is ordering, either "Suppress Filters" or "Meta Settings" options are overwritten.', 'backend', 'tabs-with-posts' ),
+				'text' => _x( 'Depending on how the plugin is ordering, either "Suppress Filters" or "Meta Settings" or both options are overwritten.', 'backend', 'tabs-with-posts' ),
 			),
 
 			static::NOTE__POST_SETTINGS_NOTE             => array(

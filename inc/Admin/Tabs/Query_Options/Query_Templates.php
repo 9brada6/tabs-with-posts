@@ -2,9 +2,11 @@
 
 namespace TWRP\Admin\Tabs\Query_Options;
 
+use TWRP\Plugins\Post_Rating;
 use TWRP\Query_Generator\Query_Setting\Post_Order;
 use TWRP\Query_Generator\Query_Setting\Post_Comments;
 use TWRP\Query_Generator\Query_Setting\Post_Date;
+use TWRP\Query_Generator\Query_Setting\Query_Name;
 
 /**
  * Class that is used to declare the starting templates for query settings.
@@ -24,6 +26,10 @@ class Query_Templates {
 
 	const THIS_WEEK__TEMPLATE_NAME = 'this_week_template';
 
+	const BEST_RATED__TEMPLATE_NAME = 'best_rated_template';
+
+	const MOST_RATED__TEMPLATE_NAME = 'most_rated_template';
+
 	/**
 	 * Get an array with the template id as key and the template display name as
 	 * value.
@@ -36,6 +42,8 @@ class Query_Templates {
 			self::MOST_COMMENTED__TEMPLATE_NAME => _x( 'Most Commented Template', 'backend', 'tabs-with-posts' ),
 			self::RANDOM_POSTS__TEMPLATE_NAME   => _x( 'Random Posts Template', 'backend', 'tabs-with-posts' ),
 			self::THIS_WEEK__TEMPLATE_NAME      => _x( 'This Week Template', 'backend', 'tabs-with-posts' ),
+			self::BEST_RATED__TEMPLATE_NAME     => _x( 'Best Rated Template', 'backend', 'tabs-with-posts' ),
+			self::MOST_RATED__TEMPLATE_NAME     => _x( 'Most Rated Template', 'backend', 'tabs-with-posts' ),
 		);
 	}
 
@@ -51,6 +59,8 @@ class Query_Templates {
 			self::MOST_COMMENTED__TEMPLATE_NAME => $this->get_most_commented_template_settings(),
 			self::RANDOM_POSTS__TEMPLATE_NAME   => $this->get_random_posts_template_settings(),
 			self::THIS_WEEK__TEMPLATE_NAME      => $this->get_this_week_template_settings(),
+			self::BEST_RATED__TEMPLATE_NAME     => $this->get_best_rated_template_settings(),
+			self::MOST_RATED__TEMPLATE_NAME     => $this->get_most_rated_template_settings(),
 		);
 	}
 
@@ -60,10 +70,14 @@ class Query_Templates {
 	 * @return array
 	 */
 	public function get_last_posts_template_settings() {
+		$query_name_class  = new Query_Name();
+		$query_name_prefix = $query_name_class->get_setting_name();
+
 		$post_order_class = new Post_Order();
 		$setting_prefix   = $post_order_class->get_setting_name();
 
 		return array(
+			$query_name_prefix . '[' . $query_name_class::QUERY_NAME__SETTING_NAME . ']' => _x( 'Last Posts', 'backend', 'tabs-with-posts' ),
 			$setting_prefix . '[' . $post_order_class::FIRST_ORDERBY_SELECT_NAME . ']' => 'date',
 			$setting_prefix . '[' . $post_order_class::FIRST_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
 		);
@@ -75,6 +89,9 @@ class Query_Templates {
 	 * @return array
 	 */
 	public function get_most_commented_template_settings() {
+		$query_name_class  = new Query_Name();
+		$query_name_prefix = $query_name_class->get_setting_name();
+
 		$post_order_class     = new Post_Order();
 		$order_setting_prefix = $post_order_class->get_setting_name();
 
@@ -82,6 +99,7 @@ class Query_Templates {
 		$comments_setting_prefix = $post_comments_class->get_setting_name();
 
 		return array(
+			$query_name_prefix . '[' . $query_name_class::QUERY_NAME__SETTING_NAME . ']' => _x( 'Most Commented', 'backend', 'tabs-with-posts' ),
 			$order_setting_prefix . '[' . $post_order_class::FIRST_ORDERBY_SELECT_NAME . ']' => 'comment_count',
 			$order_setting_prefix . '[' . $post_order_class::FIRST_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
 			$order_setting_prefix . '[' . $post_order_class::SECOND_ORDERBY_SELECT_NAME . ']' => 'date',
@@ -97,10 +115,14 @@ class Query_Templates {
 	 * @return array
 	 */
 	public function get_random_posts_template_settings() {
+		$query_name_class  = new Query_Name();
+		$query_name_prefix = $query_name_class->get_setting_name();
+
 		$post_order_class = new Post_Order();
 		$setting_prefix   = $post_order_class->get_setting_name();
 
 		return array(
+			$query_name_prefix . '[' . $query_name_class::QUERY_NAME__SETTING_NAME . ']' => _x( 'Random Posts', 'backend', 'tabs-with-posts' ),
 			$setting_prefix . '[' . $post_order_class::FIRST_ORDERBY_SELECT_NAME . ']' => 'rand',
 			$setting_prefix . '[' . $post_order_class::FIRST_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
 		);
@@ -112,6 +134,9 @@ class Query_Templates {
 	 * @return array
 	 */
 	public function get_this_week_template_settings() {
+		$query_name_class  = new Query_Name();
+		$query_name_prefix = $query_name_class->get_setting_name();
+
 		$post_order_class     = new Post_Order();
 		$order_setting_prefix = $post_order_class->get_setting_name();
 
@@ -119,10 +144,53 @@ class Query_Templates {
 		$date_setting_prefix = $post_date_class->get_setting_name();
 
 		return array(
+			$query_name_prefix . '[' . $query_name_class::QUERY_NAME__SETTING_NAME . ']' => _x( 'This Week', 'backend', 'tabs-with-posts' ),
 			$order_setting_prefix . '[' . $post_order_class::FIRST_ORDERBY_SELECT_NAME . ']' => 'date',
 			$order_setting_prefix . '[' . $post_order_class::FIRST_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
 			$date_setting_prefix . '[' . $post_date_class::DATE_TYPE_NAME . ']' => 'LT',
 			$date_setting_prefix . '[' . $post_date_class::DATE_LAST_PERIOD_NAME . ']' => 'L7D',
+		);
+	}
+
+	/**
+	 * Get best rated posts template.
+	 *
+	 * @return array
+	 */
+	public function get_best_rated_template_settings() {
+		$query_name_class  = new Query_Name();
+		$query_name_prefix = $query_name_class->get_setting_name();
+
+		$post_order_class = new Post_Order();
+		$setting_prefix   = $post_order_class->get_setting_name();
+
+		return array(
+			$query_name_prefix . '[' . $query_name_class::QUERY_NAME__SETTING_NAME . ']' => _x( 'Best Rated', 'backend', 'tabs-with-posts' ),
+			$setting_prefix . '[' . $post_order_class::FIRST_ORDERBY_SELECT_NAME . ']' => Post_Rating::ORDERBY_RATING_OPTION_KEY,
+			$setting_prefix . '[' . $post_order_class::FIRST_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
+			$setting_prefix . '[' . $post_order_class::SECOND_ORDERBY_SELECT_NAME . ']' => 'date',
+			$setting_prefix . '[' . $post_order_class::SECOND_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
+		);
+	}
+
+	/**
+	 * Get most rated posts template.
+	 *
+	 * @return array
+	 */
+	public function get_most_rated_template_settings() {
+		$query_name_class  = new Query_Name();
+		$query_name_prefix = $query_name_class->get_setting_name();
+
+		$post_order_class = new Post_Order();
+		$setting_prefix   = $post_order_class->get_setting_name();
+
+		return array(
+			$query_name_prefix . '[' . $query_name_class::QUERY_NAME__SETTING_NAME . ']' => _x( 'Most Rated', 'backend', 'tabs-with-posts' ),
+			$setting_prefix . '[' . $post_order_class::FIRST_ORDERBY_SELECT_NAME . ']' => Post_Rating::ORDERBY_RATING_COUNT_OPTION_KEY,
+			$setting_prefix . '[' . $post_order_class::FIRST_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
+			$setting_prefix . '[' . $post_order_class::SECOND_ORDERBY_SELECT_NAME . ']' => 'date',
+			$setting_prefix . '[' . $post_order_class::SECOND_ORDER_TYPE_SELECT_NAME . ']' => 'DESC',
 		);
 	}
 

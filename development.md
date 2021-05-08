@@ -52,19 +52,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Test A3Rev views plugin, because we changed something.
-
-- Rating:
-- Need to implement order by counts in the YASR plugin.
-- Plugin to test: YASR
-
-- Add in Query tabs if order by rating is selected, that either meta or suppress_filters is used.
-
-- ------------------------------------------------------------------------------
-
 - Tab Queries:
 
-- Add a new template to sort by rating.
 - Add query-name to template.
 
 - Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
@@ -81,8 +70,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - Finish Modern style.
 
 - ------------------------------------------------------------------------------
-
-- Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 
 - When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
 
@@ -105,6 +92,7 @@ disable admin privilege.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 - Add in Manual tests, to test the cache with various plugins.
+- Add in Manual tests, to check if query templates work.
 - Query/plugin, if a plugin from a category is not installed, then the query should say that the plugin is not installed
 and show an error.
 
@@ -177,7 +165,9 @@ and show an error.
 
 ## 🎉 Todo: After first release
 
+- Test A3Rev views plugin, because we changed something.
 - 🥇 Add taxonomy options(with post formats).
+- ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.
 - ➕ Add filters for all things.
 - ➕ Add a way to invert category icons?

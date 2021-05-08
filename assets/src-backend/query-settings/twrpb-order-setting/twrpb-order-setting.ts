@@ -150,7 +150,7 @@ $( hideOrShowViewsNote );
 $( document ).on( 'change', `.${ orderByClassName }`, hideOrShowViewsNote );
 
 function hideOrShowViewsNote() : void {
-	hideOrShowNoteOnSelect( 'twrp_post_views_order', viewsNote );
+	hideOrShowNoteOnSelect( [ 'twrp_post_views_order', 'twrp_post_rating_order', 'twrp_post_rating_count_order' ], viewsNote );
 }
 
 // #endregion -- Hide/Show Views notice if selected.
