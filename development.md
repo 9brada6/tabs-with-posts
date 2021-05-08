@@ -52,22 +52,18 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Tab Queries:
+- Add meta places image to modern style.
+- Finish Modern style.
 
-- Add query-name to template.
+- ------------------------------------------------------------------------------
+
+- Tab Queries:
 
 - Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
 
 - Do not display a tab, if a query doesn't have the needed plugins.
 - Do not display tab if contents are empty.
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
-
-- ------------------------------------------------------------------------------
-
-- Find a way to flex shrink only one big meta?
-- Check YT style for flex shrink of meta.
-- Add meta places image to modern style.
-- Finish Modern style.
 
 - ------------------------------------------------------------------------------
 

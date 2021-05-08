@@ -20,7 +20,7 @@ if ( ! isset( $artblock ) ) {
 	<?php endif; ?>
 
 	<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2, 3 ) ) ) : ?>
-		<div class="twrp-ss__first-meta-wrapper">
+		<div class="twrp-ss__first-meta-wrapper twrp-ss__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 1, 2, 3 ) ); ?>">
 			<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
 				<span class="twrp-ss__meta twrp-ss__meta--1 twrp-ss__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
 			<?php endif; ?>
@@ -36,7 +36,7 @@ if ( ! isset( $artblock ) ) {
 	<?php endif; ?>
 
 	<?php if ( $artblock->one_or_more_meta_id_displayed( array( 4, 5, 6 ) ) ) : ?>
-		<div class="twrp-ss__second-meta-wrapper">
+		<div class="twrp-ss__second-meta-wrapper twrp-ss__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 4, 5, 6 ) ); ?>">
 			<?php if ( $artblock->get_meta_displayed_name( 4 ) ) : ?>
 				<span class="twrp-ss__meta twrp-ss__meta--4 twrp-ss__<?php $artblock->meta_suffix_class( 4 ); ?>"><?php $artblock->display_meta( 4 ); ?></span>
 			<?php endif; ?>

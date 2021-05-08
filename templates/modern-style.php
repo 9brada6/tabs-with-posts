@@ -48,7 +48,7 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2, 3, 4, 5, 6 ) ) ) : ?>
 			<div class="twrp-ms__bot-meta-wrapper">
 				<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2, 3 ) ) ) : ?>
-					<div class="twrp-ms__first-meta-wrapper">
+					<div class="twrp-ms__first-meta-wrapper twrp-ms__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 1, 2, 3 ) ); ?>">
 						<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
 							<span class="twrp-ms__meta twrp-ms__meta--1 twrp-ms__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
 						<?php endif; ?>
@@ -64,7 +64,7 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 				<?php endif; ?>
 
 				<?php if ( $artblock->one_or_more_meta_id_displayed( array( 4, 5, 6 ) ) ) : ?>
-					<div class="twrp-ms__second-meta-wrapper">
+					<div class="twrp-ms__second-meta-wrapper twrp-ms__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 4, 5, 6 ) ); ?>">
 						<?php if ( $artblock->get_meta_displayed_name( 4 ) ) : ?>
 							<span class="twrp-ms__meta twrp-ms__meta--4 twrp-ms__<?php $artblock->meta_suffix_class( 4 ); ?>"><?php $artblock->display_meta( 4 ); ?></span>
 						<?php endif; ?>

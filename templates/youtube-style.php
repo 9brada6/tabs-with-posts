@@ -31,7 +31,7 @@ if ( ! isset( $artblock ) ) {
 		</a>
 
 		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2 ) ) ) : ?>
-		<div class="twrp-ys__first-meta-wrapper">
+		<div class="twrp-ys__first-meta-wrapper twrp-ys__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 1, 2 ) ); ?>">
 			<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
 				<span class="twrp-ys__meta twrp-ys__meta--1 twrp-ys__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
 			<?php endif; ?>
@@ -43,7 +43,7 @@ if ( ! isset( $artblock ) ) {
 		<?php endif; ?>
 
 		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 3, 4 ) ) ) : ?>
-		<div class="twrp-ys__second-meta-wrapper">
+		<div class="twrp-ys__second-meta-wrapper twrp-ys__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 3, 4 ) ); ?>">
 			<?php if ( $artblock->get_meta_displayed_name( 3 ) ) : ?>
 				<span class="twrp-ys__meta twrp-ys__meta--3 twrp-ys__<?php $artblock->meta_suffix_class( 3 ); ?>"><?php $artblock->display_meta( 3 ); ?></span>
 			<?php endif; ?>

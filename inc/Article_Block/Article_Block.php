@@ -1295,6 +1295,23 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		return $option;
 	}
 
+	public function meta_suffix_classes( $numbers ) {
+		$class_suffix = '';
+		foreach ( $numbers as $number ) {
+			$meta_class = $this->get_meta_suffix_class( $number );
+
+			if ( ! empty( $meta_class ) ) {
+				if ( ! empty( $class_suffix ) ) {
+					$class_suffix = $class_suffix . '-' . $meta_class;
+				} else {
+					$class_suffix = $meta_class;
+				}
+			}
+		}
+
+		echo $class_suffix; // phpcs:ignore
+	}
+
 	/**
 	 * Display the class suffix for the wrapper.
 	 *
@@ -1302,17 +1319,21 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @return void
 	 */
 	public function meta_suffix_class( $number ) {
+		echo $this->get_meta_suffix_class( $number ); // phpcs:ignore
+	}
+
+	public function get_meta_suffix_class( $number ) {
 		$meta = $this->get_meta_displayed_name( $number );
 
 		if ( false === $meta ) {
-			return;
+			return '';
 		}
 
 		if ( 'rating_and_count' === $meta ) {
-			echo 'rating'; // phpcs:ignore -- No XSS.
+			$meta = 'rating';
 		}
 
-		echo $meta; // phpcs:ignore -- No XSS.
+		return $meta;
 	}
 
 	/**
