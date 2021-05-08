@@ -161,11 +161,6 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					<?php General_Settings_Factory::display_setting( General_Options::FILL_GRID_WITH_POSTS ); ?>
 				</fieldset>
 
-				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'External Plugin Settings', 'backend', 'tabs-with-posts' ); ?></legend>
-					<?php General_Settings_Factory::display_setting( General_Options::YASR_RATING_TYPE ); ?>
-				</fieldset>
-
 				<?php
 				self::display_submit_button();
 				?>

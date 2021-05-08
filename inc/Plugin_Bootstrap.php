@@ -176,8 +176,8 @@ class Plugin_Bootstrap {
 		'Plugins/Known_Plugins/Post_Rating_Plugins/Blaz_Rating_Plugin',
 		// 'Plugins/Known_Plugins/Post_Rating_Plugins/Site_Reviews_Rating_Plugin',
 		'Plugins/Known_Plugins/Post_Rating_Plugins/Gamerz_Rating_Plugin',
-		'Plugins/Known_Plugins/Post_Rating_Plugins/YASR_Rating_Plugin',
 		'Plugins/Known_Plugins/Post_Rating_Plugins/KK_Rating_Plugin',
+		// 'Plugins/Known_Plugins/Post_Rating_Plugins/YASR_Rating_Plugin',
 
 		// Query_Setting.
 		'Query_Generator/Query_Generator',

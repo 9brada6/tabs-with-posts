@@ -52,28 +52,32 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
+- Test A3Rev views plugin, because we changed something.
+
 - Rating:
 - Need to implement order by counts in the YASR plugin.
-
-- Plugin tested: BlazK, KK
-- Plugin to test previous versions: Gamerz(average, most voted), YASR(average, most voted)
+- Plugin to test: YASR
 
 - Add in Query tabs if order by rating is selected, that either meta or suppress_filters is used.
-
-- Check if YASR table name constants are defined first.
 
 - ------------------------------------------------------------------------------
 
 - Tab Queries:
-- Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
+
 - Add a new template to sort by rating.
 - Add query-name to template.
+
+- Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
+
 - Do not display a tab, if a query doesn't have the needed plugins.
+- Do not display tab if contents are empty.
+- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - ------------------------------------------------------------------------------
 
 - Find a way to flex shrink only one big meta?
 - Check YT style for flex shrink of meta.
+- Add meta places image to modern style.
 - Finish Modern style.
 
 - ------------------------------------------------------------------------------
@@ -91,8 +95,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
-
-- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 
@@ -121,6 +123,10 @@ and show an error.
     - Move the documentation to the last position, in he tabs.
     - Add some photos.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
+
+    Additional plugin supported notes:
+    - Support main category from SEO.
+    - YASR does not support ordered by count if is set to overall.
 
     General Settings:
     - Say that if a plugin to cache pages is used, then the page cache must be purged(deleted).
@@ -172,6 +178,7 @@ and show an error.
 ## 🎉 Todo: After first release
 
 - 🥇 Add taxonomy options(with post formats).
+- ➕ Fix order By YASR plugin.
 - ➕ Add filters for all things.
 - ➕ Add a way to invert category icons?
 - ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.

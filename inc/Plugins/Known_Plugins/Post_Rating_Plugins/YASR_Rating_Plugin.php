@@ -366,6 +366,48 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 
 	public static function after_setup_theme_init() {
 		add_filter(
+			'twrp_query_plugin_dependencies',
+			/**
+			 * If the query is ordered by count, and yasr plugin is set to
+			 * overall rating, then the query doesn't work.
+			 *
+			 * @param bool $dependencies_ok
+			 * @param array $query_args
+			 * @return bool
+			*/
+			function( $dependencies_ok, $query_args ) {
+				if ( false === $dependencies_ok ) {
+					return $dependencies_ok;
+				}
+
+				$yasr_rating_type = General_Options::get_option( General_Options::YASR_RATING_TYPE );
+
+				if ( isset( $query_args['orderby'][ Post_Rating::ORDERBY_RATING_COUNT_OPTION_KEY ] )
+				|| isset( $query_args['orderby'][ Post_Rating::ORDERBY_RATING_OPTION_KEY ] ) ) {
+					$plugin_to_use = Post_Rating::get_plugin_to_use();
+					if ( false !== $plugin_to_use && is_a( $plugin_to_use, self::class ) ) {
+						if ( 'multi_set_overall' === $yasr_rating_type || 'multi_set_visitors' === $yasr_rating_type ) {
+							$dependencies_ok = false;
+						}
+					}
+				}
+
+				if ( isset( $query_args['orderby'][ Post_Rating::ORDERBY_RATING_COUNT_OPTION_KEY ] ) ) {
+					$plugin_to_use = Post_Rating::get_plugin_to_use();
+					if ( false !== $plugin_to_use && is_a( $plugin_to_use, self::class ) ) {
+						if ( 'overall' === $yasr_rating_type || 'multi_set_overall' === $yasr_rating_type ) {
+							$dependencies_ok = false;
+						}
+					}
+				}
+
+				return $dependencies_ok;
+			},
+			10,
+			2
+		);
+
+		add_filter(
 			'twrp_before_getting_query',
 			/**
 			 * Added some filters that can order posts by this plugin views.
@@ -432,9 +474,8 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 
 		if ( array_key_exists( 'twrp_order_by_yasr_count_multiset_visitors', $query_array ) ) {
 			$yasr_log_table = YASR_LOG_MULTI_SET;
+			// todo.
 		}
-
-		// twrp_count_rating_table.twrp_rating_counts
 
 		return $join;
 	}

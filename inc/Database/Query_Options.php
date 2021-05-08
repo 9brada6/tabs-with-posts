@@ -285,6 +285,8 @@ class Query_Options implements Clean_Database {
 			$dependencies_ok = false;
 		}
 
+		$dependencies_ok = apply_filters( 'twrp_query_plugin_dependencies', $dependencies_ok, $query_args );
+
 		return $dependencies_ok;
 	}
 
