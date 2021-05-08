@@ -27,7 +27,7 @@ use YasrMultiSetData;
 class YASR_Rating_Plugin extends Post_Rating_Plugin {
 
 	public static function get_class_order_among_siblings() {
-		return 50;
+		return 60;
 	}
 
 	#region -- Plugin Meta
@@ -60,7 +60,9 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 		$multiset_count = Simple_Utils::method_exist_and_is_public( YasrMultiSetData::class, 'returnMultisetContent' ) ||
 		Simple_Utils::method_exist_and_is_public( YasrMultiSetData::class, 'returnVisitorMultiSetContent' );
 
-		return $overall_rating && $visitors_votes && $multiset_average && $multiset_count;
+		$constants_defined = defined( 'YASR_LOG_MULTI_SET' ) && defined( 'YASR_LOG_TABLE' );
+
+		return $overall_rating && $visitors_votes && $multiset_average && $multiset_count && $constants_defined;
 	}
 
 	#endregion -- Detect if is installed.
@@ -253,6 +255,19 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 	#region -- Modify the query argument to order posts.
 
 	public function modify_query_arg_if_necessary( $query_args ) {
+		$query_args = $this->modify_query_arg_if_necessary_to_order_by_average( $query_args );
+		$query_args = $this->modify_query_arg_if_necessary_to_order_by_count( $query_args );
+
+		return $query_args;
+	}
+
+	/**
+	 * Given the query args, modify them to order them by average.
+	 *
+	 * @param array $query_args
+	 * @return array
+	 */
+	protected function modify_query_arg_if_necessary_to_order_by_average( $query_args ) {
 		$orderby_value = Post_Rating::ORDERBY_RATING_OPTION_KEY;
 		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
 			return $query_args;
@@ -307,6 +322,40 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 		}
 
 		return $query_args;
+	}
+
+	/**
+	 * Given the query args, modify them to order them by rating count.
+	 *
+	 * @param array $query_args
+	 * @return array
+	 */
+	protected function modify_query_arg_if_necessary_to_order_by_count( $query_args ) {
+		$orderby_value = Post_Rating::ORDERBY_RATING_COUNT_OPTION_KEY;
+		if ( ! isset( $query_args['orderby'][ $orderby_value ] ) ) {
+			return $query_args;
+		}
+
+		$yasr_rating_type = General_Options::get_option( General_Options::YASR_RATING_TYPE );
+
+		if ( 'overall' === $yasr_rating_type || 'multi_set_overall' === $yasr_rating_type ) {
+			return $query_args;
+		}
+
+		if ( 'visitors' === $yasr_rating_type ) {
+			$query_args['twrp_order_by_yasr_count_visitors'] = true;
+			$query_args['suppress_filters']                  = false;
+
+			return $query_args;
+		}
+
+		if ( 'multi_set_visitors' === $yasr_rating_type ) {
+			$query_args['twrp_order_by_yasr_count_multiset_visitors'] = true;
+			$query_args['suppress_filters']                           = false;
+
+			return $query_args;
+		}
+
 	}
 
 	#endregion -- Modify the query argument to order posts.
@@ -364,17 +413,28 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 			return $join;
 		}
 
+		$wp_posts_table = $wpdb->posts;
+
 		if ( array_key_exists( 'twrp_order_by_yasr_average_visitors', $query_array ) ) {
-			$wp_posts_table = $wpdb->posts;
 			$yasr_log_table = YASR_LOG_TABLE;
 			$join          .= "INNER JOIN (SELECT post_id as twrp_avg_post_id, SUM(vote)/COUNT(vote) as twrp_avg_vote FROM $yasr_log_table WHERE vote > 0 AND vote <= 5 GROUP BY post_id) as twrp_avg_rating_table ON twrp_avg_rating_table.twrp_avg_post_id = $wp_posts_table.ID";
 		}
 
 		if ( array_key_exists( 'twrp_order_by_yasr_average_multiset_visitors', $query_array ) ) {
-			$wp_posts_table = $wpdb->posts;
 			$yasr_log_table = YASR_LOG_MULTI_SET;
 			$join          .= "INNER JOIN (SELECT post_id as twrp_avg_post_id, SUM(vote)/COUNT(vote) as twrp_avg_vote FROM $yasr_log_table WHERE vote > 0 AND vote <= 5 GROUP BY post_id) as twrp_avg_rating_table ON twrp_avg_rating_table.twrp_avg_post_id = $wp_posts_table.ID";
 		}
+
+		if ( array_key_exists( 'twrp_order_by_yasr_count_visitors', $query_array ) ) {
+			$yasr_log_table = YASR_LOG_TABLE;
+			$join          .= "INNER JOIN (SELECT post_id as twrp_avg_post_id, COUNT(vote) as twrp_rating_counts FROM $yasr_log_table WHERE vote > 0 AND vote <= 5 GROUP BY post_id) as twrp_count_rating_table ON twrp_count_rating_table.twrp_avg_post_id = $wp_posts_table.ID";
+		}
+
+		if ( array_key_exists( 'twrp_order_by_yasr_count_multiset_visitors', $query_array ) ) {
+			$yasr_log_table = YASR_LOG_MULTI_SET;
+		}
+
+		// twrp_count_rating_table.twrp_rating_counts
 
 		return $join;
 	}
@@ -397,12 +457,13 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 			return $orderby;
 		}
 
-		if ( array_key_exists( 'twrp_order_by_yasr_average_visitors', $query_array ) ) {
-			$order = 'DESC';
-			if ( isset( $query_array['orderby'], $query_array['orderby'][ $orderby_value ] ) ) {
-				$order = $query_array['orderby'][ $orderby_value ];
-			}
+		$order = 'DESC';
+		if ( isset( $query_array['orderby'], $query_array['orderby'][ $orderby_value ] ) ) {
+			$order = $query_array['orderby'][ $orderby_value ];
+		}
 
+		if ( array_key_exists( 'twrp_order_by_yasr_average_visitors', $query_array )
+		|| array_key_exists( 'twrp_order_by_yasr_average_multiset_visitors', $query_array ) ) {
 			if ( ! empty( $orderby ) ) {
 				$orderby = ', ' . $orderby;
 			}
@@ -410,18 +471,15 @@ class YASR_Rating_Plugin extends Post_Rating_Plugin {
 			$orderby = 'twrp_avg_rating_table.twrp_avg_vote ' . $order . $orderby;
 		}
 
-		if ( array_key_exists( 'twrp_order_by_yasr_average_multiset_visitors', $query_array ) ) {
-			$order = 'DESC';
-			if ( isset( $query_array['orderby'], $query_array['orderby'][ $orderby_value ] ) ) {
-				$order = $query_array['orderby'][ $orderby_value ];
-			}
-
+		if ( array_key_exists( 'twrp_order_by_yasr_count_visitors', $query_array )
+		|| array_key_exists( 'twrp_order_by_yasr_count_multiset_visitors', $query_array ) ) {
 			if ( ! empty( $orderby ) ) {
 				$orderby = ', ' . $orderby;
 			}
 
-			$orderby = 'twrp_avg_rating_table.twrp_avg_vote ' . $order . $orderby;
+			$orderby = 'twrp_count_rating_table.twrp_rating_counts ' . $order . $orderby;
 		}
+
 		return $orderby;
 	}
 

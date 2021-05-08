@@ -40,7 +40,7 @@ namespace {
 	// For YASR Plugin:
 	const YASR_LOG_MULTI_SET = 'Some Value';
 
-	const YASR_LOG_TABLE = 'Some Value';
+	const YASR_LOG_TABLE = 'Some Value 2';
 
 	const ARRAY_A = 'Some Value';
 

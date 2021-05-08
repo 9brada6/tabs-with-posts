@@ -148,7 +148,7 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 		}
 
 		$pvc_total_table_name = $wpdb->prefix . 'pvc_total';
-		$join                .= "RIGHT JOIN $pvc_total_table_name ON $wpdb->posts.ID = $pvc_total_table_name.postnum ";
+		$join                .= "INNER JOIN $pvc_total_table_name ON $wpdb->posts.ID = $pvc_total_table_name.postnum ";
 
 		return $join;
 	}

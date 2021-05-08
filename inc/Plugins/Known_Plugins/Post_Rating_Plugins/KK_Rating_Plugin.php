@@ -15,7 +15,7 @@ use TWRP\Utils\Simple_Utils;
 class KK_Rating_Plugin extends Post_Rating_Plugin {
 
 	public static function get_class_order_among_siblings() {
-		return 60;
+		return 50;
 	}
 
 	#region -- Plugin Meta
