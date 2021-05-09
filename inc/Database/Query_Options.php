@@ -5,6 +5,7 @@ namespace TWRP\Database;
 use TWRP\Query_Generator\Query_Setting\Query_Name;
 use TWRP\Utils\Class_Retriever_Utils;
 use RuntimeException;
+use TWRP\Admin\Tabs\Query_Options\Query_Templates;
 use TWRP\Plugins\Post_Rating;
 use TWRP\Plugins\Post_Views;
 use TWRP\Query_Generator\Query_Generator;
@@ -297,5 +298,52 @@ class Query_Options implements Clean_Database {
 	}
 
 	#region -- Clean Database
+
+	#region -- Populate database with default queries.
+
+	/**
+	 * Populate the database with some default queries, if there are none defined.
+	 *
+	 * @return void
+	 */
+	public static function populate_database_with_default_queries() {
+		$queries_options = get_option( self::QUERIES_OPTION_KEY, array() );
+
+		if ( ! empty( $queries_options ) ) {
+			return;
+		}
+
+		$registered_settings_classes = Class_Retriever_Utils::get_all_query_settings_objects();
+
+		$all_default_options = array();
+		foreach ( $registered_settings_classes as $query_setting_class ) {
+			$all_default_options[ $query_setting_class->get_setting_name() ] = $query_setting_class->get_default_setting();
+		}
+
+		$query_templates         = new Query_Templates();
+		$query_templates_options = $query_templates->get_all_query_posts_templates_array();
+
+		foreach ( $query_templates_options as $query_options ) {
+			$new_options = self::merge_default_with_new_args( $all_default_options, $query_options );
+			self::add_new_query( $new_options );
+		}
+	}
+
+	public static function merge_default_with_new_args( $default_args, $new_args ) {
+		$returned_args = $default_args;
+		foreach ( $new_args as $key => $setting ) {
+			if ( is_array( $setting ) ) {
+				foreach ( $setting as $key2 => $setting2 ) {
+					$returned_args[ $key ][ $key2 ] = $setting2;
+				}
+			} else {
+				$returned_args[ $key ] = $setting;
+			}
+		}
+
+		return $returned_args;
+	}
+
+	#endregion -- Populate database with default queries.
 
 }

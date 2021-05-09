@@ -54,8 +54,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Tab Queries:
 
-- Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
-
+- Add most viewed template.
 - Do not display a tab, if a query doesn't have the needed plugins.
 - Do not display tab if contents are empty.
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
@@ -82,6 +81,7 @@ disable admin privilege.
 - Add in manual testing a lot of testing, mainly including javascript things.
 - Add in Manual tests, to test the cache with various plugins.
 - Add in Manual tests, to check if query templates work.
+- Add in Manual tests to test query template, because they can go wrong very easy.
 - Query/plugin, if a plugin from a category is not installed, then the query should say that the plugin is not installed
 and show an error.
 
@@ -158,6 +158,7 @@ and show an error.
 - 🥇 Add taxonomy options(with post formats).
 - ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.
+- ➕ ADD most viewed query tabs template.
 - Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 - ➕ Add filters for all things.
 - ➕ In the title component, add a setting to how many lines of text should be displayed.
