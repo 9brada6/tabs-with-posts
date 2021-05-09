@@ -68,24 +68,25 @@
 11. Test how each article block style works with show more posts button.
 12. Make sure that the meta wrapper is not displayed, if the meta inside is not.
 13. Test the hover/focus state of the elements, to not differ between them(or to not work at all).
-14. When writing CSS for hover selectors, the hover selector should be tagged anchor tag hover/focus(use focus-within on parent).
+14. When writing CSS for hover selectors, the hover/focus selector should be on anchor tag(use focus-within on parent).
 15. Check if thumbnail image dimension is correct, in proportion of what it needs to display(thumbnail or medium).
-16. Use "header" and no "title" to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
+16. Use "header" and no "title" in components settings to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
 17. Check components classes, if they exist in template file.
 18. Inspect the template file and check if everything is good, and there are no mistakes.
+19. Check if direct parent elements of meta have class flex-meta-wrapper--$artblock->meta_suffix_classes()
 
 ## CSS of Article Blocks
 
 1. Any block should import twrp-block-mixin, and additionally, any meta item should have the class &__meta, title should have the class &__title.
 2. Each class element must be declared in the SCSS file, even if that we don't need to style that class.(Some classes might not be declared only if they target same element, and they are additional descriptors. Ex: an element with &__meta and &__author is unnecessary to add &__author in SCSS file if it is not needed.)
-3. Each block element, or inline element must extend .twrp-reset-box mixin, including the main element, the anchor tags(things that are often styled, should also extend .twrp-reset-anchor). Exceptions are elements that use .twrp-thumbnail-wrapper, and .twrp-thumbnail, since these mixins are already included in the classes.
+3. Each block element, or inline element must extend .twrp-reset-box mixin, including the main element, the anchor tags(things that are often styled, should also extend .twrp-reset-anchor). Exceptions are elements that use .twrp-thumbnail-wrapper, and .twrp-thumbnail, since these mixins are already included in the classes, and classes like &__author, where is declared in &__meta.
 4. Each element must not declare css proprieties that can inherit: font-weight, font-face, font-kerning... etc. The only exceptions are font-size, word-break, word-wrap, white-spacing and line-height, color.
 5. Meta elements should have font-variant-numeric: lining-nums; to align the numbers in meta with the icons(inherited from block mixin).
 6. All anchors should have the color and background color set in CSS(or not set, but inherited from reset anchor mixin), hover/focus are not mandatory, since it is overwritten by CSS specificity.
 7. For the title CSS, use color/background color target the title, when hover/focus is used, target the title inside the anchor(css property should be on h3, and not on the anchor, in css and in components).
 8. Each article block should have word-wrap: break-word(and overflow-wrap: break-word;) where is necessary. The title gets it from the mixin, meta usually needs white-space: nowrap, the long ones. Test this by inserting long lines of text.
 9. Make sure that the long meta have white-space:nowrap if needed.
-10. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited. Define for meta and title in article block mixin.
+10. Make sure that each component has in css transition defined, transition is a CSS property that is not inherited. Defined for meta and title in article block mixin.
 11. Test how article blocks are displayed in grid mode when the title/meta is longer than the others. Make sure is
 displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last item.
 12. Be sure that we use css variables where we need(meta font size, title font size... etc).

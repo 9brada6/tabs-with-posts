@@ -52,11 +52,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Add meta places image to modern style.
-- Finish Modern style.
-
-- ------------------------------------------------------------------------------
-
 - Tab Queries:
 
 - Add a list of query templates by default. These templates should be created when plugin is activated, if the previous queries does not exist.
@@ -78,8 +73,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.
-
-- Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 
 - ### TODO Manual Tests
 
@@ -165,7 +158,9 @@ and show an error.
 - 🥇 Add taxonomy options(with post formats).
 - ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.
+- Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 - ➕ Add filters for all things.
+- ➕ In the title component, add a setting to how many lines of text should be displayed.
 - ➕ Add a way to invert category icons?
 - ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.
 - ➕ Add a preview query posts in the backend. If we add a query preview in the backend, add a warning that will say that sticky posts are not included here.

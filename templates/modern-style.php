@@ -23,9 +23,7 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 
 		<?php if ( $artblock->excerpt_exist_and_is_displayed() ) : ?>
 			<div class="twrp-ms__excerpt-container">
-				<div class="twrp-ms__excerpt">
-					<?php $artblock->display_the_excerpt(); ?>
-				</div>
+				<div class="twrp-ms__excerpt"><?php $artblock->display_the_excerpt(); ?></div>
 			</div>
 		<?php endif; ?>
 

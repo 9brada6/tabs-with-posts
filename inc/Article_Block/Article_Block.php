@@ -1295,6 +1295,14 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		return $option;
 	}
 
+	/**
+	 * Display a class suffix, which consist of the meta names, separated by '-'.
+	 * This function should be used only on DIRECT the parent of the meta
+	 * elements.
+	 *
+	 * @param array $numbers
+	 * @return void
+	 */
 	public function meta_suffix_classes( $numbers ) {
 		$class_suffix = '';
 		foreach ( $numbers as $number ) {
