@@ -43,6 +43,11 @@
 		padding-bottom: 0.2rem;
 	}
 
+	&--disabled {
+		cursor: wait;
+		opacity: 0.6 !important;
+	}
+
 	&:hover,
 	&:focus {
 		color: white;

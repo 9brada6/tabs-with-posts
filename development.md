@@ -54,16 +54,17 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Tab Queries:
 
-- Add most viewed template.
 - Do not display a tab, if a query doesn't have the needed plugins.
+- Add somewhere in the widgets, that the tab is not displayed because a widget is not installed.
+
 - Do not display tab if contents are empty.
+
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - ------------------------------------------------------------------------------
 
-- When a tab query is deleted, then delete the tab from the widgets?(sounds very good).
-
-- Make ajax show a "Loading..." text before loading widget, and before adding a tab.
+- Make ajax show a "Loading..." before adding a tab, and a message in case it fails.
+- Make ajax show a "Loading..." text before loading widget.
 - Make ajax show a "Loading..." text in widget when selecting article block.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
@@ -156,6 +157,7 @@ and show an error.
 
 - Test A3Rev views plugin, because we changed something.
 - 🥇 Add taxonomy options(with post formats).
+- ➕ When a tab query is deleted, then delete the tab from the widgets?(sounds very good), and if is not deleted, then improve the message that a tab is non existed in widget.
 - ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.
 - ➕ ADD most viewed query tabs template.

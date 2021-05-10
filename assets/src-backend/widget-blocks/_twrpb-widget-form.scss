@@ -26,12 +26,15 @@
 		margin-left: -4px;
 	}
 
-	// Selected Queries
-	&__selected-queries{
-
+	&__failed-to-load-query-tab {
+		display: none;
 	}
 
-	&__selected-query {
+	// Selected Queries
+	&__selected-queries { /* stylelint-disable-next-line rule */
+	}
+
+	&__selected-query { /* stylelint-disable-next-line rule */
 	}
 
 	&__selected-query-title {
@@ -153,6 +156,15 @@
 		width: 250px;
 		max-width: 100%;
 		max-height: auto;
+	}
+
+	// Loading spinner.
+	&__query-loading {
+		display: none;
+		flex-shrink: 0;
+		width: 25px;
+		height: 25px;
+		margin-left: 8px;
 	}
 }
 

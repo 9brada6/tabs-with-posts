@@ -19,6 +19,8 @@ const queriesListSelector = '.twrpb-widget-form__selected-queries-list';
 const queriesItemSelector = '.twrpb-widget-form__selected-query';
 
 const queryAddSelector = '.twrpb-widget-form__select-query-to-add-btn';
+const querySpinnerSelector = '.twrpb-widget-form__query-loading';
+const queryFailedToAddSelector = '.twrpb-widget-form__failed-to-load-query-tab';
 const queryRemoveSelector = '.twrpb-widget-form__remove-selected-query';
 
 const queriesInputSelector = '.twrpb-widget-form__selected-queries';
@@ -32,6 +34,8 @@ const articleBlockSettingsContainerSelector = '.twrpb-widget-form__article-block
 // #region -- Add Queries.
 
 $( document ).on( 'click', queryAddSelector, handleAddQueryButton );
+
+let widgetIsAjaxLoadingQuery = false;
 
 /**
  * Handles the click when a user wants to add a query(tab) to be displayed and
@@ -57,6 +61,17 @@ async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|num
 		return;
 	}
 
+	if ( widgetIsAjaxLoadingQuery ) {
+		return;
+	}
+
+	const widgetElement = getWidgetWrapperById( widgetId );
+	const failedMessageElement = widgetElement.find( queryFailedToAddSelector );
+	failedMessageElement.hide();
+
+	addQueryLoadingAnimation( widgetId );
+	widgetIsAjaxLoadingQuery = true;
+
 	const ajaxNonce = String( $( '#twrpb-plugin-widget-ajax-nonce' ).attr( 'data-twrpb-plugin-widget-ajax-nonce' ) );
 
 	$.ajax( {
@@ -81,6 +96,10 @@ async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|num
 					updateQueriesInput( widgetId );
 					makeAllQueriesCollapsible();
 					queriesList.trigger( 'twrpb-query-added' );
+				} else if ( data.length < 25 ) {
+					const widget = getWidgetWrapperById( widgetId );
+					const failedMessage = widget.find( queryFailedToAddSelector );
+					failedMessage.show();
 				}
 			}
 		)
@@ -89,8 +108,32 @@ async function addQueryToListIfDoNotExist( widgetId: string, queryId: string|num
 			function( data ) {
 				// eslint-disable-next-line no-console
 				console.error( 'Something went wrong with the ajax callback in addQueryToListIfDoNotExist() function,' );
+				const widget = getWidgetWrapperById( widgetId );
+				const failedMessage = widget.find( queryFailedToAddSelector );
+				failedMessage.show();
 			}
-		);
+		).always( function() {
+			removeQueryLoadingAnimation( widgetId );
+			widgetIsAjaxLoadingQuery = false;
+		} );
+}
+
+function addQueryLoadingAnimation( widgetId: string ) {
+	const widget = getWidgetWrapperById( widgetId );
+	const addQueryButton = widget.find( queryAddSelector );
+	const spinner = widget.find( querySpinnerSelector );
+
+	addQueryButton.addClass( 'twrpb-button--disabled' );
+	spinner.show();
+}
+
+function removeQueryLoadingAnimation( widgetId: string ) {
+	const widget = getWidgetWrapperById( widgetId );
+	const addQueryButton = widget.find( queryAddSelector );
+	const spinner = widget.find( querySpinnerSelector );
+
+	addQueryButton.removeClass( 'twrpb-button--disabled' );
+	spinner.hide();
 }
 
 // #endregion -- Add Queries.

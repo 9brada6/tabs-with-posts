@@ -207,6 +207,14 @@ class Widget_Form {
 			<button class="<?php $this->bem_class( 'select-query-to-add-btn' ); ?> twrpb-button" type="button">
 				<?= esc_html_x( 'Add', 'backend', 'tabs-with-posts' ); ?>
 			</button>
+
+			<span class="<?php $this->bem_class( 'query-loading' ); ?>">
+				<span class="twrpb-loading"></span>
+			</span>
+		</p>
+
+		<p class="<?php $this->bem_class( 'failed-to-load-query-tab' ); ?>">
+			<?= esc_html_x( 'Failed to add tab. Something went wrong, try refreshing the page.', 'backend', 'tabs-with-posts' ); ?>
 		</p>
 		<?php
 	}
