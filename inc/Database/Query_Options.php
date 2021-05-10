@@ -329,6 +329,13 @@ class Query_Options implements Clean_Database {
 		}
 	}
 
+	/**
+	 * Merge the default args of a query, with the args from a template.
+	 *
+	 * @param array $default_args
+	 * @param array $new_args
+	 * @return array
+	 */
 	public static function merge_default_with_new_args( $default_args, $new_args ) {
 		$returned_args = $default_args;
 		foreach ( $new_args as $key => $setting ) {

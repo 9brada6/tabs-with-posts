@@ -14,6 +14,7 @@ use TWRP\Utils\Class_Retriever_Utils;
 
 use RuntimeException;
 use TWRP\Database\General_Options;
+use TWRP\Database\Query_Options;
 use TWRP\Utils\Frontend_Translation;
 use WP_Post;
 
@@ -122,6 +123,7 @@ class Tabs_Creator {
 		$this->tab_style = new $tab_style_class_name( $this->widget_id, $this->instance_settings, $tab_variant );
 
 		$this->query_ids = Widget_Utils::pluck_valid_query_ids( $this->instance_settings );
+		$this->query_ids = $this->get_filtered_valid_queries_to_display( $this->query_ids );
 
 		foreach ( $this->query_ids as $key => $query_id ) {
 			$artblock = $this->get_artblock( $query_id );
@@ -131,8 +133,6 @@ class Tabs_Creator {
 				$this->query_artblocks[ $query_id ] = $artblock;
 			}
 		}
-
-		// todo: verify if query_ids exist here, and unset them.
 
 		if ( empty( $this->query_ids ) ) {
 			throw new RuntimeException();
@@ -145,8 +145,10 @@ class Tabs_Creator {
 	 * @return void
 	 */
 	public function display_tabs() {
-		$loaded_via_ajax = $this->widget_is_loaded_via_ajax();
-		do_action( 'twrp_display_tabs_before_ajax', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids, $loaded_via_ajax );
+		$loaded_via_ajax    = $this->widget_is_loaded_via_ajax();
+		$queries_to_display = $this->query_ids;
+
+		do_action( 'twrp_display_tabs_before_ajax', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $queries_to_display, $loaded_via_ajax );
 
 		if ( $loaded_via_ajax ) {
 			$this->display_widget_to_load_via_ajax();
@@ -157,12 +159,12 @@ class Tabs_Creator {
 		$tab_style   = $this->tab_style;
 		$default_tab = true;
 
-		do_action( 'twrp_before_tabs', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids );
+		do_action( 'twrp_before_tabs', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $queries_to_display );
 
 		$tab_style->start_tabs_wrapper();
-		if ( count( $this->query_ids ) > 1 ) {
+		if ( count( $queries_to_display ) > 1 ) {
 			$tab_style->start_tab_buttons_wrapper();
-			foreach ( $this->query_ids as $query_id ) :
+			foreach ( $queries_to_display as $query_id ) :
 				$button_text = Widget_Utils::pluck_tab_button_title( $this->instance_settings, $query_id );
 				$tab_style->tab_button( $button_text, $query_id, $default_tab );
 				$default_tab = false;
@@ -171,7 +173,7 @@ class Tabs_Creator {
 		}
 
 		$tab_style->start_all_tabs_wrapper();
-		foreach ( $this->query_ids as $query_id ) :
+		foreach ( $queries_to_display as $query_id ) :
 			$tab_style->start_tab_content_wrapper( $query_id );
 			$this->display_query_posts( $query_id );
 			$tab_style->end_tab_content_wrapper( $query_id );
@@ -179,7 +181,7 @@ class Tabs_Creator {
 		$tab_style->end_all_tabs_wrapper();
 		$tab_style->end_tabs_wrapper();
 
-		do_action( 'twrp_after_tabs', $this->instance_settings, $this->widget_id, $this->query_ids, $this->tab_style, $this->query_artblocks, $this->query_ids );
+		do_action( 'twrp_after_tabs', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $queries_to_display );
 	}
 
 	/**
@@ -396,8 +398,33 @@ class Tabs_Creator {
 			$post_id = (string) $post->ID;
 		}
 
-		$failed_text = Frontend_Translation::get_translation(Frontend_Translation::WIDGET_FAIL_TO_LOAD);
+		$failed_text = Frontend_Translation::get_translation( Frontend_Translation::WIDGET_FAIL_TO_LOAD );
 
 		echo '<div id="twrp-widget-load-via-ajax--' . esc_attr( $widget_id ) . '" style="display:none;" data-twrp-ajax-widget-id="' . esc_attr( $widget_id ) . '" data-twrp-ajax-post-id="' . esc_attr( $post_id ) . '" data-twrp-failed-text="' . esc_attr( $failed_text ) . '">';
+	}
+
+	/**
+	 * Get the query ids, that are valid to display.
+	 *
+	 * A query is valid to display if it has the needed plugins installed.
+	 *
+	 * @param array $query_ids
+	 * @return array
+	 */
+	protected function get_filtered_valid_queries_to_display( $query_ids ) {
+		$returned_query_ids = array();
+		foreach ( $query_ids as $query_id ) {
+			$dependencies_ok = false;
+			if ( Query_Options::query_plugin_dependencies_installed( $query_id ) ) {
+				$dependencies_ok = true;
+			}
+
+			$all_ok = $dependencies_ok;
+			if ( $all_ok ) {
+				array_push( $returned_query_ids, $query_id );
+			}
+		}
+
+		return $returned_query_ids;
 	}
 }

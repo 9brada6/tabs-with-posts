@@ -54,18 +54,18 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Tab Queries:
 
-- Do not display a tab, if a query doesn't have the needed plugins.
+- Remove duplicate $queries_to_display from display_tabs() actions
+
 - Add somewhere in the widgets, that the tab is not displayed because a widget is not installed.
 
-- Do not display tab if contents are empty.
+- Add a message, if the tab contents are empty.
 
 - Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - ------------------------------------------------------------------------------
 
-- Make ajax show a "Loading..." before adding a tab, and a message in case it fails.
+- Make ajax show a "Loading..." text in widget when selecting article block, and add a fail text.
 - Make ajax show a "Loading..." text before loading widget.
-- Make ajax show a "Loading..." text in widget when selecting article block.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
 
@@ -76,8 +76,6 @@ disable admin privilege.
 
 - ### TODO Manual Tests
 
-- Add in manual test: Test if cache disable works as expected. Test if cache works as expected. Test if cache fire at the actions.
-- Check if article block have image with meta locations.
 - Add in manual test: Test disabled comment display align(usually, not having margin-right).
 - Add in manual testing a lot of testing, mainly including javascript things.
 - Add in Manual tests, to test the cache with various plugins.
@@ -85,16 +83,6 @@ disable admin privilege.
 - Add in Manual tests to test query template, because they can go wrong very easy.
 - Query/plugin, if a plugin from a category is not installed, then the query should say that the plugin is not installed
 and show an error.
-
-- ### Todo Page Builders
-
-- Make widget work in elementor and other page builders, test other page builders how they work.
-- Add in manual tests to test how they work in page builders.
-
-- ### Todo Translations
-
-- Learn about multi-language support and test all of the plugins.
-- Add in Manual tests, to test the translations with various plugins.
 
 - ### ✅ Todo Documentation
 
@@ -155,12 +143,13 @@ and show an error.
 
 ## 🎉 Todo: After first release
 
+- Make widget work in elementor and other page builders, test other page builders how they work.
+- Learn about multi-language support and test what external translation plugins, this plugin support.
 - Test A3Rev views plugin, because we changed something.
 - 🥇 Add taxonomy options(with post formats).
 - ➕ When a tab query is deleted, then delete the tab from the widgets?(sounds very good), and if is not deleted, then improve the message that a tab is non existed in widget.
 - ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.
-- ➕ ADD most viewed query tabs template.
 - Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 - ➕ Add filters for all things.
 - ➕ In the title component, add a setting to how many lines of text should be displayed.

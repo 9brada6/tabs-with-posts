@@ -73,7 +73,8 @@
 16. Use "header" and no "title" in components settings to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
 17. Check components classes, if they exist in template file.
 18. Inspect the template file and check if everything is good, and there are no mistakes.
-19. Check if direct parent elements of meta have class flex-meta-wrapper--$artblock->meta_suffix_classes()
+19. Check if direct parent elements of meta have class flex-meta-wrapper--$artblock->meta_suffix_classes().
+20. Check if article block have image with meta locations.
 
 ## CSS of Article Blocks
 
@@ -104,6 +105,17 @@ displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last
 ## Translation
 
 1. Check if all frontend translations have the option to be modified in settings.
+2. Test the translations of the widget with various plugins to see if they work(what plugins this pluggin support).
+
+## Cache
+
+1. Test if cache disable works as expected.
+2. Test if cache works as expected.
+3. Test if cache fire at the actions.
+
+## Page Builders
+
+1. Test how this plugin work in different(supported) page builders.
 
 ## Documentation
 
