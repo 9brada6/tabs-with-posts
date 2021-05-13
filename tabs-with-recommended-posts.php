@@ -4,11 +4,11 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Tabs with Recommended Posts (Widget)
- * Description:       @todo
+ * Description:       Widget to show posts(latest/most viewed/best rated/custom), with a lot of very solid and nice designs. Focused on user friendliness to customize.
  * Version:           1.0.0
- * Author:            @todo
- * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * Author:            Bradatan Dorin
+ * License:           CC BY-NC-ND
+ * License URI:       https://creativecommons.org/licenses/by-nc-nd/2.0/
  * Text Domain:       tabs-with-posts
  * Domain Path:       @todo
  */

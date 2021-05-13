@@ -66,9 +66,9 @@
 9. Make sure that at the beginning of the template we check if artblock exist.
 10. The title should have &__title, and the meta should have &__meta, &__meta--artblock->meta_suffix_class( $n );, and $meta--$n.
 11. Test how each article block style works with show more posts button.
-12. Make sure that the meta wrapper is not displayed, if the meta inside is not.
+12. Make sure that the meta HTML wrapper is not displayed, if the meta inside is not.
 13. Test the hover/focus state of the elements, to not differ between them(or to not work at all).
-14. When writing CSS for hover selectors, the hover/focus selector should be on anchor tag(use focus-within on parent).
+14. When writing CSS for hover selectors, the hover/focus selector should be on anchor tag.
 15. Check if thumbnail image dimension is correct, in proportion of what it needs to display(thumbnail or medium).
 16. Use "header" and no "title" in components settings to prevent the WP widget to show a widget title in widget settings HTML "name" attribute.
 17. Check components classes, if they exist in template file.
@@ -105,7 +105,7 @@ displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last
 ## Translation
 
 1. Check if all frontend translations have the option to be modified in settings.
-2. Test the translations of the widget with various plugins to see if they work(what plugins this pluggin support).
+2. Test the translations of the widget with various plugins to see if they work(what plugins this plugin support).
 
 ## Cache
 

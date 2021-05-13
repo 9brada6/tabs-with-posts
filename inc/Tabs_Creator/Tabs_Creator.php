@@ -148,7 +148,7 @@ class Tabs_Creator {
 		$loaded_via_ajax    = $this->widget_is_loaded_via_ajax();
 		$queries_to_display = $this->query_ids;
 
-		do_action( 'twrp_display_tabs_before_ajax', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $queries_to_display, $loaded_via_ajax );
+		do_action( 'twrp_display_tabs_before_ajax', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $loaded_via_ajax );
 
 		if ( $loaded_via_ajax ) {
 			$this->display_widget_to_load_via_ajax();
@@ -159,7 +159,7 @@ class Tabs_Creator {
 		$tab_style   = $this->tab_style;
 		$default_tab = true;
 
-		do_action( 'twrp_before_tabs', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $queries_to_display );
+		do_action( 'twrp_before_tabs', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks );
 
 		$tab_style->start_tabs_wrapper();
 		if ( count( $queries_to_display ) > 1 ) {
@@ -181,7 +181,7 @@ class Tabs_Creator {
 		$tab_style->end_all_tabs_wrapper();
 		$tab_style->end_tabs_wrapper();
 
-		do_action( 'twrp_after_tabs', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks, $queries_to_display );
+		do_action( 'twrp_after_tabs', $this->instance_settings, $this->widget_id, $queries_to_display, $this->tab_style, $this->query_artblocks );
 	}
 
 	/**

@@ -15,6 +15,7 @@ class Color_Utils {
 	 * @return bool
 	 *
 	 * @phan-assert string $value
+	 * @psalm-assert-if-true string $value
 	 */
 	public static function is_color( $value ) {
 		if ( ! is_string( $value ) ) {

@@ -54,22 +54,15 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Tab Queries:
 
-- Remove duplicate $queries_to_display from display_tabs() actions
-
-- Add somewhere in the widgets, that the tab is not displayed because a widget is not installed.
-
+- Bug: If after a query, no posts are returned(article blocks are not created), then the cache is not updated.
 - Add a message, if the tab contents are empty.
-
-- Bug: If we make a most rated posts(ordered), (or most viewed), then we disable the plugin, the tab will display but the contents not. (If there are no posts, then display a message). Aka Display a tab only if the content exist.
 
 - ------------------------------------------------------------------------------
 
-- Make ajax show a "Loading..." text in widget when selecting article block, and add a fail text.
+- Make ajax in widget when selecting article block to show a fail text.
 - Make ajax show a "Loading..." text before loading widget.
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
-
-- Bug: If after a query, no posts are returned(article blocks are not created), then the cache is not updated.
 
 - Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
 disable admin privilege.

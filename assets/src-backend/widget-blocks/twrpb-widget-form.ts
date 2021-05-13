@@ -337,7 +337,9 @@ async function handleArticleBlockChanged() {
 	if ( hasArticleBlockInCache( widgetId, queryId, artblockId ) ) {
 		artblockSettingsHTML = getArticleBlockFromCache( widgetId, queryId, artblockId );
 	} else {
+		displayLoadingArtblock( widgetId, queryId );
 		artblockSettingsHTML = await getArticleBlockSettings( widgetId, queryId, artblockId );
+		removeLoadingArtblock( widgetId, queryId );
 	}
 
 	insertArticleBlock( widgetId, queryId, artblockSettingsHTML );
@@ -370,6 +372,26 @@ function insertArticleBlock( widgetId: string, queryId: string|number, html: str
 	artblockContainer.find( '[' + dataArtblockId + ']' ).detach();
 	artblockContainer.append( html );
 	artblockContainer.trigger( 'twrpb-artblock-added' );
+}
+
+function displayLoadingArtblock( widgetId, queryId ) {
+	const queryContainer = getQueryItemById( widgetId, queryId );
+
+	const settingsContainer = queryContainer.find( articleBlockSettingsContainerSelector );
+	settingsContainer.addClass( 'twrpb-widget-form__article-block-loading' );
+
+	const loadingSpinner = queryContainer.find( '.twrpb-widget-form__article-block-loading-spinner' );
+	loadingSpinner.show();
+}
+
+function removeLoadingArtblock( widgetId, queryId ) {
+	const queryContainer = getQueryItemById( widgetId, queryId );
+
+	const settingsContainer = queryContainer.find( articleBlockSettingsContainerSelector );
+	settingsContainer.removeClass( 'twrpb-widget-form__article-block-loading' );
+
+	const loadingSpinner = queryContainer.find( '.twrpb-widget-form__article-block-loading-spinner' );
+	loadingSpinner.hide();
 }
 
 // #endregion -- Insert The Article Block Settings.

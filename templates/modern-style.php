@@ -27,15 +27,15 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 			</div>
 		<?php endif; ?>
 
-		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 7, 8 ) ) ) : ?>
+		<?php if ( $artblock->one_or_more_meta_is_displayed( array( 7, 8 ) ) ) : ?>
 			<div class="twrp-ms__top-meta-wrapper">
-				<?php if ( $artblock->one_or_more_meta_id_displayed( array( 7 ) ) ) : ?>
+				<?php if ( $artblock->one_or_more_meta_is_displayed( array( 7 ) ) ) : ?>
 					<div class="twrp-ms__top-left-meta">
 						<span class="twrp-ms__meta twrp-ms__meta--7 twrp-ms__<?php $artblock->meta_suffix_class( 7 ); ?>"><?php $artblock->display_meta( 7 ); ?></span>
 					</div>
 				<?php endif; ?>
 
-				<?php if ( $artblock->one_or_more_meta_id_displayed( array( 8 ) ) ) : ?>
+				<?php if ( $artblock->one_or_more_meta_is_displayed( array( 8 ) ) ) : ?>
 					<div class="twrp-ms__top-right-meta">
 						<span class="twrp-ms__meta twrp-ms__meta--8 twrp-ms__<?php $artblock->meta_suffix_class( 8 ); ?>"><?php $artblock->display_meta( 8 ); ?></span>
 					</div>
@@ -43,9 +43,9 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 			</div>
 		<?php endif; ?>
 
-		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2, 3, 4, 5, 6 ) ) ) : ?>
+		<?php if ( $artblock->one_or_more_meta_is_displayed( array( 1, 2, 3, 4, 5, 6 ) ) ) : ?>
 			<div class="twrp-ms__bot-meta-wrapper">
-				<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2, 3 ) ) ) : ?>
+				<?php if ( $artblock->one_or_more_meta_is_displayed( array( 1, 2, 3 ) ) ) : ?>
 					<div class="twrp-ms__first-meta-wrapper twrp-ms__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 1, 2, 3 ) ); ?>">
 						<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
 							<span class="twrp-ms__meta twrp-ms__meta--1 twrp-ms__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
@@ -61,7 +61,7 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 					</div>
 				<?php endif; ?>
 
-				<?php if ( $artblock->one_or_more_meta_id_displayed( array( 4, 5, 6 ) ) ) : ?>
+				<?php if ( $artblock->one_or_more_meta_is_displayed( array( 4, 5, 6 ) ) ) : ?>
 					<div class="twrp-ms__second-meta-wrapper twrp-ms__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 4, 5, 6 ) ); ?>">
 						<?php if ( $artblock->get_meta_displayed_name( 4 ) ) : ?>
 							<span class="twrp-ms__meta twrp-ms__meta--4 twrp-ms__<?php $artblock->meta_suffix_class( 4 ); ?>"><?php $artblock->display_meta( 4 ); ?></span>

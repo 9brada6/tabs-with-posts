@@ -50,6 +50,11 @@ class Create_Tabs_Cache {
 		add_action( 'post_updated', array( static::class, 'cache_all_widgets_and_tabs' ) );
 		add_action( 'after_delete_post', array( static::class, 'cache_all_widgets_and_tabs' ) );
 
+		// When a term is updated/added/deleted.
+		add_action( 'create_term', array( static::class, 'cache_all_widgets_and_tabs' ) );
+		add_action( 'edited_terms', array( static::class, 'cache_all_widgets_and_tabs' ) );
+		add_action( 'delete_term', array( static::class, 'cache_all_widgets_and_tabs' ) );
+
 		// When the widget is updated/added/deleted.
 		add_action( 'update_option_widget_twrp_tabs_with_recommended_posts', array( static::class, 'cache_all_widgets_and_tabs' ) );
 
@@ -75,6 +80,11 @@ class Create_Tabs_Cache {
 		add_action( 'wp_ajax_twrp_refresh_widget_cache', array( static::class, 'ajax_refresh_cache' ) );
 	}
 
+	/**
+	 * Refresh cache when this plugin is activated.
+	 *
+	 * @return void
+	 */
 	public static function plugin_activated_refresh_cache() {
 		// We can't create cache here because is too late, but anyway delete the
 		// cache timestamp to refresh next time a page load.

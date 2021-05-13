@@ -264,6 +264,12 @@ class Widget_Form {
 	public function display_query_settings( $query_id ) {
 		$delete_button_text       = _x( 'Delete', 'backend', 'tabs-with-posts' );
 		$delete_button_aria_label = _x( 'Delete this tab', 'backend', 'tabs-with-posts' );
+
+		$plugins_needed_not_installed = '';
+		if ( ! Query_Options::query_plugin_dependencies_installed( $query_id ) ) {
+			$plugins_needed_not_installed = _x( 'This tab will not be displayed, because the needed plugins are not installed.', 'backend', 'tabs-with-posts' );
+		}
+
 		?>
 		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrpb-query-id="<?= esc_attr( (string) $query_id ); ?>">
 			<h4 class="<?php $this->bem_class( 'selected-query-title' ); ?>">
@@ -276,6 +282,13 @@ class Widget_Form {
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
 					<?= esc_html_x( 'Tab Settings:', 'backend', 'tabs-with-posts' ); ?>
 				</h5>
+
+				<?php if ( ! empty( $plugins_needed_not_installed ) ) : ?>
+					<span class="<?php $this->bem_class( 'tab-not-displayed-msg' ); ?>">
+						<?= esc_html( $plugins_needed_not_installed ); ?>
+					</span>
+				<?php endif; ?>
+
 				<?php $this->display_tab_button_text_setting( $query_id ); ?>
 				<?php $this->display_tab_query_select_artblock( $query_id ); ?>
 
@@ -341,7 +354,9 @@ class Widget_Form {
 		$select_name = Widget_Utils::get_field_name( $this->widget_id, $query_id, TWRP_Widget::ARTBLOCK_SELECTOR__NAME );
 		?>
 		<p class="<?php $this->bem_class( 'article-block-selector-wrapper' ); ?>">
-			<?= esc_html_x( 'Select a style to display:', 'backend', 'tabs-with-posts' ); ?>
+			<span class="<?php $this->bem_class( 'article-block-selector-text' ); ?>">
+				<?= esc_html_x( 'Select a style to display:', 'backend', 'tabs-with-posts' ); ?>
+			</span>
 			<select class="<?php $this->bem_class( 'article-block-selector' ); ?>" name="<?= esc_attr( $select_name ); ?>">
 				<?php foreach ( $registered_artblocks as $artblock ) : ?>
 					<option
@@ -353,6 +368,9 @@ class Widget_Form {
 					</option>
 				<?php endforeach; ?>
 			</select>
+			<span class="<?php $this->bem_class( 'article-block-loading-spinner' ); ?>">
+				<span class="twrpb-loading"></span>
+			</span>
 		</p>
 		<?php
 	}

@@ -223,10 +223,10 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 			return $orderby;
 		}
 
-		$date_order      = '';
+		$other_order     = '';
 		$orderby_clauses = explode( ', ', $orderby );
 		if ( count( $orderby_clauses ) > 2 ) {
-			$date_order = ', ' . $orderby_clauses[2];
+			$other_order = ', ' . $orderby_clauses[2];
 		}
 
 		$pattern         = '/CAST\(.+?\)/i';
@@ -234,7 +234,6 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 		$pattern_matches = preg_match_all( $pattern, $orderby, $matches );
 
 		if ( 2 !== $pattern_matches ) {
-			// todo: add to log.
 			return $orderby;
 		}
 		if ( isset( $matches[0] ) ) {
@@ -242,13 +241,12 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 		}
 
 		if ( ! isset( $matches[0], $matches[1] ) || ! is_string( $matches[0] ) || ! is_string( $matches[1] ) ) {
-			// todo: add to log.
 			return $orderby;
 		}
 
 		$orderby = '(' . $matches[0] . '/' . $matches[1] . ') DESC';
 
-		return $orderby . $date_order;
+		return $orderby . $other_order;
 	}
 
 	#endregion -- Creating custom filters for ordering posts.

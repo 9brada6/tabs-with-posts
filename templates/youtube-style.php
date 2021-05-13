@@ -12,7 +12,7 @@ if ( ! isset( $artblock ) ) {
 			<?php $artblock->display_post_thumbnail( 'thumbnail', array( 'class' => 'twrp-thumbnail twrp-ys__thumbnail' ) ); ?>
 		</div>
 
-		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 5, 6 ) ) ) : ?>
+		<?php if ( $artblock->one_or_more_meta_is_displayed( array( 5, 6 ) ) ) : ?>
 		<div class="twrp-ys__thumbnail-meta-wrapper">
 			<?php if ( $artblock->get_meta_displayed_name( 5 ) ) : ?>
 				<span class="twrp-ys__meta twrp-ys__meta--5 twrp-ys__<?php $artblock->meta_suffix_class( 5 ); ?>"><?php $artblock->display_meta( 5 ); ?></span>
@@ -30,7 +30,7 @@ if ( ! isset( $artblock ) ) {
 			<?php $artblock->the_title( '<h3 class="twrp-ys__title">', '</h3>' ); ?>
 		</a>
 
-		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 1, 2 ) ) ) : ?>
+		<?php if ( $artblock->one_or_more_meta_is_displayed( array( 1, 2 ) ) ) : ?>
 		<div class="twrp-ys__first-meta-wrapper twrp-ys__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 1, 2 ) ); ?>">
 			<?php if ( $artblock->get_meta_displayed_name( 1 ) ) : ?>
 				<span class="twrp-ys__meta twrp-ys__meta--1 twrp-ys__<?php $artblock->meta_suffix_class( 1 ); ?>"><?php $artblock->display_meta( 1 ); ?></span>
@@ -42,7 +42,7 @@ if ( ! isset( $artblock ) ) {
 		</div>
 		<?php endif; ?>
 
-		<?php if ( $artblock->one_or_more_meta_id_displayed( array( 3, 4 ) ) ) : ?>
+		<?php if ( $artblock->one_or_more_meta_is_displayed( array( 3, 4 ) ) ) : ?>
 		<div class="twrp-ys__second-meta-wrapper twrp-ys__flex-meta-wrapper--<?php $artblock->meta_suffix_classes( array( 3, 4 ) ); ?>">
 			<?php if ( $artblock->get_meta_displayed_name( 3 ) ) : ?>
 				<span class="twrp-ys__meta twrp-ys__meta--3 twrp-ys__<?php $artblock->meta_suffix_class( 3 ); ?>"><?php $artblock->display_meta( 3 ); ?></span>

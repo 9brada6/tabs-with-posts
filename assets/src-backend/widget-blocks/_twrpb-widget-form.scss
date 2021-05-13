@@ -87,6 +87,30 @@
 		margin: 0.6rem 0;
 	}
 
+	&__article-block-selector-wrapper {
+		display: flex;
+		align-items: center;
+	}
+
+	&__article-block-selector-text {
+		margin-right: 4px;
+	}
+
+	// Loading Article Block
+
+	&__article-block-loading {
+		cursor: wait;
+		opacity: 0.55;
+	}
+
+	&__article-block-loading-spinner {
+		display: none;
+		flex-shrink: 0;
+		width: 25px;
+		height: 25px;
+		margin-left: 8px;
+	}
+
 	// Controls:
 
 	&__paragraph-select-control {

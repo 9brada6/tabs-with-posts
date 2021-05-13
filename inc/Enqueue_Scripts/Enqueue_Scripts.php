@@ -46,7 +46,13 @@ class Enqueue_Scripts {
 		if ( 'true' === $include_inline ) {
 			add_action(
 				'twrp_display_tabs_before_ajax',
-				function() {
+				/**
+				 * Add the inline svg icons.
+				 *
+				 * @param array $instance_settings
+				 * @return void
+				 */
+				function( $instance_settings ) {
 					static $function_executed = false;
 					if ( ! $function_executed ) {
 						Icons_CSS::include_needed_icons_inline();

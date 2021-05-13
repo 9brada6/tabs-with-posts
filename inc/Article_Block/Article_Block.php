@@ -697,7 +697,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	 * @param array<int> $array_of_numbers
 	 * @return bool
 	 */
-	public function one_or_more_meta_id_displayed( $array_of_numbers ) {
+	public function one_or_more_meta_is_displayed( $array_of_numbers ) {
 		foreach ( $array_of_numbers as $number ) {
 			$return_value = $this->get_meta_displayed_name( $number );
 			if ( false !== $return_value ) {
