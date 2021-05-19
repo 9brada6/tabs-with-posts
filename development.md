@@ -54,8 +54,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - Tab Queries:
 
-- Bug: If after a query, no posts are returned(article blocks are not created), then the cache is not updated.
 - Add a message, if the tab contents are empty.
+- Add background component to meta 7,8 on YT style.
 
 - ------------------------------------------------------------------------------
 
@@ -64,8 +64,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 - In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
 
-- Bug: Find where the cache might be generated different if the user has admin privilege, or find a way to
-disable admin privilege.
+- Remove schedule from documentation.
 
 - ### TODO Manual Tests
 

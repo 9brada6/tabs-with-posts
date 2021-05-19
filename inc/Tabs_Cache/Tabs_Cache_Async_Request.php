@@ -82,10 +82,6 @@ class Tabs_Cache_Async_Request extends WP_Background_Process {
 		$query_ids = $tabs_creator->get_query_ids();
 		foreach ( $query_ids as $query_id ) {
 			$tab_content_html = $tabs_creator->create_tab_articles( $query_id );
-			if ( empty( $tab_content_html ) ) {
-				continue;
-			}
-
 			$table_cache->update_widget_html( $query_id, $tab_content_html );
 		}
 	}

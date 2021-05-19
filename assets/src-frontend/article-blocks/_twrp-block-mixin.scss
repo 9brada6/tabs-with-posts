@@ -1,5 +1,6 @@
 @mixin twrp-block-mixin {
 	position: relative;
+	max-width: var(--twrp-artblock-max-width);
 	overflow: hidden;
 
 	&__meta {

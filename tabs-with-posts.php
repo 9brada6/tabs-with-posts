@@ -4,16 +4,20 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Tabs with Recommended Posts (Widget)
- * Description:       Widget to show posts(latest/most viewed/best rated/custom), with a lot of very solid and nice designs. Focused on user friendliness to customize.
- * Version:           1.0.0
+ * Description:       Widget to show posts(latest/most viewed/best rated/custom), with a very solid and nice design. Focused on user friendliness to customize.
+ * Version:           0.9.0
  * Author:            Bradatan Dorin
  * License:           CC BY-NC-ND
- * License URI:       https://creativecommons.org/licenses/by-nc-nd/2.0/
  * Text Domain:       tabs-with-posts
  * Domain Path:       @todo
  */
 
 use TWRP\Plugin_Bootstrap;
+
+/**
+ * Require Freemius initialization.
+ */
+require_once __DIR__ . '/inc/Freemius_Init.php';
 
 /**
  * Include all the files of this plugin.

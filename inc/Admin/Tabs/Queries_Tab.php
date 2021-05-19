@@ -248,7 +248,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 
 		$documentation_url = Settings_Menu::get_tab_url( new Documentation_Tab() );
 		/* translators: both %1$s and %2$s will be replaced with an anchor HTML tag, so the "documentation" word must be between them.  */
-		$message_2 = sprintf( _x( 'See the %1$s documentation %2$s for supported rating/views plugins.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_url( $documentation_url ) . '" target="_blank">', '</a>' );
+		$message_2 = sprintf( _x( 'See the %1$s documentation%2$s for supported rating/views plugins.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_url( $documentation_url ) . '" target="_blank">', '</a>' );
 		?>
 			<p>
 				<?php echo esc_html( $message ) . ' ' . wp_kses( $message_2, Simple_Utils::get_plugin_allowed_kses_html() ); ?>

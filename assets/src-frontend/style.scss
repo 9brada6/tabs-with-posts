@@ -21,6 +21,7 @@
 	// --twrp-tab-button-font-size: 1.05rem;
 
 	// Article Block variables.
+	--twrp-artblock-max-width: 400px;
 	--twrp-title-font-size: 1.1rem;
 	--twrp-title-line-height: 1.4;
 	--twrp-title-line-clamp: 3;
@@ -32,7 +33,7 @@
 	// Tabs Variables.
 	--twrp-tab-button-line-height: 1.5;
 	--twrp-contents-wrapper-padding-top: 10px;
-	--twrp-grid-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+	--twrp-grid-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
 	--twrp-grid-gap: 16px;
 
 	// Article Block & Tabs Variables.
