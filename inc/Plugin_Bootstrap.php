@@ -225,7 +225,10 @@ class Plugin_Bootstrap {
 	 */
 	public static function include_all_files() {
 		foreach ( self::$required_files as $file ) {
-			require __DIR__ . '/' . $file . '.php';
+			$filename = __DIR__ . '/' . $file . '.php';
+			// if ( file_exists( $filename ) ) { .
+				require $filename;
+			// }
 		}
 	}
 

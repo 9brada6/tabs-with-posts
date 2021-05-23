@@ -52,6 +52,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
+- Make plugin folder name and plugin file name not be hard-coded.
+
 - Tab Queries:
 
 - Add a message, if the tab contents are empty.
