@@ -14,10 +14,13 @@
 
 use TWRP\Plugin_Bootstrap;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 #region -- Include Freemius.
 
 if ( ! function_exists( 'twrp_fs' ) ) {
-
 	// Create a helper function for easy SDK access.
 	function twrp_fs() {
 		global $twrp_fs;
@@ -28,24 +31,32 @@ if ( ! function_exists( 'twrp_fs' ) ) {
 
 			$twrp_fs = fs_dynamic_init(
 				array(
-					'id'             => '8374',
-					'slug'           => 'tabs-with-posts',
-					'type'           => 'plugin',
-					'public_key'     => 'pk_c1ae81786eb03cf3ee395ca42d790',
-					'is_premium'     => false,
-					'has_addons'     => false,
-					'has_paid_plans' => false,
-					'menu'           => array(
+					'id'                  => '8374',
+					'slug'                => 'tabs-with-posts',
+					'type'                => 'plugin',
+					'public_key'          => 'pk_c1ae81786eb03cf3ee395ca42d790',
+					'is_premium'          => true,
+					// If your plugin is a serviceware, set this option to false.
+					'has_premium_version' => true,
+					'has_addons'          => false,
+					'has_paid_plans'      => true,
+					'trial'               => array(
+						'days'               => 7,
+						'is_require_payment' => false,
+					),
+					'menu'                => array(
 						'slug'           => 'tabs_with_recommended_posts',
 						'override_exact' => true,
 						'first-path'     => 'options-general.php?page=tabs_with_recommended_posts&tab=documentation',
-						'account'        => false,
 						'contact'        => false,
 						'support'        => false,
 						'parent'         => array(
 							'slug' => 'options-general.php',
 						),
 					),
+					// Set the SDK to work in a sandbox mode (for development & testing).
+					// IMPORTANT: MAKE SURE TO REMOVE SECRET KEY BEFORE DEPLOYMENT.
+					'secret_key'          => 'sk_H(LhQ^:9R~P$s=6sp_tm%?Ys4=-&A',
 				)
 			);
 		}
@@ -65,8 +76,7 @@ if ( ! function_exists( 'twrp_fs' ) ) {
 	twrp_fs()->add_filter( 'connect_url', 'twrp_fs_settings_url' );
 	twrp_fs()->add_filter( 'after_skip_url', 'twrp_fs_settings_url' );
 	twrp_fs()->add_filter( 'after_connect_url', 'twrp_fs_settings_url' );
-	twrp_fs()->add_filter( 'after_pending_connect_url', 'twrp_fs_settings_url' );
-}
+	twrp_fs()->add_filter( 'after_pending_connect_url', 'twrp_fs_settings_url' );}
 
 #endregion -- Include Freemius.
 

@@ -25,7 +25,7 @@ class Simple_Article extends Article_Block {
 	protected $settings;
 
 	public static function get_class_order_among_siblings() {
-		return 50;
+		return 30;
 	}
 
 	public static function get_id() {

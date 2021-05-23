@@ -104,6 +104,7 @@ class Plugin_Bootstrap {
 		// Article Blocks.
 		'Article_Block/Article_Block_Info',
 		'Article_Block/Article_Block',
+		'Article_Block/Article_Block_Locked',
 
 		'Article_Block/Component/Artblock_Component',
 		'Article_Block/Component/Component_Settings/Component_Setting',
