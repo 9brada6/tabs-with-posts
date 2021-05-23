@@ -175,6 +175,7 @@ class Plugin_Bootstrap {
 		'Plugins/Known_Plugins/Post_Views_Plugins/GamerZ_Views_Plugin',
 
 		'Plugins/Known_Plugins/Post_Rating_Plugins/Post_Rating_Plugin',
+		'Plugins/Known_Plugins/Post_Rating_Plugins/Post_Rating_Plugin_Locked',
 		'Plugins/Known_Plugins/Post_Rating_Plugins/Blaz_Rating_Plugin',
 		// 'Plugins/Known_Plugins/Post_Rating_Plugins/Site_Reviews_Rating_Plugin',
 		'Plugins/Known_Plugins/Post_Rating_Plugins/Gamerz_Rating_Plugin',
