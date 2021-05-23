@@ -272,7 +272,7 @@ if ( twrp_fs()->is__premium_only() ) {
 		}
 
 		public static function get_name() {
-			return _x( 'Youtube Style (Premium Only)', 'backend', 'tabs-with-posts' );
+			return _x( 'Youtube Style (PRO Only)', 'backend', 'tabs-with-posts' );
 		}
 
 		public static function get_file_name() {

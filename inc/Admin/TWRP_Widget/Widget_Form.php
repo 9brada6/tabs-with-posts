@@ -345,6 +345,7 @@ class Widget_Form {
 	 */
 	protected function display_tab_query_select_artblock( $query_id ) {
 		$registered_artblocks = Class_Retriever_Utils::get_all_article_block_names();
+		$premium_artblocks    = Class_Retriever_Utils::get_all_article_block_locked_names();
 
 		$selected_value = Widget_Utils::pluck_artblock_id( $this->instance_settings, $query_id );
 		if ( empty( $selected_value ) ) {
@@ -363,6 +364,15 @@ class Widget_Form {
 						class="<?php $this->bem_class( 'article-block-select-option' ); ?>"
 						value="<?= esc_attr( $artblock::get_id() ); ?>"
 						<?= $selected_value === $artblock::get_id() ? 'selected' : '' ?>
+					>
+						<?= esc_html( $artblock::get_name() ); ?>
+					</option>
+				<?php endforeach; ?>
+				<?php foreach ( $premium_artblocks as $artblock ) : ?>
+					<option
+						class="<?php $this->bem_class( 'article-block-select-option' ); ?>"
+						value="<?= esc_attr( $artblock::get_id() ); ?>"
+						disabled
 					>
 						<?= esc_html( $artblock::get_name() ); ?>
 					</option>
