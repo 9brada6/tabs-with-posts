@@ -8,14 +8,7 @@ use TWRP\Utils\Simple_Utils;
 
 use WP_Query;
 
-/**
- * Class used to retrieve the ratings for Blaz K. Rating Plugin.
- *
- * This plugin use a 0-5 rating stars system(can be custom changed via a filter).
- */
-class Blaz_Rating_Plugin extends Post_Rating_Plugin {
-
-	const QUERY_ADDITIONAL_FILTER_KEY = 'twrp_blazk_rating_order';
+trait Blaz_Rating_Plugin_Info {
 
 	public static function get_class_order_among_siblings() {
 		return 20;
@@ -50,6 +43,19 @@ class Blaz_Rating_Plugin extends Post_Rating_Plugin {
 	}
 
 	#endregion -- Detect if is installed.
+
+}
+
+/**
+ * Class used to retrieve the ratings for Blaz K. Rating Plugin.
+ *
+ * This plugin use a 0-5 rating stars system(can be custom changed via a filter).
+ */
+class Blaz_Rating_Plugin extends Post_Rating_Plugin {
+
+	const QUERY_ADDITIONAL_FILTER_KEY = 'twrp_blazk_rating_order';
+
+	use Blaz_Rating_Plugin_Info;
 
 	#region -- Get Ratings.
 
