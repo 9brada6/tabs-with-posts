@@ -12,6 +12,7 @@
  * Domain Path:       @todo
  */
 
+use TWRP\Database\Manage_Clean_Database;
 use TWRP\Plugin_Bootstrap;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -72,8 +73,12 @@ if ( function_exists( 'twrp_fs' ) ) {
 
 		// Init Freemius.
 		twrp_fs();
+
 		// Signal that SDK was initiated.
 		do_action( 'twrp_fs_loaded' );
+
+		// Not like register_uninstall_hook(), you do NOT have to use a static function.
+		twrp_fs()->add_action( 'after_uninstall', array( Manage_Clean_Database::class, 'delete_all_plugin_database_entries' ) );
 
 		function twrp_fs_settings_url() {
 			return admin_url( 'options-general.php?page=tabs_with_recommended_posts&tab=general_settings' );

@@ -52,7 +52,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Add a way for free plugin, to show a way of the other supported premium plugins.
+- Add a way for free plugin, to show a way of the other supported premium external plugins.
+- Make free plugin GPLv2 , premium cc-plm.
 
 - Tab Queries:
 
@@ -96,6 +97,7 @@ and show an error.
     - Say how cache works, what plugin have been tested on.
     - Write in documentation what plugins are supported: WP Fastest Cache(By Emre Vona), Autoptimize(By Frank Goossens (futtta)), WP Super Cache(By Automattic), WP-Optimize(By David Anderson, Ruhani Rabin, Team Updraft), Hummingbird(By WPMU DEV), W3 Total Cache(By BoldGrid)
     - Say that all tables/settings are deleted when plugin is uninstalled.
+    - A widget can be forced to load via ajax or not, via a method call.
 
     Query tabs:
     - Say that there should be not any difference in displaying between an admin and an user, because if an admin enter the website, the cache can be saved and all the users will see it.
@@ -109,7 +111,6 @@ and show an error.
     Tabs:
 
     - Don't forget to say that tabs are not displayed when only a single tab is displayed.
-    - A widget can be forced to load via ajax or not, via a method call.
 
     Article Block:
 

@@ -254,9 +254,6 @@ class Plugin_Bootstrap {
 
 		// Populate the database with some default queries.
 		register_activation_hook( $main_file_path, array( Query_Options::class, 'populate_database_with_default_queries' ) );
-
-		// Delete all database when the plugin is uninstalled.
-		register_uninstall_hook( $main_file_path, array( Manage_Clean_Database::class, 'delete_all_plugin_database_entries' ) );
 	}
 
 	/**
