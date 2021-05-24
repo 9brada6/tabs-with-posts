@@ -39,11 +39,6 @@ class Directory_Utils {
 	const PLUGIN_MAIN_FILE_NAME = 'tabs-with-posts';
 
 	/**
-	 * The folder name of this plugin.
-	 */
-	const PLUGIN_FOLDER_NAME = 'tabs-with-posts';
-
-	/**
 	 * The folder where article blocks templates are to be found.
 	 */
 	const TEMPLATES_FOLDER = 'templates/';

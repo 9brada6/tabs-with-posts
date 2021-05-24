@@ -88,11 +88,6 @@ if ( function_exists( 'twrp_fs' ) ) {
 
 	}
 
-	if ( ! defined( 'TWRP__PLUGIN_DIR' ) ) {
-		define( 'TWRP__PLUGIN_DIR', dirname( __FILE__ ) );
-		define( 'TWRP__PLUGIN_URL', plugins_url( plugin_basename( TWRP__PLUGIN_DIR ) ) );
-	}
-
 	#region -- Plugin Bootstrap
 
 	/**

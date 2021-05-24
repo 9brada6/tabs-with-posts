@@ -52,7 +52,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Make plugin folder name and plugin file name not be hard-coded.
+- Add a way for free plugin, to show a way of the other supported premium plugins.
 
 - Tab Queries:
 
