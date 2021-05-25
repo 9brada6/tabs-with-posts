@@ -117,6 +117,8 @@ class General_Options implements Clean_Database {
 
 	const FAIL_TO_LOAD_WIDGET_TEXT = 'Fail_To_Load_Widget_Text';
 
+	const NO_POSTS_TEXT = 'No_Posts_Text';
+
 
 	const ARIA_AUTHOR_TEXT = 'Aria_Author_Text';
 
@@ -197,6 +199,7 @@ class General_Options implements Clean_Database {
 			self::POST_WITH_NO_THUMBNAIL_TEXT,
 			self::DATE_RELATIVE_TEXT,
 			self::FAIL_TO_LOAD_WIDGET_TEXT,
+			self::NO_POSTS_TEXT,
 			self::ARIA_AUTHOR_TEXT,
 			self::ARIA_DATE_TEXT,
 			self::ARIA_VIEWS_TEXT,

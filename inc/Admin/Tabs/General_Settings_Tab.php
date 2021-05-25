@@ -145,6 +145,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 						<?php General_Settings_Factory::display_setting( General_Options::POST_WITH_NO_THUMBNAIL_TEXT ); ?>
 						<?php General_Settings_Factory::display_setting( General_Options::DATE_RELATIVE_TEXT ); ?>
 						<?php General_Settings_Factory::display_setting( General_Options::FAIL_TO_LOAD_WIDGET_TEXT ); ?>
+						<?php General_Settings_Factory::display_setting( General_Options::NO_POSTS_TEXT ); ?>
 
 						<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_THOUSANDS ); ?>
 						<?php General_Settings_Factory::display_setting( General_Options::ABBREVIATION_FOR_MILLIONS ); ?>

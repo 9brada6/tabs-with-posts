@@ -52,7 +52,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Make Unfortunately, no posts, to be translated via settings.
 - Make ajax in widget when selecting article block to show a fail text.
 
 - ### ✅ Todo Documentation

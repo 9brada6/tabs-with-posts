@@ -439,6 +439,8 @@ class Tabs_Creator {
 	 * @return string
 	 */
 	protected function get_display_no_posts_message() {
-		return '<div class="twrp-main__no-posts-wrapper"><span class="twrp-main__no-posts-text">' . esc_html_x( 'Unfortunately, no posts are here.', 'backend', 'tabs-with-posts' ) . '</span></div>';
+		$no_posts_text = Frontend_Translation::get_translation( Frontend_Translation::NO_POSTS_TEXT );
+
+		return '<div class="twrp-main__no-posts-wrapper"><span class="twrp-main__no-posts-text">' . esc_html( $no_posts_text ) . '</span></div>';
 	}
 }

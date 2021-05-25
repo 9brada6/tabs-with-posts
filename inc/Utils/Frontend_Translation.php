@@ -23,6 +23,7 @@ class Frontend_Translation {
 	const POST_NO_THUMBNAIL   = 'post_no_thumbnail';
 	const HUMAN_RELATIVE_DATE = 'human_relative_date';
 	const WIDGET_FAIL_TO_LOAD = 'widget_failed_to_load';
+	const NO_POSTS_TEXT       = 'no_posts_text';
 
 	const ARIA_AUTHOR            = 'aria_author';
 	const ARIA_DATE              = 'aria_date';
@@ -111,6 +112,7 @@ class Frontend_Translation {
 			/* translators: %s: a date representation, in human language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc. the %s is expected to be already translated. */
 			self::HUMAN_RELATIVE_DATE        => __( '%s ago', 'tabs-with-posts' ),
 			self::WIDGET_FAIL_TO_LOAD        => __( 'Loading articles failed, please refresh the page to try again.', 'tabs-with-posts' ),
+			self::NO_POSTS_TEXT              => __( 'Unfortunately, no posts are here.', 'tabs-with-posts' ),
 
 			self::ARIA_AUTHOR                => _x( 'Author', 'Noun, accessibility text', 'tabs-with-posts' ),
 			self::ARIA_DATE                  => _x( 'Date', 'Noun, accessibility text', 'tabs-with-posts' ),
@@ -142,6 +144,7 @@ class Frontend_Translation {
 			self::POST_NO_THUMBNAIL          => General_Options::POST_WITH_NO_THUMBNAIL_TEXT,
 			self::HUMAN_RELATIVE_DATE        => General_Options::DATE_RELATIVE_TEXT,
 			self::WIDGET_FAIL_TO_LOAD        => General_Options::FAIL_TO_LOAD_WIDGET_TEXT,
+			self::NO_POSTS_TEXT              => General_Options::NO_POSTS_TEXT,
 
 			self::ARIA_AUTHOR                => General_Options::ARIA_AUTHOR_TEXT,
 			self::ARIA_DATE                  => General_Options::ARIA_DATE_TEXT,

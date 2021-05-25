@@ -162,6 +162,7 @@ class General_Settings_Factory {
 			General_Options::POST_WITH_NO_THUMBNAIL_TEXT => self::TEXT_SETTING_CLASS,
 			General_Options::DATE_RELATIVE_TEXT          => self::TEXT_SETTING_CLASS,
 			General_Options::FAIL_TO_LOAD_WIDGET_TEXT    => self::TEXT_SETTING_CLASS,
+			General_Options::NO_POSTS_TEXT               => self::TEXT_SETTING_CLASS,
 
 			General_Options::ARIA_AUTHOR_TEXT            => self::TEXT_SETTING_CLASS,
 			General_Options::ARIA_DATE_TEXT              => self::TEXT_SETTING_CLASS,
@@ -221,6 +222,7 @@ class General_Settings_Factory {
 			General_Options::POST_WITH_NO_THUMBNAIL_TEXT => 'get_post_no_thumbnail_text_args',
 			General_Options::DATE_RELATIVE_TEXT          => 'get_date_relative_args',
 			General_Options::FAIL_TO_LOAD_WIDGET_TEXT    => 'get_fail_to_load_widget_text_args',
+			General_Options::NO_POSTS_TEXT               => 'get_no_posts_text_args',
 
 			General_Options::ARIA_AUTHOR_TEXT            => 'get_aria_author_text_args',
 			General_Options::ARIA_DATE_TEXT              => 'get_aria_date_text_args',
@@ -775,6 +777,28 @@ class General_Settings_Factory {
 
 		return array(
 			'title'       => _x( 'Enter the text to display when the widget fails to load via Ajax:', 'backend', 'tabs-with-posts' ),
+			'description' => $description,
+		);
+	}
+
+	/**
+	 * Get the arguments for the translation to display when there are no posts.
+	 *
+	 * @return array
+	 */
+	protected static function get_no_posts_text_args() {
+		$default_translations = Frontend_Translation::get_all_localized_translations();
+		$default              = '';
+		if ( isset( $default_translations[ Frontend_Translation::NO_POSTS_TEXT ] ) ) {
+			$default = $default_translations[ Frontend_Translation::NO_POSTS_TEXT ];
+		}
+
+		/* translators: %s is a translation of a string that an administrator can change. */
+		$defaults_to_text = sprintf( _x( 'Translation defaults to: "%s", additionally translated in the frontend website language.', 'backend', 'tabs-with-posts' ), $default );
+		$description      = $defaults_to_text;
+
+		return array(
+			'title'       => _x( 'Enter the text to display when a tab contains no posts:', 'backend', 'tabs-with-posts' ),
 			'description' => $description,
 		);
 	}

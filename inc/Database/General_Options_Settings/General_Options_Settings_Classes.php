@@ -607,6 +607,25 @@ class Fail_To_Load_Widget_Text extends General_Option_Setting {
 
 }
 
+/**
+ * Class that manages the setting of the text to display when no posts are
+ * displayed.
+ */
+class No_Posts_Text extends General_Option_Setting {
+
+	public function get_default_value() {
+		return '';
+	}
+
+	public function sanitize( $value ) {
+		if ( is_string( $value ) ) {
+			return $value;
+		}
+
+		return $this->get_default_value();
+	}
+
+}
 
 /**
  * Class that manages the aria author translation.
