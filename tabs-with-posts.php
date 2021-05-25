@@ -4,12 +4,15 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Tabs with Recommended Posts (Widget)
- * Description:       Widget to show posts(latest/most viewed/best rated/custom), with a very solid and nice design. Focused on user friendliness to customize.
+ * Description:       Widget to show posts(latest/most viewed/best rated/custom), with a very solid and nice design. Very user-friendly to customize and get started.
  * Version:           0.9.0
+ * Requires at least: 4.9
+ * Requires PHP:      5.6
  * Author:            Bradatan Dorin
  * License:           CC BY-NC-ND
+ * License URI:       http://creativecommons.org/licenses/by-nc-nd/4.0/
  * Text Domain:       tabs-with-posts
- * Domain Path:       @todo
+ * Domain Path:       /translations
  */
 
 use TWRP\Database\Manage_Clean_Database;

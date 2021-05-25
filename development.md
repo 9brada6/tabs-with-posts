@@ -52,28 +52,14 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Add a way for free plugin, to show a way of the other supported premium
-external plugins.
-- Make free plugin GPLv2 , premium cc-plm.
-
-- Tab Queries:
-
-- Add a message, if the tab contents are empty.
+- Be sure that translations work.
 - Add background component to meta 7,8 on YT style.
 
-- get_plugin_file_relative_path get all files for premium plgins also.
-
-- ------------------------------------------------------------------------------
-
 - Make ajax in widget when selecting article block to show a fail text.
-- Make ajax show a "Loading..." text before loading widget.
-
-- Remove schedule from documentation.
-
-- Be sure that translations work.
 
 - ### ✅ Todo Documentation
 
+    - Remove schedule from documentation.
     - Move the documentation to the last position, in he tabs.
     - Add some photos.
     - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
@@ -135,6 +121,7 @@ external plugins.
 - Learn about multi-language support and test what external translation plugins, this plugin support.
 - Test A3Rev views plugin, because we changed something.
 - 🥇 Add taxonomy options(with post formats).
+- ➕ Make ajax show a "Loading..." text before loading widget.
 - ➕ When a tab query is deleted, then delete the tab from the widgets?(sounds very good), and if is not deleted, then improve the message that a tab is non existed in widget.
 - ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.

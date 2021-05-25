@@ -327,22 +327,26 @@ class Tabs_Creator {
 			$result = ob_get_contents();
 			ob_end_clean();
 			if ( $echo ) {
-				return '';
+				echo $this->get_display_no_posts_message(); //phpcs:ignore -- No XSS.
 			} else {
-				return null;
+				return $this->get_display_no_posts_message();
 			}
 		}
 
 		$artblock       = $this->query_artblocks[ $query_id ];
 		$posts_per_page = $this->get_posts_per_page_setting();
-		$artblock->display_blocks( $query_posts, $posts_per_page );
+		if ( ! empty( $query_posts ) ) {
+			$artblock->display_blocks( $query_posts, $posts_per_page );
+		} else {
+			echo $this->get_display_no_posts_message(); //phpcs:ignore -- No XSS.
+		}
 
 		if ( ! $echo ) {
 			$result = ob_get_contents();
 			ob_end_clean();
 
 			if ( false === $result ) {
-				$result = '';
+				$result = $this->get_display_no_posts_message();
 			}
 
 			return $result;
@@ -427,5 +431,14 @@ class Tabs_Creator {
 		}
 
 		return $returned_query_ids;
+	}
+
+	/**
+	 * Display a text that says that there is no posts.
+	 *
+	 * @return string
+	 */
+	protected function get_display_no_posts_message() {
+		return '<div class="twrp-main__no-posts-wrapper"><span class="twrp-main__no-posts-text">' . esc_html_x( 'Unfortunately, no posts are here.', 'backend', 'tabs-with-posts' ) . '</span></div>';
 	}
 }

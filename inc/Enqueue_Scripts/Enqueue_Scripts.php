@@ -54,7 +54,7 @@ class Enqueue_Scripts {
 				 */
 				function( $instance_settings ) {
 					static $function_executed = false;
-					if ( ! $function_executed ) {
+					if ( ! $function_executed && ! wp_doing_ajax() ) {
 						Icons_CSS::include_needed_icons_inline();
 						$function_executed = true;
 					}
