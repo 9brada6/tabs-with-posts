@@ -2,7 +2,9 @@
 
 namespace TWRP\Utils;
 
+use TWRP\Utils\Directory_Utils;
 use TWRP\Database\General_Options;
+use TWRP\Utils\Helper_Trait\After_Setup_Theme_Init_Trait;
 
 /**
  * This class is used to control the retrieving of all translated strings that
@@ -40,6 +42,26 @@ class Frontend_Translation {
 	 * @var array
 	 */
 	protected static $cached_translations = array();
+
+	use After_Setup_Theme_Init_Trait;
+
+	/**
+	 * Load the plugin text domain.
+	 *
+	 * @return void
+	 */
+	public static function after_setup_theme_init() {
+		$plugin_folder      = trim( Directory_Utils::get_plugin_directory_path(), '/' );
+		$plugin_folder_name = strrchr( $plugin_folder, '/' );
+
+		if ( false === $plugin_folder_name ) {
+			return;
+		}
+
+		$plugin_folder_name = trim( $plugin_folder_name, '/' );
+
+		load_plugin_textdomain( 'tabs-with-posts', false, $plugin_folder_name . '/languages' );
+	}
 
 	/**
 	 * Get a frontend translation.

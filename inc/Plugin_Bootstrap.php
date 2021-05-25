@@ -5,7 +5,6 @@
 
 namespace TWRP;
 
-use TWRP\Database\Manage_Clean_Database;
 use TWRP\Database\Query_Options;
 use TWRP\Enqueue_Scripts\Icons_CSS;
 use TWRP\Database\Tabs_Cache_Table;

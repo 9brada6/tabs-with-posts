@@ -52,8 +52,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Be sure that translations work.
-
+- Make Unfortunately, no posts, to be translated via settings.
 - Make ajax in widget when selecting article block to show a fail text.
 
 - ### ✅ Todo Documentation
@@ -111,6 +110,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
     Translations:
 
+    - Add what the filename of the translation should be.
     - Add a section in documentation where you write about translations, how they work,
     and how to translate this plugin.
 

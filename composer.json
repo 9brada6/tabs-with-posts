@@ -17,7 +17,7 @@
 		"pack": "powershell ",
 		"phan": "docker run -v ${PWD}:/mnt/src --rm phanphp/phan:latest",
 		"psalm": "docker run --rm --mount type=bind,src=${PWD},dst=/app --env VAR1=value1 vimeo/psalm-github-actions",
-		"translation": "@php ./bin/wp-cli.phar i18n make-pot . --domain=tabs-with-posts translations/tabs-with-posts.pot",
+		"translation": "@php ./bin/wp-cli.phar i18n make-pot . --domain=tabs-with-posts languages/tabs-with-posts.pot",
 		"test": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit",
 		"test-query-settings": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite query_settings",
 		"test-icons": "docker exec -t -w /var/www/html/wp-content/plugins/tabs-with-recommended-posts twrp_wp vendor/bin/phpunit --testsuite icons",
