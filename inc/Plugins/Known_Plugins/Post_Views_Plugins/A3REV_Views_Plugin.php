@@ -37,7 +37,11 @@ class A3REV_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_plugin_file_relative_path() {
-		return 'page-views-count/page-views-count.php';
+		return array(
+			'page-views-count-premium/page-views-count.php',
+			'page-views-count-premium/page-views-count-premium.php',
+			'page-views-count/page-views-count.php',
+		);
 	}
 
 	#endregion -- Plugin Meta

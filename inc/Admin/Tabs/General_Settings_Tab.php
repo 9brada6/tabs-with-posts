@@ -38,6 +38,11 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 			?>
 
 			<form class="twrpb-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
+
+				<p class="twrpb-general-settings__pre-form-note">
+					<?= esc_html_x( 'If you are using a plugin that cache pages, you need to purge(delete) the page data after changing these settings.', 'backend', 'tabs-with-posts' ); ?>
+				</p>
+
 				<fieldset class="twrpb-general-settings__fieldset">
 					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Color Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php

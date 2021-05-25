@@ -33,7 +33,11 @@ class DFactory_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_plugin_file_relative_path() {
-		return 'post-views-counter/post-views-counter.php';
+		return array(
+			'post-views-counter-premium/post-views-counter.php',
+			'post-views-counter-premium/post-views-counter-premium.php',
+			'post-views-counter/post-views-counter.php',
+		);
 	}
 
 	#endregion -- Plugin Meta

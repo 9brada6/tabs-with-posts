@@ -31,19 +31,16 @@ trait KK_Rating_Plugin_Info {
 	}
 
 	public function get_plugin_file_relative_path() {
-		return 'kk-star-ratings/index.php';
+		return array(
+			'kk-star-ratings-premium/index.php',
+			'kk-star-ratings-premium/kk-star-ratings.php',
+			'kk-star-ratings-premium/kk-star-ratings-premium.php',
+			'kk-star-ratings/kk-star-ratings.php',
+			'kk-star-ratings/index.php',
+		);
 	}
 
 	#endregion -- Plugin Meta
-
-	#region -- Detect if is installed.
-
-	public function is_installed_and_can_be_used() {
-		$plugin_is_installed = function_exists( 'kk_star_ratings' );
-		return $plugin_is_installed;
-	}
-
-	#endregion -- Detect if is installed.
 
 }
 
@@ -59,6 +56,15 @@ if ( twrp_fs()->is__premium_only() ) {
 	class KK_Rating_Plugin extends Post_Rating_Plugin {
 
 		use KK_Rating_Plugin_Info;
+
+		#region -- Detect if is installed.
+
+		public function is_installed_and_can_be_used() {
+			$plugin_is_installed = function_exists( 'kk_star_ratings' );
+			return $plugin_is_installed;
+		}
+
+		#endregion -- Detect if is installed.
 
 		#region -- Get Ratings.
 

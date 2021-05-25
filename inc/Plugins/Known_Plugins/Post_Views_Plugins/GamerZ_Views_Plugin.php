@@ -34,7 +34,11 @@ class GamerZ_Views_Plugin extends Post_Views_Plugin {
 	}
 
 	public function get_plugin_file_relative_path() {
-		return 'wp-postviews/wp-postviews.php';
+		return array(
+			'wp-postviews-premium/wp-postviews.php',
+			'wp-postviews-premium/wp-postviews-premium.php',
+			'wp-postviews/wp-postviews.php',
+		);
 	}
 
 	#endregion -- Plugin Meta

@@ -1,10 +1,14 @@
 # Manual Testing
 
+## Javascript
+
+- Add here more javascript things to test.
+
 ## Assets
 
 - Make sure that in the backend script, the JQuery ui widgets used are compatible with Jquery UI v11 and up.
 
-## Query Settings Manual Testing
+## Query Settings
 
 - Test each setting, see in the debugger if it is as there should be.
 - Be sure that only these types of controls are used: text, number, checkbox, radio, date, number, select, textarea, and hidden(with a custom JS thing).
@@ -16,6 +20,8 @@
 - All date controls should have yy-mm-dd format.
 - All settings should be only in the first array, aka the array of settings should not be a multidimensional array, except for a checkbox setting(that are array by default).
 - Each link to a documentation section should work, and open in a new tab.
+- Check if query templates work.
+- Query/plugin, if a plugin from a category is not installed, then the query should say that the plugin is not installed and show an error
 
 ## Icons Manual Testing
 
@@ -93,6 +99,7 @@ displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last
 12. Be sure that we use css variables where we need(meta font size, title font size... etc).
 13. Check if grid article block is having a good width per column(if the variable --twrp-grid-column needs to be set).
 14. Check if flex displayed meta should have align-items: baseline(in case one of the font-size is changed).
+15. Test disabled comment display align(usually, not having margin-right).
 
 ## Plugins
 

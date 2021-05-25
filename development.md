@@ -52,7 +52,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## ✅ Todo
 
-- Add a way for free plugin, to show a way of the other supported premium external plugins.
+- Add a way for free plugin, to show a way of the other supported premium
+external plugins.
 - Make free plugin GPLv2 , premium cc-plm.
 
 - Tab Queries:
@@ -60,24 +61,16 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - Add a message, if the tab contents are empty.
 - Add background component to meta 7,8 on YT style.
 
+- get_plugin_file_relative_path get all files for premium plgins also.
+
 - ------------------------------------------------------------------------------
 
 - Make ajax in widget when selecting article block to show a fail text.
 - Make ajax show a "Loading..." text before loading widget.
 
-- In General Settings, add a note to say that if you use a plugin with cache, then the cache should be refreshed.
-
 - Remove schedule from documentation.
 
-- ### TODO Manual Tests
-
-- Add in manual test: Test disabled comment display align(usually, not having margin-right).
-- Add in manual testing a lot of testing, mainly including javascript things.
-- Add in Manual tests, to test the cache with various plugins.
-- Add in Manual tests, to check if query templates work.
-- Add in Manual tests to test query template, because they can go wrong very easy.
-- Query/plugin, if a plugin from a category is not installed, then the query should say that the plugin is not installed
-and show an error.
+- Be sure that translations work.
 
 - ### ✅ Todo Documentation
 

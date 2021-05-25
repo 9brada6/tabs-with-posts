@@ -6,6 +6,7 @@ use TWRP\Query_Generator\Query_Setting\Query_Setting;
 use TWRP\Admin\Tabs\Query_Options\Query_Setting_Display;
 use TWRP\Plugins\Known_Plugins\Post_Views_Plugin;
 use TWRP\Plugins\Known_Plugins\Post_Rating_Plugin;
+use TWRP\Plugins\Known_Plugins\Post_Rating_Plugin_Locked;
 use TWRP\Tabs_Creator\Tabs_Styles\Tab_Style;
 use TWRP\Article_Block\Article_Block;
 use TWRP\Article_Block\Article_Block_Locked;
@@ -163,6 +164,23 @@ class Class_Retriever_Utils {
 
 		return $classes;
 	}
+
+	/**
+	 * Get an instance object of each class that extends Post_Rating_Plugin_Locked.
+	 *
+	 * @return array<Post_Rating_Plugin_Locked>
+	 */
+	public static function get_all_post_ratings_plugins_locked_objects() {
+		$class_names = static::get_all_child_classes( Post_Rating_Plugin_Locked::class );
+		$classes     = array();
+
+		foreach ( $class_names as $key => $class_name ) {
+			$classes[ $key ] = new $class_name();
+		}
+
+		return $classes;
+	}
+
 
 	/**
 	 * Get all classes that implements/extends a certain interface/class.

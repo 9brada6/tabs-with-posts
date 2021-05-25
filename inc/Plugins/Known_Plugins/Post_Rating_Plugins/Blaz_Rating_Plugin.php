@@ -1,4 +1,9 @@
 <?php
+/**
+ * Blaz Rating plugin file
+ *
+ * @phpcs:disable Generic.Files.OneObjectStructurePerFile
+ */
 
 namespace TWRP\Plugins\Known_Plugins;
 
@@ -29,20 +34,14 @@ trait Blaz_Rating_Plugin_Info {
 	}
 
 	public function get_plugin_file_relative_path() {
-		return 'rate-my-post/rate-my-post.php';
+		return array(
+			'rate-my-post-premium/rate-my-post.php',
+			'rate-my-post-premium/rate-my-post-premium.php',
+			'rate-my-post/rate-my-post.php',
+		);
 	}
 
 	#endregion -- Plugin Meta
-
-	#region -- Detect if is installed.
-
-	public function is_installed_and_can_be_used() {
-		$avg_function_exist   = function_exists( 'rmp_get_avg_rating' );
-		$count_function_exist = function_exists( 'rmp_get_vote_count' );
-		return $avg_function_exist && $count_function_exist;
-	}
-
-	#endregion -- Detect if is installed.
 
 }
 
@@ -58,6 +57,16 @@ if ( twrp_fs()->is__premium_only() ) {
 		const QUERY_ADDITIONAL_FILTER_KEY = 'twrp_blazk_rating_order';
 
 		use Blaz_Rating_Plugin_Info;
+
+		#region -- Detect if is installed.
+
+		public function is_installed_and_can_be_used() {
+			$avg_function_exist   = function_exists( 'rmp_get_avg_rating' );
+			$count_function_exist = function_exists( 'rmp_get_vote_count' );
+			return $avg_function_exist && $count_function_exist;
+		}
+
+		#endregion -- Detect if is installed.
 
 		#region -- Get Ratings.
 
@@ -263,6 +272,9 @@ if ( twrp_fs()->is__premium_only() ) {
 
 } else {
 
+	/**
+	 * Full class available only in premium plugin.
+	 */
 	class Blaz_Rating_Plugin_Locked extends Post_Rating_Plugin_Locked {
 		use Blaz_Rating_Plugin_Info;
 	}

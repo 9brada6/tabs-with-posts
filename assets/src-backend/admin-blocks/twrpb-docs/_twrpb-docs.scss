@@ -50,6 +50,16 @@
 		border-radius: 6px;
 	}
 
+	&__premium-only-note {
+		font-size: 0.9rem;
+		color: rgb(194, 0, 0);
+	}
+
+	&__premium-locked-plugin {
+		background-color: rgb(255, 223, 223);
+		opacity: 0.85;
+	}
+
 	&__plugin-avatar-wrapper {
 		max-width: 110px;
 		height: auto;

@@ -16,7 +16,7 @@
     <projectFiles>
         <directory name="inc"/>
         <!-- <directory name="tests"/> -->
-        <file name="tabs-with-recommended-posts.php"/>
+        <file name="tabs-with-posts.php"/>
         <ignoreFiles>
             <directory name=".git"/>
             <directory name=".stubs"/>

@@ -37,7 +37,11 @@ class Gamerz_Rating_Plugin extends Post_Rating_Plugin {
 	}
 
 	public function get_plugin_file_relative_path() {
-		return 'wp-postratings/wp-postratings.php';
+		return array(
+			'wp-postratings-premium/wp-postratings.php',
+			'wp-postratings-premium/wp-postratings-premium.php',
+			'wp-postratings/wp-postratings.php',
+		);
 	}
 
 	#endregion -- Plugin Meta

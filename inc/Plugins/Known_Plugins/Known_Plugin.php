@@ -37,12 +37,18 @@ abstract class Known_Plugin {
 	public function get_plugin_version() {
 		$plugins = get_plugins();
 
-		$plugin_file = $this->get_plugin_file_relative_path();
-		if ( ! isset( $plugins[ $plugin_file ]['Version'] ) ) {
-			return false;
+		$plugin_files = $this->get_plugin_file_relative_path();
+		if ( is_array( $plugin_files ) ) {
+			foreach ( $plugin_files as $plugin_file ) {
+				if ( isset( $plugins[ $plugin_file ]['Version'] ) ) {
+					return $plugins[ $plugin_file ]['Version'];
+				}
+			}
+		} elseif ( isset( $plugins[ $plugin_files ]['Version'] ) ) {
+			return $plugins[ $plugin_files ]['Version'];
 		}
 
-		return $plugins[ $plugin_file ]['Version'];
+		return false;
 	}
 
 	/**
@@ -58,13 +64,16 @@ abstract class Known_Plugin {
 	 * @return string
 	 */
 	public function get_plugin_avatar_src() {
-		return Directory_Utils::get_plugin_avatar_src( get_called_class() );
+		$class_name = get_called_class();
+		$class_name = str_replace( '_Locked', '', $class_name );
+
+		return Directory_Utils::get_plugin_avatar_src( $class_name );
 	}
 
 	/**
 	 * Get the plugin file path, relative to WP plugins directory.
 	 *
-	 * @return string
+	 * @return string|string[]
 	 */
 	abstract public function get_plugin_file_relative_path();
 
