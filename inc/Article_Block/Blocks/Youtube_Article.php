@@ -67,6 +67,20 @@ if ( twrp_fs()->is__premium_only() ) {
 				Artblock_Component::HOVER_COLOR_SETTING,
 			);
 
+			$meta_thumbnail_component_settings = array(
+				Artblock_Component::META_FONT_SIZE_SETTING,
+				Artblock_Component::FONT_WEIGHT_SETTING,
+				Artblock_Component::TEXT_DECORATION_SETTING,
+				Artblock_Component::COLOR_SETTING,
+				Artblock_Component::BACKGROUND_COLOR_SETTING,
+			);
+
+			$meta_thumbnail_component_settings_hover = array(
+				Artblock_Component::HOVER_TEXT_DECORATION_SETTING,
+				Artblock_Component::HOVER_COLOR_SETTING,
+				Artblock_Component::HOVER_BACKGROUND_COLOR_SETTING,
+			);
+
 			#region -- Title
 
 			// Use 'header' instead of 'title' to prevent WP widget to mistake the name with an usual title setting.
@@ -149,8 +163,8 @@ if ( twrp_fs()->is__premium_only() ) {
 			$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--5, ' . $css_prefix . ':focus-within .twrp-ys__meta--5';
 			$current_settings      = ( isset( $this->settings['meta_5'] ) && is_array( $this->settings['meta_5'] ) ) ? $this->settings['meta_5'] : array();
 			$css_components        = array(
-				$css_prefix . ' .twrp-ys__meta--5' => $meta_component_settings,
-				$hover_css_selector                => $component_settings_hover,
+				$css_prefix . ' .twrp-ys__meta--5' => $meta_thumbnail_component_settings,
+				$hover_css_selector                => $meta_thumbnail_component_settings_hover,
 			);
 			$component             = new Artblock_Component( 'meta_5', _x( 'Meta 5', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 			$components ['meta_5'] = $component;
@@ -162,8 +176,8 @@ if ( twrp_fs()->is__premium_only() ) {
 			$hover_css_selector    = $css_prefix . ':hover .twrp-ys__meta--6, ' . $css_prefix . ':focus-within .twrp-ys__meta--6';
 			$current_settings      = ( isset( $this->settings['meta_6'] ) && is_array( $this->settings['meta_6'] ) ) ? $this->settings['meta_6'] : array();
 			$css_components        = array(
-				$css_prefix . ' .twrp-ys__meta--6' => $meta_component_settings,
-				$hover_css_selector                => $component_settings_hover,
+				$css_prefix . ' .twrp-ys__meta--6' => $meta_thumbnail_component_settings,
+				$hover_css_selector                => $meta_thumbnail_component_settings_hover,
 			);
 			$component             = new Artblock_Component( 'meta_6', _x( 'Meta 6', 'backend', 'tabs-with-posts' ), $current_settings, $css_components );
 			$components ['meta_6'] = $component;

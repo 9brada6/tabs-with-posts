@@ -53,7 +53,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 ## ✅ Todo
 
 - Be sure that translations work.
-- Add background component to meta 7,8 on YT style.
 
 - Make ajax in widget when selecting article block to show a fail text.
 
