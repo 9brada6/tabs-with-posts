@@ -130,6 +130,9 @@ class Settings_Menu {
 						<?= $this->get_tab_title( $tab ); // phpcs:ignore -- "Feature" to add icons. ?>
 					</a>
 				<?php endforeach; ?>
+				<a href="<?= esc_url( menu_page_url( self::MENU_SLUG, false ) . '-contact' ); ?>" class="<?= esc_attr( $this->get_tab_class_attribute( 'contact' ) ) ?>">
+					<?= esc_html_x( 'Contact Us', 'backend', 'tabs-with-posts' ); ?>
+				</a>
 			</div>
 		<?php
 	}
@@ -172,14 +175,13 @@ class Settings_Menu {
 	/**
 	 * Get the HTML class attribute of a specific tab button.
 	 *
-	 * @param Admin_Menu_Tab $tab_class The tab to create the attribute.
-	 *
+	 * @param Admin_Menu_Tab|'contact' $tab_class The tab to create the attribute.
 	 * @return string
 	 */
 	protected function get_tab_class_attribute( $tab_class ) {
 		$default_class = $this->get_bem_class( 'tab-btn' ) . ' nav-tab';
 
-		if ( self::is_tab_active( $tab_class ) ) {
+		if ( ! is_string( $tab_class ) && self::is_tab_active( $tab_class ) ) {
 			$default_class .= ' ' . $this->get_bem_class( 'tab-btn', 'active' ) . ' nav-tab-active';
 		}
 

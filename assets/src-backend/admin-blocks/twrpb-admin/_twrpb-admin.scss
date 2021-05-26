@@ -24,3 +24,7 @@
 		color: #444;
 	}
 }
+
+#adminmenu .wp-submenu a[href="options-general.php?page=tabs_with_recommended_posts-contact"]:not(.current) {
+	display: none;
+}

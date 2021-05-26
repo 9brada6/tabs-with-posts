@@ -53,16 +53,16 @@ can be dangerous, because an admin can generate a cache that should not be visib
 ## ✅ Todo
 
 - Make ajax in widget when selecting article block to show a fail text.
+- Make freemius to block premium plugin if no license is active.
 
 - ### ✅ Todo Documentation
 
     - Remove schedule from documentation.
-    - Move the documentation to the last position, in he tabs.
     - Add some photos.
-    - Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 
     Additional plugin supported notes:
     - Support main category from SEO.
+    - All cache pages and translations.
     - YASR does not support ordered by count if is set to overall.
 
     General Settings:
@@ -115,6 +115,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 
 ## 🎉 Todo: After first release
 
+- Documentation: Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
 - Make widget work in elementor and other page builders, test other page builders how they work.
 - Learn about multi-language support and test what external translation plugins, this plugin support.
 - Test A3Rev views plugin, because we changed something.
