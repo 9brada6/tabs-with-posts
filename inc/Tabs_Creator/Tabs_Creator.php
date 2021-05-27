@@ -15,7 +15,6 @@ use TWRP\Utils\Class_Retriever_Utils;
 use RuntimeException;
 use TWRP\Database\General_Options;
 use TWRP\Database\Query_Options;
-use TWRP\Debug\Benchmark;
 use TWRP\Utils\Frontend_Translation;
 use WP_Post;
 

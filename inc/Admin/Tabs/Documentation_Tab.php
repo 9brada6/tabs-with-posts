@@ -2,6 +2,7 @@
 
 namespace TWRP\Admin\Tabs;
 
+use TWRP\Admin\Tabs\Documentation\Cache_Docs;
 use TWRP\Admin\Tabs\Documentation\License_Display;
 use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 use TWRP\Admin\Tabs\Documentation\Plugin_Support_Docs;
@@ -35,6 +36,13 @@ class Documentation_Tab extends Admin_Menu_Tab {
 				<?php
 				$icons_documentation = new Icons_Documentation();
 				$icons_documentation->display_icon_documentation();
+				?>
+			</div>
+
+			<div class="<?php $this->bem_class( 'text' ); ?>">
+				<?php
+				$cache_documentation = new Cache_Docs();
+				$cache_documentation->display();
 				?>
 			</div>
 

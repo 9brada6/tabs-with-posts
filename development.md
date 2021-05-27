@@ -60,6 +60,13 @@ can be dangerous, because an admin can generate a cache that should not be visib
     - Remove schedule from documentation.
     - Add some photos.
 
+    Documentation Style:
+
+    - Add a style for documentation.
+    - Add a style for twrpb-documentation__text-developer.
+
+
+
     Additional plugin supported notes:
     - Support main category from SEO.
     - All cache pages and translations.
@@ -68,12 +75,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
     General Settings:
     - Say that if a plugin to cache pages is used, then the page cache must be purged(deleted).
     - Say that all tables/settings are deleted when plugin is uninstalled.
-
-    Cache:
-    - Say how cache works, what plugin have been tested on.
-    - Write in documentation what plugins are supported: WP Fastest Cache(By Emre Vona), Autoptimize(By Frank Goossens (futtta)), WP Super Cache(By Automattic), WP-Optimize(By David Anderson, Ruhani Rabin, Team Updraft), Hummingbird(By WPMU DEV), W3 Total Cache(By BoldGrid)
-    - Say that all tables/settings are deleted when plugin is uninstalled.
-    - A widget can be forced to load via ajax or not, via a method call.
+    - Describe the settings.
 
     Query tabs:
     - Say that there should be not any difference in displaying between an admin and an user, because if an admin enter the website, the cache can be saved and all the users will see it.
@@ -94,18 +96,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
     - Say in documentation that the thumbnails are loading lazy.
     - Add in documentation that you can overwrite an article block either via 'twrp-style-name.php' or 'twrp-templates/style-name.php'
 
-    Documentation Style:
-
-    - Add a style for documentation.
-    - Add a style for twrpb-documentation__text-developer.
-
-    Plugins:
-
-    - Say how YASR rating plugin setting works, and also put a link from settings.
-    - Say that YASR performance sucks when using to order by this plugin.(maybe say that also in settings).
+    Additional Plugins Info:
     - Write in documentation that GamerZ like/dislike system is not working.
-
-    Cache: Say how it works, and why is good to be enabled.
 
     Translations:
 
@@ -126,6 +118,8 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - ➕ Fix order By YASR plugin.
 - Add in documentation to switch to another plugin if YASR plugin is used to get most rated posts.
 - ➕ Add filters for all things.
+- ➕ Say in documentation how YASR rating plugin setting works, and also put a link from settings.
+- ➕ Say in documentation that YASR performance sucks when using to order by this plugin.(maybe say that also in settings).
 - ➕ In the title component, add a setting to how many lines of text should be displayed.
 - ➕ Add a way to invert category icons?
 - ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.

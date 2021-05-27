@@ -49,6 +49,7 @@ class Plugin_Bootstrap {
 
 		'Admin/Tabs/Documentation/Tab_Queries_Docs',
 		'Admin/Tabs/Documentation/License_Display',
+		'Admin/Tabs/Documentation/Cache_Docs',
 		'Admin/Tabs/Documentation/Icons_Documentation',
 		'Admin/Tabs/Documentation/Plugin_Support_Docs',
 
@@ -226,9 +227,7 @@ class Plugin_Bootstrap {
 	public static function include_all_files() {
 		foreach ( self::$required_files as $file ) {
 			$filename = __DIR__ . '/' . $file . '.php';
-			// if ( file_exists( $filename ) ) { .
-				require $filename;
-			// }
+			require $filename;
 		}
 	}
 
