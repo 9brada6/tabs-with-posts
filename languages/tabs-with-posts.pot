@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-05-25T14:18:47+00:00\n"
+"POT-Creation-Date: 2021-05-28T16:48:56+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: tabs-with-posts\n"
@@ -56,67 +56,66 @@ msgctxt "backend"
 msgid "Some theme/plugins can alter any WP database query, modifying it's results in unexpected ways. Fortunately, with this setting we can suppress/allow them all together."
 msgstr ""
 
-#. translators: %1$s and %2$s are HTML tags for a link to the documentation.
-#: inc/Admin/Helpers/Remember_Note.php:156
+#: inc/Admin/Helpers/Remember_Note.php:155
 msgctxt "backend"
-msgid "By default, you have only one choice here(\"Published\"), so usually you don't want to modify this setting. If you want to show the Scheduled Posts, read in %1$s documentation%2$s how to do it."
+msgid "By default, you have only one choice here(\"Published\"), so usually you don't want to modify this setting."
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:160
+#: inc/Admin/Helpers/Remember_Note.php:159
 msgctxt "backend"
 msgid "Ordering by post ID is not usually a good choice. If you don't know what a post ID is, then you maybe want to order by date, which is more efficient."
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:164
+#: inc/Admin/Helpers/Remember_Note.php:163
 msgctxt "backend"
 msgid "When ordering by comments, is good to order by something else secondarily(like date), in case the number of comments are equal between posts."
 msgstr ""
 
 #. translators: %1$s and %2$s are HTML tags for a link to the documentation.
-#: inc/Admin/Helpers/Remember_Note.php:169
+#: inc/Admin/Helpers/Remember_Note.php:168
 msgctxt "backend"
 msgid "Don't forget to add some search terms, also, there is a technical explanation in the %1$s documentation%2$s of how ordering by search works."
 msgstr ""
 
 #. translators: %1$s and %2$s are HTML tags for a link to the documentation.
-#: inc/Admin/Helpers/Remember_Note.php:174
+#: inc/Admin/Helpers/Remember_Note.php:173
 msgctxt "backend"
 msgid "Don't forget to add a meta value. Do not confuse sorting alphabetically with numerically, in %1$s documentation%2$s there is an explanation between the two."
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:178
+#: inc/Admin/Helpers/Remember_Note.php:177
 msgctxt "backend"
 msgid "Don't forget to add posts to the \"Included Posts\" setting, and sort them how you want."
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:182
+#: inc/Admin/Helpers/Remember_Note.php:181
 msgctxt "backend"
 msgid "Depending on how the plugin is ordering, either \"Suppress Filters\" or \"Meta Settings\" or both options are overwritten."
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:186
+#: inc/Admin/Helpers/Remember_Note.php:185
 msgctxt "backend"
 msgid "This setting is a filter, and the posts added here can be filtered by other options. For example if a post(of type \"Post\") is added here, and in the Post Types Setting only \"Pages\" setting is selected, then the post will not be shown because it is filtered out by other setting."
 msgstr ""
 
 #. translators: %1$s and %2$s are HTML tags for a link to the documentation.
-#: inc/Admin/Helpers/Remember_Note.php:191
+#: inc/Admin/Helpers/Remember_Note.php:190
 msgctxt "backend"
 msgid "This is a JSON setting, will overwrite any other settings, used for more advanced settings that are not usually worth making a graphical settings for them. You can see in %1$s documentation%2$s an example. If you want to use PHP, then use the filters to overwrite a specific query(examples in documentation)."
 msgstr ""
 
 #. translators: The tags %1$s and %2$s will be replaced with a HTML link tag.
-#: inc/Admin/Helpers/Remember_Note.php:196
+#: inc/Admin/Helpers/Remember_Note.php:195
 msgctxt "backend"
 msgid "The JSON you entered is invalid and will not be applied. If you can't detect where the error might be, you can copy the text into an %1$s online checker%2$s for more details."
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:247
+#: inc/Admin/Helpers/Remember_Note.php:246
 msgctxt "backend"
 msgid "Note:"
 msgstr ""
 
-#: inc/Admin/Helpers/Remember_Note.php:256
+#: inc/Admin/Helpers/Remember_Note.php:255
 msgctxt "backend"
 msgid "Warning:"
 msgstr ""
@@ -130,6 +129,141 @@ msgstr ""
 #: inc/TWRP_Widget.php:54
 msgctxt "backend"
 msgid "Tabs with Recommended Posts"
+msgstr ""
+
+#: inc/Admin/Settings_Menu.php:134
+msgctxt "backend"
+msgid "Contact Us"
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Additional_Plugins_Supported.php:22
+msgctxt "backend documentation"
+msgid "Additional Plugins Support & Info"
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Additional_Plugins_Supported.php:24
+msgctxt "backend documentation"
+msgid "This plugin also supports the \"Yoast SEO\" plugin to retrieve the main category and to display it."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Additional_Plugins_Supported.php:27
+msgctxt "backend, documentation"
+msgid "This widget supports all page cache plugins."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Additional_Plugins_Supported.php:31
+msgctxt "backend, documentation"
+msgid "This plugin supports all multi-language plugins that can translate each widget individually."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Additional_Plugins_Supported.php:35
+msgctxt "backend, documentation"
+msgid "This plugin does NOT support Likes/Dislikes of \"WP-PostRatings\" Rating plugin."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:22
+msgctxt "backend documentation"
+msgid "Article Blocks(Styles)"
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:25
+msgctxt "backend, documentation"
+msgid "The article blocks, or styles, are a way to display a post."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:29
+msgctxt "backend, documentation"
+msgid "Each tab can have a different article block, but for consistency, it's good to make them all look the same."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:33
+msgctxt "backend, documentation"
+msgid "Each article block has a number of spots where a post meta could be inserted, and a meta could be inserted in any of these spots. Using this, you can create a unique way to display a post, with the most important information first."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:37
+msgctxt "backend, documentation"
+msgid "Just be careful to not overdo it, by putting a lot of meta and style them too hard."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:41
+msgctxt "backend, documentation"
+msgid "Another tip which I suggest is this: There are 2 types of meta, long ones: author, date, category. and short ones: views, comments, rating. Try to not use 3 or 2(depending on styles) long meta one after another, when you might not have enough space. By combining one or two long styles, you make the long ones not shrink when they don't have space."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:45
+msgctxt "backend, documentation"
+msgid "All the thumbnails of the styles are loading lazy(only if in view)."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Article_Blocks_Docs.php:49
+msgctxt "backend, documentation"
+msgid "You can overwrite an article block(style) template in your theme/child-theme by creating a file \"twrp-{style-name}.php\" or a file in a folder \"twrp-templates/style-name.php\" where the style-name is the name of the style(look on this plugin folder for example)."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:22
+msgctxt "backend, documentation"
+msgid "Cache"
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:25
+msgctxt "backend, documentation"
+msgid "To make the widgets faster, this plugin uses a database cache to not generate the widget every time a page is loaded."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:29
+msgctxt "backend, documentation"
+msgid "The cache implementation is almost a must since the interrogation of the database is expensive, and also the additional plugins for views/ratings interrogate the database again for every post."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:33
+msgctxt "backend, documentation"
+msgid "A widget with 4 tabs, will be generated in 500 milliseconds average if the cache is off, if the setting is on it will take only 3ms(depending on database connection) average. According to Google, 53% of mobile users leave the page if it takes more than 3 seconds to load."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:37
+msgctxt "backend, documentation"
+msgid "The plugin cache is highly recommended to be ON all the time, even if you use another external plugin to cache pages. If you use another plugin to cache pages, you must set the option to load the widget via AJAX."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:41
+msgctxt "backend, documentation"
+msgid "The cache is generated in a background async process, so no user will feel any page load impact, since the widget is not generated when the page is loaded."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:45
+msgctxt "backend, documentation"
+msgid "The cache will be automatically refreshed at an interval of time(to refresh views and rating), a setting that the user can change."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:49
+msgctxt "backend, documentation"
+msgid "If you don't see views/ratings change immediately, don't panic and be patient, the widget will be refreshed when the next visitor passes the minutes mark."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:53
+msgctxt "backend, documentation"
+msgid "The widget will also force a refresh at some specific events, these include: any post added/updated/removed, any term added/updated/removed, any plugin activated/deactivated, WordPress Updates, ... etc."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Cache_Docs.php:57
+msgctxt "backend, documentation"
+msgid "The database table with the cache will be automatically removed when the plugin is deleted."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/CSS_Docs.php:22
+msgctxt "backend documentation"
+msgid "CSS"
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/CSS_Docs.php:24
+msgctxt "backend, documentation"
+msgid "The one thing that I want to mention about the CSS is that all the CSS is enclosed into body:not(#twrpS) selectors, usually following by the class that the style apply. The meaning of this selector is to overwrite theme CSS like \".widget .item a\" in a simple manner(an id tag overrides all classes tags), while not using !important tags."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/CSS_Docs.php:27
+msgctxt "backend, documentation"
+msgid "When changing the CSS, try to change variables first. CSS variables from this plugin begin with \"--twrp...\"."
 msgstr ""
 
 #: inc/Admin/Tabs/Documentation/Icons_Documentation.php:27
@@ -330,7 +464,7 @@ msgid "Installed Version:"
 msgstr ""
 
 #: inc/Admin/Tabs/Documentation/Plugin_Support_Docs.php:133
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:592
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:594
 msgctxt "backend"
 msgid "Not Installed"
 msgstr ""
@@ -472,7 +606,7 @@ msgstr ""
 
 #: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:102
 msgctxt "backend, documentation"
-msgid "With the last option setting, you can override entirely the query, or add things keys that are not found in the settings provided. These arguments are provided as a JSON transformed into a PHP array, and then merged to the previous arguments, replacing them if they are already defined. If you want to use the PHP directly, then use the \"twrp_get_query_arguments_created\" filter"
+msgid "With the last option setting, you can override entirely the query, or add things keys that are not found in the settings provided. These arguments are provided as a JSON transformed into a PHP array, and then merged to the previous arguments, replacing them if they are already defined. If you want to use the PHP directly, then use the \"twrp_get_query_arguments_created\" filter."
 msgstr ""
 
 #: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:106
@@ -480,366 +614,377 @@ msgctxt "backend, documentation"
 msgid "Below is an example of how we choose to show only some scheduled posts. Keep in mind that some arguments are added by default, like \"no_found_rows\", \"ignore_sticky_posts\", or \"post_type\". But you can save the setting and check the debugger if the final arguments are what you wish for. The \"post__in\" posts are added as an extra measure, to not show unwanted(or all) scheduled posts. The \"perm\" (from permission) is added because is a best practice to always add this key when we modify \"post_status\" key, especially when we show private posts."
 msgstr ""
 
-#: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:121
-msgctxt "backend, documentation"
-msgid "You can even remove the post__in key, to show them dynamically, as they appear:"
-msgstr ""
-
-#: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:136
-msgctxt "backend, documentation"
-msgid "As for private post statuses, these are meant for administrators and editors, if you want to show the posts in this tab, just schedule them, it's not worth to show a lot things that should not be showing(also you need to remove the perm key, which is totally not recommended)."
-msgstr ""
-
-#: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:139
+#: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:120
 msgctxt "backend, documentation"
 msgid "Debug generated query settings"
 msgstr ""
 
-#: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:142
+#: inc/Admin/Tabs/Documentation/Tab_Queries_Docs.php:123
 msgctxt "backend, documentation"
 msgid "After the save button, there is a button that lets you see the WP_Query array args created by the query. You can use this to check if you doubt about a setting, or just to make sure that is not the query that is wrong, and the posts retrieved are intended. Keep in mind that you can see some array keys not in official possible arguments, used by plugins to create their custom query."
 msgstr ""
 
-#: inc/Admin/Tabs/Documentation_Tab.php:54
+#: inc/Admin/Tabs/Documentation/Translations_Docs.php:22
+msgctxt "backend documentation"
+msgid "Translations"
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Translations_Docs.php:24
+msgctxt "backend, documentation"
+msgid "You can either translate this plugin by changing directly the localization strings, via a plugin like \"Loco Translate\", or use the options to translate the strings. By translating the localization strings(and not changing the options), you can have multiple languages on a website."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation/Translations_Docs.php:27
+msgctxt "backend, documentation"
+msgid "You should never translate the files in the plugin directory because these will be deleted when the plugin is updated."
+msgstr ""
+
+#: inc/Admin/Tabs/Documentation_Tab.php:86
 msgctxt "backend"
 msgid "Documentation"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:252
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:254
 msgctxt "backend"
 msgid "Display the date in relative format(Ex: 3 weeks ago)?"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:254
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:417
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:615
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:630
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:666
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:256
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:419
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:617
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:632
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:668
 #: inc/Admin/Tabs/General_Settings/General_Setting_Creator/General_Select_With_Switch_Setting.php:40
 msgctxt "backend"
 msgid "Yes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:255
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:418
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:616
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:631
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:667
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:257
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:420
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:618
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:633
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:669
 #: inc/Admin/Tabs/General_Settings/General_Setting_Creator/General_Select_With_Switch_Setting.php:41
 msgctxt "backend"
 msgid "No"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:273
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:275
 msgctxt "backend"
 msgid "Enter custom date format(leave empty for WordPress default setting):"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:275
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:277
 msgctxt "backend, date format"
 msgid "Ex: F j, Y"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:290
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:292
 msgctxt "backend"
 msgid "Select the default author icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:304
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:306
 msgctxt "backend"
 msgid "Select the default date icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:318
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:320
 msgctxt "backend"
 msgid "Select the default category icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:332
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:334
 msgctxt "backend"
 msgid "Select the default comments icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:349
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:351
 msgctxt "backend"
 msgid "Select the default disabled comments icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:355
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:357
 msgctxt "backend"
 msgid "Auto-select this icon(best-looking) based on the comment icon."
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:371
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:373
 msgctxt "backend"
 msgid "Select the default views icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:400
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:402
 msgctxt "backend"
 msgid "Select the default rating pack icons:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:415
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:417
 msgctxt "backend"
 msgid "Include SVG icons inline?"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:430
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:432
 msgctxt "backend"
 msgid "Select the text color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:431
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:443
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:455
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:467
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:479
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:491
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:503
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:515
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:527
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:433
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:445
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:457
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:469
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:481
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:493
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:505
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:517
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:529
 msgctxt "backend"
 msgid "Click to change:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:442
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:444
 msgctxt "backend"
 msgid "Select the disabled text color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:454
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:456
 msgctxt "backend"
 msgid "Select the background color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:466
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:468
 msgctxt "backend"
 msgid "Select the secondary background color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:478
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:480
 msgctxt "backend"
 msgid "Select the accent color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:490
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:492
 msgctxt "backend"
 msgid "Select the darker accent color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:502
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:504
 msgctxt "backend"
 msgid "Select the lighter accent color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:514
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:516
 msgctxt "backend"
 msgid "Select the border color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:526
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:528
 msgctxt "backend"
 msgid "Select the secondary border color:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:538
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:540
 msgctxt "backend"
 msgid "Change the default border radius of elements:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:550
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:552
 msgctxt "backend"
 msgid "Change the default tab button font-size:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:568
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:570
 msgctxt "backend"
 msgid "Select an image to display if the post has no thumbnail:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:588
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:590
 msgctxt "backend"
 msgid "Select the YASR rating type that you wish this plugin to show in posts:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:598
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:600
 msgctxt "backend"
 msgid "Overall/Author Rating"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:599
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:601
 msgctxt "backend"
 msgid "Visitors Vote"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:600
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:602
 msgctxt "backend"
 msgid "Multiset Overall/Authors Vote"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:601
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:603
 msgctxt "backend"
 msgid "Multiset Visitors Vote"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:613
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:615
 msgctxt "backend"
 msgid "Fill the empty grid spaces with posts?"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:628
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:630
 msgctxt "backend"
 msgid "Enable widget cache?"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:644
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:646
 msgctxt "backend"
 msgid "After how many minutes the cache should refresh?"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:646
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:648
 msgctxt "backend"
 msgid "7 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:647
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:649
 msgctxt "backend"
 msgid "10 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:648
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:650
 msgctxt "backend"
 msgid "15 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:649
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:651
 msgctxt "backend"
 msgid "20 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:650
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:652
 msgctxt "backend"
 msgid "30 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:651
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:653
 msgctxt "backend"
 msgid "45 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:652
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:654
 msgctxt "backend"
 msgid "60 minutes"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:664
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:666
 msgctxt "backend"
 msgid "Load widgets dynamically, via Ajax? Set \"Yes\" if you use another plugin to cache pages."
 msgstr ""
 
 #. translators: %s is a translation of a string that an administrator can change.
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:685
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:707
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:729
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:751
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:773
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:795
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:818
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:841
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:864
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:887
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:910
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:934
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:957
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:979
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:1001
-msgctxt "backend"
-msgid "Translation defaults to: \"%s\", additionally translated in the frontend website language."
-msgstr ""
-
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:689
-msgctxt "backend"
-msgid "Enter the text to of the button to show more posts:"
-msgstr ""
-
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:711
-msgctxt "backend"
-msgid "Text to display as a title if post has no title:"
-msgstr ""
-
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:733
-msgctxt "backend"
-msgid "Descriptive text of the default thumbnail that is loaded when a post has no thumbnail:"
-msgstr ""
-
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:755
-msgctxt "backend"
-msgid "Relative date text:"
-msgstr ""
-
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:777
-msgctxt "backend"
-msgid "Enter the text to display when the widget fails to load via Ajax:"
-msgstr ""
-
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:796
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:687
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:709
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:731
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:753
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:775
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:797
 #: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:819
 #: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:842
 #: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:865
 #: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:888
 #: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:911
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:934
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:958
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:981
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:1003
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:1025
+msgctxt "backend"
+msgid "Translation defaults to: \"%s\", additionally translated in the frontend website language."
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:691
+msgctxt "backend"
+msgid "Enter the text to of the button to show more posts:"
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:713
+msgctxt "backend"
+msgid "Text to display as a title if post has no title:"
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:735
+msgctxt "backend"
+msgid "Descriptive text of the default thumbnail that is loaded when a post has no thumbnail:"
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:757
+msgctxt "backend"
+msgid "Relative date text:"
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:779
+msgctxt "backend"
+msgid "Enter the text to display when the widget fails to load via Ajax:"
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:801
+msgctxt "backend"
+msgid "Enter the text to display when a tab contains no posts:"
+msgstr ""
+
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:820
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:843
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:866
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:889
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:912
 #: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:935
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:959
 msgctxt "backend"
 msgid "This text will be visible only to visually impaired users(or a screen reader)."
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:800
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:824
 msgctxt "backend"
 msgid "Text to describe the author icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:823
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:847
 msgctxt "backend"
 msgid "Text to describe the date icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:846
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:870
 msgctxt "backend"
 msgid "Text to describe the views icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:869
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:893
 msgctxt "backend"
 msgid "Text to describe the rating icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:892
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:916
 msgctxt "backend"
 msgid "Text to describe the category icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:915
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:939
 msgctxt "backend"
 msgid "Text to describe the comments icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:939
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:963
 msgctxt "backend"
 msgid "Text to describe the \"comments disabled\" icon:"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:961
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:985
 msgctxt "backend"
 msgid "Abbreviation of a number for thousands."
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:983
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:1007
 msgctxt "backend"
 msgid "Abbreviation of a number for millions."
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:1005
+#: inc/Admin/Tabs/General_Settings/General_Settings_Factory.php:1029
 msgctxt "backend"
 msgid "Abbreviation of a number for billions."
 msgstr ""
@@ -935,18 +1080,18 @@ msgctxt "backend"
 msgid "The string below will override the translations. If you want the default translation(or you use another plugin), then leave these empty. If you have a multi language website, then use a plugin for string localization, like \"Loco Translate\"(Free)."
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings_Tab.php:165
+#: inc/Admin/Tabs/General_Settings_Tab.php:166
 msgctxt "backend"
 msgid "Other Settings"
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings_Tab.php:185
+#: inc/Admin/Tabs/General_Settings_Tab.php:186
 #: inc/Admin/Tabs/Queries_Tab.php:328
 msgctxt "backend"
 msgid "Settings saved successfully."
 msgstr ""
 
-#: inc/Admin/Tabs/General_Settings_Tab.php:222
+#: inc/Admin/Tabs/General_Settings_Tab.php:223
 #: inc/Admin/Tabs/Queries_Tab.php:370
 msgctxt "backend"
 msgid "Save Settings"
@@ -2611,11 +2756,6 @@ msgctxt "backend"
 msgid "Query-%s"
 msgstr ""
 
-#: inc/Tabs_Creator/Tabs_Creator.php:442
-msgctxt "backend"
-msgid "Unfortunately, no posts are here."
-msgstr ""
-
 #: inc/Tabs_Creator/Tabs_Styles/Styles/Button_Tabs.php:13
 msgctxt "backend"
 msgid "Buttons Style"
@@ -2658,75 +2798,79 @@ msgctxt "backend"
 msgid "Every %d Minutes"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:98
+#: inc/Utils/Frontend_Translation.php:108
 msgid "Show more posts"
 msgstr ""
 
 #. translators: Text to display if a post has no title.
-#: inc/Utils/Frontend_Translation.php:100
+#: inc/Utils/Frontend_Translation.php:110
 msgctxt "title if the post has no title."
 msgid "&laquo; No title &raquo;"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:101
+#: inc/Utils/Frontend_Translation.php:111
 msgid "Post with no thumbnail"
 msgstr ""
 
 #. translators: %s: a date representation, in human language. Ex: 2 days ago, 3 weeks ago,  1 month ago... etc. the %s is expected to be already translated.
-#: inc/Utils/Frontend_Translation.php:103
+#: inc/Utils/Frontend_Translation.php:113
 msgid "%s ago"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:104
+#: inc/Utils/Frontend_Translation.php:114
 msgid "Loading articles failed, please refresh the page to try again."
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:106
+#: inc/Utils/Frontend_Translation.php:115
+msgid "Unfortunately, no posts are here."
+msgstr ""
+
+#: inc/Utils/Frontend_Translation.php:117
 msgctxt "Noun, accessibility text"
 msgid "Author"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:107
+#: inc/Utils/Frontend_Translation.php:118
 msgctxt "Noun, accessibility text"
 msgid "Date"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:108
+#: inc/Utils/Frontend_Translation.php:119
 msgctxt "Noun, accessibility text"
 msgid "Views"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:109
+#: inc/Utils/Frontend_Translation.php:120
 msgctxt "Noun, accessibility text"
 msgid "Rating"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:110
+#: inc/Utils/Frontend_Translation.php:121
 msgctxt "Noun, accessibility text"
 msgid "Category"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:111
+#: inc/Utils/Frontend_Translation.php:122
 msgctxt "Noun, accessibility text"
 msgid "Comments"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:112
+#: inc/Utils/Frontend_Translation.php:123
 msgctxt "Noun, accessibility text"
 msgid "Comments are disabled"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:114
+#: inc/Utils/Frontend_Translation.php:125
 msgctxt "Abbreviation for Thousands"
 msgid "K"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:115
+#: inc/Utils/Frontend_Translation.php:126
 msgctxt "Abbreviation for Millions"
 msgid "M"
 msgstr ""
 
-#: inc/Utils/Frontend_Translation.php:116
+#: inc/Utils/Frontend_Translation.php:127
 msgctxt "Abbreviation for Billions"
 msgid "B"
 msgstr ""

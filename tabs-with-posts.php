@@ -5,7 +5,7 @@
  * @wordpress-plugin
  * Plugin Name:       Tabs with Recommended Posts (Widget)
  * Description:       Widget to show posts(latest/most viewed/best rated/custom), with a very solid and nice design. Very user-friendly to customize and get started.
- * Version:           0.9.0
+ * Version:           1.0.0
  * Requires at least: 4.9
  * Requires PHP:      5.6
  * Author:            Bradatan Dorin

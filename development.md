@@ -53,7 +53,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 ## ✅ Todo
 
 - Make ajax in widget when selecting article block to show a fail text.
-- Make freemius to block premium plugin if no license is active.
 
 - ### ✅ Todo Documentation
 
