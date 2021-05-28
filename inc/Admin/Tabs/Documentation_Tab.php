@@ -2,7 +2,9 @@
 
 namespace TWRP\Admin\Tabs;
 
+use TWRP\Admin\Tabs\Documentation\Additional_Plugins_Supported;
 use TWRP\Admin\Tabs\Documentation\Cache_Docs;
+use TWRP\Admin\Tabs\Documentation\CSS_Docs;
 use TWRP\Admin\Tabs\Documentation\License_Display;
 use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 use TWRP\Admin\Tabs\Documentation\Plugin_Support_Docs;
@@ -28,6 +30,13 @@ class Documentation_Tab extends Admin_Menu_Tab {
 
 			<div class="<?php $this->bem_class( 'text' ); ?>">
 				<?php
+				$tab_queries_docs = new Additional_Plugins_Supported();
+				$tab_queries_docs->display();
+				?>
+			</div>
+
+			<div class="<?php $this->bem_class( 'text' ); ?>">
+				<?php
 				$tab_queries_docs = new Tab_Queries_Docs();
 				$tab_queries_docs->display();
 				?>
@@ -43,6 +52,13 @@ class Documentation_Tab extends Admin_Menu_Tab {
 			<div class="<?php $this->bem_class( 'text' ); ?>">
 				<?php
 				$cache_documentation = new Cache_Docs();
+				$cache_documentation->display();
+				?>
+			</div>
+
+			<div class="<?php $this->bem_class( 'text' ); ?>">
+				<?php
+				$cache_documentation = new CSS_Docs();
 				$cache_documentation->display();
 				?>
 			</div>

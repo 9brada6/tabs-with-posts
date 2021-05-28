@@ -65,37 +65,13 @@ can be dangerous, because an admin can generate a cache that should not be visib
     - Add a style for documentation.
     - Add a style for twrpb-documentation__text-developer.
 
-    Additional plugin supported notes:
-    - Support main category from SEO.
-    - All cache pages and translations.
-    - YASR does not support ordered by count if is set to overall.
-
     General Settings:
     - Say that if a plugin to cache pages is used, then the page cache must be purged(deleted).
     - Say that all tables/settings are deleted when plugin is uninstalled.
     - Describe the settings.
 
-    Query tabs:
-    - Say that there should be not any difference in displaying between an admin and an user, because if an admin enter the website, the cache can be saved and all the users will see it.
-
-    CSS:
-
-    - Don't forget to add CSS specificity in documentation.
-    - Say in documentation that tab variables css are better to be overwrite in tab main classes.
-    - Say in YT style documentation to use the variables for yt style.
-
-    Tabs:
-
-    - Don't forget to say that tabs are not displayed when only a single tab is displayed.
-
     Article Block:
-
-    - Say that you can use Yoast plugin to set the primary category.
-    - Say in documentation that the thumbnails are loading lazy.
-    - Add in documentation that you can overwrite an article block either via 'twrp-style-name.php' or 'twrp-templates/style-name.php'
-
-    Additional Plugins Info:
-    - Write in documentation that GamerZ like/dislike system is not working.
+    - Don't forget to say that tabs are not displayed when only a single tab is displayed.
 
 ## 🎉 Todo: After first release
 
@@ -114,7 +90,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - ➕ Say in documentation how YASR rating plugin setting works, and also put a link from settings.
 - ➕ Say in documentation that YASR performance sucks when using to order by this plugin.(maybe say that also in settings).
 - ➕ In the title component, add a setting to how many lines of text should be displayed.
-- ➕ Add a way to invert category icons?
 - ➕ Add a way to "Only Include/Exclude specific posts" to also including all the post children with a checkbox option.
 - ➕ Add a preview query posts in the backend. If we add a query preview in the backend, add a warning that will say that sticky posts are not included here.
 - ➕ Add in Date Query settings, a way to select posts from this week and this month, 3-7 days(easy).
