@@ -8,7 +8,7 @@ use TWRP\Article_Block\Article_Block_Locked;
 use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Article_Block\Settings\Display_Meta;
 
-if ( twrp_fs()->is__premium_only() ) {
+if ( twrp_fs()->can_use_premium_code__premium_only() ) {
 
 	/**
 	 * The class that display a post in a style, that is named "Youtube", because

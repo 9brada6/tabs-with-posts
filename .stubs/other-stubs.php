@@ -8,6 +8,15 @@ namespace A3Rev\PageViewsCount {
 	}
 }
 
+/**
+ * Freemius Function
+ *
+ * @return mixed
+ */
+function twrp_fs() {
+	return null;
+}
+
 namespace {
 	const ABSPATH = '';
 

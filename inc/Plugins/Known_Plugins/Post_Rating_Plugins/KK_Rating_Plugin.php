@@ -44,7 +44,7 @@ trait KK_Rating_Plugin_Info {
 
 }
 
-if ( twrp_fs()->is__premium_only() ) {
+if ( twrp_fs()->can_use_premium_code__premium_only() ) {
 
 	/**
 	 * Class used to retrieve the ratings for KK Rating Plugin.
