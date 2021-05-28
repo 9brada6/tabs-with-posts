@@ -65,8 +65,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
     - Add a style for documentation.
     - Add a style for twrpb-documentation__text-developer.
 
-
-
     Additional plugin supported notes:
     - Support main category from SEO.
     - All cache pages and translations.
@@ -99,12 +97,6 @@ can be dangerous, because an admin can generate a cache that should not be visib
     Additional Plugins Info:
     - Write in documentation that GamerZ like/dislike system is not working.
 
-    Translations:
-
-    - Add what the filename of the translation should be.
-    - Add a section in documentation where you write about translations, how they work,
-    and how to translate this plugin.
-
 ## 🎉 Todo: After first release
 
 - Documentation: Make a link button, and add the id before the title, as when clicked on a link, to see the title(search on google how to do it before).
@@ -113,6 +105,7 @@ can be dangerous, because an admin can generate a cache that should not be visib
 - Test A3Rev views plugin, because we changed something.
 - 🥇 Add taxonomy options(with post formats).
 - ➕ Make ajax show a "Loading..." text before loading widget.
+- add a setting to do not enable cache if the user is an admin.
 - ➕ When a tab query is deleted, then delete the tab from the widgets?(sounds very good), and if is not deleted, then improve the message that a tab is non existed in widget.
 - ➕ Add a way to minimize CSS/HTML when is cached. CSS is very important to minimize, because there is a lot of improvement.
 - ➕ Fix order By YASR plugin.

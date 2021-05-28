@@ -51,6 +51,7 @@ class Plugin_Bootstrap {
 		'Admin/Tabs/Documentation/License_Display',
 		'Admin/Tabs/Documentation/Cache_Docs',
 		'Admin/Tabs/Documentation/Icons_Documentation',
+		'Admin/Tabs/Documentation/Translations_Docs',
 		'Admin/Tabs/Documentation/Plugin_Support_Docs',
 
 		'Admin/Tabs/General_Settings/General_Setting_Creator/General_Setting_Creator',

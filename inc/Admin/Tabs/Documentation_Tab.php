@@ -7,6 +7,7 @@ use TWRP\Admin\Tabs\Documentation\License_Display;
 use TWRP\Admin\Tabs\Documentation\Icons_Documentation;
 use TWRP\Admin\Tabs\Documentation\Plugin_Support_Docs;
 use TWRP\Admin\Tabs\Documentation\Tab_Queries_Docs;
+use TWRP\Admin\Tabs\Documentation\Translations_Docs;
 use TWRP\Utils\Helper_Trait\BEM_Class_Naming_Trait;
 
 /**
@@ -42,6 +43,13 @@ class Documentation_Tab extends Admin_Menu_Tab {
 			<div class="<?php $this->bem_class( 'text' ); ?>">
 				<?php
 				$cache_documentation = new Cache_Docs();
+				$cache_documentation->display();
+				?>
+			</div>
+
+			<div class="<?php $this->bem_class( 'text' ); ?>">
+				<?php
+				$cache_documentation = new Translations_Docs();
 				$cache_documentation->display();
 				?>
 			</div>
