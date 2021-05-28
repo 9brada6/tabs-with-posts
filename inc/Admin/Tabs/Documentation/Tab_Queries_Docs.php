@@ -99,7 +99,7 @@ class Tab_Queries_Docs {
 		<h3 id="<?php $this->bem_class( 'advanced-query-settings' ); ?>" class="<?php $this->bem_class( 'title-sub-section' ); ?>"><?=  esc_html_x( 'Advanced query settings', 'backend, documentation', 'tabs-with-posts' ); ?></h3>
 
 		<p class="<?php $this->bem_class( 'developer-text' ); ?>">
-			<?=  esc_html_x( 'With the last option setting, you can override entirely the query, or add things keys that are not found in the settings provided. These arguments are provided as a JSON transformed into a PHP array, and then merged to the previous arguments, replacing them if they are already defined. If you want to use the PHP directly, then use the "twrp_get_query_arguments_created" filter', 'backend, documentation', 'tabs-with-posts' ); ?>
+			<?=  esc_html_x( 'With the last option setting, you can override entirely the query, or add things keys that are not found in the settings provided. These arguments are provided as a JSON transformed into a PHP array, and then merged to the previous arguments, replacing them if they are already defined. If you want to use the PHP directly, then use the "twrp_get_query_arguments_created" filter.', 'backend, documentation', 'tabs-with-posts' ); ?>
 		</p>
 
 		<p>
@@ -116,25 +116,6 @@ class Tab_Queries_Docs {
 }
 		</pre>
 		<?php // phpcs:enable WordPress.WhiteSpace ?>
-
-		<p>
-			<?=  esc_html_x( 'You can even remove the post__in key, to show them dynamically, as they appear:', 'backend, documentation', 'tabs-with-posts' ); ?>
-		</p>
-
-		<?php // phpcs:disable WordPress.WhiteSpace ?>
-		<pre>
-{
-  "post_status": "future",
-  "perm": "readable",
-  "orderby": "date",
-  "order": "DESC"
-}
-		</pre>
-		<?php // phpcs:enable WordPress.WhiteSpace ?>
-
-		<p>
-			<?=  esc_html_x( 'As for private post statuses, these are meant for administrators and editors, if you want to show the posts in this tab, just schedule them, it\'s not worth to show a lot things that should not be showing(also you need to remove the perm key, which is totally not recommended).', 'backend, documentation', 'tabs-with-posts' ); ?>
-		</p>
 
 		<h3 class="<?php $this->bem_class( 'title-sub-section' ); ?>"><?=  esc_html_x( 'Debug generated query settings', 'backend, documentation', 'tabs-with-posts' ); ?></h3>
 

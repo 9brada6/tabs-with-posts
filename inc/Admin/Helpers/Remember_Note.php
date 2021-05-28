@@ -152,8 +152,7 @@ class Remember_Note {
 			),
 
 			static::NOTE__POST_STATUS_INFO               => array(
-				/* translators: %1$s and %2$s are HTML tags for a link to the documentation. */
-				'text' => sprintf( _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting. If you want to show the Scheduled Posts, read in %1$s documentation%2$s how to do it.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
+				'text' => sprintf( _x( 'By default, you have only one choice here("Published"), so usually you don\'t want to modify this setting.', 'backend', 'tabs-with-posts' ), '<a href="' . esc_attr( $advanced_arguments_documentation ) . '" target="_blank">', '</a>' ),
 			),
 
 			static::NOTE__ORDERING_BY_POST_ID_WARNING    => array(
