@@ -147,7 +147,7 @@ abstract class WP_Async_Request {
 			'timeout'   => 0.01,
 			'blocking'  => false,
 			'body'      => $this->data,
-			'cookies'   => $_COOKIE,
+			'cookies'   => $_COOKIE, // phpcs:ignore -- No Need to validate here.
 			// cspell:disable-next-line -- Ignore word.
 			'sslverify' => apply_filters( 'https_local_ssl_verify', false ), // phpcs:ignore WordPress.NamingConventions
 		);

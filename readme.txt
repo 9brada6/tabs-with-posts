@@ -4,12 +4,12 @@ Tags: widget, posts, tabs, popular, recommended, views, ratings, thumbnails
 Requires at least: 4.9
 Tested up to: 5.7
 Requires PHP: 5.6
-Stable tag: 1.0
+Stable tag: 1.0.0
 License: CC BY-NC-ND
 License URI: http://creativecommons.org/licenses/by-nc-nd/4.0/
 
 Widget to show posts(latest/most viewed/best rated/custom), with a very solid and nice design. Very user-friendly to customize and get started.
- 
+
 == Description ==
 
 Tabs with recommended posts
