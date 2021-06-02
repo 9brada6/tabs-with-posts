@@ -128,9 +128,9 @@ displayed nice. As a fix, add margin-top:auto/margin-bottom: auto; on first/last
 
 1. Make sure that each gettext function(\_x, \_ex, ..etc) have the context "backend, documentation".
 
-
 ## Before Deploying
 
 - Change the version plugin in main file and in Directory Utils.
 - Make sure to refresh translations.
 - Change License in free version.
+- Verify if no errors is outputted by phpcs: "vendor/bin/phpcs .".

@@ -16,7 +16,7 @@ if ( $artblock->excerpt_exist_and_is_displayed() ) {
 		<?php $artblock->the_title( '<h3 class="twrp-ms__title">', '</h3>' ); ?>
 	</a>
 
-	<div class="twrp-ms__thumbnail-container<?= esc_attr( $additional_excerpt_class ); ?>">
+	<div class="twrp-ms__thumbnail-container<?php echo esc_attr( $additional_excerpt_class ); ?>">
 		<div class="twrp-thumbnail-wrapper twrp-ms__thumbnail-wrapper">
 			<?php $artblock->display_post_thumbnail( 'medium', array( 'class' => 'twrp-thumbnail twrp-ms__thumbnail' ) ); ?>
 		</div>

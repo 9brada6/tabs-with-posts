@@ -5,6 +5,9 @@ namespace TWRP\Admin\TWRP_Widget;
 use TWRP\Article_Block\Component\Artblock_Component;
 use TWRP\Utils\Widget_Utils;
 
+/**
+ * Class used to display the tabs for each component.
+ */
 class Widget_Form_Components_Display {
 
 	/**
