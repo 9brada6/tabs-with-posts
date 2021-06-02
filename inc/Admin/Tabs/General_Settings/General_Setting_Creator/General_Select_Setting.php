@@ -15,8 +15,8 @@ class General_Select_Setting extends General_Setting_Creator {
 		?>
 		<div class="<?php $this->bem_class( 'select-wrapper' ); ?>">
 			<select
-				id="<?= esc_attr( $this->get_settings_attr_id() ); ?>"
-				name="<?= esc_attr( $this->name ); ?>"
+				id="<?php echo esc_attr( $this->get_settings_attr_id() ); ?>"
+				name="<?php echo esc_attr( $this->name ); ?>"
 				class="<?php $this->bem_class( 'select' ); ?>"
 				<?php $this->display_input_attributes(); ?>
 			>
@@ -40,7 +40,7 @@ class General_Select_Setting extends General_Setting_Creator {
 	protected function display_select_opt_groups() {
 		foreach ( $this->options as $label => $brand_options ) :
 			?>
-			<optgroup label="<?= esc_attr( (string) $label ); ?>">
+			<optgroup label="<?php echo esc_attr( (string) $label ); ?>">
 				<?php $this->display_select_options( $brand_options ); ?>
 			</optgroup>
 			<?php
@@ -57,8 +57,8 @@ class General_Select_Setting extends General_Setting_Creator {
 		foreach ( $options as $option_value => $option_label ) :
 			$selected = ( (string) $option_value === (string) $this->value ? ' selected' : '' );
 			?>
-			<option value="<?= esc_attr( $option_value ); ?>"<?= esc_attr( $selected ); ?>>
-				<?= esc_html( $option_label ); ?>
+			<option value="<?php echo esc_attr( $option_value ); ?>"<?php echo esc_attr( $selected ); ?>>
+				<?php echo esc_html( $option_label ); ?>
 			</option>
 			<?php
 		endforeach;

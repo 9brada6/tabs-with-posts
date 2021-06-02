@@ -55,15 +55,15 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 		?>
 		<div class="<?php $this->query_setting_paragraph_class(); ?>">
-			<select id="<?php $this->bem_class( 'js-filter-type' ); ?>" name="<?= esc_attr( $select_name ); ?>">
+			<select id="<?php $this->bem_class( 'js-filter-type' ); ?>" name="<?php echo esc_attr( $select_name ); ?>">
 				<option value="NA" <?php selected( 'NA', $option_selected ); ?>>
-					<?= esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 				<option value="IP" <?php selected( 'IP', $option_selected ); ?>>
-					<?= esc_html_x( 'Only these posts', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Only these posts', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 				<option value="EP" <?php selected( 'EP', $option_selected ); ?>>
-					<?= esc_html_x( 'Exclude these posts', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Exclude these posts', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
@@ -124,14 +124,14 @@ class Post_Settings_Display extends Query_Setting_Display {
 		?>
 		<div
 			id="<?php $this->bem_class( 'js-posts-list' ); ?>"
-			class="twrpb-display-list <?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'posts-list' ); ?><?= esc_attr( $list_is_hidden_class ); ?>"
-			data-twrpb-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+			class="twrpb-display-list <?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'posts-list' ); ?><?php echo esc_attr( $list_is_hidden_class ); ?>"
+			data-twrpb-aria-remove-label="<?php echo esc_attr( $remove_aria_label ); ?>"
 		>
 			<div
 				id="<?php $this->bem_class( 'js-no-posts-selected' ); ?>"
-				class="twrpb-display-list__empty-msg<?= esc_attr( $text_is_hidden_class ); ?>"
+				class="twrpb-display-list__empty-msg<?php echo esc_attr( $text_is_hidden_class ); ?>"
 			>
-				<?= esc_html_x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'No posts selected. You can search for a post and click the button to add.', 'backend', 'tabs-with-posts' ); ?>
 			</div>
 			<?php foreach ( $posts as $post ) : ?>
 				<?php
@@ -145,9 +145,9 @@ class Post_Settings_Display extends Query_Setting_Display {
 				$remove_btn_label = sprintf( $remove_aria_label, $title );
 				?>
 
-				<div class="twrpb-display-list__item <?php $this->bem_class( 'post-item' ); ?>" data-post-id="<?= esc_attr( (string) $post->ID ); ?>">
-					<div class="<?php $this->bem_class( 'post-item-title' ); ?>"><?= $title // phpcs:ignore -- No XSS. ?></div>
-					<button class="twrpb-display-list__item-remove-btn <?php $this->bem_class( 'js-post-remove-btn' ); ?>" type="button" aria-label="<?= esc_attr( $remove_btn_label ); ?>">
+				<div class="twrpb-display-list__item <?php $this->bem_class( 'post-item' ); ?>" data-post-id="<?php echo esc_attr( (string) $post->ID ); ?>">
+					<div class="<?php $this->bem_class( 'post-item-title' ); ?>"><?php echo $title // phpcs:ignore -- No XSS. ?></div>
+					<button class="twrpb-display-list__item-remove-btn <?php $this->bem_class( 'js-post-remove-btn' ); ?>" type="button" aria-label="<?php echo esc_attr( $remove_btn_label ); ?>">
 						<span class="dashicons dashicons-no"></span>
 					</button>
 				</div>
@@ -170,18 +170,18 @@ class Post_Settings_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="<?php $this->bem_class( 'js-posts-search-wrap' ); ?>" class="<?php $this->bem_class( 'posts-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $list_is_hidden_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-posts-search-wrap' ); ?>" class="<?php $this->bem_class( 'posts-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_attr( $list_is_hidden_class ); ?>">
 			<input
 				id="<?php $this->bem_class( 'js-posts-search' ); ?>" type="text"
 				class="<?php $this->bem_class( 'posts-search' ); ?>"
-				placeholder="<?= esc_attr_x( 'Search for a post', 'backend', 'tabs-with-posts' ); ?>"
+				placeholder="<?php echo esc_attr_x( 'Search for a post', 'backend', 'tabs-with-posts' ); ?>"
 			/>
 
 			<button
 				id="<?php $this->bem_class( 'js-posts-add-btn' ); ?>" type="button"
 				class="<?php $this->bem_class( 'js-posts-add-btn' ); ?> twrpb-button"
 			>
-				<?= esc_html_x( 'Add Post', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Add Post', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php
@@ -202,8 +202,8 @@ class Post_Settings_Display extends Query_Setting_Display {
 
 		?>
 		<input id="<?php $this->bem_class( 'js-posts-ids' ); ?>"
-			name="<?= esc_attr( $input_name ); ?>" type="hidden"
-			value="<?= esc_attr( $value ); ?>"
+			name="<?php echo esc_attr( $input_name ); ?>" type="hidden"
+			value="<?php echo esc_attr( $value ); ?>"
 		>
 		<?php
 	}

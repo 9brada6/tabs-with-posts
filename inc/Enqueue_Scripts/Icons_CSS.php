@@ -78,7 +78,7 @@ class Icons_CSS {
 
 		?>
 		<script id="twrp-include-icons-inline-script" type="text/javascript">
-		(function(){var div=document.createElement( 'div' );div.innerHTML=<?= $icon_definitions; // phpcs:ignore ?>;insertIntoDocument(div);
+		(function(){var div=document.createElement( 'div' );div.innerHTML=<?php echo $icon_definitions; // phpcs:ignore ?>;insertIntoDocument(div);
 		function insertIntoDocument(elem){if(document.body && document.body.firstElementChild){document.body.insertBefore(elem,document.body.firstElementChild);}else{setTimeout(insertIntoDocument.bind(null,elem),200);}}})();
 		</script>
 		<?php
@@ -124,7 +124,7 @@ class Icons_CSS {
 	protected static function ajax_include_svg_file( $file_path ) {
 		?>
 		<script type="text/javascript">
-		(function(){const ajax=new XMLHttpRequest();ajax.open('GET','<?= esc_url( $file_path ) ?>',true);ajax.send();
+		(function(){const ajax=new XMLHttpRequest();ajax.open('GET','<?php echo esc_url( $file_path ); ?>',true);ajax.send();
 		ajax.onload=function(e){var div=document.createElement('div');div.innerHTML=ajax.responseText;insertIntoDocument(div);};
 		function insertIntoDocument(elem){if(document.body && document.body.firstElementChild){document.body.insertBefore(elem,document.body.firstElementChild);}else{setTimeout(insertIntoDocument.bind(null,elem),200);}}})();
 		</script>

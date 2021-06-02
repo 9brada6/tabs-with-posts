@@ -44,28 +44,28 @@ class General_Select_With_Switch_Setting extends General_Select_Setting {
 		<div class="<?php $this->bem_class( 'switch-wrapper' ); ?>">
 			<div class="twrpb-switch <?php $this->bem_class( 'switch' ); ?>">
 				<input
-					id="<?= esc_attr( $this->get_settings_attr_id( 'false' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_settings_attr_id( 'false' ) ); ?>"
 					class="twrpb-switch__input" type="radio"
-					name="<?= esc_attr( $switch_name ); ?>"
+					name="<?php echo esc_attr( $switch_name ); ?>"
 					value="false"
-					<?= esc_html( $disabled_value_checked ); ?>
+					<?php echo esc_html( $disabled_value_checked ); ?>
 				/>
 
 				<input
-					id="<?= esc_attr( $this->get_settings_attr_id( 'true' ) ); ?>"
+					id="<?php echo esc_attr( $this->get_settings_attr_id( 'true' ) ); ?>"
 					class="twrpb-switch__input" type="radio"
-					name="<?= esc_attr( $switch_name ); ?>"
+					name="<?php echo esc_attr( $switch_name ); ?>"
 					value="true"
-					<?= esc_html( $enabled_value_checked ); ?>
+					<?php echo esc_html( $enabled_value_checked ); ?>
 				/>
 
 				<span class="twrpb-switch__slider">
-					<label for="<?= esc_attr( $this->get_settings_attr_id( 'false' ) ); ?>" class="twrpb-switch__slider-label-disabled" aria-label="<?= esc_attr( $disabled_aria_label ); ?>"></label>
-					<label for="<?= esc_attr( $this->get_settings_attr_id( 'true' ) ); ?>" class="twrpb-switch__slider-label-enabled" aria-label="<?= esc_attr( $enabled_aria_label ); ?>"></label>
+					<label for="<?php echo esc_attr( $this->get_settings_attr_id( 'false' ) ); ?>" class="twrpb-switch__slider-label-disabled" aria-label="<?php echo esc_attr( $disabled_aria_label ); ?>"></label>
+					<label for="<?php echo esc_attr( $this->get_settings_attr_id( 'true' ) ); ?>" class="twrpb-switch__slider-label-enabled" aria-label="<?php echo esc_attr( $enabled_aria_label ); ?>"></label>
 				</span>
 			</div>
 			<div class="<?php $this->bem_class( 'switch-title' ); ?>">
-				<?= esc_html( $switch_title ); ?>
+				<?php echo esc_html( $switch_title ); ?>
 			</div>
 		</div>
 		<?php

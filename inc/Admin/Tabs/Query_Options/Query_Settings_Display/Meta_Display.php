@@ -55,40 +55,40 @@ class Meta_Display extends Query_Setting_Display {
 		$value_placeholder = _x( 'Meta Value', 'backend', 'tabs-with-posts' );
 		?>
 		<div class="<?php $this->bem_class(); ?>">
-			<select id="<?php $this->bem_class( 'js-apply-meta-select' ); ?>" class="<?php $this->bem_class( 'apply-meta-select' ); ?> <?php $this->query_setting_paragraph_class(); ?>" name="<?= esc_attr( $meta_is_applied_name ); ?>">
-				<option value="NA" <?php selected( $meta_apply_value, 'NA' ); ?>><?= esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ); ?></option>
-				<option value="A" <?php selected( $meta_apply_value, 'A' ); ?>><?= esc_html_x( 'Apply Meta', 'backend', 'tabs-with-posts' ); ?></option>
+			<select id="<?php $this->bem_class( 'js-apply-meta-select' ); ?>" class="<?php $this->bem_class( 'apply-meta-select' ); ?> <?php $this->query_setting_paragraph_class(); ?>" name="<?php echo esc_attr( $meta_is_applied_name ); ?>">
+				<option value="NA" <?php selected( $meta_apply_value, 'NA' ); ?>><?php echo esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ); ?></option>
+				<option value="A" <?php selected( $meta_apply_value, 'A' ); ?>><?php echo esc_html_x( 'Apply Meta', 'backend', 'tabs-with-posts' ); ?></option>
 			</select>
 
-			<div id="<?php $this->bem_class( 'js-setting-wrapper' ); ?>" class="<?php $this->bem_class( 'setting-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_meta_hidden_class ); ?>">
+			<div id="<?php $this->bem_class( 'js-setting-wrapper' ); ?>" class="<?php $this->bem_class( 'setting-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_attr( $additional_meta_hidden_class ); ?>">
 				<div class="<?php $this->bem_class( 'input-group' ); ?>">
 					<label for="<?php $this->bem_class( 'meta-key' ); ?>" class="<?php $this->bem_class( 'input-label' ); ?>">
-						<?= esc_html_x( 'Meta Name:', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Meta Name:', 'backend', 'tabs-with-posts' ); ?>
 					</label>
-					<input id="<?php $this->bem_class( 'meta-key' ); ?>" type="text" placeholder="<?= esc_attr( $name_placeholder ); ?>" name="<?= esc_attr( $meta_key_name ); ?>" value="<?= esc_attr( $meta_key_value ); ?>"/>
+					<input id="<?php $this->bem_class( 'meta-key' ); ?>" type="text" placeholder="<?php echo esc_attr( $name_placeholder ); ?>" name="<?php echo esc_attr( $meta_key_name ); ?>" value="<?php echo esc_attr( $meta_key_value ); ?>"/>
 				</div>
 
 				<div class="<?php $this->bem_class( 'input-group' ); ?>">
 					<label for="<?php $this->bem_class( 'js-meta-type' ); ?>" class="<?php $this->bem_class( 'input-label' ); ?>">
-						<?= esc_html_x( 'Meta Comparator:', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Meta Comparator:', 'backend', 'tabs-with-posts' ); ?>
 					</label>
-					<select id="<?php $this->bem_class( 'js-meta-type' ); ?>" name="<?= esc_attr( $meta_compare_name ); ?>">
+					<select id="<?php $this->bem_class( 'js-meta-type' ); ?>" name="<?php echo esc_attr( $meta_compare_name ); ?>">
 						<?php foreach ( $comparators as $value => $display ) : ?>
 							<option
-								value="<?= esc_attr( $value ); ?>"
+								value="<?php echo esc_attr( $value ); ?>"
 								<?php selected( $value, $meta_compare_value ); ?>
 							>
-								<?= esc_html( $display ); ?>
+								<?php echo esc_html( $display ); ?>
 							</option>
 						<?php endforeach; ?>
 					</select>
 				</div>
 
-				<div id="<?php $this->bem_class( 'js-meta-value-group' ); ?>" class="<?php $this->bem_class( 'input-group' ); ?> <?= esc_attr( $additional_value_hidden_class ); ?>">
+				<div id="<?php $this->bem_class( 'js-meta-value-group' ); ?>" class="<?php $this->bem_class( 'input-group' ); ?> <?php echo esc_attr( $additional_value_hidden_class ); ?>">
 					<label for="<?php $this->bem_class( 'js-meta-value' ); ?>" class="<?php $this->bem_class( 'input-label' ); ?>">
-						<?= esc_html_x( 'Meta Value:', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Meta Value:', 'backend', 'tabs-with-posts' ); ?>
 					</label>
-					<input id="<?php $this->bem_class( 'js-meta-value' ); ?>" class="<?php $this->bem_class( 'meta-value' ); ?>" placeholder="<?= esc_attr( $value_placeholder ); ?>" type="text" name="<?= esc_attr( $meta_value_name ); ?>" value="<?= esc_attr( $meta_value_value ); ?>"/>
+					<input id="<?php $this->bem_class( 'js-meta-value' ); ?>" class="<?php $this->bem_class( 'meta-value' ); ?>" placeholder="<?php echo esc_attr( $value_placeholder ); ?>" type="text" name="<?php echo esc_attr( $meta_value_name ); ?>" value="<?php echo esc_attr( $meta_value_value ); ?>"/>
 				</div>
 			</div>
 		</div>

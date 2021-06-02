@@ -57,14 +57,14 @@ class Post_Types_Display extends Query_Setting_Display {
 		?>
 		<div class="<?php $this->bem_class( 'checkbox' ); ?> <?php $this->query_setting_checkbox_line_class(); ?>">
 			<input
-				id="<?= esc_attr( $checkbox_id ); ?>"
-				name="<?= esc_attr( $checkbox_name ); ?>"
+				id="<?php echo esc_attr( $checkbox_id ); ?>"
+				name="<?php echo esc_attr( $checkbox_name ); ?>"
 				type="checkbox"
-				value="<?= esc_attr( $name ); ?>"
-				<?= $checked_attr //phpcs:ignore -- No XSS. ?>
+				value="<?php echo esc_attr( $name ); ?>"
+				<?php echo $checked_attr //phpcs:ignore -- No XSS. ?>
 			/>
-			<label for="<?= esc_attr( $checkbox_id ); ?>">
-				<?= esc_html( $label ) ?>
+			<label for="<?php echo esc_attr( $checkbox_id ); ?>">
+				<?php echo esc_html( $label ); ?>
 			</label>
 		</div>
 		<?php

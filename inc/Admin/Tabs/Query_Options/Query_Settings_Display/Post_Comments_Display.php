@@ -34,32 +34,32 @@ class Post_Comments_Display extends Query_Setting_Display {
 					<select
 						id="<?php $this->bem_class( 'js-comparator' ); ?>"
 						class="<?php $this->bem_class( 'comparator' ); ?>"
-						name="<?= esc_attr( $comments_class->get_setting_name() . '[' . Post_Comments::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
+						name="<?php echo esc_attr( $comments_class->get_setting_name() . '[' . Post_Comments::COMMENTS_COMPARATOR_NAME . ']' ); ?>"
 					>
 						<option value="NA" <?php selected( 'NA', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
-							<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
+							<?php echo esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 						</option>
 						<option value="BE" <?php selected( 'BE', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
-							<?= esc_html_x( 'Bigger or equal than: >=', 'backend', 'tabs-with-posts' ); ?>
+							<?php echo esc_html_x( 'Bigger or equal than: >=', 'backend', 'tabs-with-posts' ); ?>
 						</option>
 						<option value="LE" <?php selected( 'LE', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
-							<?= esc_html_x( 'Less or equal than: <=', 'backend', 'tabs-with-posts' ); ?>
+							<?php echo esc_html_x( 'Less or equal than: <=', 'backend', 'tabs-with-posts' ); ?>
 						</option>
 						<option value="E" <?php selected( 'E', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
-							<?= esc_html_x( 'Equal', 'backend', 'tabs-with-posts' ); ?>
+							<?php echo esc_html_x( 'Equal', 'backend', 'tabs-with-posts' ); ?>
 						</option>
 						<option value="NE" <?php selected( 'NE', $current_setting[ Post_Comments::COMMENTS_COMPARATOR_NAME ] ); ?>>
-							<?= esc_html_x( 'Not equal', 'backend', 'tabs-with-posts' ); ?>
+							<?php echo esc_html_x( 'Not equal', 'backend', 'tabs-with-posts' ); ?>
 						</option>
 					</select>
 
 					<input
 						id="<?php $this->bem_class( 'js-num_comments' ); ?>"
-						class="<?php $this->bem_class( 'num_comments' ); ?><?= esc_attr( $hidden_class ); ?>"
+						class="<?php $this->bem_class( 'num_comments' ); ?><?php echo esc_attr( $hidden_class ); ?>"
 						type="number" min="0" step="1"
-						placeholder="<?= esc_attr_x( 'Number of comments', 'backend', 'tabs-with-posts' ); ?>"
-						name="<?= esc_attr( $comments_class->get_setting_name() . '[' . Post_Comments::COMMENTS_VALUE_NAME . ']' ); ?>"
-						value="<?= esc_attr( $current_setting[ Post_Comments::COMMENTS_VALUE_NAME ] ); ?>"
+						placeholder="<?php echo esc_attr_x( 'Number of comments', 'backend', 'tabs-with-posts' ); ?>"
+						name="<?php echo esc_attr( $comments_class->get_setting_name() . '[' . Post_Comments::COMMENTS_VALUE_NAME . ']' ); ?>"
+						value="<?php echo esc_attr( $current_setting[ Post_Comments::COMMENTS_VALUE_NAME ] ); ?>"
 					/>
 				</div>
 			</div>

@@ -146,9 +146,9 @@ class Queries_Tab extends Admin_Menu_Tab {
 			}
 			?>
 
-			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?= esc_html_x( 'Existing Queries:', 'backend', 'tabs-with-posts' ) ?></h3>
+			<h3 class="<?php $this->bem_class( 'title' ); ?>"><?php echo esc_html_x( 'Existing Queries:', 'backend', 'tabs-with-posts' ); ?></h3>
 			<?php $this->display_queries_that_depends_on_non_installed_plugins(); ?>
-			<div id="<?php $this->bem_class( 'before-deleting-confirmation' ); ?>" style="display:none" data-twrpb-query-delete-confirm="<?= esc_attr( $delete_query_confirmation_message ) ?>"></div>
+			<div id="<?php $this->bem_class( 'before-deleting-confirmation' ); ?>" style="display:none" data-twrpb-query-delete-confirm="<?php echo esc_attr( $delete_query_confirmation_message ); ?>"></div>
 			<?php
 			do_action( 'twrp_before_displaying_existing_queries_table' );
 			$existing_queries_table->display();
@@ -205,7 +205,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	protected function display_existing_queries_add_new_btn() {
 		$add_btn_icon = '<span class="' . $this->get_bem_class( 'add-query-btn-icon' ) . ' dashicons dashicons-plus"></span>';
 		?>
-		<a class="<?php $this->bem_class( 'add-query-btn' ); ?> twrpb-button twrpb-button--save twrpb-button--large" href=<?= esc_url( $this->get_new_query_link() ); ?>>
+		<a class="<?php $this->bem_class( 'add-query-btn' ); ?> twrpb-button twrpb-button--save twrpb-button--large" href=<?php echo esc_url( $this->get_new_query_link() ); ?>>
 			<?php
 				/* translators: %s: plus dashicon html. */
 				echo wp_kses( sprintf( _x( '%s Add New Query', 'backend', 'tabs-with-posts' ), $add_btn_icon ), Simple_Utils::get_plugin_allowed_kses_html() );
@@ -325,7 +325,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	protected function display_successfully_query_saved_message() {
 		?>
 		<div class="<?php $this->bem_class( 'notification' ); ?> twrpb-notification twrpb-notification--success">
-			<?= esc_html_x( 'Settings saved successfully.', 'backend', 'tabs-with-posts' ); ?>
+			<?php echo esc_html_x( 'Settings saved successfully.', 'backend', 'tabs-with-posts' ); ?>
 		</div>
 		<?php
 	}
@@ -338,7 +338,7 @@ class Queries_Tab extends Admin_Menu_Tab {
 	protected function display_successfully_query_deleted_message() {
 		?>
 		<div class="<?php $this->bem_class( 'notification' ); ?> twrpb-notification twrpb-notification--success">
-			<?= esc_html_x( 'Query deleted successfully.', 'backend', 'tabs-with-posts' ); ?>
+			<?php echo esc_html_x( 'Query deleted successfully.', 'backend', 'tabs-with-posts' ); ?>
 		</div>
 		<?php
 	}
@@ -357,17 +357,17 @@ class Queries_Tab extends Admin_Menu_Tab {
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<?php $this->display_back_to_existing_tables_btn(); ?>
-			<form action="<?= esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
+			<form action="<?php echo esc_url( $this->get_edit_query_form_action() ); ?>" method="post">
 				<?php $query_settings_display->display(); ?>
 				<?php wp_nonce_field( self::NONCE_EDIT_ACTION, self::NONCE_EDIT_NAME ); ?>
 
 				<button
 					class="<?php $this->bem_class( 'save-query-btn' ); ?> twrpb-button twrpb-button--save twrpb-button--large"
-					name="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>"
-					value="<?= esc_attr( self::SUBMIT_BTN_NAME ) ?>"
+					name="<?php echo esc_attr( self::SUBMIT_BTN_NAME ); ?>"
+					value="<?php echo esc_attr( self::SUBMIT_BTN_NAME ); ?>"
 					type="submit"
 				>
-					<?= esc_html_x( 'Save Settings', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Save Settings', 'backend', 'tabs-with-posts' ); ?>
 				</button>
 			</form>
 			<?php $this->display_query_debug(); ?>
@@ -408,15 +408,15 @@ class Queries_Tab extends Admin_Menu_Tab {
 		}
 
 		?>
-		<div id="<?php $this->bem_class( 'query_generated_array_container' ); ?>" class="<?php $this->bem_class( 'query_generated_array_container' ); ?>" data-twrpb-query-generated-array="<?= esc_attr( $result_json ); ?>">
-			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?= esc_html_x( 'See WP_Query arguments generated', 'backend', 'tabs-with-posts' ); ?></button>
+		<div id="<?php $this->bem_class( 'query_generated_array_container' ); ?>" class="<?php $this->bem_class( 'query_generated_array_container' ); ?>" data-twrpb-query-generated-array="<?php echo esc_attr( $result_json ); ?>">
+			<button id="<?php $this->bem_class( 'query_generated_array_btn' ); ?>" class="button <?php $this->bem_class( 'query_generated_array_btn' ); ?>" type="button">&#9660;&nbsp;&nbsp;<?php echo esc_html_x( 'See WP_Query arguments generated', 'backend', 'tabs-with-posts' ); ?></button>
 
 			<div class="<?php $this->bem_class( 'query_args_collapsible' ); ?>">
 				<div class="<?php $this->bem_class( 'query_generated_note' ); ?>">
-					<?= esc_html_x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'These arguments are generated when this page is loaded, and does not live-change when a setting here is modified.', 'backend', 'tabs-with-posts' ); ?>
 				</div>
 
-				<div class="<?php $this->bem_class( 'query_generated_array' ); ?>"><?= esc_html( $result_to_display ); ?></div>
+				<div class="<?php $this->bem_class( 'query_generated_array' ); ?>"><?php echo esc_html( $result_to_display ); ?></div>
 			</div>
 		</div>
 		<?php
@@ -431,8 +431,8 @@ class Queries_Tab extends Admin_Menu_Tab {
 		$link        = Settings_Menu::get_tab_url( $this );
 		$button_text = _x( '< Back to the Queries Overview', 'backend', 'tabs-with-posts' );
 		?>
-		<a href="<?= esc_url( $link ); ?>" class="<?php $this->bem_class( 'back-btn' ); ?> twrpb-button twrpb-button--large">
-			<?= esc_html( $button_text ); ?>
+		<a href="<?php echo esc_url( $link ); ?>" class="<?php $this->bem_class( 'back-btn' ); ?> twrpb-button twrpb-button--large">
+			<?php echo esc_html( $button_text ); ?>
 		</a>
 		<?php
 	}

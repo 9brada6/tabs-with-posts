@@ -15,10 +15,10 @@ class General_Text_Setting extends General_Setting_Creator {
 		?>
 		<div class="<?php $this->bem_class( 'wrapper' ); ?>">
 			<input
-				id="<?= esc_attr( $this->get_settings_attr_id() ); ?>"
+				id="<?php echo esc_attr( $this->get_settings_attr_id() ); ?>"
 				type="text"
-				name="<?= esc_attr( $this->name ); ?>"
-				value="<?= esc_attr( $this->value ); ?>"
+				name="<?php echo esc_attr( $this->name ); ?>"
+				value="<?php echo esc_attr( $this->value ); ?>"
 				<?php $this->display_input_attributes(); ?>
 			/>
 		</div>

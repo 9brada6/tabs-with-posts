@@ -126,12 +126,12 @@ class Settings_Menu {
 		?>
 			<div class="<?php $this->bem_class( 'tabs' ); ?> nav-tab-wrapper">
 				<?php foreach ( self::$tabs as $tab ) : ?>
-					<a href="<?= esc_url( self::get_tab_url( $tab ) ) ?>" class="<?= esc_attr( $this->get_tab_class_attribute( $tab ) ) ?>">
-						<?= $this->get_tab_title( $tab ); // phpcs:ignore -- "Feature" to add icons. ?>
+					<a href="<?php echo esc_url( self::get_tab_url( $tab ) ); ?>" class="<?php echo esc_attr( $this->get_tab_class_attribute( $tab ) ); ?>">
+						<?php echo $this->get_tab_title( $tab ); // phpcs:ignore -- "Feature" to add icons. ?>
 					</a>
 				<?php endforeach; ?>
-				<a href="<?= esc_url( menu_page_url( self::MENU_SLUG, false ) . '-contact' ); ?>" class="<?= esc_attr( $this->get_tab_class_attribute( 'contact' ) ) ?>">
-					<?= esc_html_x( 'Contact Us', 'backend', 'tabs-with-posts' ); ?>
+				<a href="<?php echo esc_url( menu_page_url( self::MENU_SLUG, false ) . '-contact' ); ?>" class="<?php echo esc_attr( $this->get_tab_class_attribute( 'contact' ) ); ?>">
+					<?php echo esc_html_x( 'Contact Us', 'backend', 'tabs-with-posts' ); ?>
 				</a>
 			</div>
 		<?php

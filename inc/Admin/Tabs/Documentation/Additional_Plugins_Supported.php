@@ -19,20 +19,20 @@ class Additional_Plugins_Supported {
 	 */
 	public function display() {
 		?>
-			<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html_x( 'Additional Plugins Support & Info', 'backend documentation', 'tabs-with-posts' ); ?></h2>
+			<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?php echo esc_html_x( 'Additional Plugins Support & Info', 'backend documentation', 'tabs-with-posts' ); ?></h2>
 
-			<p><?= esc_html_x( 'This plugin also supports the "Yoast SEO" plugin to retrieve the main category and to display it.', 'backend documentation', 'tabs-with-posts' ); ?></p>
+			<p><?php echo esc_html_x( 'This plugin also supports the "Yoast SEO" plugin to retrieve the main category and to display it.', 'backend documentation', 'tabs-with-posts' ); ?></p>
 
 			<p>
-				<?= esc_html_x( 'This widget supports all page cache plugins.', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'This widget supports all page cache plugins.', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 
 			<p>
-				<?= esc_html_x( 'This plugin supports all multi-language plugins that can translate each widget individually.', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'This plugin supports all multi-language plugins that can translate each widget individually.', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 
 			<p>
-				<?= esc_html_x( 'This plugin does NOT support Likes/Dislikes of "WP-PostRatings" Rating plugin.', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'This plugin does NOT support Likes/Dislikes of "WP-PostRatings" Rating plugin.', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 		<?php
 	}

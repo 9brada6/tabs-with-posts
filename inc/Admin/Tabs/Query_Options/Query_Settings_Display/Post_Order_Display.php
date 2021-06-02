@@ -63,32 +63,32 @@ class Post_Order_Display extends Query_Setting_Display {
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<p id="<?php $this->bem_class( 'js-first-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
-				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $first_select_orderby_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?php echo esc_attr( $first_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
 					<?php $this->display_order_by_select_options( $first_orderby_setting, Post_Order::get_additional_first_orderby_select_options() ); ?>
 				</select>
 
-				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_first_order_type_class ); ?>" name=<?= esc_attr( $first_select_order_type_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?php echo esc_html( $additional_first_order_type_class ); ?>" name=<?php echo esc_attr( $first_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $first_order_type_setting ); ?>
 				</select>
 			</p>
 
-			<p id="<?php $this->bem_class( 'js-second-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_html( $additional_second_order_class ); ?>">
-				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $second_select_orderby_name ); ?>>
+			<p id="<?php $this->bem_class( 'js-second-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_html( $additional_second_order_class ); ?>">
+				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?php echo esc_attr( $second_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $second_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
 				</select>
 
-				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_second_order_type_class ); ?>" name=<?= esc_attr( $second_select_order_type_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?php echo esc_html( $additional_second_order_type_class ); ?>" name=<?php echo esc_attr( $second_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $second_order_type_setting ); ?>
 				</select>
 			</p>
 
-			<p id="<?php $this->bem_class( 'js-third-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_html( $additional_third_order_class ); ?>">
-				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?= esc_attr( $third_select_orderby_name ); ?>>
+			<p id="<?php $this->bem_class( 'js-third-order-group' ); ?>" class="<?php $this->bem_class( 'order-group' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_html( $additional_third_order_class ); ?>">
+				<select class="<?php $this->bem_class( 'js-orderby' ); ?>" name=<?php echo esc_attr( $third_select_orderby_name ); ?>>
 					<?php $this->display_order_by_select_options( $third_orderby_setting, Post_Order::get_orderby_select_options() ); ?>
 				</select>
 
-				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?= esc_html( $additional_third_order_type_class ); ?>" name=<?= esc_attr( $third_select_order_type_name ); ?>>
+				<select class="<?php $this->bem_class( 'js-order-type' ); ?><?php echo esc_html( $additional_third_order_type_class ); ?>" name=<?php echo esc_attr( $third_select_order_type_name ); ?>>
 					<?php $this->display_order_type_select_options( $third_order_type_setting ); ?>
 				</select>
 			</p>
@@ -162,8 +162,8 @@ class Post_Order_Display extends Query_Setting_Display {
 
 		foreach ( $options as $value => $description ) {
 			?>
-			<option value=<?= esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>
-				<?= esc_html( $description ); ?>
+			<option value=<?php echo esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>
+				<?php echo esc_html( $description ); ?>
 			</option>
 			<?php
 		}
@@ -183,8 +183,8 @@ class Post_Order_Display extends Query_Setting_Display {
 
 		foreach ( $options as $value => $description ) {
 			?>
-				<option value=<?= esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>
-					<?= esc_html( $description ); ?>
+				<option value=<?php echo esc_attr( $value ); ?> <?php selected( $value, $current_setting ); ?>>
+					<?php echo esc_html( $description ); ?>
 				</option>
 			<?php
 		}

@@ -210,13 +210,13 @@ class Remember_Note {
 			$note_additional_class = ' ' . $note_additional_class;
 		}
 		?>
-		<p id="<?php $this->bem_class( $this->name ); ?>" class="<?php $this->bem_class(); ?><?php $this->additional_note_modifier_class(); ?><?= esc_attr( $note_additional_class ); ?>">
+		<p id="<?php $this->bem_class( $this->name ); ?>" class="<?php $this->bem_class(); ?><?php $this->additional_note_modifier_class(); ?><?php echo esc_attr( $note_additional_class ); ?>">
 			<span class="<?php $this->bem_class( 'label' ); ?>">
-				<?= esc_html( $this->label ); ?>
+				<?php echo esc_html( $this->label ); ?>
 			</span>
 
 			<span class="<?php $this->bem_class( 'text' ); ?>">
-				<?= wp_kses( $this->text, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
+				<?php echo wp_kses( $this->text, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
 			</span>
 		</p>
 		<?php

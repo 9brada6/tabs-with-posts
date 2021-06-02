@@ -96,7 +96,7 @@ class Widget_Ajax {
 
 		$nonce = wp_create_nonce( self::NONCE_ACTION_NAME );
 		?>
-			<div id="twrpb-plugin-widget-ajax-nonce" data-twrpb-plugin-widget-ajax-nonce="<?= esc_attr( $nonce ) ?>" style="display:none"></div>
+			<div id="twrpb-plugin-widget-ajax-nonce" data-twrpb-plugin-widget-ajax-nonce="<?php echo esc_attr( $nonce ); ?>" style="display:none"></div>
 		<?php
 	}
 }

@@ -49,7 +49,7 @@ class Plugin_Support_Docs {
 		?>
 		<div class="<?php $this->bem_class( 'plugins-support' ); ?> <?php $this->bem_class( 'plugins-support', 'views-plugin' ); ?>">
 			<h2 class="<?php $this->bem_class( 'title-section' ); ?>">
-				<?= esc_html_x( 'Views plugin support', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Views plugin support', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</h2>
 
 			<div class="<?php $this->bem_class( 'plugins-list' ); ?>">
@@ -75,7 +75,7 @@ class Plugin_Support_Docs {
 		?>
 		<div class="<?php $this->bem_class( 'plugins-support' ); ?> <?php $this->bem_class( 'plugins-support', 'views-plugin' ); ?>">
 			<h2 class="<?php $this->bem_class( 'title-section' ); ?>">
-				<?= esc_html_x( 'Rating plugin support', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Rating plugin support', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</h2>
 
 			<div class="<?php $this->bem_class( 'plugins-list' ); ?>">
@@ -110,16 +110,16 @@ class Plugin_Support_Docs {
 		}
 
 		?>
-		<div class="<?php $this->bem_class( 'docs-plugin' ); ?><?= esc_attr( $additional_locked_class ); ?>">
+		<div class="<?php $this->bem_class( 'docs-plugin' ); ?><?php echo esc_attr( $additional_locked_class ); ?>">
 			<div class="<?php $this->bem_class( 'plugin-avatar-wrapper' ); ?>">
-				<img src="<?= esc_url( $plugin->get_plugin_avatar_src() ) ?>" alt="<?= esc_attr_x( 'Plugin avatar', 'backend, screen reader', 'tabs-with-posts' ); ?>"/>
+				<img src="<?php echo esc_url( $plugin->get_plugin_avatar_src() ); ?>" alt="<?php echo esc_attr_x( 'Plugin avatar', 'backend, screen reader', 'tabs-with-posts' ); ?>"/>
 			</div>
 
 			<div class="<?php $this->bem_class( 'meta-wrapper' ); ?>">
-				<h3 class="<?php $this->bem_class( 'plugin-title' ); ?>"><?= esc_html( $plugin->get_plugin_title() ); ?><?= $premium_only_html; // phpcs:ignore - No XSS. ?></h3>
+				<h3 class="<?php $this->bem_class( 'plugin-title' ); ?>"><?php echo esc_html( $plugin->get_plugin_title() ); ?><?php echo $premium_only_html; // phpcs:ignore - No XSS. ?></h3>
 
 				<p class="<?php $this->bem_class( 'plugin-author-wrap' ); ?>">
-					<?= esc_html_x( 'Author:', 'backend,', 'tabs-with-posts' ) . ' ' . esc_html( $plugin->get_plugin_author() ); ?>
+					<?php echo esc_html_x( 'Author:', 'backend,', 'tabs-with-posts' ) . ' ' . esc_html( $plugin->get_plugin_author() ); ?>
 				</p>
 
 				<p class="<?php $this->bem_class( 'plugin-version-wrap' ); ?>">
@@ -149,7 +149,7 @@ class Plugin_Support_Docs {
 				</p>
 
 				<p class="<?php $this->bem_class( 'plugin-tested-version-wrap' ); ?>">
-					<?= esc_html_x( 'Tested versions:', 'backend', 'tabs-with-posts' ) . ' ' . esc_html( $plugin->get_tested_plugin_versions() ); ?>
+					<?php echo esc_html_x( 'Tested versions:', 'backend', 'tabs-with-posts' ) . ' ' . esc_html( $plugin->get_tested_plugin_versions() ); ?>
 				</p>
 			</div>
 		</div>

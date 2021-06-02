@@ -175,7 +175,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 	public function display_show_more_button() {
 		?>
 			<div class="twrp-show-more">
-				<button class="twrp-show-more__btn" type="button"><?= esc_html( Frontend_Translation::get_translation( Frontend_Translation::SHOW_MORE_POSTS ) ) ?></button>
+				<button class="twrp-show-more__btn" type="button"><?php echo esc_html( Frontend_Translation::get_translation( Frontend_Translation::SHOW_MORE_POSTS ) ); ?></button>
 			</div>
 		<?php
 	}
@@ -274,7 +274,7 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 
 		?>
 		<h5 class="twrpb-widget-form__query-description-title">
-			<?= esc_html_x( 'Change component CSS:', 'backend', 'tabs-with-posts' ); ?>
+			<?php echo esc_html_x( 'Change component CSS:', 'backend', 'tabs-with-posts' ); ?>
 		</h5>
 		<?php
 
@@ -297,11 +297,11 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		?>
 		<div class="twrpb-widget-form__artblock-tooltip-info">
 			<button class="twrpb-widget-form__artblock-tooltip-btn" type="button">
-				<?= esc_html_x( 'Click to show/hide the meta locations', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Click to show/hide the meta locations', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 
 			<div class="twrpb-widget-form__artblock-tooltip-content">
-				<img class="twrpb-widget-form__artblock-tooltip-img" src="<?= esc_attr( $image_src ); ?>" alt="<?= esc_attr_x( 'Image showing where the meta are placed.', 'backend', 'tabs-with-posts' ); ?>">
+				<img class="twrpb-widget-form__artblock-tooltip-img" src="<?php echo esc_attr( $image_src ); ?>" alt="<?php echo esc_attr_x( 'Image showing where the meta are placed.', 'backend', 'tabs-with-posts' ); ?>">
 			</div>
 		</div>
 		<?php
@@ -1330,6 +1330,12 @@ abstract class Article_Block implements Class_Children_Order, Article_Block_Info
 		echo $this->get_meta_suffix_class( $number ); // phpcs:ignore
 	}
 
+	/**
+	 * Get the class name suffix for the wrapper.
+	 *
+	 * @param int $number The number of the meta.
+	 * @return string
+	 */
 	public function get_meta_suffix_class( $number ) {
 		$meta = $this->get_meta_displayed_name( $number );
 

@@ -57,16 +57,16 @@ class Author_Display extends Query_Setting_Display {
 			<select
 				id="<?php $this->bem_class( 'select_type' ); ?>"
 				class="<?php $this->bem_class( 'select_type' ); ?>"
-				name="<?= esc_attr( $author_class->get_setting_name() . '[' . Author::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
+				name="<?php echo esc_attr( $author_class->get_setting_name() . '[' . Author::AUTHORS_TYPE__SETTING_NAME . ']' ); ?>"
 			>
-				<option value="<?= esc_attr( Author::AUTHORS_TYPE__DISABLED ) ?>" <?php selected( Author::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
-					<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
+				<option value="<?php echo esc_attr( Author::AUTHORS_TYPE__DISABLED ); ?>" <?php selected( Author::AUTHORS_TYPE__DISABLED, $selected_option ); ?>>
+					<?php echo esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
-				<option value="<?= esc_attr( Author::AUTHORS_TYPE__INCLUDE ) ?>" <?php selected( Author::AUTHORS_TYPE__INCLUDE, $selected_option ); ?>>
-					<?= esc_html_x( 'Include only posts with selected authors', 'backend', 'tabs-with-posts' ); ?>
+				<option value="<?php echo esc_attr( Author::AUTHORS_TYPE__INCLUDE ); ?>" <?php selected( Author::AUTHORS_TYPE__INCLUDE, $selected_option ); ?>>
+					<?php echo esc_html_x( 'Include only posts with selected authors', 'backend', 'tabs-with-posts' ); ?>
 				</option>
-				<option value="<?= esc_attr( Author::AUTHORS_TYPE__EXCLUDE ) ?>" <?php selected( Author::AUTHORS_TYPE__EXCLUDE, $selected_option ); ?>>
-					<?= esc_html_x( 'Exclude posts with selected authors', 'backend', 'tabs-with-posts' ); ?>
+				<option value="<?php echo esc_attr( Author::AUTHORS_TYPE__EXCLUDE ); ?>" <?php selected( Author::AUTHORS_TYPE__EXCLUDE, $selected_option ); ?>>
+					<?php echo esc_html_x( 'Exclude posts with selected authors', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
@@ -112,11 +112,11 @@ class Author_Display extends Query_Setting_Display {
 		?>
 		<div
 			id="<?php $this->bem_class( 'js-authors-list' ); ?>"
-			class="twrpb-display-list <?php $this->bem_class( 'display-list' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_list_class ); ?>"
-			data-twrpb-aria-remove-label="<?= esc_attr( $remove_aria_label ); ?>"
+			class="twrpb-display-list <?php $this->bem_class( 'display-list' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_attr( $additional_list_class ); ?>"
+			data-twrpb-aria-remove-label="<?php echo esc_attr( $remove_aria_label ); ?>"
 		>
-			<div id="<?php $this->bem_class( 'js-no-authors-selected' ); ?>" class="twrpb-display-list__empty-msg<?= esc_attr( $additional_no_authors_class ); ?>">
-				<?= esc_html_x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'tabs-with-posts' ); ?>
+			<div id="<?php $this->bem_class( 'js-no-authors-selected' ); ?>" class="twrpb-display-list__empty-msg<?php echo esc_attr( $additional_no_authors_class ); ?>">
+				<?php echo esc_html_x( 'No authors selected. You can search for an author and click the button to add.', 'backend', 'tabs-with-posts' ); ?>
 			</div>
 			<?php foreach ( $authors as $author ) : ?>
 				<?php
@@ -125,14 +125,14 @@ class Author_Display extends Query_Setting_Display {
 				// The following HTML can also be generated in JS, so it will
 				// be need to be changed there as well.
 				?>
-				<div class="<?php $this->bem_class( 'author-item' ); ?> twrpb-display-list__item" data-author-id="<?= esc_attr( (string) $author->ID ); ?>">
+				<div class="<?php $this->bem_class( 'author-item' ); ?> twrpb-display-list__item" data-author-id="<?php echo esc_attr( (string) $author->ID ); ?>">
 					<div class="<?php $this->bem_class( 'author-item-name' ); ?>">
-						<?= esc_html( $author_display_name ); ?>
+						<?php echo esc_html( $author_display_name ); ?>
 					</div>
 					<button
 						class="twrpb-display-list__item-remove-btn <?php $this->bem_class( 'js-author-remove-btn' ); ?>"
 						type="button"
-						aria-label="<?= esc_attr( sprintf( $remove_aria_label, $author_display_name ) ); ?>"
+						aria-label="<?php echo esc_attr( sprintf( $remove_aria_label, $author_display_name ) ); ?>"
 					>
 						<span class="dashicons dashicons-no"></span>
 					</button>
@@ -158,24 +158,24 @@ class Author_Display extends Query_Setting_Display {
 		$author_class = $this->get_setting_class();
 
 		?>
-		<div id="<?php $this->bem_class( 'author-search-wrap' ); ?>" class="<?php $this->bem_class( 'author-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_class ); ?>">
+		<div id="<?php $this->bem_class( 'author-search-wrap' ); ?>" class="<?php $this->bem_class( 'author-search-wrap' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_attr( $additional_class ); ?>">
 			<input
 				id="<?php $this->bem_class( 'js-author-search' ); ?>" type="text"
 				class="<?php $this->bem_class( 'author-search' ); ?>"
-				placeholder="<?= esc_attr_x( 'Search for Author', 'backend', 'tabs-with-posts' ); ?>"
+				placeholder="<?php echo esc_attr_x( 'Search for Author', 'backend', 'tabs-with-posts' ); ?>"
 			/>
 
 			<button
 				id="<?php $this->bem_class( 'js-author-add-btn' ); ?>" type="button"
 				class="<?php $this->bem_class( 'js-author-add-btn' ); ?> twrpb-button"
 			>
-				<?= esc_html_x( 'Add Author', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Add Author', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 
 			<input
 				id="<?php $this->bem_class( 'js-author-ids' ); ?>" type="hidden"
-				name="<?= esc_attr( $author_class->get_setting_name() . '[' . Author::AUTHORS_IDS__SETTING_NAME . ']' ) ?>"
-				value="<?= esc_attr( $current_setting[ Author::AUTHORS_IDS__SETTING_NAME ] ) ?>"
+				name="<?php echo esc_attr( $author_class->get_setting_name() . '[' . Author::AUTHORS_IDS__SETTING_NAME . ']' ); ?>"
+				value="<?php echo esc_attr( $current_setting[ Author::AUTHORS_IDS__SETTING_NAME ] ); ?>"
 			/>
 		</div>
 		<?php

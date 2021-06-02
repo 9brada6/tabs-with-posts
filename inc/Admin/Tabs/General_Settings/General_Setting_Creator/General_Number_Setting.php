@@ -15,22 +15,22 @@ class General_Number_Setting extends General_Setting_Creator {
 		?>
 		<div class="<?php $this->bem_class( 'wrapper' ); ?>">
 			<?php if ( ! empty( $this->all_args['before'] ) && is_string( $this->all_args['before'] ) ) : ?>
-				<label for="<?= esc_attr( $this->get_settings_attr_id() ); ?>" class="<?php $this->bem_class( 'before-input' ); ?>">
-					<?= esc_html( $this->all_args['before'] ); ?>
+				<label for="<?php echo esc_attr( $this->get_settings_attr_id() ); ?>" class="<?php $this->bem_class( 'before-input' ); ?>">
+					<?php echo esc_html( $this->all_args['before'] ); ?>
 				</label>
 			<?php endif; ?>
 
 			<input
-				id="<?= esc_attr( $this->get_settings_attr_id() ); ?>"
+				id="<?php echo esc_attr( $this->get_settings_attr_id() ); ?>"
 				type="number"
-				name="<?= esc_attr( $this->name ); ?>"
-				value="<?= esc_attr( $this->value ); ?>"
+				name="<?php echo esc_attr( $this->name ); ?>"
+				value="<?php echo esc_attr( $this->value ); ?>"
 				<?php $this->display_input_attributes(); ?>
 			/>
 
 			<?php if ( ! empty( $this->all_args['after'] ) && is_string( $this->all_args['after'] ) ) : ?>
-				<label for="<?= esc_attr( $this->get_settings_attr_id() ); ?>" class="<?php $this->bem_class( 'after-input' ); ?>">
-					<?= esc_html( $this->all_args['after'] ); ?>
+				<label for="<?php echo esc_attr( $this->get_settings_attr_id() ); ?>" class="<?php $this->bem_class( 'after-input' ); ?>">
+					<?php echo esc_html( $this->all_args['after'] ); ?>
 				</label>
 			<?php endif; ?>
 		</div>

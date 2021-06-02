@@ -30,7 +30,7 @@ class Modify_Query_Settings {
 		$query_id         = $queries_tab->get_sanitized_id_of_query_being_modified();
 
 		?>
-			<input type="hidden" name="<?= esc_attr( self::NAME__QUERY_ID_HIDDEN_INPUT ) ?>" value="<?= esc_attr( $query_id ); ?>">
+			<input type="hidden" name="<?php echo esc_attr( self::NAME__QUERY_ID_HIDDEN_INPUT ); ?>" value="<?php echo esc_attr( $query_id ); ?>">
 		<?php
 		$this->display_template_selector();
 
@@ -58,22 +58,22 @@ class Modify_Query_Settings {
 		?>
 		<div class="<?php $this->bem_class( 'apply_templates_container' ); ?>">
 			<div class="<?php $this->bem_class( 'apply_templates_label' ); ?>">
-				<?= esc_html_x( 'Start with a template:', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Start with a template:', 'backend', 'tabs-with-posts' ); ?>
 			</div>
 
 			<select
 				id="<?php $this->bem_class( 'predefined_template_selector' ); ?>"
 				class="<?php $this->bem_class( 'predefined_template_selector' ); ?>"
-				data-twrpb-templates="<?= esc_attr( $query_templates_settings ); ?>"
-				data-twrpb-confirm-template-changes="<?= esc_attr( $templates_confirmation_message ); ?>"
+				data-twrpb-templates="<?php echo esc_attr( $query_templates_settings ); ?>"
+				data-twrpb-confirm-template-changes="<?php echo esc_attr( $templates_confirmation_message ); ?>"
 			>
 				<?php foreach ( $query_templates_options as $value => $display_option ) : ?>
-					<option value="<?= esc_attr( $value ); ?>"><?= esc_html( $display_option ); ?></option>
+					<option value="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( $display_option ); ?></option>
 				<?php endforeach; ?>
 			</select>
 
 			<button id="<?php $this->bem_class( 'apply_template_btn' ); ?>" class="twrpb-button <?php $this->bem_class( 'apply_template_btn' ); ?>" type="button">
-				<?= esc_html_x( 'Apply template', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Apply template', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php
@@ -95,14 +95,14 @@ class Modify_Query_Settings {
 		}
 
 		?>
-		<div class="<?= esc_attr( $queries_tab->get_query_setting_wrapper_class() ); ?> twrpb-collapsible"
-			data-twrpb-is-collapsed="<?= esc_attr( $collapsed ) ?>"
-			data-twrpb-default-settings="<?= esc_attr( $default_settings_json ); ?>"
-			data-twrpb-setting-name="<?= esc_attr( $setting_display_class->get_setting_name() ); ?>"
+		<div class="<?php echo esc_attr( $queries_tab->get_query_setting_wrapper_class() ); ?> twrpb-collapsible"
+			data-twrpb-is-collapsed="<?php echo esc_attr( $collapsed ); ?>"
+			data-twrpb-default-settings="<?php echo esc_attr( $default_settings_json ); ?>"
+			data-twrpb-setting-name="<?php echo esc_attr( $setting_display_class->get_setting_name() ); ?>"
 		>
 			<h2 class="twrpb-collapsible__title">
 				<span class="twrpb-collapsible__indicator"></span>
-				<?= $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
+				<?php echo $setting_display_class->get_title(); // phpcs:ignore -- No need to escape title. ?>
 			</h2>
 			<div class="twrpb-collapsible__content">
 				<?php $setting_display_class->display_setting( $current_setting ); ?>

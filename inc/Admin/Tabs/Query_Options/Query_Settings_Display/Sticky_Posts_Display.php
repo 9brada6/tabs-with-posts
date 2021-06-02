@@ -28,13 +28,13 @@ class Sticky_Posts_Display extends Query_Setting_Display {
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<p class="<?php $this->query_setting_paragraph_class(); ?>">
-				<select class="<?php $this->bem_class( 'selector' ); ?>" name="<?= esc_attr( $name ); ?>">
+				<select class="<?php $this->bem_class( 'selector' ); ?>" name="<?php echo esc_attr( $name ); ?>">
 					<option value="not_include" <?php selected( $selected_option, 'not_include' ); ?>>
-						<?= esc_html_x( 'Do not bring the sticky posts first', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Do not bring the sticky posts first', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 
 					<option value="include" <?php selected( $selected_option, 'include' ); ?>>
-						<?= esc_html_x( 'Bring the sticky posts to be first(at the top)', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Bring the sticky posts to be first(at the top)', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 				</select>
 			</p>

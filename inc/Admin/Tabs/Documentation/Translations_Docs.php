@@ -19,12 +19,12 @@ class Translations_Docs {
 	 */
 	public function display() {
 		?>
-			<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html_x( 'Translations', 'backend documentation', 'tabs-with-posts' ); ?></h2>
+			<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?php echo esc_html_x( 'Translations', 'backend documentation', 'tabs-with-posts' ); ?></h2>
 			<p>
-				<?= esc_html_x( 'You can either translate this plugin by changing directly the localization strings, via a plugin like "Loco Translate", or use the options to translate the strings. By translating the localization strings(and not changing the options), you can have multiple languages on a website.', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'You can either translate this plugin by changing directly the localization strings, via a plugin like "Loco Translate", or use the options to translate the strings. By translating the localization strings(and not changing the options), you can have multiple languages on a website.', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 			<p>
-				<?= esc_html_x( 'You should never translate the files in the plugin directory because these will be deleted when the plugin is updated.', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'You should never translate the files in the plugin directory because these will be deleted when the plugin is updated.', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 		<?php
 	}

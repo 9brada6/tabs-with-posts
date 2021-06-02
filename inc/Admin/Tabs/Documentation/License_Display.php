@@ -151,7 +151,7 @@ class License_Display {
 		?>
 		<div class="<?php $this->bem_class( 'licenses' ); ?>">
 			<div class="<?php $this->bem_class( 'licenses-title-wrapper' ); ?>">
-				<h2 class="<?php $this->bem_class( 'licenses-title' ); ?>"><?= esc_html_x( 'Licenses and external programs used', 'backend, documentation', 'tabs-with-posts' ); ?></h2>
+				<h2 class="<?php $this->bem_class( 'licenses-title' ); ?>"><?php echo esc_html_x( 'Licenses and external programs used', 'backend, documentation', 'tabs-with-posts' ); ?></h2>
 			</div>
 
 			<div class="<?php $this->bem_class( 'licenses-list' ); ?>">
@@ -179,17 +179,17 @@ class License_Display {
 		?>
 			<div class="<?php $this->bem_class( 'license' ); ?>">
 				<h3 class="<?php $this->bem_class( 'license-title' ); ?>">
-					<?= esc_html( $license['title'] ); ?>
+					<?php echo esc_html( $license['title'] ); ?>
 				</h3>
 
 				<div class="<?php $this->bem_class( 'license-description' ); ?>">
-					<?= wp_kses( $license['description'], Simple_Utils::get_plugin_allowed_kses_html() ); ?>
+					<?php echo wp_kses( $license['description'], Simple_Utils::get_plugin_allowed_kses_html() ); ?>
 				</div>
 
 				<div class="<?php $this->bem_class( 'license-link-wrapper' ); ?>">
-					<?= esc_html_x( 'License Link:', 'backend, documentation', 'tabs-with-posts' ); ?>
-					<a href="<?= esc_url( $license['license_link_description'] ); ?>" class="<?php $this->bem_class( 'license-link' ); ?>">
-						<?= esc_html( $license['license_link_description'] ); ?>
+					<?php echo esc_html_x( 'License Link:', 'backend, documentation', 'tabs-with-posts' ); ?>
+					<a href="<?php echo esc_url( $license['license_link_description'] ); ?>" class="<?php $this->bem_class( 'license-link' ); ?>">
+						<?php echo esc_html( $license['license_link_description'] ); ?>
 					</a>
 				</div>
 			</div>

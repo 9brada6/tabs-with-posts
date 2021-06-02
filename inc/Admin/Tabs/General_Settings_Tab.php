@@ -37,14 +37,14 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 			}
 			?>
 
-			<form class="twrpb-general-settings__form" method="post" action="<?= esc_url( self::get_form_action() ); ?>">
+			<form class="twrpb-general-settings__form" method="post" action="<?php echo esc_url( self::get_form_action() ); ?>">
 
 				<p class="twrpb-general-settings__pre-form-note">
-					<?= esc_html_x( 'If you are using a plugin that cache pages, you need to purge(delete) the page data after changing these settings.', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'If you are using a plugin that cache pages, you need to purge(delete) the page data after changing these settings.', 'backend', 'tabs-with-posts' ); ?>
 				</p>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Color Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Color Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::BACKGROUND_COLOR );
 					General_Settings_Factory::display_setting( General_Options::SECONDARY_BACKGROUND_COLOR );
@@ -59,7 +59,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Style Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Style Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::BORDER_RADIUS );
 					General_Settings_Factory::display_setting( General_Options::TAB_BUTTON_SIZE );
@@ -67,7 +67,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Date Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Date Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::HUMAN_READABLE_DATE );
 					General_Settings_Factory::display_setting( General_Options::DATE_FORMAT );
@@ -75,14 +75,14 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Thumbnail Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Thumbnail Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php
 					General_Settings_Factory::display_setting( General_Options::NO_THUMBNAIL_IMAGE );
 					?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Icons Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Icons Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<p>
 						<?php
 						$icon_reference_link = Settings_Menu::get_tab_url( new Documentation_Tab() );
@@ -111,7 +111,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Cache Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Cache Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::ENABLE_CACHE ); ?>
 					<?php General_Settings_Factory::display_setting( General_Options::CACHE_AUTOMATIC_REFRESH ); ?>
 
@@ -119,25 +119,25 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 					<button
 						id="twrpb-refresh-cache-button"
 						class="twrpb-button twrpb-general-settings__refresh-cache-btn"
-						data-twrpb-refresh-cache-nonce="<?= esc_attr( $nonce ) ?>"
-						data-twrpb-refresh-cache-waiting="<?= esc_attr_x( 'Waiting', 'backend', 'tabs-with-posts' ); ?>"
-						data-twrpb-refresh-cache-success="<?= esc_attr_x( 'Success', 'backend', 'tabs-with-posts' ); ?>"
-						data-twrpb-refresh-cache-failed="<?= esc_attr_x( 'Failed', 'backend', 'tabs-with-posts' ); ?>"
+						data-twrpb-refresh-cache-nonce="<?php echo esc_attr( $nonce ); ?>"
+						data-twrpb-refresh-cache-waiting="<?php echo esc_attr_x( 'Waiting', 'backend', 'tabs-with-posts' ); ?>"
+						data-twrpb-refresh-cache-success="<?php echo esc_attr_x( 'Success', 'backend', 'tabs-with-posts' ); ?>"
+						data-twrpb-refresh-cache-failed="<?php echo esc_attr_x( 'Failed', 'backend', 'tabs-with-posts' ); ?>"
 						type="button">
-						<?= esc_html_x( 'Refresh widget cache', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Refresh widget cache', 'backend', 'tabs-with-posts' ); ?>
 					</button>
 
 					<?php General_Settings_Factory::display_setting( General_Options::LOAD_WIDGET_VIA_AJAX ); ?>
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Translation', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Translation', 'backend', 'tabs-with-posts' ); ?></legend>
 
-					<button id="twrpb-general-settings__translations-show-btn" class="twrpb-button twrpb-general-settings__btn-show-translations"><?= esc_html_x( 'Click to show/hide translations', 'backend', 'tabs-with-posts' ); ?></button>
+					<button id="twrpb-general-settings__translations-show-btn" class="twrpb-button twrpb-general-settings__btn-show-translations"><?php echo esc_html_x( 'Click to show/hide translations', 'backend', 'tabs-with-posts' ); ?></button>
 
 					<div id="twrpb-general-settings__translations-hidden" class="twrpb-general-settings__translations-container">
 						<p>
-							<?= esc_html_x( 'The string below will override the translations. If you want the default translation(or you use another plugin), then leave these empty. If you have a multi language website, then use a plugin for string localization, like "Loco Translate"(Free).', 'backend', 'tabs-with-posts' ); ?>
+							<?php echo esc_html_x( 'The string below will override the translations. If you want the default translation(or you use another plugin), then leave these empty. If you have a multi language website, then use a plugin for string localization, like "Loco Translate"(Free).', 'backend', 'tabs-with-posts' ); ?>
 						</p>
 
 						<?php General_Settings_Factory::display_setting( General_Options::SHOW_MORE_POSTS_TEXT ); ?>
@@ -163,7 +163,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 				</fieldset>
 
 				<fieldset class="twrpb-general-settings__fieldset">
-					<legend class="twrpb-general-settings__legend"><?= esc_html_x( 'Other Settings', 'backend', 'tabs-with-posts' ); ?></legend>
+					<legend class="twrpb-general-settings__legend"><?php echo esc_html_x( 'Other Settings', 'backend', 'tabs-with-posts' ); ?></legend>
 					<?php General_Settings_Factory::display_setting( General_Options::FILL_GRID_WITH_POSTS ); ?>
 				</fieldset>
 
@@ -183,7 +183,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 	protected static function settings_submitted_success_message() {
 		?>
 		<div class="twrpb-general-settings__success-submitted-wrapper twrpb-notification twrpb-notification--success">
-			<?= esc_html_x( 'Settings saved successfully.', 'backend', 'tabs-with-posts' ); ?>
+			<?php echo esc_html_x( 'Settings saved successfully.', 'backend', 'tabs-with-posts' ); ?>
 		</div>
 		<?php
 	}
@@ -220,7 +220,7 @@ class General_Settings_Tab extends Admin_Menu_Tab {
 		<div class="twrpb-general-settings__submit-btn-wrapper">
 			<?php wp_nonce_field( 'twrp_general_submit_nonce', 'twrp_general_nonce', true, true ); ?>
 			<button id="twrpb-general-settings__submit-btn" class="twrpb-general-settings__submit-btn twrpb-button twrpb-button--save twrpb-button--large" type="submit" name="submit" value="submit">
-				<?= esc_html_x( 'Save Settings', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Save Settings', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 		</div>
 		<?php

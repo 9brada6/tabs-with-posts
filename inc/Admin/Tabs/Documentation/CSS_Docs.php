@@ -19,12 +19,12 @@ class CSS_Docs {
 	 */
 	public function display() {
 		?>
-			<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?= esc_html_x( 'CSS', 'backend documentation', 'tabs-with-posts' ); ?></h2>
+			<h2 class="<?php $this->bem_class( 'title-section' ); ?>"><?php echo esc_html_x( 'CSS', 'backend documentation', 'tabs-with-posts' ); ?></h2>
 			<p>
-				<?= esc_html_x( 'The one thing that I want to mention about the CSS is that all the CSS is enclosed into body:not(#twrpS) selectors, usually following by the class that the style apply. The meaning of this selector is to overwrite theme CSS like ".widget .item a" in a simple manner(an id tag overrides all classes tags), while not using !important tags.', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'The one thing that I want to mention about the CSS is that all the CSS is enclosed into body:not(#twrpS) selectors, usually following by the class that the style apply. The meaning of this selector is to overwrite theme CSS like ".widget .item a" in a simple manner(an id tag overrides all classes tags), while not using !important tags.', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 			<p>
-				<?= esc_html_x( 'When changing the CSS, try to change variables first. CSS variables from this plugin begin with "--twrp...".', 'backend, documentation', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'When changing the CSS, try to change variables first. CSS variables from this plugin begin with "--twrp...".', 'backend, documentation', 'tabs-with-posts' ); ?>
 			</p>
 		<?php
 	}

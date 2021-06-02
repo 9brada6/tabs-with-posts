@@ -34,17 +34,17 @@ class Post_Status_Display extends Query_Setting_Display {
 		?>
 
 		<div class="<?php $this->query_setting_paragraph_class(); ?>">
-			<select id="<?php $this->bem_class( 'js-apply-select' ); ?>" name="<?= esc_attr( $apply_statuses_name ); ?>">
-				<option value="not_applied" <?= selected( $current_apply_statuses, 'not_applied' ); ?>>
-					<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
+			<select id="<?php $this->bem_class( 'js-apply-select' ); ?>" name="<?php echo esc_attr( $apply_statuses_name ); ?>">
+				<option value="not_applied" <?php echo selected( $current_apply_statuses, 'not_applied' ); ?>>
+					<?php echo esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
-				<option value="apply" <?= selected( $current_apply_statuses, 'apply' ); ?>>
-					<?= esc_html_x( 'Filter by post statuses', 'backend', 'tabs-with-posts' ); ?>
+				<option value="apply" <?php echo selected( $current_apply_statuses, 'apply' ); ?>>
+					<?php echo esc_html_x( 'Filter by post statuses', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
 
-		<div id="<?php $this->bem_class( 'js-statuses-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'statuses-wrap' ); ?><?= esc_attr( $additional_hide_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-statuses-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> <?php $this->bem_class( 'statuses-wrap' ); ?><?php echo esc_attr( $additional_hide_class ); ?>">
 			<?php
 			$post_stats = Post_Status::get_post_statuses();
 			foreach ( $post_stats as $status ) :
@@ -58,15 +58,15 @@ class Post_Status_Display extends Query_Setting_Display {
 					?>
 					<div class="<?php $this->query_setting_checkbox_line_class(); ?>">
 						<input
-							id="<?= esc_attr( $id ); ?>"
+							id="<?php echo esc_attr( $id ); ?>"
 							class="<?php $this->bem_class( 'input' ); ?>"
-							name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Status::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
+							name="<?php echo esc_attr( $setting_class->get_setting_name() . '[' . Post_Status::POST_STATUSES__SETTING_NAME . '][' . $status->name . ']' ); ?>"
 							type="checkbox"
-							value="<?= esc_attr( $status->name ); ?>"
-							<?= esc_attr( $checked ); ?>
+							value="<?php echo esc_attr( $status->name ); ?>"
+							<?php echo esc_attr( $checked ); ?>
 						/>
-						<label class="<?php $this->bem_class( 'label' ); ?>" for="<?= esc_attr( $id ); ?>">
-							<?= esc_html( $status->label ); ?>
+						<label class="<?php $this->bem_class( 'label' ); ?>" for="<?php echo esc_attr( $id ); ?>">
+							<?php echo esc_html( $status->label ); ?>
 						</label>
 					</div>
 					<?php

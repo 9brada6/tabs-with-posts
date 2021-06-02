@@ -36,24 +36,24 @@ class Checkbox_Control implements Widget_Control {
 		?>
 		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-checkbox-control">
 			<?php if ( $args['before'] ) : ?>
-				<label class="twrpb-widget-form__checkbox-label-before" for="<?= esc_attr( $id ) ?>">
-					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
+				<label class="twrpb-widget-form__checkbox-label-before" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['before']; // phpcs:ignore -- No XSS. ?>
 				</label>
 			<?php endif; ?>
 
-			<input type='hidden' value='' name="<?= esc_attr( $name ); ?>">
+			<input type='hidden' value='' name="<?php echo esc_attr( $name ); ?>">
 			<input
-				id="<?= esc_attr( $id ); ?>"
+				id="<?php echo esc_attr( $id ); ?>"
 				type="checkbox"
-				name="<?= esc_attr( $name ); ?>"
-				value="<?= esc_attr( $args['value'] ); ?>"
+				name="<?php echo esc_attr( $name ); ?>"
+				value="<?php echo esc_attr( $args['value'] ); ?>"
 				<?php checked( $value, $args['value'] ); ?>
-				<?= esc_attr( $disabled ); ?>
+				<?php echo esc_attr( $disabled ); ?>
 			>
 
 			<?php if ( $args['after'] ) : ?>
-				<label class="twrpb-widget-form__checkbox-label-after" for="<?= esc_attr( $id ) ?>">
-					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
+				<label class="twrpb-widget-form__checkbox-label-after" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['after']; // phpcs:ignore -- No XSS. ?>
 				</label>
 			<?php endif; ?>
 		</div>

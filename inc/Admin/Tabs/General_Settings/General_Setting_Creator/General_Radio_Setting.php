@@ -21,15 +21,15 @@ class General_Radio_Setting extends General_Setting_Creator {
 				?>
 				<span class="<?php $this->bem_class( 'selection' ); ?>">
 					<input
-						id="<?= esc_attr( $radio_id ); ?>"
+						id="<?php echo esc_attr( $radio_id ); ?>"
 						type="radio"
-						name="<?= esc_attr( $this->name ); ?>"
-						value="<?= esc_attr( $option_value ); ?>"
-						<?= esc_attr( $checked ); ?>
+						name="<?php echo esc_attr( $this->name ); ?>"
+						value="<?php echo esc_attr( $option_value ); ?>"
+						<?php echo esc_attr( $checked ); ?>
 					>
 
-					<label for="<?= esc_attr( $radio_id ); ?>">
-						<?= $text; // phpcs:ignore -- No XSS ?>
+					<label for="<?php echo esc_attr( $radio_id ); ?>">
+						<?php echo $text; // phpcs:ignore -- No XSS ?>
 					</label>
 				</span>
 			<?php endforeach; ?>

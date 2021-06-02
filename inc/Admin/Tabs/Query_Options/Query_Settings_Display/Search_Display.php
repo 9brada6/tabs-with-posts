@@ -45,9 +45,9 @@ class Search_Display extends Query_Setting_Display {
 					id="<?php $this->bem_class( 'js-search-input' ); ?>"
 					class="<?php $this->bem_class( 'input' ); ?>"
 					type="text"
-					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Search::SEARCH_KEYWORDS__SETTING_NAME . ']' ); ?>"
-					value="<?= esc_attr( $search_keywords ) ?>"
-					placeholder="<?= esc_attr_x( 'Search keywords...', 'backend', 'tabs-with-posts' ) ?>"
+					name="<?php echo esc_attr( $setting_class->get_setting_name() . '[' . Search::SEARCH_KEYWORDS__SETTING_NAME . ']' ); ?>"
+					value="<?php echo esc_attr( $search_keywords ); ?>"
+					placeholder="<?php echo esc_attr_x( 'Search keywords...', 'backend', 'tabs-with-posts' ); ?>"
 				/>
 			</div>
 			<?php

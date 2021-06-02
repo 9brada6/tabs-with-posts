@@ -41,19 +41,19 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 				<select
 					id="<?php $this->bem_class( 'is-applied-selector' ); ?>"
 					class="<?php $this->bem_class( 'is-applied-selector' ); ?>"
-					name="<?= esc_attr( $selector_name ); ?>"  rows="10"
+					name="<?php echo esc_attr( $selector_name ); ?>"  rows="10"
 				>
 					<option value="not_apply" <?php selected( $selector_value, 'not_apply' ); ?>>
-						<?= esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Not applied', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 
 					<option value="apply" <?php selected( $selector_value, 'apply' ); ?>>
-						<?= esc_html_x( 'Apply settings', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'Apply settings', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 				</select>
 			</div>
 
-			<div id="<?php $this->bem_class( 'textarea-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> twrpb-codemirror-material-dark<?= esc_attr( $additional_setting_hidden_class ); ?>">
+			<div id="<?php $this->bem_class( 'textarea-wrapper' ); ?>" class="<?php $this->query_setting_paragraph_class(); ?> twrpb-codemirror-material-dark<?php echo esc_attr( $additional_setting_hidden_class ); ?>">
 				<?php
 				$remember_note = new Remember_Note( Remember_Note::NOTE__ADVANCED_ARGS_NOTE );
 				$remember_note->display_note( $this->get_query_setting_paragraph_class() );
@@ -61,8 +61,8 @@ class Advanced_Arguments_Display extends Query_Setting_Display {
 				<textarea
 					id="<?php $this->bem_class( 'textarea' ); ?>"
 					class="<?php $this->bem_class( 'textarea' ); ?>"
-					name="<?= esc_attr( $textarea_name ); ?>"  rows="10"
-				><?= esc_html( $advanced_args ); ?></textarea>
+					name="<?php echo esc_attr( $textarea_name ); ?>"  rows="10"
+				><?php echo esc_html( $advanced_args ); ?></textarea>
 				<?php
 				$warning_json_invalid = new Remember_Note( Remember_Note::NOTE__INVALID_JSON_WARNING, 'warning' );
 				$warning_json_invalid->display_note( $this->get_query_setting_paragraph_class() );

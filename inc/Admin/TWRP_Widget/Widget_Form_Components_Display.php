@@ -52,15 +52,15 @@ class Widget_Form_Components_Display {
 			<ul class="twrpb-widget-components__tab-buttons">
 				<?php foreach ( $this->components as $component ) : ?>
 					<li class="twrpb-widget-components__btn-wrapper">
-						<a class="twrpb-widget-components__btn" href="<?= esc_attr( '#' . $this->get_html_id_attr( $component ) ); ?>">
-						<?= esc_html( $component->get_component_title() ); ?>
+						<a class="twrpb-widget-components__btn" href="<?php echo esc_attr( '#' . $this->get_html_id_attr( $component ) ); ?>">
+						<?php echo esc_html( $component->get_component_title() ); ?>
 						</a>
 					</li>
 				<?php endforeach; ?>
 			</ul>
 			<div class="twrpb-widget-components__components">
 				<?php foreach ( $this->components as $component ) : ?>
-					<div id="<?= esc_attr( $this->get_html_id_attr( $component ) ); ?>" class="twrpb-widget-components__component-wrapper">
+					<div id="<?php echo esc_attr( $this->get_html_id_attr( $component ) ); ?>" class="twrpb-widget-components__component-wrapper">
 						<?php $this->display_component_settings( $component ); ?>
 					</div>
 				<?php endforeach; ?>

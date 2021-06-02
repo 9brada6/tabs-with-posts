@@ -158,18 +158,18 @@ abstract class General_Setting_Creator {
 	public function display() {
 		?>
 		<div
-			id="<?= esc_attr( $this->get_setting_wrapper_attr_id() ); ?>"
-			class="<?= esc_html( $this->get_main_html_element_class_name() ) ?>"
-			<?= $this->additional_attr // phpcs:ignore -- Pre-escaped. ?>
+			id="<?php echo esc_attr( $this->get_setting_wrapper_attr_id() ); ?>"
+			class="<?php echo esc_html( $this->get_main_html_element_class_name() ); ?>"
+			<?php echo $this->additional_attr // phpcs:ignore -- Pre-escaped. ?>
 		>
 
 			<div class="<?php $this->bem_class( 'title' ); ?>">
-				<?= $this->title; // phpcs:ignore -- No XSS ?>
+				<?php echo $this->title; // phpcs:ignore -- No XSS ?>
 			</div>
 
 			<?php if ( ! empty( $this->description ) ) : ?>
 				<div class="<?php $this->bem_class( 'description' ); ?>">
-					<?= wp_kses( $this->description, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
+					<?php echo wp_kses( $this->description, Simple_Utils::get_plugin_allowed_kses_html() ); ?>
 				</div>
 			<?php endif; ?>
 

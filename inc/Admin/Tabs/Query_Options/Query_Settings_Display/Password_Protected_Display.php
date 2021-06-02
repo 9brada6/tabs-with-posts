@@ -33,15 +33,15 @@ class Password_Protected_Display extends Query_Setting_Display {
 		?>
 		<div class="<?php $this->bem_class(); ?>">
 			<div class="<?php $this->query_setting_paragraph_class(); ?>">
-				<select name="<?= esc_attr( $select_name ); ?>" class="<?php $this->bem_class( 'selector' ); ?>">
+				<select name="<?php echo esc_attr( $select_name ); ?>" class="<?php $this->bem_class( 'selector' ); ?>">
 					<option value="not_applied" <?php selected( 'not_applied', $current_setting ); ?>>
-						<?= esc_html( $not_applied_text ); ?>
+						<?php echo esc_html( $not_applied_text ); ?>
 					</option>
 					<option value="has_password" <?php selected( 'has_password', $current_setting ); ?>>
-						<?= esc_html( $has_password_text ); ?>
+						<?php echo esc_html( $has_password_text ); ?>
 					</option>
 					<option value="no_password" <?php selected( 'no_password', $current_setting ); ?>>
-						<?= esc_html( $no_password_text ); ?>
+						<?php echo esc_html( $no_password_text ); ?>
 					</option>
 				</select>
 			</div>

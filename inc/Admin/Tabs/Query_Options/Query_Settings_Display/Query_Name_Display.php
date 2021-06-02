@@ -38,9 +38,9 @@ class Query_Name_Display extends Query_Setting_Display {
 			<input
 				id="<?php $this->bem_class( 'name' ); ?>"
 				class="<?php $this->bem_class( 'name' ); ?>" type="text"
-				name="<?= esc_attr( $name ) ?>"
-				value="<?= esc_attr( $value ) ?>"
-				placeholder="<?= esc_attr( $placeholder ) ?>"
+				name="<?php echo esc_attr( $name ); ?>"
+				value="<?php echo esc_attr( $value ); ?>"
+				placeholder="<?php echo esc_attr( $placeholder ); ?>"
 			/>
 			</div>
 

@@ -31,24 +31,24 @@ class Number_Control implements Widget_Control {
 		?>
 		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-number-control">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrpb-widget-form__number-label-before" for="<?= esc_attr( $id ) ?>">
-					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
+				<span class="twrpb-widget-form__number-label-before" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['before']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 
-			<input id="<?= esc_attr( $id ) ?>"
+			<input id="<?php echo esc_attr( $id ); ?>"
 				class="twrpb-widget-form__number-control"
-				name="<?= esc_attr( $name ) ?>"
+				name="<?php echo esc_attr( $name ); ?>"
 				type="number"
-				step="<?= esc_attr( $args['step'] ) ?>"
-				max="<?= esc_attr( $args['max'] ) ?>"
-				min="<?= esc_attr( $args['min'] ) ?>"
-				value="<?= esc_attr( (string) $value ) ?>"
+				step="<?php echo esc_attr( $args['step'] ); ?>"
+				max="<?php echo esc_attr( $args['max'] ); ?>"
+				min="<?php echo esc_attr( $args['min'] ); ?>"
+				value="<?php echo esc_attr( (string) $value ); ?>"
 			/>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrpb-widget-form__number-label-after" for="<?= esc_attr( $id ) ?>">
-					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
+				<span class="twrpb-widget-form__number-label-after" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['after']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 		</div>

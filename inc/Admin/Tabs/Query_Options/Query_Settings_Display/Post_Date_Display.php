@@ -45,17 +45,17 @@ class Post_Date_Display extends Query_Setting_Display {
 		$setting_class = $this->get_setting_class();
 		?>
 		<div class="<?php $this->bem_class( 'type-selector-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?>">
-			<select id="<?php $this->bem_class( 'js-date-type' ); ?>" name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ) ?>">
+			<select id="<?php $this->bem_class( 'js-date-type' ); ?>" name="<?php echo esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::DATE_TYPE_NAME . ']' ); ?>">
 				<option value="NA" <?php selected( 'NA', $date_type ); ?>>
-					<?= esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ) ?>
+					<?php echo esc_html_x( 'Not Applied', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 
 				<option value="LT" <?php selected( 'LT', $date_type ); ?>>
-					<?= esc_html_x( 'Last period of time', 'backend', 'tabs-with-posts' ) ?>
+					<?php echo esc_html_x( 'Last period of time', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 
 				<option value="FT" <?php selected( 'FT', $date_type ); ?>>
-					<?= esc_html_x( 'Between points in time', 'backend', 'tabs-with-posts' ) ?>
+					<?php echo esc_html_x( 'Between points in time', 'backend', 'tabs-with-posts' ); ?>
 				</option>
 			</select>
 		</div>
@@ -90,7 +90,7 @@ class Post_Date_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="<?php $this->bem_class( 'js-last-period-wrapper' ); ?>" class="<?php $this->bem_class( 'last-period-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $additional_settings_hidden_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-last-period-wrapper' ); ?>" class="<?php $this->bem_class( 'last-period-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_attr( $additional_settings_hidden_class ); ?>">
 			<?php
 			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_SETTING_REMEMBER, 'warning' );
 			$remember_note->display_note( $this->get_query_setting_paragraph_class() . ' twrpb-hidden' );
@@ -98,70 +98,70 @@ class Post_Date_Display extends Query_Setting_Display {
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'last-7-days' ); ?>" type="radio" value="L7D"
-					name="<?= esc_attr( $name ) ?>"
+					name="<?php echo esc_attr( $name ); ?>"
 					<?php checked( 'L7D', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-7-days' ); ?>">
-					<?= esc_html_x( 'Last 7 days', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Last 7 days', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'last-30-days' ); ?>" type="radio" value="L30D"
-					name="<?= esc_attr( $name ) ?>"
+					name="<?php echo esc_attr( $name ); ?>"
 					<?php checked( 'L30D', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-30-days' ); ?>">
-					<?= esc_html_x( 'Last 30 days', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Last 30 days', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'last-week' ); ?>" type="radio" value="LW"
-					name="<?= esc_attr( $name ) ?>"
+					name="<?php echo esc_attr( $name ); ?>"
 					<?php checked( 'LW', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-week' ); ?>">
-					<?= esc_html_x( 'This and last week (max 7-14 days)', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'This and last week (max 7-14 days)', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'last-month' ); ?>" type="radio" value="LM"
-					name="<?= esc_attr( $name ) ?>"
+					name="<?php echo esc_attr( $name ); ?>"
 					<?php checked( 'LM', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'last-month' ); ?>">
-					<?= esc_html_x( 'This and last month (max 30-60 days)', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'This and last month (max 30-60 days)', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?>">
 				<input id="<?php $this->bem_class( 'this-year' ); ?>" type="radio" value="TY"
-					name="<?= esc_attr( $name ) ?>"
+					name="<?php echo esc_attr( $name ); ?>"
 					<?php checked( 'TY', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'this-year' ); ?>">
-					<?= esc_html_x( 'This year', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'This year', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 			</p>
 
 			<p class="<?php $this->query_setting_checkbox_line_class(); ?> <?php $this->bem_class( 'custom-last-days-wrapper' ); ?>">
 				<input id="<?php $this->bem_class( 'js-custom' ); ?>" type="radio" value="C"
-					name="<?= esc_attr( $name ) ?>"
+					name="<?php echo esc_attr( $name ); ?>"
 					<?php checked( 'C', $last_period ); ?>
 				/>
 				<label for="<?php $this->bem_class( 'js-custom' ); ?>">
-					<?= esc_html_x( 'Last n days:', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Last n days:', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 
 				<input
 					id="<?php $this->bem_class( 'js-last-days-input' ); ?>"
 					class="<?php $this->bem_class( 'last-days-input' ); ?>"
 					min="0" step="1" type="number"
-					name="<?= esc_attr( $last_days_name ); ?>"
-					placeholder="<?= esc_attr_x( 'Last number of days...', 'backend', 'tabs-with-posts' ); ?>"
-					value="<?= esc_attr( (string) $last_days_num ); ?>"
+					name="<?php echo esc_attr( $last_days_name ); ?>"
+					placeholder="<?php echo esc_attr_x( 'Last number of days...', 'backend', 'tabs-with-posts' ); ?>"
+					value="<?php echo esc_attr( (string) $last_days_num ); ?>"
 				/>
 			</p>
 		</div>
@@ -192,7 +192,7 @@ class Post_Date_Display extends Query_Setting_Display {
 		}
 
 		?>
-		<div id="<?php $this->bem_class( 'js-between-wrapper' ); ?>" class="<?php $this->bem_class( 'between-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?= esc_attr( $is_hidden_class ); ?>">
+		<div id="<?php $this->bem_class( 'js-between-wrapper' ); ?>" class="<?php $this->bem_class( 'between-wrapper' ); ?> <?php $this->query_setting_paragraph_class(); ?><?php echo esc_attr( $is_hidden_class ); ?>">
 			<?php
 			$setting_class = $this->get_setting_class();
 			$remember_note = new Remember_Note( Remember_Note::NOTE__POST_DATE_AFTER_BEFORE_SETTING_EXAMPLE );
@@ -201,12 +201,12 @@ class Post_Date_Display extends Query_Setting_Display {
 
 			<span class="<?php $this->bem_class( 'after-wrapper' ); ?>">
 				<label for="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after-label' ); ?>">
-					<?= esc_html_x( 'After:', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'After:', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 				<br />
 				<input id="<?php $this->bem_class( 'after' ); ?>" class="<?php $this->bem_class( 'after' ); ?>" type="date" autocomplete="off"
-					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::AFTER_DATE_NAME . ']' ); ?>"
-					value="<?= esc_attr( $after_value ); ?>"
+					name="<?php echo esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::AFTER_DATE_NAME . ']' ); ?>"
+					value="<?php echo esc_attr( $after_value ); ?>"
 				/>
 			</span>
 
@@ -214,12 +214,12 @@ class Post_Date_Display extends Query_Setting_Display {
 
 			<span class="<?php $this->bem_class( 'before-wrapper' ); ?>">
 				<label for="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before-label' ); ?>">
-					<?= esc_html_x( 'Before:', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Before:', 'backend', 'tabs-with-posts' ); ?>
 				</label>
 				<br />
 				<input id="<?php $this->bem_class( 'before' ); ?>" class="<?php $this->bem_class( 'before' ); ?>" type="date" autocomplete="off"
-					name="<?= esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::BEFORE_DATE_NAME . ']' ); ?>"
-					value="<?= esc_attr( $before_value ); ?>"
+					name="<?php echo esc_attr( $setting_class->get_setting_name() . '[' . Post_Date::BEFORE_DATE_NAME . ']' ); ?>"
+					value="<?php echo esc_attr( $before_value ); ?>"
 				/>
 			</span>
 		</div>

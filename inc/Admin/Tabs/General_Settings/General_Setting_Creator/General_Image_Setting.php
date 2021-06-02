@@ -28,14 +28,14 @@ class General_Image_Setting extends General_Setting_Creator {
 
 		?>
 		<div class="<?php $this->bem_class( 'btns-wrapper' ); ?>">
-			<button class="<?php $this->bem_class( 'btn' ); ?> twrpb-button" type="button"><?= esc_html_x( 'Add image', 'backend', 'tabs-with-posts' ); ?></button>
-			<button class="<?php $this->bem_class( 'clear-btn' ); ?> twrpb-button twrpb-button--delete twrpb-button--small" type="button"><?= esc_html_x( 'Clear Image', 'backend', 'tabs-with-posts' ); ?></button>
+			<button class="<?php $this->bem_class( 'btn' ); ?> twrpb-button" type="button"><?php echo esc_html_x( 'Add image', 'backend', 'tabs-with-posts' ); ?></button>
+			<button class="<?php $this->bem_class( 'clear-btn' ); ?> twrpb-button twrpb-button--delete twrpb-button--small" type="button"><?php echo esc_html_x( 'Clear Image', 'backend', 'tabs-with-posts' ); ?></button>
 		</div>
 
-		<input class="<?php $this->bem_class( 'img-src' ); ?>" name="<?= esc_attr( $this->name ); ?>" value="<?= esc_attr( $image_id ); ?>" type="hidden"<?php $this->display_input_attributes(); ?>/>
+		<input class="<?php $this->bem_class( 'img-src' ); ?>" name="<?php echo esc_attr( $this->name ); ?>" value="<?php echo esc_attr( $image_id ); ?>" type="hidden"<?php $this->display_input_attributes(); ?>/>
 
 		<div class="<?php $this->bem_class( 'img-preview-wrapper' ); ?>">
-			<img class="<?php $this->bem_class( 'img-preview' ); ?>" src="<?= esc_url( $src ) ?>"></img>
+			<img class="<?php $this->bem_class( 'img-preview' ); ?>" src="<?php echo esc_url( $src ); ?>"></img>
 		</div>
 		<?php
 	}

@@ -33,7 +33,7 @@ class Button_Tabs extends Tab_Style {
 		}
 
 		?>
-		<div id="<?php $this->tabs_wrapper_id(); ?>" class="<?php $this->tab_class(); ?><?= esc_attr( $additional_tab_class ); ?>">
+		<div id="<?php $this->tabs_wrapper_id(); ?>" class="<?php $this->tab_class(); ?><?php echo esc_attr( $additional_tab_class ); ?>">
 		<?php
 	}
 
@@ -61,7 +61,7 @@ class Button_Tabs extends Tab_Style {
 			$default_tab_attr = ' ' . $this->get_tabby_default_tab_data_attr();
 		}
 		?>
-		<li class="<?php $this->tab_btn_item_class(); ?>"><a class="<?php $this->tab_btn_class(); ?>" href="#<?php $this->tab_id( $query_id ); ?>"<?= esc_attr( $default_tab_attr ); ?>><?= esc_html( $button_text ); ?></a></li>
+		<li class="<?php $this->tab_btn_item_class(); ?>"><a class="<?php $this->tab_btn_class(); ?>" href="#<?php $this->tab_id( $query_id ); ?>"<?php echo esc_attr( $default_tab_attr ); ?>><?php echo esc_html( $button_text ); ?></a></li>
 		<?php
 	}
 

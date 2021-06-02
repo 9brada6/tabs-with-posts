@@ -26,9 +26,9 @@ class Query_Existing_Table {
 		<table class="<?php $this->bem_class(); ?>">
 			<thead>
 				<tr>
-					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?= esc_html_x( 'Query Name', 'backend', 'tabs-with-posts' ); ?></th>
+					<th class="<?php $this->bem_class( 'title-head' ); ?>"><?php echo esc_html_x( 'Query Name', 'backend', 'tabs-with-posts' ); ?></th>
 					<th class="<?php $this->bem_class( 'edit-head' ); ?>">
-						<?= esc_html_x( 'Actions', 'backend', 'tabs-with-posts' ) ?>
+						<?php echo esc_html_x( 'Actions', 'backend', 'tabs-with-posts' ); ?>
 					</th>
 				</tr>
 			</thead>
@@ -40,7 +40,7 @@ class Query_Existing_Table {
 				<?php else : ?>
 					<tr>
 						<td class="<?php $this->bem_class( 'no-queries-col' ); ?>" colspan="2">
-						<?= esc_html_x( 'No queries yet', 'backend', 'tabs-with-posts' ); ?>
+						<?php echo esc_html_x( 'No queries yet', 'backend', 'tabs-with-posts' ); ?>
 						</td>
 					</tr>
 				<?php endif; ?>
@@ -74,9 +74,9 @@ class Query_Existing_Table {
 				<?php echo esc_html( Query_Name::get_query_display_name( $query_settings, $query_id ) ); ?>
 			</td>
 			<td class="<?php $this->bem_class( 'edit-col' ); ?>">
-				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?= wp_kses( $edit_text, Simple_Utils::get_plugin_allowed_kses_html() ); ?></a>
+				<a class="<?php $this->bem_class( 'edit-link' ); ?>" href="<?php echo esc_url( $queries_tab->get_query_edit_link( $query_id ) ); ?>"><?php echo wp_kses( $edit_text, Simple_Utils::get_plugin_allowed_kses_html() ); ?></a>
 				<span class="<?php $this->bem_class( 'edit-delete-separator' ); ?>">|</span>
-				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?= esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?= wp_kses( $delete_text, Simple_Utils::get_plugin_allowed_kses_html() ); ?></a>
+				<a class="<?php $this->bem_class( 'delete-link' ); ?>" href="<?php echo esc_url( $queries_tab->get_query_delete_link( $query_id ) ); ?>"><?php echo wp_kses( $delete_text, Simple_Utils::get_plugin_allowed_kses_html() ); ?></a>
 			</td>
 		</tr>
 		<?php

@@ -28,17 +28,17 @@ class Color_Control implements Widget_Control {
 		?>
 		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-color-control">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrpb-widget-form__color-label-before" for="<?= esc_attr( $id ) ?>">
-					<?= $args['before']; // phpcs:ignore -- No XSS ?>
+				<span class="twrpb-widget-form__color-label-before" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['before']; // phpcs:ignore -- No XSS ?>
 				</span>
 			<?php endif; ?>
 
-			<input type="hidden" name="<?= esc_attr( $name ); ?>" value="<?= esc_attr( $value ); ?>">
+			<input type="hidden" name="<?php echo esc_attr( $name ); ?>" value="<?php echo esc_attr( $value ); ?>">
 			<div class="twrpb-color-picker"></div>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrpb-widget-form__color-label-after" for="<?= esc_attr( $id ) ?>">
-					<?= $args['after']; // phpcs:ignore -- No XSS ?>
+				<span class="twrpb-widget-form__color-label-after" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['after']; // phpcs:ignore -- No XSS ?>
 				</span>
 			<?php endif; ?>
 		</div>

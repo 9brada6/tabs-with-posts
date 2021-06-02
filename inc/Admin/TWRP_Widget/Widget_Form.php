@@ -61,7 +61,7 @@ class Widget_Form {
 	public function display_form() {
 		$queries = Query_Options::get_all_queries();
 		?>
-		<div class="<?php $this->bem_class(); ?>" data-twrpb-widget-id=<?= esc_attr( (string) $this->widget_id ); ?> >
+		<div class="<?php $this->bem_class(); ?>" data-twrpb-widget-id=<?php echo esc_attr( (string) $this->widget_id ); ?> >
 			<?php
 			if ( empty( $queries ) ) {
 				$this->display_no_queries_exist();
@@ -87,8 +87,8 @@ class Widget_Form {
 	protected function display_no_queries_exist() {
 		?>
 		<p class="<?php $this->bem_class( 'select-queries-exist' ); ?>">
-			<?=
-				wp_kses(
+			<?php
+				echo wp_kses(
 					/* translators: The <b>, </b>, and <br /> tag is a HTML tag and is good to remain there(only these tags are allowed). */
 					_x( 'No queries created. You need to select from right menu: <br /><b> "Settings" -> "Tabs With Recommended Posts" (Submenu).</b><br /> Then navigate to: <br /><b> "Post Queries" (Tab) -> "Add Query".</b>', 'backend', 'tabs-with-posts' ),
 					Simple_Utils::get_plugin_allowed_kses_html()
@@ -193,19 +193,19 @@ class Widget_Form {
 		?>
 		<p class="<?php $this->bem_class( 'select-query-wrapper' ); ?>">
 			<span class="<?php $this->bem_class( 'select-query-to-add-text' ); ?>">
-				<?= esc_html_x( 'Add tab:', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Add tab:', 'backend', 'tabs-with-posts' ); ?>
 			</span>
 
 			<select class="<?php $this->bem_class( 'select-query-to-add' ); ?>">
 				<?php foreach ( $queries_ids as $query_id ) : ?>
-					<option value="<?= esc_attr( (string) $query_id ) ?>">
-						<?= esc_html( Query_Options::get_query_display_name( $query_id ) ); ?>
+					<option value="<?php echo esc_attr( (string) $query_id ); ?>">
+						<?php echo esc_html( Query_Options::get_query_display_name( $query_id ) ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
 
 			<button class="<?php $this->bem_class( 'select-query-to-add-btn' ); ?> twrpb-button" type="button">
-				<?= esc_html_x( 'Add', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Add', 'backend', 'tabs-with-posts' ); ?>
 			</button>
 
 			<span class="<?php $this->bem_class( 'query-loading' ); ?>">
@@ -214,7 +214,7 @@ class Widget_Form {
 		</p>
 
 		<p class="<?php $this->bem_class( 'failed-to-load-query-tab' ); ?>">
-			<?= esc_html_x( 'Failed to add tab. Something went wrong, try refreshing the page.', 'backend', 'tabs-with-posts' ); ?>
+			<?php echo esc_html_x( 'Failed to add tab. Something went wrong, try refreshing the page.', 'backend', 'tabs-with-posts' ); ?>
 		</p>
 		<?php
 	}
@@ -243,11 +243,11 @@ class Widget_Form {
 		</ul>
 
 		<input
-			id="<?= esc_attr( $queries_field_id ); ?>"
+			id="<?php echo esc_attr( $queries_field_id ); ?>"
 			class="<?php $this->bem_class( 'selected-queries' ); ?>"
-			name="<?= esc_attr( $queries_field_name ); ?>"
+			name="<?php echo esc_attr( $queries_field_name ); ?>"
 			type="hidden"
-			value="<?= esc_attr( (string) $selected_queries_list ); ?>"
+			value="<?php echo esc_attr( (string) $selected_queries_list ); ?>"
 		/>
 		<?php
 	}
@@ -271,21 +271,21 @@ class Widget_Form {
 		}
 
 		?>
-		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrpb-query-id="<?= esc_attr( (string) $query_id ); ?>">
+		<li class="<?php $this->bem_class( 'selected-query' ); ?>" data-twrpb-query-id="<?php echo esc_attr( (string) $query_id ); ?>">
 			<h4 class="<?php $this->bem_class( 'selected-query-title' ); ?>">
 				<span class="<?php $this->bem_class( 'accordion-indicator' ); ?>"></span>
-				<?= esc_attr( Query_Options::get_query_display_name( $query_id ) ); ?>
-				<button class="<?php $this->bem_class( 'remove-selected-query' ); ?> twrpb-button twrpb-button--small twrpb-button--delete" type="button" aria-label="<?= esc_attr( $delete_button_aria_label ); ?>"><?= esc_html( $delete_button_text ) ?></button>
+				<?php echo esc_attr( Query_Options::get_query_display_name( $query_id ) ); ?>
+				<button class="<?php $this->bem_class( 'remove-selected-query' ); ?> twrpb-button twrpb-button--small twrpb-button--delete" type="button" aria-label="<?php echo esc_attr( $delete_button_aria_label ); ?>"><?php echo esc_html( $delete_button_text ); ?></button>
 			</h4>
 
 			<div class="<?php $this->bem_class( 'selected-query-settings' ); ?>">
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
-					<?= esc_html_x( 'Tab Settings:', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Tab Settings:', 'backend', 'tabs-with-posts' ); ?>
 				</h5>
 
 				<?php if ( ! empty( $plugins_needed_not_installed ) ) : ?>
 					<span class="<?php $this->bem_class( 'tab-not-displayed-msg' ); ?>">
-						<?= esc_html( $plugins_needed_not_installed ); ?>
+						<?php echo esc_html( $plugins_needed_not_installed ); ?>
 					</span>
 				<?php endif; ?>
 
@@ -293,7 +293,7 @@ class Widget_Form {
 				<?php $this->display_tab_query_select_artblock( $query_id ); ?>
 
 				<h5 class="<?php $this->bem_class( 'query-description-title' ); ?>">
-					<?= esc_html_x( 'Post settings:', 'backend', 'tabs-with-posts' ); ?>
+					<?php echo esc_html_x( 'Post settings:', 'backend', 'tabs-with-posts' ); ?>
 				</h5>
 				<div class="<?php $this->bem_class( 'article-block-settings-container' ); ?>">
 					<?php $this->display_artblock_settings( $query_id ); ?>
@@ -324,13 +324,13 @@ class Widget_Form {
 
 		?>
 		<p class="<?php $this->bem_class( 'tab-button-text-wrapper' ); ?>">
-			<?= esc_html_x( 'Tab button text:', 'backend', 'tabs-with-posts' ); ?>
+			<?php echo esc_html_x( 'Tab button text:', 'backend', 'tabs-with-posts' ); ?>
 			<input
 				type="text"
 				class="<?php $this->bem_class( 'tab-button-text' ); ?>"
-				name="<?= esc_attr( $name ); ?>"
-				placeholder="<?= esc_attr_x( 'Display tab title', 'backend', 'tabs-with-posts' ); ?>"
-				value="<?= esc_attr( $value ); ?>"
+				name="<?php echo esc_attr( $name ); ?>"
+				placeholder="<?php echo esc_attr_x( 'Display tab title', 'backend', 'tabs-with-posts' ); ?>"
+				value="<?php echo esc_attr( $value ); ?>"
 			/>
 		</p>
 		<?php
@@ -356,25 +356,25 @@ class Widget_Form {
 		?>
 		<p class="<?php $this->bem_class( 'article-block-selector-wrapper' ); ?>">
 			<span class="<?php $this->bem_class( 'article-block-selector-text' ); ?>">
-				<?= esc_html_x( 'Select a style to display:', 'backend', 'tabs-with-posts' ); ?>
+				<?php echo esc_html_x( 'Select a style to display:', 'backend', 'tabs-with-posts' ); ?>
 			</span>
-			<select class="<?php $this->bem_class( 'article-block-selector' ); ?>" name="<?= esc_attr( $select_name ); ?>">
+			<select class="<?php $this->bem_class( 'article-block-selector' ); ?>" name="<?php echo esc_attr( $select_name ); ?>">
 				<?php foreach ( $registered_artblocks as $artblock ) : ?>
 					<option
 						class="<?php $this->bem_class( 'article-block-select-option' ); ?>"
-						value="<?= esc_attr( $artblock::get_id() ); ?>"
-						<?= $selected_value === $artblock::get_id() ? 'selected' : '' ?>
+						value="<?php echo esc_attr( $artblock::get_id() ); ?>"
+						<?php echo $selected_value === $artblock::get_id() ? 'selected' : ''; ?>
 					>
-						<?= esc_html( $artblock::get_name() ); ?>
+						<?php echo esc_html( $artblock::get_name() ); ?>
 					</option>
 				<?php endforeach; ?>
 				<?php foreach ( $premium_artblocks as $artblock ) : ?>
 					<option
 						class="<?php $this->bem_class( 'article-block-select-option' ); ?>"
-						value="<?= esc_attr( $artblock::get_id() ); ?>"
+						value="<?php echo esc_attr( $artblock::get_id() ); ?>"
 						disabled
 					>
-						<?= esc_html( $artblock::get_name() ); ?>
+						<?php echo esc_html( $artblock::get_name() ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
@@ -422,7 +422,7 @@ class Widget_Form {
 		$artblock->sanitize_widget_settings();
 
 		?>
-		<div class="twrpb-widget-form__article-block-settings" data-twrpb-selected-artblock="<?= esc_attr( (string) $artblock_id ); ?>" >
+		<div class="twrpb-widget-form__article-block-settings" data-twrpb-selected-artblock="<?php echo esc_attr( (string) $artblock_id ); ?>" >
 			<?php $artblock->display_form_settings(); ?>
 		</div>
 		<?php

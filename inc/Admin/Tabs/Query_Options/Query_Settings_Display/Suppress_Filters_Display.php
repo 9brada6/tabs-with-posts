@@ -34,12 +34,12 @@ class Suppress_Filters_Display extends Query_Setting_Display {
 			?>
 
 			<div class="<?php $this->query_setting_paragraph_class(); ?>">
-				<select id="<?php $this->bem_class( 'suppress-filters' ); ?>" name="<?= esc_attr( $name ); ?>">
-					<option value="true" <?= selected( $suppress_the_filters, 'true' ); ?>>
-						<?= esc_html_x( 'Suppress the filters', 'backend', 'tabs-with-posts' ); ?>
+				<select id="<?php $this->bem_class( 'suppress-filters' ); ?>" name="<?php echo esc_attr( $name ); ?>">
+					<option value="true" <?php echo selected( $suppress_the_filters, 'true' ); ?>>
+						<?php echo esc_html_x( 'Suppress the filters', 'backend', 'tabs-with-posts' ); ?>
 					</option>
-					<option value="false" <?= selected( $suppress_the_filters, 'false' ); ?>>
-						<?= esc_html_x( 'Do not suppress the filters', 'backend', 'tabs-with-posts' ); ?>
+					<option value="false" <?php echo selected( $suppress_the_filters, 'false' ); ?>>
+						<?php echo esc_html_x( 'Do not suppress the filters', 'backend', 'tabs-with-posts' ); ?>
 					</option>
 				</select>
 			</div>

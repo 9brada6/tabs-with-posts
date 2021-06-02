@@ -34,28 +34,28 @@ class Select_Control implements Widget_Control {
 		}
 
 		?>
-		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-select-control<?= esc_attr( $control_class_modifier ); ?>">
+		<div class="twrpb-widget-form__paragraph twrpb-widget-form__paragraph-select-control<?php echo esc_attr( $control_class_modifier ); ?>">
 			<?php if ( $args['before'] ) : ?>
-				<span class="twrpb-widget-form__select-label-before" for="<?= esc_attr( $id ) ?>">
-					<?= $args['before']; // phpcs:ignore -- No XSS. ?>
+				<span class="twrpb-widget-form__select-label-before" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['before']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 
 			<select
-				id="<?= esc_attr( $id ) ?>"
+				id="<?php echo esc_attr( $id ); ?>"
 				class="twrpb-widget-form__select-control"
-				name="<?= esc_attr( $name ) ?>"
+				name="<?php echo esc_attr( $name ); ?>"
 			>
 				<?php foreach ( $args['options'] as $option_value => $display_value ) : ?>
-					<option value="<?= esc_attr( $option_value ); ?>" <?php selected( $option_value, $value ); ?>>
-						<?= esc_html( $display_value ); ?>
+					<option value="<?php echo esc_attr( $option_value ); ?>" <?php selected( $option_value, $value ); ?>>
+						<?php echo esc_html( $display_value ); ?>
 					</option>
 				<?php endforeach; ?>
 			</select>
 
 			<?php if ( $args['after'] ) : ?>
-				<span class="twrpb-widget-form__select-label-after" for="<?= esc_attr( $id ) ?>">
-					<?= $args['after']; // phpcs:ignore -- No XSS. ?>
+				<span class="twrpb-widget-form__select-label-after" for="<?php echo esc_attr( $id ); ?>">
+					<?php echo $args['after']; // phpcs:ignore -- No XSS. ?>
 				</span>
 			<?php endif; ?>
 		</div>
